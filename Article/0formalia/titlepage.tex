@@ -1,0 +1,80 @@
+%pagestyle{fancy} %enable headers and footers again
+
+\begin{comment}
+\pdfbookmark[0]{Danish title page}{label:titlepage_en}
+\aautitlepage{%
+  \englishprojectinfo{
+    Project Title %title
+  }{%
+    Analoge kredsløb og systemer %theme
+  }{%
+    P3: 2. September 2014 - 17. December 2014 %project period
+  }{%
+    14gr313 % project group
+  }{%
+    %list of group members
+    Amalie Vistoft Petersen\\
+    Mikkel Krogh Simonsen\\
+    Rasmus Gundorff Sæderup\\
+    Simon Bjerre Krogh\\
+    Thomas Kær Juel Jørgensen\\
+    Thomas 'Godlike' Rasmussen
+  }{%
+    %list of supervisors
+    Tom S. Pedersen
+
+  }{%
+    9 % number of printed copies
+  }{%
+    \today % date of completion
+  }%
+}{%department and address
+  \textbf{Institut for Elektroniske Systemer}\\
+  Fredrik Bajers Vej 7\\
+  DK-9220 Aalborg Ø\\
+  }{% the abstract
+  Here is the abstract
+}
+
+\cleardoublepage
+
+\end{comment}
+
+\selectlanguage{english}
+\pdfbookmark[0]{Titelblad}{label:titelblad}
+\aautitlepage{%
+  \danishprojectinfo{
+    Multi Band Limiter For Loudspeaker Protection%title
+  }{%
+    Digital Real-Time Signal Processing  %theme
+  }{%
+    6. Semester %project period
+  }{%
+    16gr640 % project group
+  }{%
+    %list of group members
+    Kasper Kiis Jensen\\
+    Poul Hoang\\
+    Mikkel Krogh Simonsen
+  }{%
+    %list of supervisors
+    Sofus Birkedal Nielsen
+    }{
+    
+    }{%
+    4 % number of printed copies
+  }
+  {%
+    May 25, 2016%\today % date of completion
+  }%
+}{%department and address
+  \textrm{\textbf{Institute of Electronic Systems}\\
+  Fredrik Bajers Vej 7\\
+  DK-9220 Aalborg Ø\\}
+ }{
+ This project concerns the development of a real-time signal processing system in an active loudspeaker to prevent the coil from hitting the backplate of the woofer and reduce distortion compared to peak limitation. A DALI Zensor 5 AX active loudspeaker was used to benchmark the loudspeaker performance. \\
+ 
+ From the measurements several models and behaviors could be determined. Through subjective listening test a multi-band limitation could be determined for protection. The implemented system resulted in a feedforward system with five RMS limiters implemented in a multi-rate system to distribute the limitation over multiple bands. The system were implemented into a TMS320C5515 EZDSP with a frequency response deviating only $\pm$ 0.4dB. \\
+ 
+ The system was implemented using C for the main code and Assembler for the instruction critical areas. The systems RMS limiter was however faulty implemented and did not limit properly. The system was ultimately able to attenuate the signal enough to keep the voice coil from hitting the backplate. 
+}
