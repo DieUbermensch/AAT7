@@ -1,0 +1,82 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{textcomp}
+\begin{document}
+
+\begin{Huge}
+\begin{center}
+Journal template : Experiments
+\end{center}
+\end{Huge}
+
+
+\section{Purpose}
+
+The purpose of this experience is to determine the SNR needed to understand speech in a noisy office environnement.
+
+\subsection{AAU num list}
+
+\begin{table}[h]
+	\centering
+	
+	\begin{tabular}{ c c c } \toprule
+		{Item} & {Description} & {AAU-no}. \\ \bottomrule 
+		1      &  4 Genelec speakers						& xxx	\\
+		2      &  1 pair of headset						& xx		\\
+		3      &  Soundcard RME                      	& 64696		\\
+		4      &  Computer								   & NaN		\\  
+		5      &  Headphone amplifer    				& TBA		\\ \bottomrule 
+	\end{tabular}
+	\caption{Table over equipment used in test}
+	\label{tab:UsedEquipmentListning1}
+\end{table}
+
+
+
+\subsection{Diagram}
+
+\begin{figure}[H]
+	\label{fig1}
+	\centering
+		\includegraphics[width=12cm]{setup}
+		\caption{Waveforms of voices and unvoices sounds}
+	\end{figure}
+
+
+\subsection{Settings/Description}
+
+Our settings aim at reproducing an office sound field. We choosed to reproduce the sound field with 4 speakers.
+
+\subsection{Picture}
+\vspace{1cm}
+\section{Procedure}
+
+\begin{itemize}
+\item 1. We will play on the speakers office environnement sounds and speech. 
+\item 2. The listener will put the headphones on.
+\item 3. We will play in the headphones the file "speech1"
+\item 4. The listener will then adjust the sound level on the speakers thank to a keyboard operating a matlab script. The listener will then stop adjusting the level when he reachs a level of "non disturbance"
+\item 4. The listener will then adjust the sound level on the speakers thank to a keyboard operating a matlab script. The listener will then stop adjusting the level when he reachs a level of "non disturbance" "Speech understanding"
+\item 5. We note the two attenuation levels for the given recording
+\item 6. We change the file being played in the headphone and repeat the experience from 3.
+\end{itemize}
+
+\vspace{1cm}
+\section{Data Extraction}
+\vspace{1cm}
+\section{Analysis}
+\vspace{1cm}
+\section{Error Sources}
+\vspace{1cm}
+\section{Conclusion}
+
+\end{document}
