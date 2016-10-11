@@ -14,7 +14,7 @@
 
 \begin{Huge}
 \begin{center}
-Journal template : Experiments
+Noise Attenuation Measurements
 \end{center}
 \end{Huge}
 
@@ -30,9 +30,9 @@ The purpose of this experience is to determine the SNR needed to understand spee
 	
 	\begin{tabular}{ c c c } \toprule
 		{Item} & {Description} & {AAU-no}. \\ \bottomrule 
-		1      &  4 Genelec speakers						& xxx	\\
-		2      &  1 pair of headset						& xx		\\
-		3      &  Soundcard RME                      	& 64696		\\
+		1      &  4 Genelec speakers						& TBD	\\
+		2      &  1 pair of headset						& TBD		\\
+		3      &  Soundcard RME                      	& TBD		\\
 		4      &  Computer								   & NaN		\\  
 		5      &  Headphone amplifer    				& TBA		\\ \bottomrule 
 	\end{tabular}
@@ -54,7 +54,11 @@ The purpose of this experience is to determine the SNR needed to understand spee
 
 \subsection{Settings/Description}
 
-Our settings aim at reproducing an office sound field. We choosed to reproduce the sound field with 4 speakers.
+Our setting aims at reproducing an office sound field. We choosed to reproduce the sound field with 4 speakers. 
+The idea is to reproduce a real life situation in an office that's why speech and office background noise will be played on the speaker. 
+The listener who stands in front of speakers will also receive a speech sounds in the headset. This set up emulates a call in a noisy office.
+
+The listener will have control over a matlab script that control the background noise. His role will be to find the noise ratio needed in order to: 1) fully understand the speech 2) not be disturbed by the noise (i.e confort ratio)
 
 \subsection{Picture}
 \vspace{1cm}
@@ -64,18 +68,29 @@ Our settings aim at reproducing an office sound field. We choosed to reproduce t
 \item 1. We will play on the speakers office environnement sounds and speech. 
 \item 2. The listener will put the headphones on.
 \item 3. We will play in the headphones the file "speech1"
-\item 4. The listener will then adjust the sound level on the speakers thank to a keyboard operating a matlab script. The listener will then stop adjusting the level when he reachs a level of "non disturbance"
-\item 4. The listener will then adjust the sound level on the speakers thank to a keyboard operating a matlab script. The listener will then stop adjusting the level when he reachs a level of "non disturbance" "Speech understanding"
+\item 4. The listener will then adjust the sound level on the speakers thanks to a keyboard operating a matlab script. The listener will then stop adjusting the level when he reachs a level of "Speech understanding"
+\item 4. The listener will then adjust the sound level on the speakers thanks to a keyboard operating a matlab script. The listener will then stop adjusting the level when he reachs a level of "confort"
 \item 5. We note the two attenuation levels for the given recording
 \item 6. We change the file being played in the headphone and repeat the experience from 3.
 \end{itemize}
 
 \vspace{1cm}
 \section{Data Extraction}
+
+Results will be extracted manualy from Matlab to excel in order to analyse it
+
 \vspace{1cm}
 \section{Analysis}
+
+Compute statistics in Excel in order to find the overall attenuation needed by the system to be efficient.
 \vspace{1cm}
+
 \section{Error Sources}
+\begin{itemize}
+\item While our main error source might be human, we want to minimise the way we interact with him in order to not misslead him.
+\item Audio sample level mesurement.
+\end{itemize}
+
 \vspace{1cm}
 \section{Conclusion}
 
