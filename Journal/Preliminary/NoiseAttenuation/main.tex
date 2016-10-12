@@ -30,10 +30,10 @@ The purpose of this experience is to determine the SNR needed to understand spee
 	
 	\begin{tabular}{ c c c } \toprule
 		{Item} & {Description} & {AAU-no}. \\ \bottomrule 
-		1      &  4 Genelec speakers						& xxx	\\
+		1      &  4 Genelec speakers					& xxx	\\
 		2      &  1 pair of headset						& xx		\\
-		3      &  Soundcard RME                      	& 64696		\\
-		4      &  Computer								   & NaN		\\  
+		3      &  Soundcard RME 802                    	& 64696		\\
+		4      &  Computer								& NaN		\\  
 		5      &  Headphone amplifer    				& TBA		\\ \bottomrule 
 	\end{tabular}
 	\caption{Table over equipment used in test}
@@ -60,15 +60,44 @@ Our settings aim at reproducing an office sound field. We choosed to reproduce t
 \vspace{1cm}
 \section{Procedure}
 
-\begin{itemize}
-\item 1. We will play on the speakers office environnement sounds and speech. 
-\item 2. The listener will put the headphones on.
-\item 3. We will play in the headphones the file "speech1"
-\item 4. The listener will then adjust the sound level on the speakers thank to a keyboard operating a matlab script. The listener will then stop adjusting the level when he reachs a level of "non disturbance"
-\item 4. The listener will then adjust the sound level on the speakers thank to a keyboard operating a matlab script. The listener will then stop adjusting the level when he reachs a level of "non disturbance" "Speech understanding"
-\item 5. We note the two attenuation levels for the given recording
-\item 6. We change the file being played in the headphone and repeat the experience from 3.
-\end{itemize}
+\begin{enumerate}
+
+
+\item We will play on the speakers office environnement sounds and speech. 
+\item The listener will put the headphones on.
+\item We will play in the headphones the file "speech1"
+\item The listener will then adjust the sound level on the speakers thank to a keyboard operating a matlab script. The listener will then stop adjusting the level when he reachs a level of "non disturbance"
+\item The listener will then adjust the sound level on the speakers thank to a keyboard operating a matlab script. The listener will then stop adjusting the level when he reachs a level of "non disturbance" "Speech understanding"
+\item We note the two attenuation levels for the given recording
+\item We change the file being played in the headphone and repeat the experience from 3.
+\end{enumerate}
+\noindent
+The test will be carried out at the following gain settings. Gain 1 corresponds to a SPL of LALA of the noice sources at the listeners position. (Calibrated at slider-gain 1) \\\\
+\begin{tabular}{c | c} \toprule 
+Gain & Attenuation from max noise SPL [dB]  \\ \toprule
+1 		& 0   \\
+0.891 	& -1  \\
+0.794	& -2  \\
+0.708	& -3  \\
+0.631	& -4  \\
+0.562	& -5  \\
+0.501	& -6  \\
+0.447	& -7  \\
+0.398	& -8  \\
+0.355	& -9  \\
+0.316	& -10 \\
+0.282 	& -11  \\
+0.251	& -12  \\
+0.224	& -13  \\
+0.200	& -14  \\
+0.178	& -15  \\
+0.158	& -16  \\
+0.141	& -17  \\
+0.126	& -18  \\
+0.112	& -19  \\
+0.100	& -20 \\ \bottomrule
+
+\end{tabular}
 
 \vspace{1cm}
 \section{Data Extraction}
@@ -78,5 +107,14 @@ Our settings aim at reproducing an office sound field. We choosed to reproduce t
 \section{Error Sources}
 \vspace{1cm}
 \section{Conclusion}
+
+\section*{Appendix A}
+For each test the following table will be filled \\\\
+\begin{tabular}{c  c  c} \toprule
+experiment number & Gain audiable wanted signal & Gain noise sources not disturbing  \\ \toprule
+1 &  & \\
+2 &  & \\
+3 &  & \\ \bottomrule
+\end{tabular}
 
 \end{document}
