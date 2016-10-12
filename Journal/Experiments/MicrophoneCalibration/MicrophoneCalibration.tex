@@ -1,0 +1,50 @@
+\documentclass[12pt,a4paper,openright]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{textcomp}
+\usepackage[left=2.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\usepackage{float}
+
+\begin{document}
+\begin{Huge}
+\begin{center}
+Microphone Calibration
+\end{center}
+\end{Huge}
+
+
+\section{List of Equipment}
+\begin{table}[h]
+	\centering
+	\ra{1.3}
+	\begin{tabular}{ c l c } \toprule
+		{Item} &	{Description} & {AAU-no}. \\ \bottomrule 
+		1	&	[Microphone to be calibrated]			& ?????			\\
+		2	&	B\&K 2639 Microphone Pre-amplifier		& 08639			\\  
+		3	&	B\&K 4231 Sound Calibrator				& 78301			\\
+		%2	&	B\&K 4221 High-Pressure Microphone Calibrator	& ?????	\\
+		4	&	B\&K 2606 Frequency Analyzer			& 07034			\\ \bottomrule 
+	\end{tabular}
+	\caption{Table over equipment used in test}
+	\label{tab:UsedEquipmentListning}
+\end{table}
+
+\section{Procedure}
+\begin{enumerate}
+	\item Place item 1 into item 2
+	\item Place item 2 into item 3
+	\item Connect item 3 into input-porn on item 4
+	\item Enable on item 3
+	\item Control 94 dB and $\approx$ 50 $m$V / Pa (according to data sheet for microphone) using item 4
+	\begin{itemize}
+		\item If need be use item 4 to adjust values to appropriate levels
+	\end{itemize}
+\end{enumerate}
+
+\end{document}

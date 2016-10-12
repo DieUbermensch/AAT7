@@ -1,0 +1,157 @@
+\documentclass[12pt,a4paper,openright]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{textcomp}
+\usepackage[left=2.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\usepackage{float}
+\begin{document}
+\begin{Huge}
+\begin{center}
+Cancellation path
+\end{center}
+\end{Huge}
+
+\section{Purpose}
+The purpose of the experiment is to determine the impulse response of of the cancellation path, i.e. the transfer-function between the 'source-loudspeaker' and the 'error-microphone (ear)'.
+		
+\subsection{AAU number list}
+\begin{table}[h]
+	\centering
+	\ra{1.3}
+	\begin{tabular}{ c c c } \toprule
+		{Item} & {Description} & {AAU-no}. \\ \bottomrule 
+		1      &  "Valdemar"							& 2150-00	\\
+		2      &  Sennheiser HD 200						& 33379		\\
+		3      &  Roland Edirol UA-25EX Audio Capture	& 64696		\\
+		4      &  Computer								& NaN		\\  
+		5      &  Measurement Microphone				& TBA		\\ \bottomrule 
+	\end{tabular}
+	\caption{Table over equipment used in test}
+	\label{tab:UsedEquipmentListning1}
+\end{table}
+
+\subsection{Diagram}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Schem1.pdf}
+	\caption{Preliminary Schematic of the Setup}
+	\label{Schematic}
+\end{figure}
+
+\subsection{Settings/Description}
+No instrument settings are required to be set at this moment.
+
+\subsection{Picture}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{picture.png}
+	\caption{Preliminary Drawing (Picture) of the Setup}
+	\label{PictureDrawing}
+\end{figure}
+
+\section{Procedure}
+\begin{enumerate}
+	\item Control and adjust item 5 (See section "Microphone Calibration")
+	\item Place item 2 onto "Valdemar's" (Item 1) ears
+	\item Insert item 1's phantom-connector into input of item 3
+	\item Insert item 2's jack-connector into output of item 3
+	\item Play "Test\_Sound\_1.wav" from computer through item 3
+	\item Record and save, and name "Cancellation\_Path\_1.wav" from item 3
+\end{enumerate}
+
+\section{Data Extraction}
+In MATLAB\textsuperscript{\textregistered} run script: "Cancellation\_Path\_TF.m" and load file "Cancellation\_Path\_1.wav". This should yield the resulting transfer-function and other information about the cancellation-path in this set-up.
+
+\section{Analysis}
+This experiment determined the transfer-function of the cancellation-path.
+
+\section{Error Sources}
+\begin{itemize}
+	\item Placement of the instruments
+	\item Instrument inaccuracies 
+	\item \textit{TBA}
+\end{itemize}
+
+\section{Conclusion}
+\textit{TBA}
+	
+	
+\pagebreak
+\begin{Huge}
+\begin{center}
+Headphone Transfer-Function
+\end{center}
+\end{Huge}
+
+\section{Purpose}
+The purpose of the experiment is to determine the impulse response of of the  headphone, i.e. the transfer-function between the 'reference-microphone' and the 'source-loudspeaker'
+
+\subsection{AAU number list}
+\begin{table}[h]
+	\centering
+	\ra{1.3}
+	\begin{tabular}{ c c c } \toprule
+		{Item} & {Description} & {AAU-no.} \\ \bottomrule 
+		1      &  "Valdemar"							& 2150-00	\\
+		2      &  Sennheiser HD 200						& 33379		\\
+		3      &  Roland Edirol UA-25EX Audio Capture	& 64696		\\
+		4      &  Computer								& NaN		\\  
+		5      &  Measurement Microphone				& TBA		\\ \bottomrule 
+	\end{tabular}
+	\caption{Table over equipment used in test}
+	\label{tab:UsedEquipmentListning2}
+\end{table}
+
+\subsection{Diagram}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Schem2.pdf}
+	\caption{Schematic of the Setup}
+	\label{Schematic}
+\end{figure}
+
+\subsection{Settings/Description}
+No instrument settings are required to be set at this moment.
+
+\subsection{Picture}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{picture.png}
+	\caption{Preliminary Drawing (Picture) of the Setup}
+	\label{PictureDrawing}
+\end{figure}
+
+\section{Procedure}
+\begin{enumerate}
+	\item Control and adjust item 5 (See section "Microphone Calibration")
+	\item Place item 5 onto item 2
+	\item Place item 2 onto "Valdemar's" (Item 1) ears
+	\item Insert item 2's jack-connector into output of item 3
+	\item Play "Test\_File\_2.wav" from computer through item 3
+	\item Record and save, and name "Headphone\_Path\_1.wav" from item 3
+\end{enumerate}
+
+\section{Data Extraction}
+In MATLAB\textsuperscript{\textregistered} run script: "Headphone\_TF.m" and load file "Headphone\_Path\_1.wav". This should yield the resulting transfer-function and other information about the headphones used in this set-up.\\
+\indent The script takes the sound played by the headphones (Item 2) , applies FFT, and takes the inverse of the result. This result is then convolved with the FFT of the sound picked up by the microphone (Item 5). This yields an impulse response, which is used to determine the transfer-function.
+
+\section{Analysis}
+This experiment determined the transfer-function of the headphones (Item 2).
+
+\section{Error Sources}
+\begin{itemize}
+	\item Placement of the instruments
+	\item Instrument inaccuracies 
+	\item \textit{TBA}
+\end{itemize}
+
+\section{Conclusion}
+\textit{TBA}
+
+\end{document}
