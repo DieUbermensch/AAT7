@@ -126,4 +126,4 @@ local.properties
 
 # Mac Crap
 *.DS_store
-
+.DS_store
