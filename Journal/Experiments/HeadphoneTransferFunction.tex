@@ -7,71 +7,97 @@ The purpose of the experiment is to determine the impulse response of of the  he
 	\centering
 	\ra{1.3}
 	\begin{tabular}{ c c c } \toprule
-		{Item}	& {Description} 						& {AAU-no.} \\ \bottomrule 
-		1		&	Head And Torso Simulator "Henry"	& 4128		\\
-		2		& 	Sennheiser HD 200					& 33379		\\
-		3		&	Roland Edirol UA-25EX Audio Capture	& 64696		\\
-		4		&	Vision B3565 Computer				& NaN		\\  
-		5		&	B\&K Condenser Microphone Type 4134	& 61447		\\
-		6		&	B\&K 4231 Sound Calibrator			& 78301		\\ 		7		&	B\&K Sound Intensity Calibrator Type 3541	& 08597	\\ \bottomrule
+		{Item}	& {Description} 						& {AAU-no}. \\ \bottomrule 
+		1	&	B\&K Head And Torso Simulator "Henry" Type 4128	& 08453		\\
+		2	&	B\&K \textonehalf'' Condenser Microphone Type 4134 & 61447\\
+		3	&	Sennheiser HD 200	Headphones			& 33379		\\
+		4	&	Roland Edirol UA-25EX Audio Capture		& 64696		\\
+		5	&	Vision B3565 Computer					& NaN		\\
+		6	&	B\&K Microphone Power Supply Type 2804	& 07304		\\
+		7	&	B\&K Sound Calibrator Type 4231			& 78301		\\ 
+		8	&	G.R.A.S. Type 26AK \textonehalf'' Standard Preamplifier	& 52665		\\ 
+		%7	&	B\&K Sound Intensity Calibrator Type 3541	& 08597	\\ 
+		\bottomrule
 	\end{tabular}
-	\caption{Table over equipment used in test}
-	\label{tab:UsedEquipmentListning2}
+	\caption{Table over equipment used in test.}
+	\label{tab:UsedEquipmentListningHP}
 \end{table}
 
 \subsection{Diagram}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Schematic_HeadPhones.pdf}
-	\caption{Schematic of the Setup}
+	\caption{Schematic of the Setup.}
 	\label{Schematic}
 \end{figure}
 
 \subsection{Settings/Description}
+\label{SettingsHeadPhones}
 \begin{itemize}
 	\item Computer is set to 0 dBFS
 	\item Sound Capture port "PHONES" is set to maximum volume
-	\item Sound Capture port "SENS(INPUT 1/L)" is set to + 0 dB
+	\item Sound Capture port "SENS(INPUT 1/L)" is set to + 20 dB
 \end{itemize}
 
 \subsubsection{Picture}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{CancellationPath_and_Headphones/FullSetup.jpg}
-	\caption{Full setup of experiment}
+	\caption{Full setup of experiment.}
 	\label{FullSetupCancellationPath}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{CancellationPath_and_Headphones/CloseUpMic.jpg}
-	\caption{Close up of experiment}
+	\caption{Close up of experiment.}
 	\label{CloseUpCancellationPath}
 \end{figure}
 
 \subsection{Procedure}
+\subsection{Set-up}
 \begin{enumerate}
-	\item Control and adjust item 5 (See section "Microphone Calibration")
-	\item Place item 5 onto item 2
-	\item Place item 2 onto "Valdemar's" (Item 1) ears
-	\item Insert item 2's jack-connector into output of item 3
-	\item Play "Test\_File\_2.wav" from computer through item 3
-	\item Record and save, and name "Headphone\_Path\_1.wav" from item 3
+	\item Set instruments to comply with the list in \ref{SettingsHeadPhones}
+	\item Control, and if necessary, calibrate item 2 using item 7
+	\item Place item 3 onto item 1 ("Henry"'s head and ears)
+	\item Insert item 2's onto item 8 and connect to input of item 6
+	\item Connect item 6 to item 4 and connect item 4 to item 5 via USB
+	\item Insert item 3's connector into output of item 4
 \end{enumerate}
 
-\section{Data Extraction}
-In MATLAB\textsuperscript{\textregistered} run script: "Headphone\_TF.m" and load file "Headphone\_Path\_1.wav". This should yield the resulting transfer-function and other information about the headphones used in this set-up.\\
-\indent The script takes the sound played by the headphones (Item 2) , applies FFT, and takes the inverse of the result. This result is then convolved with the FFT of the sound picked up by the microphone (Item 5). This yields an impulse response, which is used to determine the transfer-function.
+\subsection{Performing the experiment}
+\begin{enumerate}
+	\item Open Simulink\textsuperscript{\textregistered} and run file "SimulinkSystemHeadPhone.xls"
+	\item Through Simulink\textsuperscript{\textregistered} play "LogChirp.wav" from item 5 via item 4
+	\item Record and save, and name "Mic[i].wav" and Ref[i].wav" from item 4 onto item 5 \footnote{[i] indicates the iteration of the experiment}
+	\begin{itemize}
+		\item[] Perform this experiment for a total of 5 times
+	\end{itemize}
+\end{enumerate}
+
+
+\subsection{Data Extraction}
+\begin{enumerate}
+	\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "HeadPhoneScript.m".
+	\item Open MATLAB\textsuperscript{\textregistered} and run script "CancellationPathScript.m"
+\end{enumerate}
+This should yield the resulting frequency response, impulse response and finally the transfer function, along other information about the cancellation-path in this set-up.
+
+
+%In MATLAB\textsuperscript{\textregistered} run script: "Headphone\_TF.m" and load file "Headphone\_Path\_1.wav". This should yield the resulting transfer-function and other information about the headphones used in this set-up.\\
+%\indent The script takes the sound played by the headphones (Item 2) , applies FFT, and takes the inverse of the result. This result is then convolved with the FFT of the sound picked up by the microphone (Item 5). This yields an impulse response, which is used to determine the transfer-function.
+%\todo[inline]{Tjek lige det her}
 
 \subsection{Analysis}
-This experiment determined the transfer-function of the headphones (Item 2).
+INSERT MAGIC HERE
 
 \subsection{Error Sources}
 \begin{itemize}
-	\item Placement of the instruments
+	\item Placement of the actuators and test-devices
 	\item Instrument inaccuracies 
-	\item \textit{TBA}
+	\item Movement of instruments
+	\item Low-frequency background noise
 \end{itemize}
 
 \subsection{Conclusion}
-\textit{TBA}
+We done did it
