@@ -11,11 +11,15 @@ The purpose of this experience is to determine the SNR needed to understand spee
 	
 	\begin{tabular}{ c c c } \toprule
 		{Item} & {Description} & {AAU-no}. \\ \bottomrule 
-		1      	&  4 Genelec speakers					& TBD		\\
-		2      	&  Beyerdynamic 						& TBD		\\
-		3      	&  Soundcard RME 802                   	& TBD		\\
+		1      	&  USB keyboard							& NaN		\\
+		2      	&  Beyerdynamic DT770pro				& 2037-18	\\
+		3      	&  Soundcard RME Fireface 802           & 86838		\\
 		4      	&  Computer	running Simulink			& NaN		\\  
-		5		&  Valdemar with SPL-meter				& TBD		\\ \bottomrule 
+		5		&  Valdemar with SPL-meter				& TBD		\\
+		6      	&  Genelec speaker A					& 33984		\\
+		7      	&  Genelec speaker B					& 33989		\\
+		8      	&  Genelec speaker C					& 33987		\\
+		9      	&  Genelec speaker D					& 33990		\\ \bottomrule 
 	\end{tabular}
 	\caption{Table over equipment used in test}
 	\label{tab:UsedEquipmentListning1}
@@ -25,31 +29,43 @@ The purpose of this experience is to determine the SNR needed to understand spee
 
 \subsubsection{Diagram}
 
+\begin{table} [h]
+	\centering
+	\begin{tabular}{c c} \toprule
+		\centering
+		Height of:			 			& Measurement [cm] 	\\ \bottomrule
+		Speakers					  	& 100				\\
+		The ear of participant			& 110				\\ \bottomrule 
+	\end{tabular}
+	\caption{Height of setup. Speakers are placed with tweeters on the bottom.}
+	\label{Tab:NoiseAttenuationDimensions}
+\end{table}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=12cm]{setup}
-	\caption{Waveforms of voices and unvoices sounds}
-	\label{fig1}
+	\caption{Setup of Noise attenuation experiment}
+	\label{Fig:NoiseAttenuationExperimet}
 \end{figure}
 
 
 \subsubsection{Settings/Description}
-
 Our setting aims at reproducing an office sound field. We chose to produce the sound field with 4 speakers. 
-The idea is to reproduce a real life situation in an office that's why speech and office background noise will be played on the speakers. Speaker 2 and 4 in figure \ref{fig1} play speech signals. Speaker 1 and 3 play ambient office noise. 
-The listener who is seated in front of speakers will wear a pair of headphones playing speech. This set up emulates a phone call in a noisy office.
+The idea is to reproduce a real life situation in an office. Speech and office background noise will be played on four speakers. Speaker C and D in figure \ref{Fig:NoiseAttenuationExperimet} play speech signals. Speaker A and B play ambient office noise. The listener who is seated in front of speakers will wear a pair of headphones playing speech. This set up emulates a phone call in a noisy office. The test will run seven times with each participant. The first test is a "trial" and will not be used in data analysis. The following three will run at "high level" according to table \ref{tab:SPLCalibration}. The last three test will run at "low level". 
 
-The listener will have control of a slider using a keyboard adjusting the sound level of the 4 speakers in the room, allowing them to attenuate the background noise. their role will be to find the noise level where they can understand the speech on the headset, without being disturbed significantly by the noisy environment. The slider has a range from 0 dB to -40 dB. 
+The listener has control of a slider using a keyboard adjusting the sound level of the 4 speakers in the room, allowing them to attenuate the background noise. their role will be to find the noise level where they can understand the speech on the headset, without being disturbed significantly by the noisy environment. The slider has a range from 0 dB to -40 dB with steps of 0.4dB. 
 
 The Sound pressure levels of the sources are calibrated at the position of the listener. The calibration is made with all gain settings on the computer and in Simulink set to 0dB (including the slider). "Valdemar" is placed at the listening position and the built in SPL-meter is used to find the levels of the noise from the two sets of speakers individually. 
 The same method is used is used to find the SPL of the sound in the headphones. The headphones are placed over the ears of "Valdemar" and a readout is made. The levels should be equal to the values below $\pm$2.5 dB. \\
 \begin{table} [H]
 \centering
-	\begin{tabular}{c c}			\toprule
-		Sound source	& SPL	\\ 	\bottomrule
-		Speaker 1 \& 3	&		\\
-		Speaker 2 \& 4	&		\\
-		Headphone		&		\\ \bottomrule
+	\begin{tabular}{c c}											\toprule
+		Sound source				& 	SPL [dBre20\micro Pa]	\\ 	\bottomrule
+		Speaker C \& D				& 	72.5					\\
+		Speaker A \& B				&	70						\\
+		All speakers				&	74						\\
+		Headphone high level		&	68						\\ 	
+		Headphone low level			&	62						\\	\bottomrule
 	\end{tabular}
 	\caption{SPL calibration table - tolerance $\pm$2.5dB.}
 	\label{tab:SPLCalibration}
@@ -70,9 +86,14 @@ The same method is used is used to find the SPL of the sound in the headphones. 
 \end{enumerate}
 
 \subsubsection{Information}\label{subsubsec:attenuationInformation}
-Read the following to the participant:
+Ask the participant to read the following printout:
 
-\textit{In a moment, you will put on and adjust the headphones. The speakers around you will play background noise and speech. The headphones will play a recorded voice. Your task is to adjust the volume of the noise using the left and right arrow keys in front of you. The noise level will start at maximum level. When you have found the maximum level at which the noise is not a disturbance to your understanding of the voice, wait a moment to confirm your selection. When you are certain of your choice notify the operator. The test will be repeated three times with different voices. Any questions?}
+\textit{Imagine that you are sitting in a busy office environment. You are trying to hear a person speaking to you through a pair of headphones. \\\\
+After reading this text, please put on and adjust the headphones. The speakers around you will play background noise and speech. The headphones will play a recorded voice. Your task is to adjust the volume of the speakers using the left and right arrow keys on the keyboard in front of you. The speaker volume will start at maximum level. \\
+When you have found the maximum level at which the noise is not a disturbance to your understanding of the voice, wait a moment to confirm your selection. When you are certain of your choice notify the operator. 
+The test will be repeated seven times with different voices. \\\\
+The definition of the noise being a "disturbance to your understanding of the understanding of the voice" is that you should be able to distinguish the voice from the noise without much concentration. This does not necessarily mean that the noise should be inaudible. Again imagine the situation, where you want to hear a person telling you something through a headphone in a busy office.\\\\ 
+If you are in doubt of anything please ask the operator before fitting the headphones or if necessary during the first test.}
 
 % Why is this repeated in a different wording? In this section??
 %\begin{enumerate}
@@ -90,11 +111,15 @@ Results will be extracted manually from Simulink to excel during the test.
 For each test the following table will be filled \\
 \begin{table}[h]
 \centering
-	\begin{tabular}{c  c } \toprule
-		experiment number & Gain noise sources not disturbing  \\ \bottomrule
-		1 &   \\
-		2 &   \\
-		3 &   \\ \bottomrule
+	\begin{tabular}{c  c} \toprule
+		experiment number & dB noise sources not disturbing  \\ \bottomrule
+		1	&   \\
+		2	&	\\
+		3	&	\\
+		4	&	\\
+		5	&	\\
+		6	&	\\
+		7	&	\\ \bottomrule
 	\end{tabular}
 	\caption{Results of a listening test}
 	\label{tab:ListeningRes}
