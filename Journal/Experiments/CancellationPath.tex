@@ -1,6 +1,6 @@
 \section{Cancellation path}
 \subsection{Purpose}
-The purpose of this experiment is to determine the impulse response of the cancellation path, i.e. the transfer-function between the "source-loudspeaker" and the "werror-microphone (ear)".
+The purpose of this experiment is to determine the impulse response of the cancellation path, i.e. the transfer-function between the "source-loudspeaker" and the "error-microphone (ear)".
 		
 \subsection{AAU number list}
 \begin{table}[h]
@@ -19,22 +19,24 @@ The purpose of this experiment is to determine the impulse response of the cance
 		7	&	B\&K Sound Intensity Calibrator Type 3541	& 08597	\\ \bottomrule
 	\end{tabular}
 	\caption{Table over equipment used in test}
-	\label{tab:UsedEquipmentListning1}
+	\label{tab:UsedEquipmentListningCP}
 \end{table}
 
 \subsubsection{Diagram}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Shematic_CalcellationPath.pdf}
-	\caption{Preliminary Schematic of the Setup}
+	\caption{Preliminary Schematic of the Setup.}
 	\label{Schematic}
 \end{figure}
+
 \subsubsection{Settings/Description}
 \label{SettingsCacellationPath}
+
 \begin{itemize}
-	\item Computer is set to 0 dBFS
-	\item Sound Capture port "PHONES" is set to maximum volume
-	\item Sound Capture port "SENS(INPUT 1/L)" is set to + 20 dB
+	\item Item 4 (Sound Capture port) "PHONES" is set to maximum volume
+	\item Item 4 (Sound Capture port) "SENS(INPUT 1/L)" is set to +0 dB		
+	\item Item 5 (Computer) is set to 0 dBFS
 \end{itemize}
 
 
@@ -54,28 +56,45 @@ The purpose of this experiment is to determine the impulse response of the cance
 \end{figure}
 
 \section{Procedure}
+\subsection{Set-up}
 \begin{enumerate}
 	\item Set instruments to comply with the list in \ref{SettingsCacellationPath}
-	\item Control, and if necessary, calibrate item 2
+	\item Control, and if necessary, calibrate item 2 using item 7
 	\item Place item 3 onto item 1 ("Henry"'s head and ears)
-	\item Insert item 1's phantom-connector into input of item 3
-	\item Insert item 2's jack-connector into output of item 3
-	\item Play "Test\_Sound\_1.wav" from computer through item 3
-	\item Record and save, and name "Cancellation\_Path\_1.wav" from item 3
+	\item Insert item 2's connector into input of item 6
+	\item Connect item 6 to item 4 and connect item 4 to item 5 via USB
+	\item Insert item 3's connector into output of item 4
+	\item Connect cable from item 4's output to item 4's input
 \end{enumerate}
 
+\subsection{Performing the experiment}
+\begin{enumerate}
+	\item Open Simulink\textsuperscript{\textregistered} and run file "SimulinnkSystemCancellationPath.xls"
+	\item Through Simulink\textsuperscript{\textregistered} play "LogChirp.wav" from item 5 via item 4
+	\item Record and save, and name "Mic[i].wav" and Ref[i].wav" from item 4 onto item 5 \footnote{[i] indicates the iteration of the experiment}
+	\begin{itemize}
+		\item[] Perform this experiment for a total of 5 times
+	\end{itemize}
+\end{enumerate}
+
+
 \subsection{Data Extraction}
-In MATLAB\textsuperscript{\textregistered} run script: "Cancellation\_Path\_TF.m" and load file "Cancellation\_Path\_1.wav". This should yield the resulting transfer-function and other information about the cancellation-path in this set-up.
+\begin{enumerate}
+	\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m".
+	\item Open MATLAB\textsuperscript{\textregistered} and run script "CancellationPathScript.m"
+\end{enumerate}
+This should yield the resulting frequency response, impulse response and finally the transfer function, along other information about the cancellation-path in this set-up.
 
 \subsection{Analysis}
-This experiment determined the transfer-function of the cancellation-path.
+INSERT MAGIC HERE
 
 \subsection{Error Sources}
 \begin{itemize}
-	\item Placement of the instruments
+	\item Placement of the actuators and test-devices
 	\item Instrument inaccuracies 
-	\item \textit{TBA}
+	\item Movement of instruments
+	\item Low-frequency background noise
 \end{itemize}
 
 \subsection{Conclusion}
-\textit{TBA}
+We done did it
