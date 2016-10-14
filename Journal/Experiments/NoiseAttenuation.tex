@@ -2,7 +2,7 @@
 
 \subsection{Purpose}
 
-The purpose of this experience is to determine the SNR needed to understand speech in a noisy office environnement.
+The purpose of this experience is to determine the SNR needed to understand speech in a noisy office environnement.  
 
 \subsection{AAU num list}
 
@@ -11,14 +11,13 @@ The purpose of this experience is to determine the SNR needed to understand spee
 	
 	\begin{tabular}{ c c c } \toprule
 		{Item} & {Description} & {AAU-no}. \\ \bottomrule 
-<<<<<<< HEAD
-		1      &  4 Genelec speakers						& TBD	\\
-		2      &  1 pair of headset						& TBD		\\
-		3      &  Soundcard RME                      	& TBD		\\
-		4      &  Computer								   & NaN		\\  
-
->>>>>>> origin/master
-		5      &  Headphone amplifer    				& TBA		\\ \bottomrule 
+<<<<<<< HEAD %WHAT IS THIS??
+		1      	&  4 Genelec speakers					& TBD		\\
+		2      	&  Beyerdynamic 						& TBD		\\
+		3      	&  Soundcard RME 802                   	& TBD		\\
+		4      	&  Computer	running Simulink			& NaN		\\  
+		5		&  Valdemar with SPL-meter				& TBD		\\ \bottomrule 
+>>>>>>> origin/master %WHAT IS THIS?? 
 	\end{tabular}
 	\caption{Table over equipment used in test}
 	\label{tab:UsedEquipmentListning1}
@@ -29,29 +28,56 @@ The purpose of this experience is to determine the SNR needed to understand spee
 \subsubsection{Diagram}
 
 \begin{figure}[H]
-	\label{fig1}
 	\centering
-		\includegraphics[width=12cm]{setup}
-		\caption{Waveforms of voices and unvoices sounds}
-	\end{figure}
+	\includegraphics[width=12cm]{setup}
+	\caption{Waveforms of voices and unvoices sounds}
+	\label{fig1}
+\end{figure}
 
 
 \subsubsection{Settings/Description}
 
-Our setting aims at reproducing an office sound field. We choosed to reproduce the sound field with 4 speakers. 
-The idea is to reproduce a real life situation in an office that's why speech and office background noise will be played on the speaker. 
-The listener who stands in front of speakers will also receive a speech sounds in the headset. This set up emulates a call in a noisy office.
+Our setting aims at reproducing an office sound field. We chose to produce the sound field with 4 speakers. 
+The idea is to reproduce a real life situation in an office that's why speech and office background noise will be played on the speakers. Speaker 2 and 4 in figure \ref{fig1} play speech signals. Speaker 1 and 3 play ambient office noise. 
+The listener who is seated in front of speakers will wear a pair of headphones playing speech. This set up emulates a phone call in a noisy office.
 
-The listener will have control over a matlab script that control the background noise. His role will be to find the noise ratio needed in order to: 1) fully understand the speech 2) not be disturbed by the noise (i.e confort ratio)
+The listener will have control of a slider using a keyboard adjusting the sound level of the 4 speakers in the room, allowing them to attenuate the background noise. their role will be to find the noise level where they can understand the speech on the headset, without being disturbed significantly by the noisy environment. The slider has a range from 0 dB to -40 dB. 
+
+The Sound pressure levels of the sources are calibrated at the position of the listener. The calibration is made with all gain settings on the computer and in Simulink set to 0dB (including the slider). "Valdemar" is placed at the listening position and the built in SPL-meter is used to find the levels of the noise from the two sets of speakers individually. 
+The same method is used is used to find the SPL of the sound in the headphones. The headphones are placed over the ears of "Valdemar" and a readout is made. The levels should be equal to the values below $\pm$2.5 dB. \\
+\begin{table} [H]
+\centering
+	\begin{tabular}{c c}			\toprule
+		Sound source	& SPL	\\ 	\bottomrule
+		Speaker 1 \& 3	&		\\
+		Speaker 2 \& 4	&		\\
+		Headphone		&		\\ \bottomrule
+	\end{tabular}
+	\caption{SPL calibration table - tolerance $\pm$2.5dB.}
+	\label{tab:SPLCalibration}
+\end{table}   
 
 \subsubsection{Picture}
 \vspace{1cm}
 \subsection{Procedure}
 
-
 \begin{enumerate}
+	\item Place the participant in the listening position.
+	\item Instruct the participant as described in section \ref{subsubsec:attenuationInformation}.
+	\item The participant will put on headphones and adjust them to fit their head.
+	\item Run Simulink \path{XX.mat} with testnumber equal to 1 and gain slider at 0 dB.
+	\item The participant selects noise level using arrow keys on the keyboard.
+	\item Operator notes the attenuation value.
+	\item Repeat step 4-6, with testnumber equal to 2 and 3.
+\end{enumerate}
 
+\subsubsection{Information}\label{subsubsec:attenuationInformation}
+Read the following to the participant:
 
+\textit{In a moment, you will put on the headphones. The speakers around you will play background noise and speech. The headphones will play a recorded voice. Your task is to adjust the volume of the noise using the arrow keys in front of you. The noise level will start at maximum level. When you have found the maximum level at which the noise is not a disturbance to your understanding of the voice, wait a moment to confirm your selection. When you are certain of your choice notify the operator. The test will be repeated three times with different voices. Any questions?}
+
+% Why is this repeated in a different wording? In this section??
+\begin{enumerate}
 \item We will play on the speakers office environnement sounds and speech. 
 \item The listener will put the headphones on.
 \item We will play in the headphones the file "speech1"
@@ -60,45 +86,24 @@ The listener will have control over a matlab script that control the background 
 \item We note the two attenuation levels for the given recording
 \item We change the file being played in the headphone and repeat the experience from 3.
 \end{enumerate}
-\noindent
-The test will be carried out at the following gain settings. Gain 1 corresponds to a SPL of LALA of the noice sources at the listeners position. (Calibrated at slider-gain 1) \\\\
-\begin{tabular}{c | c} \toprule 
-Gain & Attenuation from max noise SPL [dB]  \\ \toprule
-1 		& 0   \\
-0.891 	& -1  \\
-0.794	& -2  \\
-0.708	& -3  \\
-0.631	& -4  \\
-0.562	& -5  \\
-0.501	& -6  \\
-0.447	& -7  \\
-0.398	& -8  \\
-0.355	& -9  \\
-0.316	& -10 \\
-0.282 	& -11  \\
-0.251	& -12  \\
-0.224	& -13  \\
-0.200	& -14  \\
-0.178	& -15  \\
-0.158	& -16  \\
-0.141	& -17  \\
-0.126	& -18  \\
-0.112	& -19  \\
-0.100	& -20 \\ \bottomrule
 
-\end{tabular}
->>>>>>> origin/master
-
-\vspace{1cm}
 \subsection{Data Extraction}
+Results will be extracted manually from Simulink to excel during the test.
+For each test the following table will be filled \\\\
+\begin{table} [h]
+\centering
+	\begin{tabular}{c  c } \toprule
+		experiment number & Gain noise sources not disturbing  \\ \toprule
+		1 &   \\
+		2 &   \\
+		3 &   \\ \bottomrule
+	\end{tabular}
+	\caption{Results of a listening test}
+	\label{tab:ListeningRes}
+\end{table}
 
-Results will be extracted manualy from Matlab to excel in order to analyse it
-
-\vspace{1cm}
 \subsection{Analysis}
-
 Compute statistics in Excel in order to find the overall attenuation needed by the system to be efficient.
-\vspace{1cm}
 
 \subsection{Error Sources}
 \begin{itemize}
@@ -109,11 +114,4 @@ Compute statistics in Excel in order to find the overall attenuation needed by t
 \vspace{1cm}
 \subsection{Conclusion}
 
-\subsection*{Appendix A}
-For each test the following table will be filled \\\\
-\begin{tabular}{c  c  c} \toprule
-experiment number & Gain audiable wanted signal & Gain noise sources not disturbing  \\ \toprule
-1 &  & \\
-2 &  & \\
-3 &  & \\ \bottomrule
-\end{tabular}
+
