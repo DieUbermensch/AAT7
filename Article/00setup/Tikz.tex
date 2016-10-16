@@ -134,3 +134,37 @@
     ;
     \end{scope}
 }
+
+
+
+
+%% Cutom legned entry
+\newenvironment{customlegend}[1][]{%
+	\begingroup
+	% inits/clears the lists (which might be populated from previous
+	% axes):
+	\csname pgfplots@init@cleared@structures\endcsname
+	\pgfplotsset{#1}%
+}{%
+% draws the legend:
+\csname pgfplots@createlegend\endcsname
+\endgroup
+}%
+
+% makes \addlegendimage available (typically only available within an
+% axis environment):
+\def\addlegendimage{\csname pgfplots@addlegendimage\endcsname}
+
+
+
+
+
+%% Its Color time:
+\definecolor{MATLABblue}{rgb}{0,0.4470,0.7410}
+\definecolor{MATLABorange}{rgb}{0.85,0.3250,0.0980}
+\definecolor{MATLAByellow}{rgb}{0.929,0.6940,0.1250}
+\definecolor{MATLABpurple}{rgb}{0.494,0.1840,0.5560}
+\definecolor{MATLABgreen}{rgb}{0.466,0.6740,0.1880}
+\definecolor{MATLABbabyblue}{rgb}{0.301,0.7450,0.9330}
+\definecolor{MATLABred}{rgb}{0.635,0.0780,0.1840}
+
