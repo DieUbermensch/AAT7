@@ -43,7 +43,7 @@ The purpose of this experience is to determine the SNR needed to understand spee
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=12cm]{setup}
+	\includegraphics[width=12cm]{AttenuationExperiment/setup}
 	\caption{Setup of Noise attenuation experiment}
 	\label{Fig:NoiseAttenuationExperimet}
 \end{figure}
@@ -71,7 +71,18 @@ The same method is used is used to find the SPL of the sound in the headphones. 
 	\label{tab:SPLCalibration}
 \end{table}   
 
-\subsubsection{Picture}
+
+
+\subsubsection{Picture and setup}
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{AttenuationSetup}
+	\input{figures/AttenuationExperiment/SchematicSetup.tex}
+	\caption{Schematic overview of the setup}
+	\label{fig:AttenuationSetup}
+\end{figure}
+
 
 \subsection{Procedure}
 
@@ -109,7 +120,7 @@ If you are in doubt of anything please ask the operator before fitting the headp
 \subsection{Data Extraction}
 Results will be extracted manually from Simulink to excel during the test.
 For each test the following table will be filled \\
-\begin{table}[h]
+\begin{table}[H]
 \centering
 	\begin{tabular}{c  c} \toprule
 		experiment number & dB noise sources not disturbing  \\ \bottomrule
@@ -131,7 +142,7 @@ Compute statistics in Excel in order to find the overall attenuation needed by t
 \subsection{Error Sources}
 \begin{itemize}
 \item While our main error source might be human, we want to minimise the way we interact with him in order to not misslead him.
-\item Audio sample level mesurement.
+\item The calibration of the overall noise level was done using a model head with fitted with a microphone conforming with the ISO XX standard. The fluctuation in noise level was allowed to be $\pm$ 4 dB(A) compared to the calibrated level. 
 \end{itemize}
 
 \vspace{1cm}
