@@ -11,14 +11,14 @@ axis on top,
 xmin=0,
 xmax=7,
 xlabel={Time [s]},
-ylabel={relative amplitude},
+ylabel={Relative Amplitude},
 ymin=-0.8,
 ymax=0.8,
 %ytick=\empty,
 axis background/.style={fill=white},
 name=border,
-%ymajorgrids,
-%xmajorgrids
+ymajorgrids,
+xmajorgrids
 ]
 \addplot [forget plot] graphics [xmin=0.00,xmax=7,ymin=-0.8,ymax=0.8] {CancellationPath_MATLAB_Figures/Output.pdf};
 

@@ -1,4 +1,4 @@
-\section{Cancellation path}
+1\section{Cancellation path}
 \subsection{Purpose}
 The purpose of this experiment is to determine the impulse response of the cancellation path, i.e. the transfer-function between the "source-loudspeaker" and the "error-microphone (ear)".
 		
@@ -93,7 +93,7 @@ In MATLAB\textsuperscript{\textregistered} the script performs a series of mathe
 	\tikzsetnextfilename{CancellationPathAmplitudePlot}
 	\input{figures/CancellationPath_MATLAB_Figures/CancellationOutput.tex}
 	%\includegraphics[width=0.65\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathAmplitudePlot.png}
-	\caption{Amplitude plot of the cancellation path (NOT TIKZ).}
+	\caption{Amplitude plot of the cancellation path.}
 	\label{AmplitudePlotCancellationPath}
 \end{figure}
 
@@ -101,13 +101,13 @@ From here and on the frequency response of the cancellation path is to be found.
 
 \begin{equation}
 \label{FrequencyResponseEq}
-Y(m) = \frac{X(m_{\mu}) \cdot  H(conj(r_{\mu}))}{H(r_{\mu}) \cdot  H(conj(r_{\mu}))}
+Y(m) = \frac{X(m_{\mu}) *  H(r_{\mu})}{H(r_{\mu}) *  H(r_{\mu})}
 \end{equation}
 Where:
 \begin{itemize}
 	\item $Y(m)$ is the FT of the microphone's recording
 	\item $H(m_{\mu})$ and $H(r_{\mu})$ is the FT of the meaning over the microphone and reference recordings respectively
-	\item "conj" denotes Complex conjugating
+	\item "*" denotes the complex conjugation
 \end{itemize}
 
 \begin{figure}[H]
