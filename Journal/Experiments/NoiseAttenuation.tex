@@ -15,7 +15,7 @@ The purpose of this experience is to determine the SNR needed to understand spee
 		2      	&  Beyerdynamic DT770pro				& 2037-18	\\
 		3      	&  Soundcard RME Fireface 802           & 86838		\\
 		4      	&  Computer	running Simulink			& NaN		\\  
-		5		&  Valdemar with SPL-meter				& 2150-04	\\
+		5		&  HATS with SPL-meter				& 2150-04	\\
 		6      	&  Genelec speaker A					& 33984		\\
 		7      	&  Genelec speaker B					& 33989		\\
 		8      	&  Genelec speaker C					& 33987		\\
@@ -35,7 +35,8 @@ The purpose of this experience is to determine the SNR needed to understand spee
 		\centering
 		Height of:			 			& Measurement [cm] 	\\ \bottomrule
 		Speakers					  	& 100				\\
-		The ear of participant			& 110				\\ \bottomrule 
+		The ear of participant			& 110				\\ 
+		Table							&					\\ \bottomrule 
 	\end{tabular}
 	\caption{Height of setup. Speakers are placed with tweeters on the bottom.}
 	\label{Tab:NoiseAttenuationDimensions}
@@ -51,12 +52,12 @@ The purpose of this experience is to determine the SNR needed to understand spee
 
 \subsubsection{Settings/Description}
 Our setting aims at reproducing an office sound field. We chose to produce the sound field with 4 speakers. 
-The idea is to reproduce a real life situation in an office. Speech and office background noise will be played on four speakers. Speaker C and D in figure \ref{Fig:NoiseAttenuationExperimet} play speech signals. Speaker A and B play ambient office noise. The listener who is seated in front of speakers will wear a pair of headphones playing speech. This set up emulates a phone call in a noisy office. The test will run seven times with each participant. The first test is a "trial" and will not be used in data analysis. The following three will run at "high level" according to table \ref{tab:SPLCalibration}. The last three test will run at "low level". 
+The idea is to reproduce a real life situation in an office. Speech and office background noise will be played on four speakers. Speaker C and D in figure \ref{Fig:NoiseAttenuationExperimet} play speech signals. Speaker A and B play ambient office noise. The listener who is seated in front of speakers will wear a pair of headphones playing speech. This setup emulates a phone call in a noisy office. The test will run six times with each participant. The first test is a "trial" and will not be used in data analysis. The following three will run at "high level" according to table \ref{tab:SPLCalibration}. The last two test will run at "low level". 
 
-The listener has control of a slider using a keyboard adjusting the sound level of the 4 speakers in the room, allowing them to attenuate the background noise. their role will be to find the noise level where they can understand the speech on the headset, without being disturbed significantly by the noisy environment. The slider has a range from 0 dB to -40 dB with steps of 0.4dB. 
+The participant has control of a slider using a keyboard adjusting the sound level of the 4 speakers in the room, allowing them to attenuate the background noise. their role will be to find the noise level where they can understand the speech on the headset, without being disturbed significantly by the noisy environment. The slider has a range from 0 dB to -40 dB with steps of 0.4dB. 
 
-The Sound pressure levels of the sources are calibrated at the position of the listener. The calibration is made with all gain settings on the computer and in Simulink set to 0dB (including the slider). "Valdemar" is placed at the listening position and the built in SPL-meter is used to find the levels of the noise from the two sets of speakers individually. 
-The same method is used is used to find the SPL of the sound in the headphones. The headphones are placed over the ears of "Valdemar" and a readout is made. The levels should be equal to the values below $\pm$2.5 dB. \\
+The Sound pressure levels of the sources are calibrated at the position of the listener. The calibration is made with all gain settings on the computer and in Simulink set to 0dB (including the slider). The HATS is placed at the listening position and the built in SPL-meter is used to find the levels of the noise from the two sets of speakers individually and in combination. 
+The same method is used is used to find the SPL of the sound in the headphones. The headphones are placed over the ears of "Valdemar" and a readout is made. The levels are equal to the values below $\pm$2.5 dB. \\
 \begin{table} [H]
 \centering
 	\begin{tabular}{c c}											\toprule
@@ -92,11 +93,12 @@ The same method is used is used to find the SPL of the sound in the headphones. 
 	\item The participant will put on headphones and adjust them to fit their head.
 	\item Run Simulink \path{XX.mat} with testnumber equal to 1 and gain slider at 0 dB.
 	\item The participant selects noise level using arrow keys on the keyboard.
-	\item Operator notes the attenuation value.
-	\item Repeat step 4-6, with testnumber equal to 2 and 3.
+	\item Operator notes the attenuation value chosen by the participant.
+	\item Repeat step 4-6, with testnumber equal to 2 through 6.
 \end{enumerate}
 
 \subsubsection{Information}\label{subsubsec:attenuationInformation}
+The participant should read the instructions themselves to minimize how interaction between operator and participant influences the results. It is of course possible to ask questions.   
 Ask the participant to read the following printout:
 
 \textit{Imagine that you are sitting in a busy office environment. You are trying to hear a person speaking to you in a pair of headphones. \\\\
@@ -119,7 +121,7 @@ If you are in doubt of anything please ask the operator before fitting the headp
 %\end{enumerate}
 
 \subsection{Data Extraction}
-Results will be extracted manually from Simulink to excel during the test.
+Results will be extracted manually from Simulink to a table during the test.
 For each test the following table will be filled \\
 \begin{table}[H]
 \centering
@@ -130,8 +132,7 @@ For each test the following table will be filled \\
 		3	&	\\
 		4	&	\\
 		5	&	\\
-		6	&	\\
-		7	&	\\ \bottomrule
+		6	&	\\ \bottomrule
 	\end{tabular}
 	\caption{Results of a listening test}
 	\label{tab:ListeningRes}
@@ -140,13 +141,27 @@ For each test the following table will be filled \\
 \subsection{Analysis}
 Compute statistics in Excel in order to find the overall attenuation needed by the system to be efficient.
 
-\subsection{Error Sources}
+\subsection{Changes after Pilot test}
+During the pilot the instructions were shorter and read aloud. This resulted in a lot of questions after the instruction was given. For the main test it has therefore been chosen to make a written instruction, so people could reread sections if needed. This resulted in fewer questions after the instruction. \\
+The amount of tests per participant was increased, which allowed testing at more than one gain setting in the headphones. \\
+Small corrections to the physical setup was also made. 
+
+\subsection{Notes from operator}
 \begin{itemize}
-\item While our main error source might be human, we want to minimise the way we interact with him in order to not misslead him.
-\item The calibration of the overall noise level was done using a model head with fitted with a microphone conforming with the ISO XX standard. The fluctuation in noise level was allowed to be $\pm$ 4 dB(A) compared to the calibrated level. 
+\item The written instruction might be too long, participants felt the need to excuse their slow reading.
+\item participants suggesting deleting the first experiment due to misunderstanding of the instruction. This choice had already been made, maybe it would be beneficial to tell the participants that the first experiment was a dummy. 
 \end{itemize}
 
-\vspace{1cm}
+\subsection{Error Sources}
+\begin{itemize}
+\item As the participants are human it is not possible to give them instructions that will make all of them understand exactly the same question. 
+\item None of the participants were native English speakers. As all signals were in English, they might have a harder time separating the sound sources than they would in their native languages. 
+\item All participants were from the institute of electronics at AAU. Quite a few studying acoustics and some having preliminary knowledge of the scope of our main project. Only one female participated in the test. The participants were not chosen at random. 
+\item The calibration of the overall noise level was done using a model head with fitted with a microphone conforming with the ISO XX standard. The fluctuation in noise level was allowed to be $\pm$ 2.5 dB(A) compared to the calibrated level. 
+\item Once during the test a participant wanted to increase the noise to a level above 0 dB. This is not supported by the setup, and as a result that measurement is omitted.
+\item Some om the participants chose levels very close to the boundary 0 dB. The participants might have been able to unknowingly count the amount of steps taken from the boundary.  
+\end{itemize}
+
 \subsection{Conclusion}
 
 
