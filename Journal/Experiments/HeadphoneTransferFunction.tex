@@ -9,13 +9,17 @@ The purpose of the experiment is to determine the impulse response of of the  he
 	\begin{tabular}{ c c c } \toprule
 		{Item}	& {Description} 						& {AAU-no}. \\ \bottomrule 
 		1	&	B\&K Head And Torso Simulator "Henry" Type 4128	& 08453		\\
-		2	&	B\&K \textonehalf'' Condenser Microphone Type 4134 & 61447\\
+		2	&	B\&K 1'' Condenser Microphone Type 4179 & 08024\\
+		%2	&	B\&K \textonehalf'' Condenser Microphone Type 4134 & 61447\\
 		3	&	Sennheiser HD 200	Headphones			& 33379		\\
 		4	&	Roland Edirol UA-25EX Audio Capture		& 64696		\\
 		5	&	Vision B3565 Computer					& NaN		\\
-		6	&	B\&K Microphone Power Supply Type 2804	& 07304		\\
-		7	&	B\&K Sound Calibrator Type 4231			& 78301		\\ 
-		8	&	G.R.A.S. Type 26AK \textonehalf'' Standard Preamplifier	& 52665		\\ 
+		%6	&	B\&K Microphone Power Supply Type 2804	& 07304		\\
+		6	&	B\&K Measuring Amplifiers Type 2636	& 08717		\\
+		%7	&	B\&K Sound Calibrator Type 4231			& 78301		\\ 
+		7	&	B\&K Sound Calibrator Type 4230			& 08155		\\ 
+		8	&	B\&K 1'' Microphone Preamplifier Type 2660	& 08025		\\
+		%8	&	G.R.A.S. Type 26AK \textonehalf'' Standard Preamplifier	& 52665		\\ 
 		%7	&	B\&K Sound Intensity Calibrator Type 3541	& 08597	\\ 
 		\bottomrule
 	\end{tabular}
@@ -33,16 +37,35 @@ The purpose of the experiment is to determine the impulse response of of the  he
 
 \subsection{Settings/Description}
 \label{SettingsHeadPhones}
+
+Calibration of the microphone and associated preamplifier is done on the measurement amplifier, but any other method can be used. The following setting is present:
+\subsubsection{Control and calibration}
+\begin{itemize}
+	\item 93.6 dB @ 1000 Hz is used as calibration signal
+	\item Microphone sensitivity is controlled to 110 $m$V/Pa
+	\item Measurement amplifier is set to -10 dB default
+	\item Calibration signal yields an amplitude of 0.87 relative to 0 dBFS
+\end{itemize}
+\subsubsection{Equipment settings}
 \begin{itemize}
 	\item This experiment is performed with a sampling rate of, $F_{s}$ = 24,000 Hz
-	\item Item 4 (sound capture card):
+	\item Outside microphone is placed 12.6 mm from headphone cup
+	\item For item 4 (sound capture card):
 	\begin{itemize}
-		\item "SENS(INPUT 1/L)" is set to +20 dB"
+		\item "SENS(INPUT 1/L)" is set to +0 dB"
 		\item "SENS(INPUT 2/R)" is set to +0 dB"
 		\item "PHONES" is set to maximum volume
 	\end{itemize}		
+	\item For item 6 (measuring amplifier):
+		\begin{itemize}
+			\item "Input Section Gain" is set to +20 dB in proportion to calibration
+			\item 22.4 $k$Hz low-pass filter is enabled
+			\item 22.4 $k$Hz high-pass filter is enabled 
+		\end{itemize}
 	\item Item 5 (computer) is set to 0 dBFS
 \end{itemize}
+
+
 
 \subsubsection{Picture}
 \begin{figure}[H]
