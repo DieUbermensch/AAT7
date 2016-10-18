@@ -2,9 +2,11 @@
 
 \subsection{Purpose}
 
-The purpose of this experience is to determine the SNR needed to understand speech in a noisy office environnement.  
+The purpose of this experience is to determine the SNR needed to understand speech in a noisy office environment. 
 
 \subsection{AAU number list}
+The materials used for the experiments is noted in table \ref{tab:UsedEquipmentListningAttenuation}. The items are paired with a number which corresponds with the same number on figure \ref{fig:AttenuationSetup}.
+
 \begin{table}[h]
 	\centering
 	
@@ -20,8 +22,8 @@ The purpose of this experience is to determine the SNR needed to understand spee
 		8      	&  Genelec speaker C					& 33987		\\
 		9      	&  Genelec speaker D					& 33990		\\ \bottomrule 
 	\end{tabular}
-	\caption{Table over equipment used in test}
-	\label{tab:UsedEquipmentListning1}
+	\caption{Table over equipment used in the experiment}
+	\label{tab:UsedEquipmentListningAttenuation}
 \end{table}
 
 
@@ -76,11 +78,24 @@ The same method is used is used to find the SPL of the sound in the headphones. 
 \subsubsection{Picture and setup}
 
 \begin{figure}[H]
-	\centering
+\centering
+  \begin{subfigure}[b]{0.5\textwidth}
+  \centering
 	\tikzsetnextfilename{AttenuationSetup}
 	\input{figures/AttenuationExperiment/SchematicSetup.tex}
 	\caption{Schematic overview of the setup}
 	\label{fig:AttenuationSetup}
+  \end{subfigure}\qquad
+    \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{AttenuationExperiment/AttenuationSetupBack}
+    \caption{Setup from the back}
+    \label{fig:SetupFront}
+\vspace{2ex}
+    \includegraphics[width=\textwidth]{AttenuationExperiment/AttenuationSetupFront}
+    \caption{Setup from the front}
+    \label{fig:SetupBack}
+  \end{subfigure}
+  \caption{Picture of setup and the specific schematic}
 \end{figure}
 
 
