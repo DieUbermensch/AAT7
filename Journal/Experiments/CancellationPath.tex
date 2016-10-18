@@ -1,4 +1,4 @@
-1\section{Cancellation path}
+\section{Cancellation path}
 \subsection{Purpose}
 The purpose of this experiment is to determine the impulse response of the cancellation path, i.e. the transfer-function between the "source-loudspeaker" and the "error-microphone (ear)".
 		
@@ -22,7 +22,7 @@ The purpose of this experiment is to determine the impulse response of the cance
 	\label{tab:UsedEquipmentListningCP}
 \end{table}
 
-\subsubsection{Diagram}
+\subsection{Diagram}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Shematic_CalcellationPath.pdf}
@@ -30,21 +30,26 @@ The purpose of this experiment is to determine the impulse response of the cance
 	\label{Schematic}
 \end{figure}
 
-\subsubsection{Settings/Description}
+\subsection{Settings/Description}
 \label{SettingsCacellationPath}
 
 \begin{itemize}
-	\item Item 4 (Sound Capture port) "PHONES" is set to maximum volume
-	\item Item 4 (Sound Capture port) "SENS(INPUT 1/L)" is set to +0 dB		
-	\item Item 5 (Computer) is set to 0 dBFS
+	\item This experiment is performed with a sampling rate of, $F_{s}$ = 24,000 Hz
+	\item Item 4 (sound capture card):
+		\begin{itemize}
+			\item "SENS(INPUT 1/L)" is set to +0 dB"
+			\item "SENS(INPUT 2/R)" is set to +0 dB"
+			\item "PHONES" is set to maximum volume
+		\end{itemize}		
+	\item Item 5 (computer) is set to 0 dBFS
 \end{itemize}
 
 
-\subsubsection{Pictures}
+\subsection{Pictures}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{CancellationPath_and_Headphones/FullSetup.jpg}
-	\caption{Full setup of experiment (Note that external microphone is not in use in the experiment).}
+	\caption{Full setup of experiment (Note that "outside" microphone is not in use in the experiment).}
 	\label{FullSetupCancellationPath}
 \end{figure}
 
@@ -55,8 +60,8 @@ The purpose of this experiment is to determine the impulse response of the cance
 	\label{CloseUpCancellationPath}
 \end{figure}
 
-\section{Procedure}
-\subsection{Set-up}
+\subsection{Procedure}
+\subsubsection{Set-up}
 \begin{enumerate}
 	\item Set instruments to comply with the list in \ref{SettingsCacellationPath}
 	\item Control, and if necessary, calibrate item 2 using item 7
@@ -67,26 +72,39 @@ The purpose of this experiment is to determine the impulse response of the cance
 	\item Connect cable from item 4's output to item 4's input
 \end{enumerate}
 
-\subsection{Performing the experiment}
+\subsubsection{Performing the experiment}
 \begin{enumerate}
-	\item Open Simulink\textsuperscript{\textregistered} and run file "SimulinnkSystemCancellationPath.xls"
-	\item Through Simulink\textsuperscript{\textregistered} play "LogChirp.wav" from item 5 via item 4
-	\item Record and save, and name "Mic[i].wav" and Ref[i].wav" from item 4 onto item 5 \footnote{[i] indicates the iteration of the experiment}
+	\item Open Simulink\textsuperscript{\textregistered} and open and run file "SimulinkSystemCancellationPath.xls"
+	\begin{itemize} 
+		\item The simulations outputs a logarithmic chirp from 20 Hz to 20,000 Hz at 0 dBFS over the span of five seconds
+		\item The simulation runs for six seconds
+	\end{itemize}
+	%\item Through Simulink\textsuperscript{\textregistered} play "LogChirp.wav" from item 5 via item 4
+	\item Rename outputted file "Mic" and "Ref" to "Mic[i].wav" and Ref[i].wav" \footnote{[i] indicates the iteration of the experiment}
 	\begin{itemize}
 		\item[] Perform this experiment for a total of 5 times
 	\end{itemize}
 \end{enumerate}
 
 
-\subsection{Data Extraction}
+\subsubsection{Data Extraction}
 \begin{enumerate}
-	\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m".
+	%\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m".
 	\item Open MATLAB\textsuperscript{\textregistered} and run script "CancellationPathScript.m"
 \end{enumerate}
 This should yield the resulting frequency response, impulse response and finally the transfer function, along other information about the cancellation-path in this set-up.
 
 \subsection{Analysis}
-In MATLAB\textsuperscript{\textregistered} the script performs a series of mathematical operations. In short it loads all generated .wav-files and finds the mean. This mean of all measured signals is used to generate an amplitude plot of both the reference signal (the signal looped back from and to the Sound Capture Card) and the signal from the microphone (item 2).
+%In MATLAB\textsuperscript{\textregistered} the script performs a series of mathematical operations. In short it loads all generated .wav-files and finds the mean. This mean of all measured signals is used to generate an amplitude plot of both the reference signal (the signal looped back from and to the Sound Capture Card) and the signal from the microphone (item 2).
+
+From the performing of the experiment, 10 files has been generated:
+\begin{itemize}
+	\item Mic1.wav - Mic5.wav
+	\item Ref1.wav - Ref5.wav
+\end{itemize}
+
+These files are the results of performing the six second simulation which gives a number of 288,768 samples, for each generated .wav-file.
+An example showing outputted Mic1 and Ref1 are shown in  \autoref{AmplitudePlotCancellationPath}.
 
 \begin{figure}[H]
 	\centering
@@ -97,18 +115,22 @@ In MATLAB\textsuperscript{\textregistered} the script performs a series of mathe
 	\label{AmplitudePlotCancellationPath}
 \end{figure}
 
-From here and on the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the microphones recorded signal and is given by:
+Here the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the cross correlation between Mic[i] and Ref[i] and is given by:
 
 \begin{equation}
 \label{FrequencyResponseEq}
-Y(m) = \frac{X(m_{\mu}) *  H(r_{\mu})}{H(r_{\mu}) *  H(r_{\mu})}
+%H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
+H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
 \end{equation}
 Where:
 \begin{itemize}
-	\item $Y(m)$ is the FT of the microphone's recording
-	\item $H(m_{\mu})$ and $H(r_{\mu})$ is the FT of the meaning over the microphone and reference recordings respectively
-	\item "*" denotes the complex conjugation
+	%\item " $*$ " denotes the complex conjugation
+	\item $H(f)$ is the FT of the 'Cancellation Path'
+	\item $Y(f)$ is the recorded microphone signals, Mic[i]
+	\item $X(f)$ is the recorded reference signals, Ref[i]
 \end{itemize}
+
+The frequency response of the calcellation path is shown at \autoref{FrequencyResponsePlotCancellationPath}.
 
 \begin{figure}[H]
 	\centering
@@ -117,8 +139,8 @@ Where:
 	\label{FrequencyResponsePlotCancellationPath}
 \end{figure}
 
-When the frequency response is known, finding the impulse response of the system is matter of taking the IFT (Inverse Fourier Transform) of the signal.
-The signal looks as such:
+The impulse response of this system is found by taking the IFT (Inverse Fourier Transform) of the frequency response.
+The impulse response looks as shown on \autoref{CancellationPathImpulseResponse}.
 
 \begin{figure}[H]
 	\centering
@@ -126,6 +148,9 @@ The signal looks as such:
 	\caption{Impulse Response plot of the cancellation path (NOT TIKZ).}
 	\label{CancellationPathImpulseResponse}
 \end{figure}
+
+From the impulse response 
+
 
 \subsection{Error Sources}
 \begin{itemize}

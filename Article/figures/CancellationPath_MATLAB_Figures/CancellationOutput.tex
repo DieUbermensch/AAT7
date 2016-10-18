@@ -11,7 +11,7 @@ axis on top,
 xmin=0,
 xmax=7,
 xlabel={Time [s]},
-ylabel={Relative Amplitude},
+ylabel={Amplitude [$\cdot$ \textsubscript{re. 0 dBFS}]},
 ymin=-0.8,
 ymax=0.8,
 %ytick=\empty,
@@ -32,8 +32,8 @@ draw=black,
 below left=2mm
 ] at (border.north east) {\renewcommand{\arraystretch}{0.8}
 	\begin{tabular}{@{}r@{ }l@{}}
-	\raisebox{2pt}{\tikz{\draw[MATLABblue] (0,0) -- (5mm,0);}}&Input\\
-	\raisebox{2pt}{\tikz{\draw[MATLABorange] (0,0) -- (5mm,0);}}&Output\\
+	\raisebox{2pt}{\tikz{\draw[MATLABblue] (0,0) -- (5mm,0);}}&Ref1\\
+	\raisebox{2pt}{\tikz{\draw[MATLABorange] (0,0) -- (5mm,0);}}&Mic1\\
 	\end{tabular}};
 
 

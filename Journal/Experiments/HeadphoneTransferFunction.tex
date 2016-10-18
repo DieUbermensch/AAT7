@@ -2,7 +2,7 @@
 \subsection{Purpose}
 The purpose of the experiment is to determine the impulse response of of the  headphone, i.e. the transfer-function between the 'reference-microphone' and the 'source-loudspeaker'
 
-\subsubsection{AAU number list}
+\subsection{AAU number list}
 \begin{table}[h]
 	\centering
 	\ra{1.3}
@@ -34,9 +34,14 @@ The purpose of the experiment is to determine the impulse response of of the  he
 \subsection{Settings/Description}
 \label{SettingsHeadPhones}
 \begin{itemize}
-	\item Computer is set to 0 dBFS
-	\item Sound Capture port "PHONES" is set to maximum volume
-	\item Sound Capture port "SENS(INPUT 1/L)" is set to + 20 dB
+	\item This experiment is performed with a sampling rate of, $F_{s}$ = 24,000 Hz
+	\item Item 4 (sound capture card):
+	\begin{itemize}
+		\item "SENS(INPUT 1/L)" is set to +20 dB"
+		\item "SENS(INPUT 2/R)" is set to +0 dB"
+		\item "PHONES" is set to maximum volume
+	\end{itemize}		
+	\item Item 5 (computer) is set to 0 dBFS
 \end{itemize}
 
 \subsubsection{Picture}
@@ -55,7 +60,7 @@ The purpose of the experiment is to determine the impulse response of of the  he
 \end{figure}
 
 \subsection{Procedure}
-\subsection{Set-up}
+\subsubsection{Set-up}
 \begin{enumerate}
 	\item Set instruments to comply with the list in \ref{SettingsHeadPhones}
 	\item Control, and if necessary, calibrate item 2 using item 7
@@ -65,7 +70,7 @@ The purpose of the experiment is to determine the impulse response of of the  he
 	\item Insert item 3's connector into output of item 4
 \end{enumerate}
 
-\subsection{Performing the experiment}
+\subsubsection{Performing the experiment}
 \begin{enumerate}
 	\item Open Simulink\textsuperscript{\textregistered} and run file "SimulinkSystemHeadPhone.xls"
 	\item Through Simulink\textsuperscript{\textregistered} play "LogChirp.wav" from item 5 via item 4
@@ -76,7 +81,7 @@ The purpose of the experiment is to determine the impulse response of of the  he
 \end{enumerate}
 
 
-\subsection{Data Extraction}
+\subsubsection{Data Extraction}
 \begin{enumerate}
 	\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "HeadPhoneScript.m".
 	\item Open MATLAB\textsuperscript{\textregistered} and run script "CancellationPathScript.m"
