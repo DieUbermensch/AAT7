@@ -8,33 +8,38 @@ scale only axis,
 %point meta min=-119.999592255047,
 %point meta max=-13.064611467143,
 axis on top,
-xmin=0,
-xmax=7,
+xmin=-0.02,
+xmax=0.1,
 xlabel={Time [s]},
 ylabel={Amplitude [$\cdot$ \textsubscript{re. 0 dBFS}]},
-ymin=-0.8,
-ymax=0.8,
+ymin=-0.25,
+ymax=0.15,
 %ytick=\empty,
 axis background/.style={fill=white},
 name=border,
-ymajorgrids,
-xmajorgrids
+xticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=3
+},
+scaled x ticks=false,
+%ymajorgrids,
+%xmajorgrids
 ]
-\addplot [forget plot] graphics [xmin=0.00,xmax=7,ymin=-0.8,ymax=0.8] {CancellationPath_MATLAB_Figures/Output.pdf};
+\addplot [forget plot] graphics [xmin=-0.019,xmax=0.1,ymin=-0.25,ymax=0.15] {CancellationPath_MATLAB_Figures/figure3.pdf};
 
 
 \end{axis}
 
-\node[
-draw=black,
-%thick,
-%rounded corners=1pt,
-below left=2mm
-] at (border.north east) {\renewcommand{\arraystretch}{0.8}
-	\begin{tabular}{@{}r@{ }l@{}}
-	\raisebox{2pt}{\tikz{\draw[MATLABblue] (0,0) -- (5mm,0);}}&Ref1\\
-	\raisebox{2pt}{\tikz{\draw[MATLABorange] (0,0) -- (5mm,0);}}&Mic1\\
-	\end{tabular}};
+%\node[
+%draw=black,
+%%thick,
+%%rounded corners=1pt,
+%below left=2mm
+%] at (border.north east) {\renewcommand{\arraystretch}{0.8}
+%	\begin{tabular}{@{}r@{ }l@{}}
+%	\raisebox{2pt}{\tikz{\draw[MATLABblue] (0,0) -- (5mm,0);}}&Ref1\\
+%	\raisebox{2pt}{\tikz{\draw[MATLABorange] (0,0) -- (5mm,0);}}&Mic1\\
+%	\end{tabular}};
 
 
 

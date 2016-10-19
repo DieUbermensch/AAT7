@@ -119,27 +119,19 @@ An example showing outputted Mic1 and Ref1 are shown in  \autoref{AmplitudePlotC
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{CancellationPathAmplitudePlot}
-	\input{figures/CancellationPath_MATLAB_Figures/CancellationOutput.tex}
-	%\includegraphics[width=0.65\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathAmplitudePlot.png}
+	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathAmplitudePlot.tex}
 	\caption{Amplitude plot of the cancellation path.}
 	\label{AmplitudePlotCancellationPath}
 \end{figure}
 
-<<<<<<< HEAD
-Here the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the cross correlation between Mic[i] and Ref[i] and is given by:
-=======
 
-%\begin{figure}[H]
-%	\centering
-%	\tikzsetnextfilename{Thisisatest}
-%	\input{figures/CancellationPath_MATLAB_Figures/lineplotreducer.tex}
-%	\caption{Amplitude plot of the cancellation path.}
-%	\label{Thisisatest}
-%\end{figure}
+Here the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the cross correlation between Mic[i] and Ref[i] and is given by:
+
+
+
 
 
 From here and on the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the microphones recorded signal and is given by:
->>>>>>> 405a1a4de88910d70b6153476e08a06e9427ab3f
 
 \begin{equation}
 \label{FrequencyResponseEq}
@@ -158,20 +150,38 @@ The frequency response of the calcellation path is shown at \autoref{FrequencyRe
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.65\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathFrequencyResponse.png}
-	\caption{Frequency Response plot of the cancellation path (NOT TIKZ).}
+	\tikzsetnextfilename{CancellationPathFrequencyResponse}
+	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathFrequencyResponse.tex}
+	\caption{Frequency Response plot of the cancellation path}
 	\label{FrequencyResponsePlotCancellationPath}
 \end{figure}
+
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.65\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathFrequencyResponse.png}
+%	\caption{Frequency Response plot of the cancellation path (NOT TIKZ).}
+%	\label{FrequencyResponsePlotCancellationPath}
+%\end{figure}
 
 The impulse response of this system is found by taking the IFT (Inverse Fourier Transform) of the frequency response.
 The impulse response looks as shown on \autoref{CancellationPathImpulseResponse}.
 
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.65\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.png}
+%	\caption{Impulse Response plot of the cancellation path (NOT TIKZ).}
+%	\label{CancellationPathImpulseResponse}
+%\end{figure}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.65\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.png}
-	\caption{Impulse Response plot of the cancellation path (NOT TIKZ).}
+	\tikzsetnextfilename{CancellationPathImpulseResponse}
+	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.tex}
+	\caption{Frequency Response plot of the cancellation path}
 	\label{CancellationPathImpulseResponse}
 \end{figure}
+
 
 From the impulse response 
 
