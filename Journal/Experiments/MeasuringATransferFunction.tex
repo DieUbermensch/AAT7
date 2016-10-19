@@ -15,7 +15,7 @@ Y(f)=\mathscr{F}(y(t))\times\mathscr{F}'(x(t)) \text{ \& } X(f)=\mathscr{F}(x(t)
 Where $\times$ denotes bin-wise multiplication and $'$ denotes the complex conjugate. \\
 From equation \ref{Eq:TranferFunction} and \ref{Eq:cross-spectrum} you can find $H(f)$. Taking the inverse furrier of that will give the impulse response of the system. 
 \begin{equation}
-\frac{H(f) = Y(f)}{X(f)} \xrightarrow{\mathscr{F}^{-1}} h(t)
+H(f) = \frac{Y(f)}{X(f)} \xrightarrow{\mathscr{F}^{-1}} h(t)
 \label{Eq:Impulseresponse}
 \end{equation} 
 
@@ -29,7 +29,7 @@ H(f)=\dfrac{\mathscr{F}(y(t)\star x(t))} {\mathscr{F}(x(t)\star x(t))}=
 where $\star $ denotes the cross-correlation and $\ast $ denotes the convolution. %The deconvolution should be made as a division in frequency domain as this is more robust towards noise in the system. 
 
 \subsection{Ref}
-ref: PDF from LYL
+\citep{TutorialMeasurementPowerSpectra}
 
 
 
