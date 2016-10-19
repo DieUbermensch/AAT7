@@ -22,7 +22,7 @@ The materials used for the experiments is noted in table \ref{tab:UsedEquipmentL
 		8      	&  Genelec speaker C					& 33987		\\
 		9      	&  Genelec speaker D					& 33990		\\ \bottomrule 
 	\end{tabular}
-	\caption{Table over equipment used in the experiment}
+	\caption{Equipment used in the experiment}
 	\label{tab:UsedEquipmentListningAttenuation}
 \end{table}
 
@@ -37,7 +37,7 @@ The materials used for the experiments is noted in table \ref{tab:UsedEquipmentL
 		Height of:			 			& Measurement [cm] 	\\ \bottomrule
 		Speakers					  	& 100				\\
 		The ear of participant			& 110				\\ 
-		Table							&					\\ \bottomrule 
+		Table							& 90				\\ \bottomrule 
 	\end{tabular}
 	\caption{Height of setup. Speakers are placed with tweeters on the bottom.}
 	\label{Tab:NoiseAttenuationDimensions}
@@ -53,12 +53,12 @@ The materials used for the experiments is noted in table \ref{tab:UsedEquipmentL
 
 \subsubsection{Settings/Description}
 Our setting aims at reproducing an office sound field. We chose to produce the sound field with 4 speakers. 
-The idea is to reproduce a real life situation in an office. Speech and office background noise will be played on four speakers. Speaker C and D in figure \ref{Fig:NoiseAttenuationExperimet} play speech signals. Speaker A and B play ambient office noise. The listener who is seated in front of speakers will wear a pair of headphones playing speech. This setup emulates a phone call in a noisy office. The test will run six times with each participant. The first test is a "trial" and will not be used in data analysis. The following three will run at "high level" according to table \ref{tab:SPLCalibration}. The last two test will run at "low level". 
+The idea is to reproduce a real life situation in an office. Speech and office background noise is played on four speakers. Speaker C and D in figure \ref{Fig:NoiseAttenuationExperimet} play speech signals. Speaker A and B play ambient office noise. The listener who is seated in front of speakers will wear a pair of headphones playing speech. This setup emulates a phone call in a noisy office. The test will run six times with each participant. The first test is a "trial" and will not be used in data analysis. The following three will run at "high level" according to table \ref{tab:SPLCalibration}. The last two test will run at "low level". 
 
 The participant has control of a slider using a keyboard adjusting the sound level of the 4 speakers in the room, allowing them to attenuate the background noise. their role will be to find the noise level where they can understand the speech on the headset, without being disturbed significantly by the noisy environment. The slider has a range from 0 dB to -40 dB with steps of 0.4dB. 
 
 The Sound pressure levels of the sources are calibrated at the position of the listener. The calibration is made with all gain settings on the computer and in Simulink set to 0dB (including the slider). The HATS is placed at the listening position and the built in SPL-meter is used to find the levels of the noise from the two sets of speakers individually and in combination. 
-The same method is used is used to find the SPL of the sound in the headphones. The headphones are placed over the ears of "Valdemar" and a readout is made. The levels are equal to the values below $\pm$2.5 dB. \\
+The same method is used is used to find the SPL of the sound in the headphones. The headphones are placed over the ears of "Valdemar" and a readout is made. The levels are equal to the values below.
 \begin{table} [H]
 \centering
 	\begin{tabular}{c c}											\toprule
@@ -170,8 +170,7 @@ Small corrections to the physical setup was also made.
 \begin{itemize}
 \item As the participants are human it is not possible to give them instructions that will make all of them understand exactly the same question. 
 \item None of the participants were native English speakers. As all signals were in English, they might have a harder time separating the sound sources than they would in their native languages. 
-\item All participants were from the institute of electronics at AAU. Quite a few studying acoustics and some having preliminary knowledge of the scope of our main project. Only one female participated in the test. The participants were not chosen at random. 
-\item The calibration of the overall noise level was done using a model head with fitted with a microphone conforming with the ISO XX standard. The fluctuation in noise level was allowed to be $\pm$ 2.5 dB(A) compared to the calibrated level. 
+\item All participants were from the institute of electronics at AAU. Quite a few studying acoustics and some having preliminary knowledge of the scope of our main project. Only one female participated in the test. The participants were not chosen at random.  
 \item Once during the test a participant wanted to increase the noise to a level above 0 dB. This is not supported by the setup, and as a result that measurement is omitted.
 \item Some om the participants chose levels very close to the boundary 0 dB. The participants might have been able to unknowingly count the amount of steps taken from the boundary.  
 \end{itemize}
