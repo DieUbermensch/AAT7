@@ -127,8 +127,6 @@ An example showing outputted Mic1 and Ref1 are shown in  \autoref{AmplitudePlotC
 Here the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the cross correlation between Mic[i] and Ref[i] and is given by:
 
 
-
-
 \begin{equation}
 \label{FrequencyResponseEq}
 %H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
@@ -163,20 +161,30 @@ The frequency response of the calcellation path is shown at \autoref{FrequencyRe
 The impulse response of this system is found by taking the IFT (Inverse Fourier Transform) of the frequency response.
 The impulse response looks as shown on \autoref{CancellationPathImpulseResponse}.
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.65\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.png}
-%	\caption{Impulse Response plot of the cancellation path (NOT TIKZ).}
-%	\label{CancellationPathImpulseResponse}
-%\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.png}
+	\caption{Impulse Response plot of the cancellation path (NOT TIKZ).}
+	\label{CancellationPathImpulseResponse}
+\end{figure}
+
+Converting the impulse response from magnitude to dB, gives the time decay which reveals the SNR (Signal to Noise Ratio) of the system, and from the read off SNR is found to be $\sim$ 50 dB SNR.
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{CancellationPathImpulseResponse}
-	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.tex}
-	\caption{Frequency Response plot of the cancellation path}
-	\label{CancellationPathImpulseResponse}
+	\includegraphics[width=0.85\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathTimeDecay.png}
+	\caption{Time decay plot of the cancellation path (NOT TIKZ).}
+	\label{TimeDecayPlotCancellationPath}
 \end{figure}
+
+
+%\begin{figure}[H]
+%	\centering
+%	\tikzsetnextfilename{CancellationPathImpulseResponse}
+%	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.tex}
+%	\caption{Impulse response plot of the cancellation path}
+%	\label{CancellationPathImpulseResponse}
+%\end{figure}
 
 \subsection{Error Sources}
 \begin{itemize}
@@ -202,15 +210,5 @@ The impulse response looks as shown on \autoref{CancellationPathImpulseResponse}
 	\label{TolerancesCP}
 \end{table}
 
-
-
-
-
-
-
-
-
-
-
 \subsection{Conclusion}
-We done did it
+The impulse response shows the coefficients of the system, and a file containing all 250 is generated with the name "CoeffientsCP.mat"
