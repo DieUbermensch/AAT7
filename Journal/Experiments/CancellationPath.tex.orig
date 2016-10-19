@@ -124,18 +124,21 @@ An example showing outputted Mic1 and Ref1 are shown in  \autoref{AmplitudePlotC
 	\label{AmplitudePlotCancellationPath}
 \end{figure}
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> a58d31ae52fce4893ddcb7976a165c9fa75f65c5
 Here the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the cross correlation between Mic[i] and Ref[i] and is given by:
 
-\begin{figure}[H]
-	\centering
-	\tikzsetnextfilename{Setup}
-	\input{figures/CancellationPath_MATLAB_Figures/Headphone.tex}
-	\caption{test}
-	\label{test}
-\end{figure}
 
 
 
+
+<<<<<<< HEAD
+From here and on the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the microphones recorded signal and is given by:
+
+=======
+>>>>>>> a58d31ae52fce4893ddcb7976a165c9fa75f65c5
 \begin{equation}
 \label{FrequencyResponseEq}
 %H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
