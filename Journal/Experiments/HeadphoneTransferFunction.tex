@@ -145,7 +145,7 @@ An example showing outputted Mic1 and Ref1 are shown in  \autoref{HeadPhoneAmpli
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.65\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneAmplitudePlot.png}
+	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneAmplitudePlot.png}
 	\caption{Amplitude plot of the headphones (NOT TIKZ).}
 	\label{HeadPhoneAmplitudePLot}
 \end{figure}
@@ -179,7 +179,7 @@ The frequency response of the headphones path is shown at \autoref{HeadPhoneFreq
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.65\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneFrequencyResponse.png}
+	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneFrequencyResponse.png}
 	\caption{Frequency Response plot of the headphones (NOT TIKZ).}
 	\label{HeadPhoneFrequencyResponsePlot}
 \end{figure}
@@ -189,8 +189,8 @@ The impulse response looks as shown on \autoref{HeadPhoneImpulseResponse}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.65\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneImpulseResponse.png}
-	\caption{Impulse Response plot of the cancellation path (NOT TIKZ).}
+	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneImpulseResponse.png}
+	\caption{Impulse Response plot of the headphones (NOT TIKZ).}
 	\label{HeadPhoneImpulseResponse}
 \end{figure}
 
@@ -202,7 +202,14 @@ The impulse response looks as shown on \autoref{HeadPhoneImpulseResponse}.
 %	\label{CancellationPathImpulseResponse}
 %\end{figure}
 
+Converting the impulse response from magnitude to dB, gives the time decay which reveals the SNR (Signal to Noise Ratio) of the system, and from the read off SNR is found to be $\sim$ 50 dB SNR.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhonesTimeDecay.png}
+	\caption{Time decay plot of the cancellation path (NOT TIKZ).}
+	\label{TimeDecayPlotCancellationPath}
+\end{figure}
 
 \subsection{Error Sources}
 \begin{itemize}
@@ -230,4 +237,4 @@ The impulse response looks as shown on \autoref{HeadPhoneImpulseResponse}.
 \end{table}
 
 \subsection{Conclusion}
-We done did it
+The impulse response on \autoref{HeadPhoneImpulseResponse} shows the coefficients of the system, and a file containing all 250 is generated with the name "CoeffientsHP.mat"
