@@ -127,8 +127,7 @@ An example showing outputted Mic1 and Ref1 are shown in  \autoref{AmplitudePlotC
 Here the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the cross correlation between Mic[i] and Ref[i] and is given by:
 
 
-\begin{equation}
-\label{FrequencyResponseEq}
+\begin{equation}\label{FrequencyResponseEq2}
 %H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
 H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
 \end{equation}
@@ -151,29 +150,40 @@ The frequency response of the calcellation path is shown at \autoref{FrequencyRe
 \end{figure}
 
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.65\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathFrequencyResponse.png}
-%	\caption{Frequency Response plot of the cancellation path (NOT TIKZ).}
-%	\label{FrequencyResponsePlotCancellationPath}
-%\end{figure}
 
 The impulse response of this system is found by taking the IFT (Inverse Fourier Transform) of the frequency response.
 The impulse response looks as shown on \autoref{CancellationPathImpulseResponse}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.png}
-	\caption{Impulse Response plot of the cancellation path (NOT TIKZ).}
+	\tikzsetnextfilename{CancellationPathImpulseResponse}
+	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.tex}
+	\caption{Impulse Response plot of the cancellation path}
 	\label{CancellationPathImpulseResponse}
 \end{figure}
 
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.85\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.png}
+%	\caption{Impulse Response plot of the cancellation path (NOT TIKZ).}
+%	\label{CancellationPathImpulseResponse}
+%\end{figure}
+
 Converting the impulse response from magnitude to dB, gives the time decay which reveals the SNR (Signal to Noise Ratio) of the system, and from the read off SNR is found to be $\sim$ 50 dB SNR.
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.85\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathTimeDecay.png}
+%	\caption{Time decay plot of the cancellation path (NOT TIKZ).}
+%	\label{TimeDecayPlotCancellationPath}
+%\end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathTimeDecay.png}
-	\caption{Time decay plot of the cancellation path (NOT TIKZ).}
+	\tikzsetnextfilename{TimeDecayPlotCancellationPath}
+	\input{figures/CancellationPath_MATLAB_Figures/TimeDecayPlotCancellationPath.tex}
+	\caption{Time Decay plot of the cancellation path}
 	\label{TimeDecayPlotCancellationPath}
 \end{figure}
 

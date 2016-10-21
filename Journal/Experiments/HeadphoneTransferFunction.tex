@@ -3,7 +3,7 @@
 The purpose of the experiment is to determine the impulse response of of the  headphones, i.e. the transfer-function between the 'reference-microphone' and the 'source-loudspeaker'
 
 \subsection{AAU number list}
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	\ra{1.3}
 	\begin{tabular}{ c c c } \toprule
@@ -147,15 +147,14 @@ An example showing outputted Mic1 and Ref1 are shown in  \autoref{HeadPhoneAmpli
 	\centering
 	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneAmplitudePlot.png}
 	\caption{Amplitude plot of the headphones (NOT TIKZ).}
-	\label{HeadPhoneAmplitudePLot}
+	\label{HeadPhoneAmplitudePlot}
 \end{figure}
 
 
 Here the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the cross correlation between Mic[i] and Ref[i] and is given by:
 
 
-\begin{equation}
-	\label{FrequencyResponseEq}
+\begin{equation}\label{FrequencyResponseEq}
 	H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
 \end{equation}
 Where:
@@ -168,29 +167,25 @@ Where:
 
 The frequency response of the headphones path is shown at \autoref{HeadPhoneFrequencyResponsePlot}.
 
-%\begin{figure}[H]
-%	\centering
-%	\tikzsetnextfilename{CancellationPathFrequencyResponse}
-%	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathFrequencyResponse.tex}
-%	\caption{Frequency Response plot of the cancellation path}
-%	\label{FrequencyResponsePlotCancellationPath}
-%\end{figure}
-
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneFrequencyResponse.png}
-	\caption{Frequency Response plot of the headphones (NOT TIKZ).}
+	\tikzsetnextfilename{HeadPhoneFrequencyResponse}
+	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneFrequencyResponse.tex}
+	\caption{Frequency Response plot of the headphones}
 	\label{HeadPhoneFrequencyResponsePlot}
 \end{figure}
+
+
 
 The impulse response of this system is found by taking the IFT (Inverse Fourier Transform) of the frequency response.
 The impulse response looks as shown on \autoref{HeadPhoneImpulseResponse}.
 
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneImpulseResponse.png}
-	\caption{Impulse Response plot of the headphones (NOT TIKZ).}
+	\tikzsetnextfilename{HeadPhoneImpulseResponse}
+	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneImpulseResponse.tex}
+	\caption{Impulse Response plot of the headphones }
 	\label{HeadPhoneImpulseResponse}
 \end{figure}
 
@@ -206,10 +201,14 @@ Converting the impulse response from magnitude to dB, gives the time decay which
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhonesTimeDecay.png}
-	\caption{Time decay plot of the cancellation path (NOT TIKZ).}
-	\label{TimeDecayPlotCancellationPath}
+	\tikzsetnextfilename{TimeDecayPlotCancellationPath}
+	\input{figures/CancellationPath_MATLAB_Figures/TimeDecayPlotCancellationPath.tex}
+	\caption{Time Decay plot of the cancellation path}
+	\label{TimeDecayPlotHeadphone}
 \end{figure}
+
+
+
 
 \subsection{Error Sources}
 \begin{itemize}
