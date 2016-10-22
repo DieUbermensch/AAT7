@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?ccsproject version="1.0"?>
+
+<projectOptions>
+<deviceVariant value="TMS320C55XX.TMS320C5510"/>
+<deviceEndianness value="big"/>
+<codegenToolVersion value="4.3.8"/>
+<isElfFormat value="false"/>
+<linkerCommandFile value="C5510.cmd"/>
+<rts value="rts55x.lib"/>
+<templateProperties value="id=com.ti.common.project.core.emptyProjectTemplate,"/>
+</projectOptions>
