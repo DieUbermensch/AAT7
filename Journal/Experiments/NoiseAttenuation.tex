@@ -177,7 +177,63 @@ Small corrections to the physical setup was also made.
 
 \subsection{Conclusion}
 
+We conducted our test with 13 participants who were subject to 5 listening tests. The first three tests were realized with a high sound level in the headset whereas the last two tests were conducted with a lower sound level in the headset. 
 
+As you can see on the data (see figure below) our different tests appears to have results that makes sense except for the test number 3 which seams to have a broader set of results.  
+
+From the data collected we were able to draw different conclusions over our study population. 
+First, it is interesting to notice that for a given participant, results over different tests are very stable (within +-2,5 dB which was our calibration uncertainty).  Secondly, even if test results between each participants varies a lot, we can categorize  them into three ranges: "ultra sensitive" (from - 26db to - 19db) , "sensitive"(from -14db to -8db) and "less sensitive"(from -6db to 0db). 
+
+Participants are not uniformly distributed between each categorizes but it seams important to distinguish them. This basic analysis helped us to understand our test population.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{*{7}{c}}
+  \hline
+  Participant & Test 1 & Test 2 & Test 3  & Test 4  & Test 5  
+  \\
+  \hline
+  1 & -26.8 & -26.0 &	-22.8 & -27.6 & -28.4 \\
+  2 & -21.6 & -18.0 & -19.6  & -21.6  & -20.0 \\
+  3 & -5.6 & -4.4 & -2.0 & -8.4 & -6.8  \\
+  4 & -10.8 & -8.4 & -5.2 & -12.0 & -10.4 \\
+  5 & -11.6 & -7.2 & -5.6	 & -12.0 & -8.4 \\
+  6 & -11.6 & -10.8 & -8.4 & -12.4 & -11.2 \\
+  7 & -5.2 & -4.0 & -0.4 & -6.8 & -7.6 \\
+  8 & -8.8 & -6.4 & -3.6 & -10-0 & -10.4 \\
+  9 & -17.6 & -16.8 & -18.4 & -23.6 & -18.0 \\
+  10 & -12.0 & -13.6 & -15.2 & -15.2 & 	-14.8 \\
+  11 & -5.6 & -4.8 & -3.6 & -8.4 & -8.8 \\
+  12 & -1.6 & -1.6 & 0	 & -6.0 & 	-8.0 \\
+  13 & -7.6 & -4.4 & -1.6	 & -5.6 & 	-7.6   \\
+  \hline
+\end{tabular}
+  \caption{Results of the listening test}
+	\label{tab:ListeningResults}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{*{7}{c}}
+  \hline
+   & Test 1 & Test 2 & Test 3  & Test 4  & Test 5  
+  \\
+  \hline
+  Mean & -11,3 & -9,7 & -8,9	 & -13,0 & -12,3 \\
+  \hline
+\end{tabular}
+  \caption{means of the listening test}
+	\label{tab:MeanListeningResults}
+\end{table}
+
+Our first attempt to model our data achieved a limited success. We thought of a normal distribution but the data were not fitting well; then we realized they were more likely to be modeled with a one sided normal distribution.
+
+Using a one sided normal distribution the fitting was better but still not perfect. According to the QQ plots (see figure below.) , data are bouncing between the line and our population does not seams to follow a normal distribution. 
+
+
+Thanks to this experiment we learned a lot about our population and how people are not distributed but what about the real world ? How can we fit our data with a high level of confidence with so few people ?
+
+Here are the figures extracted from our matlab analysis script.
 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{AttenuationExperiment/figure1.pdf}
