@@ -43,9 +43,17 @@ The materials used for the experiments is noted in table \ref{tab:UsedEquipmentL
 	\label{Tab:NoiseAttenuationDimensions}
 \end{table}
 
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=12cm]{AttenuationExperiment/setup}
+%	\caption{Setup of Noise attenuation experiment}
+%	\label{Fig:NoiseAttenuationExperimet}
+%\end{figure}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=12cm]{AttenuationExperiment/setup}
+	\tikzsetnextfilename{AttenuationTestSetup}
+	\input{figures/AttenuationExperiment/AttenuationTestSetup.tex}
 	\caption{Setup of Noise attenuation experiment}
 	\label{Fig:NoiseAttenuationExperimet}
 \end{figure}
@@ -228,7 +236,7 @@ Looking at results it appears that they make sense except for the test number 3 
 
 As show in the figure, means of each high level tests are stable (within +-2,4 dB) and means of each low level tests are even more stable (within +-0,7dB). 
 
-Our first attempt to model the achieved data is a limited success. A normal distribution was considered but the data were not fitting well, since the data seems the be skewed. Conforming to the QQ plots, data are bouncing between the line and our population does not follow a normal distribution very accurately. A one sided normal distribution fit is used since is conforms better with the results and will provide good predictability. Here are the figures extracted from our matlab analysis script.
+Our first attempt to model the achieved data is a limited success. A normal distribution was considered but the data did not fit well, since the data seems the be skewed. Conforming to the QQ plots, data are bouncing between the line and our population does not follow a normal distribution very accurately. A one sided normal distribution fit is used since is conforms better with the results and will provide good predictability. Here are the figures extracted from our Matlab analysis script.
 
 
 \begin{figure}[H]
