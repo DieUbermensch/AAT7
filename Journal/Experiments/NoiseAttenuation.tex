@@ -5,7 +5,7 @@
 The purpose of this experience is to determine the SNR needed to understand speech in a noisy office environment. 
 
 \subsection{AAU number list}
-The materials used for the experiments is noted in table \ref{tab:UsedEquipmentListningAttenuation}. The items are paired with a number which corresponds with the same number on figure \ref{fig:AttenuationSetup}.
+The materials used for the experiments is noted in table \ref{tab:UsedEquipmentListningAttenuation}. See figure \ref{fig:AttenuationSetup} for the setup.
 
 \begin{table}[h]
 	\centering
@@ -43,9 +43,17 @@ The materials used for the experiments is noted in table \ref{tab:UsedEquipmentL
 	\label{Tab:NoiseAttenuationDimensions}
 \end{table}
 
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=12cm]{AttenuationExperiment/setup}
+%	\caption{Setup of Noise attenuation experiment}
+%	\label{Fig:NoiseAttenuationExperimet}
+%\end{figure}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=12cm]{AttenuationExperiment/setup}
+	\tikzsetnextfilename{AttenuationTestSetup}
+	\input{figures/AttenuationExperiment/AttenuationTestSetup.tex}
 	\caption{Setup of Noise attenuation experiment}
 	\label{Fig:NoiseAttenuationExperimet}
 \end{figure}
@@ -83,7 +91,7 @@ The same method is used is used to find the SPL of the sound in the headphones. 
   \centering
 	\tikzsetnextfilename{AttenuationSetup}
 	\input{figures/AttenuationExperiment/SchematicSetup.tex}
-	\caption{Schematic overview of the setup}
+	\caption{Schematic overview of the setup. "5" is the participant during tests or the HATS during calibration}
 	\label{fig:AttenuationSetup}
   \end{subfigure}\qquad
     \begin{subfigure}[b]{0.4\textwidth}
@@ -152,7 +160,7 @@ Results will be extracted manually from Simulink to a table during the test.
 %	\label{tab:ListeningRes}
 %\end{table}
 
-\begin{table}[H]
+\begin{table} [H]
 	\centering
 	\begin{tabular}{*{7}{c}}
 		\hline
@@ -170,13 +178,49 @@ Results will be extracted manually from Simulink to a table during the test.
 		9 & -17.6 & -16.8 & -18.4 & -23.6 & -18.0 \\
 		10 & -12.0 & -13.6 & -15.2 & -15.2 & 	-14.8 \\
 		11 & -5.6 & -4.8 & -3.6 & -8.4 & -8.8 \\
-		12 & -1.6 & -1.6 & 0	 & -6.0 & 	-8.0 \\
+		12 & -1.6 & -1.6 & above & -6.0 & 	-8.0 \\
 		13 & -7.6 & -4.4 & -1.6	 & -5.6 & 	-7.6   \\
 		\hline
 	\end{tabular}
-	\caption{Results of the listening test}
+	\caption{Results of the listening test. The value above is set at 0 for calculations see section \ref{SubSec:ErrSouNoiAtt} for more information.}
 	\label{tab:ListeningResults}
 \end{table}
+
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{*{7}{c}}
+%		\hline
+%		High level  & Low level 
+%		\\
+%		\hline
+%		4,5	& 0,311 \\
+%		3,3	& 1,3 \\
+%		3,4	& 1,3 \\
+%		7,9	& 1,3 \\
+%		9,7	& 6,5 \\
+%		2,8	& 0,7 \\
+%		6,2	& 0,3 \\
+%		6,8	& 0,1 \\
+%		0,6	& 15,7 \\
+%		2,6	& 0,1 \\
+%		1,0	& 0,1 \\
+%		0,0	& 2,0 \\
+%		9,0	& 2,0 \\
+%		\hline
+%	\end{tabular}
+%	\caption{Variances of High and Low level test}
+%	\label{tab:VarListeningResults}
+%\end{table}
+
+
+
+\subsection{Analysis}
+
+The test was conducted with 13 participants subject to 6 listening tests. The first test (enumerated 0) is omitted in analysis. The next three tests (1-3) were realized with a high sound level in the headset whereas the two last tests (4-5) were conducted with a lower sound level in the headset. 
+
+Looking at results it appears that they make sense except for the test number 3 which have a broader set of results. As shown in the attenuation box plot in figure \ref{fig:ResAttExp}, given a specific test, more than half of the participant's values are within 8-10 dB with extreme values going from 0 to -28.4.
+
+As show in table \ref{tab:MeanListeningResults}, means of each high level tests are stable (within +-2,4 dB) and means of each low level tests are even more stable (within +-0,7dB). Both these values are below the tolerance, that the signals are calibrated within. 
 
 \begin{table}[H]
 	\centering
@@ -192,47 +236,14 @@ Results will be extracted manually from Simulink to a table during the test.
 	\label{tab:MeanListeningResults}
 \end{table}
 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{*{7}{c}}
-		\hline
-		High level  & Low level 
-		\\
-		\hline
-		4,5	& 0,311 \\
-		3,3	& 1,3 \\
-		3,4	& 1,3 \\
-		7,9	& 1,3 \\
-		9,7	& 6,5 \\
-		2,8	& 0,7 \\
-		6,2	& 0,3 \\
-		6,8	& 0,1 \\
-		0,6	& 15,7 \\
-		2,6	& 0,1 \\
-		1,0	& 0,1 \\
-		0,0	& 2,0 \\
-		9,0	& 2,0 \\
-		\hline
-	\end{tabular}
-	\caption{Variances of High and Low level test}
-	\label{tab:VarListeningResults}
-\end{table}
-
-
-
-\subsection{Analysis}
-
-The test was conducted with 13 participants subject to 5 listening tests. The first three tests were realized with a high sound level in the headset whereas the last two tests were conducted with a lower sound level in the headset. 
-
-Looking at results it appears that they make sense except for the test number 3 which have a broader set of results. As shown in the attenuation box plot, given a specific test, more than half of the participant's values are within 8-10 dB with extreme values going from 0 to -28.4.
-
-As show in the figure, means of each high level tests are stable (within +-2,4 dB) and means of each low level tests are even more stable (within +-0,7dB). 
-
-Our first attempt to model the achieved data is a limited success. A normal distribution was considered but the data were not fitting well, since the data seems the be skewed. Conforming to the QQ plots, data are bouncing between the line and our population does not follow a normal distribution very accurately. A one sided normal distribution fit is used since is conforms better with the results and will provide good predictability. Here are the figures extracted from our matlab analysis script.
+Our first attempt to model the achieved data is a limited success. A normal distribution was considered but the data did not fit well, since the data seems the be skewed. Conforming to the QQ plots, data are bouncing not randomly distributed around the line and our population does not follow a normal distribution. A one sided normal distribution fit is used since is conforms better with the results and will provide good predictability. Figure \ref{fig:ResAttExp} contains the figures extracted from our Matlab analysis.
 
 
 \begin{figure}[H]
+	\centering
 	\includegraphics[width=\textwidth]{AttenuationExperiment/figure1.pdf}
+	\caption{Results from attenuation experiment}
+	\label{fig:ResAttExp}
 \end{figure}
 
 \subsection{Changes after Pilot test}
@@ -246,7 +257,7 @@ Small corrections to the physical setup was also made.
 \item participants suggesting deleting the first experiment due to misunderstanding of the instruction. This choice had already been made, maybe it would be beneficial to tell the participants that the first experiment was a dummy. 
 \end{itemize}
 
-\subsection{Error Sources}
+\subsection{Error Sources} \label{SubSec:ErrSouNoiAtt}
 \begin{itemize}
 \item As the participants are human it is not possible to give them instructions that will make all of them understand exactly the same question. 
 \item None of the participants were native English speakers. As all signals were in English, they might have a harder time separating the sound sources than they would in their native languages. 
@@ -256,13 +267,20 @@ Small corrections to the physical setup was also made.
 \end{itemize}
 
 \subsection{Conclusion}
-From the data collected conclusions can now be drawn over our study population. 
+%From the data collected conclusions can now be drawn over our study population. 
 
-Interestingly a given participant's results over different tests is very stable, within +-2,5 dB which was our calibration uncertainty.  Secondly, even if test results between each participants varies a lot, three population families can be find: "ultra sensitive" from - 26db to - 19db , "sensitive" from -14db to -8db  and "less sensitive" from -6db to 0db. 
+Interestingly a given participant's results over different tests are very stable, within +-2,5 dB which was our calibration uncertainty.  Secondly, even if test results between each participants varies a lot, three population families can be find: "ultra sensitive" from - 26db to - 19db , "sensitive" from -14db to -8db  and "less sensitive" from -6db to 0db. 
 
 The "less sensitive" population might not be interested in ANC headset, in order to satisfy most of the people, our system needs to consider critical values of our experiment.
 
 
-
+%Notes from CC
+% New sorting into groups in conclusion
+% Comparison on stability of persons - that's not in the main! Only test stability is in the main
+% No comments on the diagrams
+% comment about less sensitive population in conclusion - new
+% histograms are inverted + -> -
+% variance not used for anything
+% more items on overview? 
 
 
