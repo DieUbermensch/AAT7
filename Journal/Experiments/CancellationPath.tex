@@ -33,18 +33,19 @@ The purpose of this experiment is to determine the impulse response of the cance
 \subsection{Settings/Description}
 \label{SettingsCacellationPath}
 
-Calibration of the microphone and associated preamplifier is done on the computer using Simulink\textsuperscript{\textregistered}, but any other method can be used. The following setting is present:
+Calibration of the microphone and associated preamplifier is done on the computer using Simulink\textsuperscript{\textregistered}. The following settings are present:
 
 \subsubsection{Control and calibration}
 \begin{itemize}
-	\item 93.2 dB $@$ 250 Hz is used as calibration signal
+	\item 94 dB (-0.8 dB for adapters) $@$ 250 Hz is used as calibration signal
 	\item Microphone sensitivity is controlled to 11.6 $m$V/Pa
 	\item Calibration signal yields an amplitude of 0.6 relative to 0 dBFS
+	\item Calibration signal yields a spike at 95.5 dB SPL, which requires a -2.3 dB SPL adjustment
 \end{itemize}
 
 \subsubsection{Equipment settings}
 \begin{itemize}
-	\item This experiment is performed with a sampling rate of, $F_{s}$ = 24,000 Hz
+	\item This experiment is performed with a sampling rate of, $F_{s}$ = 48,000 Hz
 	\item Item 4 (sound capture card):
 		\begin{itemize}
 			\item "SENS(INPUT 1/L)" is set to +0 dB"
@@ -56,12 +57,12 @@ Calibration of the microphone and associated preamplifier is done on the compute
 
 
 \subsection{Pictures}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{CancellationPath_and_Headphones/FullSetup.jpg}
-	\caption{Full setup of experiment (Note that "outside" microphone is not in use in the experiment).}
-	\label{FullSetupCancellationPath}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{CancellationPath_and_Headphones/FullSetup.jpg}
+%	\caption{Full setup of experiment (Note that "outside" microphone is not in use in the experiment).} 
+%	\label{FullSetupCancellationPath}
+%\end{figure}
 
 \begin{figure}[H]
 	\centering
@@ -74,7 +75,7 @@ Calibration of the microphone and associated preamplifier is done on the compute
 \subsubsection{Set-up}
 \begin{enumerate}
 	\item Set instruments to comply with the list in \ref{SettingsCacellationPath}
-	\item Control, and if necessary, calibrate item 2 using item 7
+	\item Control and calibrate item 2 using item 7
 	\item Place item 3 onto item 1 ("Henry"'s head and ears)
 	\item Insert item 2's connector into input of item 6
 	\item Connect item 6 to item 4 and connect item 4 to item 5 via USB
@@ -95,6 +96,7 @@ Calibration of the microphone and associated preamplifier is done on the compute
 		\item[] Perform this experiment for a total of 5 times
 	\end{itemize}
 \end{enumerate}
+If there is a discontinuity  on the recorded signal(s) discard that recording.
 
 
 \subsubsection{Data Extraction}
@@ -102,11 +104,6 @@ Calibration of the microphone and associated preamplifier is done on the compute
 	%\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m".
 	\item Open MATLAB\textsuperscript{\textregistered} and run script "CancellationPathScript.m"
 \end{enumerate}
-This should yield the resulting frequency response, impulse response and finally the transfer function, along other information about the cancellation-path in this set-up.
-
-\subsection{Analysis}
-%In MATLAB\textsuperscript{\textregistered} the script performs a series of mathematical operations. In short it loads all generated .wav-files and finds the mean. This mean of all measured signals is used to generate an amplitude plot of both the reference signal (the signal looped back from and to the Sound Capture Card) and the signal from the microphone (item 2).
-
 From the performing of the experiment, 10 files has been generated:
 \begin{itemize}
 	\item Mic1.wav - Mic5.wav
@@ -119,12 +116,19 @@ An example showing outputted Mic1 and Ref1 are shown in  \autoref{AmplitudePlotC
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{CancellationPathAmplitudePlot}
-	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathAmplitudePlot.tex}
+	\input{figures/CancellationPath_MATLAB_Figures/Amplitudeplot2.tex}
 	\caption{Amplitude plot of the cancellation path.}
 	\label{AmplitudePlotCancellationPath}
 \end{figure}
 
-Here the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the cross correlation between Mic[i] and Ref[i] and is given by:
+MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m" is used for data extraction and analysis.
+
+
+
+\subsection{Analysis}
+The impulse response of the "cancellation path" is to be found.
+This is done by first finding the frequency response of the "cancellation path", which is found by taking the cross correlation between Mic[i] and Ref[i]. This is done by taking the FT (Fourier Transform of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
+
 
 
 \begin{equation}\label{FrequencyResponseEq2}
@@ -135,24 +139,24 @@ Where:
 \begin{itemize}
 	%\item " $*$ " denotes the complex conjugation
 	\item $H(f)$ is the FT of the 'Cancellation Path'
-	\item $Y(f)$ is the recorded microphone signals, Mic[i]
-	\item $X(f)$ is the recorded reference signals, Ref[i]
+	\item $Y(f)$ is the FT of the recorded microphone signals, Mic[i]
+	\item $X(f)$ is the FT of the recorded reference signals, Ref[i]
 \end{itemize}
 
-The frequency response of the calcellation path is shown at \autoref{FrequencyResponsePlotCancellationPath}.
+The frequency response of the cancellation path is shown at \autoref{FrequencyResponsePlotCancellationPath}.
 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{CancellationPathFrequencyResponse}
-	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathFrequencyResponse.tex}
+	\input{figures/CancellationPath_MATLAB_Figures/CP_freqresp.tex}
 	\caption{Frequency Response plot of the cancellation path}
 	\label{FrequencyResponsePlotCancellationPath}
 \end{figure}
 
 
 
-The impulse response of this system is found by taking the IFT (Inverse Fourier Transform) of the frequency response.
-The impulse response looks as shown on \autoref{CancellationPathImpulseResponse}.
+The impulse response of this "cancellation path" is found by taking the IFT (Inverse Fourier Transform) of the frequency response.
+The impulse response is shown on \autoref{CancellationPathImpulseResponse}.
 
 \begin{figure}[H]
 	\centering
@@ -170,7 +174,7 @@ The impulse response looks as shown on \autoref{CancellationPathImpulseResponse}
 %	\label{CancellationPathImpulseResponse}
 %\end{figure}
 
-Converting the impulse response from magnitude to dB, gives the time decay which reveals the SNR (Signal to Noise Ratio) of the system, and from the read off SNR is found to be $\sim$ 50 dB SNR.
+Converting the impulse response from magnitude to dB, gives the time decay which reveals the SNR (Signal to Noise Ratio) of the system, and from the read off SNR is found to be $\sim$ 50 dB SNR, as seen on \autoref{TimeDecayPlotCancellationPath}.
 
 %\begin{figure}[H]
 %	\centering
@@ -188,13 +192,25 @@ Converting the impulse response from magnitude to dB, gives the time decay which
 \end{figure}
 
 
-%\begin{figure}[H]
-%	\centering
-%	\tikzsetnextfilename{CancellationPathImpulseResponse}
-%	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.tex}
-%	\caption{Impulse response plot of the cancellation path}
-%	\label{CancellationPathImpulseResponse}
-%\end{figure}
+Taking the first 256 coefficients of the impulse response gives the following cropped impulse response, as seen on \autoref{CancellationPathImpulseResponseCrop}.
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{CancellationPathImpulseResponseCrop}
+	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponseCrop.tex}
+	\caption{Cropped Impulse response plot of the cancellation path}
+	\label{CancellationPathImpulseResponseCrop}
+\end{figure}
+To verify that the frequency response of the cropped impulse response approximately equals that of the non-cropped impulse response the two frequency responses are compared. This can be seen on \autoref{CancellationPathImpulseResponseCompare}.
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{CancellationPathImpulseResponseCompare}
+	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponseCompare.tex}
+	\caption{Cropped Impulse response plot of the cancellation path}
+	\label{CancellationPathImpulseResponseCompare}
+\end{figure}
+
 
 \subsection{Error Sources}
 \begin{itemize}

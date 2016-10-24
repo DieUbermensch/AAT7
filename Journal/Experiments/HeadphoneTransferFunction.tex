@@ -46,8 +46,8 @@ The purpose of the experiment is to determine the impulse response of of the  he
 
 \subsection{Settings/Description}
 \label{SettingsHeadPhones}
+Calibration of the microphone and associated preamplifier is done on the computer using Simulink\textsuperscript{\textregistered}. The following settings are present:
 
-Calibration of the microphone and associated preamplifier is done on the measurement amplifier, but any other method can be used. The following setting is present:
 \subsubsection{Control and calibration}
 \begin{itemize}
 	\item 93.6 dB @ 1000 Hz is used as calibration signal
@@ -95,7 +95,7 @@ Calibration of the microphone and associated preamplifier is done on the measure
 \subsubsection{Set-up}
 \begin{enumerate}
 	\item Set instruments to comply with the list in \ref{SettingsHeadPhones}
-	\item Control, and if necessary, calibrate item 2 using item 7
+	\item Control and calibrate item 2 using item 7
 	\item Place item 3 onto item 1 ("Henry"'s head and ears)
 	\item Insert item 2's onto item 8 and connect to input of item 6
 	\item Connect item 6 to item 4 and connect item 4 to item 5 via USB
@@ -111,21 +111,14 @@ Calibration of the microphone and associated preamplifier is done on the measure
 		\item[] Perform this experiment for a total of 5 times
 	\end{itemize}
 \end{enumerate}
-
+If there is a discontinuity  on the recorded signal(s) discard that recording.
 
 \subsubsection{Data Extraction}
 \begin{enumerate}
 	\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "HeadPhoneScript.m".
 	\item Open MATLAB\textsuperscript{\textregistered} and run script "CancellationPathScript.m"
 \end{enumerate}
-This should yield the resulting frequency response, impulse response and finally the transfer function, along other information about the headphones in this set-up.
 
-
-%In MATLAB\textsuperscript{\textregistered} run script: "Headphone\_TF.m" and load file "Headphone\_Path\_1.wav". This should yield the resulting transfer-function and other information about the headphones used in this set-up.\\
-%\indent The script takes the sound played by the headphones (Item 2) , applies FFT, and takes the inverse of the result. This result is then convolved with the FFT of the sound picked up by the microphone (Item 5). This yields an impulse response, which is used to determine the transfer-function.
-%\todo[inline]{Tjek lige det her}
-
-\subsection{Analysis}
 From the performing of the experiment, 10 files has been generated:
 \begin{itemize}
 	\item HPMic1.wav - HPMic5.wav
@@ -135,6 +128,18 @@ From the performing of the experiment, 10 files has been generated:
 These files are the results of performing the six second simulation which gives a number of 288,768 samples, for each generated .wav-file.
 An example showing outputted Mic1 and Ref1 are shown in  \autoref{HeadPhoneAmplitudePlot}.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneAmplitudePlot.png}
+	\caption{Amplitude plot of the headphones (NOT TIKZ).}
+	\label{HeadPhoneAmplitudePlot}
+\end{figure}
+
+MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m" is used for data extraction and analysis.
+
+
+\subsection{Analysis}
+
 %\begin{figure}[H]
 %	\centering
 %	\tikzsetnextfilename{HeadPhoneAmplitudePlot}
@@ -143,27 +148,23 @@ An example showing outputted Mic1 and Ref1 are shown in  \autoref{HeadPhoneAmpli
 %	\label{HeadPhoneAmplitudePlot}
 %\end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneAmplitudePlot.png}
-	\caption{Amplitude plot of the headphones (NOT TIKZ).}
-	\label{HeadPhoneAmplitudePlot}
-\end{figure}
+The impulse response of the "cancellation path" is to be found.
+This is done by first finding the frequency response of the "headphone", which is found by taking the cross correlation between Mic[i] and Ref[i]. This is done by taking the FT (Fourier Transform of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
 
 
-Here the frequency response of the cancellation path is to be found. This is defined as the FT (Fourier Transform) of the cross correlation between Mic[i] and Ref[i] and is given by:
 
-
-\begin{equation}\label{FrequencyResponseEq}
-	H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
+\begin{equation}\label{FrequencyResponseEq2}
+%H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
+H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
 \end{equation}
 Where:
 \begin{itemize}
 	%\item " $*$ " denotes the complex conjugation
 	\item $H(f)$ is the FT of the 'Cancellation Path'
-	\item $Y(f)$ is the recorded microphone signals, Mic[i]
-	\item $X(f)$ is the recorded reference signals, Ref[i]
+	\item $Y(f)$ is the FT of the recorded microphone signals, Mic[i]
+	\item $X(f)$ is the FT of the recorded reference signals, Ref[i]
 \end{itemize}
+
 
 The frequency response of the headphones path is shown at \autoref{HeadPhoneFrequencyResponsePlot}.
 
