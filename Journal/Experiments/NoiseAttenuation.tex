@@ -136,24 +136,106 @@ If you are in doubt of anything please ask the operator before fitting the headp
 
 \subsection{Data Extraction}
 Results will be extracted manually from Simulink to a table during the test.
-For each test the following table will be filled \\
+%For each test the following table will be filled \\
+%\begin{table}[H]
+%\centering
+%	\begin{tabular}{c  c} \toprule
+%		experiment number & dB noise sources not disturbing  \\ \bottomrule
+%		1	&   \\
+%		2	&	\\
+%		3	&	\\
+%		4	&	\\
+%		5	&	\\
+%		6	&	\\ \bottomrule
+%	\end{tabular}
+%	\caption{Results of a listening test}
+%	\label{tab:ListeningRes}
+%\end{table}
+
 \begin{table}[H]
-\centering
-	\begin{tabular}{c  c} \toprule
-		experiment number & dB noise sources not disturbing  \\ \bottomrule
-		1	&   \\
-		2	&	\\
-		3	&	\\
-		4	&	\\
-		5	&	\\
-		6	&	\\ \bottomrule
+	\centering
+	\begin{tabular}{*{7}{c}}
+		\hline
+		Participant & Test 1 & Test 2 & Test 3  & Test 4  & Test 5  
+		\\
+		\hline
+		1 & -26.8 & -26.0 &	-22.8 & -27.6 & -28.4 \\
+		2 & -21.6 & -18.0 & -19.6  & -21.6  & -20.0 \\
+		3 & -5.6 & -4.4 & -2.0 & -8.4 & -6.8  \\
+		4 & -10.8 & -8.4 & -5.2 & -12.0 & -10.4 \\
+		5 & -11.6 & -7.2 & -5.6	 & -12.0 & -8.4 \\
+		6 & -11.6 & -10.8 & -8.4 & -12.4 & -11.2 \\
+		7 & -5.2 & -4.0 & -0.4 & -6.8 & -7.6 \\
+		8 & -8.8 & -6.4 & -3.6 & -10-0 & -10.4 \\
+		9 & -17.6 & -16.8 & -18.4 & -23.6 & -18.0 \\
+		10 & -12.0 & -13.6 & -15.2 & -15.2 & 	-14.8 \\
+		11 & -5.6 & -4.8 & -3.6 & -8.4 & -8.8 \\
+		12 & -1.6 & -1.6 & 0	 & -6.0 & 	-8.0 \\
+		13 & -7.6 & -4.4 & -1.6	 & -5.6 & 	-7.6   \\
+		\hline
 	\end{tabular}
-	\caption{Results of a listening test}
-	\label{tab:ListeningRes}
+	\caption{Results of the listening test}
+	\label{tab:ListeningResults}
 \end{table}
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{*{7}{c}}
+		\hline
+		& Test 1 & Test 2 & Test 3  & Test 4  & Test 5  
+		\\
+		\hline
+		Mean & -11,3 & -9,7 & -8,9	 & -13,0 & -12,3 \\
+		\hline
+	\end{tabular}
+	\caption{means of the listening test}
+	\label{tab:MeanListeningResults}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{*{7}{c}}
+		\hline
+		High level  & Low level 
+		\\
+		\hline
+		4,5	& 0,311 \\
+		3,3	& 1,3 \\
+		3,4	& 1,3 \\
+		7,9	& 1,3 \\
+		9,7	& 6,5 \\
+		2,8	& 0,7 \\
+		6,2	& 0,3 \\
+		6,8	& 0,1 \\
+		0,6	& 15,7 \\
+		2,6	& 0,1 \\
+		1,0	& 0,1 \\
+		0,0	& 2,0 \\
+		9,0	& 2,0 \\
+		\hline
+	\end{tabular}
+	\caption{Variances of High and Low level test}
+	\label{tab:VarListeningResults}
+\end{table}
+
+
+
 \subsection{Analysis}
-Compute statistics in Excel in order to find the overall attenuation needed by the system to be efficient.
+
+The test was conducted with 13 participants subject to 5 listening tests. The first three tests were realized with a high sound level in the headset whereas the last two tests were conducted with a lower sound level in the headset. 
+
+Looking at results it appears that they make sense except for the test number 3 which have a broader set of results. 
+
+Participants are not uniformly distributed between each categorizes but it seams important to distinguish them. This basic analysis helped us understand our test population.
+
+Our first attempt to model the achieved data is a limited success. A normal distribution was considered but the data were not fitting well, since the data seems the be skewed. Conforming to the QQ plots, data are bouncing between the line and our population does not follow a normal distribution very accurately. A one sided normal distribution fit is used since is conforms better with the results and will provide good predictability.
+
+
+Here are the figures extracted from our matlab analysis script.
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{AttenuationExperiment/figure1.pdf}
+\end{figure}
 
 \subsection{Changes after Pilot test}
 During the pilot the instructions were shorter and read aloud. This resulted in a lot of questions after the instruction was given. For the main test it has therefore been chosen to make a written instruction, so people could reread sections if needed. This resulted in fewer questions after the instruction. \\
@@ -176,89 +258,8 @@ Small corrections to the physical setup was also made.
 \end{itemize}
 
 \subsection{Conclusion}
-
-Our test was conducted with 13 participants subject to 5 listening tests. The first three tests were realized with a high sound level in the headset whereas the last two tests were conducted with a lower sound level in the headset. 
-
-Looking at our different results it appears that they make sense except for the test number 3 which have a broader set of results. 
-
 From the data collected conclusions can now be drawn over our study population. 
 Interestingly a given participant's results over different tests is very stable (within +-2,5 dB which was our calibration uncertainty).  Secondly, even if test results between each participants varies a lot, three population families can be find: "ultra sensitive" (from - 26db to - 19db) , "sensitive"(from -14db to -8db) and "less sensitive"(from -6db to 0db). 
 
-Participants are not uniformly distributed between each categorizes but it seams important to distinguish them. This basic analysis helped us understand our test population.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{*{7}{c}}
-  \hline
-  Participant & Test 1 & Test 2 & Test 3  & Test 4  & Test 5  
-  \\
-  \hline
-  1 & -26.8 & -26.0 &	-22.8 & -27.6 & -28.4 \\
-  2 & -21.6 & -18.0 & -19.6  & -21.6  & -20.0 \\
-  3 & -5.6 & -4.4 & -2.0 & -8.4 & -6.8  \\
-  4 & -10.8 & -8.4 & -5.2 & -12.0 & -10.4 \\
-  5 & -11.6 & -7.2 & -5.6	 & -12.0 & -8.4 \\
-  6 & -11.6 & -10.8 & -8.4 & -12.4 & -11.2 \\
-  7 & -5.2 & -4.0 & -0.4 & -6.8 & -7.6 \\
-  8 & -8.8 & -6.4 & -3.6 & -10-0 & -10.4 \\
-  9 & -17.6 & -16.8 & -18.4 & -23.6 & -18.0 \\
-  10 & -12.0 & -13.6 & -15.2 & -15.2 & 	-14.8 \\
-  11 & -5.6 & -4.8 & -3.6 & -8.4 & -8.8 \\
-  12 & -1.6 & -1.6 & 0	 & -6.0 & 	-8.0 \\
-  13 & -7.6 & -4.4 & -1.6	 & -5.6 & 	-7.6   \\
-  \hline
-\end{tabular}
-  \caption{Results of the listening test}
-	\label{tab:ListeningResults}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{*{7}{c}}
-  \hline
-   & Test 1 & Test 2 & Test 3  & Test 4  & Test 5  
-  \\
-  \hline
-  Mean & -11,3 & -9,7 & -8,9	 & -13,0 & -12,3 \\
-  \hline
-\end{tabular}
-  \caption{means of the listening test}
-	\label{tab:MeanListeningResults}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{*{7}{c}}
-  \hline
-   High level  & Low level 
-  \\
-  \hline
-  4,5	& 0,311 \\
-  3,3	& 1,3 \\
-  3,4	& 1,3 \\
-  7,9	& 1,3 \\
-  9,7	& 6,5 \\
-  2,8	& 0,7 \\
-  6,2	& 0,3 \\
-  6,8	& 0,1 \\
-  0,6	& 15,7 \\
-  2,6	& 0,1 \\
-  1,0	& 0,1 \\
-  0,0	& 2,0 \\
-  9,0	& 2,0 \\
-  \hline
-\end{tabular}
-  \caption{Variances of High and Low level test}
-	\label{tab:VarListeningResults}
-\end{table}
-
-Our first attempt to model data achieved a limited success. A normal distribution was considered but the data were not fitting well. According to the QQ plots (see figure ), data are bouncing between the line and our population does not seams to follow a normal distribution. A one sided normal distribution fit gives better results but still very perfectible.
-
-
-Here are the figures extracted from our matlab analysis script.
-
-\begin{figure}[H]
-	\includegraphics[width=\textwidth]{AttenuationExperiment/figure1.pdf}
-\end{figure}
 
 
