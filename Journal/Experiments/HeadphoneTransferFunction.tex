@@ -50,7 +50,8 @@ Calibration of the microphone and associated preamplifier is done on the compute
 
 \subsubsection{Control and calibration}
 \begin{itemize}
-	\item 93.6 dB @ 1000 Hz is used as calibration signal
+
+	\item 93.6 dB (-0.4 is subtracted from 94 dB due to adapters) $@$ 1000 Hz is used as calibration signal
 	\item Microphone sensitivity is controlled to 110 $m$V/Pa
 	\item Measurement amplifier is set to -10 dB default
 	\item Calibration signal yields an amplitude of 0.87 relative to 0 dBFS
@@ -128,10 +129,18 @@ From the performing of the experiment, 10 files has been generated:
 These files are the results of performing the six second simulation which gives a number of 288,768 samples, for each generated .wav-file.
 An example showing outputted Mic1 and Ref1 are shown in  \autoref{HeadPhoneAmplitudePlot}.
 
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneAmplitudePlot.png}
+%	\caption{Amplitude plot of the headphones (NOT TIKZ).}
+%	\label{HeadPhoneAmplitudePlot}
+%\end{figure}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{HeadPhone_MATLAB_Figures/HeadPhoneAmplitudePlot.png}
-	\caption{Amplitude plot of the headphones (NOT TIKZ).}
+	\tikzsetnextfilename{HeadPhoneAmplitudePlot}
+	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneAmplitudePlot.tex}
+	\caption{Amplitude plot of the cancellation path.}
 	\label{HeadPhoneAmplitudePlot}
 \end{figure}
 
@@ -139,15 +148,6 @@ MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m" is use
 
 
 \subsection{Analysis}
-
-%\begin{figure}[H]
-%	\centering
-%	\tikzsetnextfilename{HeadPhoneAmplitudePlot}
-%	\input{figures/CancellationPath_MATLAB_Figures/HeadPhoneAmplitudePlot.tex}
-%	\caption{Amplitude plot of the cancellation path.}
-%	\label{HeadPhoneAmplitudePlot}
-%\end{figure}
-
 The impulse response of the "cancellation path" is to be found.
 This is done by first finding the frequency response of the "headphone", which is found by taking the cross correlation between Mic[i] and Ref[i]. This is done by taking the FT (Fourier Transform of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
 
@@ -223,7 +223,7 @@ Converting the impulse response from magnitude to dB, gives the time decay which
 	\centering
 	\ra{1.3}
 	\begin{tabular}{ c c l } \toprule
-	{Item}	& 		{Description} 							& {Tolerance ([dB])}.\\ \bottomrule 
+	{Item}	& 		{Description} 							& {Tolerance ([dB$_{re20\mu P}$]}.\\ \bottomrule 
 		2	&	B\&K 1'' Condenser Microphone Type 4179 	& $\pm$ 1		\\
 		3	&	Sennheiser HD 200 Headphones				& $\pm$ 3.0		\\
 		4	&	Roland Edirol UA-25EX Audio Capture			& $\pm$ 1.0		\\
