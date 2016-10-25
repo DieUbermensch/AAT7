@@ -28,7 +28,7 @@
  *  results of the autogeneration and must be included for proper operation.  
  *  The name of the file is taken from tone.cdb and adding cfg.h.  
  */   
-//#include "loopbackcfg.h"   
+#include "loopbackcfg.h"   
    
 /*  
  *  The 5510 DSK Board Support Library is divided into several modules, each  
