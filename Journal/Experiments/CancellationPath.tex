@@ -28,7 +28,7 @@ The purpose of this experiment is to determine the impulse response of the cance
 	\tikzsetnextfilename{CancellationPath}
 	\input{figures/CancellationPath_MATLAB_Figures/CancellationPath.tex}
 %	\includegraphics[width=0.7\textwidth]{Shematic_CalcellationPath.pdf}
-	\caption{Total overview of the system.}
+	\caption{Total overview of the system. (Oliver needs to make the drawing)}
 	\label{SchematicOverview}
 \end{figure}
 
@@ -117,7 +117,7 @@ An example showing outputted Mic1 and Ref1 are shown in  \autoref{AmplitudePlotC
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{CancellationPathAmplitudePlot}
+	\tikzsetnextfilename{CancellationPathAmplitudePlot2}
 	\input{figures/CancellationPath_MATLAB_Figures/Amplitudeplot2.tex}
 	\caption{Time plot of the cancellation path.}
 	\label{AmplitudePlotCancellationPath}
@@ -149,7 +149,7 @@ The frequency response of the cancellation path is shown at \autoref{FrequencyRe
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{CancellationPathFrequencyResponse}
+	\tikzsetnextfilename{CancellationPathFrequencyResponse1}
 	\input{figures/CancellationPath_MATLAB_Figures/CP_freqresp.tex}
 	\caption{Frequency response plot of the cancellation path}
 	\label{FrequencyResponsePlotCancellationPath}
@@ -162,7 +162,7 @@ The impulse response is shown on \autoref{CancellationPathImpulseResponse}.
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{CancellationPathImpulseResponse}
+	\tikzsetnextfilename{CancellationPathImpulseResponse1}
 	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.tex}
 	\caption{Impulse response plot of the cancellation path}
 	\label{CancellationPathImpulseResponse}
@@ -187,7 +187,7 @@ Converting the impulse response from magnitude to dB, gives the time decay which
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{TimeDecayPlotCancellationPath}
+	\tikzsetnextfilename{TimeDecayPlotCancellationPath1}
 	\input{figures/CancellationPath_MATLAB_Figures/TimeDecayPlotCancellationPath.tex}
 	\caption{Time decay plot of the cancellation path}
 	\label{TimeDecayPlotCancellationPath}
@@ -198,7 +198,7 @@ Taking the first 256 coefficients of the impulse response gives the following cr
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{CancellationPathImpulseResponseCrop}
+	\tikzsetnextfilename{CancellationPathImpulseResponseCrop1}
 	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponseCrop.tex}
 	\caption{Cropped impulse response plot of the cancellation path}
 	\label{CancellationPathImpulseResponseCrop}
@@ -207,7 +207,7 @@ To verify that the frequency response of the cropped impulse response approximat
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{CancellationPathImpulseResponseCompare}
+	\tikzsetnextfilename{CancellationPathImpulseResponseCompare1}
 	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponseCompare.tex}
 	\caption{Cropped Impulse response plot of the cancellation path}
 	\label{CancellationPathImpulseResponseCompare}
@@ -239,4 +239,5 @@ From \autoref{CancellationPathImpulseResponseCompare} it can be concluded that 2
 \end{table}
 
 \subsection{Conclusion}
-The impulse response on \autoref{CancellationPathImpulseResponse} shows the coefficients of the system, and a file containing all 256 is generated with the name "CoeffientsCP.mat"
+It can be concluded that an impulse response of 256 coefficients, see \autoref{CancellationPathImpulseResponse}, is found for the "Cancellation path".
+%The impulse response on  shows the coefficients of the system, and a file containing all 256 is generated with the name "CoeffientsCP.mat"

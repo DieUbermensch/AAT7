@@ -220,7 +220,7 @@ Results will be extracted manually from Simulink to a table during the test.
 
 The test was conducted with 13 participants subject to 6 listening tests. The first test (enumerated 0) is omitted in analysis. The next three tests (1-3) were realized with a high sound level in the headset whereas the two last tests (4-5) were conducted with a lower sound level in the headset. 
 
-Looking at results it appears that they make sense except for the test number 3 which have a broader set of results. As shown in the attenuation box plot in figure \ref{fig:ResAttExp}, given a specific test, more than half of the participant's values are within 8-10 dB with extreme values going from 0 to -28.4.
+%Looking at results it appears that they make sense except for the test number 3 which have a broader set of results. As shown in the attenuation box plot in figure \ref{fig:ResAttExp}, given a specific test, more than half of the participant's values are within 8-10 dB with extreme values going from 0 to -28.4.
 
 As show in table \ref{tab:MeanListeningResults}, means of each high level tests are stable (within +-2,4 dB) and means of each low level tests are even more stable (within +-0,7dB). Both these values are below the tolerance, that the signals are calibrated within. This is also plotted in figure \ref{fig:ResAttExp}. 
 
@@ -237,6 +237,7 @@ As show in table \ref{tab:MeanListeningResults}, means of each high level tests 
 	\caption{means of the listening test}
 	\label{tab:MeanListeningResults}
 \end{table}
+The test shows that the participants are quite static in their choice of attenuation between test. The variation between participants is much larger. This shows that a user will have approximately constant requirements for attenuation over time and source of noise. However noise that does not disturb one person might disturb another.  
 
 Our first attempt to model the achieved data is a limited success. A normal distribution was considered but the data did not fit well, since the data seems the be skewed. Conforming to the QQ plots, data are bouncing not randomly distributed around the line and our population does not follow a normal distribution. A one sided normal distribution fit is used since is conforms better with the results and will provide good predictability. Figure \ref{fig:ResAttExp} contains the figures extracted from our Matlab analysis. \\
 It should be remembered that 0 dB is gain compared to maximum noise level. As can be seen in table \ref{tab:SPLCalibration} a signal to noise ratio of 1 is present when the noise is attenuated 6 dB for high level tests. \\\\
@@ -274,30 +275,24 @@ Small corrections to the physical setup was also made.
 \subsection{Conclusion}
 %From the data collected conclusions can now be drawn over our study population. 
 
-Interestingly a given participant's results over different tests are very stable, within +-2,5 dB which was our calibration uncertainty.  Secondly, even if test results between each participants varies a lot, three population families can be find: "ultra sensitive" from - 26db to - 19db , "sensitive" from -14db to -8db  and "less sensitive" from -6db to 0db. 
+A given participant's results over different tests are very stable, within +-2,5 dB which was our calibration uncertainty. 
+%  Secondly, even if test results between each participants varies a lot, three population families can be find: "ultra sensitive" from - 26db to - 19db , "sensitive" from -14db to -8db  and "less sensitive" from -6db to 0db. 
 
 The less sensitive population (1/4) might not be interested in ANC headsets. In order to satisfy most of the people (3/4) the experiment shows that a signal to attenuated noise ratio of minimum 10 dB should be achieved by the system.  
 %, our system needs to consider critical values of our experiment.
 
 
-%Notes from CC
-% New sorting into groups in conclusion
-
-% Comparison on stability of persons - that's not in the main! Only test stability is in the main
-
+%Notes from CC ALL DONE
 % more items on overview? 
-
 % more than half of the participant's values are within 8-10 dB with extreme values going from 0 to -28.4.
-
 % comment about less sensitive population in conclusion - new
-
-
-
+% Comparison on stability of persons - that's not in the main! Only test stability is in the main OK
 % boxplot OK
 % comment on measurementlevels OK
 % No comments on the diagrams OK
 % histograms are inverted + -> - OK
 % variance not used for anything - deleted
+% New sorting into groups in conclusion OK
 
 
 
