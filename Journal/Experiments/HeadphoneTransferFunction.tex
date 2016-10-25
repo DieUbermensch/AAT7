@@ -55,10 +55,11 @@ Calibration of the microphone and associated preamplifier is done on the compute
 	\item Microphone sensitivity is controlled to 110 $m$V/Pa
 	\item Measurement amplifier is set to -10 dB default
 	\item Calibration signal yields an amplitude of 0.87 relative to 0 dBFS
+	\item  Calibration signal yields a spike at 101.3 dB SPL, which requires a -7.7 dB SPL adjustment
 \end{itemize}
 \subsubsection{Equipment settings}
 \begin{itemize}
-	\item This experiment is performed with a sampling rate of, $F_{s}$ = 24,000 Hz
+	\item This experiment is performed with a sampling rate of, $F_{s}$ = 48,000 Hz
 	\item Outside microphone is placed 12.6 mm from headphone cup
 	\item For item 4 (sound capture card):
 	\begin{itemize}
@@ -116,8 +117,8 @@ If there is a discontinuity  on the recorded signal(s) discard that recording.
 
 \subsubsection{Data Extraction}
 \begin{enumerate}
-	\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "HeadPhoneScript.m".
-	\item Open MATLAB\textsuperscript{\textregistered} and run script "CancellationPathScript.m"
+	%\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "HeadPhoneScript.m".
+	\item Open MATLAB\textsuperscript{\textregistered} and run script "HeadPhoneScript.m"
 \end{enumerate}
 
 From the performing of the experiment, 10 files has been generated:
@@ -127,7 +128,7 @@ From the performing of the experiment, 10 files has been generated:
 \end{itemize}
 
 These files are the results of performing the six second simulation which gives a number of 288,768 samples, for each generated .wav-file.
-An example showing outputted Mic1 and Ref1 are shown in  \autoref{HeadPhoneAmplitudePlot}.
+An example showing outputted HPMic1 and HPRef1 are shown in  \autoref{HeadPhoneAmplitudePlot}.
 
 %\begin{figure}[H]
 %	\centering
@@ -138,18 +139,18 @@ An example showing outputted Mic1 and Ref1 are shown in  \autoref{HeadPhoneAmpli
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{HeadPhoneAmplitudePlot}
-	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneAmplitudePlot.tex}
-	\caption{Amplitude plot of the cancellation path.}
+	\tikzsetnextfilename{HeadPhoneAmplitudePlot2}
+	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneAmplitudePlot2.tex}
+	\caption{Amplitude plot of HPRef1 and HPMic1.}
 	\label{HeadPhoneAmplitudePlot}
 \end{figure}
 
-MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m" is used for data extraction and analysis.
+MATLAB\textsuperscript{\textregistered}-script "HeadPhoneScript.m" is used for data extraction and analysis.
 
 
 \subsection{Analysis}
-The impulse response of the "cancellation path" is to be found.
-This is done by first finding the frequency response of the "headphone", which is found by taking the cross correlation between Mic[i] and Ref[i]. This is done by taking the FT (Fourier Transform of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
+The impulse response of the "headphone transfer-function" is to be found.
+This is done by first finding the frequency response of the "headphone transfer-function", which is found by taking the cross correlation between HPMic[i] and HPRef[i]. This is done by taking the FT (Fourier Transform of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
 
 
 
@@ -160,33 +161,33 @@ H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}
 Where:
 \begin{itemize}
 	%\item " $*$ " denotes the complex conjugation
-	\item $H(f)$ is the FT of the 'Cancellation Path'
-	\item $Y(f)$ is the FT of the recorded microphone signals, Mic[i]
-	\item $X(f)$ is the FT of the recorded reference signals, Ref[i]
+	\item $H(f)$ is the FT of the 'headphone transfer-function'
+	\item $Y(f)$ is the FT of the recorded microphone signals, HPMic[i]
+	\item $X(f)$ is the FT of the recorded reference signals, HPRef[i]
 \end{itemize}
 
 
-The frequency response of the headphones path is shown at \autoref{HeadPhoneFrequencyResponsePlot}.
+The frequency response of the headphones transfer-function is shown at \autoref{HeadPhoneFrequencyResponsePlot}.
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{HeadPhoneFrequencyResponse}
-	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneFrequencyResponse.tex}
+	\tikzsetnextfilename{HeadPhoneFrequencyResponse2}
+	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneFrequencyResponse3.tex}
 	\caption{Frequency Response plot of the headphones}
 	\label{HeadPhoneFrequencyResponsePlot}
 \end{figure}
 
 
 
-The impulse response of this system is found by taking the IFT (Inverse Fourier Transform) of the frequency response.
-The impulse response looks as shown on \autoref{HeadPhoneImpulseResponse}.
+The impulse response of this system is found by taking the IFT (Inverse Fourier Transform) of the frequency responses.
+The impulse responses looks as shown on \autoref{HeadPhoneImpulseResponse}.
 
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{HeadPhoneImpulseResponse}
-	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneImpulseResponse.tex}
-	\caption{Impulse Response plot of the headphones }
+	\tikzsetnextfilename{HeadPhoneImpulseResponse2}
+	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneImpulseResponse2.tex}
+	\caption{Impulse Response plot of the headphone transfer-function }
 	\label{HeadPhoneImpulseResponse}
 \end{figure}
 
@@ -198,17 +199,37 @@ The impulse response looks as shown on \autoref{HeadPhoneImpulseResponse}.
 %	\label{CancellationPathImpulseResponse}
 %\end{figure}
 
-Converting the impulse response from magnitude to dB, gives the time decay which reveals the SNR (Signal to Noise Ratio) of the system, and from the read off SNR is found to be $\sim$ 50 dB SNR.
+Converting the impulse response from magnitude to dB, gives the time decay which reveals the SNR (Signal to Noise Ratio) of the system, see \autoref{TimeDecayPlotHeadphone}, and from the read off SNR is found to be $\sim$ 30 dB SNR.
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{TimeDecayPlotCancellationPath}
-	\input{figures/CancellationPath_MATLAB_Figures/TimeDecayPlotCancellationPath.tex}
-	\caption{Time Decay plot of the cancellation path}
+	\tikzsetnextfilename{TimeDecayHP}
+	\input{figures/HeadPhone_MATLAB_Figures/TimeDecayHP.tex}
+	\caption{Time Decay plot of the headphone transfer-function}
 	\label{TimeDecayPlotHeadphone}
 \end{figure}
 
+Taking the first 256 coefficients of the impulse response gives the following cropped impulse response, as seen on \autoref{fig:ImpRespCropHP}.
 
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{HPFIR}
+	\input{figures/HeadPhone_MATLAB_Figures/ImpRespCropHP.tex}
+	\caption{Impulse response of the cropped impulse response}
+	\label{fig:ImpRespCropHP}
+\end{figure}
+
+Test 2's impulse is used as the correct impulse response. To verify that the frequency response of the cropped impulse response approximately equals that of the non-cropped impulse response the two frequency responses are compared. This can be seen on \autoref{fig:CompImpHP}.
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{FreqCompHP}
+	\input{figures/HeadPhone_MATLAB_Figures/CompHpImp.tex}
+	\caption{Comparison of the frequency response of 256 coefficients vs 288,768 coefficients.}
+	\label{fig:CompImpHP}
+\end{figure}
+
+From \autoref{fig:CompImpHP} it can be concluded that 256 coefficients is sufficient.
 
 
 \subsection{Error Sources}
@@ -237,4 +258,4 @@ Converting the impulse response from magnitude to dB, gives the time decay which
 \end{table}
 
 \subsection{Conclusion}
-The impulse response on \autoref{HeadPhoneImpulseResponse} shows the coefficients of the system, and a file containing all 250 is generated with the name "CoeffientsHP.mat"
+It can be concluded that an impulse response of 256 coefficients, see \autoref{fig:ImpRespCropHP}, is found for the 'headphone transfer-function'.
