@@ -180,8 +180,7 @@ Results will be extracted manually from Simulink to a table during the test.
 		9 & -17.6 & -16.8 & -18.4 & -23.6 & -18.0 \\
 		10 & -12.0 & -13.6 & -15.2 & -15.2 & 	-14.8 \\
 		11 & -5.6 & -4.8 & -3.6 & -8.4 & -8.8 \\
-		12 & -1.6 & -1.6 & above & -6.0 & 	-8.0 \\
-		13 & -7.6 & -4.4 & -1.6	 & -5.6 & 	-7.6   \\
+		12 & -7.6 & -4.4 & -1.6	 & -5.6 & 	-7.6   \\
 		\hline
 	\end{tabular}
 	\caption{Results of the listening test. The value above is set at 0 for calculations see section \ref{SubSec:ErrSouNoiAtt} for more information.}
@@ -218,11 +217,11 @@ Results will be extracted manually from Simulink to a table during the test.
 
 \subsection{Analysis}
 
-The test was conducted with 13 participants subject to 6 listening tests. The first test (enumerated 0) is omitted in analysis. The next three tests (1-3) were realized with a high sound level in the headset whereas the two last tests (4-5) were conducted with a lower sound level in the headset. 
+The test was conducted with 12 participants subject to 6 listening tests. The first test (enumerated 0) is omitted in analysis. The next three tests (1-3) were realized with a high sound level in the headset whereas the two last tests (4-5) were conducted with a lower sound level in the headset. 
 
 %Looking at results it appears that they make sense except for the test number 3 which have a broader set of results. As shown in the attenuation box plot in figure \ref{fig:ResAttExp}, given a specific test, more than half of the participant's values are within 8-10 dB with extreme values going from 0 to -28.4.
 
-As show in table \ref{tab:MeanListeningResults}, means of each high level tests are stable (within +-2,4 dB) and means of each low level tests are even more stable (within +-0,7dB). Both these values are below the tolerance, that the signals are calibrated within. This is also plotted in figure \ref{fig:ResAttExp}. 
+As show in table \ref{tab:MeanListeningResults}, means of each high level tests are stable (within +-2,4 dB) and means of each low level tests are even more stable (within +-0,7dB). Both these values are below the tolerance, that the signals are calibrated within. 
 
 \begin{table}[H]
 	\centering
@@ -238,17 +237,16 @@ As show in table \ref{tab:MeanListeningResults}, means of each high level tests 
 	\label{tab:MeanListeningResults}
 \end{table}
 The test shows that the participants are quite static in their choice of attenuation between test. The variation between participants is much larger. This shows that a user will have approximately constant requirements for attenuation over time and source of noise. However noise that does not disturb one person might disturb another.  
-
-Our first attempt to model the achieved data is a limited success. A normal distribution was considered but the data did not fit well, since the data seems the be skewed. Conforming to the QQ plots, data are bouncing not randomly distributed around the line and our population does not follow a normal distribution. A one sided normal distribution fit is used since is conforms better with the results and will provide good predictability. Figure \ref{fig:ResAttExp} contains the figures extracted from our Matlab analysis. \\
+%Our first attempt to model the achieved data is a limited success. A normal distribution was considered but the data did not fit well, since the data seems the be skewed. Conforming to the QQ plots, data are bouncing not randomly distributed around the line and our population does not follow a normal distribution. A one sided normal distribution fit is used since is conforms better with the results and will provide good predictability. Figure \ref{fig:ResAttExp} contains the figures extracted from our Matlab analysis. \\
 It should be remembered that 0 dB is gain compared to maximum noise level. As can be seen in table \ref{tab:SPLCalibration} a signal to noise ratio of 1 is present when the noise is attenuated 6 dB for high level tests. \\\\
 The box plot in figure \ref{fig:ResAttExp} shows that at least a quarter of the participants does not need a signal to noise ratio greater than 1 to not be disturbed by the noise. This group of people are probably not very interested in noise cancelling headphones in the situation described to them in the experiment. \\
-It can also be seen in the box plot, that the majority (3/4) of participants are satisfied with a reduction of 15 dB corresponding to a SNR of -10dB. This value is chosen as the guideline for required attenuation of our system. Some of the last quarter of the participants were extremely sensitive to noise, and it would prove difficult to make a system that would satisfy their needs. 
+It can also be seen in the box plot, that the majority (3/4) of participants are satisfied with a reduction of 15 dB corresponding to a SNR of -10dB. This value is chosen as the guideline for required attenuation of the system. Some of the last quarter of the participants were extremely sensitive to noise, and it would prove difficult to make a system that would satisfy their needs. 
 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{AttenuationExperiment/figure1.pdf}
-	\caption{Results from attenuation experiment. Please note that the histograms are sign flipped, because Matlab can only show the PDF of the half sided Gaussian that way.}
+	\caption{Box plot of the results from the attenuation experiment.}
 	\label{fig:ResAttExp}
 \end{figure}
 
@@ -267,15 +265,15 @@ Small corrections to the physical setup was also made.
 \begin{itemize}
 \item As the participants are human it is not possible to give them instructions that will make all of them understand exactly the same question. 
 \item None of the participants were native English speakers. As all signals were in English, they might have a harder time separating the sound sources than they would in their native languages. 
-\item All participants were from the institute of electronics at AAU. Quite a few studying acoustics and some having preliminary knowledge of the scope of our main project. Only one female participated in the test. The participants were not chosen at random.  
-\item Once during the test a participant wanted to increase the noise to a level above 0 dB. This is not supported by the setup, and as a result that measurement is omitted.
+\item All participants were from the institute of electronics at AAU. Quite a few studying acoustics and some having preliminary knowledge of the scope of the main project. Only one female participated in the test. The participants were not chosen at random.  
 \item Some om the participants chose levels very close to the boundary 0 dB. The participants might have been able to unknowingly count the amount of steps taken from the boundary.  
+\item A single participant was excluded from the analysis as they previous to entering the room made a remark about having a bad hearing. During the test they tried to increase the noise beyond the limits of the system. their choice of attenuation was consistently very small compared to other participants.
 \end{itemize}
 
 \subsection{Conclusion}
 %From the data collected conclusions can now be drawn over our study population. 
 
-A given participant's results over different tests are very stable, within +-2,5 dB which was our calibration uncertainty. 
+A given participant's results over different tests are very stable, within +-2,5 dB which was the calibration uncertainty. 
 %  Secondly, even if test results between each participants varies a lot, three population families can be find: "ultra sensitive" from - 26db to - 19db , "sensitive" from -14db to -8db  and "less sensitive" from -6db to 0db. 
 
 The less sensitive population (1/4) might not be interested in ANC headsets. In order to satisfy most of the people (3/4) the experiment shows that a signal to attenuated noise ratio of minimum 10 dB should be achieved by the system.  
