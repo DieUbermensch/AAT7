@@ -37,7 +37,7 @@
 <listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 </option>
 </tool>
-<macros/>
+<macros expandEnvironmentMacros="true"/>
 </toolChain>
 </configuration>
 <configuration artifactExtension="out" artifactName="ActiveNoiseCancelling" description="" id="com.ti.ccstudio.buildDefinitions.C5500.Release.1028554101" name="Release" parent="com.ti.ccstudio.buildDefinitions.C5500.Release">
@@ -76,5 +76,6 @@
 </tool>
 </toolChain>
 </configuration>
+<macros/>
 </project>
 </ManagedProjectBuildInfo>
