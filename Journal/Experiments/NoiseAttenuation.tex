@@ -244,11 +244,11 @@ It should be remembered that 0 dB is gain compared to maximum noise level. As ca
 The box plot in figure \ref{fig:ResAttExp} shows that at least a quarter of the participants does not need a signal to noise ratio greater than 1 to not be disturbed by the noise. This group of people are probably not very interested in noise cancelling headphones in the situation described to them in the experiment. \\
 It can also be seen in the box plot, that the majority (3/4) of participants are satisfied with a reduction of 15 dB corresponding to a SNR of -10dB. This value is chosen as the guideline for required attenuation of our system. Some of the last quarter of the participants were extremely sensitive to noise, and it would prove difficult to make a system that would satisfy their needs. 
 
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{AttenuationExperiment/figure1.pdf}
-	\caption{Results from attenuation experiment. Please note that the histograms are sign flipped, because Matlab can only show the PDF of the half sided Gaussian that way.}
+	\tikzsetnextfilename{BoxPlotAttenuation}
+	\input{figures/AttenuationExperiment/BoxPlotAttenuation.tex}
+	\caption{Box plot showing the mean of each test with respective quartiles plotted.}
 	\label{fig:ResAttExp}
 \end{figure}
 
