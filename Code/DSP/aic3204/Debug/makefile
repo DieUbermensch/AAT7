@@ -10,11 +10,10 @@ CG_TOOL_ROOT := C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/com
 
 ORDERED_OBJS += \
 $(GEN_CMDS_QUOTED) \
-"./src/vector.obj" \
-"./src/audioLoopTest.obj" \
--l"rts55x.lib" \
-"../lib/myC55xUtil.lib" \
-"../C5515lnkx.cmd" \
+"./main.obj" \
+-l"usbstk5515bsl.lib" \
+-l"rts55x_eh.lib" \
+"../lnkx.cmd" \
 
 -include ../makefile.init
 
@@ -24,11 +23,7 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
--include src/subdir_vars.mk
--include lib/subdir_vars.mk
 -include subdir_rules.mk
--include src/subdir_rules.mk
--include lib/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -114,22 +109,22 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: EZDSP_AudioFilter.out
+all: aic3204.out
+
 
 # Tool invocations
-EZDSP_AudioFilter.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
+aic3204.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Linker'
-	"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/bin/cl55" -v5505 --symdebug:coff --define="_DEBUG" --define="C55X" --diag_warning=225 --ptrdiff_size=16 --no_mac_expand --memory_model=large --asm_source=mnemonic -z -m"EZDSP_AudioFilter.map" --stack_size=1000 --warn_sections -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/include" -i"C:/Program Files (x86)/Texas Instruments/cssv424/bios_5_41_10_36/packages/ti/rtdx/lib/c5500" -i"C:/Program Files (x86)/Texas Instruments/cssv424/bios_5_41_10_36/packages/ti/bios/lib" -i"C:/Users/Mikkel Krogh/Documents/GitHub/AAT7/Code/DSP/audioLoop" -i"/lib" --reread_libs --entry_point=reset_isr --rom_model --sys_stacksize=1000 -o "EZDSP_AudioFilter.out" $(ORDERED_OBJS)
+	"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/bin/cl55" -vcpu:3.3 -g --diag_warning=225 --ptrdiff_size=32 --memory_model=large -z -m"aic3204.map" --warn_sections -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/include" -i"C:/Users/Mikkel Krogh/Documents/GitHub/AAT7/Code/DSP/aic3204/../../lib" --reread_libs --rom_model -o "aic3204.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(GEN_CMDS__QTD)$(GEN_SRCS__QTD)$(GEN_MISC_FILES__QTD)$(C5500_EXECUTABLE_OUTPUTS__QTD) "EZDSP_AudioFilter.out"
-	-$(RM) ".\src\audioLoopTest.obj" ".\src\vector.obj" 
-	-$(RM) ".\src\vector.pp" 
-	-$(RM) ".\src\audioLoopTest.pp" 
+	-$(RM) $(C5500_EXECUTABLE_OUTPUTS__QTD) "aic3204.out"
+	-$(RM) ".\main.obj" 
+	-$(RM) ".\main.pp" 
 	-@echo ' '
 
 .PHONY: all clean dependents

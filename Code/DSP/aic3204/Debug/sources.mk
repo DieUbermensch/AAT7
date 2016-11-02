@@ -13,7 +13,6 @@ A_SRCS :=
 CPP_SRCS := 
 LD_SRCS := 
 O_SRCS := 
-TCF_SRCS := 
 ASM_SRCS := 
 CXX_SRCS := 
 ASM_UPPER_SRCS := 
@@ -32,13 +31,10 @@ C_UPPER_SRCS :=
 S??_SRCS := 
 S43_SRCS := 
 C62_SRCS := 
-TCF_UPPER_SRCS := 
 S_SRCS := 
 C??_SRCS := 
 CC_SRCS := 
-GEN_SRCS := 
 S62_DEPS := 
-GEN_CMDS := 
 ASM_DEPS := 
 C55_DEPS := 
 S_UPPER_DEPS := 
@@ -49,7 +45,6 @@ OBJS :=
 C43_DEPS := 
 C62_DEPS := 
 C??_DEPS := 
-GEN_MISC_FILES := 
 S??_DEPS := 
 S55_DEPS := 
 C_DEPS := 
@@ -73,12 +68,10 @@ ASM_DEPS__QTD :=
 C62_DEPS__QTD := 
 C_UPPER_DEPS__QTD := 
 S??_DEPS__QTD := 
-GEN_CMDS__QTD := 
 S55_DEPS__QTD := 
 S64_DEPS__QTD := 
 C55_DEPS__QTD := 
 C67_DEPS__QTD := 
-GEN_SRCS__QTD := 
 CPP_DEPS__QTD := 
 C43_DEPS__QTD := 
 C_DEPS__QTD := 
@@ -89,7 +82,6 @@ OPT_DEPS__QTD :=
 S_UPPER_DEPS__QTD := 
 C??_DEPS__QTD := 
 CXX_DEPS__QTD := 
-GEN_MISC_FILES__QTD := 
 C5500_EXECUTABLE_OUTPUTS__QTD := 
 C++_DEPS__QTD := 
 S_DEPS__QTD := 
@@ -99,7 +91,5 @@ K_DEPS__QTD :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-src \
-lib \
 . \
 

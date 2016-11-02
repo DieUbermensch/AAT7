@@ -1,1 +1,0 @@
-"./src/vector.obj" "./src/audioLoopTest.obj" -l"rts55x.lib" "../lib/myC55xUtil.lib" "../C5515lnkx.cmd" 

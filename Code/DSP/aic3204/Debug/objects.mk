@@ -2,5 +2,6 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-# Each subdirectory must supply rules for building sources it contributes
+LIBS := "$(GEN_CMDS_QUOTED)" -l"usbstk5515bsl.lib" -l"rts55x_eh.lib"
 
+USER_OBJS :=
