@@ -15,7 +15,7 @@ Int16 AIC3204_rset( Uint16 regnum, Uint16 regval )
 
 // Initializing the codec
 Int16 AIC3204_Init(void)
-{
+{	
     /* Configure AIC3204 */
     AIC3204_rset( 0, 0 );          // Select page 0
     AIC3204_rset( 1, 1 );          // Reset codec
@@ -40,6 +40,12 @@ Int16 AIC3204_Init(void)
     AIC3204_rset( 12, 0x87 );      // Power up MDAC and set MDAC value to 7
     AIC3204_rset( 18, 0x87 );      // Power up NADC and set NADC value to 7
     AIC3204_rset( 19, 0x82 );      // Power up MADC and set MADC value to 2
+    
+    /* Setting the Gain of the DAC and ADC  */
+    AIC3204_rset( 0x41, 0x30 );   // Setting the left channel gain in the DAC
+    AIC3204_rset( 0x42, 0x10 );   // Setting the right channel gain the DAC
+    
+    
     /* DAC ROUTING and Power Up */
     AIC3204_rset(  0, 0x01 );      // Select page 1
     AIC3204_rset( 12, 0x08 );      // LDAC AFIR routed to HPL
