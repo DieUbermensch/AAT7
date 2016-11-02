@@ -6,10 +6,14 @@ SHELL = cmd.exe
 
 EMPTY := 
 SPACE := $(EMPTY) $(EMPTY)
-CG_TOOL_ROOT := C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500
+CG_TOOL_ROOT := C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/c5500
 
 ORDERED_OBJS += \
 $(GEN_CMDS_QUOTED) \
+"./include/usbstk5515_led.obj" \
+"./include/usbstk5515_i2c.obj" \
+"./include/usbstk5515_gpio.obj" \
+"./include/usbstk5515.obj" \
 "./main.obj" \
 -l"usbstk5515bsl.lib" \
 -l"rts55x_eh.lib" \
@@ -23,7 +27,9 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include include/subdir_vars.mk
 -include subdir_rules.mk
+-include include/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -116,15 +122,15 @@ all: aic3204.out
 aic3204.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Linker'
-	"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/bin/cl55" -vcpu:3.3 -g --diag_warning=225 --ptrdiff_size=32 --memory_model=large -z -m"aic3204.map" --warn_sections -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/include" -i"C:/Users/Mikkel Krogh/Documents/GitHub/AAT7/Code/DSP/aic3204/../../lib" --reread_libs --rom_model -o "aic3204.out" $(ORDERED_OBJS)
+	"C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/c5500/bin/cl55" -vcpu:3.3 -g --diag_warning=225 --ptrdiff_size=32 --memory_model=large -z -m"aic3204.map" --warn_sections -i"C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/c5500/include" -i"C:/Users/Lenovo/Documents/AAT7/Code/DSP/aic3204/../../lib" --reread_libs --rom_model -o "aic3204.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(C5500_EXECUTABLE_OUTPUTS__QTD) "aic3204.out"
-	-$(RM) ".\main.obj" 
-	-$(RM) ".\main.pp" 
+	-$(RM) ".\main.obj" ".\include\usbstk5515.obj" ".\include\usbstk5515_gpio.obj" ".\include\usbstk5515_i2c.obj" ".\include\usbstk5515_led.obj" 
+	-$(RM) ".\main.pp" ".\include\usbstk5515.pp" ".\include\usbstk5515_gpio.pp" ".\include\usbstk5515_i2c.pp" ".\include\usbstk5515_led.pp" 
 	-@echo ' '
 
 .PHONY: all clean dependents

@@ -2,7 +2,12 @@
  *  Basic coded setup
  *  Author: Group 761
  */
- 
+
+// Define address for the board
+#define AIC3204_I2C_ADDR 0x18
+#define Rcv 0x08
+#define Xmit 0x20
+
 // Setup files - dont touch! 
 #include "stdio.h"
 #include "usbstk5515.h"
@@ -10,11 +15,6 @@
 #include "usbstk5515_i2c.h"
 #include "aic3204_setup.h"
 
-
-// Define address for the board
-#define AIC3204_I2C_ADDR 0x18
-#define Rcv 0x08
-#define Xmit 0x20
 
 // AIC3204 Settings
 #define Fs			48				// (48,192)
@@ -34,7 +34,7 @@ void main( void )
 {
     /* Initialize Board and Codec - look in "aic3204_setup.h" */
     USBSTK5515_init( );
-    AIC3204_Init(Fs, Res);
+    AIC3204_Init( );
 
 
             while ( 1 )

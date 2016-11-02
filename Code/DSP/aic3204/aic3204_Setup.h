@@ -80,18 +80,18 @@ Int16 AIC3204_Init(void)
 
 // Initialize the codec with parameters
 
-void codec_init (uint8 Fs, uint8 Res, uint8 DAC, unit8 ADC){
-	uint8 BCLK
-	
-	/* Checking Register 27 on Page 0 for resolution */
-	if 		(res == 16){BCLK = 0x0d};
-	else if (res == 24){BCLK = 0x2d};
-	else if (res == 32){BCLK = 0x3d};
-	else (BCLK = 0x0d)
-	
-	if 		(Fs == 48{}
-			(Fs == 
-	 
-	
-}
+
+//void codec_init (uint8 Fs, uint8 Res, uint8 DAC, unit8 ADC){
+//	uint8 BCLK	
+//	/* Checking Register 27 on Page 0 for resolution */
+//	if 		(res == 16){BCLK = 0x0d};
+//	else if (res == 24){BCLK = 0x2d};
+//	else if (res == 32){BCLK = 0x3d};
+//	else (BCLK = 0x0d)
+//	
+//	if 		(Fs == 48{}
+//			(Fs == 	
+//}
+
+
 
