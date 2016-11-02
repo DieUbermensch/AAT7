@@ -1,0 +1,56 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="dsk5510bslxf"
+ProjectDir="$(Install_dir)\c5500\dsk5510\lib\dsk5510bsl\"
+ProjectType=Library
+CPUFamily=TMS320C55XX
+Tool="Archiver"
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="c55xx_dma_mcbsp.c"
+Source="dsk5510.c"
+Source="dsk5510_aic23_closecodec.c"
+Source="dsk5510_aic23_loopback.c"
+Source="dsk5510_aic23_mute.c"
+Source="dsk5510_aic23_opencodec.c"
+Source="dsk5510_aic23_outgain.c"
+Source="dsk5510_aic23_powerdown.c"
+Source="dsk5510_aic23_read16.c"
+Source="dsk5510_aic23_read32.c"
+Source="dsk5510_aic23_registers.c"
+Source="dsk5510_aic23_setfreq.c"
+Source="dsk5510_aic23_write16.c"
+Source="dsk5510_aic23_write32.c"
+Source="dsk5510_dip.c"
+Source="dsk5510_dma_aic23.c"
+Source="dsk5510_flash_checksum.c"
+Source="dsk5510_flash_erase.c"
+Source="dsk5510_flash_read.c"
+Source="dsk5510_flash_write.c"
+Source="dsk5510_led.c"
+Source="dsk5510_mem.c"
+
+["Archiver" Settings: "Debug"]
+Options=-r -o.\Debug\dsk5510bslx.lib
+
+["Archiver" Settings: "Release"]
+Options=-r -o.\Release\dsk5510bslx.lib
+
+["Compiler" Settings: "Debug"]
+Options=-q -fr".\Debug" -i"." -i"..\..\include" -d"_DEBUG" -d"CHIP_5510PG2_2" -ml -mn -v5510:2
+
+["Compiler" Settings: "Release"]
+Options=-q -fr".\Release" -i"." -i"..\..\include" -d"_DEBUG" -d"CHIP_5510PG2_2" -ml -mn -v5510:2
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v55
+

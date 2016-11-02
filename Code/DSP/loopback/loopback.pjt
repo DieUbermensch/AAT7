@@ -1,0 +1,40 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="tone"
+ProjectDir="C:\work\book_2ed\ch01_2ed\experiments\exp1.6.6_loopback\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="loopback.cdb"
+Source="src\loopback.c"
+Source="loopbackcfg.cmd"
+
+[Generated Files]
+Source="loopbackcfg.s55"
+Source="loopbackcfg_c.c"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -q -fr".\Debug" -i"." -i"..\" -d"_DEBUG" -ml -mn -v5510:2
+
+["Compiler" Settings: "Release"]
+Options=-mg -q -fr".\Release" -i"." -ml -mn -v5510:2
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v55
+
+["Linker" Settings: "Debug"]
+Options=-q -c -o".\Debug\loopback.out" -x -l"dsk5510bslx.lib"
+
+["Linker" Settings: "Release"]
+Options=-q -c -o".\Release\tone.out" -x -l"dsk5510bslx.lib"
+
