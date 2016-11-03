@@ -8,12 +8,6 @@
 #define Rcv 0x08
 #define Xmit 0x20
 
-// AIC3204 Settings
-#define Fs			48				// (48,192)
-#define Res			16				// (16,32)
-#define GainDAC		0				// (X - XX dB)
-#define uint8 		DACGain		0				// (X - XX dB)
-
 
 // Setup files - dont touch! 
 #include "stdio.h"
@@ -37,8 +31,7 @@ void main( void )
 {
     /* Initialize Board and Codec - look in "aic3204_setup.h" */
     USBSTK5515_init( );
-    AIC3204_Init( );
-
+	codec_init ();
 
             while ( 1 )
             {

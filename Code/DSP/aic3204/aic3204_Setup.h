@@ -12,6 +12,7 @@ Int16 AIC3204_rset( Uint16 regnum, Uint16 regval )
 
     return USBSTK5515_I2C_write( AIC3204_I2C_ADDR, cmd, 2 );
 }
+Uint8 J, Dlow, Dhigh, BCLK, BCLKN;
 
 // Initializing the codec
 Int16 AIC3204_Init(void)
@@ -24,26 +25,22 @@ Int16 AIC3204_Init(void)
     AIC3204_rset( 2, 1 );          // Enable Analog Blocks, use LDO power
     AIC3204_rset( 0, 0 );          // Select page 0
     /* PLL and Clocks config and Power Up  */
-    AIC3204_rset( 27, 0x0d );      // BCLK and WCLK is set as o/p to AIC3204(Master)
+    AIC3204_rset( 27, BCLK );      // BCLK and WCLK is set as o/p to AIC3204(Master)
     AIC3204_rset( 28, 0x00 );      // Data ofset = 0
     AIC3204_rset( 4, 3 );          // PLL setting: PLLCLK <- MCLK, CODEC_CLKIN <-PLL CLK
-    AIC3204_rset( 6, 7 );          // PLL setting: J=7
-    AIC3204_rset( 7, 0x06 );       // PLL setting: HI_BYTE(D=1680)
-    AIC3204_rset( 8, 0x90 );       // PLL setting: LO_BYTE(D=1680)
-    AIC3204_rset( 30, 0x88 );      // For 32 bit clocks per frame in Master mode ONLY
+    AIC3204_rset( 6, J );          // PLL setting: J=7
+    AIC3204_rset( 7, Dhigh );       // PLL setting: HI_BYTE(D=1680)
+    AIC3204_rset( 8, Dlow );       // PLL setting: LO_BYTE(D=1680)
+    AIC3204_rset( 30, BCLKN );      // For 32 bit clocks per frame in Master mode ONLY
                                    // BCLK=DAC_CLK/N =(12288000/8) = 1.536MHz = 32*fs
     AIC3204_rset( 5, 0x91 );       // PLL setting: Power up PLL, P=1 and R=1
     AIC3204_rset( 13, 0 );         // Hi_Byte(DOSR) for DOSR = 128 decimal or 0x0080 DAC oversamppling
     AIC3204_rset( 14, 0x80 );      // Lo_Byte(DOSR) for DOSR = 128 decimal or 0x0080
     AIC3204_rset( 20, 0x80 );      // AOSR for AOSR = 128 decimal or 0x0080 for decimation filters 1 to 6
-    AIC3204_rset( 11, 0x82 );      // Power up NDAC and set NDAC value to 2
+    AIC3204_rset( 11, 0x81 );      // Power up NDAC and set NDAC value to 2 (0x82)
     AIC3204_rset( 12, 0x87 );      // Power up MDAC and set MDAC value to 7
     AIC3204_rset( 18, 0x87 );      // Power up NADC and set NADC value to 7
-    AIC3204_rset( 19, 0x82 );      // Power up MADC and set MADC value to 2
-    
-    /* Setting the Gain of the DAC and ADC  */
-    AIC3204_rset( 0x41, 0x30 );   // Setting the left channel gain in the DAC
-    AIC3204_rset( 0x42, 0x10 );   // Setting the right channel gain the DAC
+    AIC3204_rset( 19, 0x81 );      // Power up MADC and set MADC value to 2 (0x82)
     
     
     /* DAC ROUTING and Power Up */
@@ -86,18 +83,29 @@ Int16 AIC3204_Init(void)
 
 // Initialize the codec with parameters
 
+#define Res	16
+#define DACFs	0
+#define ADCFs	96
 
-//void codec_init (uint8 Fs, uint8 Res, uint8 DAC, unit8 ADC){
-//	uint8 BCLK	
-//	/* Checking Register 27 on Page 0 for resolution */
-//	if 		(res == 16){BCLK = 0x0d};
-//	else if (res == 24){BCLK = 0x2d};
-//	else if (res == 32){BCLK = 0x3d};
-//	else (BCLK = 0x0d)
-//	
-//	if 		(Fs == 48{}
-//			(Fs == 	
-//}
+void codec_init(void){
+
+
+	/* Checking Register 27 on Page 0 for resolution */
+	if 		(Res == 16){BCLK = 0x0d;}
+	else if (Res == 24){BCLK = 0x2d;}
+	else if (Res == 32){BCLK = 0x3d;}
+	else {BCLK = 0x0d;}
+	
+	if 		(ADCFs == 48) {J = 0x07; Dlow = 0x90; Dhigh =0x06; BCLKN = 0x88;}
+	else if	(ADCFs == 96) {J = 0x0e; Dlow = 0x20; Dhigh =0x0d; BCLKN = 0x84;}
+	else if (ADCFs == 192){J = 0x1c; Dlow = 0x40; Dhigh =0x1a; BCLKN = 0x82;}	
+	else 	{J = 0x07; Dlow = 0x90; Dhigh =0x06;}
+	
+	
+	
+	AIC3204_Init();
+	
+}
 
 
 
