@@ -85,7 +85,7 @@ Int16 AIC3204_Init(void)
 
 #define Res	16
 #define DACFs	0
-#define ADCFs	192
+#define ADCFs	48
 
 void codec_init(void){
 
@@ -97,8 +97,8 @@ void codec_init(void){
 	else {BCLK = 0x0d;}
 	
 	if 		(ADCFs == 48) {J = 0x07; Dlow = 0x90; Dhigh =0x06; BCLKN = 0x88;
-							Reg11 = 0x81; Reg12 = 0x87; Reg13 = 0x08; Reg14 = 0x80; 	
-							Reg18 = 0x87; Reg19 = 0x81; Reg20 = 0x80;							
+							Reg11 = 0x82; Reg12 = 0x87; Reg13 = 0; Reg14 = 0x80; 	
+							Reg18 = 0x87; Reg19 = 0x82; Reg20 = 0x80;							
 							}
 	else if	(ADCFs == 96) {J = 0x0e; Dlow = 0x20; Dhigh =0x0d; BCLKN = 0x84;}
 	
