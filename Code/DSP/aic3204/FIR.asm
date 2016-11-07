@@ -1,8 +1,9 @@
-	.global _FIR;
-	
+	.global _CPFIR
 
-_FIR	
-				
-RET
+_CPFIR:	
+	
+ret
+
+.end
 	
 	
