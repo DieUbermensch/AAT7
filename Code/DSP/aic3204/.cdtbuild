@@ -3,7 +3,7 @@
 
 <ManagedProjectBuildInfo>
 <project id="aic3204.com.ti.ccstudio.buildDefinitions.C5500.ProjectType.1511703331" name="C5500" projectType="com.ti.ccstudio.buildDefinitions.C5500.ProjectType">
-<configuration artifactExtension="out" artifactName="aic3204" description="" id="com.ti.ccstudio.buildDefinitions.C5500.Debug.1186441741" name="Debug" parent="com.ti.ccstudio.buildDefinitions.C5500.Debug">
+<configuration artifactExtension="out" artifactName="aic3204" description="" id="com.ti.ccstudio.buildDefinitions.C5500.Debug.1186441741" name="Debug" parent="com.ti.ccstudio.buildDefinitions.C5500.Debug" postbuildStep="" prebuildStep="">
 <toolChain id="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.DebugToolchain.637911396" name="TI Code Generation Tools" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.DebugToolchain" targetTool="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.linkerDebug.1580797240">
 <option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.1713759506" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="4.3.2" valueType="string"/>
 <option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.1374995514" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
@@ -15,6 +15,7 @@
 <listOptionValue builtIn="false" value="CCS_MBS_VERSION=4.0.1"/>
 <listOptionValue builtIn="false" value="PROJECT_KIND=com.ti.ccstudio.managedbuild.core.ProjectKind_Executable"/>
 </option>
+<builder arguments="-k" command="${CCS_INSTALL_ROOT}/utils/gmake/gmake" id="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.builderDebug.203445186" name="GNU Make.Debug" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.builderDebug"/>
 <tool id="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.compilerDebug.1597286740" name="C5500 Compiler" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.compilerDebug">
 <option id="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.INCLUDE_PATH.1312571444" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.INCLUDE_PATH" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>

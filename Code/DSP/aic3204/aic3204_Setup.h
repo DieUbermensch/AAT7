@@ -12,7 +12,7 @@ Int16 AIC3204_rset( Uint16 regnum, Uint16 regval )
 
     return USBSTK5515_I2C_write( AIC3204_I2C_ADDR, cmd, 2 );
 }
-Uint8 J, Dlow, Dhigh, BCLK, BCLKN;
+Uint8 J, Dlow, Dhigh, BCLK, BCLKN, Reg11, Reg12, Reg13, Reg14, Reg18, Reg19, Reg20;	
 
 // Initializing the codec
 Int16 AIC3204_Init(void)
@@ -35,12 +35,12 @@ Int16 AIC3204_Init(void)
                                    // BCLK=DAC_CLK/N =(12288000/8) = 1.536MHz = 32*fs
     AIC3204_rset( 5, 0x91 );       // PLL setting: Power up PLL, P=1 and R=1
     AIC3204_rset( 13, 0 );         // Hi_Byte(DOSR) for DOSR = 128 decimal or 0x0080 DAC oversamppling
-    AIC3204_rset( 14, 0x80 );      // Lo_Byte(DOSR) for DOSR = 128 decimal or 0x0080
-    AIC3204_rset( 20, 0x80 );      // AOSR for AOSR = 128 decimal or 0x0080 for decimation filters 1 to 6
-    AIC3204_rset( 11, 0x81 );      // Power up NDAC and set NDAC value to 2 (0x82)
-    AIC3204_rset( 12, 0x87 );      // Power up MDAC and set MDAC value to 7
-    AIC3204_rset( 18, 0x87 );      // Power up NADC and set NADC value to 7
-    AIC3204_rset( 19, 0x81 );      // Power up MADC and set MADC value to 2 (0x82)
+    AIC3204_rset( 14, Reg14 );      // Lo_Byte(DOSR) for DOSR = 128 decimal or 0x0080
+    AIC3204_rset( 20, Reg20 );      // AOSR for AOSR = 128 decimal or 0x0080 for decimation filters 1 to 6
+    AIC3204_rset( 11, Reg11 );      // Power up NDAC and set NDAC value to 2 (0x82)
+    AIC3204_rset( 12, Reg12 );      // Power up MDAC and set MDAC value to 7
+    AIC3204_rset( 18, Reg18 );      // Power up NADC and set NADC value to 7
+    AIC3204_rset( 19, Reg19 );      // Power up MADC and set MADC value to 2 (0x82)
     
     
     /* DAC ROUTING and Power Up */
@@ -96,9 +96,16 @@ void codec_init(void){
 	else if (Res == 32){BCLK = 0x3d;}
 	else {BCLK = 0x0d;}
 	
-	if 		(ADCFs == 48) {J = 0x07; Dlow = 0x90; Dhigh =0x06; BCLKN = 0x88;}
+	if 		(ADCFs == 48) {J = 0x07; Dlow = 0x90; Dhigh =0x06; BCLKN = 0x88;
+							Reg11 = 0x82; Reg12 = 0x87; Reg13 = 0; Reg14 = 0x80; 	
+							Reg18 = 0x87; Reg19 = 0x82; Reg20 = 0x80;							
+							}
 	else if	(ADCFs == 96) {J = 0x0e; Dlow = 0x20; Dhigh =0x0d; BCLKN = 0x84;}
-	else if (ADCFs == 192){J = 0x1c; Dlow = 0x40; Dhigh =0x1a; BCLKN = 0x82;}	
+	
+	else if (ADCFs == 192){J = 0x08; Dlow = 0x80; Dhigh =0x7; BCLKN = 0x87; 
+							Reg11 = 0x82; Reg12 = 0x84; Reg13 = 0x0; Reg14 = 64; 	
+							Reg18 = 0x82; Reg19 = 0x84; Reg20 = 64;
+							}	
 	else 	{J = 0x07; Dlow = 0x90; Dhigh =0x06;}
 	
 	
