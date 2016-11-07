@@ -56,6 +56,7 @@ void main( void )
       	        data1 = I2S0_W0_LSW_R;
       	        data4 = I2S0_W1_MSW_R;  // 16 bit right channel received audio data
       	        data2 = I2S0_W1_LSW_R;
+<<<<<<< HEAD
       	        //asm(" bset XF");
       	        asm(" bclr XF");
       	        
@@ -69,8 +70,12 @@ void main( void )
        	        //CPFIR(x,b,N,y,i);
       	        
       	                
+=======
+      	        asm(" bset XF");
+>>>>>>> 7e2ebba7f949dca56dbb8ebe5e268c0cbf0fc33e
 				/* Write Digital audio */
       	        while((Xmit & I2S0_IR) == 0);  // Wait for interrupt pending flag
+      	        asm(" bclr XF");
 				I2S0_W0_MSW_W = data3;  // 16 bit left channel transmit audio data
       	        I2S0_W0_LSW_W = 0;
       	        I2S0_W1_MSW_W = data4;  // 16 bit right channel transmit audio data
