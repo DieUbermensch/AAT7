@@ -18,7 +18,7 @@
 
 
 
-
+extern short FIR(short x);
 
 
 

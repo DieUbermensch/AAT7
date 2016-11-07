@@ -85,7 +85,7 @@ Int16 AIC3204_Init(void)
 
 #define Res	16
 #define DACFs	0
-#define ADCFs	96
+#define ADCFs	48
 
 void codec_init(void){
 
