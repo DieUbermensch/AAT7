@@ -18,20 +18,35 @@
 
 
 
-extern short FIR(short x);
 
 
 
+
+// Initialize
 
 
 
 Int16 data1, data2, data3, data4;
 Int16 k;
+
+//FIR
+#define N 255
+
+Int16 x[N];
+Int16 b[N];
+Int16 y[N];
+Int16 i = 0;
+
+//extern void CPFIR(Int16 *x, Int16 *b, Int16 order, Int16 *y, Int16 index);
+extern void CPFIR(void);
+void initAll(void);
+
 void main( void )
 {
     /* Initialize Board and Codec - look in "aic3204_setup.h" */
     USBSTK5515_init( );
 	codec_init ();
+	initAll();
 
             while ( 1 )
             {
@@ -43,7 +58,21 @@ void main( void )
       	        data1 = I2S0_W0_LSW_R;
       	        data4 = I2S0_W1_MSW_R;  // 16 bit right channel received audio data
       	        data2 = I2S0_W1_LSW_R;
+
+      	        //asm(" bset XF");
+      	        asm(" bclr XF");
+      	        
+      	        if(i == N)
+      	        {
+      	        	i = -1;
+      	        }
+      	        x[i] = data3;
+      	        i++;
+       	        //CPFIR(x,b,N,y,i);
+       	        CPFIR();
+      	               
       	        asm(" bset XF");
+
 				/* Write Digital audio */
       	        while((Xmit & I2S0_IR) == 0);  // Wait for interrupt pending flag
       	        asm(" bclr XF");
@@ -52,6 +81,17 @@ void main( void )
       	        I2S0_W1_MSW_W = data4;  // 16 bit right channel transmit audio data
       	        I2S0_W1_LSW_W = 0;
       	        
-    
 			}
+}
+
+void initAll(void)
+{
+	Int16 cnt;
+	// Clear array
+	for(cnt=0;cnt<=N;cnt++) 
+	{
+		x[cnt] = 0;
+		b[cnt] = 0;
+		y[cnt] = 0;	
+	}	
 }
