@@ -6,7 +6,7 @@ SHELL = cmd.exe
 
 EMPTY := 
 SPACE := $(EMPTY) $(EMPTY)
-CG_TOOL_ROOT := C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500
+CG_TOOL_ROOT := C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500
 
 ORDERED_OBJS += \
 $(GEN_CMDS_QUOTED) \
@@ -123,7 +123,7 @@ all: aic3204.out
 aic3204.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Linker'
-	"C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/bin/cl55" -vcpu:3.3 -g --diag_warning=225 --ptrdiff_size=32 --memory_model=large -z -m"aic3204.map" --warn_sections -i"C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/include" -i"C:/Users/Kiis/Dropbox/Uni/7. semester/AAT7/Code/DSP/aic3204/../../lib" --reread_libs --rom_model -o "aic3204.out" $(ORDERED_OBJS)
+	"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/bin/cl55" -vcpu:3.3 -g --diag_warning=225 --ptrdiff_size=32 --memory_model=large -z -m"aic3204.map" --warn_sections -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/include" -i"C:/Users/Mikkel Krogh/Documents/GitHub/AAT7/Code/DSP/aic3204/../../lib" --reread_libs --rom_model -o "aic3204.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
