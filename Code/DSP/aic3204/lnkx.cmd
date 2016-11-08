@@ -62,8 +62,8 @@ SECTIONS
    .pinit    >  SARAM2                /* Initialization fn tables    */
    .cio      >  SARAM2                /* C I/O buffers               */
    .args     >  SARAM2                /* Arguments to main()         */
-
-    vectors  >  VECS                  /* Interrupt vectors           */
-
+	
+	vectors  >  VECS                  /* Interrupt vectors           */
+	
    .ioport   >  IOPORT PAGE 2         /* Global & static ioport vars */
 }

@@ -21,6 +21,7 @@
 
 
 
+
 // Initialize
 
 
@@ -36,7 +37,8 @@ Int16 b[N];
 Int16 y[N];
 Int16 i = 0;
 
-void CPFIR(Int16 *x, Int16 *b, Int16 order, Int16 *y, Int16 index);
+//extern void CPFIR(Int16 *x, Int16 *b, Int16 order, Int16 *y, Int16 index);
+extern void CPFIR(void);
 void initAll(void);
 
 void main( void )
@@ -56,7 +58,7 @@ void main( void )
       	        data1 = I2S0_W0_LSW_R;
       	        data4 = I2S0_W1_MSW_R;  // 16 bit right channel received audio data
       	        data2 = I2S0_W1_LSW_R;
-<<<<<<< HEAD
+
       	        //asm(" bset XF");
       	        asm(" bclr XF");
       	        
@@ -66,13 +68,11 @@ void main( void )
       	        }
       	        x[i] = data3;
       	        i++;
-      	        
        	        //CPFIR(x,b,N,y,i);
-      	        
-      	                
-=======
+       	        CPFIR();
+      	               
       	        asm(" bset XF");
->>>>>>> 7e2ebba7f949dca56dbb8ebe5e268c0cbf0fc33e
+
 				/* Write Digital audio */
       	        while((Xmit & I2S0_IR) == 0);  // Wait for interrupt pending flag
       	        asm(" bclr XF");
