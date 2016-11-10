@@ -1,7 +1,7 @@
 ******************************************************************************
               TMS320C55x Linker PC v4.3.8                      
 ******************************************************************************
->> Linked Wed Nov 09 16:28:39 2016
+>> Linked Thu Nov 10 09:19:07 2016
 
 OUTPUT FILE NAME:   <aic3204.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 000208cc
@@ -58,7 +58,7 @@ section   page  orgn(bytes) orgn(words) len(bytes) len(words)   input sections
                    00020843  [ 00010421+] 0000004b          *              : args_main.obj (.text)
                    0002088e  [ 00010447 ] 0000003e          *              : exit.obj (.text)
                    000208cc  [ 00010466 ] 00000034          *              : boot.obj (.text)
-                   00020900  [ 00010480 ] 00000022          *   FIRFunction.obj (.text)
+                   00020900  [ 00010480 ] 00000022          *   Functions.obj (.text)
                    00020922  [ 00010491 ] 00000012          *   rts55x.lib : _lock.obj (.text)
                    00020934  [ 0001049a ] 00000007          *              : exit.obj (.text:CIO_breakpoint)
                    0002093b  [ 0001049d+] 00000002          *              : vectors.obj (.text)

@@ -1,4 +1,4 @@
-	.global _FIR;
+	.global _FIR, _FXLMS;
 
 ;------------------------------------------------------
 ;		void FIR(Int16 *x,	=> AR0
@@ -15,12 +15,16 @@ _FIR:
 	MOV *(#T1),AR0				; Start from ith sample
 	bset AR0LC					; Set pointer as circular
 	SUB #1,T0					; Setup Repititions
-	MOV T0,CSR
-	RPT CSR					
+	MOV T0,CSR					; Setup Repititions
+	RPT CSR						; Repeat order times
 	MAC *AR0-,*AR1+,AC0 		; Do filter convolution
 	SFTL AC0, #-15				; Bit shift to fit Q15
 	MOV AC0,T0					; Output sample
     RET
+    
+_FXLMS:
+	NOP
+	RET
 
 
 	

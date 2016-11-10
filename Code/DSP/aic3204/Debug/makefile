@@ -15,7 +15,7 @@ $(GEN_CMDS_QUOTED) \
 "./include/usbstk5515_gpio.obj" \
 "./include/usbstk5515.obj" \
 "./main.obj" \
-"./FIRFunction.obj" \
+"./Functions.obj" \
 -l"usbstk5515bsl.lib" \
 -l"rts55x.lib" \
 "../lnkx.cmd" \
@@ -130,8 +130,8 @@ aic3204.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(C5500_EXECUTABLE_OUTPUTS__QTD) "aic3204.out"
-	-$(RM) ".\FIRFunction.obj" ".\main.obj" ".\include\usbstk5515.obj" ".\include\usbstk5515_gpio.obj" ".\include\usbstk5515_i2c.obj" ".\include\usbstk5515_led.obj" 
-	-$(RM) ".\FIRFunction.pp" 
+	-$(RM) ".\Functions.obj" ".\main.obj" ".\include\usbstk5515.obj" ".\include\usbstk5515_gpio.obj" ".\include\usbstk5515_i2c.obj" ".\include\usbstk5515_led.obj" 
+	-$(RM) ".\Functions.pp" 
 	-$(RM) ".\main.pp" ".\include\usbstk5515.pp" ".\include\usbstk5515_gpio.pp" ".\include\usbstk5515_i2c.pp" ".\include\usbstk5515_led.pp" 
 	-@echo ' '
 

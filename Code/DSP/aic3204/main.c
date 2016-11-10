@@ -35,10 +35,12 @@ Int16 delayVar1;
 Int16 x[N];
 //Int16 b[N];
 Int16 b[] = {0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD};
+//Int16 b[] = {1,0,0,0,0,0,0,0,0,0};
 Int16 y[N];
 Int16 i = 0;
 
 extern Int16 FIR(Int16 *x, Int16 *b, Int16 order, Int16 index);
+extern void  FXLMS(Int16 *x, Int16 *b, Int order, Int16 error, Int16 mu, Int16 index)
 void initAll(void);
 
 void main( void )
