@@ -3,7 +3,6 @@
 
 
 \subsection{Description}
-Provide a context and how the function is used in the program,
 This function filters an input signal with a set of filter coefficients with a given length (order).
 
 \subsection{Syntax} 
@@ -11,8 +10,7 @@ This function filters an input signal with a set of filter coefficients with a g
 	extern Int16 FIR(Int16 *x, Int16 *b, Int16 order, Int16 index);
 \end{lstlisting}
 
-\subsection{Flowchart}
-Provide explicit description and break the function into different process that explains how the function works
+\subsection{Diagram}
 \begin{figure} [h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{../Journal/Code/FIRfilter}
@@ -29,7 +27,7 @@ Provide explicit description and break the function into different process that 
 	Int16	*b		//The filter coefficients
 	Int16	order	//The order of the filter (length of x & b)
 	Int16	index	//The index of the newest x sample
-	int16	return	//Returns the output of the filter (y(n))
+	Int16	return	//Returns the output of the filter (y(n))
 \end{lstlisting}
 
 \subsubsection{code}
