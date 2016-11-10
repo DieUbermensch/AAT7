@@ -6,7 +6,10 @@ SHELL = cmd.exe
 
 EMPTY := 
 SPACE := $(EMPTY) $(EMPTY)
-CG_TOOL_ROOT := C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500
+<<<<<<< HEAD
+CG_TOOL_ROOT := C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500
+=======
+>>>>>>> c7bf8eac3a0de9924b286282c87d07ce297189da
 
 ORDERED_OBJS += \
 $(GEN_CMDS_QUOTED) \
@@ -23,14 +26,11 @@ $(GEN_CMDS_QUOTED) \
 -include ../makefile.init
 
 RM := DEL /F
-RMDIR := RMDIR /S/Q
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include subdir_vars.mk
--include include/subdir_vars.mk
--include subdir_rules.mk
--include include/subdir_rules.mk
+-include subdir.mk
+-include include/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -46,23 +46,50 @@ endif
 ifneq ($(strip $(S_UPPER_DEPS)),)
 -include $(S_UPPER_DEPS)
 endif
+ifneq ($(strip $(C++_DEPS)),)
+-include $(C++_DEPS)
+endif
 ifneq ($(strip $(S_DEPS)),)
 -include $(S_DEPS)
 endif
-ifneq ($(strip $(CPP_DEPS)),)
--include $(CPP_DEPS)
+ifneq ($(strip $(CC_DEPS)),)
+-include $(CC_DEPS)
 endif
 ifneq ($(strip $(C64_DEPS)),)
 -include $(C64_DEPS)
 endif
-ifneq ($(strip $(C43_DEPS)),)
--include $(C43_DEPS)
+ifneq ($(strip $(CPP_DEPS)),)
+-include $(CPP_DEPS)
+endif
+ifneq ($(strip $(S64_DEPS)),)
+-include $(S64_DEPS)
+endif
+ifneq ($(strip $(CXX_DEPS)),)
+-include $(CXX_DEPS)
+endif
+ifneq ($(strip $(C67_DEPS)),)
+-include $(C67_DEPS)
+endif
+ifneq ($(strip $(S67_DEPS)),)
+-include $(S67_DEPS)
+endif
+ifneq ($(strip $(S43_DEPS)),)
+-include $(S43_DEPS)
 endif
 ifneq ($(strip $(C62_DEPS)),)
 -include $(C62_DEPS)
 endif
+ifneq ($(strip $(C43_DEPS)),)
+-include $(C43_DEPS)
+endif
 ifneq ($(strip $(C??_DEPS)),)
 -include $(C??_DEPS)
+endif
+ifneq ($(strip $(ASM_UPPER_DEPS)),)
+-include $(ASM_UPPER_DEPS)
+endif
+ifneq ($(strip $(OPT_DEPS)),)
+-include $(OPT_DEPS)
 endif
 ifneq ($(strip $(S??_DEPS)),)
 -include $(S??_DEPS)
@@ -73,41 +100,11 @@ endif
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
 endif
-ifneq ($(strip $(C_UPPER_DEPS)),)
--include $(C_UPPER_DEPS)
-endif
 ifneq ($(strip $(SA_DEPS)),)
 -include $(SA_DEPS)
 endif
-ifneq ($(strip $(C++_DEPS)),)
--include $(C++_DEPS)
-endif
-ifneq ($(strip $(K_DEPS)),)
--include $(K_DEPS)
-endif
-ifneq ($(strip $(CC_DEPS)),)
--include $(CC_DEPS)
-endif
-ifneq ($(strip $(S64_DEPS)),)
--include $(S64_DEPS)
-endif
-ifneq ($(strip $(CXX_DEPS)),)
--include $(CXX_DEPS)
-endif
-ifneq ($(strip $(S43_DEPS)),)
--include $(S43_DEPS)
-endif
-ifneq ($(strip $(S67_DEPS)),)
--include $(S67_DEPS)
-endif
-ifneq ($(strip $(C67_DEPS)),)
--include $(C67_DEPS)
-endif
-ifneq ($(strip $(ASM_UPPER_DEPS)),)
--include $(ASM_UPPER_DEPS)
-endif
-ifneq ($(strip $(OPT_DEPS)),)
--include $(OPT_DEPS)
+ifneq ($(strip $(C_UPPER_DEPS)),)
+-include $(C_UPPER_DEPS)
 endif
 endif
 
@@ -120,10 +117,18 @@ all: aic3204.out
 
 
 # Tool invocations
-aic3204.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+aic3204.out: $(GEN_CMDS) $(CMD_SRCS) $(OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Linker'
+<<<<<<< HEAD
+	"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/bin/cl55" -vcpu:3.3 -g --diag_warning=225 --ptrdiff_size=32 --memory_model=large -z -m"aic3204.map" --warn_sections -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/include" -i"C:/Users/Mikkel Krogh/Documents/GitHub/AAT7/Code/DSP/aic3204/../../lib" --reread_libs --rom_model -o "aic3204.out" $(ORDERED_OBJS)
+=======
+<<<<<<< HEAD
+	"C:/Program Files (x86)/Texas Instruments2/ccsv4/tools/compiler/c5500/bin/cl55" -vcpu:3.3 -g --diag_warning=225 --ptrdiff_size=32 --memory_model=large -z -m"aic3204.map" --warn_sections -i"C:/Program Files (x86)/Texas Instruments2/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files (x86)/Texas Instruments2/ccsv4/tools/compiler/c5500/include" -i"C:/Users/Christian/Documents/AkustikGit/AAT7/Code/DSP/aic3204/../../lib" --reread_libs --rom_model -o "aic3204.out" $(ORDERED_OBJS)
+=======
 	"C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/bin/cl55" -v5515 -g --diag_warning=225 --ptrdiff_size=16 --memory_model=large -z -m"aic3204.map" --warn_sections -i"C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/include" -i"C:/Users/Kiis/Dropbox/Uni/7. semester/AAT7/Code/DSP/aic3204/../../lib" --reread_libs --rom_model -o "aic3204.out" $(ORDERED_OBJS)
+>>>>>>> 26074a2c1cc077033086d508bedf3f23045c9ac6
+>>>>>>> c7bf8eac3a0de9924b286282c87d07ce297189da
 	@echo 'Finished building target: $@'
 	@echo ' '
 
