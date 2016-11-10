@@ -1,1 +1,0 @@
-"./vector.obj" "./timer.obj" "./sar.obj" "./rtc.obj" "./oled_test.obj" "./main.obj" "./i2s_register.obj" "./i2s.obj" "./dma.obj" "./aic_test_i2c.obj" -l"rts55x.lib" -l"usbstk5515bsl.lib" "C:/Users/Mikkel Krogh/Downloads/usbstk5515_v1/tests/USB_Stick_Sample/c5505.cmd" 
