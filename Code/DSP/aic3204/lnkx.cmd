@@ -65,5 +65,6 @@ SECTIONS
 	
 	vectors  >  VECS                  /* Interrupt vectors           */
 	
+   
    .ioport   >  IOPORT PAGE 2         /* Global & static ioport vars */
 }

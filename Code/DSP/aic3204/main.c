@@ -28,23 +28,25 @@
 
 Int16 data1, data2, data3, data4;
 Int16 k;
-
+Int16 delayVar1;
 //FIR
-#define N 255
+#define N 10
 
 Int16 x[N];
-Int16 b[N];
+//Int16 b[N];
+Int16 b[] = {0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD};
+//Int16 b[] = {1,0,0,0,0,0,0,0,0,0};
 Int16 y[N];
 Int16 i = 0;
 
-//extern void CPFIR(Int16 *x, Int16 *b, Int16 order, Int16 *y, Int16 index);
-extern void CPFIR(void);
+extern Int16 FIR(Int16 *x, Int16 *b, Int16 order, Int16 index);
+extern void  FXLMS(Int16 *x, Int16 *b, Int order, Int16 error, Int16 mu, Int16 index)
 void initAll(void);
 
 void main( void )
 {
     /* Initialize Board and Codec - look in "aic3204_setup.h" */
-    USBSTK5515_init( );
+    USBSTK5515_init();
 	codec_init ();
 	initAll();
 
@@ -64,13 +66,13 @@ void main( void )
       	        
       	        if(i == N)
       	        {
-      	        	i = -1;
+      	        	i = 0;
       	        }
       	        x[i] = data3;
-      	        i++;
-       	        //CPFIR(x,b,N,y,i);
-       	        CPFIR();
-      	               
+       	        y[i] = FIR(x,b,N,i);
+       	        data3 = y[i];
+       	        data4 = y[i];      	               
+       	        i++;
       	        asm(" bset XF");
 
 				/* Write Digital audio */
@@ -88,10 +90,10 @@ void initAll(void)
 {
 	Int16 cnt;
 	// Clear array
-	for(cnt=0;cnt<=N;cnt++) 
+	for(cnt=0;cnt<N;cnt++) 
 	{
 		x[cnt] = 0;
-		b[cnt] = 0;
+		//b[cnt] = 0;
 		y[cnt] = 0;	
 	}	
 }

@@ -1,0 +1,1113 @@
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE    1
+
+     931              ; Temporary Registers Used: None
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.3.8 *
+       3              ;* Date/Time created: Wed Nov 09 11:17:58 2016                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --silicon_core_3_3 --symd
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .asg DPH, MDP
+      13                      .model call=c55_std
+      14                      .model mem=large
+      15                      .noremark 5002  ; code respects overwrite rules
+      16              ;*******************************************************************************
+      17              ;* GLOBAL FILE PARAMETERS                                                      *
+      18              ;*                                                                             *
+      19              ;*   Architecture       : TMS320C55x                                           *
+      20              ;*   Optimizing for     : Speed                                                *
+      21              ;*   Memory             : Large Model (23-Bit Data Pointers)                   *
+      22              ;*   Calls              : Normal Library ASM calls                             *
+      23              ;*   Debug Info         : Standard TI Debug Information                        *
+      24              ;*******************************************************************************
+      25              
+      26              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      27                      .dwattr $C$DW$CU, DW_AT_name("../include/usbstk5515_gpio.c")
+      28                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.3.8 Copyright (c) 1996-2010 Texas In
+      29                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      30                      .dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\Kiis\Dropbox\Uni\7. semester\AAT7\Code\DSP\aic3204\Debug")
+      31              ;       C:\Program Files\TexasInstruments\ccsv4\tools\compiler\c5500\bin\acp55.exe -@C:\Users\Kiis\AppData\Lo
+      32 000000               .sect   ".text"
+      33                      .global _USBSTK5515_GPIO_init
+      34              
+      35              $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_GPIO_init")
+      36                      .dwattr $C$DW$1, DW_AT_low_pc(_USBSTK5515_GPIO_init)
+      37                      .dwattr $C$DW$1, DW_AT_high_pc(0x00)
+      38                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_USBSTK5515_GPIO_init")
+      39                      .dwattr $C$DW$1, DW_AT_external
+      40                      .dwattr $C$DW$1, DW_AT_type(*$C$DW$T$8)
+      41                      .dwattr $C$DW$1, DW_AT_TI_begin_file("../include/usbstk5515_gpio.c")
+      42                      .dwattr $C$DW$1, DW_AT_TI_begin_line(0x12)
+      43                      .dwattr $C$DW$1, DW_AT_TI_begin_column(0x07)
+      44                      .dwattr $C$DW$1, DW_AT_decl_file("../include/usbstk5515_gpio.c")
+      45                      .dwattr $C$DW$1, DW_AT_decl_line(0x12)
+      46                      .dwattr $C$DW$1, DW_AT_decl_column(0x07)
+      47                      .dwattr $C$DW$1, DW_AT_TI_max_frame_size(0x01)
+      48                      .dwpsn  file "../include/usbstk5515_gpio.c",line 19,column 1,is_stmt,address _USBSTK5515_GPIO_init
+      49              
+      50                      .dwfde $C$DW$CIE, _USBSTK5515_GPIO_init
+      51              ;----------------------------------------------------------------------
+      52              ;  18 | Int16 USBSTK5515_GPIO_init()                                           
+      53              ;----------------------------------------------------------------------
+      54              ;*******************************************************************************
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE    2
+
+      55              ;* FUNCTION NAME: USBSTK5515_GPIO_init                                         *
+      56              ;*                                                                             *
+      57              ;*   Function Uses Regs : T0,SP,M40,SATA,SATD,RDM,FRCT,SMUL                    *
+      58              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+      59              ;*   Total Frame Size   : 1 word                                               *
+      60              ;*                        (1 return address/alignment)                         *
+      61              ;*   Min System Stack   : 1 word                                               *
+      62              ;*******************************************************************************
+      63 000000       _USBSTK5515_GPIO_init:
+      64                      .dwcfi  cfa_offset, 1
+      65                      .dwcfi  save_reg_to_mem, 91, -1
+      66                      .dwpsn  file "../include/usbstk5515_gpio.c",line 20,column 5,is_stmt
+      67              ;----------------------------------------------------------------------
+      68              ;  20 | return 0;                                                              
+      69              ;----------------------------------------------------------------------
+      70 000000 3C04          MOV #0, T0
+      71                      .dwpsn  file "../include/usbstk5515_gpio.c",line 21,column 1,is_stmt
+      72              $C$DW$2 .dwtag  DW_TAG_TI_branch
+      73                      .dwattr $C$DW$2, DW_AT_low_pc(0x00)
+      74                      .dwattr $C$DW$2, DW_AT_TI_return
+      75 000002 4804          RET
+      76                                                      ; return occurs
+      77                      .dwattr $C$DW$1, DW_AT_TI_end_file("../include/usbstk5515_gpio.c")
+      78                      .dwattr $C$DW$1, DW_AT_TI_end_line(0x15)
+      79                      .dwattr $C$DW$1, DW_AT_TI_end_column(0x01)
+      80                      .dwendentry
+      81                      .dwendtag $C$DW$1
+      82              
+      83 000004               .sect   ".text"
+      84                      .global _USBSTK5515_GPIO_setDirection
+      85              
+      86              $C$DW$3 .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_GPIO_setDirection")
+      87                      .dwattr $C$DW$3, DW_AT_low_pc(_USBSTK5515_GPIO_setDirection)
+      88                      .dwattr $C$DW$3, DW_AT_high_pc(0x00)
+      89                      .dwattr $C$DW$3, DW_AT_TI_symbol_name("_USBSTK5515_GPIO_setDirection")
+      90                      .dwattr $C$DW$3, DW_AT_external
+      91                      .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$8)
+      92                      .dwattr $C$DW$3, DW_AT_TI_begin_file("../include/usbstk5515_gpio.c")
+      93                      .dwattr $C$DW$3, DW_AT_TI_begin_line(0x1f)
+      94                      .dwattr $C$DW$3, DW_AT_TI_begin_column(0x07)
+      95                      .dwattr $C$DW$3, DW_AT_decl_file("../include/usbstk5515_gpio.c")
+      96                      .dwattr $C$DW$3, DW_AT_decl_line(0x1f)
+      97                      .dwattr $C$DW$3, DW_AT_decl_column(0x07)
+      98                      .dwattr $C$DW$3, DW_AT_TI_max_frame_size(0x08)
+      99                      .dwpsn  file "../include/usbstk5515_gpio.c",line 32,column 1,is_stmt,address _USBSTK5515_GPIO_setDire
+     100              
+     101                      .dwfde $C$DW$CIE, _USBSTK5515_GPIO_setDirection
+     102              $C$DW$4 .dwtag  DW_TAG_formal_parameter, DW_AT_name("number")
+     103                      .dwattr $C$DW$4, DW_AT_TI_symbol_name("_number")
+     104                      .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$9)
+     105                      .dwattr $C$DW$4, DW_AT_location[DW_OP_reg12]
+     106              $C$DW$5 .dwtag  DW_TAG_formal_parameter, DW_AT_name("direction")
+     107                      .dwattr $C$DW$5, DW_AT_TI_symbol_name("_direction")
+     108                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$9)
+     109                      .dwattr $C$DW$5, DW_AT_location[DW_OP_reg13]
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE    3
+
+     110              ;----------------------------------------------------------------------
+     111              ;  31 | Int16 USBSTK5515_GPIO_setDirection( Uint16 number, Uint16 direction )  
+     112              ;----------------------------------------------------------------------
+     113              ;*******************************************************************************
+     114              ;* FUNCTION NAME: USBSTK5515_GPIO_setDirection                                 *
+     115              ;*                                                                             *
+     116              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,T1,AR1,SP,TC1,M40,SATA,SATD,RDM,  *
+     117              ;*                        FRCT,SMUL                                            *
+     118              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     119              ;*   Total Frame Size   : 8 words                                              *
+     120              ;*                        (2 return address/alignment)                         *
+     121              ;*                        (6 local values)                                     *
+     122              ;*   Min System Stack   : 1 word                                               *
+     123              ;*******************************************************************************
+     124 000004       _USBSTK5515_GPIO_setDirection:
+     125                      .dwcfi  cfa_offset, 1
+     126                      .dwcfi  save_reg_to_mem, 91, -1
+     127 000004 4EF9          AADD #-7, SP
+     128                      .dwcfi  cfa_offset, 8
+     129              $C$DW$6 .dwtag  DW_TAG_variable, DW_AT_name("number")
+     130                      .dwattr $C$DW$6, DW_AT_TI_symbol_name("_number")
+     131                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$9)
+     132                      .dwattr $C$DW$6, DW_AT_location[DW_OP_bregx 0x24 0]
+     133              $C$DW$7 .dwtag  DW_TAG_variable, DW_AT_name("direction")
+     134                      .dwattr $C$DW$7, DW_AT_TI_symbol_name("_direction")
+     135                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$9)
+     136                      .dwattr $C$DW$7, DW_AT_location[DW_OP_bregx 0x24 1]
+     137              $C$DW$8 .dwtag  DW_TAG_variable, DW_AT_name("bank_id")
+     138                      .dwattr $C$DW$8, DW_AT_TI_symbol_name("_bank_id")
+     139                      .dwattr $C$DW$8, DW_AT_type(*$C$DW$T$13)
+     140                      .dwattr $C$DW$8, DW_AT_location[DW_OP_bregx 0x24 2]
+     141              $C$DW$9 .dwtag  DW_TAG_variable, DW_AT_name("pin_id")
+     142                      .dwattr $C$DW$9, DW_AT_TI_symbol_name("_pin_id")
+     143                      .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$13)
+     144                      .dwattr $C$DW$9, DW_AT_location[DW_OP_bregx 0x24 4]
+     145 000006 C502          MOV T1, *SP(#1) ; |32| 
+     146 000008 C400          MOV T0, *SP(#0) ; |32| 
+     147                      .dwpsn  file "../include/usbstk5515_gpio.c",line 34,column 12,is_stmt
+     148              ;----------------------------------------------------------------------
+     149              ;  34 | Uint32 bank_id = ( number >> 4);                                       
+     150              ;----------------------------------------------------------------------
+     151 00000a 2240          MOV T0, AC0
+     152 00000c 76FF          BFXTR #0xfff0, AC0, AR1 ; |34| 
+         00000e F090 
+     153 000010 7DFF          AND #0xffff, AR1, AC0 ; |34| 
+         000012 FF09 
+     154 000014 EB04          MOV AC0, dbl(*SP(#2)) ; |34| 
+         000016 08   
+     155                      .dwpsn  file "../include/usbstk5515_gpio.c",line 35,column 12,is_stmt
+     156              ;----------------------------------------------------------------------
+     157              ;  35 | Uint32 pin_id  = ( 1 << ( number & 0xF ) );                            
+     158              ;----------------------------------------------------------------------
+     159 000017 A900          MOV *SP(#0), AR1 ; |35| 
+     160              
+     161 000019 180F          AND #0x000f, AR1, T1 ; |35| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE    4
+
+         00001b 59   
+     162 00001c 3D10  ||      MOV #1, AC0
+     163              
+     164 00001e 5C05          SFTS AC0, T1, AC0 ; |35| 
+     165 000020 A010          MOV mmap(AC0L), AC0 ; |35| 
+         000022 98   
+     166 000023 EB08          MOV AC0, dbl(*SP(#4)) ; |35| 
+         000025 08   
+     167                      .dwpsn  file "../include/usbstk5515_gpio.c",line 37,column 5,is_stmt
+     168              ;----------------------------------------------------------------------
+     169              ;  37 | if (bank_id == 0)                                                      
+     170              ;----------------------------------------------------------------------
+     171 000026 ED04          MOV dbl(*SP(#2)), AC0 ; |37| 
+         000028 08   
+     172 000029 0410          BCC $C$L2,AC0 != #0 ; |37| 
+         00002b 22   
+     173                                                      ; branchcc occurs ; |37| 
+     174                      .dwpsn  file "../include/usbstk5515_gpio.c",line 38,column 9,is_stmt
+     175              ;----------------------------------------------------------------------
+     176              ;  38 | if ((direction & 1) == GPIO_IN)                                        
+     177              ;----------------------------------------------------------------------
+     178 00002c DC02          BTST #0, *SP(#1), TC1 ; |38| 
+         00002e 00   
+     179 00002f 0464          BCC $C$L1,TC1 ; |38| 
+         000031 10   
+     180                                                      ; branchcc occurs ; |38| 
+     181                      .dwpsn  file "../include/usbstk5515_gpio.c",line 39,column 10,is_stmt
+     182              ;----------------------------------------------------------------------
+     183              ;  39 | SYS_GPIO_DIR0 &= ~pin_id;                                              
+     184              ;  40 | else                                                                   
+     185              ;----------------------------------------------------------------------
+     186 000032 ED08          MOV dbl(*SP(#4)), AC0 ; |39| 
+         000034 08   
+     187 000035 3600          NOT AC0, AC0 ; |39| 
+     188 000037 D951          AND *port(#7174), AC0, AC0 ; |39| 
+         000039 001C 
+         00003b 06   
+     189 00003c C051          MOV AC0, *port(#7174) ; |39| 
+         00003e 1C06 
+     190 000040 4A0C          B $C$L2   ; |39| 
+     191                                                      ; branch occurs ; |39| 
+     192 000042       $C$L1:    
+     193                      .dwpsn  file "../include/usbstk5515_gpio.c",line 41,column 13,is_stmt
+     194              ;----------------------------------------------------------------------
+     195              ;  41 | SYS_GPIO_DIR0 |= pin_id;                                               
+     196              ;----------------------------------------------------------------------
+     197 000042 ED08          MOV dbl(*SP(#4)), AC0 ; |41| 
+         000044 08   
+     198 000045 DA51          OR *port(#7174), AC0, AC0 ; |41| 
+         000047 001C 
+         000049 06   
+     199 00004a C051          MOV AC0, *port(#7174) ; |41| 
+         00004c 1C06 
+     200 00004e       $C$L2:    
+     201                      .dwpsn  file "../include/usbstk5515_gpio.c",line 43,column 5,is_stmt
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE    5
+
+     202              ;----------------------------------------------------------------------
+     203              ;  43 | if (bank_id == 1)                                                      
+     204              ;----------------------------------------------------------------------
+     205              
+     206 00004e ED04          MOV dbl(*SP(#2)), AC1 ; |43| 
+         000050 18   
+     207 000051 3D10  ||      MOV #1, AC0 ; |43| 
+     208              
+     209 000053 121C          CMPU AC1 != AC0, TC1 ; |43| 
+         000055 04   
+     210 000056 0464          BCC $C$L4,TC1 ; |43| 
+         000058 22   
+     211                                                      ; branchcc occurs ; |43| 
+     212                      .dwpsn  file "../include/usbstk5515_gpio.c",line 44,column 9,is_stmt
+     213              ;----------------------------------------------------------------------
+     214              ;  44 | if ((direction & 1) == GPIO_IN)                                        
+     215              ;----------------------------------------------------------------------
+     216 000059 DC02          BTST #0, *SP(#1), TC1 ; |44| 
+         00005b 00   
+     217 00005c 0464          BCC $C$L3,TC1 ; |44| 
+         00005e 10   
+     218                                                      ; branchcc occurs ; |44| 
+     219                      .dwpsn  file "../include/usbstk5515_gpio.c",line 45,column 10,is_stmt
+     220              ;----------------------------------------------------------------------
+     221              ;  45 | SYS_GPIO_DIR1 &= ~pin_id;                                              
+     222              ;  46 | else                                                                   
+     223              ;----------------------------------------------------------------------
+     224 00005f ED08          MOV dbl(*SP(#4)), AC0 ; |45| 
+         000061 08   
+     225 000062 3600          NOT AC0, AC0 ; |45| 
+     226 000064 D951          AND *port(#7175), AC0, AC0 ; |45| 
+         000066 001C 
+         000068 07   
+     227 000069 C051          MOV AC0, *port(#7175) ; |45| 
+         00006b 1C07 
+     228 00006d 4A0C          B $C$L4   ; |45| 
+     229                                                      ; branch occurs ; |45| 
+     230 00006f       $C$L3:    
+     231                      .dwpsn  file "../include/usbstk5515_gpio.c",line 47,column 13,is_stmt
+     232              ;----------------------------------------------------------------------
+     233              ;  47 | SYS_GPIO_DIR1 |= pin_id;                                               
+     234              ;----------------------------------------------------------------------
+     235 00006f ED08          MOV dbl(*SP(#4)), AC0 ; |47| 
+         000071 08   
+     236 000072 DA51          OR *port(#7175), AC0, AC0 ; |47| 
+         000074 001C 
+         000076 07   
+     237 000077 C051          MOV AC0, *port(#7175) ; |47| 
+         000079 1C07 
+     238 00007b       $C$L4:    
+     239                      .dwpsn  file "../include/usbstk5515_gpio.c",line 49,column 5,is_stmt
+     240              ;----------------------------------------------------------------------
+     241              ;  49 | return 0;                                                              
+     242              ;----------------------------------------------------------------------
+     243 00007b 3C04          MOV #0, T0
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE    6
+
+     244                      .dwpsn  file "../include/usbstk5515_gpio.c",line 50,column 1,is_stmt
+     245 00007d 4E07          AADD #7, SP
+     246                      .dwcfi  cfa_offset, 1
+     247              $C$DW$10        .dwtag  DW_TAG_TI_branch
+     248                      .dwattr $C$DW$10, DW_AT_low_pc(0x00)
+     249                      .dwattr $C$DW$10, DW_AT_TI_return
+     250 00007f 4804          RET
+     251                                                      ; return occurs
+     252                      .dwattr $C$DW$3, DW_AT_TI_end_file("../include/usbstk5515_gpio.c")
+     253                      .dwattr $C$DW$3, DW_AT_TI_end_line(0x32)
+     254                      .dwattr $C$DW$3, DW_AT_TI_end_column(0x01)
+     255                      .dwendentry
+     256                      .dwendtag $C$DW$3
+     257              
+     258 000081               .sect   ".text"
+     259                      .global _USBSTK5515_GPIO_setOutput
+     260              
+     261              $C$DW$11        .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_GPIO_setOutput")
+     262                      .dwattr $C$DW$11, DW_AT_low_pc(_USBSTK5515_GPIO_setOutput)
+     263                      .dwattr $C$DW$11, DW_AT_high_pc(0x00)
+     264                      .dwattr $C$DW$11, DW_AT_TI_symbol_name("_USBSTK5515_GPIO_setOutput")
+     265                      .dwattr $C$DW$11, DW_AT_external
+     266                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$8)
+     267                      .dwattr $C$DW$11, DW_AT_TI_begin_file("../include/usbstk5515_gpio.c")
+     268                      .dwattr $C$DW$11, DW_AT_TI_begin_line(0x3c)
+     269                      .dwattr $C$DW$11, DW_AT_TI_begin_column(0x07)
+     270                      .dwattr $C$DW$11, DW_AT_decl_file("../include/usbstk5515_gpio.c")
+     271                      .dwattr $C$DW$11, DW_AT_decl_line(0x3c)
+     272                      .dwattr $C$DW$11, DW_AT_decl_column(0x07)
+     273                      .dwattr $C$DW$11, DW_AT_TI_max_frame_size(0x08)
+     274                      .dwpsn  file "../include/usbstk5515_gpio.c",line 61,column 1,is_stmt,address _USBSTK5515_GPIO_setOutp
+     275              
+     276                      .dwfde $C$DW$CIE, _USBSTK5515_GPIO_setOutput
+     277              $C$DW$12        .dwtag  DW_TAG_formal_parameter, DW_AT_name("number")
+     278                      .dwattr $C$DW$12, DW_AT_TI_symbol_name("_number")
+     279                      .dwattr $C$DW$12, DW_AT_type(*$C$DW$T$9)
+     280                      .dwattr $C$DW$12, DW_AT_location[DW_OP_reg12]
+     281              $C$DW$13        .dwtag  DW_TAG_formal_parameter, DW_AT_name("output")
+     282                      .dwattr $C$DW$13, DW_AT_TI_symbol_name("_output")
+     283                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$9)
+     284                      .dwattr $C$DW$13, DW_AT_location[DW_OP_reg13]
+     285              ;----------------------------------------------------------------------
+     286              ;  60 | Int16 USBSTK5515_GPIO_setOutput( Uint16 number, Uint16 output )        
+     287              ;----------------------------------------------------------------------
+     288              ;*******************************************************************************
+     289              ;* FUNCTION NAME: USBSTK5515_GPIO_setOutput                                    *
+     290              ;*                                                                             *
+     291              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,T1,AR1,SP,TC1,M40,SATA,SATD,RDM,  *
+     292              ;*                        FRCT,SMUL                                            *
+     293              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     294              ;*   Total Frame Size   : 8 words                                              *
+     295              ;*                        (2 return address/alignment)                         *
+     296              ;*                        (6 local values)                                     *
+     297              ;*   Min System Stack   : 1 word                                               *
+     298              ;*******************************************************************************
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE    7
+
+     299 000081       _USBSTK5515_GPIO_setOutput:
+     300                      .dwcfi  cfa_offset, 1
+     301                      .dwcfi  save_reg_to_mem, 91, -1
+     302 000081 4EF9          AADD #-7, SP
+     303                      .dwcfi  cfa_offset, 8
+     304              $C$DW$14        .dwtag  DW_TAG_variable, DW_AT_name("number")
+     305                      .dwattr $C$DW$14, DW_AT_TI_symbol_name("_number")
+     306                      .dwattr $C$DW$14, DW_AT_type(*$C$DW$T$9)
+     307                      .dwattr $C$DW$14, DW_AT_location[DW_OP_bregx 0x24 0]
+     308              $C$DW$15        .dwtag  DW_TAG_variable, DW_AT_name("output")
+     309                      .dwattr $C$DW$15, DW_AT_TI_symbol_name("_output")
+     310                      .dwattr $C$DW$15, DW_AT_type(*$C$DW$T$9)
+     311                      .dwattr $C$DW$15, DW_AT_location[DW_OP_bregx 0x24 1]
+     312              $C$DW$16        .dwtag  DW_TAG_variable, DW_AT_name("bank_id")
+     313                      .dwattr $C$DW$16, DW_AT_TI_symbol_name("_bank_id")
+     314                      .dwattr $C$DW$16, DW_AT_type(*$C$DW$T$13)
+     315                      .dwattr $C$DW$16, DW_AT_location[DW_OP_bregx 0x24 2]
+     316              $C$DW$17        .dwtag  DW_TAG_variable, DW_AT_name("pin_id")
+     317                      .dwattr $C$DW$17, DW_AT_TI_symbol_name("_pin_id")
+     318                      .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$13)
+     319                      .dwattr $C$DW$17, DW_AT_location[DW_OP_bregx 0x24 4]
+     320 000083 C502          MOV T1, *SP(#1) ; |61| 
+     321 000085 C400          MOV T0, *SP(#0) ; |61| 
+     322                      .dwpsn  file "../include/usbstk5515_gpio.c",line 62,column 12,is_stmt
+     323              ;----------------------------------------------------------------------
+     324              ;  62 | Uint32 bank_id = ( number >> 4 );                                      
+     325              ;----------------------------------------------------------------------
+     326 000087 2240          MOV T0, AC0
+     327 000089 76FF          BFXTR #0xfff0, AC0, AR1 ; |62| 
+         00008b F090 
+     328 00008d 7DFF          AND #0xffff, AR1, AC0 ; |62| 
+         00008f FF09 
+     329 000091 EB04          MOV AC0, dbl(*SP(#2)) ; |62| 
+         000093 08   
+     330                      .dwpsn  file "../include/usbstk5515_gpio.c",line 63,column 12,is_stmt
+     331              ;----------------------------------------------------------------------
+     332              ;  63 | Uint32 pin_id  = ( 1 << ( number & 0xF ) );                            
+     333              ;----------------------------------------------------------------------
+     334 000094 A900          MOV *SP(#0), AR1 ; |63| 
+     335              
+     336 000096 180F          AND #0x000f, AR1, T1 ; |63| 
+         000098 59   
+     337 000099 3D10  ||      MOV #1, AC0
+     338              
+     339 00009b 5C05          SFTS AC0, T1, AC0 ; |63| 
+     340 00009d A010          MOV mmap(AC0L), AC0 ; |63| 
+         00009f 98   
+     341 0000a0 EB08          MOV AC0, dbl(*SP(#4)) ; |63| 
+         0000a2 08   
+     342                      .dwpsn  file "../include/usbstk5515_gpio.c",line 65,column 5,is_stmt
+     343              ;----------------------------------------------------------------------
+     344              ;  65 | if (bank_id == 0)                                                      
+     345              ;----------------------------------------------------------------------
+     346 0000a3 ED04          MOV dbl(*SP(#2)), AC0 ; |65| 
+         0000a5 08   
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE    8
+
+     347 0000a6 0410          BCC $C$L6,AC0 != #0 ; |65| 
+         0000a8 22   
+     348                                                      ; branchcc occurs ; |65| 
+     349                      .dwpsn  file "../include/usbstk5515_gpio.c",line 66,column 9,is_stmt
+     350              ;----------------------------------------------------------------------
+     351              ;  66 | if ((output & 1) == 0)                                                 
+     352              ;----------------------------------------------------------------------
+     353 0000a9 DC02          BTST #0, *SP(#1), TC1 ; |66| 
+         0000ab 00   
+     354 0000ac 0464          BCC $C$L5,TC1 ; |66| 
+         0000ae 10   
+     355                                                      ; branchcc occurs ; |66| 
+     356                      .dwpsn  file "../include/usbstk5515_gpio.c",line 67,column 10,is_stmt
+     357              ;----------------------------------------------------------------------
+     358              ;  67 | SYS_GPIO_DATAOUT0 &= ~pin_id;                                          
+     359              ;  68 | else                                                                   
+     360              ;----------------------------------------------------------------------
+     361 0000af ED08          MOV dbl(*SP(#4)), AC0 ; |67| 
+         0000b1 08   
+     362 0000b2 3600          NOT AC0, AC0 ; |67| 
+     363 0000b4 D951          AND *port(#7178), AC0, AC0 ; |67| 
+         0000b6 001C 
+         0000b8 0A   
+     364 0000b9 C051          MOV AC0, *port(#7178) ; |67| 
+         0000bb 1C0A 
+     365 0000bd 4A0C          B $C$L6   ; |67| 
+     366                                                      ; branch occurs ; |67| 
+     367 0000bf       $C$L5:    
+     368                      .dwpsn  file "../include/usbstk5515_gpio.c",line 69,column 13,is_stmt
+     369              ;----------------------------------------------------------------------
+     370              ;  69 | SYS_GPIO_DATAOUT0 |= pin_id;                                           
+     371              ;----------------------------------------------------------------------
+     372 0000bf ED08          MOV dbl(*SP(#4)), AC0 ; |69| 
+         0000c1 08   
+     373 0000c2 DA51          OR *port(#7178), AC0, AC0 ; |69| 
+         0000c4 001C 
+         0000c6 0A   
+     374 0000c7 C051          MOV AC0, *port(#7178) ; |69| 
+         0000c9 1C0A 
+     375 0000cb       $C$L6:    
+     376                      .dwpsn  file "../include/usbstk5515_gpio.c",line 71,column 5,is_stmt
+     377              ;----------------------------------------------------------------------
+     378              ;  71 | if (bank_id == 1)                                                      
+     379              ;----------------------------------------------------------------------
+     380              
+     381 0000cb ED04          MOV dbl(*SP(#2)), AC1 ; |71| 
+         0000cd 18   
+     382 0000ce 3D10  ||      MOV #1, AC0 ; |71| 
+     383              
+     384 0000d0 121C          CMPU AC1 != AC0, TC1 ; |71| 
+         0000d2 04   
+     385 0000d3 0464          BCC $C$L8,TC1 ; |71| 
+         0000d5 22   
+     386                                                      ; branchcc occurs ; |71| 
+     387                      .dwpsn  file "../include/usbstk5515_gpio.c",line 72,column 9,is_stmt
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE    9
+
+     388              ;----------------------------------------------------------------------
+     389              ;  72 | if ((output & 1) == 0)                                                 
+     390              ;----------------------------------------------------------------------
+     391 0000d6 DC02          BTST #0, *SP(#1), TC1 ; |72| 
+         0000d8 00   
+     392 0000d9 0464          BCC $C$L7,TC1 ; |72| 
+         0000db 10   
+     393                                                      ; branchcc occurs ; |72| 
+     394                      .dwpsn  file "../include/usbstk5515_gpio.c",line 73,column 10,is_stmt
+     395              ;----------------------------------------------------------------------
+     396              ;  73 | SYS_GPIO_DATAOUT1 &= ~pin_id;                                          
+     397              ;  74 | else                                                                   
+     398              ;----------------------------------------------------------------------
+     399 0000dc ED08          MOV dbl(*SP(#4)), AC0 ; |73| 
+         0000de 08   
+     400 0000df 3600          NOT AC0, AC0 ; |73| 
+     401 0000e1 D951          AND *port(#7179), AC0, AC0 ; |73| 
+         0000e3 001C 
+         0000e5 0B   
+     402 0000e6 C051          MOV AC0, *port(#7179) ; |73| 
+         0000e8 1C0B 
+     403 0000ea 4A0C          B $C$L8   ; |73| 
+     404                                                      ; branch occurs ; |73| 
+     405 0000ec       $C$L7:    
+     406                      .dwpsn  file "../include/usbstk5515_gpio.c",line 75,column 13,is_stmt
+     407              ;----------------------------------------------------------------------
+     408              ;  75 | SYS_GPIO_DATAOUT1 |= pin_id;                                           
+     409              ;----------------------------------------------------------------------
+     410 0000ec ED08          MOV dbl(*SP(#4)), AC0 ; |75| 
+         0000ee 08   
+     411 0000ef DA51          OR *port(#7179), AC0, AC0 ; |75| 
+         0000f1 001C 
+         0000f3 0B   
+     412 0000f4 C051          MOV AC0, *port(#7179) ; |75| 
+         0000f6 1C0B 
+     413 0000f8       $C$L8:    
+     414                      .dwpsn  file "../include/usbstk5515_gpio.c",line 77,column 5,is_stmt
+     415              ;----------------------------------------------------------------------
+     416              ;  77 | return 0;                                                              
+     417              ;----------------------------------------------------------------------
+     418 0000f8 3C04          MOV #0, T0
+     419                      .dwpsn  file "../include/usbstk5515_gpio.c",line 78,column 1,is_stmt
+     420 0000fa 4E07          AADD #7, SP
+     421                      .dwcfi  cfa_offset, 1
+     422              $C$DW$18        .dwtag  DW_TAG_TI_branch
+     423                      .dwattr $C$DW$18, DW_AT_low_pc(0x00)
+     424                      .dwattr $C$DW$18, DW_AT_TI_return
+     425 0000fc 4804          RET
+     426                                                      ; return occurs
+     427                      .dwattr $C$DW$11, DW_AT_TI_end_file("../include/usbstk5515_gpio.c")
+     428                      .dwattr $C$DW$11, DW_AT_TI_end_line(0x4e)
+     429                      .dwattr $C$DW$11, DW_AT_TI_end_column(0x01)
+     430                      .dwendentry
+     431                      .dwendtag $C$DW$11
+     432              
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE   10
+
+     433 0000fe               .sect   ".text"
+     434                      .global _USBSTK5515_GPIO_getInput
+     435              
+     436              $C$DW$19        .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_GPIO_getInput")
+     437                      .dwattr $C$DW$19, DW_AT_low_pc(_USBSTK5515_GPIO_getInput)
+     438                      .dwattr $C$DW$19, DW_AT_high_pc(0x00)
+     439                      .dwattr $C$DW$19, DW_AT_TI_symbol_name("_USBSTK5515_GPIO_getInput")
+     440                      .dwattr $C$DW$19, DW_AT_external
+     441                      .dwattr $C$DW$19, DW_AT_type(*$C$DW$T$8)
+     442                      .dwattr $C$DW$19, DW_AT_TI_begin_file("../include/usbstk5515_gpio.c")
+     443                      .dwattr $C$DW$19, DW_AT_TI_begin_line(0x5a)
+     444                      .dwattr $C$DW$19, DW_AT_TI_begin_column(0x07)
+     445                      .dwattr $C$DW$19, DW_AT_decl_file("../include/usbstk5515_gpio.c")
+     446                      .dwattr $C$DW$19, DW_AT_decl_line(0x5a)
+     447                      .dwattr $C$DW$19, DW_AT_decl_column(0x07)
+     448                      .dwattr $C$DW$19, DW_AT_TI_max_frame_size(0x0a)
+     449                      .dwpsn  file "../include/usbstk5515_gpio.c",line 91,column 1,is_stmt,address _USBSTK5515_GPIO_getInpu
+     450              
+     451                      .dwfde $C$DW$CIE, _USBSTK5515_GPIO_getInput
+     452              $C$DW$20        .dwtag  DW_TAG_formal_parameter, DW_AT_name("number")
+     453                      .dwattr $C$DW$20, DW_AT_TI_symbol_name("_number")
+     454                      .dwattr $C$DW$20, DW_AT_type(*$C$DW$T$9)
+     455                      .dwattr $C$DW$20, DW_AT_location[DW_OP_reg12]
+     456              ;----------------------------------------------------------------------
+     457              ;  90 | Int16 USBSTK5515_GPIO_getInput( Uint16 number )                        
+     458              ;----------------------------------------------------------------------
+     459              ;*******************************************************************************
+     460              ;* FUNCTION NAME: USBSTK5515_GPIO_getInput                                     *
+     461              ;*                                                                             *
+     462              ;*   Function Uses Regs : AC0,AC0,AC1,AC1,T0,T1,AR1,SP,CARRY,TC1,M40,SATA,SATD,*
+     463              ;*                        RDM,FRCT,SMUL                                        *
+     464              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     465              ;*   Total Frame Size   : 10 words                                             *
+     466              ;*                        (2 return address/alignment)                         *
+     467              ;*                        (8 local values)                                     *
+     468              ;*   Min System Stack   : 1 word                                               *
+     469              ;*******************************************************************************
+     470 0000fe       _USBSTK5515_GPIO_getInput:
+     471                      .dwcfi  cfa_offset, 1
+     472                      .dwcfi  save_reg_to_mem, 91, -1
+     473 0000fe 4EF7          AADD #-9, SP
+     474                      .dwcfi  cfa_offset, 10
+     475              $C$DW$21        .dwtag  DW_TAG_variable, DW_AT_name("number")
+     476                      .dwattr $C$DW$21, DW_AT_TI_symbol_name("_number")
+     477                      .dwattr $C$DW$21, DW_AT_type(*$C$DW$T$9)
+     478                      .dwattr $C$DW$21, DW_AT_location[DW_OP_bregx 0x24 0]
+     479              $C$DW$22        .dwtag  DW_TAG_variable, DW_AT_name("input")
+     480                      .dwattr $C$DW$22, DW_AT_TI_symbol_name("_input")
+     481                      .dwattr $C$DW$22, DW_AT_type(*$C$DW$T$13)
+     482                      .dwattr $C$DW$22, DW_AT_location[DW_OP_bregx 0x24 2]
+     483              $C$DW$23        .dwtag  DW_TAG_variable, DW_AT_name("bank_id")
+     484                      .dwattr $C$DW$23, DW_AT_TI_symbol_name("_bank_id")
+     485                      .dwattr $C$DW$23, DW_AT_type(*$C$DW$T$13)
+     486                      .dwattr $C$DW$23, DW_AT_location[DW_OP_bregx 0x24 4]
+     487              $C$DW$24        .dwtag  DW_TAG_variable, DW_AT_name("pin_id")
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE   11
+
+     488                      .dwattr $C$DW$24, DW_AT_TI_symbol_name("_pin_id")
+     489                      .dwattr $C$DW$24, DW_AT_type(*$C$DW$T$13)
+     490                      .dwattr $C$DW$24, DW_AT_location[DW_OP_bregx 0x24 6]
+     491              ;----------------------------------------------------------------------
+     492              ;  92 | Uint32 input;                                                          
+     493              ;----------------------------------------------------------------------
+     494 000100 C400          MOV T0, *SP(#0) ; |91| 
+     495                      .dwpsn  file "../include/usbstk5515_gpio.c",line 93,column 12,is_stmt
+     496              ;----------------------------------------------------------------------
+     497              ;  93 | Uint32 bank_id = ( number >> 4 );                                      
+     498              ;----------------------------------------------------------------------
+     499 000102 2240          MOV T0, AC0
+     500 000104 76FF          BFXTR #0xfff0, AC0, AR1 ; |93| 
+         000106 F090 
+     501 000108 7DFF          AND #0xffff, AR1, AC0 ; |93| 
+         00010a FF09 
+     502 00010c EB08          MOV AC0, dbl(*SP(#4)) ; |93| 
+         00010e 08   
+     503                      .dwpsn  file "../include/usbstk5515_gpio.c",line 94,column 12,is_stmt
+     504              ;----------------------------------------------------------------------
+     505              ;  94 | Uint32 pin_id  = ( number & 0xF );                                     
+     506              ;----------------------------------------------------------------------
+     507 00010f A900          MOV *SP(#0), AR1 ; |94| 
+     508 000111 180F          AND #0x000f, AR1, AC0 ; |94| 
+         000113 09   
+     509 000114 EB0C          MOV AC0, dbl(*SP(#6)) ; |94| 
+         000116 08   
+     510                      .dwpsn  file "../include/usbstk5515_gpio.c",line 96,column 5,is_stmt
+     511              ;----------------------------------------------------------------------
+     512              ;  96 | if (bank_id == 0)                                                      
+     513              ;----------------------------------------------------------------------
+     514 000117 ED08          MOV dbl(*SP(#4)), AC0 ; |96| 
+         000119 08   
+     515 00011a 0410          BCC $C$L9,AC0 != #0 ; |96| 
+         00011c 14   
+     516                                                      ; branchcc occurs ; |96| 
+     517                      .dwpsn  file "../include/usbstk5515_gpio.c",line 97,column 9,is_stmt
+     518              ;----------------------------------------------------------------------
+     519              ;  97 | input = (SYS_GPIO_DATAIN0 >> pin_id) & 1;                              
+     520              ;----------------------------------------------------------------------
+     521 00011d ED0C          MOV dbl(*SP(#6)), AC0 ; |97| 
+         00011f 08   
+     522 000120 3400          NEG AC0, AC0 ; |97| 
+     523 000122 2205          MOV AC0, T1 ; |97| 
+     524 000124 DF51          MOV uns(*port(#7176)), AC0 ; |97| 
+         000126 051C 
+         000128 08   
+     525 000129 5C05          SFTS AC0, T1, AC0 ; |97| 
+     526 00012b 1801          AND #0x0001, AC0, AC0 ; |97| 
+         00012d 00   
+     527 00012e EB04          MOV AC0, dbl(*SP(#2)) ; |97| 
+         000130 08   
+     528 000131       $C$L9:    
+     529                      .dwpsn  file "../include/usbstk5515_gpio.c",line 98,column 5,is_stmt
+     530              ;----------------------------------------------------------------------
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE   12
+
+     531              ;  98 | if (bank_id == 1)                                                      
+     532              ;----------------------------------------------------------------------
+     533              
+     534 000131 ED08          MOV dbl(*SP(#4)), AC1 ; |98| 
+         000133 18   
+     535 000134 3D10  ||      MOV #1, AC0 ; |98| 
+     536              
+     537 000136 121C          CMPU AC1 != AC0, TC1 ; |98| 
+         000138 04   
+     538 000139 0464          BCC $C$L10,TC1 ; |98| 
+         00013b 14   
+     539                                                      ; branchcc occurs ; |98| 
+     540                      .dwpsn  file "../include/usbstk5515_gpio.c",line 99,column 9,is_stmt
+     541              ;----------------------------------------------------------------------
+     542              ;  99 | input = (SYS_GPIO_DATAIN1 >> pin_id) & 1;                              
+     543              ;----------------------------------------------------------------------
+     544 00013c ED0C          MOV dbl(*SP(#6)), AC0 ; |99| 
+         00013e 08   
+     545 00013f 3400          NEG AC0, AC0 ; |99| 
+     546 000141 2205          MOV AC0, T1 ; |99| 
+     547 000143 DF51          MOV uns(*port(#7177)), AC0 ; |99| 
+         000145 051C 
+         000147 09   
+     548 000148 5C05          SFTS AC0, T1, AC0 ; |99| 
+     549 00014a 1801          AND #0x0001, AC0, AC0 ; |99| 
+         00014c 00   
+     550 00014d EB04          MOV AC0, dbl(*SP(#2)) ; |99| 
+         00014f 08   
+     551 000150       $C$L10:    
+     552                      .dwpsn  file "../include/usbstk5515_gpio.c",line 101,column 5,is_stmt
+     553              ;----------------------------------------------------------------------
+     554              ; 101 | return input;                                                          
+     555              ;----------------------------------------------------------------------
+     556 000150 A406          MOV *SP(#3), T0 ; |101| 
+     557                      .dwpsn  file "../include/usbstk5515_gpio.c",line 102,column 1,is_stmt
+     558 000152 4E09          AADD #9, SP
+     559                      .dwcfi  cfa_offset, 1
+     560              $C$DW$25        .dwtag  DW_TAG_TI_branch
+     561                      .dwattr $C$DW$25, DW_AT_low_pc(0x00)
+     562                      .dwattr $C$DW$25, DW_AT_TI_return
+     563 000154 4804          RET
+     564                                                      ; return occurs
+     565                      .dwattr $C$DW$19, DW_AT_TI_end_file("../include/usbstk5515_gpio.c")
+     566                      .dwattr $C$DW$19, DW_AT_TI_end_line(0x66)
+     567                      .dwattr $C$DW$19, DW_AT_TI_end_column(0x01)
+     568                      .dwendentry
+     569                      .dwendtag $C$DW$19
+     570              
+     571              
+     572              ;*******************************************************************************
+     573              ;* TYPE INFORMATION                                                            *
+     574              ;*******************************************************************************
+     575              $C$DW$T$4       .dwtag  DW_TAG_base_type
+     576                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+     577                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE   13
+
+     578                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+     579              $C$DW$T$5       .dwtag  DW_TAG_base_type
+     580                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+     581                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+     582                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+     583              $C$DW$T$6       .dwtag  DW_TAG_base_type
+     584                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+     585                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+     586                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+     587              $C$DW$T$7       .dwtag  DW_TAG_base_type
+     588                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+     589                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+     590                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+     591              $C$DW$T$8       .dwtag  DW_TAG_base_type
+     592                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+     593                      .dwattr $C$DW$T$8, DW_AT_name("short")
+     594                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+     595              $C$DW$T$9       .dwtag  DW_TAG_base_type
+     596                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+     597                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+     598                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+     599              $C$DW$T$10      .dwtag  DW_TAG_base_type
+     600                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+     601                      .dwattr $C$DW$T$10, DW_AT_name("int")
+     602                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+     603              $C$DW$T$11      .dwtag  DW_TAG_base_type
+     604                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+     605                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+     606                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+     607              $C$DW$T$12      .dwtag  DW_TAG_base_type
+     608                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+     609                      .dwattr $C$DW$T$12, DW_AT_name("long")
+     610                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+     611              $C$DW$T$13      .dwtag  DW_TAG_base_type
+     612                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+     613                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+     614                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+     615              $C$DW$T$14      .dwtag  DW_TAG_base_type
+     616                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+     617                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+     618                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+     619                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+     620                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+     621              $C$DW$T$15      .dwtag  DW_TAG_base_type
+     622                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+     623                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+     624                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+     625                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+     626                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+     627              $C$DW$T$16      .dwtag  DW_TAG_base_type
+     628                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+     629                      .dwattr $C$DW$T$16, DW_AT_name("float")
+     630                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+     631              $C$DW$T$17      .dwtag  DW_TAG_base_type
+     632                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE   14
+
+     633                      .dwattr $C$DW$T$17, DW_AT_name("double")
+     634                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+     635              $C$DW$T$18      .dwtag  DW_TAG_base_type
+     636                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+     637                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+     638                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+     639                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+     640              
+     641              ;***************************************************************
+     642              ;* DWARF CIE ENTRIES                                           *
+     643              ;***************************************************************
+     644              
+     645              $C$DW$CIE       .dwcie 91
+     646                      .dwcfi  cfa_register, 36
+     647                      .dwcfi  cfa_offset, 0
+     648                      .dwcfi  undefined, 0
+     649                      .dwcfi  undefined, 1
+     650                      .dwcfi  undefined, 2
+     651                      .dwcfi  undefined, 3
+     652                      .dwcfi  undefined, 4
+     653                      .dwcfi  undefined, 5
+     654                      .dwcfi  undefined, 6
+     655                      .dwcfi  undefined, 7
+     656                      .dwcfi  undefined, 8
+     657                      .dwcfi  undefined, 9
+     658                      .dwcfi  undefined, 10
+     659                      .dwcfi  undefined, 11
+     660                      .dwcfi  undefined, 12
+     661                      .dwcfi  undefined, 13
+     662                      .dwcfi  same_value, 14
+     663                      .dwcfi  same_value, 15
+     664                      .dwcfi  undefined, 16
+     665                      .dwcfi  undefined, 17
+     666                      .dwcfi  undefined, 18
+     667                      .dwcfi  undefined, 19
+     668                      .dwcfi  undefined, 20
+     669                      .dwcfi  undefined, 21
+     670                      .dwcfi  undefined, 22
+     671                      .dwcfi  undefined, 23
+     672                      .dwcfi  undefined, 24
+     673                      .dwcfi  undefined, 25
+     674                      .dwcfi  same_value, 26
+     675                      .dwcfi  same_value, 27
+     676                      .dwcfi  same_value, 28
+     677                      .dwcfi  same_value, 29
+     678                      .dwcfi  same_value, 30
+     679                      .dwcfi  same_value, 31
+     680                      .dwcfi  undefined, 32
+     681                      .dwcfi  undefined, 33
+     682                      .dwcfi  undefined, 34
+     683                      .dwcfi  undefined, 35
+     684                      .dwcfi  undefined, 36
+     685                      .dwcfi  undefined, 37
+     686                      .dwcfi  undefined, 38
+     687                      .dwcfi  undefined, 39
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE   15
+
+     688                      .dwcfi  undefined, 40
+     689                      .dwcfi  undefined, 41
+     690                      .dwcfi  undefined, 42
+     691                      .dwcfi  undefined, 43
+     692                      .dwcfi  undefined, 44
+     693                      .dwcfi  undefined, 45
+     694                      .dwcfi  undefined, 46
+     695                      .dwcfi  undefined, 47
+     696                      .dwcfi  undefined, 48
+     697                      .dwcfi  undefined, 49
+     698                      .dwcfi  undefined, 50
+     699                      .dwcfi  undefined, 51
+     700                      .dwcfi  undefined, 52
+     701                      .dwcfi  undefined, 53
+     702                      .dwcfi  undefined, 54
+     703                      .dwcfi  undefined, 55
+     704                      .dwcfi  undefined, 56
+     705                      .dwcfi  undefined, 57
+     706                      .dwcfi  undefined, 58
+     707                      .dwcfi  undefined, 59
+     708                      .dwcfi  undefined, 60
+     709                      .dwcfi  undefined, 61
+     710                      .dwcfi  undefined, 62
+     711                      .dwcfi  undefined, 63
+     712                      .dwcfi  undefined, 64
+     713                      .dwcfi  undefined, 65
+     714                      .dwcfi  undefined, 66
+     715                      .dwcfi  undefined, 67
+     716                      .dwcfi  undefined, 68
+     717                      .dwcfi  undefined, 69
+     718                      .dwcfi  undefined, 70
+     719                      .dwcfi  undefined, 71
+     720                      .dwcfi  undefined, 72
+     721                      .dwcfi  undefined, 73
+     722                      .dwcfi  undefined, 74
+     723                      .dwcfi  undefined, 75
+     724                      .dwcfi  undefined, 76
+     725                      .dwcfi  undefined, 77
+     726                      .dwcfi  undefined, 78
+     727                      .dwcfi  undefined, 79
+     728                      .dwcfi  undefined, 80
+     729                      .dwcfi  undefined, 81
+     730                      .dwcfi  undefined, 82
+     731                      .dwcfi  undefined, 83
+     732                      .dwcfi  undefined, 84
+     733                      .dwcfi  undefined, 85
+     734                      .dwcfi  undefined, 86
+     735                      .dwcfi  undefined, 87
+     736                      .dwcfi  undefined, 88
+     737                      .dwcfi  undefined, 89
+     738                      .dwcfi  undefined, 90
+     739                      .dwcfi  undefined, 91
+     740                      .dwendentry
+     741              
+     742              ;***************************************************************
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE   16
+
+     743              ;* DWARF REGISTER MAP                                          *
+     744              ;***************************************************************
+     745              
+     746              $C$DW$26        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+     747                      .dwattr $C$DW$26, DW_AT_location[DW_OP_reg0]
+     748              $C$DW$27        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+     749                      .dwattr $C$DW$27, DW_AT_location[DW_OP_reg1]
+     750              $C$DW$28        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+     751                      .dwattr $C$DW$28, DW_AT_location[DW_OP_reg2]
+     752              $C$DW$29        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+     753                      .dwattr $C$DW$29, DW_AT_location[DW_OP_reg3]
+     754              $C$DW$30        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+     755                      .dwattr $C$DW$30, DW_AT_location[DW_OP_reg4]
+     756              $C$DW$31        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+     757                      .dwattr $C$DW$31, DW_AT_location[DW_OP_reg5]
+     758              $C$DW$32        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+     759                      .dwattr $C$DW$32, DW_AT_location[DW_OP_reg6]
+     760              $C$DW$33        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+     761                      .dwattr $C$DW$33, DW_AT_location[DW_OP_reg7]
+     762              $C$DW$34        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+     763                      .dwattr $C$DW$34, DW_AT_location[DW_OP_reg8]
+     764              $C$DW$35        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+     765                      .dwattr $C$DW$35, DW_AT_location[DW_OP_reg9]
+     766              $C$DW$36        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+     767                      .dwattr $C$DW$36, DW_AT_location[DW_OP_reg10]
+     768              $C$DW$37        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+     769                      .dwattr $C$DW$37, DW_AT_location[DW_OP_reg11]
+     770              $C$DW$38        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+     771                      .dwattr $C$DW$38, DW_AT_location[DW_OP_reg12]
+     772              $C$DW$39        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+     773                      .dwattr $C$DW$39, DW_AT_location[DW_OP_reg13]
+     774              $C$DW$40        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+     775                      .dwattr $C$DW$40, DW_AT_location[DW_OP_reg14]
+     776              $C$DW$41        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+     777                      .dwattr $C$DW$41, DW_AT_location[DW_OP_reg15]
+     778              $C$DW$42        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+     779                      .dwattr $C$DW$42, DW_AT_location[DW_OP_reg16]
+     780              $C$DW$43        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+     781                      .dwattr $C$DW$43, DW_AT_location[DW_OP_reg17]
+     782              $C$DW$44        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+     783                      .dwattr $C$DW$44, DW_AT_location[DW_OP_reg18]
+     784              $C$DW$45        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+     785                      .dwattr $C$DW$45, DW_AT_location[DW_OP_reg19]
+     786              $C$DW$46        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+     787                      .dwattr $C$DW$46, DW_AT_location[DW_OP_reg20]
+     788              $C$DW$47        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+     789                      .dwattr $C$DW$47, DW_AT_location[DW_OP_reg21]
+     790              $C$DW$48        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+     791                      .dwattr $C$DW$48, DW_AT_location[DW_OP_reg22]
+     792              $C$DW$49        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+     793                      .dwattr $C$DW$49, DW_AT_location[DW_OP_reg23]
+     794              $C$DW$50        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+     795                      .dwattr $C$DW$50, DW_AT_location[DW_OP_reg24]
+     796              $C$DW$51        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+     797                      .dwattr $C$DW$51, DW_AT_location[DW_OP_reg25]
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE   17
+
+     798              $C$DW$52        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+     799                      .dwattr $C$DW$52, DW_AT_location[DW_OP_reg26]
+     800              $C$DW$53        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+     801                      .dwattr $C$DW$53, DW_AT_location[DW_OP_reg27]
+     802              $C$DW$54        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+     803                      .dwattr $C$DW$54, DW_AT_location[DW_OP_reg28]
+     804              $C$DW$55        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+     805                      .dwattr $C$DW$55, DW_AT_location[DW_OP_reg29]
+     806              $C$DW$56        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+     807                      .dwattr $C$DW$56, DW_AT_location[DW_OP_reg30]
+     808              $C$DW$57        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+     809                      .dwattr $C$DW$57, DW_AT_location[DW_OP_reg31]
+     810              $C$DW$58        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+     811                      .dwattr $C$DW$58, DW_AT_location[DW_OP_regx 0x20]
+     812              $C$DW$59        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+     813                      .dwattr $C$DW$59, DW_AT_location[DW_OP_regx 0x21]
+     814              $C$DW$60        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+     815                      .dwattr $C$DW$60, DW_AT_location[DW_OP_regx 0x22]
+     816              $C$DW$61        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+     817                      .dwattr $C$DW$61, DW_AT_location[DW_OP_regx 0x23]
+     818              $C$DW$62        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+     819                      .dwattr $C$DW$62, DW_AT_location[DW_OP_regx 0x24]
+     820              $C$DW$63        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+     821                      .dwattr $C$DW$63, DW_AT_location[DW_OP_regx 0x25]
+     822              $C$DW$64        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+     823                      .dwattr $C$DW$64, DW_AT_location[DW_OP_regx 0x26]
+     824              $C$DW$65        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+     825                      .dwattr $C$DW$65, DW_AT_location[DW_OP_regx 0x27]
+     826              $C$DW$66        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+     827                      .dwattr $C$DW$66, DW_AT_location[DW_OP_regx 0x28]
+     828              $C$DW$67        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+     829                      .dwattr $C$DW$67, DW_AT_location[DW_OP_regx 0x29]
+     830              $C$DW$68        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+     831                      .dwattr $C$DW$68, DW_AT_location[DW_OP_regx 0x2a]
+     832              $C$DW$69        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+     833                      .dwattr $C$DW$69, DW_AT_location[DW_OP_regx 0x2b]
+     834              $C$DW$70        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+     835                      .dwattr $C$DW$70, DW_AT_location[DW_OP_regx 0x2c]
+     836              $C$DW$71        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+     837                      .dwattr $C$DW$71, DW_AT_location[DW_OP_regx 0x2d]
+     838              $C$DW$72        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+     839                      .dwattr $C$DW$72, DW_AT_location[DW_OP_regx 0x2e]
+     840              $C$DW$73        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+     841                      .dwattr $C$DW$73, DW_AT_location[DW_OP_regx 0x2f]
+     842              $C$DW$74        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+     843                      .dwattr $C$DW$74, DW_AT_location[DW_OP_regx 0x30]
+     844              $C$DW$75        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+     845                      .dwattr $C$DW$75, DW_AT_location[DW_OP_regx 0x31]
+     846              $C$DW$76        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+     847                      .dwattr $C$DW$76, DW_AT_location[DW_OP_regx 0x32]
+     848              $C$DW$77        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+     849                      .dwattr $C$DW$77, DW_AT_location[DW_OP_regx 0x33]
+     850              $C$DW$78        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+     851                      .dwattr $C$DW$78, DW_AT_location[DW_OP_regx 0x34]
+     852              $C$DW$79        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE   18
+
+     853                      .dwattr $C$DW$79, DW_AT_location[DW_OP_regx 0x35]
+     854              $C$DW$80        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+     855                      .dwattr $C$DW$80, DW_AT_location[DW_OP_regx 0x36]
+     856              $C$DW$81        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+     857                      .dwattr $C$DW$81, DW_AT_location[DW_OP_regx 0x37]
+     858              $C$DW$82        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+     859                      .dwattr $C$DW$82, DW_AT_location[DW_OP_regx 0x38]
+     860              $C$DW$83        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+     861                      .dwattr $C$DW$83, DW_AT_location[DW_OP_regx 0x39]
+     862              $C$DW$84        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+     863                      .dwattr $C$DW$84, DW_AT_location[DW_OP_regx 0x3a]
+     864              $C$DW$85        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+     865                      .dwattr $C$DW$85, DW_AT_location[DW_OP_regx 0x3b]
+     866              $C$DW$86        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+     867                      .dwattr $C$DW$86, DW_AT_location[DW_OP_regx 0x3c]
+     868              $C$DW$87        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+     869                      .dwattr $C$DW$87, DW_AT_location[DW_OP_regx 0x3d]
+     870              $C$DW$88        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+     871                      .dwattr $C$DW$88, DW_AT_location[DW_OP_regx 0x3e]
+     872              $C$DW$89        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+     873                      .dwattr $C$DW$89, DW_AT_location[DW_OP_regx 0x3f]
+     874              $C$DW$90        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+     875                      .dwattr $C$DW$90, DW_AT_location[DW_OP_regx 0x40]
+     876              $C$DW$91        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+     877                      .dwattr $C$DW$91, DW_AT_location[DW_OP_regx 0x41]
+     878              $C$DW$92        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+     879                      .dwattr $C$DW$92, DW_AT_location[DW_OP_regx 0x42]
+     880              $C$DW$93        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+     881                      .dwattr $C$DW$93, DW_AT_location[DW_OP_regx 0x43]
+     882              $C$DW$94        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+     883                      .dwattr $C$DW$94, DW_AT_location[DW_OP_regx 0x44]
+     884              $C$DW$95        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+     885                      .dwattr $C$DW$95, DW_AT_location[DW_OP_regx 0x45]
+     886              $C$DW$96        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+     887                      .dwattr $C$DW$96, DW_AT_location[DW_OP_regx 0x46]
+     888              $C$DW$97        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+     889                      .dwattr $C$DW$97, DW_AT_location[DW_OP_regx 0x47]
+     890              $C$DW$98        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+     891                      .dwattr $C$DW$98, DW_AT_location[DW_OP_regx 0x48]
+     892              $C$DW$99        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+     893                      .dwattr $C$DW$99, DW_AT_location[DW_OP_regx 0x49]
+     894              $C$DW$100       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+     895                      .dwattr $C$DW$100, DW_AT_location[DW_OP_regx 0x4a]
+     896              $C$DW$101       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+     897                      .dwattr $C$DW$101, DW_AT_location[DW_OP_regx 0x4b]
+     898              $C$DW$102       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+     899                      .dwattr $C$DW$102, DW_AT_location[DW_OP_regx 0x4c]
+     900              $C$DW$103       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+     901                      .dwattr $C$DW$103, DW_AT_location[DW_OP_regx 0x4d]
+     902              $C$DW$104       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+     903                      .dwattr $C$DW$104, DW_AT_location[DW_OP_regx 0x4e]
+     904              $C$DW$105       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+     905                      .dwattr $C$DW$105, DW_AT_location[DW_OP_regx 0x4f]
+     906              $C$DW$106       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+     907                      .dwattr $C$DW$106, DW_AT_location[DW_OP_regx 0x50]
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_gpio.asm                                                  PAGE   19
+
+     908              $C$DW$107       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+     909                      .dwattr $C$DW$107, DW_AT_location[DW_OP_regx 0x51]
+     910              $C$DW$108       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+     911                      .dwattr $C$DW$108, DW_AT_location[DW_OP_regx 0x52]
+     912              $C$DW$109       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+     913                      .dwattr $C$DW$109, DW_AT_location[DW_OP_regx 0x53]
+     914              $C$DW$110       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+     915                      .dwattr $C$DW$110, DW_AT_location[DW_OP_regx 0x54]
+     916              $C$DW$111       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+     917                      .dwattr $C$DW$111, DW_AT_location[DW_OP_regx 0x55]
+     918              $C$DW$112       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+     919                      .dwattr $C$DW$112, DW_AT_location[DW_OP_regx 0x56]
+     920              $C$DW$113       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+     921                      .dwattr $C$DW$113, DW_AT_location[DW_OP_regx 0x57]
+     922              $C$DW$114       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+     923                      .dwattr $C$DW$114, DW_AT_location[DW_OP_regx 0x58]
+     924              $C$DW$115       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+     925                      .dwattr $C$DW$115, DW_AT_location[DW_OP_regx 0x59]
+     926              $C$DW$116       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+     927                      .dwattr $C$DW$116, DW_AT_location[DW_OP_regx 0x5a]
+     928              $C$DW$117       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+     929                      .dwattr $C$DW$117, DW_AT_location[DW_OP_regx 0x5b]
+     930                      .dwendtag $C$DW$CU
+     931              
+     931              
+     931              
+
+No Assembly Errors, No Assembly Warnings

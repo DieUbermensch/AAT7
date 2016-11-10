@@ -7,33 +7,33 @@ C_SRCS += \
 ../main.c 
 
 ASM_SRCS += \
-../FIRFunction.asm 
+../Functions.asm 
 
 CMD_SRCS += \
 ../lnkx.cmd 
 
 ASM_DEPS += \
-./FIRFunction.pp 
+./Functions.pp 
 
 OBJS += \
-./FIRFunction.obj \
+./Functions.obj \
 ./main.obj 
 
 C_DEPS += \
 ./main.pp 
 
 OBJS__QTD += \
-".\FIRFunction.obj" \
+".\Functions.obj" \
 ".\main.obj" 
 
 ASM_DEPS__QTD += \
-".\FIRFunction.pp" 
+".\Functions.pp" 
 
 C_DEPS__QTD += \
 ".\main.pp" 
 
 ASM_SRCS_QUOTED += \
-"../FIRFunction.asm" 
+"../Functions.asm" 
 
 C_SRCS_QUOTED += \
 "../main.c" 
