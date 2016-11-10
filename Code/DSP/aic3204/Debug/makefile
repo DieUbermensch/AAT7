@@ -14,9 +14,9 @@ $(GEN_CMDS_QUOTED) \
 "./include/usbstk5515_gpio.obj" \
 "./include/usbstk5515.obj" \
 "./main.obj" \
-"./FIRFunction.obj" \
+"./Functions.obj" \
 -l"usbstk5515bsl.lib" \
--l"rts55x_eh.lib" \
+-l"rts55x.lib" \
 "../lnkx.cmd" \
 
 -include ../makefile.init
@@ -116,15 +116,19 @@ all: aic3204.out
 aic3204.out: $(GEN_CMDS) $(CMD_SRCS) $(OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Linker'
+<<<<<<< HEAD
 	"C:/Program Files (x86)/Texas Instruments2/ccsv4/tools/compiler/c5500/bin/cl55" -vcpu:3.3 -g --diag_warning=225 --ptrdiff_size=32 --memory_model=large -z -m"aic3204.map" --warn_sections -i"C:/Program Files (x86)/Texas Instruments2/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files (x86)/Texas Instruments2/ccsv4/tools/compiler/c5500/include" -i"C:/Users/Christian/Documents/AkustikGit/AAT7/Code/DSP/aic3204/../../lib" --reread_libs --rom_model -o "aic3204.out" $(ORDERED_OBJS)
+=======
+	"C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/bin/cl55" -v5515 -g --diag_warning=225 --ptrdiff_size=16 --memory_model=large -z -m"aic3204.map" --warn_sections -i"C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/include" -i"C:/Users/Kiis/Dropbox/Uni/7. semester/AAT7/Code/DSP/aic3204/../../lib" --reread_libs --rom_model -o "aic3204.out" $(ORDERED_OBJS)
+>>>>>>> 26074a2c1cc077033086d508bedf3f23045c9ac6
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(C5500_EXECUTABLE_OUTPUTS__QTD) "aic3204.out"
-	-$(RM) ".\FIRFunction.obj" ".\main.obj" ".\include\usbstk5515.obj" ".\include\usbstk5515_gpio.obj" ".\include\usbstk5515_i2c.obj" ".\include\usbstk5515_led.obj" 
-	-$(RM) ".\FIRFunction.pp" 
+	-$(RM) ".\Functions.obj" ".\main.obj" ".\include\usbstk5515.obj" ".\include\usbstk5515_gpio.obj" ".\include\usbstk5515_i2c.obj" ".\include\usbstk5515_led.obj" 
+	-$(RM) ".\Functions.pp" 
 	-$(RM) ".\main.pp" ".\include\usbstk5515.pp" ".\include\usbstk5515_gpio.pp" ".\include\usbstk5515_i2c.pp" ".\include\usbstk5515_led.pp" 
 	-@echo ' '
 

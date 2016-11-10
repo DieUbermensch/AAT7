@@ -1,0 +1,60 @@
+
+\section{FIR function in assembly}
+
+
+\subsection{Description}
+Provide a context and how the function is used in the program,
+This function filters an input signal with a set of filter coefficients with a given length (order).
+
+\subsection{Syntax} 
+\begin{lstlisting}
+	extern Int16 FIR(Int16 *x, Int16 *b, Int16 order, Int16 index);
+\end{lstlisting}
+
+\subsection{Flowchart}
+Provide explicit description and break the function into different process that explains how the function works
+\begin{figure} [h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{../Journal/Code/FIRfilter}
+	\caption{Diagram of FIR filter}
+	\label{Fig:FIR_filter}
+\end{figure}
+
+
+\subsection{Implementation}
+
+\subsubsection{variables}
+\begin{lstlisting}
+	Int16 	*x 		//The input signal
+	Int16	*b		//The filter coefficients
+	Int16	order	//The order of the filter (length of x & b)
+	Int16	index	//The index of the newest x sample
+	int16	return	//Returns the output of the filter (y(n))
+\end{lstlisting}
+
+\subsubsection{code}
+\begin{lstlisting} [language={[x86masm]Assembler}]
+	.global _FIR;
+
+;------------------------------------------------------
+;		void FIR(  	Int16 *x,	=> AR0
+;			  		Int16 *b, 	=> AR1
+;			   		Int16 N, 	=> T0
+;			   		Int16 i)		=> T1
+
+
+
+_FIR:	
+MOV #0, AC0					; Clear AC1
+MOV mmap(AR0),BSA01			; Set base Adress for buffer
+MOV mmap(T0), BK03			; Set buffer size to filter order
+MOV *(#T1),AR0				; Start from ith sample
+bset AR0LC					; Set pointer as circular
+SUB #1,T0					; Setup Repititions
+MOV T0,CSR					; Setup Repititions
+RPT CSR						; Repeat order times
+MAC *AR0-,*AR1+,AC0 		; Do filter convolution
+SFTL AC0, #-15				; Bit shift to fit Q15
+MOV AC0,T0					; Output sample
+RET
+\end{lstlisting}
