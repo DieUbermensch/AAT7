@@ -88,20 +88,21 @@
     \@ifundefined{ttlp@#6}{}{\ttlp@write{#6}}}
 \makeatother
 
-\titlespacing{\chapter}{0pt}{0pt}{10pt}
-\titlespacing{\section}{0pt}{0pt}{-5pt}
-\titlespacing{\subsection}{0pt}{8pt}{-5pt}
-\titlespacing{\subsubsection}{0pt}{6pt}{-10pt}
+%\titlespacing{\chapter}{0pt}{0pt}{10pt}
+%\titlespacing{\section}{0pt}{0pt}{-5pt}
+%\titlespacing{\subsection}{0pt}{8pt}{5pt}
+%\titlespacing{\subsubsection}{0pt}{6pt}{10pt}
 
-%\titleformat*{\section}{\normalfont\Large\bfseries}\color{aaublue}}
-\titleformat{\section}
-  {\normalfont\scshape}{\thesection}{1em}{}
-\titleformat{\subsection}
-{\normalfont\scshape}{\thesubsection}{1em}{}
-%\titleformat*{\subsection}{\normalfont\large\bfseries}%\color{aaublue}}
-\titleformat*{\subsubsection}{\normalfont\normalsize\bfseries}%\color{aaublue}}
-%\titleformat*{\paragraph}{\normalfont\normalsize\bfseries\color{aaublue}}
-%\titleformat*{\subparagraph}{\normalfont\normalsize\bfseries\color{aaublue}}
+%%\titleformat*{\section}{\normalfont\Large\bfseries}\color{aaublue}}
+%\titleformat{\section}
+%  {\normalfont\scshape}{\thesection}{1em}{}
+%\titleformat{\subsection}
+%{\normalfont\scshape}{\thesubsection}{1em}{}
+%%\titleformat*{\subsection}{\normalfont\large\bfseries}%\color{aaublue}}
+%\titleformat{\subsubsection}{\normalfont\scshape}{\thesubsubsection}{0.5em}{}
+%%\titleformat*{\subsubsection}{\normalfont\normalsize\bfseries}%\color{aaublue}}
+%%\titleformat*{\paragraph}{\normalfont\normalsize\bfseries\color{aaublue}}
+%%\titleformat*{\subparagraph}{\normalfont\normalsize\bfseries\color{aaublue}}
 
 %Formatting chapter headers. Predefined styles that can be used as option to the package: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, PetersLenny and Bjornstrup
 
@@ -406,3 +407,4 @@
 \usepackage{multicol}
 \usepackage{lipsum}
 \usepackage{lettrine}
+\renewcommand{\LettrineTextFont}{\normalfont}
