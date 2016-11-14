@@ -58,9 +58,9 @@ From the examination of the three different topologies it is concluded that a fe
 %\missingfigure{Basic System without adaptive CP}     
 
 
-\subsection*{FXLMS algorithm for FIR filters}\label{subsec:fxlms}
 
-This algorithm and it termonology is derived in correlation with figure \ref{fig:feedforward}
+\subsection*{FXLMS algorithm for FIR filters}\label{subsec:fxlms}
+The FXLMS is a gradient descent algorithm which iteratibely changes the coefficients of the control filter by adding to the current coefficients which should converge to a global minimum of the error criterion. The deriviation of the FXLMS algorithm is given below. 
 \begin{equation}\label{eq:1}
 w(k+1) = w(k) - \mu\nabla J(k)
 \end{equation}
