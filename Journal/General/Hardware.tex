@@ -1,6 +1,6 @@
 \section{Hardware Documentation}\label{sec:HardwareDocumentation}
 
-The following sections describes the requirements and the preceding considerations concerning the hardware chosen for real time implementation.
+The following sections describes the requirements and the preceding considerations concerning the hardware chosen for real time implementation. 
 
 \subsection{Requirements}\label{subsec:Requirements}
 
@@ -74,9 +74,9 @@ It should be noted that the highest frequency used is the I2S bit clock of 1.2 M
 
 
 
-\subsection{Interface}\label{subsec:Interface}
+\subsection{Interfaceand setup}\label{subsec:Interface}
 
-The board will be interfacing using both analogue and digitally using the TLV320AIC3204 for the analogue part and I2S for the digital part. The different interfaces are hence documented to ensure correct levels when in use. 
+The board will be interfacing using both analogue and digitally using the TLV320AIC3204 for the analogue part and I2S for the digital part. The different interfaces and configurations are hence documented to ensure correct communication and levels when in use. 
 
 \subsubsection*{I2S}
 
@@ -133,21 +133,10 @@ The gain is by experiment determined to be:
 
 \subsubsection*{MEMS}
 
-This is not known yet, explanation is coming.
-%
+\todo[inline]{not totally sure how this works yet. It's a work in progress}
 
+As mentioned before the TLV320AIC3204 codec have to much delay when sampling the signal, hence the real-time implementation will be depending on MEMS (Micro Electrical Mechanical System) microphones for sampling of ambient sound. These microphones will out their value in a 12-bit value, directly to an I2S port. This will eliminate the AD conversion time and give more time for processing.
 
+The MEMS microphone will only need a serial clock and a data lane from the I2S port.
 
-\subsection{Setup}\label{subsec:SetupOfDSP}
-
-
-How are the DSP setup
-
-\begin{itemize}
-	\item RTL for the codec
-	\item Comunication between the DSP system
-	\item etc.
-\end{itemize}
-
-
-
+To be continued..
