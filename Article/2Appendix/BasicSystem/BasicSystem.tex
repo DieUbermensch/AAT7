@@ -15,10 +15,12 @@ Where:
 \begin{itemize}
 \item Reference microphone: The microphone which picks up the noise 
 \item Error microphone: The microphone which measures the the error between the noise and the output of the ANC system
-\item Adaptive FXLMS algorithm: FLMS optimization algorithm for the coefficients of the control filter
+\item Adaptive FXLMS algorithm: FXLMS optimization algorithm for the coefficients of the control filter
 \item Cancellation path estimate: Impulse response from the transducer to the error microphone
 \item Adaptive algorithm: LMS optimization algorithm for the coefficients of the Cancellation path estimate 
 \end{itemize}
+
+The feedforward system uses a reference microphone to pick up the noise which is feed into the control filter which should have the impulse response of the path from the reference microphone to the transducer. The control filter could either be realized as a FIR filter if there is no feedback from the transducer into the reference micophone or a IIR filter if there is feedback. It should be noted that if the filter is chosen to be an IIR filter there is a possibility of not getting a global minimum in the FXLMS algorithm. Because the cancellation path is constant refer to  
 \subsection*{Feedback}
 
 \begin{figure}[H]
