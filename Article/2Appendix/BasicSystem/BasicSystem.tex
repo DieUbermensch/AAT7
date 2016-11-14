@@ -23,7 +23,7 @@ Where:
 \item Adaptive algorithm: LMS optimization algorithm for the coefficients of the Cancellation path estimate 
 \end{itemize}
 
-The feedforward topology uses a reference microphone to pick up the noise which is feed into the control filter which should have the impulse response of the path from the reference microphone to the transducer. The control filter could either be realized as a FIR filter if there is no feedback from the transducer into the reference micophone or a IIR filter if there is feedback. It should be noted that if the filter is chosen to be an IIR filter there is a possibility of not getting a global minimum in the FXLMS algorithm. Because the cancellation path is constant refer to ???, the adaptive algorithm and cancellation path estimate will not be in the basic system. This means that the copy of cancellation path estimate will be a constant impulse response, therefore the cancellation path will not be discussed further. 
+The feedforward topology uses a reference microphone to pick up the noise which is feed into the control filter which should have the impulse response of the path from the reference microphone to the transducer. The control filter could either be realized as a FIR filter if there is no feedback from the transducer into the reference micophone or a IIR filter if there is feedback. It should be noted that if the filter is chosen to be an IIR filter there is a possibility of not getting a global minimum in the FXLMS algorithm.
 
 The advantage of the feedforward topology is that it can cancel all types of sound, but the disadvantage of the topology is that in order for the feedforward to have a good performance, the delay of the system must be lesser than the delay of the sound from the reference microphone to the transducer.    
 
@@ -55,7 +55,21 @@ A hybrid feedforward/feedback ANC system consists of the following as seen on \a
 
 The hybrid feedforward/feedback uses both topologies advantages to get increased performance. The topology cancels out periodic noise using feedback and not periodic noise with the feedforward. The disadvantage of the hybrid topology is that the system is more advanced the other two topologies.   
 
-From the examination of the three different topologies it is concluded that a feedforward system will be used. The reasoning of this choice is that the feedback system is only capable of noise cancelling periodic noise and the hybrid feedforward/feedback increased performance comes from using the feedback part to reduce periodic noise which is non existing in speech signals. The Basic system which we be used is seen on \autoref{fig:BasicSystem}.
+From the examination of the three different topologies it is concluded that a feedforward system will be used. The reasoning of this choice is that the feedback system is only capable of noise cancelling periodic noise and the hybrid feedforward/feedback increased performance comes from using the feedback part to reduce periodic noise which is non existing in speech signals. With the topology given a system design using headphones can now be derived. 
+
+
+
+
+\section{System Design} \label{sec:systemDesign}
+This section will go through the design of the system using a feedforward topology. Using a headphone the microphones will be placed as seen on \autoref{fig:SystemHeadphone}. A \fxnote{dummy} will be used as the HATS during tests. This means that the cancellation path will have a constant impulse response. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{missingfigure}
+	\caption{Headphone look}
+	\label{fig:SystemHeadphone}
+\end{figure}  
+
+Because the cancellation path is constant, the adaptive algorithm and cancellation path estimate will not be in the basic system. This means that the copy of cancellation path estimate will be a constant impulse response. The cancellation has been testet, refer to \autoref{sec:CPjournal} for test journal \fxnote{Do we need to have the resulting impulse response here?}. The basic feedforward control system is seen on \autoref{fig:BasicSystem}. 
 
 \begin{figure}[H]
 	\centering
@@ -64,14 +78,8 @@ From the examination of the three different topologies it is concluded that a fe
 	\label{fig:BasicSystem}
 \end{figure}   
 
-With the basic system given a system design using headphones can now be derived. 
+\fxnote{Possibly missing text}
 
-
-
-
-\section{System Design} \label{sec:systemDesign}
-
-\subsection*{Parameters}
 
 
 
@@ -159,4 +167,32 @@ w_j(k+1) = w_k(k) - 2\mu e(k)f(k-j)
 
 With the definition of the FXLMS given the basic system, see \autoref{fig:BasicSystem}, can be simulated.
 
+
+
+
+
+
+
 \subsection*{Simulation} 
+The basic system as seen on \autoref{fig:BasicSystem} has been setup in Simulink, as seen on \autoref{fig:SimulinkRealWorld} which resembles the real world and \autoref{fig:SimulinkANC} which resembles the ANC algorithm on a dsp. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{figures/BasicSystem/SimulinkRealWorld}
+	\caption{Simulink real world.}
+	\label{fig:SimulinkRealWorld}
+\end{figure}    
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{figures/BasicSystem/SimulinkANC}
+	\caption{Simulink ANC algorithm}
+	\label{fig:SimulinkANC}
+\end{figure} 
+
+The functions for the different impulse responses and the control filter is a standard sample-by-sample FIR filter, while the FXLMS algorithm is \autoref{eq:14} implemented with a convergence factor of 0.005. The delay of the ADC and DAC is set to 0 samples. 
+
+\fxnote{Which results do we need}
+
+
+
