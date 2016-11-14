@@ -5,6 +5,7 @@ A general ANC system uses either one or two inputs dependent on the topology as 
 
 
 
+
 \subsection*{Feedforward}
 A feedforward ANC system consists of the following as seen on \autoref{fig:feedforwardTopology}.
 \begin{figure}[H]
@@ -28,11 +29,12 @@ The advantage of the feedforward topology is that it can cancel all types of sou
 
 
 
+
 \subsection*{Feedback}
 A feedback ANC system consists of the following as seen on \autoref{fig:feedbackTopology}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{figures/BasicSystem/feedback}
+	\includegraphics[width=0.6\textwidth]{figures/BasicSystem/feedback}
 	\caption{Adaptive feedback controller with on-line cancellation path identification. (Maybe switched with headphone figure)}
 	\label{fig:feedbackTopology}
 \end{figure}
@@ -46,16 +48,31 @@ The feedback topology uses a pseudo-reference signal synthesised from the error 
 A hybrid feedforward/feedback ANC system consists of the following as seen on \autoref{fig:hybridTopology}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{figures/BasicSystem/hybrid}
+	\includegraphics[width=0.6\textwidth]{figures/BasicSystem/hybrid}
 	\caption{Configuration for hybrid feedforward/feedback control system. (Maybe switched with headphone figure)}
 	\label{fig:hybridTopology}
 \end{figure}
 
 The hybrid feedforward/feedback uses both topologies advantages to get increased performance. The topology cancels out periodic noise using feedback and not periodic noise with the feedforward. The disadvantage of the hybrid topology is that the system is more advanced the other two topologies.   
 
-From the examination of the three different topologies it is concluded that a feedforward system will be used. The reasoning of this choice is that the feedback system is only capable of noise cancelling periodic noise and the hybrid feedforward/feedback increased performance comes from using the feedback part to reduce periodic noise which is non existing in speech signals. The Basic system which we be used is seen on ???.
+From the examination of the three different topologies it is concluded that a feedforward system will be used. The reasoning of this choice is that the feedback system is only capable of noise cancelling periodic noise and the hybrid feedforward/feedback increased performance comes from using the feedback part to reduce periodic noise which is non existing in speech signals. The Basic system which we be used is seen on \autoref{fig:BasicSystem}.
 
-%\missingfigure{Basic System without adaptive CP}     
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{missingfigure}
+	\caption{Basic System without adaptive CP}
+	\label{fig:BasicSystem}
+\end{figure}   
+
+With the basic system given a system design using headphones can now be derived. 
+
+
+
+
+\section{System Design} \label{sec:systemDesign}
+
+\subsection*{Parameters}
+
 
 
 
@@ -140,5 +157,6 @@ which is the standard FXLMS algorithm using an adaptive FIR filter
 w_j(k+1) = w_k(k) - 2\mu e(k)f(k-j)
 \end{equation}
 
+With the definition of the FXLMS given the basic system, see \autoref{fig:BasicSystem}, can be simulated.
 
 \subsection*{Simulation} 
