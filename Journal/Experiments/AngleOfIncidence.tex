@@ -87,12 +87,8 @@ Calibration of the microphone and associated preamplifier is done on the compute
 \subsubsection{Equipment settings}
 \begin{itemize}
 	\item This experiment is performed with a sampling rate of, $F_{s}$ = 48,000 Hz
-	\item The microphone is placed in close proximity to the speaker unit of the headset
-	\item For item 4 (sound capture card):
-	\begin{itemize}
-		\item "SENS(INPUT 1/L)" is set to +0 dB"
-		\item "SENS(INPUT 2/R)" is set to +0 dB"
-	\end{itemize}		
+	\item The outside microphone is placed in close proximity to the speaker unit of the headset
+	\item For item 4 (sound capture card) all gains are set at 0dB		
 	\item For item 6 (measuring amplifier):
 	\begin{itemize}
 		\item "Input Section Gain" is set to +20 dB in proportion to calibration
@@ -107,6 +103,14 @@ Calibration of the microphone and associated preamplifier is done on the compute
 \subsection{Set-up}
 
 \subsection{Procedure}
+\begin{enumerate}
+	\item Open Simulink\textsuperscript{\textregistered} and run file "SimulinkAngleOfIndence.xls"
+	\item Run Simulink\textsuperscript{\textregistered} to play "LogChirp.wav" through the speaker
+	\item Record and save, and name "Mic[i].wav" and Ref[i].wav" from item 4 onto item 5 \footnote{[i] indicates the iteration of the experiment}
+	\begin{itemize}
+		\item[] Perform this experiment for all angles given by the Matlab script. 
+	\end{itemize}
+\end{enumerate}
 
 \subsection{Data Extraction}
 
