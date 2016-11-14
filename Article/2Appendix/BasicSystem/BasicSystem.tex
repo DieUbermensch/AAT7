@@ -3,6 +3,8 @@ This section will go through the different basic active noise cancelling system 
 
 A general ANC system uses either one or two inputs dependent on the topology as inputs to an adaptive optimization algorithm to determine coefficients for a control filter which is used as an estimation from input to ouput transducer. In an ideal case the filter would just be a FIR filter with a -1 tap, but this is assuming no delay or magnitude change in either the physical world or the ANC system and no feedback from output transducer to input microphone e.g. but the ideal case is not realizable in reality. 
 
+
+
 \subsection*{Feedforward}
 A feedforward ANC system consists of the following as seen on \autoref{fig:feedforwardTopology}.
 \begin{figure}[H]
@@ -15,12 +17,19 @@ Where:
 \begin{itemize}
 \item Reference microphone: The microphone which picks up the noise 
 \item Error microphone: The microphone which measures the the error between the noise and the output of the ANC system
-\item Adaptive FXLMS algorithm: FLMS optimization algorithm for the coefficients of the control filter
+\item Adaptive FXLMS algorithm: FXLMS optimization algorithm for the coefficients of the control filter
 \item Cancellation path estimate: Impulse response from the transducer to the error microphone
 \item Adaptive algorithm: LMS optimization algorithm for the coefficients of the Cancellation path estimate 
 \end{itemize}
-\subsection*{Feedback}
 
+The feedforward topology uses a reference microphone to pick up the noise which is feed into the control filter which should have the impulse response of the path from the reference microphone to the transducer. The control filter could either be realized as a FIR filter if there is no feedback from the transducer into the reference micophone or a IIR filter if there is feedback. It should be noted that if the filter is chosen to be an IIR filter there is a possibility of not getting a global minimum in the FXLMS algorithm. Because the cancellation path is constant refer to ???, the adaptive algorithm and cancellation path estimate will not be in the basic system. This means that the copy of cancellation path estimate will be a constant impulse response, therefore the cancellation path will not be discussed further. 
+
+The advantage of the feedforward topology is that it can cancel all types of sound, but the disadvantage of the topology is that in order for the feedforward to have a good performance, the delay of the system must be lesser than the delay of the sound from the reference microphone to the transducer.    
+
+
+
+\subsection*{Feedback}
+A feedback ANC system consists of the following as seen on \autoref{fig:feedbackTopology}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{figures/BasicSystem/feedback}
@@ -28,8 +37,13 @@ Where:
 	\label{fig:feedbackTopology}
 \end{figure}
 
-\subsection*{Hybrid feedforward/feedback}    
+The feedback topology uses a pseudo-reference signal synthesised from the error microphone to cancel out periodic noise. The disadvantage of the feedback topology is then that it cannot cancel out non periodic noise.    
 
+
+
+
+\subsection*{Hybrid feedforward/feedback}    
+A hybrid feedforward/feedback ANC system consists of the following as seen on \autoref{fig:hybridTopology}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{figures/BasicSystem/hybrid}
@@ -37,12 +51,16 @@ Where:
 	\label{fig:hybridTopology}
 \end{figure}
 
-From the examination of the three different topologies it is concluded that a feedforward system will be used. The reasoning of this choice is that the feedback system is only capable of noise cancelling periodic noise and the hybrid feedforward/feedback increased performance comes from using the feedback part to reduce periodic noise   
+The hybrid feedforward/feedback uses both topologies advantages to get increased performance. The topology cancels out periodic noise using feedback and not periodic noise with the feedforward. The disadvantage of the hybrid topology is that the system is more advanced the other two topologies.   
+
+From the examination of the three different topologies it is concluded that a feedforward system will be used. The reasoning of this choice is that the feedback system is only capable of noise cancelling periodic noise and the hybrid feedforward/feedback increased performance comes from using the feedback part to reduce periodic noise which is non existing in speech signals. The Basic system which we be used is seen on ???.
+
+%\missingfigure{Basic System without adaptive CP}     
+
 
 
 \subsection*{FXLMS algorithm for FIR filters}\label{subsec:fxlms}
-
-This algorithm and it termonology is derived in correlation with figure \ref{fig:feedforward}
+The FXLMS is a gradient descent algorithm which iteratibely changes the coefficients of the control filter by adding to the current coefficients which should converge to a global minimum of the error criterion. The deriviation of the FXLMS algorithm is given below. 
 \begin{equation}\label{eq:1}
 w(k+1) = w(k) - \mu\nabla J(k)
 \end{equation}
@@ -121,3 +139,6 @@ which is the standard FXLMS algorithm using an adaptive FIR filter
 \begin{equation}\label{eq:14}
 w_j(k+1) = w_k(k) - 2\mu e(k)f(k-j)
 \end{equation}
+
+
+\subsection*{Simulation} 

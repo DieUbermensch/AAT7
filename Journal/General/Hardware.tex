@@ -1,0 +1,100 @@
+\section{Hardware Documentation}
+
+The following sections describes the requirements and the preceding considerations concerning the hardware chosen for real time implementation.
+
+\subsection{Requirements}
+
+The system is based on a feed-forward system combined for an adaptive algorithm controlled by an error microphone in order for the cancellation path to be adapted. The following requirements are determined with the key-idea of having as much computation time as possible and maintaining causality.
+\todo[inline]{We need some kind of documentation of these requirements}
+\begin{enumerate}
+	
+	\item The hardware platform must be capable of sampling from $\geq$X microphones.\label{Req:NoOfMic}
+	\begin{itemize}
+		\item[-]In order for the system to predict a direction of the noise, there must be $\geq$X microphones to compare levels at the different locations
+	\end{itemize}
+	
+	\item The hardware platform must be able to sample and output with a computation time of $\leq$ XX seconds, corresponding to XX samples.\label{Req:NoOfSamples}
+	\begin{itemize}
+		\item[-]For the system to remain causal the delay from the reference microphone to the error microphone must be within the measured propagation time. Se Appendix XX
+	\end{itemize}
+	
+	\item The hardware platform must be able to work and output with 16-bit resolution.\label{Req:DSPResolution}
+	\begin{itemize}
+		\item[-] For proper replay of the recorded sound a 16-bit resolution is deemed sufficient. 
+	\end{itemize}
+	
+	\item The hardware platform must function between 20 Hz - 20 kHz having fluctuation of $\leq$ 0.5 dB in the frequency response.\label{Req:DSPFrequencyArea}
+	\begin{itemize}
+		\item[-] The frequency range is assumed to be the audible range and is necessary for proper functionality.
+	\end{itemize}
+\end{enumerate} 
+
+Assuming these requirements are met the hardware platform will perform as a prober basis for development of the real time system.
+
+\subsection{Choice}
+
+For this project the real time implementation will be done using the TMS320C5515 eZdsp development board. The reason for choosing this board is based on a Development time / Yield assumption. The board is assumed easy in set-up and readily available for the group. Futhermore requirement \ref{Req:DSPResolution} and \ref{Req:DSPFrequencyArea} is fulfilled.
+
+The board is based of a Texas Instrument TMS320C5515 Fixed point DSP which has been paired directly with a TLV320AIC3204 stereo codec. The stereo codec features a possible resolution of 32-bit and sampling rates at 192 kHz. the codecs DAC/ADC is made using a 1-bit sigma delta structure. The sigma delta converter functions by oversampling at a higher rate than what is effectively set in the codec. This method offers great bandwidth and flexible resolution. This is usually desirable on development boards but comes with the cost of latency. Adding to a high latency of 880 $\mu$ at 48 kHz it also follows that The lower the sampling rate, the higher the latency. Increasing the codec to run at 192 kHz improves the performance to only 240 $\mu$ seconds.
+
+In order to fulfil requirement \ref{Req:NoOfSamples} it is necessary to use digital MEMS microphones from STmicroelectronics. These microphones will be able to output through a XX protocol hence the conversion to the digital domain is already done. By reading on the boards GPIO pin it is possible to connect XX microphones. It should be noted that the MEMS microphone only have a bit resolution of 12-bit. Hence the microphone should not be used for audible playback.
+
+
+
+
+
+\subsection{Design}
+
+The DSP board will be insufficient when implemented as a stereo system. To compensate for this problem a custom expansion board is designed. The board is designed to be full-fledged for both digital and analogue inputs and outputs. Since most of the development boards inputs are routed to an PCI expansion slot and not immediately accessible, these will be routed for easier access. The board developed has the following features:
+
+\begin{enumerate}
+	\item 4 6.3 mm mono jack input and 2 mono output for easier access.
+	\begin{itemize}
+		\item[-] All fitted with BNC for low noise data monitoring and data logging.
+		\item[-] All fitted with 1.order analouge lowpass filter with -3dB cut-off at 24 kHz .
+	\end{itemize}
+	\item 3.5 mm interconnected stereo mini jack for easier access to DSP onboard TLV320AIC3204 stereo codec.
+	\item I2S bus routed between DSP as master and slave setup for inter-codec data transfer.
+	\item I2C and UART bus on master DSP made accessible.
+	\item XX GPIO Made accessible for MEMS connection.
+	\item inter-I2C bus between DSP's routed. 
+\end{enumerate}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{missingfigure}	
+	\caption{The expansion board equipped with two DSPs}
+	\label{fig:PCBboard}
+\end{figure}
+
+It should be noted that the highest frequency used is the I2S bit clock of 1.2 Mhz. Since the 10. harmonic of this frequency has a wavelength of $\lambda=\frac{c}{12 \text{Mhz}}\approx25\text{m}$ there hasn't been any consideration about reflections.
+
+
+
+
+
+
+\subsection{Interface}
+
+The board will be interfacing with different protocols both analouge 
+
+\begin{itemize}
+	\item I2S and TTL
+	\item MEMS
+	\item Input and Output (Both Digitally and Analog)
+\end{itemize}
+
+
+
+\subsection*{Setup}
+
+How are the DSP setup
+
+\begin{itemize}
+	\item RTL for the codec
+	\item Comunication between the DSP system
+	\item etc.
+\end{itemize}
+
+
+
