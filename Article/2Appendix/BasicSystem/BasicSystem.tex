@@ -1,0 +1,125 @@
+\section{Basic Active noise cancelling system} \label{sec:BasicSystem}
+This section will go through the different basic active noise cancelling system topologies and explain the choosen topology in detail. There are three basic different topologies for noise cancelling, feedforward, feedback and hybrid feedforward/feedback. These topologies each have their advantages and disadvantages and therefore a topology must be choosen.
+
+A general ANC system uses either one or two inputs dependent on the topology as inputs to an adaptive optimization algorithm to determine coefficients for a control filter which is used as an estimation from input to ouput transducer. In an ideal case the filter would just be a FIR filter with a -1 tap, but this is assuming no delay or magnitude change in either the physical world or the ANC system and no feedback from output transducer to input microphone e.g. but the ideal case is not realizable in reality. 
+
+\subsection*{Feedforward}
+A feedforward ANC system consists of the following as seen on \autoref{fig:feedforwardTopology}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figures/BasicSystem/feedforward}
+	\caption{Typical control system layout with on-line cancellation path identification. (Maybe switched with headphone figure)}
+	\label{fig:feedforwardTopology}
+\end{figure}
+Where:
+\begin{itemize}
+\item Reference microphone: The microphone which picks up the noise 
+\item Error microphone: The microphone which measures the the error between the noise and the output of the ANC system
+\item Adaptive FXLMS algorithm: FXLMS optimization algorithm for the coefficients of the control filter
+\item Cancellation path estimate: Impulse response from the transducer to the error microphone
+\item Adaptive algorithm: LMS optimization algorithm for the coefficients of the Cancellation path estimate 
+\end{itemize}
+
+The feedforward system uses a reference microphone to pick up the noise which is feed into the control filter which should have the impulse response of the path from the reference microphone to the transducer. The control filter could either be realized as a FIR filter if there is no feedback from the transducer into the reference micophone or a IIR filter if there is feedback. It should be noted that if the filter is chosen to be an IIR filter there is a possibility of not getting a global minimum in the FXLMS algorithm. Because the cancellation path is constant refer to  
+\subsection*{Feedback}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figures/BasicSystem/feedback}
+	\caption{Adaptive feedback controller with on-line cancellation path identification. (Maybe switched with headphone figure)}
+	\label{fig:feedbackTopology}
+\end{figure}
+
+\subsection*{Hybrid feedforward/feedback}    
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figures/BasicSystem/hybrid}
+	\caption{Configuration for hybrid feedforward/feedback control system. (Maybe switched with headphone figure)}
+	\label{fig:hybridTopology}
+\end{figure}
+
+From the examination of the three different topologies it is concluded that a feedforward system will be used. The reasoning of this choice is that the feedback system is only capable of noise cancelling periodic noise and the hybrid feedforward/feedback increased performance comes from using the feedback part to reduce periodic noise   
+
+
+\subsection*{FXLMS algorithm for FIR filters}\label{subsec:fxlms}
+
+This algorithm and it termonology is derived in correlation with figure \ref{fig:feedforward}
+\begin{equation}\label{eq:1}
+w(k+1) = w(k) - \mu\nabla J(k)
+\end{equation}
+Where:
+\begin{description}
+	\item[\text{$\nabla$J}] is the gradient of the error surface at the location given by the current weight coefficient
+	\item[\text{$\mu$}] is the convergence factor
+	\item[w(k)] is the weight coefficients of the control filter written as  $w(k)=[w_(k),w_1(k) \cdots w_{L-1}(k)]^T$
+\end{description}
+
+\begin{equation}\label{eq:2}
+e(k) = p(k) + s(k)
+\end{equation}
+Where:
+\begin{description}
+	\item[\text{$p(k)$}] is the primary noise source
+	\item[\text{$s(k)$}] is the control source
+\end{description}
+
+The error criterion as a function of the filter weights is to be minimized therefore the gradient of the error surface ($\nabla J$) is calculated by differentiating the error criterion, shown in equation \ref{eq:3} 
+
+\begin{equation}\label{eq:3}
+J(k) = e^2(k)
+\end{equation}
+
+Differentiating equation \ref{eq:3} it yields equation \ref{eq:4}:
+
+\begin{equation}\label{eq:4}
+\Delta w(k) = \frac{\partial e^2(k)}{\partial w(k)} = 2e(k)\frac{\partial e(k)}{\partial w(k)} = 2e(k)\frac{\partial s(k)}{\partial w(k)}
+\end{equation}
+$e(k)$ can be sampled, but obtaining s(k) is given below. \\
+The controller output signal y(k) is given by equation \ref{eq:6} 
+
+\begin{equation}\label{eq:6}
+y(k) = w^T(k) + x(k) = \sum_{i=0}^{L-1} w_i(k)x(k-i)
+\end{equation}
+Where:
+\begin{description}
+	\item[x(k)] = $[x(k) x(k-1) \cdots x(k-L+1)]^T $
+\end{description}
+$s(k)$ can be formulated as equation \ref{eq:8}
+
+\begin{equation}\label{eq:8}
+s(k) = [w^T(k)x(k)]*c(k)\approx y(k)*\hat{c}(k) = \sum_{i=0}^{M-1}\hat{c}_i(k)y(k-1)
+\end{equation}
+Where:
+\begin{description}
+	\item[y(k)] = $[ y(k) y(k-1) \cdots y(k-M+1)]$
+	\item[c(k)] is the impulse response of the cancellation path (The Taps)
+\end{description}
+
+Equation \ref{eq:8} can be rewritten to equation \ref{eq:10}
+
+\begin{equation}\label{eq:10}
+s(k) = [w^T(k)x(k)]*c(k)\approx w^T(k)*f(k)
+\end{equation}
+Where:
+\begin{description}
+	\item[f(k)] is the filtered reference signal $f(k)=x(k)c(k)$
+	\item[f(k-j)] = $\sum_{i=0}^{M-1}\hat{c}_i(k)x(k-i-j)$
+\end{description}
+
+by using equation \ref{eq:10} in substituting into equation \ref{eq:4}, the error of the surface gradient can be written as equation \ref{eq:12}.
+
+\begin{equation}\label{eq:12}
+\nabla J = 2e(k)\frac{\partial s(k)}{\partial w(k)} = 2e(k)f(k)
+\end{equation}
+
+which yields equation \ref{eq:13}
+
+\begin{equation}\label{eq:13}
+w(k+1) = w(k) - 2\mu e(k)f(k)
+\end{equation}
+
+which is the standard FXLMS algorithm using an adaptive FIR filter
+\begin{equation}\label{eq:14}
+w_j(k+1) = w_k(k) - 2\mu e(k)f(k-j)
+\end{equation}
