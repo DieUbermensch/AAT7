@@ -52,7 +52,6 @@ _FXLMS:
 	SFTL AC1, #-15				; Bit shift to fit Q15
 	MOV AC1,*AR1+ 				; Place the new b(i) at old b(i) 
 loop
-	
 	RET
 
 	
