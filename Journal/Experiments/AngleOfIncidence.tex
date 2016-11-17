@@ -37,11 +37,11 @@ Measurements will only be performed in a horizontal plane.
 	\begin{subfigure}[b]{.4\textwidth}
 		\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/AngleOfIncidenceOnAxis.pdf}
 		\caption{On axis}
-		\label{fig:AngOgIndOnax}
+		\label{fig:AngOfIndOnax}
 		\vspace{2ex}
 		\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/AngleOfIncidenceOffAxis.pdf}
 		\caption{Off axis}
-		\label{fig:AngOgIndOffax}
+		\label{fig:AngOfIndOffax}
 	\end{subfigure} 
 	\begin{subfigure}[b]{.4\textwidth}
 	\centering
@@ -56,9 +56,19 @@ Measurements will only be performed in a horizontal plane.
 
 \subsection{Settings/Description}
 The experiment uses a single speaker to measure angles of incidence. Therefore either the speaker has to be moved around or the HATS will have to be turned to the right angles. \\
-Adjusting the angle is done by rotating the HATS around the centre of the HATS leaving the speaker in place. This creates a triangle between the speaker, microphone and inner microphone of the HATS. The baseline of the triangle is from the microphone to the inner microphone, and angle is adjusted according to that line. 
-The following Matlab code is used to calculate the angles at which measurements should be performed. The first measurement is performed at a 180\textdegree angle. This determines the length of the baseline (maxI in the code below). After determining the angles of interest can be calculated.  \\
-The script is based on two triangles that share a corner, the turning point, and a side to the speaker. The two triangles share the same angle at the turning point. This creates for two equations with two unknowns using the cosine relation and the fact that the side opposite the turning point should have a length "x" in one triangle and "x" + an amount of samples in the other triangle. Using this the angle can  be found.
+Adjusting the angle is done by rotating the HATS around the centre of the HATS leaving the speaker in place. This creates a triangle between the speaker, microphone and inner microphone of the HATS. The baseline of the triangle is from the microphone to the inner microphone, and angle is adjusted according to that line.
+The following angles are examined:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c c c c c c c c c c} \toprule
+		0 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 \\ \bottomrule
+	\end{tabular}
+\label{Tab:AngleOfInciMeasAngles}
+\caption{angles that measurements should be performed at. 0\textdegree is the situation in \autoref{fig:AngOfIndOnax}}
+\end{table}
+ 
+% The following Matlab code is used to calculate the angles at which measurements should be performed. The first measurement is performed at a 180\textdegree angle. This determines the length of the baseline (maxI in the code below). After determining the angles of interest can be calculated.  \\
+%The script is based on two triangles that share a corner, the turning point, and a side to the speaker. The two triangles share the same angle at the turning point. This creates for two equations with two unknowns using the cosine relation and the fact that the side opposite the turning point should have a length "x" in one triangle and "x" + an amount of samples in the other triangle. Using this the angle can  be found.
 
 \begin{figure}
 	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/TriangleCalculation.pdf}
@@ -66,28 +76,6 @@ The script is based on two triangles that share a corner, the turning point, and
 	\caption{The two triangle spanned by the centre og the Hats, the speaker and two of the microphones. M1 is the speakerMic and M2 is the Ref}
 \end{figure}  
 
-\begin{lstlisting} [language=Matlab]
-	fs=48000;
-	c=342;
-	maxI=11;
-	metersPrSample=1/(fs/c);
-	distM1=0.15; %meters
-	% distM2=distM1; %meters - not used - difference added in sampledomain
-	distSpeaker=1.5; %metersPrSample;
-	
-	sampledistM1=round(distM1/metersPrSample);
-	sampledistM2=round(distM1/metersPrSample)+11; % difference added here
-	sampledistSpeaker=round(distSpeaker/metersPrSample);
-	
-	i=1:maxI-1;
-	
-	x= -( sqrt(i.\^2*sampledistM1*sampledistM2 + (sampledistSpeaker\^2 - ...
-	sampledistM1*sampledistM2)*(sampledistM1 - sampledistM2)\^2) ...
-	- i*sampledistM2)/(sampledistM1 - sampledistM2);
-	
-	Angle=acosd((sampledistSpeaker\^2+sampledistM2\^2-x.\^2)/ ...
-	(2*sampledistM2*sampledistSpeaker));
-\end{lstlisting}
 
 \subsection{Set-up}
 \begin{figure}[H]
@@ -103,8 +91,8 @@ For the speaker the limiting criteria is the lower roll off, especially in the a
 The measurement system uses a RME Fireface 802 controlled using Simulink. Data extraction is made using the method described in \autoref{Sec:MeasATransFunc}
 
 \subsection{Control and calibration}
-The speaker is placed XXX meters from the centre of the HATS. \\\\
-The two microphones SpeakerMic and Ref are fixed IN SOME WAY. \\\\
+The speaker is placed 1.6 meters from the centre of the HATS. \\\\
+The two microphones SpeakerMic and Ref are fixed at distances 8.85 cm and 12.45 cm from the centre respectively. \\\\
 For each microphone and preamplifier calibrations are made on the computer using Simulink\textsuperscript{\textregistered}. The following settings are present:
 \begin{itemize}
 	\item 93.6 dB (-0.4 is subtracted from 94 dB due to adapters) $@$ 1000 Hz is used as calibration signal
@@ -117,14 +105,14 @@ For each microphone and preamplifier calibrations are made on the computer using
 \subsection{Equipment settings}
 \begin{itemize}
 	\item This experiment is performed with a sampling rate of, $F_{s}$ = 48,000 Hz
-	\item The Ref microphone is placed just outside the headset i line with the ear and speaker unit
+	\item The Ref microphone is placed just outside the headset in-line with the ear and speaker unit
 	\item The SpeakerMic is placed inside the headphone, as close to the speaker unit as possible. 
-	\item For item 4 (sound capture card) all gains are set at 0dB		
-	\item For item 6 (measuring amplifier):
+	\item For item 4 (sound card) take care to turn on the "inst" option in the mixing console. The following gain settings are present: 		
 	\begin{itemize}
-		\item "Input Section Gain" is set to +20 dB in proportion to calibration
-		\item 22.4 $k$Hz low-pass filter is enabled
-		\item 22.4 $k$Hz high-pass filter is enabled 
+		\item Line level gain is 0 dB
+		\item Error Microphones has gain
+		\item Ref Microphones has gain
+		\item Speaker Microphones has gain
 	\end{itemize}
 	\item Item 5 (computer) is set to 0 dBFS
 	\item A logarithmic sine sweep is generated and saved in Matlab using the chirp function as follows:
@@ -139,15 +127,16 @@ For each microphone and preamplifier calibrations are made on the computer using
 
 \subsection{Procedure}
 \begin{enumerate}
+	\item Set the HATS at the angle under test. 
 	\item Open Simulink\textsuperscript{\textregistered} and run file "SimulinkAngleOfIndence.xls"
 	\item Run Simulink\textsuperscript{\textregistered} to play "LogChirp.wav" through the speaker
-	\item Record and save, and name "Mic[i].wav" and Ref[i].wav" from item 4 onto item 5 \footnote{[i] indicates the iteration of the experiment}
-	\begin{itemize}
-		\item[] Perform this experiment for all angles given by the Matlab script. 
-	\end{itemize}
+	\item Record and save, and name "Mic[i].wav", "SpM[i].wav", "loop[i].wav" and Ref[i].wav"\footnote{[i] indicates the angle of the experiment}
+	\item Repeat the experiment for all angles.
+
 \end{enumerate}
 
 \subsection{Data Extraction}
+The data is saved during the experiment
 
 \subsection{Analysis}
 
