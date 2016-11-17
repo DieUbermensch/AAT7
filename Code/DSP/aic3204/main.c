@@ -70,23 +70,23 @@ void main( void )
       	        /* Signal processing */
       	        asm(" bclr XF");
       	        
-      	        if(i == N)
-      	        {
-      	        	i = 0;
-      	        }
-      	        if(iLMS == NLMS)
-      	        {
-      	        	iLMS = 0;
-      	        }
-      	        //xLMS[i] = data3;
-       	        //xLMS[iLMS] = FIR(x,b,N,i);
-       	        FXLMS(xLMS, bLMS, e, iLMS, constants);
-       	        
-       	        data3 = y[i];
-       	        data4 = y[i];      	               
-       	        i++;
-       	        iLMS++;
-      	        asm(" bset XF");
+//      	        if(i == N)
+//      	        {
+//      	        	i = 0;
+//      	        }
+//      	        if(iLMS == NLMS)
+//      	        {
+//      	        	iLMS = 0;
+//      	        }
+//      	        //xLMS[i] = data3;
+//       	        //xLMS[iLMS] = FIR(x,b,N,i);
+//       	        FXLMS(xLMS, bLMS, e, iLMS, constants);
+//       	        
+//       	        data3 = y[i];
+//       	        data4 = y[i];      	               
+//       	        i++;
+//       	        iLMS++;
+//      	        asm(" bset XF");
 
 				/* Write Digital audio */
       	        while((Xmit & I2S0_IR) == 0);  // Wait for interrupt pending flag
