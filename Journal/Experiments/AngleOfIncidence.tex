@@ -95,9 +95,9 @@ The speaker is placed 1.6 meters from the centre of the HATS. \\\\
 The two microphones SpeakerMic and Ref are fixed at distances 8.85 cm and 12.45 cm from the centre of the HATS respectively. The SpeakerMic is fitted just in front of the headphone speaker using medical tape.\\\\
 For each microphone and pre-amplifier calibrations are made on the computer using Simulink\textsuperscript{\textregistered}.
 \begin{itemize}
-	\item For the Ref microphone calibration is made at 1000 Hz using the B\&K 4230 as calibrator. This should yield a signal of 93.6 dB as it is a pressure field microphone. The measured intensity in Matlab was XX so all measurements are multiplied by XXX to get a calibrated signal i Matlab. 
-	\item For the Error microphone calibration is made at 1000 Hz using the B\&K 4230 as calibrator with adaptor B\&K 0741 for the ear of the HATS. This should yield a signal of 95.6 dB. The measured intensity in Matlab was XX so all measurements are multiplied by XXX to get a calibrated signal i Matlab. 
-	\item For the speakerMic calibration is made using a earplug cut in half and fitted around the adaptor. This simple adaptor allows the B\&K 4230 to be used as calibrator. The measured output level is XXX, and should have been XXX. Therefore all measurements are multiplied by XXX to get a calibrated signal i Matlab. 
+	\item For the Ref microphone calibration is made at 1000 Hz using the B\&K 4230 as calibrator. This should yield a signal of 93.6 dB as it is a pressure field microphone. The measured intensity in Matlab was 68.99 so all measurements are multiplied by 17.00 to get a calibrated signal in Matlab. 
+	\item For the Error microphone calibration is made at 1000 Hz using the B\&K 4230 as calibrator with adaptor B\&K 0741 for the ear of the HATS. This should yield a signal of 95.6 dB. The measured intensity in Matlab was 78.22 so all measurements are multiplied by 7.40 to get a calibrated signal i Matlab. 
+	\item For the speakerMic calibration is made using a earplug cut in half and fitted around the adaptor. This simple adaptor allows the B\&K 4230 to be used as calibrator. The measured output level is 84.37, and should have been XXX. Therefore all measurements are multiplied by XXX to get a calibrated signal i Matlab. 
 \end{itemize}
  
 \subsection{Equipment settings}
@@ -115,7 +115,17 @@ For each microphone and pre-amplifier calibrations are made on the computer usin
 	\item Item 5 (computer) is set to 0 dBFS
 	\item A logarithmic sine sweep is generated and saved in Matlab using the chirp function as follows:
 	\begin{lstlisting} [language=Matlab	]
-		IHope=10; % lala
+	fs=48000;
+	f1=50;
+	f2=fs/2;
+	t=0:1/fs:5-1/fs;
+	t2=5;
+	sweep=chirp(t,f1,t2,f2,'logarithmic',90);
+	figure
+	plot(sweep)
+	sweep=[zeros(1,fs) sweep zeros(1,fs)];
+	soundsc(sweep,fs);
+	audiowrite('LogChirp.wav', sweep,fs);
 	\end{lstlisting}
 \end{itemize}
 
