@@ -1,5 +1,5 @@
 
-\section{The angle of Incidences influence on the headphone transfer function}
+\section{The angle of Incidences influence on the headphone transfer function} \label{sec:AngleOfIncidence}
 
 \subsection{Purpose}
 The purpose of this experiment is to determine if the angle of incidence has any influence on the headphone transfer function. 
@@ -15,15 +15,15 @@ Measurements will only be performed in a horizontal plane.
 	\begin{tabular}{ c c c } \toprule
 		{Item}	& {Description} 						& {AAU-no}. \\ \bottomrule 
 		1	&	B\&K Head And Torso Simulator "Henry" Type 4128	& 08453	\\
-		2	&	B\&K ½'' Condenser Microphone Type 4134 	& XXXX		\\
-		3	&	Beyerdynamic DT 770 Headphones				& XXXX		\\
+		2	&	B\&K ½'' Condenser Microphone Type 4134 	& 08130		\\
+		3	&	Beyerdynamic DT 770 Headphones				& 2037-18		\\
 		4	&	Soundcard RME Fireface 802					& 86838		\\
-		5	&	Vision B3565 Computer running simulink		& NaN		\\
-		6	&	B\&K Measuring Amplifier Type 2636			& 08717		\\
+		5	&	Computer running simulink		& NaN		\\
+		6	&	GRAS pre-amplifier type 26-AK			& 52665		\\
 		7	&	B\&K Sound Calibrator Type 4230				& 08155		\\ 
-		8	&	Small microphone							& XXXX		\\
-		9	&	Genelec speaker								& TBD		\\ 
-		10	&	Preamp for the small microphone	(homemade)	& TBD\\
+		8	&	Knowles FG-23329 microphone					& NaN		\\
+		9	&	Genelec speaker								& 33990		\\ 
+		10	&	Preamp for FG-23329  microphone	(homemade)	& NaN\\
 		11	& 	B\&K Microphone Power Supply Type 2804		& 07304		\\
 		\bottomrule
 	\end{tabular}
@@ -86,8 +86,8 @@ The following angles are examined:
 
 \subsection{Choice of equipment}
 The experiment aims to be valid in the frequency range 50Hz to 20 kHz. This means that all equipment used should cover that frequency range. \\\\
-The experiment uses a total of three microphones. The error microphone located inside the dummy's ear is given by the type fitted to the dummy. The SpeakerMic should be as small as possible in order to avoid influencing the transfer functions that are being measured. For this the very small XXXX is used. The Ref microphone has less restrictions on size and placement. This allows for the choice of a good standard measurement microphone, B\&K 4134. \\\\
-For the speaker the limiting criteria is the lower roll off, especially in an anechoic chamber were reflections does not help a lot. However transfer functions between the microphones are measured, so absolute flatness is not critical. The Genelec XXXX is chosen. \\\\
+The experiment uses a total of three microphones. The error microphone located inside the dummy's ear is given by the type fitted to the dummy. The SpeakerMic should be as small as possible in order to avoid influencing the transfer functions that are being measured. For this the very small Knowles FG-23329 is used. The Ref microphone has less restrictions on size and placement. This allows for the choice of a good standard measurement microphone, B\&K 4134. \\\\
+For the speaker the limiting criteria is the lower roll off, especially in an anechoic chamber were reflections does not help a lot. However transfer functions between the microphones are measured, so absolute flatness is not critical. The Genelec 1031-A is chosen. \\\\
 The measurement system uses a RME Fireface 802 controlled using Simulink. Data extraction is made using the method described in \autoref{Sec:MeasATransFunc}
 
 \subsection{Control and calibration}
@@ -97,7 +97,7 @@ For each microphone and pre-amplifier calibrations are made on the computer usin
 \begin{itemize}
 	\item For the Ref microphone calibration is made at 1000 Hz using the B\&K 4230 as calibrator. This should yield a signal of 93.6 dB as it is a pressure field microphone. The measured intensity in Matlab was 68.99 so all measurements are multiplied by 17.00 to get a calibrated signal in Matlab. 
 	\item For the Error microphone calibration is made at 1000 Hz using the B\&K 4230 as calibrator with adaptor B\&K 0741 for the ear of the HATS. This should yield a signal of 95.6 dB. The measured intensity in Matlab was 78.22 so all measurements are multiplied by 7.40 to get a calibrated signal in Matlab. 
-	\item For the speakerMic calibration is made using a earplug cut in half and fitted around the adaptor. This simple adaptor allows the B\&K 4230 to be used as calibrator. The measured output level is 84.37, and should have been XXX. Therefore all measurements are multiplied by XXX to get a calibrated signal in Matlab. 
+	\item For the speakerMic calibration is made using a earplug cut in half and fitted around the adaptor. This simple adaptor allows the B\&K 4230 to be used as calibrator. The measured output level is 84.37, and should have been 53.5 dB . Therefore all measurements are multiplied by 0.029 to get a calibrated signal in Matlab. 
 \end{itemize}
  
 \subsection{Equipment settings}
@@ -108,9 +108,9 @@ For each microphone and pre-amplifier calibrations are made on the computer usin
 	\item For the sound card take care to turn on the "inst" option in the mixing console. The following gain settings are present: 		
 	\begin{itemize}
 		\item Line level gain is 0 dB
-		\item Error Microphones has gain XXXX
-		\item Ref Microphones has gain XXXX
-		\item Speaker Microphones has gain XXXX
+		\item Error Microphones has gain +30dB
+		\item Ref Microphones has gain +48dB
+		\item Speaker Microphones has gain +48dB
 	\end{itemize}
 	\item All settings on the computer is set to 0 dBFS
 	\item A logarithmic sine sweep is generated and saved in Matlab using the chirp function as follows:
@@ -150,20 +150,20 @@ The data is saved during the experiment.
 The cross correlation method described in \autoref{Sec:MeasATransFunc} is used to find the transfer functions. The Reference microphone is used as input signal and the speakerMic is used as output. The system under test is the cup of the headphone. 
 Below the frequency response and time response of the system is plotted. 
 \begin{figure}[H]
-	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/AngOfIncFreq.png}
+	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/TransRef2Speaker.png}
 	\label{Fig:AngOfIncFreq}
 	\caption{The frequency response from different angles}
 \end{figure}
 It can be seen, that apart from some resonances the frequency response does not change drastically. Especially in the lower frequency regions, where the ANC system will work. 
 
 \begin{figure}[H]
-	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/AngOfIncTime.png}
+	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/impulseRef2Speaker.png}
 	\label{Fig:AngOfIncTime}
 	\caption{The Time response from different angles}
 \end{figure}
 The figure shows the first 256 filter coefficients of a FIR filter with the same frequency response as the cup of the headphone. We are interested in the delay between the impulses, therefore a plot with a zoom is shown below.
 \begin{figure}[H]
-	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/AngOfIncTimeZoom.png}
+	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/impulsezoomRef2Speaker.png}
 	\label{Fig:AngOfIncTimezoom}
 	\caption{The Time response from different angles (zoomed)}
 \end{figure} 

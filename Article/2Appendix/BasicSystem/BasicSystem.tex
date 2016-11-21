@@ -74,8 +74,13 @@ Because the cancellation path is constant, the adaptive algorithm adjusting the 
 
 \begin{figure}[H]
 	\centering
+<<<<<<< HEAD
 	\includegraphics[width=0.6\textwidth]{missingfigure}
 	\caption{Basic System without adaptive CP}
+=======
+	\includegraphics[width=1.0\textwidth]{ArticleIllustrations/ANCFeedForward}
+	\caption{Block of basic System without adaptive CP}
+>>>>>>> 9669cfe4b4c74c2f3ed5d2947008874eaa6f0864
 	\label{fig:BasicSystem}
 \end{figure}   
 
@@ -162,7 +167,7 @@ w(k+1) = w(k) - 2\mu e(k)f(k)
 
 Which is the standard FXLMS algorithm using an adaptive FIR filter
 \begin{equation}\label{eq:FXLMSw_j(k+1)}
-w_j(k+1) = w_k(k) - 2\mu e(k)f(k-j)
+w_j(k+1) = w_j(k) - 2\mu e(k)f(k-j)
 \end{equation}
 
 With the definition of the FXLMS given the basic system in \autoref{fig:BasicSystem}, can be simulated.
