@@ -151,11 +151,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Add the \citep{key} command which display a
 % reference as [author, year]
-\usepackage[square]{natbib}
-\usepackage{natbib}
-% Appearance of the bibliography
-\bibliographystyle{00setup/apalike}
-%\bibliographystyle{IEEEtran}
+
+%% Regular
+%\usepackage[square]{natbib}
+%\usepackage{natbib}
+%\bibliographystyle{00setup/apalike}
+
+%%Ieeetran
+\usepackage[square, numbers, comma, sort&compress]{natbib}			
+\bibliographystyle{ieeetr}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Misc
