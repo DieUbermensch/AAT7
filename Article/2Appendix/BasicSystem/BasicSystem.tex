@@ -65,7 +65,7 @@ From the examination of the three different topologies it is concluded that a fe
 This appendix will go through the design of the system using a feedforward topology. The ANC system will be placed on a headphone with the microphones placed as seen on \autoref{fig:SystemHeadphone}. A \fxnote{dummy} will be used as the HATS during tests. This means that the cancellation path will have a constant impulse response. 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{ArticleIllustrations/SystemOverview}
+	\includegraphics[width=0.6\textwidth]{missingfigure}
 	\caption{Headphone look}
 	\label{fig:SystemHeadphone}
 \end{figure}  
@@ -74,8 +74,8 @@ Because the cancellation path is constant, the adaptive algorithm adjusting the 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{ArticleIllustrations/ANCFeedForward}
-	\caption{Block of basic System without adaptive CP}
+	\includegraphics[width=0.6\textwidth]{missingfigure}
+	\caption{Basic System without adaptive CP}
 	\label{fig:BasicSystem}
 \end{figure}   
 
@@ -162,7 +162,7 @@ w(k+1) = w(k) - 2\mu e(k)f(k)
 
 Which is the standard FXLMS algorithm using an adaptive FIR filter
 \begin{equation}\label{eq:FXLMSw_j(k+1)}
-w_j(k+1) = w_k(k) - 2\mu e(k)f(k-j)
+w_j(k+1) = w_j(k) - 2\mu e(k)f(k-j)
 \end{equation}
 
 With the definition of the FXLMS given the basic system in \autoref{fig:BasicSystem}, can be simulated.
