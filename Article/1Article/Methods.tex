@@ -12,13 +12,6 @@ An overview of the physical components in the setup is shown in \autoref{fig:Sys
 \autoref{fig:SystemOverview} is showing a head fitted with an ANC headphone using a reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).  
 
 \subsection*{Feedforward ANC using FXLMS}
-
-\begin{itemize}
-\item BDD and explanation
-\item FXLMS explanation + equation
-\item Angle incidence 
-\end{itemize}
-
 The adaptive feedforward ANC system is shown on \autoref{fig:ANCFeedforward}
 \begin{figure}[H]
 	\centering
@@ -28,23 +21,23 @@ The adaptive feedforward ANC system is shown on \autoref{fig:ANCFeedforward}
 \end{figure}
 \autoref{fig:ANCFeedforward} is showing an expanded version of the DSP block from \autoref{fig:SystemOverview}. This consists of converters, a control filter which is a FIR filter with coefficients adapted by the FXLMS algorithm. 
 
-\textbf{Control Filter} is the filter representing the transfer function from the reference microphone to the headphone loudspeaker. The filter is initialized with the first 256 samples from the impulse response of the transfer function found by measurements \autoref{sec:AngleOfIncidence}.  
+\textbf{Control Filter} is the filter representing the transfer function from the reference microphone to the headphone loudspeaker. The filter is initialized with the inverse of the first 256 samples from the impulse response of the transfer function found by measurements \autoref{sec:AngleOfIncidence}.  
 
-\textbf{FXLMS} is the optimization algorithm which updates the control filter coefficients using the FXLMS shown in \autoref{eq:FXLMS}. 
-
+\textbf{FXLMS} is the optimization algorithm which updates the control filter coefficients using the FXLMS shown in \autoref{eq:FXLMS} which is derived in \autoref{subsec:fxlms}. 
 \begin{equation}\label{eq:FXLMS}
 w_j(k+1) = w_j(k) - 2\mu e(k)f(k-j)
 \end{equation}
 Where:
 \begin{description}
-	\item[\text{$w(k)$}] is the weight coefficients of the control filter written as  $w(k)=[w_(k),w_1(k) \cdots w_{L-1}(k)]^T$
+	\item[\text{$w_j(k)$}] is the weight coefficients of the control filter written as  $w(k)=[w_(k),w_1(k) \cdots w_{L-1}(k)]^T$
 	\item[\text{$\mu$}] is the convergence factor
 	\item[\text{$e(k)$}] is the error 
 	\item[\text{$f(k)$}] is the reference convovled with the CP
 \end{description}
 
+
 \textbf{Cancellation Path} (CP) is the transfer function from the headphone loudspeaker to the error microphone. In the litterature \cite{Hansen} the CP is adaptively adjusted but it is assumed constant in this setup because the headphone is fixed.     
 
 
-
 \subsection*{Linear Prediction}
+When implementing the system in real time delays exist due to the anti aliasing and reconstruction filters. The delays of the system exceeds the propagation time of sound from the reference microphone to the headphone loudspeaker resulting in poor performance. Therefore a linear prediction algorithm is proposed to predict future samples in order to decrease the effect of the time delays.     
