@@ -9,7 +9,31 @@ An overview of the physical components in the setup is shown in \autoref{fig:Sys
 	\caption{System Overview}
 	\label{fig:SystemOverview}
 \end{figure}
-In \autoref{fig:SystemOverview} showing a head fitted with an ANC headphone using a reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).  
+\autoref{fig:SystemOverview} is showing a head fitted with an ANC headphone using a reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).  
 
-\subsection*{ANC Feedforward}
-\subsection*{Prediction}
+\subsection*{Feedforward ANC using FXLMS}
+
+\begin{itemize}
+\item BDD and explanation
+\item FXLMS explanation + equation
+\item Angle incidence 
+\end{itemize}
+
+The adaptive feedforward ANC system is shown on \autoref{fig:ANCFeedforward}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/SystemOverview}
+	\caption{Adaptive feedforward ANC system}
+	\label{fig:ANCFeedforward}
+\end{figure}
+\autoref{fig:ANCFeedforward} is showing an expanded version of the DSP block from \autoref{fig:SystemOverview}. This consists of converters, a control filter which is a FIR filter with coefficients adapted by the FXLMS algorithm. 
+
+\textbf{Control Filter} is the filter representing the transfer function from the reference microphone to the headphone loudspeaker. The filter is initialized with the first 256 samples from the impulse response of the transfer function found by measurements \autoref{sec:AngleOfIncidence}.  
+
+\textbf{FXLMS} is the optimization
+
+\textbf{Cancellation Path} (CP) is the transfer function from the headphone loudspeaker to the error microphone. In the litterature \cite{Hansen} the CP is adaptively adjusted but it is assumed constant in this setup because the headphone is fixed.     
+
+
+
+\subsection*{Linear Prediction}
