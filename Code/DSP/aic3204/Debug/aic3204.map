@@ -2,15 +2,21 @@
               TMS320C55x Linker PC v4.3.8                      
 ******************************************************************************
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 >> Linked Thu Nov 17 16:46:05 2016
 
 OUTPUT FILE NAME:   <aic3204.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 000208e2
 =======
+=======
+>>>>>>> Stashed changes
 >> Linked Thu Nov 17 16:40:51 2016
 
 OUTPUT FILE NAME:   <aic3204.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 000208d1
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 
@@ -24,7 +30,11 @@ PAGE 0:
   DARAM0                000000c0   0000ff40  0000307a  0000cec6  RWIX
   SARAM0                00010000   00010000  00000000  00010000  RWIX
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   SARAM1                00020000   00020000  00000932  0001f6ce  RWIX
+=======
+  SARAM1                00020000   00020000  00000921  0001f6df  RWIX
+>>>>>>> Stashed changes
 =======
   SARAM1                00020000   00020000  00000921  0001f6df  RWIX
 >>>>>>> Stashed changes
@@ -60,6 +70,7 @@ section   page  orgn(bytes) orgn(words) len(bytes) len(words)   input sections
                  [ 00003138 ]  0000189c          *   00000001   usbstk5515_i2c.obj (.bss)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 .text        0     00020000  [ 00010000 ] 00000932          *   
                    00020000  [ 00010000 ] 00000305          *   main.obj (.text)
                    00020305  [ 00010182+] 000001c9          *   usbstk5515_led.obj (.text)
@@ -76,6 +87,8 @@ section   page  orgn(bytes) orgn(words) len(bytes) len(words)   input sections
                    0002092f  [ 00010497+] 00000002          *              : vectors.obj (.text)
                    00020931  [ 00010498 ] 00000001          *   --HOLE-- [fill = 20]
 =======
+=======
+>>>>>>> Stashed changes
 .text        0     00020000  [ 00010000 ] 00000921          *   
                    00020000  [ 00010000 ] 000002f4          *   main.obj (.text)
                    000202f4  [ 0001017a ] 000001c9          *   usbstk5515_led.obj (.text)
@@ -91,6 +104,9 @@ section   page  orgn(bytes) orgn(words) len(bytes) len(words)   input sections
                    00020917  [ 0001048b+] 00000007          *              : exit.obj (.text:CIO_breakpoint)
                    0002091e  [ 0001048f ] 00000002          *              : vectors.obj (.text)
                    00020920  [ 00010490 ] 00000001          *   --HOLE-- [fill = 20]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 .cinit       0   [ 00040000 ]  00020000          *   00000056   
@@ -116,7 +132,11 @@ ffffffff                .bss
 ffffffff                .data
 ffffffff                .text
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 00020929                C$$EXIT
+=======
+00020918                C$$EXIT
+>>>>>>> Stashed changes
 =======
 00020918                C$$EXIT
 >>>>>>> Stashed changes
@@ -127,8 +147,13 @@ ffffffff                .text
             00001862    _Dhigh
             00001861    _Dlow
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 00020762                _FIR
 00020784                _FXLMS
+=======
+00020751                _FIR
+00020773                _FXLMS
+>>>>>>> Stashed changes
 =======
 00020751                _FIR
 00020773                _FXLMS
@@ -142,6 +167,7 @@ ffffffff                .text
             0000186a    _Reg19
             0000186b    _Reg20
 0004fe00                _Reset
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 000205cc                _USBSTK5515_GPIO_getInput
 000204ce                _USBSTK5515_GPIO_init
@@ -165,6 +191,8 @@ ffffffff                .text
 000207b8                _USBSTK5515_wait
 000207ec                _USBSTK5515_waitusec
 =======
+=======
+>>>>>>> Stashed changes
 000205bb                _USBSTK5515_GPIO_getInput
 000204bd                _USBSTK5515_GPIO_init
 000204c1                _USBSTK5515_GPIO_setDirection
@@ -186,6 +214,9 @@ ffffffff                .text
 000207ed                _USBSTK5515_init
 000207a7                _USBSTK5515_wait
 000207db                _USBSTK5515_waitusec
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             00001060    __STACK_END
 00002000                __STACK_SIZE
@@ -200,6 +231,7 @@ ffffffff                ___end__
 ffffffff                ___etext__
 ffffffff                ___pinit__
 ffffffff                ___text__
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 00020859                __args_main
             00001898    __cleanup_ptr
@@ -217,6 +249,8 @@ ffffffff                ___text__
             0000188a    _bLMS
 000208e2                _c_int00
 =======
+=======
+>>>>>>> Stashed changes
 00020848                __args_main
             00001898    __cleanup_ptr
             0000189a    __dtors_ptr
@@ -232,6 +266,9 @@ ffffffff                ___text__
             00001875    _b
             0000188a    _bLMS
 000208d1                _c_int00
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 000201d3                _codec_init
             00001892    _constants
@@ -241,11 +278,19 @@ ffffffff                ___text__
             0000186f    _data4
             00001891    _e
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 000208a4                _exit
             00001884    _i
             0000189c    _i2c_timeout
             00001890    _iLMS
 000202a1                _initAll
+=======
+00020893                _exit
+            00001884    _i
+            0000189c    _i2c_timeout
+            00001890    _iLMS
+00020290                _initAll
+>>>>>>> Stashed changes
 =======
 00020893                _exit
             00001884    _i
@@ -315,6 +360,7 @@ byte addr   word addr   name
 000201d3                _codec_init
 00020230                _main
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 000202a1                _initAll
 00020305                _USBSTK5515_LED_init
 00020310                _USBSTK5515_LED_on
@@ -349,6 +395,8 @@ byte addr   word addr   name
 00020928                _abort
 00020929                C$$EXIT
 =======
+=======
+>>>>>>> Stashed changes
 00020290                _initAll
 000202f4                _USBSTK5515_LED_init
 000202ff                _USBSTK5515_LED_on
@@ -382,6 +430,9 @@ byte addr   word addr   name
 00020915                __nop
 00020917                _abort
 00020918                C$$EXIT
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             00020000    ___cinit__
             00020000    cinit

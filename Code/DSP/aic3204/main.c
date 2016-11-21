@@ -72,6 +72,7 @@ void main( void )
       	        data2 = I2S0_W1_LSW_R;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       	        //asm(" bset XF");
       	        /* Signal processing */
       	        asm(" bclr XF");
@@ -94,6 +95,8 @@ void main( void )
 //       	        iLMS++;
 //      	        asm(" bset XF");
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 				/* Write Digital audio */

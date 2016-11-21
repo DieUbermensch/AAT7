@@ -2,6 +2,7 @@
 
 main.obj: ../main.c
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 main.obj: C:/Program\ Files/TexasInstruments/ccsv4/tools/compiler/c5500/include/stdio.h
 main.obj: C:/Program\ Files/TexasInstruments/ccsv4/tools/compiler/c5500/include/linkage.h
 main.obj: C:/Program\ Files/TexasInstruments/ccsv4/tools/compiler/c5500/include/stdarg.h
@@ -11,6 +12,8 @@ main.obj: C:/Program\ Files/TexasInstruments/ccsv4/tools/compiler/c5500/include/
 main.obj: C:/Program\ Files/TexasInstruments/ccsv4/tools/compiler/c5500/include/usbstk5515_i2c.h
 main.obj: C:/Program\ Files/TexasInstruments/ccsv4/tools/compiler/c5500/include/usbstk5515.h
 =======
+=======
+>>>>>>> Stashed changes
 main.obj: C:/Program\ Files\ (x86)/Texas\ Instruments/cssv424/ccsv4/tools/compiler/c5500/include/stdio.h
 main.obj: C:/Program\ Files\ (x86)/Texas\ Instruments/cssv424/ccsv4/tools/compiler/c5500/include/linkage.h
 main.obj: C:/Program\ Files\ (x86)/Texas\ Instruments/cssv424/ccsv4/tools/compiler/c5500/include/stdarg.h
