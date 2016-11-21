@@ -1,0 +1,42 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=2in,
+height=2in,
+scale only axis,
+xmin=1,
+xmax=70,
+xtick={ 0, 10, 20, 30, 40, 50, 60, 70},
+xlabel={Delay in samples},
+xmajorgrids,
+ymin=-20,
+ymax=30,
+ylabel={Ratio in dB},
+ymajorgrids,
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+0	33.9199609651751\\
+2	24.5125467152285\\
+4	20.3982832349241\\
+6	9.99773981656632\\
+8	8.20762980883687\\
+10	6.82610214888687\\
+20	2.16019704533128\\
+30	-0.520506237919921\\
+40	-3.40701626419035\\
+50	-7.45475054067408\\
+60	-12.0646456751647\\
+70	-17.8365802766195\\
+};
+\end{axis}
+\end{tikzpicture}%
