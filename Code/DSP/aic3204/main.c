@@ -16,7 +16,13 @@
 #include "usbstk5515_i2c.h"
 #include "aic3204_setup.h"
 
-
+//#include "i2s.h"
+//#include "data_types.h"
+//#include "register_system.h"
+//#include "register_cpu.h"
+//#include "rtc.h"
+//#include "control.h"
+//#include "dma.h"
 
 
 
@@ -56,7 +62,6 @@ void main( void )
     USBSTK5515_init();
 	codec_init ();
 	initAll();
-
             while ( 1 )
             {
             	/* Read Digital audio */
@@ -66,6 +71,8 @@ void main( void )
       	        data4 = I2S0_W1_MSW_R;  // 16 bit right channel received audio data
       	        data2 = I2S0_W1_LSW_R;
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
       	        //asm(" bset XF");
       	        /* Signal processing */
       	        asm(" bclr XF");
@@ -88,8 +95,12 @@ void main( void )
 //       	        iLMS++;
 //      	        asm(" bset XF");
 
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 				/* Write Digital audio */
-      	        while((Xmit & I2S0_IR) == 0);  // Wait for interrupt pending flag
+      	        //while((Xmit & I2S0_IR) == 0);  // Wait for interrupt pending flag
       	        asm(" bclr XF");
 				I2S0_W0_MSW_W = data3;  // 16 bit left channel transmit audio data
       	        I2S0_W0_LSW_W = 0;

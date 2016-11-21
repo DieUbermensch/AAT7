@@ -17,6 +17,7 @@
 <listOptionValue builtIn="false" value="OUTPUT_TYPE=executable"/>
 </option>
 <option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.1723169581" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="4.3.8" valueType="string"/>
+<builder arguments="-k" command="${CCS_INSTALL_ROOT}/utils/gmake/gmake" id="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.builderDebug.651458688" name="GNU Make.Debug" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.builderDebug"/>
 <tool id="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.compilerDebug.1162093177" name="C5500 Compiler" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.compilerDebug">
 <option id="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.SILICON_VERSION.1835540247" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.SILICON_VERSION" value="5515" valueType="string"/>
 <option id="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.INCLUDE_PATH.882029114" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.INCLUDE_PATH" valueType="includePath">
