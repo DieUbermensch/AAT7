@@ -13,13 +13,14 @@ Mikkel Krogh Simonsen, Kasper Kiis Jensen, Maxime Démurger, Oliver Palmhøj Jok
 
 \vspace{5mm}
 
-\textbf{Abstract -} ANC is a widely used application, in many aspects. However most ANC solutions are based on filtering out static sounds, e.g. low-frequency noise from machinery. At this point in time a solution based on filtering out speech has not been researched and implemented yet - we sought out to discover a solution to this.
-The solution uses a FIR-filter adapted by a FXLMS-algorithm, to cancel out a quasi-periodic speech signal. Furthermore this solution uses Linear Prediction to estimate the upcoming content of the speech signal. This is used decrease the sample delay in the system and thus increasing bandwidth and yielding better attenuation.
+ANC is a widely used technique. However most ANC solutions are based on filtering out static sounds, e.g. low-frequency noise from machinery. At this point in time a solution targeted at filtering out speech has not been derived yet - which is the motivation for this paper.
+The solution proposed uses a FIR-filter adapted by a FXLMS-algorithm, to cancel a speech signal. Furthermore this solution uses the quasi-periodic properties of speech to estimate the upcoming content of the speech signal using Linear Prediction. Thereby decreasing the sample delay in the system which increases bandwidth, yielding better attenuation.
 
 
 
 
-GUESSWORK: Using the proposed methods we were able to make a simulation and a real-time implementation with sufficient attenuation of a speech signal, and thus have successfully made an ANC solution that can filter out speech.  
+GUESSWORK: Using the proposed Linear Prediction we were able to verify improved performance both through simulation and real time implementation.
+%make a simulation and a real-time implementation with sufficient attenuation of a speech signal, and thus have successfully made an ANC solution that can filter out speech.  
 
 
 
