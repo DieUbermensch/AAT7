@@ -4,7 +4,7 @@
 \autoref{fig:SystemOverview} shows a head fitted with an ANC headphone using a reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).
 {
 	%\centering
-	\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/BasicOverviewZoomed}
+	\includegraphics[width=0.9\columnwidth]{figures/ArticleIllustrations/BasicOverviewZoomed}
 	\captionof{figure}{System Overview.}
 	\label{fig:SystemOverview}
 }
@@ -59,11 +59,30 @@ When implementing the system in real-time delays exist due to the anti aliasing 
 
 Speech can be split into two main classes, voiced and unvoiced. Voiced sounds are characterized by a strong periodicity in the sound with the fundamental frequency referred to as the pitch frequency (50 - 500 Hz). Unvoiced sounds are characterized as random. Speech is a non stationary and can only be assumed wide sense stationary (WSS) for periods of 20 - 30 ms. Therefore in order to predict future samples the auto correlation function (ACF), which is used in linear prediction, of speech must be estimated in frames. 
 
-%The ACF is estimated using a   
+Utilizing a nonrecursive estimation of the autocorrelation function, shown in \autoref{eq:nonrecursive}, it is possible to determine the linear prediction coefficients (LPCs) which is used for predicting future samples. When estimating the autocorrelation function a hamming window is applied to extract the frame of interest.
+\vspace{-4mm}
+\begin{equation}\label{eq:nonrecursive}
+R[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} x_l[n]w_l[m-n]
+\end{equation}
+%\begin{multline}\label{eq:nonrecursive}
+%R[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} \\ x[n]w[m-n] x[n-\left| l\right|]w[m-n+\left| l\right|]
+%\end{multline}
+%\begin{equation}
+%R[l,m]=\sum^{m}_{n=m-N+1+\left| l\right|}x[n]w[m-n] x[n-\left| l\right|]w[m-n+\left| l\right|]
+%\end{equation}
+Where:
+\vspace{-8mm}
+\begin{description}
+	\item[\text{$x_l[n]$}] $=x[n]x[n-l]$ and $x[n]$ is the input
+	\item[\text{$w_l[n]$}] $=w[n]w[n+l]$
+	\item[\text{$l$}] is the lag in the autocorrelation function
+	\item[\text{$m$}] is the offset in the signal
+	\item[\text{$N$}] is the frame size
+\end{description}
 
-Using the ACF estimator the normal equation shown in \autoref{eq:normal} can be used to derive the linear prediction coefficients (LPCs) which is used for predicting future samples. 
+The LPCs are determined in combination with the Yule-Walkers equation \autoref{eq:normal} to determine the LPCs.
 \begin{equation}\label{eq:normal}
-R = a\cdot r
+-R = a\cdot r
 \end{equation}
 Where:
 \vspace{-8mm} % yeah I know - Sorry Mikkel - again!
@@ -76,8 +95,7 @@ This can be rewritten as shown in \autoref{eq:normal2} yielding the LPCs directl
  \begin{equation}\label{eq:normal2}
 a = -R^{-1}\cdot r
 \end{equation}
-However calculating $R^{-1}$ is not possible in a real time application 
-
+However calculating $R^{-1}$ is very time consuming and computation heavy in a real time Fixed-point application. To derive the estimated LPCs the Levinson-Durbin is used in implementation.
 
 
 
