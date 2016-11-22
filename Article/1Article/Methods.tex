@@ -36,7 +36,7 @@
 %\end{figure}
 
 
-\textbf{Control Filter} is a filter representing the transfer function from the reference microphone to the headphone loudspeaker. The filter is initialized with the inverse of the first 256 samples from the impulse response of the transfer function found by measurements in \autoref{sec:AngleOfIncidence}.  
+\textbf{Control Filter} is the filter representing the transfer function from the reference microphone to the headphone loudspeaker. The filter is initialized with the inverse of the first 256 samples from the impulse response of the transfer function found by measurements in \autoref{sec:AngleOfIncidence}.  
 
 \textbf{FXLMS} is the optimization algorithm which updates the control filter coefficients using the FXLMS method shown in \autoref{eq:FXLMS} and derived in \autoref{subsec:fxlms}. 
 \begin{equation}\label{eq:FXLMS}
