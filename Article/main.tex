@@ -88,8 +88,8 @@
 \titlespacing{\section}{0pt}{0pt}{-8pt}
 \titlespacing{\subsection}{0pt}{8pt}{-8pt}
 \titlespacing{\subsubsection}{0pt}{6pt}{-8pt}
-\titleformat{\section}{\fontsize{13}{14}\scshape\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\fontsize{11}{14}\scshape\bfseries}{\thesubsection}{1em}{}
+\titleformat{\section}{\fontsize{13}{14}\scshape}{\thesection}{1em}{}
+\titleformat{\subsection}{\fontsize{13}{14}\scshape}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalfont\scshape\bfseries}{\thesubsubsection}{0.5em}{}
 
 
@@ -102,6 +102,7 @@
 \input{1Article/Methods.tex}
 \input{1Article/Results.tex}
 \input{1Article/Conclusion.tex}
+\bibliography{00setup/mybib}
 \end{multicols}
 
 \newpage
@@ -112,7 +113,7 @@
 %%%%%%%%%%%%%% Litterature and Appendix %%%%%%%%%%%%%%%%%%%%%%
 \bookmarksetup{startatroot}% this is it
 \addtocontents{toc}{\bigskip}% perhaps as well
-\bibliography{00setup/mybib}
+
 \label{bib:mybiblio}
 
 
