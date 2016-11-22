@@ -28,7 +28,7 @@ The purpose of this experiment is to determine the impulse response of the cance
 	\tikzsetnextfilename{CancellationPath}
 	\input{figures/CancellationPath_MATLAB_Figures/CancellationPath.tex}
 %	\includegraphics[width=0.7\textwidth]{Shematic_CalcellationPath.pdf}
-	\caption{Total overview of the system. (Oliver needs to make the drawing)}
+	\caption{Total overview of the system.}
 	\label{SchematicOverview}
 \end{figure}
 
@@ -39,7 +39,7 @@ Calibration of the microphone and associated preamplifier is done on the compute
 
 \subsubsection{Control and calibration}
 \begin{itemize}
-	\item 93.2 dB (-0.8 is subtracted from 94 dB due to adapters) $@$ 250 Hz is used as calibration signal
+	\item 93.6 dB due to being a pressure field microphone $@$ 250 Hz is used as calibration signal
 	\item Microphone sensitivity is controlled to 11.6 $m$V/Pa
 	\item Calibration signal yields an amplitude of 0.6 relative to 0 dBFS
 	\item Calibration signal yields a spike at 95.5 dB SPL, which requires a -2.3 dB SPL adjustment
@@ -47,7 +47,7 @@ Calibration of the microphone and associated preamplifier is done on the compute
 
 \subsubsection{Equipment settings}
 \begin{itemize}
-	\item This experiment is performed with a sampling rate of, $F_{s}$ = 48,000 Hz
+	\item This experiment is performed with a sampling rate of, $F_{s}$ = 48 $k$Hz
 	\item Item 4 (sound capture card):
 		\begin{itemize}
 			\item "SENS(INPUT 1/L)" is set to +0 dB"
