@@ -57,11 +57,11 @@ Where:
 When implementing the system, delays exist due to the anti-aliasing and reconstruction filters. The delays of the system exceeds the propagation time of sound from the reference microphone to the headphone loudspeaker resulting in poor performance. Therefore an LP-algorithm is proposed to predict future samples in order to decrease the effect of the time delays.
 
 
-Speech can be split into two main classes, voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 - 500 Hz). Unvoiced sounds are characterized as random. Speech is a non stationary signal and can only be assumed wide sense stationary (WSS) for periods of 20 - 30 ms. In order to predict future samples the auto correlation function (ACF), which is used in LP, of speech must be estimated in frames. 
+Speech can be split into two main classes, voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 - 500 Hz). Unvoiced sounds are characterized as random. Speech is a non stationary signal and can only be assumed wide sense stationary (WSS) for periods of 20 - 30 ms. In order to predict future samples the auto correlation function (ACF), which is used in LP, of speech must be estimated in frames. The outlines of the prediction system is shown on figure \ref{fig:LinearPredictionOverview}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\columnwidth]{missingfigure}
+	\includegraphics[width=\columnwidth]{ArticleIllustrations/WienerHopf}
 	\caption{Linear prediction overview}
 	\label{fig:LinearPredictionOverview}
 \end{figure}
