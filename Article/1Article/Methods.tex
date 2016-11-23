@@ -59,6 +59,14 @@ When implementing the system, delays exist due to the anti-aliasing and reconstr
 
 Speech can be split into two main classes, voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 - 500 Hz). Unvoiced sounds are characterized as random. Speech is a non stationary signal and can only be assumed wide sense stationary (WSS) for periods of 20 - 30 ms. In order to predict future samples the auto correlation function (ACF), which is used in LP, of speech must be estimated in frames. 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{missingfigure}
+	\caption{Linear prediction overview}
+	\label{fig:LinearPredictionOverview}
+\end{figure}
+
+
 Utilizing a nonrecursive estimation of the ACF, shown in \autoref{eq:nonrecursive}, it is possible to determine the linear prediction coefficients (LPCs) which are used for predicting future samples. When estimating the ACF of the input ($x$) a Hamming window ($w$) is applied.
 \begin{equation}\label{eq:nonrecursive}
 r_x[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} x_l[n]w_l[m-n]
@@ -78,7 +86,7 @@ Where:
 	\item[\text{$m$}] is the frame index
 	\item[\text{$N$}] is the frame size
 \end{description}
-The LPCs are determined using \autoref{eq:normal}, known as the Yule-Walkers equation.
+The LPCs are determined using \autoref{eq:normal}, known as the Wiener-Hopf equation.
 \begin{equation}\label{eq:normal}
 R \cdot \bar{a} = -\bar{r_x}
 \end{equation}
@@ -93,7 +101,11 @@ Where:
  \begin{equation}\label{eq:normal2}
 \bar{a} = -R^{-1}\cdot \bar{r_x}
 \end{equation}
-Calculating $R^{-1}$ is computationally heavy on a DSP. To estimate the LPCs the Levinson-Durbin method is used.
+Calculating $R^{-1}$ is computationally heavy on a DSP. To estimate the LPCs the Levinson-Durbin method is used. Prediction using wiener filtering, shown in equation \ref{eq:Predictor}, can then be applied to the current frame for prediction of the next frame. 
 
+\begin{equation}\label{eq:Predictor}
+\hat{x}[n+1] =- \sum^{N}_{i=1}a_ix[n-i]
+\end{equation}
 
+Using equation \ref{eq:Predictor} in cascade where $\hat{x}[n+2]$ is estimated using $\hat{x}[n+1]$ and $x[n]$. The predicted frame is then used as input for the ANC system.
 
