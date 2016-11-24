@@ -1,13 +1,8 @@
 %% Introduction
-\section*{Methods}
+\section{Methods}
 %An overview of the physical components in the setup is shown in \autoref{fig:SystemOverview}.
 \autoref{fig:SystemOverview} shows a head fitted with an ANC headphone using a reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).
-{
-	%\centering
-	\includegraphics[width=0.9\columnwidth]{figures/ArticleIllustrations/BasicOverviewZoomed}
-	\captionof{figure}{System overview.}
-	\label{fig:SystemOverview}
-}
+
 
 %\begin{figure}[H]
 %	\centering
@@ -18,7 +13,7 @@
 
 
 
-\subsection*{Feedforward ANC using FXLMS}
+\subsection{Feedforward ANC using FXLMS}
 %The adaptive feedforward ANC system is shown on \autoref{fig:ANCFeedforward}
 \autoref{fig:ANCFeedforward} shows an expansion of the DSP-block from \autoref{fig:SystemOverview}. This consists of converters and a control filter which is a FIR-filter where the coefficients are adapted by the FXLMS-algorithm. 
 {
@@ -36,28 +31,39 @@
 %\end{figure}
 
 
-\textbf{Control Filter} is the filter representing the transfer function from the reference microphone to the headphone loudspeaker. The filter is initialized with the inverse of the first 256 samples from the impulse response of the transfer function found by measurements in \autoref{sec:AngleOfIncidence}.  
+\textbf{Control Filter} is the filter representing the transfer function from the reference microphone to the headphone loudspeaker. The filter, shown in equation \ref{eq:Output}, is initialized with the inverse of the first 256 samples from the impulse response of the transfer function found by measurements in \autoref{sec:AngleOfIncidence}.  
+\vspace{-3mm} % yeah I know - Sorry Mikkel!
+\begin{equation}\label{eq:Output}
+y[n]=\sum_{n=0}^{L-1}b_j[n]x[n-j]
+\end{equation}
+Where:
+\vspace{-7mm} % yeah I know - Sorry Mikkel!
+\begin{description}
+	\item[\text{$b_j[n]$}] is the weight coefficients written as  $b[n]=[b_0[n],b_1[n], \cdots, b_{L-1}[n]]^T$
+\end{description}
 
 \textbf{FXLMS} is the optimization algorithm which updates the control filter coefficients using the FXLMS method shown in \autoref{eq:FXLMS} and derived in \autoref{sec:systemDesign}. 
 \begin{equation}\label{eq:FXLMS}
-b_j(k+1) = b_j(k) - 2\mu e(k)f(k-j) 
+b_j[n+1] = b_j[n] - 2\mu e[n]f[n-j]
 \end{equation}
 Where:
 \vspace{-8mm} % yeah I know - Sorry Mikkel!
 \begin{description}
-	\item[\text{$b_j(k)$}] is the weight coefficients of the control filter written as  $b(k)=[b_0(k),b_1(k), \cdots, b_{L-1}(k)]^T$
 	\item[\text{$\mu$}] is the convergence factor
-	\item[\text{$e(k)$}] is the error 
-	\item[\text{$f(k)$}] is the reference convolved with the Cancellation Path
+	\item[\text{$e[n]$}] is the error 
+	\item[\text{$f[n]$}] is the reference convolved with the Cancellation Path
 \end{description}
 
 \textbf{Cancellation Path} (CP) is the transfer-function from the headphone loudspeaker to the error microphone. In the literature \cite{Hansen} the CP is adaptively adjusted, but it is assumed constant in this setup because the headphone position is fixed.     
 
-\subsection*{Linear Prediction of Speech}
+
 When implementing the system, delays exist due to the anti-aliasing and reconstruction filters. The delays of the system exceeds the propagation time of sound from the reference microphone to the headphone loudspeaker resulting in poor performance. Therefore an LP-algorithm is proposed to predict future samples in order to decrease the effect of the time delays.
 
+\subsection{Characteristic of Speech}
+Speech can be split into two main classes, voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 - 500 Hz). Unvoiced sounds are characterized as random. Speech is a non stationary signal and can only be assumed wide sense stationary (WSS) for periods of 20 - 30 ms. 
 
-Speech can be split into two main classes, voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 - 500 Hz). Unvoiced sounds are characterized as random. Speech is a non stationary signal and can only be assumed wide sense stationary (WSS) for periods of 20 - 30 ms. In order to predict future samples the auto correlation function (ACF), which is used in LP, of speech must be estimated in frames. The outlines of the prediction system is shown on figure \ref{fig:LinearPredictionOverview}.
+\subsection{Linear Prediction of Speech}
+In order to predict future samples the auto correlation function (ACF), which is used in LP, of speech must be estimated in frames. The outlines of the prediction system is shown in figure \ref{fig:LinearPredictionOverview}.
 
 \begin{figure}[H]
 	\centering
@@ -69,7 +75,8 @@ Speech can be split into two main classes, voiced and unvoiced. Voiced sounds ar
 
 Utilizing a nonrecursive estimation of the ACF, shown in \autoref{eq:nonrecursive}, it is possible to determine the linear prediction coefficients (LPCs) which are used for predicting future samples. When estimating the ACF of the input ($x$) a Hamming window ($w$) is applied.
 \begin{equation}\label{eq:nonrecursive}
-r_x[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} x_l[n]w_l[m-n]
+%%r_x[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} x_l[n]w_l[m-n]
+r_x[l] = \sum^{N}_{n=\left| l\right|} x_l[n]w_l[N-n]
 \end{equation}
 %\begin{multline}\label{eq:nonrecursive}
 %R[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} \\ x[n]w[m-n] x[n-\left| l\right|]w[m-n+\left| l\right|]
