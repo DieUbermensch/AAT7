@@ -1,8 +1,9 @@
 %% Introduction
 \section{Methods}
 %An overview of the physical components in the setup is shown in \autoref{fig:SystemOverview}.
-\autoref{fig:SystemOverview} shows a head fitted with an ANC headphone using a reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).
+%\autoref{fig:SystemOverview} shows a head fitted with an ANC headphone using a reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).
 
+Using \autoref{fig:SystemOverview} as the outline, the DSP(4) is expanded into \autoref{fig:ANCFeedforward}.
 
 %\begin{figure}[H]
 %	\centering
@@ -15,7 +16,7 @@
 
 \subsection{Feedforward ANC using FXLMS}
 %The adaptive feedforward ANC system is shown on \autoref{fig:ANCFeedforward}
-\autoref{fig:ANCFeedforward} shows an expansion of the DSP-block from \autoref{fig:SystemOverview}. This consists of converters and a control filter which is a FIR-filter where the coefficients are adapted by the FXLMS-algorithm. 
+This consists of converters and a control filter which is a FIR-filter where the coefficients are adapted by the FXLMS-algorithm. 
 {
 	%\centering
 	\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/ANCFeedForward}
@@ -31,7 +32,7 @@
 %\end{figure}
 
 
-\textbf{Control Filter} is the filter representing the transfer function from the reference microphone to the headphone loudspeaker. The filter, shown in equation \ref{eq:Output}, is initialized with the inverse of the first 256 samples from the impulse response of the transfer function found by measurements in \autoref{sec:AngleOfIncidence}.  
+\textbf{Control Filter} is the filter representing the transfer function from the reference microphone to the headphone loudspeaker. The filter, shown in equation \ref{eq:Output}, is initialized with the inverse of the measured impulse response of the represented transfer function. An order of 256 taps is chosen based on subjective testing in simulation. 
 \vspace{-3mm} % yeah I know - Sorry Mikkel!
 \begin{equation}\label{eq:Output}
 y[n]=\sum_{n=0}^{L-1}b_j[n]x[n-j]
