@@ -1,0 +1,417 @@
+\documentclass[10pt,fleqn,twoside,a4paper]{article}
+\usepackage{etex}
+% Select encoding of your inputs.
+\usepackage[utf8]{inputenc}
+
+% Make latex understand and use the typographic
+% rules of the language used in the document.
+\usepackage[english, danish]{babel}
+
+% Use the vector font Latin Modern which is going
+% to be the default font in latex in the future.
+\usepackage{lmodern}
+% Use vector arrows in mathmode
+\usepackage{esvect}
+
+% Choose the font encoding
+\usepackage[T1]{fontenc}
+
+% load a colour package
+\usepackage[table]{xcolor}
+\definecolor{aaublue}{RGB}{33,26,82}% dark blue
+
+% The standard graphics inclusion package
+\definecolor{white}{RGB}{255,255,255} % define color white
+\usepackage{graphicx}
+
+% Set up how figure and table captions are displayed
+\usepackage{caption}
+\captionsetup{%
+  font=footnotesize,% set font size to footnotesize
+  labelfont=bf % bold label (e.g., Figure 3.2) font
+}
+
+% Enable row combination in tables
+\usepackage{multirow}
+
+% Make space between table lines and text
+\renewcommand{\arraystretch}{1.5}
+
+% Make the standard latex tables look so much better
+\usepackage{array,booktabs}
+
+% Enable the use of frames around, e.g., theorems
+% The framed package is used in the example environment
+\usepackage{framed}
+\usepackage{colortbl}
+\usepackage{longtable}
+
+\usepackage{textcomp}
+\newcommand\degrees{\textdegree\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mathematics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Defines new environments such as equation,
+% align and split 
+\usepackage{mathrsfs,amsmath}
+\usepackage{relsize}
+% Adds new math symbols
+\usepackage{amssymb}
+% Use theorems in your document
+% The ntheorem package is also used for the example environment
+% When using thmmarks, amsmath must be an option as well. Otherwise \eqref doesn't work anymore.
+\usepackage[framed,amsmath,thmmarks]{ntheorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Change margins, papersize, etc of the document
+\usepackage[
+  left=25mm,% left margin on an odd page %tidligere 25mm for baade right og left
+  right=25mm,% right margin on an odd page
+  top=35mm,
+  ]{geometry}
+  
+% Modify how \chapter, \section, etc. look
+% The titlesec package is very configureable
+\usepackage{titlesec}
+\makeatletter
+\def\ttl@mkchap@i#1#2#3#4#5#6#7{%
+    \ttl@assign\@tempskipa#3\relax\beforetitleunit
+    \vspace{\@tempskipa}%<<<<<< REMOVE THE * AFTER \vspace
+    \global\@afterindenttrue
+    \ifcase#5 \global\@afterindentfalse\fi
+    \ttl@assign\@tempskipb#4\relax\aftertitleunit
+    \ttl@topmode{\@tempskipb}{%
+        \ttl@select{#6}{#1}{#2}{#7}}%
+    \ttl@finmarks  % Outside the box!
+    \@ifundefined{ttlp@#6}{}{\ttlp@write{#6}}}
+\makeatother
+
+%\titlespacing{\chapter}{0pt}{0pt}{10pt}
+%\titlespacing{\section}{0pt}{0pt}{-5pt}
+%\titlespacing{\subsection}{0pt}{8pt}{5pt}
+%\titlespacing{\subsubsection}{0pt}{6pt}{10pt}
+
+%%\titleformat*{\section}{\normalfont\Large\bfseries}\color{aaublue}}
+%\titleformat{\section}
+%  {\normalfont\scshape}{\thesection}{1em}{}
+%\titleformat{\subsection}
+%{\normalfont\scshape}{\thesubsection}{1em}{}
+%%\titleformat*{\subsection}{\normalfont\large\bfseries}%\color{aaublue}}
+%\titleformat{\subsubsection}{\normalfont\scshape}{\thesubsubsection}{0.5em}{}
+%%\titleformat*{\subsubsection}{\normalfont\normalsize\bfseries}%\color{aaublue}}
+%%\titleformat*{\paragraph}{\normalfont\normalsize\bfseries\color{aaublue}}
+%%\titleformat*{\subparagraph}{\normalfont\normalsize\bfseries\color{aaublue}}
+
+%Formatting chapter headers. Predefined styles that can be used as option to the package: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, PetersLenny and Bjornstrup
+
+%\usepackage[Sonny]{fncychap}
+
+\usepackage{titlesec, blindtext, color}
+%\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+%\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp{|}\hsp}{0pt}{\Huge\bfseries}
+\titleformat{\chapter}[hang]{\bfseries}{\thechapter\hsp{|}\hsp}{0pt}{\bfseries}
+
+
+% Change the headers and footers
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\fancyhf{} %delete everything
+\renewcommand{\headrulewidth}{0pt} %remove the horizontal line in the header
+\fancyhead[RO,LE]{\small\nouppercase\leftmark} %even page - chapter title
+
+\fancyhead[LO]{}
+\fancyhead[RE]{} 
+\fancyhead[CE]{}
+\fancyhead[CO]{}
+
+\fancyfoot[RE,LO]{\thepage}
+\fancyfoot[LE,RO]{B205} %page number on all pages
+\fancyfoot[CE,CO]{}
+
+
+
+% change first page of all chapters header and footer to fancy style
+\makeatletter
+\let\ps@plain\ps@fancy
+\makeatother
+
+% Do not stretch the content of a page. Instead,
+% insert white space at the bottom of the page
+\raggedbottom
+
+% Enable arithmetics with length. Useful when typesetting the layout.
+\usepackage{calc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add the \citep{key} command which display a
+% reference as [author, year]
+
+%% Regular
+%\usepackage[square]{natbib}
+%\usepackage{natbib}
+%\bibliographystyle{00setup/apalike}
+
+%%Ieeetran
+\usepackage[square, numbers, comma, sort&compress]{natbib}			
+\bibliographystyle{ieeetr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Misc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Add bibliography and index to the table of
+% contents
+\usepackage[nottoc, notlof, notlot]{tocbibind}
+\usepackage{tocloft}
+% Add the command \pageref{LastPage} which refers to the
+% page number of the last page
+\setlength{\cftbeforetoctitleskip}{0 cm}
+
+\usepackage[
+  %disable, %turn off 
+  colorinlistoftodos, %enable a coloured square in the list of todos
+  %inline,
+  textwidth=20mm, %set the width of the todonotes
+  textsize=scriptsize, %size of the text in the todonotes
+  ]{todonotes}
+\setlength{\marginparwidth}{2cm}
+\newcommand{\todocheck}[1]{\todo[color=green!40, author=Check]{#1}}
+\newcommand{\todojens}[1]{\todo[color=red!40, author=Jens, inline]{#1}}
+%Command for inserting green todo notes as Ole's corrections.
+%\renewcommand{\todo}[1]{\todo[noline]{#1}}  
+    
+\usepackage{wrapfig}
+\usepackage{amssymb}
+\usepackage{pifont}
+% Enables figures with text wrapped tightly around it 
+
+%%% Table of contents %%%%%  
+\setcounter{tocdepth}{1}
+
+\renewcommand{\cftpartpresnum}{Part~}
+\let\cftoldpartfont\cftpartfont
+\renewcommand{\cftpartfont}{\cftoldpartfont\cftpartpresnum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyperlinks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Enable hyperlinks and insert info into the pdf
+% file. Hypperref should be loaded as one of the 
+% last packages
+\usepackage{nameref}
+\usepackage{hyperref}
+\hypersetup{%
+	%pdfpagelabels=true,%
+	plainpages=false,%
+	pdfauthor={Author(s)},%
+	pdftitle={Title},%
+	pdfsubject={Subject},%
+	bookmarksnumbered=true,%
+	colorlinks,%
+	citecolor=black,%
+	filecolor=black,%
+	linkcolor=black,% you should probably change this to black before printing
+	urlcolor=black,%
+	pdfstartview=FitH%
+}
+
+% remove all indentations
+\setlength\parindent{0pt}
+\parskip 5mm
+\usepackage{verbatim}
+
+
+\definecolor{Gra}{RGB}{230,230,230}
+
+%creates a nice-looking C#-text
+\newcommand{\CC}{C\nolinebreak\hspace{-.05em}\raisebox{.3ex}{\scriptsize\text \#} }
+
+%enables multi column lists
+\usepackage{multicol}
+
+%enables code-examples
+\usepackage{listings}
+
+\definecolor{coolblue}{RGB}{32,95,128}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\usepackage{textcomp}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Listing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xcolor}
+\colorlet{keyword}{blue!90!black!100}
+\colorlet{keyword2}{red!40!blue!85}
+\colorlet{comment}{green!60!black!100}
+\definecolor{backcolour}{rgb}{0,0,0}
+\usepackage{beramono}% monospaced font with bold variant
+\definecolor{backcolourlst}{rgb}{0.97,0.97,0.96}
+%\definecolor{backcolourlst}{rgb}{1,0.75,0.80}
+
+\lstset{
+%  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+%  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+%  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+%  breaklines=true,                 % sets automatic line breaking
+%  captionpos=t,                    % sets the caption-position to bottom
+%  commentstyle=\color{mygreen},    % comment style
+%  deletekeywords={...},            % if you want to delete keywords from the given language
+%  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+%  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+%  frame=single,                    % adds a frame around the code
+%  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+%  keywordstyle=\color{blue},       % keyword style
+%  language=C++,                 % the language of the code
+%  morekeywords={*,...},            % if you want to add more keywords to the set
+%  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+%  numbersep=5pt,                   % how far the line-numbers are from the code
+%  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+%  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+%  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+%  showstringspaces=false,          % underline spaces within strings only
+%  showtabs=false,                  % show tabs within strings adding particular underscores
+%  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+%  stringstyle=\color{mymauve},     % string literal style
+%  tabsize=2,                       % sets default tabsize to 2 spaces
+%  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+	backgroundcolor=\color{lbcolor},
+	tabsize=4,
+	rulecolor=\color{black},
+	language=C,
+  	basicstyle   = \linespread{1.2} \ttfamily \scriptsize,
+  	keywordstyle = \color{keyword}\bfseries,	
+  	commentstyle = \color{comment}\bfseries,
+  	numbers=left,                   
+	numberstyle=\scriptsize,      
+	stepnumber=1,                   
+	numbersep=8pt,                  
+	backgroundcolor=\color{white},  
+	showspaces=false,               
+	showstringspaces=false,         
+	showtabs=false,                 
+	backgroundcolor=\color{backcolourlst},
+	%frame=single,
+	frame=single,                   
+	captionpos=b,           
+	breaklines=true,        
+	breakatwhitespace=false,    
+	escapeinside={\%*}{*)}
+}
+\lstset{
+	emph={uint8, int8_t, uint16_t, int16, uint32_t, int32_t,}, emphstyle={\color{keyword}\bfseries},
+    emph={[2]ISR, TCE1, CNT, TCC1, TCD1_OVF_vect},emphstyle={[2]\color{keyword2}\bfseries}%
+}
+
+
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{siunitx}
+\sisetup{decimalsymbol=comma}
+\sisetup{detect-weight}
+
+\usepackage{enumitem}
+%\usepackage[citestyle=authoryear,natbib=true]{biblatex}
+
+% Figures - TIKZ
+\usepackage{tikz}
+\usepackage[americanresistors,americaninductors,americancurrents, americanvoltages]{circuitikz}
+
+
+% Wall of text logo
+
+\newcommand{\walloftextalert}[0]{\includegraphics[width=\textwidth]{walloftext.png}}
+
+
+% Citation aliasses for nicer references in text
+\defcitealias{ISO226}{\scshape ISO223, 2003}
+\defcitealias{radio_standard}{\scshape IEC 61305-2, 1997}
+\defcitealias{tysk}{\scshape EN 60315-4, 1998}
+\defcitealias{REC}{\scshape Rec. ITU-R BS.704, 1990}
+\defcitealias{std581}{\scshape IEC 581-6, 1979}
+\defcitealias{std1305}{\scshape IEC 1305-3, 1995}
+\defcitealias{std268-3}{\scshape IEC 60268-3, 2000}
+\defcitealias{DS61938}{\scshape DS/EN 61938, 1997}
+\defcitealias{std581-8}{\scshape IEC 581-8, 1987}
+
+
+% URL break fix nede i bibfil
+
+\def\UrlBreaks{\do\/\do-}
+
+
+\usepackage{pdfpages}
+
+\definecolor{blockcolor}{RGB}{112,168,218}
+
+\tikzstyle{blockbig} = [draw, fill=blockcolor, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{block} = [draw, fill=blockcolor, rectangle, 
+    minimum height=2em, minimum width=2em]
+    
+\tikzstyle{blockbigclear} = [draw, fill=white, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{blockclear} = [draw, fill=white, rectangle, 
+    minimum height=2em, minimum width=2em]
+    
+\tikzstyle{sum} = [draw, fill=blockcolor, circle, node distance=1.5cm, minimum size=0.6cm]
+\tikzstyle{sumclear} = [draw, fill=white, circle, node distance=1.5cm, minimum size=0.6cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
+%% Centering columns of custom width
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\usepackage{empheq}
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+\newcommand{\todoanders}[1]{\todo[color=red!40, author=Anders]{#1}}
+\graphicspath{{./rapport/billeder/}}
+\newcommand{\todohusk}[1]{\todo[color=red, author=HUSK:]{#1}}
+
+
+\makeatletter
+\renewcommand{\todo}[2][]{\tikzexternaldisable\@todo[#1]{#2}\tikzexternalenable}
+\renewcommand{\missingfigure}[2][]{\tikzexternaldisable\@missingfigure[#1]{#2}\tikzexternalenable}
+\makeatother
+
+
+%%PGF TABLES%%
+\usepackage{booktabs}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\usepackage{array}
+\usepackage{ragged2e}
+
+\newcommand*{\textlabel}[2]{				% Gør \textlabel mulig
+  \edef\@currentlabel{#1}					% Set target label
+  \phantomsection							% Correct hyper reference link
+  #1\label{#2}}								% Print and store label
+
+% ¤¤ Opsætning af enheder ¤¤ % 
+\newcommand{\enhed}[1]{\hfill[\mathrm{#1}]}   % Skriv \enhed{"din enhed"} og dem bliver rykket til højre
+
+
+
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{lettrine}
+\renewcommand{\LettrineTextFont}{\normalfont}
+
+\usepackage[footnote,draft,silent,nomargin]{fixme}
