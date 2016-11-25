@@ -1,21 +1,16 @@
 \section*{Results}
 
-\#404 Error..
+At the point in time all results are not yet certain, however we will give an idea of how they are going to turn out.
+As presented in the paper thus far, we know what kind of noise we would like to cancel out and how we want to do it. The following list tells which graph will be used to show the results of the acceptance tests.
 
 \begin{itemize}
-\item Prediction gain
-\item comparison of ref and predict ref
-\item comparison of ref and predict ref
-\item comparison of frequency response between:
-\begin{itemize}
-	\item no cancel
-	\item ref cancel
-	\item ref predict cancel
-\end{itemize}
+\item Prediction gain - The difference between the input signal and the estimated signal, measured in dB. Used in the LP part.
+\item A plot comparison of frequency response between: A pure signal, a signal with FXLMS noise attenuation and a signal with LP combined with FXLMS attenuation
+\item An expansion of figure \autoref{Fig:Reference to noise ratio}: As of now only attenuation is showed, but in the future another graph in the figure will show the attenuation of the FXLMS combined with LP - which should yield even better attenuation.
+
 \end{itemize}
 
 
-The system 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{DelayRatio}
@@ -23,7 +18,6 @@ The system
 	\caption{Attenuation achieved by the system for different system delays.}
 	\label{Fig:Reference to noise ratio}
 \end{figure}
-
 
 
 %\vspace{5in}
