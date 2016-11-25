@@ -108,7 +108,7 @@ Where:
  \begin{equation}\label{eq:normal2}
 \bar{a} = -R^{-1}\cdot \bar{r_x}
 \end{equation}
-Calculating $R^{-1}$ is computationally heavy on a DSP. To estimate the LPCs the Levinson-Durbin method is used. Prediction using wiener filtering, shown in equation \ref{eq:Predictor}, can then be applied to the current frame for prediction of the next frame. 
+Calculating $R^{-1}$ is computationally heavy on a DSP. To estimate the LPCs the Levinson-Durbin method is used \cite{LevinsonDurbin}. Prediction using wiener filtering, shown in equation \ref{eq:Predictor}, can then be applied to the current frame for prediction of the next frame. 
 
 \begin{equation}\label{eq:Predictor}
 \hat{x}[n+1] =- \sum^{N}_{i=1}a_ix[n-i]
