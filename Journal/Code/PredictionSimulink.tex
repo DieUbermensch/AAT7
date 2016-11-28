@@ -1,0 +1,51 @@
+
+\section{Prediction in Simulink}
+
+
+\subsection{Description}
+This is a simulation showing the performance of the proposed prediction algorithm. It is not fine tuned in this version but allows for choice of settings corresponding to the need of a specific use case.  
+
+
+\subsection{Diagram}
+\begin{figure} [h]
+	\centering
+	\includegraphics[width=\textwidth]{../Journal/Code/SimulinkPrediction}
+	\caption{Overview of simulation of the prediction algorithm}
+	\label{Fig:PredictionSimulink}
+\end{figure}
+
+
+\subsection{Implementation}
+
+\subsubsection{variables}
+A lot of variables, are declared in the simulation and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. The values below are used to test the performance of the simulated algorithm. 
+\begin{lstlisting} [language=MATLAB]
+N =200; 		%is the framelength used as memory in the prediction
+updateRate=120; %is the overlap in the buffer
+prediction=60;  %is how far the algorithm should predict 
+fs=8000; 		%is the sample frequency of the input signal 
+w=hamming(N)	% could be replaced by other window functions, e.g. Barnwell
+\end{lstlisting}
+The following sections will show the code for the individual blocks. 
+The ACF Estimation estimates the autocorrelation function using the equation...
+\subsubsection{ACF Estimation}
+\begin{lstlisting} [language=MATLAB]
+
+\end{lstlisting}
+
+\subsubsection{Lenvinson Durbin}
+\begin{lstlisting} [language=MATLAB]
+
+\end{lstlisting}
+
+\subsubsection{Recursive filter}
+\begin{lstlisting} [language=MATLAB]
+
+\end{lstlisting}
+
+\subsection{Test}
+
+
+
+
+
