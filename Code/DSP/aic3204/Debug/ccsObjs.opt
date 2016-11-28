@@ -1,1 +1,0 @@
-"./include/usbstk5515_led.obj" "./include/usbstk5515_i2c.obj" "./include/usbstk5515_gpio.obj" "./include/usbstk5515.obj" "./Functions.obj" "./FIRFIlterTest.obj" -l"usbstk5515bsl.lib" -l"rts55x.lib" "../lnkx.cmd" 
