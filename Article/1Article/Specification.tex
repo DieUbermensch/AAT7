@@ -1,0 +1,11 @@
+%% Introduction
+
+
+\section{Development of specifications}
+\subsection{Predictability of speech}
+Speech is not a random signal, formants and a fundamental frequency exists. Furthermore the time frame of any given sound is long compared to the processing time of a real time DSP. A hypothesis is therefore that it might be possible to use the deterministic parts of a speech signal to cancel it sufficiently. \\
+Therefore a simulation was made to show if removing the fundamental frequency and formants by filtering would remove or mask the sound. For the experiment a set of recordings containing a male person saying three vowel sounds was used. \\
+The recordings were analysed in Matlab to find the fundamental frequency and the three formants of the vowels. The fundamental as well as its first 3 harmonics were removed first. This yielded no noticeable decrease in the audibility of the vowel.\\
+The three formants of the spoken vowels were also removed yielding the same result.\\
+It is concluded that simple filtering of the deterministic parts of speech will not yield a sufficiently high attenuation for ANC to work. Speech contains too many other frequencies than fundamentals and formants, even in the case of constant vowels only. The complexity increases with consonants and again with words. 
+\subsection{Attenuation requirement}

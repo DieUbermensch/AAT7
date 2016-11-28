@@ -1,0 +1,1396 @@
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE    1
+
+    1202              ; Temporary Registers Used: None
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.3.8 *
+       3              ;* Date/Time created: Wed Nov 09 11:17:59 2016                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --silicon_core_3_3 --symd
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .asg DPH, MDP
+      13                      .model call=c55_std
+      14                      .model mem=large
+      15                      .noremark 5002  ; code respects overwrite rules
+      16              ;*******************************************************************************
+      17              ;* GLOBAL FILE PARAMETERS                                                      *
+      18              ;*                                                                             *
+      19              ;*   Architecture       : TMS320C55x                                           *
+      20              ;*   Optimizing for     : Speed                                                *
+      21              ;*   Memory             : Large Model (23-Bit Data Pointers)                   *
+      22              ;*   Calls              : Normal Library ASM calls                             *
+      23              ;*   Debug Info         : Standard TI Debug Information                        *
+      24              ;*******************************************************************************
+      25              
+      26              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      27                      .dwattr $C$DW$CU, DW_AT_name("../include/usbstk5515_i2c.c")
+      28                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.3.8 Copyright (c) 1996-2010 Texas In
+      29                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      30                      .dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\Kiis\Dropbox\Uni\7. semester\AAT7\Code\DSP\aic3204\Debug")
+      31              ;******************************************************************************
+      32              ;* CINIT RECORDS                                                              *
+      33              ;******************************************************************************
+      34 000000               .sect   ".cinit"
+      35                      .align  1
+      36 000000 0001          .field          1,16
+      37 000001 0000-         .field          _i2c_timeout+0,24
+         000002 0000 
+      38 000002 0000          .field          0,8
+      39 000003 0FFF          .field          4095,16                 ; _i2c_timeout @ 0
+      40              
+      41              
+      42              $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_wait")
+      43                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_USBSTK5515_wait")
+      44                      .dwattr $C$DW$1, DW_AT_declaration
+      45                      .dwattr $C$DW$1, DW_AT_external
+      46                      .dwattr $C$DW$1, DW_AT_decl_file("..\include\usbstk5515.h")
+      47                      .dwattr $C$DW$1, DW_AT_decl_line(0x6d)
+      48                      .dwattr $C$DW$1, DW_AT_decl_column(0x06)
+      49              $C$DW$2 .dwtag  DW_TAG_formal_parameter
+      50                      .dwattr $C$DW$2, DW_AT_type(*$C$DW$T$13)
+      51                      .dwendtag $C$DW$1
+      52              
+      53              
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE    2
+
+      54              $C$DW$3 .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_waitusec")
+      55                      .dwattr $C$DW$3, DW_AT_TI_symbol_name("_USBSTK5515_waitusec")
+      56                      .dwattr $C$DW$3, DW_AT_declaration
+      57                      .dwattr $C$DW$3, DW_AT_external
+      58                      .dwattr $C$DW$3, DW_AT_decl_file("..\include\usbstk5515.h")
+      59                      .dwattr $C$DW$3, DW_AT_decl_line(0x6e)
+      60                      .dwattr $C$DW$3, DW_AT_decl_column(0x06)
+      61              $C$DW$4 .dwtag  DW_TAG_formal_parameter
+      62                      .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$13)
+      63                      .dwendtag $C$DW$3
+      64              
+      65              
+      66              $C$DW$5 .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_GPIO_setOutput")
+      67                      .dwattr $C$DW$5, DW_AT_TI_symbol_name("_USBSTK5515_GPIO_setOutput")
+      68                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$8)
+      69                      .dwattr $C$DW$5, DW_AT_declaration
+      70                      .dwattr $C$DW$5, DW_AT_external
+      71                      .dwattr $C$DW$5, DW_AT_decl_file("..\include\usbstk5515_gpio.h")
+      72                      .dwattr $C$DW$5, DW_AT_decl_line(0x3d)
+      73                      .dwattr $C$DW$5, DW_AT_decl_column(0x07)
+      74              $C$DW$6 .dwtag  DW_TAG_formal_parameter
+      75                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$9)
+      76              $C$DW$7 .dwtag  DW_TAG_formal_parameter
+      77                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$9)
+      78                      .dwendtag $C$DW$5
+      79              
+      80                      .global _i2c_timeout
+      81 000000               .bss    _i2c_timeout,1,0,0
+      82              $C$DW$8 .dwtag  DW_TAG_variable, DW_AT_name("i2c_timeout")
+      83                      .dwattr $C$DW$8, DW_AT_TI_symbol_name("_i2c_timeout")
+      84                      .dwattr $C$DW$8, DW_AT_location[DW_OP_addr _i2c_timeout]
+      85                      .dwattr $C$DW$8, DW_AT_type(*$C$DW$T$10)
+      86                      .dwattr $C$DW$8, DW_AT_external
+      87                      .dwattr $C$DW$8, DW_AT_decl_file("../include/usbstk5515_i2c.c")
+      88                      .dwattr $C$DW$8, DW_AT_decl_line(0x0c)
+      89                      .dwattr $C$DW$8, DW_AT_decl_column(0x07)
+      90              ;       C:\Program Files\TexasInstruments\ccsv4\tools\compiler\c5500\bin\acp55.exe -@C:\Users\Kiis\AppData\Lo
+      91 000000               .sect   ".text"
+      92                      .global _USBSTK5515_I2C_init
+      93              
+      94              $C$DW$9 .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_I2C_init")
+      95                      .dwattr $C$DW$9, DW_AT_low_pc(_USBSTK5515_I2C_init)
+      96                      .dwattr $C$DW$9, DW_AT_high_pc(0x00)
+      97                      .dwattr $C$DW$9, DW_AT_TI_symbol_name("_USBSTK5515_I2C_init")
+      98                      .dwattr $C$DW$9, DW_AT_external
+      99                      .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$8)
+     100                      .dwattr $C$DW$9, DW_AT_TI_begin_file("../include/usbstk5515_i2c.c")
+     101                      .dwattr $C$DW$9, DW_AT_TI_begin_line(0x16)
+     102                      .dwattr $C$DW$9, DW_AT_TI_begin_column(0x07)
+     103                      .dwattr $C$DW$9, DW_AT_decl_file("../include/usbstk5515_i2c.c")
+     104                      .dwattr $C$DW$9, DW_AT_decl_line(0x16)
+     105                      .dwattr $C$DW$9, DW_AT_decl_column(0x07)
+     106                      .dwattr $C$DW$9, DW_AT_TI_max_frame_size(0x01)
+     107                      .dwpsn  file "../include/usbstk5515_i2c.c",line 23,column 1,is_stmt,address _USBSTK5515_I2C_init
+     108              
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE    3
+
+     109                      .dwfde $C$DW$CIE, _USBSTK5515_I2C_init
+     110              ;----------------------------------------------------------------------
+     111              ;  22 | Int16 USBSTK5515_I2C_init( )                                           
+     112              ;----------------------------------------------------------------------
+     113              ;*******************************************************************************
+     114              ;* FUNCTION NAME: USBSTK5515_I2C_init                                          *
+     115              ;*                                                                             *
+     116              ;*   Function Uses Regs : T0,SP,M40,SATA,SATD,RDM,FRCT,SMUL                    *
+     117              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     118              ;*   Total Frame Size   : 1 word                                               *
+     119              ;*                        (1 return address/alignment)                         *
+     120              ;*   Min System Stack   : 1 word                                               *
+     121              ;*******************************************************************************
+     122 000000       _USBSTK5515_I2C_init:
+     123                      .dwcfi  cfa_offset, 1
+     124                      .dwcfi  save_reg_to_mem, 91, -1
+     125                      .dwpsn  file "../include/usbstk5515_i2c.c",line 24,column 5,is_stmt
+     126              ;----------------------------------------------------------------------
+     127              ;  24 | I2C_MDR = 0x0400;             // Reset I2C                             
+     128              ;----------------------------------------------------------------------
+     129 000000 FB51          MOV #1024, *port(#6692) ; |24| 
+         000002 0400 
+         000004 1A24 
+     130                      .dwpsn  file "../include/usbstk5515_i2c.c",line 25,column 5,is_stmt
+     131              ;----------------------------------------------------------------------
+     132              ;  25 | I2C_PSC   = 15;               // Config prescaler for 100MHz           
+     133              ;----------------------------------------------------------------------
+     134 000006 E651          MOV #15, *port(#6704) ; |25| 
+         000008 0F1A 
+         00000a 30   
+     135                      .dwpsn  file "../include/usbstk5515_i2c.c",line 26,column 5,is_stmt
+     136              ;----------------------------------------------------------------------
+     137              ;  26 | I2C_CLKL  = 25;               // Config clk LOW for 100kHz             
+     138              ;----------------------------------------------------------------------
+     139 00000b E651          MOV #25, *port(#6668) ; |26| 
+         00000d 191A 
+         00000f 0C   
+     140                      .dwpsn  file "../include/usbstk5515_i2c.c",line 27,column 5,is_stmt
+     141              ;----------------------------------------------------------------------
+     142              ;  27 | I2C_CLKH  = 25;               // Config clk HIGH for 100kHz            
+     143              ;----------------------------------------------------------------------
+     144 000010 E651          MOV #25, *port(#6672) ; |27| 
+         000012 191A 
+         000014 10   
+     145                      .dwpsn  file "../include/usbstk5515_i2c.c",line 29,column 5,is_stmt
+     146              ;----------------------------------------------------------------------
+     147              ;  29 | I2C_MDR   = 0x0420   ;        // Release from reset; Master, Transmitte
+     148              ;     | r, 7-bit address                                                       
+     149              ;----------------------------------------------------------------------
+     150 000015 FB51          MOV #1056, *port(#6692) ; |29| 
+         000017 0420 
+         000019 1A24 
+     151                      .dwpsn  file "../include/usbstk5515_i2c.c",line 31,column 5,is_stmt
+     152              ;----------------------------------------------------------------------
+     153              ;  31 | return 0;                                                              
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE    4
+
+     154              ;----------------------------------------------------------------------
+     155 00001b 3C04          MOV #0, T0
+     156                      .dwpsn  file "../include/usbstk5515_i2c.c",line 32,column 1,is_stmt
+     157              $C$DW$10        .dwtag  DW_TAG_TI_branch
+     158                      .dwattr $C$DW$10, DW_AT_low_pc(0x00)
+     159                      .dwattr $C$DW$10, DW_AT_TI_return
+     160 00001d 4804          RET
+     161                                                      ; return occurs
+     162                      .dwattr $C$DW$9, DW_AT_TI_end_file("../include/usbstk5515_i2c.c")
+     163                      .dwattr $C$DW$9, DW_AT_TI_end_line(0x20)
+     164                      .dwattr $C$DW$9, DW_AT_TI_end_column(0x01)
+     165                      .dwendentry
+     166                      .dwendtag $C$DW$9
+     167              
+     168 00001f               .sect   ".text"
+     169                      .global _USBSTK5515_I2C_close
+     170              
+     171              $C$DW$11        .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_I2C_close")
+     172                      .dwattr $C$DW$11, DW_AT_low_pc(_USBSTK5515_I2C_close)
+     173                      .dwattr $C$DW$11, DW_AT_high_pc(0x00)
+     174                      .dwattr $C$DW$11, DW_AT_TI_symbol_name("_USBSTK5515_I2C_close")
+     175                      .dwattr $C$DW$11, DW_AT_external
+     176                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$8)
+     177                      .dwattr $C$DW$11, DW_AT_TI_begin_file("../include/usbstk5515_i2c.c")
+     178                      .dwattr $C$DW$11, DW_AT_TI_begin_line(0x27)
+     179                      .dwattr $C$DW$11, DW_AT_TI_begin_column(0x07)
+     180                      .dwattr $C$DW$11, DW_AT_decl_file("../include/usbstk5515_i2c.c")
+     181                      .dwattr $C$DW$11, DW_AT_decl_line(0x27)
+     182                      .dwattr $C$DW$11, DW_AT_decl_column(0x07)
+     183                      .dwattr $C$DW$11, DW_AT_TI_max_frame_size(0x01)
+     184                      .dwpsn  file "../include/usbstk5515_i2c.c",line 40,column 1,is_stmt,address _USBSTK5515_I2C_close
+     185              
+     186                      .dwfde $C$DW$CIE, _USBSTK5515_I2C_close
+     187              ;----------------------------------------------------------------------
+     188              ;  39 | Int16 USBSTK5515_I2C_close( )                                          
+     189              ;----------------------------------------------------------------------
+     190              ;*******************************************************************************
+     191              ;* FUNCTION NAME: USBSTK5515_I2C_close                                         *
+     192              ;*                                                                             *
+     193              ;*   Function Uses Regs : T0,SP,M40,SATA,SATD,RDM,FRCT,SMUL                    *
+     194              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     195              ;*   Total Frame Size   : 1 word                                               *
+     196              ;*                        (1 return address/alignment)                         *
+     197              ;*   Min System Stack   : 1 word                                               *
+     198              ;*******************************************************************************
+     199 00001f       _USBSTK5515_I2C_close:
+     200                      .dwcfi  cfa_offset, 1
+     201                      .dwcfi  save_reg_to_mem, 91, -1
+     202                      .dwpsn  file "../include/usbstk5515_i2c.c",line 41,column 5,is_stmt
+     203              ;----------------------------------------------------------------------
+     204              ;  41 | I2C_MDR = 0;                      // Reset I2C                         
+     205              ;----------------------------------------------------------------------
+     206 00001f E651          MOV #0, *port(#6692) ; |41| 
+         000021 001A 
+         000023 24   
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE    5
+
+     207                      .dwpsn  file "../include/usbstk5515_i2c.c",line 42,column 5,is_stmt
+     208              ;----------------------------------------------------------------------
+     209              ;  42 | return 0;                                                              
+     210              ;----------------------------------------------------------------------
+     211 000024 3C04          MOV #0, T0
+     212                      .dwpsn  file "../include/usbstk5515_i2c.c",line 43,column 1,is_stmt
+     213              $C$DW$12        .dwtag  DW_TAG_TI_branch
+     214                      .dwattr $C$DW$12, DW_AT_low_pc(0x00)
+     215                      .dwattr $C$DW$12, DW_AT_TI_return
+     216 000026 4804          RET
+     217                                                      ; return occurs
+     218                      .dwattr $C$DW$11, DW_AT_TI_end_file("../include/usbstk5515_i2c.c")
+     219                      .dwattr $C$DW$11, DW_AT_TI_end_line(0x2b)
+     220                      .dwattr $C$DW$11, DW_AT_TI_end_column(0x01)
+     221                      .dwendentry
+     222                      .dwendtag $C$DW$11
+     223              
+     224 000028               .sect   ".text"
+     225                      .global _USBSTK5515_I2C_reset
+     226              
+     227              $C$DW$13        .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_I2C_reset")
+     228                      .dwattr $C$DW$13, DW_AT_low_pc(_USBSTK5515_I2C_reset)
+     229                      .dwattr $C$DW$13, DW_AT_high_pc(0x00)
+     230                      .dwattr $C$DW$13, DW_AT_TI_symbol_name("_USBSTK5515_I2C_reset")
+     231                      .dwattr $C$DW$13, DW_AT_external
+     232                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$8)
+     233                      .dwattr $C$DW$13, DW_AT_TI_begin_file("../include/usbstk5515_i2c.c")
+     234                      .dwattr $C$DW$13, DW_AT_TI_begin_line(0x32)
+     235                      .dwattr $C$DW$13, DW_AT_TI_begin_column(0x07)
+     236                      .dwattr $C$DW$13, DW_AT_decl_file("../include/usbstk5515_i2c.c")
+     237                      .dwattr $C$DW$13, DW_AT_decl_line(0x32)
+     238                      .dwattr $C$DW$13, DW_AT_decl_column(0x07)
+     239                      .dwattr $C$DW$13, DW_AT_TI_max_frame_size(0x02)
+     240                      .dwpsn  file "../include/usbstk5515_i2c.c",line 51,column 1,is_stmt,address _USBSTK5515_I2C_reset
+     241              
+     242                      .dwfde $C$DW$CIE, _USBSTK5515_I2C_reset
+     243              ;----------------------------------------------------------------------
+     244              ;  50 | Int16 USBSTK5515_I2C_reset( )                                          
+     245              ;----------------------------------------------------------------------
+     246              ;*******************************************************************************
+     247              ;* FUNCTION NAME: USBSTK5515_I2C_reset                                         *
+     248              ;*                                                                             *
+     249              ;*   Function Uses Regs : T0,SP,M40,SATA,SATD,RDM,FRCT,SMUL                    *
+     250              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     251              ;*   Total Frame Size   : 2 words                                              *
+     252              ;*                        (2 return address/alignment)                         *
+     253              ;*   Min System Stack   : 1 word                                               *
+     254              ;*******************************************************************************
+     255 000028       _USBSTK5515_I2C_reset:
+     256                      .dwcfi  cfa_offset, 1
+     257                      .dwcfi  save_reg_to_mem, 91, -1
+     258 000028 4EFF          AADD #-1, SP
+     259                      .dwcfi  cfa_offset, 2
+     260                      .dwpsn  file "../include/usbstk5515_i2c.c",line 52,column 5,is_stmt
+     261              ;----------------------------------------------------------------------
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE    6
+
+     262              ;  52 | USBSTK5515_I2C_close( );                                               
+     263              ;----------------------------------------------------------------------
+     264              $C$DW$14        .dwtag  DW_TAG_TI_branch
+     265                      .dwattr $C$DW$14, DW_AT_low_pc(0x00)
+     266                      .dwattr $C$DW$14, DW_AT_name("_USBSTK5515_I2C_close")
+     267                      .dwattr $C$DW$14, DW_AT_TI_call
+     268 00002a 08FF          CALL #_USBSTK5515_I2C_close ; |52| 
+         00002c F2   
+     269                                                      ; call occurs [#_USBSTK5515_I2C_close] ; |52| 
+     270                      .dwpsn  file "../include/usbstk5515_i2c.c",line 53,column 5,is_stmt
+     271              ;----------------------------------------------------------------------
+     272              ;  53 | USBSTK5515_I2C_init( );                                                
+     273              ;----------------------------------------------------------------------
+     274              $C$DW$15        .dwtag  DW_TAG_TI_branch
+     275                      .dwattr $C$DW$15, DW_AT_low_pc(0x00)
+     276                      .dwattr $C$DW$15, DW_AT_name("_USBSTK5515_I2C_init")
+     277                      .dwattr $C$DW$15, DW_AT_TI_call
+     278 00002d 08FF          CALL #_USBSTK5515_I2C_init ; |53| 
+         00002f D0   
+     279                                                      ; call occurs [#_USBSTK5515_I2C_init] ; |53| 
+     280                      .dwpsn  file "../include/usbstk5515_i2c.c",line 54,column 5,is_stmt
+     281              ;----------------------------------------------------------------------
+     282              ;  54 | return 0;                                                              
+     283              ;----------------------------------------------------------------------
+     284 000030 3C04          MOV #0, T0
+     285                      .dwpsn  file "../include/usbstk5515_i2c.c",line 55,column 1,is_stmt
+     286 000032 4E01          AADD #1, SP
+     287                      .dwcfi  cfa_offset, 1
+     288              $C$DW$16        .dwtag  DW_TAG_TI_branch
+     289                      .dwattr $C$DW$16, DW_AT_low_pc(0x00)
+     290                      .dwattr $C$DW$16, DW_AT_TI_return
+     291 000034 4804          RET
+     292                                                      ; return occurs
+     293                      .dwattr $C$DW$13, DW_AT_TI_end_file("../include/usbstk5515_i2c.c")
+     294                      .dwattr $C$DW$13, DW_AT_TI_end_line(0x37)
+     295                      .dwattr $C$DW$13, DW_AT_TI_end_column(0x01)
+     296                      .dwendentry
+     297                      .dwendtag $C$DW$13
+     298              
+     299 000036               .sect   ".text"
+     300                      .global _USBSTK5515_I2C_write
+     301              
+     302              $C$DW$17        .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_I2C_write")
+     303                      .dwattr $C$DW$17, DW_AT_low_pc(_USBSTK5515_I2C_write)
+     304                      .dwattr $C$DW$17, DW_AT_high_pc(0x00)
+     305                      .dwattr $C$DW$17, DW_AT_TI_symbol_name("_USBSTK5515_I2C_write")
+     306                      .dwattr $C$DW$17, DW_AT_external
+     307                      .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$8)
+     308                      .dwattr $C$DW$17, DW_AT_TI_begin_file("../include/usbstk5515_i2c.c")
+     309                      .dwattr $C$DW$17, DW_AT_TI_begin_line(0x44)
+     310                      .dwattr $C$DW$17, DW_AT_TI_begin_column(0x07)
+     311                      .dwattr $C$DW$17, DW_AT_decl_file("../include/usbstk5515_i2c.c")
+     312                      .dwattr $C$DW$17, DW_AT_decl_line(0x44)
+     313                      .dwattr $C$DW$17, DW_AT_decl_column(0x07)
+     314                      .dwattr $C$DW$17, DW_AT_TI_max_frame_size(0x08)
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE    7
+
+     315                      .dwpsn  file "../include/usbstk5515_i2c.c",line 69,column 1,is_stmt,address _USBSTK5515_I2C_write
+     316              
+     317                      .dwfde $C$DW$CIE, _USBSTK5515_I2C_write
+     318              $C$DW$18        .dwtag  DW_TAG_formal_parameter, DW_AT_name("i2c_addr")
+     319                      .dwattr $C$DW$18, DW_AT_TI_symbol_name("_i2c_addr")
+     320                      .dwattr $C$DW$18, DW_AT_type(*$C$DW$T$9)
+     321                      .dwattr $C$DW$18, DW_AT_location[DW_OP_reg12]
+     322              $C$DW$19        .dwtag  DW_TAG_formal_parameter, DW_AT_name("data")
+     323                      .dwattr $C$DW$19, DW_AT_TI_symbol_name("_data")
+     324                      .dwattr $C$DW$19, DW_AT_type(*$C$DW$T$21)
+     325                      .dwattr $C$DW$19, DW_AT_location[DW_OP_reg17]
+     326              $C$DW$20        .dwtag  DW_TAG_formal_parameter, DW_AT_name("len")
+     327                      .dwattr $C$DW$20, DW_AT_TI_symbol_name("_len")
+     328                      .dwattr $C$DW$20, DW_AT_type(*$C$DW$T$9)
+     329                      .dwattr $C$DW$20, DW_AT_location[DW_OP_reg13]
+     330              ;----------------------------------------------------------------------
+     331              ;  68 | Int16 USBSTK5515_I2C_write( Uint16 i2c_addr, Uint8* data, Uint16 len ) 
+     332              ;----------------------------------------------------------------------
+     333              ;*******************************************************************************
+     334              ;* FUNCTION NAME: USBSTK5515_I2C_write                                         *
+     335              ;*                                                                             *
+     336              ;*   Function Uses Regs : AC0,AC0,T0,T1,AR0,XAR0,AR1,AR2,AR3,XAR3,SP,CARRY,TC1,*
+     337              ;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
+     338              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     339              ;*   Total Frame Size   : 8 words                                              *
+     340              ;*                        (1 return address/alignment)                         *
+     341              ;*                        (7 local values)                                     *
+     342              ;*   Min System Stack   : 1 word                                               *
+     343              ;*******************************************************************************
+     344 000036       _USBSTK5515_I2C_write:
+     345                      .dwcfi  cfa_offset, 1
+     346                      .dwcfi  save_reg_to_mem, 91, -1
+     347 000036 4EF9          AADD #-7, SP
+     348                      .dwcfi  cfa_offset, 8
+     349              $C$DW$21        .dwtag  DW_TAG_variable, DW_AT_name("i2c_addr")
+     350                      .dwattr $C$DW$21, DW_AT_TI_symbol_name("_i2c_addr")
+     351                      .dwattr $C$DW$21, DW_AT_type(*$C$DW$T$9)
+     352                      .dwattr $C$DW$21, DW_AT_location[DW_OP_bregx 0x24 0]
+     353              $C$DW$22        .dwtag  DW_TAG_variable, DW_AT_name("data")
+     354                      .dwattr $C$DW$22, DW_AT_TI_symbol_name("_data")
+     355                      .dwattr $C$DW$22, DW_AT_type(*$C$DW$T$21)
+     356                      .dwattr $C$DW$22, DW_AT_location[DW_OP_bregx 0x24 2]
+     357              $C$DW$23        .dwtag  DW_TAG_variable, DW_AT_name("len")
+     358                      .dwattr $C$DW$23, DW_AT_TI_symbol_name("_len")
+     359                      .dwattr $C$DW$23, DW_AT_type(*$C$DW$T$9)
+     360                      .dwattr $C$DW$23, DW_AT_location[DW_OP_bregx 0x24 4]
+     361              $C$DW$24        .dwtag  DW_TAG_variable, DW_AT_name("timeout")
+     362                      .dwattr $C$DW$24, DW_AT_TI_symbol_name("_timeout")
+     363                      .dwattr $C$DW$24, DW_AT_type(*$C$DW$T$8)
+     364                      .dwattr $C$DW$24, DW_AT_location[DW_OP_bregx 0x24 5]
+     365              $C$DW$25        .dwtag  DW_TAG_variable, DW_AT_name("i")
+     366                      .dwattr $C$DW$25, DW_AT_TI_symbol_name("_i")
+     367                      .dwattr $C$DW$25, DW_AT_type(*$C$DW$T$8)
+     368                      .dwattr $C$DW$25, DW_AT_location[DW_OP_bregx 0x24 6]
+     369              ;----------------------------------------------------------------------
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE    8
+
+     370              ;  70 | Int16 timeout, i;                                                      
+     371              ;  72 |             //I2C_IER = 0x0000;                                        
+     372              ;----------------------------------------------------------------------
+     373 000038 C508          MOV T1, *SP(#4) ; |69| 
+     374 00003a EB04          MOV XAR0, dbl(*SP(#2))
+         00003c 85   
+     375 00003d C400          MOV T0, *SP(#0) ; |69| 
+     376                      .dwpsn  file "../include/usbstk5515_i2c.c",line 73,column 9,is_stmt
+     377              ;----------------------------------------------------------------------
+     378              ;  73 | I2C_CNT = len;                    // Set length                        
+     379              ;----------------------------------------------------------------------
+     380 00003f A908          MOV *SP(#4), AR1 ; |73| 
+     381 000041 C951          MOV AR1, *port(#6676) ; |73| 
+         000043 1A14 
+     382                      .dwpsn  file "../include/usbstk5515_i2c.c",line 74,column 9,is_stmt
+     383              ;----------------------------------------------------------------------
+     384              ;  74 | I2C_SAR = i2c_addr;               // Set I2C slave address             
+     385              ;----------------------------------------------------------------------
+     386 000045 2249          MOV T0, AR1
+     387 000047 C951          MOV AR1, *port(#6684) ; |74| 
+         000049 1A1C 
+     388                      .dwpsn  file "../include/usbstk5515_i2c.c",line 75,column 9,is_stmt
+     389              ;----------------------------------------------------------------------
+     390              ;  75 | I2C_MDR = MDR_STT                 // Set for Master Write              
+     391              ;  76 |           | MDR_TRX                                                    
+     392              ;  77 |           | MDR_MST                                                    
+     393              ;  78 |           | MDR_IRS                                                    
+     394              ;  79 |           | MDR_FREE;                                                  
+     395              ;----------------------------------------------------------------------
+     396 00004b FB51          MOV #26144, *port(#6692) ; |75| 
+         00004d 6620 
+         00004f 1A24 
+     397                      .dwpsn  file "../include/usbstk5515_i2c.c",line 81,column 9,is_stmt
+     398              ;----------------------------------------------------------------------
+     399              ;  81 | USBSTK5515_wait(100);              // Short delay                      
+     400              ;----------------------------------------------------------------------
+     401 000051 7600          MOV #100, AC0 ; |81| 
+         000053 6408 
+     402              $C$DW$26        .dwtag  DW_TAG_TI_branch
+     403                      .dwattr $C$DW$26, DW_AT_low_pc(0x00)
+     404                      .dwattr $C$DW$26, DW_AT_name("_USBSTK5515_wait")
+     405                      .dwattr $C$DW$26, DW_AT_TI_call
+     406 000055 6C00          CALL #_USBSTK5515_wait ; |81| 
+         000057 0000!
+     407                                                      ; call occurs [#_USBSTK5515_wait] ; |81| 
+     408                      .dwpsn  file "../include/usbstk5515_i2c.c",line 83,column 15,is_stmt
+     409              ;----------------------------------------------------------------------
+     410              ;  83 | for ( i = 0 ; i < len ; i++ )                                          
+     411              ;----------------------------------------------------------------------
+     412 000059 E60C          MOV #0, *SP(#6) ; |83| 
+         00005b 00   
+     413                      .dwpsn  file "../include/usbstk5515_i2c.c",line 83,column 23,is_stmt
+     414 00005c AA0C          MOV *SP(#6), AR2 ; |83| 
+     415 00005e A908          MOV *SP(#4), AR1 ; |83| 
+     416 000060 12A8          CMPU AR2 >= AR1, TC1 ; |83| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE    9
+
+         000062 94   
+     417 000063 0464          BCC $C$L4,TC1 ; |83| 
+         000065 4B   
+     418                                                      ; branchcc occurs ; |83| 
+     419 000066       $C$L1:    
+     420 000066       $C$DW$L$_USBSTK5515_I2C_write$2$B:
+     421                      .dwpsn  file "../include/usbstk5515_i2c.c",line 85,column 12,is_stmt
+     422              ;----------------------------------------------------------------------
+     423              ;  85 | I2C_DXR = data[i];            // Write                                 
+     424              ;----------------------------------------------------------------------
+     425 000066 A40C          MOV *SP(#6), T0 ; |85| 
+     426 000068 ED04          MOV dbl(*SP(#2)), XAR3
+         00006a BF   
+     427 00006b A96B          MOV *AR3(T0), AR1 ; |85| 
+     428 00006d C951          MOV AR1, *port(#6688) ; |85| 
+         00006f 1A20 
+     429                      .dwpsn  file "../include/usbstk5515_i2c.c",line 86,column 13,is_stmt
+     430              ;----------------------------------------------------------------------
+     431              ;  86 | timeout = 0x510;             // I2C_timeout = 1ms;                     
+     432              ;----------------------------------------------------------------------
+     433 000071 FB0A          MOV #1296, *SP(#5) ; |86| 
+         000073 0510 
+     434                      .dwpsn  file "../include/usbstk5515_i2c.c",line 87,column 13,is_stmt
+     435              ;----------------------------------------------------------------------
+     436              ;  87 | USBSTK5515_GPIO_setOutput( 17, 1);                                     
+     437              ;  88 | do                                                                     
+     438              ;----------------------------------------------------------------------
+     439 000075 7600          MOV #17, T0 ; |87| 
+         000077 1148 
+     440              $C$DW$27        .dwtag  DW_TAG_TI_branch
+     441                      .dwattr $C$DW$27, DW_AT_low_pc(0x00)
+     442                      .dwattr $C$DW$27, DW_AT_name("_USBSTK5515_GPIO_setOutput")
+     443                      .dwattr $C$DW$27, DW_AT_TI_call
+     444              
+     445 000079 6C00          CALL #_USBSTK5515_GPIO_setOutput ; |87| 
+         00007b 0000!
+     446 00007d 3D15  ||      MOV #1, T1
+     447              
+     448                                                      ; call occurs [#_USBSTK5515_GPIO_setOutput] ; |87| 
+     449 00007f       $C$DW$L$_USBSTK5515_I2C_write$2$E:
+     450 00007f       $C$L2:    
+     451 00007f       $C$DW$L$_USBSTK5515_I2C_write$3$B:
+     452                      .dwpsn  file "../include/usbstk5515_i2c.c",line 90,column 17,is_stmt
+     453              ;----------------------------------------------------------------------
+     454              ;  90 | if ( timeout-- < 0  )                                                  
+     455              ;----------------------------------------------------------------------
+     456 00007f A90A          MOV *SP(#5), AR1 ; |90| 
+     457 000081 7C00          SUB #1, AR1, AR2 ; |90| 
+         000083 01A9 
+     458 000085 CA0A          MOV AR2, *SP(#5) ; |90| 
+     459 000087 0459          BCC $C$L3,AR1 >= #0 ; |90| 
+         000089 11   
+     460                                                      ; branchcc occurs ; |90| 
+     461 00008a       $C$DW$L$_USBSTK5515_I2C_write$3$E:
+     462                      .dwpsn  file "../include/usbstk5515_i2c.c",line 92,column 18,is_stmt
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   10
+
+     463              ;----------------------------------------------------------------------
+     464              ;  92 | USBSTK5515_GPIO_setOutput( 17, 0);                                     
+     465              ;----------------------------------------------------------------------
+     466 00008a 7600          MOV #17, T0 ; |92| 
+         00008c 1148 
+     467              $C$DW$28        .dwtag  DW_TAG_TI_branch
+     468                      .dwattr $C$DW$28, DW_AT_low_pc(0x00)
+     469                      .dwattr $C$DW$28, DW_AT_name("_USBSTK5515_GPIO_setOutput")
+     470                      .dwattr $C$DW$28, DW_AT_TI_call
+     471              
+     472 00008e 6C00          CALL #_USBSTK5515_GPIO_setOutput ; |92| 
+         000090 0000!
+     473 000092 3D05  ||      MOV #0, T1
+     474              
+     475                                                      ; call occurs [#_USBSTK5515_GPIO_setOutput] ; |92| 
+     476                      .dwpsn  file "../include/usbstk5515_i2c.c",line 93,column 21,is_stmt
+     477              ;----------------------------------------------------------------------
+     478              ;  93 | USBSTK5515_I2C_reset( );                                               
+     479              ;----------------------------------------------------------------------
+     480              $C$DW$29        .dwtag  DW_TAG_TI_branch
+     481                      .dwattr $C$DW$29, DW_AT_low_pc(0x00)
+     482                      .dwattr $C$DW$29, DW_AT_name("_USBSTK5515_I2C_reset")
+     483                      .dwattr $C$DW$29, DW_AT_TI_call
+     484 000094 08FF          CALL #_USBSTK5515_I2C_reset ; |93| 
+         000096 91   
+     485                                                      ; call occurs [#_USBSTK5515_I2C_reset] ; |93| 
+     486                      .dwpsn  file "../include/usbstk5515_i2c.c",line 94,column 21,is_stmt
+     487              ;----------------------------------------------------------------------
+     488              ;  94 | return -1;                                                             
+     489              ;----------------------------------------------------------------------
+     490 000097 3E14          MOV #-1, T0
+     491 000099 4A26          B $C$L5   ; |94| 
+     492                                                      ; branch occurs ; |94| 
+     493 00009b       $C$L3:    
+     494 00009b       $C$DW$L$_USBSTK5515_I2C_write$5$B:
+     495                      .dwpsn  file "../include/usbstk5515_i2c.c",line 96,column 23,is_stmt
+     496              ;----------------------------------------------------------------------
+     497              ;  96 | } while ( ( I2C_STR & STR_XRDY ) == 0 );// Wait for Tx Ready           
+     498              ;----------------------------------------------------------------------
+     499 00009b DC51          BTST #4, *port(#6664), TC1 ; |96| 
+         00009d 401A 
+         00009f 08   
+     500 0000a0 0474          BCC $C$L2,!TC1 ; |96| 
+         0000a2 DC   
+     501                                                      ; branchcc occurs ; |96| 
+     502 0000a3       $C$DW$L$_USBSTK5515_I2C_write$5$E:
+     503 0000a3       $C$DW$L$_USBSTK5515_I2C_write$6$B:
+     504                      .dwpsn  file "../include/usbstk5515_i2c.c",line 83,column 33,is_stmt
+     505 0000a3 F70C          ADD #1, *SP(#6) ; |83| 
+         0000a5 0001 
+     506                      .dwpsn  file "../include/usbstk5515_i2c.c",line 83,column 23,is_stmt
+     507 0000a7 A908          MOV *SP(#4), AR1 ; |83| 
+     508 0000a9 AA0C          MOV *SP(#6), AR2 ; |83| 
+     509 0000ab 12A4          CMPU AR2 < AR1, TC1 ; |83| 
+         0000ad 94   
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   11
+
+     510 0000ae 0464          BCC $C$L1,TC1 ; |83| 
+         0000b0 B5   
+     511                                                      ; branchcc occurs ; |83| 
+     512 0000b1       $C$DW$L$_USBSTK5515_I2C_write$6$E:
+     513 0000b1       $C$L4:    
+     514                      .dwpsn  file "../include/usbstk5515_i2c.c",line 99,column 9,is_stmt
+     515              ;----------------------------------------------------------------------
+     516              ;  99 | I2C_MDR |= MDR_STP;             // Generate STOP                       
+     517              ;----------------------------------------------------------------------
+     518 0000b1 F551          OR #0x0800, *port(#6692) ; |99| 
+         0000b3 0800 
+         0000b5 1A24 
+     519                      .dwpsn  file "../include/usbstk5515_i2c.c",line 101,column 3,is_stmt
+     520              ;----------------------------------------------------------------------
+     521              ; 101 | USBSTK5515_waitusec(1000);                                             
+     522              ;----------------------------------------------------------------------
+     523 0000b7 7603          MOV #1000, AC0 ; |101| 
+         0000b9 E808 
+     524              $C$DW$30        .dwtag  DW_TAG_TI_branch
+     525                      .dwattr $C$DW$30, DW_AT_low_pc(0x00)
+     526                      .dwattr $C$DW$30, DW_AT_name("_USBSTK5515_waitusec")
+     527                      .dwattr $C$DW$30, DW_AT_TI_call
+     528 0000bb 6C00          CALL #_USBSTK5515_waitusec ; |101| 
+         0000bd 0000!
+     529                                                      ; call occurs [#_USBSTK5515_waitusec] ; |101| 
+     530                      .dwpsn  file "../include/usbstk5515_i2c.c",line 103,column 9,is_stmt
+     531              ;----------------------------------------------------------------------
+     532              ; 103 | return 0;                                                              
+     533              ;----------------------------------------------------------------------
+     534 0000bf 3C04          MOV #0, T0
+     535 0000c1       $C$L5:    
+     536                      .dwpsn  file "../include/usbstk5515_i2c.c",line 105,column 1,is_stmt
+     537 0000c1 4E07          AADD #7, SP
+     538                      .dwcfi  cfa_offset, 1
+     539              $C$DW$31        .dwtag  DW_TAG_TI_branch
+     540                      .dwattr $C$DW$31, DW_AT_low_pc(0x00)
+     541                      .dwattr $C$DW$31, DW_AT_TI_return
+     542 0000c3 4804          RET
+     543                                                      ; return occurs
+     544              
+     545              $C$DW$32        .dwtag  DW_TAG_TI_loop
+     546                      .dwattr $C$DW$32, DW_AT_name("C:\Users\Kiis\Dropbox\Uni\7. semester\AAT7\Code\DSP\aic3204\Debug\usbst
+     547                      .dwattr $C$DW$32, DW_AT_TI_begin_file("../include/usbstk5515_i2c.c")
+     548                      .dwattr $C$DW$32, DW_AT_TI_begin_line(0x53)
+     549                      .dwattr $C$DW$32, DW_AT_TI_end_line(0x61)
+     550              $C$DW$33        .dwtag  DW_TAG_TI_loop_range
+     551                      .dwattr $C$DW$33, DW_AT_low_pc($C$DW$L$_USBSTK5515_I2C_write$2$B)
+     552                      .dwattr $C$DW$33, DW_AT_high_pc($C$DW$L$_USBSTK5515_I2C_write$2$E)
+     553              $C$DW$34        .dwtag  DW_TAG_TI_loop_range
+     554                      .dwattr $C$DW$34, DW_AT_low_pc($C$DW$L$_USBSTK5515_I2C_write$6$B)
+     555                      .dwattr $C$DW$34, DW_AT_high_pc($C$DW$L$_USBSTK5515_I2C_write$6$E)
+     556              
+     557              $C$DW$35        .dwtag  DW_TAG_TI_loop
+     558                      .dwattr $C$DW$35, DW_AT_name("C:\Users\Kiis\Dropbox\Uni\7. semester\AAT7\Code\DSP\aic3204\Debug\usbst
+     559                      .dwattr $C$DW$35, DW_AT_TI_begin_file("../include/usbstk5515_i2c.c")
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   12
+
+     560                      .dwattr $C$DW$35, DW_AT_TI_begin_line(0x58)
+     561                      .dwattr $C$DW$35, DW_AT_TI_end_line(0x60)
+     562              $C$DW$36        .dwtag  DW_TAG_TI_loop_range
+     563                      .dwattr $C$DW$36, DW_AT_low_pc($C$DW$L$_USBSTK5515_I2C_write$3$B)
+     564                      .dwattr $C$DW$36, DW_AT_high_pc($C$DW$L$_USBSTK5515_I2C_write$3$E)
+     565              $C$DW$37        .dwtag  DW_TAG_TI_loop_range
+     566                      .dwattr $C$DW$37, DW_AT_low_pc($C$DW$L$_USBSTK5515_I2C_write$5$B)
+     567                      .dwattr $C$DW$37, DW_AT_high_pc($C$DW$L$_USBSTK5515_I2C_write$5$E)
+     568                      .dwendtag $C$DW$35
+     569              
+     570                      .dwendtag $C$DW$32
+     571              
+     572                      .dwattr $C$DW$17, DW_AT_TI_end_file("../include/usbstk5515_i2c.c")
+     573                      .dwattr $C$DW$17, DW_AT_TI_end_line(0x69)
+     574                      .dwattr $C$DW$17, DW_AT_TI_end_column(0x01)
+     575                      .dwendentry
+     576                      .dwendtag $C$DW$17
+     577              
+     578 0000c5               .sect   ".text"
+     579                      .global _USBSTK5515_I2C_read
+     580              
+     581              $C$DW$38        .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_I2C_read")
+     582                      .dwattr $C$DW$38, DW_AT_low_pc(_USBSTK5515_I2C_read)
+     583                      .dwattr $C$DW$38, DW_AT_high_pc(0x00)
+     584                      .dwattr $C$DW$38, DW_AT_TI_symbol_name("_USBSTK5515_I2C_read")
+     585                      .dwattr $C$DW$38, DW_AT_external
+     586                      .dwattr $C$DW$38, DW_AT_type(*$C$DW$T$8)
+     587                      .dwattr $C$DW$38, DW_AT_TI_begin_file("../include/usbstk5515_i2c.c")
+     588                      .dwattr $C$DW$38, DW_AT_TI_begin_line(0x79)
+     589                      .dwattr $C$DW$38, DW_AT_TI_begin_column(0x07)
+     590                      .dwattr $C$DW$38, DW_AT_decl_file("../include/usbstk5515_i2c.c")
+     591                      .dwattr $C$DW$38, DW_AT_decl_line(0x79)
+     592                      .dwattr $C$DW$38, DW_AT_decl_column(0x07)
+     593                      .dwattr $C$DW$38, DW_AT_TI_max_frame_size(0x08)
+     594                      .dwpsn  file "../include/usbstk5515_i2c.c",line 122,column 1,is_stmt,address _USBSTK5515_I2C_read
+     595              
+     596                      .dwfde $C$DW$CIE, _USBSTK5515_I2C_read
+     597              $C$DW$39        .dwtag  DW_TAG_formal_parameter, DW_AT_name("i2c_addr")
+     598                      .dwattr $C$DW$39, DW_AT_TI_symbol_name("_i2c_addr")
+     599                      .dwattr $C$DW$39, DW_AT_type(*$C$DW$T$9)
+     600                      .dwattr $C$DW$39, DW_AT_location[DW_OP_reg12]
+     601              $C$DW$40        .dwtag  DW_TAG_formal_parameter, DW_AT_name("data")
+     602                      .dwattr $C$DW$40, DW_AT_TI_symbol_name("_data")
+     603                      .dwattr $C$DW$40, DW_AT_type(*$C$DW$T$21)
+     604                      .dwattr $C$DW$40, DW_AT_location[DW_OP_reg17]
+     605              $C$DW$41        .dwtag  DW_TAG_formal_parameter, DW_AT_name("len")
+     606                      .dwattr $C$DW$41, DW_AT_TI_symbol_name("_len")
+     607                      .dwattr $C$DW$41, DW_AT_type(*$C$DW$T$9)
+     608                      .dwattr $C$DW$41, DW_AT_location[DW_OP_reg13]
+     609              ;----------------------------------------------------------------------
+     610              ; 121 | Int16 USBSTK5515_I2C_read( Uint16 i2c_addr, Uint8* data, Uint16 len )  
+     611              ;----------------------------------------------------------------------
+     612              ;*******************************************************************************
+     613              ;* FUNCTION NAME: USBSTK5515_I2C_read                                          *
+     614              ;*                                                                             *
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   13
+
+     615              ;*   Function Uses Regs : AC0,AC0,T0,T1,AR0,XAR0,AR1,AR2,AR3,XAR3,SP,CARRY,TC1,*
+     616              ;*                        M40,SATA,SATD,RDM,FRCT,SMUL                          *
+     617              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     618              ;*   Total Frame Size   : 8 words                                              *
+     619              ;*                        (1 return address/alignment)                         *
+     620              ;*                        (7 local values)                                     *
+     621              ;*   Min System Stack   : 1 word                                               *
+     622              ;*******************************************************************************
+     623 0000c5       _USBSTK5515_I2C_read:
+     624                      .dwcfi  cfa_offset, 1
+     625                      .dwcfi  save_reg_to_mem, 91, -1
+     626 0000c5 4EF9          AADD #-7, SP
+     627                      .dwcfi  cfa_offset, 8
+     628              $C$DW$42        .dwtag  DW_TAG_variable, DW_AT_name("i2c_addr")
+     629                      .dwattr $C$DW$42, DW_AT_TI_symbol_name("_i2c_addr")
+     630                      .dwattr $C$DW$42, DW_AT_type(*$C$DW$T$9)
+     631                      .dwattr $C$DW$42, DW_AT_location[DW_OP_bregx 0x24 0]
+     632              $C$DW$43        .dwtag  DW_TAG_variable, DW_AT_name("data")
+     633                      .dwattr $C$DW$43, DW_AT_TI_symbol_name("_data")
+     634                      .dwattr $C$DW$43, DW_AT_type(*$C$DW$T$21)
+     635                      .dwattr $C$DW$43, DW_AT_location[DW_OP_bregx 0x24 2]
+     636              $C$DW$44        .dwtag  DW_TAG_variable, DW_AT_name("len")
+     637                      .dwattr $C$DW$44, DW_AT_TI_symbol_name("_len")
+     638                      .dwattr $C$DW$44, DW_AT_type(*$C$DW$T$9)
+     639                      .dwattr $C$DW$44, DW_AT_location[DW_OP_bregx 0x24 4]
+     640              $C$DW$45        .dwtag  DW_TAG_variable, DW_AT_name("timeout")
+     641                      .dwattr $C$DW$45, DW_AT_TI_symbol_name("_timeout")
+     642                      .dwattr $C$DW$45, DW_AT_type(*$C$DW$T$10)
+     643                      .dwattr $C$DW$45, DW_AT_location[DW_OP_bregx 0x24 5]
+     644              $C$DW$46        .dwtag  DW_TAG_variable, DW_AT_name("i")
+     645                      .dwattr $C$DW$46, DW_AT_TI_symbol_name("_i")
+     646                      .dwattr $C$DW$46, DW_AT_type(*$C$DW$T$10)
+     647                      .dwattr $C$DW$46, DW_AT_location[DW_OP_bregx 0x24 6]
+     648              ;----------------------------------------------------------------------
+     649              ; 123 | Int32 timeout, i;                                                      
+     650              ;----------------------------------------------------------------------
+     651 0000c7 C508          MOV T1, *SP(#4) ; |122| 
+     652 0000c9 EB04          MOV XAR0, dbl(*SP(#2))
+         0000cb 85   
+     653 0000cc C400          MOV T0, *SP(#0) ; |122| 
+     654                      .dwpsn  file "../include/usbstk5515_i2c.c",line 125,column 5,is_stmt
+     655              ;----------------------------------------------------------------------
+     656              ; 125 | I2C_CNT = len;                    // Set length                        
+     657              ;----------------------------------------------------------------------
+     658 0000ce A908          MOV *SP(#4), AR1 ; |125| 
+     659 0000d0 C951          MOV AR1, *port(#6676) ; |125| 
+         0000d2 1A14 
+     660                      .dwpsn  file "../include/usbstk5515_i2c.c",line 126,column 5,is_stmt
+     661              ;----------------------------------------------------------------------
+     662              ; 126 | I2C_SAR = i2c_addr;               // Set I2C slave address             
+     663              ;----------------------------------------------------------------------
+     664 0000d4 2249          MOV T0, AR1
+     665 0000d6 C951          MOV AR1, *port(#6684) ; |126| 
+         0000d8 1A1C 
+     666                      .dwpsn  file "../include/usbstk5515_i2c.c",line 127,column 5,is_stmt
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   14
+
+     667              ;----------------------------------------------------------------------
+     668              ; 127 | I2C_MDR = MDR_STT                 // Set for Master Read               
+     669              ; 128 |           | MDR_MST                                                    
+     670              ; 129 |           | MDR_IRS                                                    
+     671              ; 130 |           | MDR_FREE;                                                  
+     672              ;----------------------------------------------------------------------
+     673 0000da FB51          MOV #25632, *port(#6692) ; |127| 
+         0000dc 6420 
+         0000de 1A24 
+     674                      .dwpsn  file "../include/usbstk5515_i2c.c",line 132,column 5,is_stmt
+     675              ;----------------------------------------------------------------------
+     676              ; 132 | USBSTK5515_wait( 10 );            // Short delay                       
+     677              ;----------------------------------------------------------------------
+     678              $C$DW$47        .dwtag  DW_TAG_TI_branch
+     679                      .dwattr $C$DW$47, DW_AT_low_pc(0x00)
+     680                      .dwattr $C$DW$47, DW_AT_name("_USBSTK5515_wait")
+     681                      .dwattr $C$DW$47, DW_AT_TI_call
+     682              
+     683 0000e0 6C00          CALL #_USBSTK5515_wait ; |132| 
+         0000e2 0000!
+     684 0000e4 3DA0  ||      MOV #10, AC0 ; |132| 
+     685              
+     686                                                      ; call occurs [#_USBSTK5515_wait] ; |132| 
+     687                      .dwpsn  file "../include/usbstk5515_i2c.c",line 134,column 11,is_stmt
+     688              ;----------------------------------------------------------------------
+     689              ; 134 | for ( i = 0 ; i < len ; i++ )                                          
+     690              ;----------------------------------------------------------------------
+     691 0000e6 E60C          MOV #0, *SP(#6) ; |134| 
+         0000e8 00   
+     692                      .dwpsn  file "../include/usbstk5515_i2c.c",line 134,column 19,is_stmt
+     693 0000e9 AA0C          MOV *SP(#6), AR2 ; |134| 
+     694 0000eb A908          MOV *SP(#4), AR1 ; |134| 
+     695 0000ed 12A8          CMPU AR2 >= AR1, TC1 ; |134| 
+         0000ef 94   
+     696 0000f0 0464          BCC $C$L9,TC1 ; |134| 
+         0000f2 39   
+     697                                                      ; branchcc occurs ; |134| 
+     698 0000f3       $C$L6:    
+     699 0000f3       $C$DW$L$_USBSTK5515_I2C_read$2$B:
+     700                      .dwpsn  file "../include/usbstk5515_i2c.c",line 136,column 9,is_stmt
+     701              ;----------------------------------------------------------------------
+     702              ; 136 | timeout = i2c_timeout;                                                 
+     703              ; 138 | //Wait for Rx Ready                                                    
+     704              ; 139 | do                                                                     
+     705              ;----------------------------------------------------------------------
+     706 0000f3 A931          MOV *(#_i2c_timeout), AR1 ; |136| 
+         0000f5 0000 
+         0000f7 00-  
+     707 0000f8 C90A          MOV AR1, *SP(#5) ; |136| 
+     708 0000fa       $C$DW$L$_USBSTK5515_I2C_read$2$E:
+     709 0000fa       $C$L7:    
+     710 0000fa       $C$DW$L$_USBSTK5515_I2C_read$3$B:
+     711                      .dwpsn  file "../include/usbstk5515_i2c.c",line 141,column 13,is_stmt
+     712              ;----------------------------------------------------------------------
+     713              ; 141 | if ( timeout-- < 0 )                                                   
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   15
+
+     714              ;----------------------------------------------------------------------
+     715 0000fa A90A          MOV *SP(#5), AR1 ; |141| 
+     716 0000fc 7C00          SUB #1, AR1, AR2 ; |141| 
+         0000fe 01A9 
+     717 000100 CA0A          MOV AR2, *SP(#5) ; |141| 
+     718 000102 63D9          BCC $C$L8,AR1 >= #0 ; |141| 
+     719                                                      ; branchcc occurs ; |141| 
+     720 000104       $C$DW$L$_USBSTK5515_I2C_read$3$E:
+     721                      .dwpsn  file "../include/usbstk5515_i2c.c",line 143,column 17,is_stmt
+     722              ;----------------------------------------------------------------------
+     723              ; 143 | USBSTK5515_I2C_reset( );                                               
+     724              ;----------------------------------------------------------------------
+     725              $C$DW$48        .dwtag  DW_TAG_TI_branch
+     726                      .dwattr $C$DW$48, DW_AT_low_pc(0x00)
+     727                      .dwattr $C$DW$48, DW_AT_name("_USBSTK5515_I2C_reset")
+     728                      .dwattr $C$DW$48, DW_AT_TI_call
+     729 000104 08FF          CALL #_USBSTK5515_I2C_reset ; |143| 
+         000106 21   
+     730                                                      ; call occurs [#_USBSTK5515_I2C_reset] ; |143| 
+     731                      .dwpsn  file "../include/usbstk5515_i2c.c",line 144,column 17,is_stmt
+     732              ;----------------------------------------------------------------------
+     733              ; 144 | return -1;                                                             
+     734              ;----------------------------------------------------------------------
+     735 000107 3E14          MOV #-1, T0
+     736 000109 4A2F          B $C$L10  ; |144| 
+     737                                                      ; branch occurs ; |144| 
+     738 00010b       $C$L8:    
+     739 00010b       $C$DW$L$_USBSTK5515_I2C_read$5$B:
+     740                      .dwpsn  file "../include/usbstk5515_i2c.c",line 146,column 19,is_stmt
+     741              ;----------------------------------------------------------------------
+     742              ; 146 | } while ( ( I2C_STR & STR_RRDY ) == 0 );// Wait for Rx Ready           
+     743              ;----------------------------------------------------------------------
+     744 00010b DC51          BTST #3, *port(#6664), TC1 ; |146| 
+         00010d 301A 
+         00010f 08   
+     745 000110 0474          BCC $C$L7,!TC1 ; |146| 
+         000112 E7   
+     746                                                      ; branchcc occurs ; |146| 
+     747 000113       $C$DW$L$_USBSTK5515_I2C_read$5$E:
+     748 000113       $C$DW$L$_USBSTK5515_I2C_read$6$B:
+     749                      .dwpsn  file "../include/usbstk5515_i2c.c",line 148,column 9,is_stmt
+     750              ;----------------------------------------------------------------------
+     751              ; 148 | data[i] = I2C_DRR;            // Read                                  
+     752              ;----------------------------------------------------------------------
+     753 000113 ED04          MOV dbl(*SP(#2)), XAR3
+         000115 BF   
+     754 000116 A40C          MOV *SP(#6), T0 ; |148| 
+     755 000118 A951          MOV *port(#6680), AR1 ; |148| 
+         00011a 1A18 
+     756 00011c C96B          MOV AR1, *AR3(T0) ; |148| 
+     757                      .dwpsn  file "../include/usbstk5515_i2c.c",line 134,column 29,is_stmt
+     758 00011e F70C          ADD #1, *SP(#6) ; |134| 
+         000120 0001 
+     759                      .dwpsn  file "../include/usbstk5515_i2c.c",line 134,column 19,is_stmt
+     760 000122 AA0C          MOV *SP(#6), AR2 ; |134| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   16
+
+     761 000124 A908          MOV *SP(#4), AR1 ; |134| 
+     762 000126 12A4          CMPU AR2 < AR1, TC1 ; |134| 
+         000128 94   
+     763 000129 0464          BCC $C$L6,TC1 ; |134| 
+         00012b C7   
+     764                                                      ; branchcc occurs ; |134| 
+     765 00012c       $C$DW$L$_USBSTK5515_I2C_read$6$E:
+     766 00012c       $C$L9:    
+     767                      .dwpsn  file "../include/usbstk5515_i2c.c",line 151,column 5,is_stmt
+     768              ;----------------------------------------------------------------------
+     769              ; 151 | I2C_MDR |= MDR_STP;               // Generate STOP                     
+     770              ;----------------------------------------------------------------------
+     771 00012c F551          OR #0x0800, *port(#6692) ; |151| 
+         00012e 0800 
+         000130 1A24 
+     772                      .dwpsn  file "../include/usbstk5515_i2c.c",line 153,column 2,is_stmt
+     773              ;----------------------------------------------------------------------
+     774              ; 153 | USBSTK5515_waitusec(10);                                               
+     775              ;----------------------------------------------------------------------
+     776              $C$DW$49        .dwtag  DW_TAG_TI_branch
+     777                      .dwattr $C$DW$49, DW_AT_low_pc(0x00)
+     778                      .dwattr $C$DW$49, DW_AT_name("_USBSTK5515_waitusec")
+     779                      .dwattr $C$DW$49, DW_AT_TI_call
+     780              
+     781 000132 6C00          CALL #_USBSTK5515_waitusec ; |153| 
+         000134 0000!
+     782 000136 3DA0  ||      MOV #10, AC0 ; |153| 
+     783              
+     784                                                      ; call occurs [#_USBSTK5515_waitusec] ; |153| 
+     785                      .dwpsn  file "../include/usbstk5515_i2c.c",line 154,column 5,is_stmt
+     786              ;----------------------------------------------------------------------
+     787              ; 154 | return 0;                                                              
+     788              ;----------------------------------------------------------------------
+     789 000138 3C04          MOV #0, T0
+     790 00013a       $C$L10:    
+     791                      .dwpsn  file "../include/usbstk5515_i2c.c",line 155,column 1,is_stmt
+     792 00013a 4E07          AADD #7, SP
+     793                      .dwcfi  cfa_offset, 1
+     794              $C$DW$50        .dwtag  DW_TAG_TI_branch
+     795                      .dwattr $C$DW$50, DW_AT_low_pc(0x00)
+     796                      .dwattr $C$DW$50, DW_AT_TI_return
+     797 00013c 4804          RET
+     798                                                      ; return occurs
+     799              
+     800              $C$DW$51        .dwtag  DW_TAG_TI_loop
+     801                      .dwattr $C$DW$51, DW_AT_name("C:\Users\Kiis\Dropbox\Uni\7. semester\AAT7\Code\DSP\aic3204\Debug\usbst
+     802                      .dwattr $C$DW$51, DW_AT_TI_begin_file("../include/usbstk5515_i2c.c")
+     803                      .dwattr $C$DW$51, DW_AT_TI_begin_line(0x86)
+     804                      .dwattr $C$DW$51, DW_AT_TI_end_line(0x95)
+     805              $C$DW$52        .dwtag  DW_TAG_TI_loop_range
+     806                      .dwattr $C$DW$52, DW_AT_low_pc($C$DW$L$_USBSTK5515_I2C_read$2$B)
+     807                      .dwattr $C$DW$52, DW_AT_high_pc($C$DW$L$_USBSTK5515_I2C_read$2$E)
+     808              $C$DW$53        .dwtag  DW_TAG_TI_loop_range
+     809                      .dwattr $C$DW$53, DW_AT_low_pc($C$DW$L$_USBSTK5515_I2C_read$6$B)
+     810                      .dwattr $C$DW$53, DW_AT_high_pc($C$DW$L$_USBSTK5515_I2C_read$6$E)
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   17
+
+     811              
+     812              $C$DW$54        .dwtag  DW_TAG_TI_loop
+     813                      .dwattr $C$DW$54, DW_AT_name("C:\Users\Kiis\Dropbox\Uni\7. semester\AAT7\Code\DSP\aic3204\Debug\usbst
+     814                      .dwattr $C$DW$54, DW_AT_TI_begin_file("../include/usbstk5515_i2c.c")
+     815                      .dwattr $C$DW$54, DW_AT_TI_begin_line(0x8b)
+     816                      .dwattr $C$DW$54, DW_AT_TI_end_line(0x92)
+     817              $C$DW$55        .dwtag  DW_TAG_TI_loop_range
+     818                      .dwattr $C$DW$55, DW_AT_low_pc($C$DW$L$_USBSTK5515_I2C_read$3$B)
+     819                      .dwattr $C$DW$55, DW_AT_high_pc($C$DW$L$_USBSTK5515_I2C_read$3$E)
+     820              $C$DW$56        .dwtag  DW_TAG_TI_loop_range
+     821                      .dwattr $C$DW$56, DW_AT_low_pc($C$DW$L$_USBSTK5515_I2C_read$5$B)
+     822                      .dwattr $C$DW$56, DW_AT_high_pc($C$DW$L$_USBSTK5515_I2C_read$5$E)
+     823                      .dwendtag $C$DW$54
+     824              
+     825                      .dwendtag $C$DW$51
+     826              
+     827                      .dwattr $C$DW$38, DW_AT_TI_end_file("../include/usbstk5515_i2c.c")
+     828                      .dwattr $C$DW$38, DW_AT_TI_end_line(0x9b)
+     829                      .dwattr $C$DW$38, DW_AT_TI_end_column(0x01)
+     830                      .dwendentry
+     831                      .dwendtag $C$DW$38
+     832              
+     833              ;******************************************************************************
+     834              ;* UNDEFINED EXTERNAL REFERENCES                                              *
+     835              ;******************************************************************************
+     836                      .global _USBSTK5515_wait
+     837                      .global _USBSTK5515_waitusec
+     838                      .global _USBSTK5515_GPIO_setOutput
+     839              
+     840              ;*******************************************************************************
+     841              ;* TYPE INFORMATION                                                            *
+     842              ;*******************************************************************************
+     843              $C$DW$T$4       .dwtag  DW_TAG_base_type
+     844                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+     845                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+     846                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+     847              $C$DW$T$5       .dwtag  DW_TAG_base_type
+     848                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+     849                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+     850                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+     851              $C$DW$T$6       .dwtag  DW_TAG_base_type
+     852                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+     853                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+     854                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+     855              $C$DW$T$21      .dwtag  DW_TAG_pointer_type
+     856                      .dwattr $C$DW$T$21, DW_AT_type(*$C$DW$T$6)
+     857                      .dwattr $C$DW$T$21, DW_AT_address_class(0x17)
+     858              $C$DW$T$7       .dwtag  DW_TAG_base_type
+     859                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+     860                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+     861                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+     862              $C$DW$T$8       .dwtag  DW_TAG_base_type
+     863                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+     864                      .dwattr $C$DW$T$8, DW_AT_name("short")
+     865                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   18
+
+     866              $C$DW$T$9       .dwtag  DW_TAG_base_type
+     867                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+     868                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+     869                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+     870              $C$DW$T$10      .dwtag  DW_TAG_base_type
+     871                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+     872                      .dwattr $C$DW$T$10, DW_AT_name("int")
+     873                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+     874              $C$DW$T$11      .dwtag  DW_TAG_base_type
+     875                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+     876                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+     877                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+     878              $C$DW$T$12      .dwtag  DW_TAG_base_type
+     879                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+     880                      .dwattr $C$DW$T$12, DW_AT_name("long")
+     881                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+     882              $C$DW$T$13      .dwtag  DW_TAG_base_type
+     883                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+     884                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+     885                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+     886              $C$DW$T$14      .dwtag  DW_TAG_base_type
+     887                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+     888                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+     889                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+     890                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+     891                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+     892              $C$DW$T$15      .dwtag  DW_TAG_base_type
+     893                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+     894                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+     895                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+     896                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+     897                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+     898              $C$DW$T$16      .dwtag  DW_TAG_base_type
+     899                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+     900                      .dwattr $C$DW$T$16, DW_AT_name("float")
+     901                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+     902              $C$DW$T$17      .dwtag  DW_TAG_base_type
+     903                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+     904                      .dwattr $C$DW$T$17, DW_AT_name("double")
+     905                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+     906              $C$DW$T$18      .dwtag  DW_TAG_base_type
+     907                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+     908                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+     909                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+     910                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+     911              
+     912              ;***************************************************************
+     913              ;* DWARF CIE ENTRIES                                           *
+     914              ;***************************************************************
+     915              
+     916              $C$DW$CIE       .dwcie 91
+     917                      .dwcfi  cfa_register, 36
+     918                      .dwcfi  cfa_offset, 0
+     919                      .dwcfi  undefined, 0
+     920                      .dwcfi  undefined, 1
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   19
+
+     921                      .dwcfi  undefined, 2
+     922                      .dwcfi  undefined, 3
+     923                      .dwcfi  undefined, 4
+     924                      .dwcfi  undefined, 5
+     925                      .dwcfi  undefined, 6
+     926                      .dwcfi  undefined, 7
+     927                      .dwcfi  undefined, 8
+     928                      .dwcfi  undefined, 9
+     929                      .dwcfi  undefined, 10
+     930                      .dwcfi  undefined, 11
+     931                      .dwcfi  undefined, 12
+     932                      .dwcfi  undefined, 13
+     933                      .dwcfi  same_value, 14
+     934                      .dwcfi  same_value, 15
+     935                      .dwcfi  undefined, 16
+     936                      .dwcfi  undefined, 17
+     937                      .dwcfi  undefined, 18
+     938                      .dwcfi  undefined, 19
+     939                      .dwcfi  undefined, 20
+     940                      .dwcfi  undefined, 21
+     941                      .dwcfi  undefined, 22
+     942                      .dwcfi  undefined, 23
+     943                      .dwcfi  undefined, 24
+     944                      .dwcfi  undefined, 25
+     945                      .dwcfi  same_value, 26
+     946                      .dwcfi  same_value, 27
+     947                      .dwcfi  same_value, 28
+     948                      .dwcfi  same_value, 29
+     949                      .dwcfi  same_value, 30
+     950                      .dwcfi  same_value, 31
+     951                      .dwcfi  undefined, 32
+     952                      .dwcfi  undefined, 33
+     953                      .dwcfi  undefined, 34
+     954                      .dwcfi  undefined, 35
+     955                      .dwcfi  undefined, 36
+     956                      .dwcfi  undefined, 37
+     957                      .dwcfi  undefined, 38
+     958                      .dwcfi  undefined, 39
+     959                      .dwcfi  undefined, 40
+     960                      .dwcfi  undefined, 41
+     961                      .dwcfi  undefined, 42
+     962                      .dwcfi  undefined, 43
+     963                      .dwcfi  undefined, 44
+     964                      .dwcfi  undefined, 45
+     965                      .dwcfi  undefined, 46
+     966                      .dwcfi  undefined, 47
+     967                      .dwcfi  undefined, 48
+     968                      .dwcfi  undefined, 49
+     969                      .dwcfi  undefined, 50
+     970                      .dwcfi  undefined, 51
+     971                      .dwcfi  undefined, 52
+     972                      .dwcfi  undefined, 53
+     973                      .dwcfi  undefined, 54
+     974                      .dwcfi  undefined, 55
+     975                      .dwcfi  undefined, 56
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   20
+
+     976                      .dwcfi  undefined, 57
+     977                      .dwcfi  undefined, 58
+     978                      .dwcfi  undefined, 59
+     979                      .dwcfi  undefined, 60
+     980                      .dwcfi  undefined, 61
+     981                      .dwcfi  undefined, 62
+     982                      .dwcfi  undefined, 63
+     983                      .dwcfi  undefined, 64
+     984                      .dwcfi  undefined, 65
+     985                      .dwcfi  undefined, 66
+     986                      .dwcfi  undefined, 67
+     987                      .dwcfi  undefined, 68
+     988                      .dwcfi  undefined, 69
+     989                      .dwcfi  undefined, 70
+     990                      .dwcfi  undefined, 71
+     991                      .dwcfi  undefined, 72
+     992                      .dwcfi  undefined, 73
+     993                      .dwcfi  undefined, 74
+     994                      .dwcfi  undefined, 75
+     995                      .dwcfi  undefined, 76
+     996                      .dwcfi  undefined, 77
+     997                      .dwcfi  undefined, 78
+     998                      .dwcfi  undefined, 79
+     999                      .dwcfi  undefined, 80
+    1000                      .dwcfi  undefined, 81
+    1001                      .dwcfi  undefined, 82
+    1002                      .dwcfi  undefined, 83
+    1003                      .dwcfi  undefined, 84
+    1004                      .dwcfi  undefined, 85
+    1005                      .dwcfi  undefined, 86
+    1006                      .dwcfi  undefined, 87
+    1007                      .dwcfi  undefined, 88
+    1008                      .dwcfi  undefined, 89
+    1009                      .dwcfi  undefined, 90
+    1010                      .dwcfi  undefined, 91
+    1011                      .dwendentry
+    1012              
+    1013              ;***************************************************************
+    1014              ;* DWARF REGISTER MAP                                          *
+    1015              ;***************************************************************
+    1016              
+    1017              $C$DW$57        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1018                      .dwattr $C$DW$57, DW_AT_location[DW_OP_reg0]
+    1019              $C$DW$58        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1020                      .dwattr $C$DW$58, DW_AT_location[DW_OP_reg1]
+    1021              $C$DW$59        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+    1022                      .dwattr $C$DW$59, DW_AT_location[DW_OP_reg2]
+    1023              $C$DW$60        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1024                      .dwattr $C$DW$60, DW_AT_location[DW_OP_reg3]
+    1025              $C$DW$61        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1026                      .dwattr $C$DW$61, DW_AT_location[DW_OP_reg4]
+    1027              $C$DW$62        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+    1028                      .dwattr $C$DW$62, DW_AT_location[DW_OP_reg5]
+    1029              $C$DW$63        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1030                      .dwattr $C$DW$63, DW_AT_location[DW_OP_reg6]
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   21
+
+    1031              $C$DW$64        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1032                      .dwattr $C$DW$64, DW_AT_location[DW_OP_reg7]
+    1033              $C$DW$65        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+    1034                      .dwattr $C$DW$65, DW_AT_location[DW_OP_reg8]
+    1035              $C$DW$66        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1036                      .dwattr $C$DW$66, DW_AT_location[DW_OP_reg9]
+    1037              $C$DW$67        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1038                      .dwattr $C$DW$67, DW_AT_location[DW_OP_reg10]
+    1039              $C$DW$68        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+    1040                      .dwattr $C$DW$68, DW_AT_location[DW_OP_reg11]
+    1041              $C$DW$69        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+    1042                      .dwattr $C$DW$69, DW_AT_location[DW_OP_reg12]
+    1043              $C$DW$70        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+    1044                      .dwattr $C$DW$70, DW_AT_location[DW_OP_reg13]
+    1045              $C$DW$71        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+    1046                      .dwattr $C$DW$71, DW_AT_location[DW_OP_reg14]
+    1047              $C$DW$72        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+    1048                      .dwattr $C$DW$72, DW_AT_location[DW_OP_reg15]
+    1049              $C$DW$73        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+    1050                      .dwattr $C$DW$73, DW_AT_location[DW_OP_reg16]
+    1051              $C$DW$74        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+    1052                      .dwattr $C$DW$74, DW_AT_location[DW_OP_reg17]
+    1053              $C$DW$75        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+    1054                      .dwattr $C$DW$75, DW_AT_location[DW_OP_reg18]
+    1055              $C$DW$76        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+    1056                      .dwattr $C$DW$76, DW_AT_location[DW_OP_reg19]
+    1057              $C$DW$77        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+    1058                      .dwattr $C$DW$77, DW_AT_location[DW_OP_reg20]
+    1059              $C$DW$78        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+    1060                      .dwattr $C$DW$78, DW_AT_location[DW_OP_reg21]
+    1061              $C$DW$79        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+    1062                      .dwattr $C$DW$79, DW_AT_location[DW_OP_reg22]
+    1063              $C$DW$80        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+    1064                      .dwattr $C$DW$80, DW_AT_location[DW_OP_reg23]
+    1065              $C$DW$81        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+    1066                      .dwattr $C$DW$81, DW_AT_location[DW_OP_reg24]
+    1067              $C$DW$82        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+    1068                      .dwattr $C$DW$82, DW_AT_location[DW_OP_reg25]
+    1069              $C$DW$83        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+    1070                      .dwattr $C$DW$83, DW_AT_location[DW_OP_reg26]
+    1071              $C$DW$84        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+    1072                      .dwattr $C$DW$84, DW_AT_location[DW_OP_reg27]
+    1073              $C$DW$85        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+    1074                      .dwattr $C$DW$85, DW_AT_location[DW_OP_reg28]
+    1075              $C$DW$86        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+    1076                      .dwattr $C$DW$86, DW_AT_location[DW_OP_reg29]
+    1077              $C$DW$87        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+    1078                      .dwattr $C$DW$87, DW_AT_location[DW_OP_reg30]
+    1079              $C$DW$88        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+    1080                      .dwattr $C$DW$88, DW_AT_location[DW_OP_reg31]
+    1081              $C$DW$89        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+    1082                      .dwattr $C$DW$89, DW_AT_location[DW_OP_regx 0x20]
+    1083              $C$DW$90        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+    1084                      .dwattr $C$DW$90, DW_AT_location[DW_OP_regx 0x21]
+    1085              $C$DW$91        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   22
+
+    1086                      .dwattr $C$DW$91, DW_AT_location[DW_OP_regx 0x22]
+    1087              $C$DW$92        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+    1088                      .dwattr $C$DW$92, DW_AT_location[DW_OP_regx 0x23]
+    1089              $C$DW$93        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+    1090                      .dwattr $C$DW$93, DW_AT_location[DW_OP_regx 0x24]
+    1091              $C$DW$94        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+    1092                      .dwattr $C$DW$94, DW_AT_location[DW_OP_regx 0x25]
+    1093              $C$DW$95        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+    1094                      .dwattr $C$DW$95, DW_AT_location[DW_OP_regx 0x26]
+    1095              $C$DW$96        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+    1096                      .dwattr $C$DW$96, DW_AT_location[DW_OP_regx 0x27]
+    1097              $C$DW$97        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+    1098                      .dwattr $C$DW$97, DW_AT_location[DW_OP_regx 0x28]
+    1099              $C$DW$98        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+    1100                      .dwattr $C$DW$98, DW_AT_location[DW_OP_regx 0x29]
+    1101              $C$DW$99        .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+    1102                      .dwattr $C$DW$99, DW_AT_location[DW_OP_regx 0x2a]
+    1103              $C$DW$100       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+    1104                      .dwattr $C$DW$100, DW_AT_location[DW_OP_regx 0x2b]
+    1105              $C$DW$101       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+    1106                      .dwattr $C$DW$101, DW_AT_location[DW_OP_regx 0x2c]
+    1107              $C$DW$102       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+    1108                      .dwattr $C$DW$102, DW_AT_location[DW_OP_regx 0x2d]
+    1109              $C$DW$103       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+    1110                      .dwattr $C$DW$103, DW_AT_location[DW_OP_regx 0x2e]
+    1111              $C$DW$104       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+    1112                      .dwattr $C$DW$104, DW_AT_location[DW_OP_regx 0x2f]
+    1113              $C$DW$105       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+    1114                      .dwattr $C$DW$105, DW_AT_location[DW_OP_regx 0x30]
+    1115              $C$DW$106       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+    1116                      .dwattr $C$DW$106, DW_AT_location[DW_OP_regx 0x31]
+    1117              $C$DW$107       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+    1118                      .dwattr $C$DW$107, DW_AT_location[DW_OP_regx 0x32]
+    1119              $C$DW$108       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+    1120                      .dwattr $C$DW$108, DW_AT_location[DW_OP_regx 0x33]
+    1121              $C$DW$109       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+    1122                      .dwattr $C$DW$109, DW_AT_location[DW_OP_regx 0x34]
+    1123              $C$DW$110       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+    1124                      .dwattr $C$DW$110, DW_AT_location[DW_OP_regx 0x35]
+    1125              $C$DW$111       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+    1126                      .dwattr $C$DW$111, DW_AT_location[DW_OP_regx 0x36]
+    1127              $C$DW$112       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+    1128                      .dwattr $C$DW$112, DW_AT_location[DW_OP_regx 0x37]
+    1129              $C$DW$113       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+    1130                      .dwattr $C$DW$113, DW_AT_location[DW_OP_regx 0x38]
+    1131              $C$DW$114       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+    1132                      .dwattr $C$DW$114, DW_AT_location[DW_OP_regx 0x39]
+    1133              $C$DW$115       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+    1134                      .dwattr $C$DW$115, DW_AT_location[DW_OP_regx 0x3a]
+    1135              $C$DW$116       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+    1136                      .dwattr $C$DW$116, DW_AT_location[DW_OP_regx 0x3b]
+    1137              $C$DW$117       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+    1138                      .dwattr $C$DW$117, DW_AT_location[DW_OP_regx 0x3c]
+    1139              $C$DW$118       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+    1140                      .dwattr $C$DW$118, DW_AT_location[DW_OP_regx 0x3d]
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   23
+
+    1141              $C$DW$119       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+    1142                      .dwattr $C$DW$119, DW_AT_location[DW_OP_regx 0x3e]
+    1143              $C$DW$120       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+    1144                      .dwattr $C$DW$120, DW_AT_location[DW_OP_regx 0x3f]
+    1145              $C$DW$121       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+    1146                      .dwattr $C$DW$121, DW_AT_location[DW_OP_regx 0x40]
+    1147              $C$DW$122       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+    1148                      .dwattr $C$DW$122, DW_AT_location[DW_OP_regx 0x41]
+    1149              $C$DW$123       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+    1150                      .dwattr $C$DW$123, DW_AT_location[DW_OP_regx 0x42]
+    1151              $C$DW$124       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+    1152                      .dwattr $C$DW$124, DW_AT_location[DW_OP_regx 0x43]
+    1153              $C$DW$125       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+    1154                      .dwattr $C$DW$125, DW_AT_location[DW_OP_regx 0x44]
+    1155              $C$DW$126       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+    1156                      .dwattr $C$DW$126, DW_AT_location[DW_OP_regx 0x45]
+    1157              $C$DW$127       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+    1158                      .dwattr $C$DW$127, DW_AT_location[DW_OP_regx 0x46]
+    1159              $C$DW$128       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+    1160                      .dwattr $C$DW$128, DW_AT_location[DW_OP_regx 0x47]
+    1161              $C$DW$129       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+    1162                      .dwattr $C$DW$129, DW_AT_location[DW_OP_regx 0x48]
+    1163              $C$DW$130       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+    1164                      .dwattr $C$DW$130, DW_AT_location[DW_OP_regx 0x49]
+    1165              $C$DW$131       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+    1166                      .dwattr $C$DW$131, DW_AT_location[DW_OP_regx 0x4a]
+    1167              $C$DW$132       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+    1168                      .dwattr $C$DW$132, DW_AT_location[DW_OP_regx 0x4b]
+    1169              $C$DW$133       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+    1170                      .dwattr $C$DW$133, DW_AT_location[DW_OP_regx 0x4c]
+    1171              $C$DW$134       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+    1172                      .dwattr $C$DW$134, DW_AT_location[DW_OP_regx 0x4d]
+    1173              $C$DW$135       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+    1174                      .dwattr $C$DW$135, DW_AT_location[DW_OP_regx 0x4e]
+    1175              $C$DW$136       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+    1176                      .dwattr $C$DW$136, DW_AT_location[DW_OP_regx 0x4f]
+    1177              $C$DW$137       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+    1178                      .dwattr $C$DW$137, DW_AT_location[DW_OP_regx 0x50]
+    1179              $C$DW$138       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+    1180                      .dwattr $C$DW$138, DW_AT_location[DW_OP_regx 0x51]
+    1181              $C$DW$139       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+    1182                      .dwattr $C$DW$139, DW_AT_location[DW_OP_regx 0x52]
+    1183              $C$DW$140       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+    1184                      .dwattr $C$DW$140, DW_AT_location[DW_OP_regx 0x53]
+    1185              $C$DW$141       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+    1186                      .dwattr $C$DW$141, DW_AT_location[DW_OP_regx 0x54]
+    1187              $C$DW$142       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+    1188                      .dwattr $C$DW$142, DW_AT_location[DW_OP_regx 0x55]
+    1189              $C$DW$143       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+    1190                      .dwattr $C$DW$143, DW_AT_location[DW_OP_regx 0x56]
+    1191              $C$DW$144       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+    1192                      .dwattr $C$DW$144, DW_AT_location[DW_OP_regx 0x57]
+    1193              $C$DW$145       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+    1194                      .dwattr $C$DW$145, DW_AT_location[DW_OP_regx 0x58]
+    1195              $C$DW$146       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:59 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+usbstk5515_i2c.asm                                                   PAGE   24
+
+    1196                      .dwattr $C$DW$146, DW_AT_location[DW_OP_regx 0x59]
+    1197              $C$DW$147       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+    1198                      .dwattr $C$DW$147, DW_AT_location[DW_OP_regx 0x5a]
+    1199              $C$DW$148       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+    1200                      .dwattr $C$DW$148, DW_AT_location[DW_OP_regx 0x5b]
+    1201                      .dwendtag $C$DW$CU
+    1202              
+    1202              
+    1202              
+
+No Assembly Errors, No Assembly Warnings

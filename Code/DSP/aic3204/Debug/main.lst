@@ -1,0 +1,2538 @@
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE    1
+
+    2108              ; Temporary Registers Used: None
+       1              ;*******************************************************************************
+       2              ;* TMS320C55x C/C++ Codegen                                          PC v4.3.8 *
+       3              ;* Date/Time created: Wed Nov 09 11:17:57 2016                                 *
+       4              ;*******************************************************************************
+       5                      .compiler_opts --hll_source=on --mem_model:code=flat --mem_model:data=large --silicon_core_3_3 --symd
+       6                      .mmregs
+       7                      .cpl_on
+       8                      .arms_on
+       9                      .c54cm_off
+      10                      .asg AR6, FP
+      11                      .asg XAR6, XFP
+      12                      .asg DPH, MDP
+      13                      .model call=c55_std
+      14                      .model mem=large
+      15                      .noremark 5002  ; code respects overwrite rules
+      16              ;*******************************************************************************
+      17              ;* GLOBAL FILE PARAMETERS                                                      *
+      18              ;*                                                                             *
+      19              ;*   Architecture       : TMS320C55x                                           *
+      20              ;*   Optimizing for     : Speed                                                *
+      21              ;*   Memory             : Large Model (23-Bit Data Pointers)                   *
+      22              ;*   Calls              : Normal Library ASM calls                             *
+      23              ;*   Debug Info         : Standard TI Debug Information                        *
+      24              ;*******************************************************************************
+      25              
+      26              $C$DW$CU        .dwtag  DW_TAG_compile_unit
+      27                      .dwattr $C$DW$CU, DW_AT_name("../main.c")
+      28                      .dwattr $C$DW$CU, DW_AT_producer("TMS320C55x C/C++ Codegen PC v4.3.8 Copyright (c) 1996-2010 Texas In
+      29                      .dwattr $C$DW$CU, DW_AT_TI_version(0x01)
+      30                      .dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\Kiis\Dropbox\Uni\7. semester\AAT7\Code\DSP\aic3204\Debug")
+      31              ;******************************************************************************
+      32              ;* CINIT RECORDS                                                              *
+      33              ;******************************************************************************
+      34 000000               .sect   ".cinit"
+      35                      .align  1
+      36 000000 0001          .field          1,16
+      37 000001 0003-         .field          _i+0,24
+         000002 0E00 
+      38 000002 0E00          .field          0,8
+      39 000003 0000          .field          0,16                    ; _i @ 0
+      40              
+      41              
+      42              $C$DW$1 .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_init")
+      43                      .dwattr $C$DW$1, DW_AT_TI_symbol_name("_USBSTK5515_init")
+      44                      .dwattr $C$DW$1, DW_AT_type(*$C$DW$T$8)
+      45                      .dwattr $C$DW$1, DW_AT_declaration
+      46                      .dwattr $C$DW$1, DW_AT_external
+      47                      .dwattr $C$DW$1, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/includ
+      48                      .dwattr $C$DW$1, DW_AT_decl_line(0x6a)
+      49                      .dwattr $C$DW$1, DW_AT_decl_column(0x07)
+      50              
+      51              $C$DW$2 .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_wait")
+      52                      .dwattr $C$DW$2, DW_AT_TI_symbol_name("_USBSTK5515_wait")
+      53                      .dwattr $C$DW$2, DW_AT_declaration
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE    2
+
+      54                      .dwattr $C$DW$2, DW_AT_external
+      55                      .dwattr $C$DW$2, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/includ
+      56                      .dwattr $C$DW$2, DW_AT_decl_line(0x6d)
+      57                      .dwattr $C$DW$2, DW_AT_decl_column(0x06)
+      58              $C$DW$3 .dwtag  DW_TAG_formal_parameter
+      59                      .dwattr $C$DW$3, DW_AT_type(*$C$DW$T$13)
+      60                      .dwendtag $C$DW$2
+      61              
+      62              
+      63              $C$DW$4 .dwtag  DW_TAG_subprogram, DW_AT_name("USBSTK5515_I2C_write")
+      64                      .dwattr $C$DW$4, DW_AT_TI_symbol_name("_USBSTK5515_I2C_write")
+      65                      .dwattr $C$DW$4, DW_AT_type(*$C$DW$T$8)
+      66                      .dwattr $C$DW$4, DW_AT_declaration
+      67                      .dwattr $C$DW$4, DW_AT_external
+      68                      .dwattr $C$DW$4, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/includ
+      69                      .dwattr $C$DW$4, DW_AT_decl_line(0x1e)
+      70                      .dwattr $C$DW$4, DW_AT_decl_column(0x07)
+      71              $C$DW$5 .dwtag  DW_TAG_formal_parameter
+      72                      .dwattr $C$DW$5, DW_AT_type(*$C$DW$T$9)
+      73              $C$DW$6 .dwtag  DW_TAG_formal_parameter
+      74                      .dwattr $C$DW$6, DW_AT_type(*$C$DW$T$19)
+      75              $C$DW$7 .dwtag  DW_TAG_formal_parameter
+      76                      .dwattr $C$DW$7, DW_AT_type(*$C$DW$T$9)
+      77                      .dwendtag $C$DW$4
+      78              
+      79              
+      80              $C$DW$8 .dwtag  DW_TAG_subprogram, DW_AT_name("CPFIR")
+      81                      .dwattr $C$DW$8, DW_AT_TI_symbol_name("_CPFIR")
+      82                      .dwattr $C$DW$8, DW_AT_declaration
+      83                      .dwattr $C$DW$8, DW_AT_external
+      84                      .dwattr $C$DW$8, DW_AT_decl_file("../main.c")
+      85                      .dwattr $C$DW$8, DW_AT_decl_line(0x29)
+      86                      .dwattr $C$DW$8, DW_AT_decl_column(0x0d)
+      87                      .global _J
+      88 000000               .bss    _J,1,0,0
+      89              $C$DW$9 .dwtag  DW_TAG_variable, DW_AT_name("J")
+      90                      .dwattr $C$DW$9, DW_AT_TI_symbol_name("_J")
+      91                      .dwattr $C$DW$9, DW_AT_location[DW_OP_addr _J]
+      92                      .dwattr $C$DW$9, DW_AT_type(*$C$DW$T$6)
+      93                      .dwattr $C$DW$9, DW_AT_external
+      94                      .dwattr $C$DW$9, DW_AT_decl_file("..\aic3204_setup.h")
+      95                      .dwattr $C$DW$9, DW_AT_decl_line(0x0f)
+      96                      .dwattr $C$DW$9, DW_AT_decl_column(0x07)
+      97                      .global _Dlow
+      98 000001               .bss    _Dlow,1,0,0
+      99              $C$DW$10        .dwtag  DW_TAG_variable, DW_AT_name("Dlow")
+     100                      .dwattr $C$DW$10, DW_AT_TI_symbol_name("_Dlow")
+     101                      .dwattr $C$DW$10, DW_AT_location[DW_OP_addr _Dlow]
+     102                      .dwattr $C$DW$10, DW_AT_type(*$C$DW$T$6)
+     103                      .dwattr $C$DW$10, DW_AT_external
+     104                      .dwattr $C$DW$10, DW_AT_decl_file("..\aic3204_setup.h")
+     105                      .dwattr $C$DW$10, DW_AT_decl_line(0x0f)
+     106                      .dwattr $C$DW$10, DW_AT_decl_column(0x0a)
+     107                      .global _Dhigh
+     108 000002               .bss    _Dhigh,1,0,0
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE    3
+
+     109              $C$DW$11        .dwtag  DW_TAG_variable, DW_AT_name("Dhigh")
+     110                      .dwattr $C$DW$11, DW_AT_TI_symbol_name("_Dhigh")
+     111                      .dwattr $C$DW$11, DW_AT_location[DW_OP_addr _Dhigh]
+     112                      .dwattr $C$DW$11, DW_AT_type(*$C$DW$T$6)
+     113                      .dwattr $C$DW$11, DW_AT_external
+     114                      .dwattr $C$DW$11, DW_AT_decl_file("..\aic3204_setup.h")
+     115                      .dwattr $C$DW$11, DW_AT_decl_line(0x0f)
+     116                      .dwattr $C$DW$11, DW_AT_decl_column(0x10)
+     117                      .global _BCLK
+     118 000003               .bss    _BCLK,1,0,0
+     119              $C$DW$12        .dwtag  DW_TAG_variable, DW_AT_name("BCLK")
+     120                      .dwattr $C$DW$12, DW_AT_TI_symbol_name("_BCLK")
+     121                      .dwattr $C$DW$12, DW_AT_location[DW_OP_addr _BCLK]
+     122                      .dwattr $C$DW$12, DW_AT_type(*$C$DW$T$6)
+     123                      .dwattr $C$DW$12, DW_AT_external
+     124                      .dwattr $C$DW$12, DW_AT_decl_file("..\aic3204_setup.h")
+     125                      .dwattr $C$DW$12, DW_AT_decl_line(0x0f)
+     126                      .dwattr $C$DW$12, DW_AT_decl_column(0x17)
+     127                      .global _BCLKN
+     128 000004               .bss    _BCLKN,1,0,0
+     129              $C$DW$13        .dwtag  DW_TAG_variable, DW_AT_name("BCLKN")
+     130                      .dwattr $C$DW$13, DW_AT_TI_symbol_name("_BCLKN")
+     131                      .dwattr $C$DW$13, DW_AT_location[DW_OP_addr _BCLKN]
+     132                      .dwattr $C$DW$13, DW_AT_type(*$C$DW$T$6)
+     133                      .dwattr $C$DW$13, DW_AT_external
+     134                      .dwattr $C$DW$13, DW_AT_decl_file("..\aic3204_setup.h")
+     135                      .dwattr $C$DW$13, DW_AT_decl_line(0x0f)
+     136                      .dwattr $C$DW$13, DW_AT_decl_column(0x1d)
+     137                      .global _Reg11
+     138 000005               .bss    _Reg11,1,0,0
+     139              $C$DW$14        .dwtag  DW_TAG_variable, DW_AT_name("Reg11")
+     140                      .dwattr $C$DW$14, DW_AT_TI_symbol_name("_Reg11")
+     141                      .dwattr $C$DW$14, DW_AT_location[DW_OP_addr _Reg11]
+     142                      .dwattr $C$DW$14, DW_AT_type(*$C$DW$T$6)
+     143                      .dwattr $C$DW$14, DW_AT_external
+     144                      .dwattr $C$DW$14, DW_AT_decl_file("..\aic3204_setup.h")
+     145                      .dwattr $C$DW$14, DW_AT_decl_line(0x0f)
+     146                      .dwattr $C$DW$14, DW_AT_decl_column(0x24)
+     147                      .global _Reg12
+     148 000006               .bss    _Reg12,1,0,0
+     149              $C$DW$15        .dwtag  DW_TAG_variable, DW_AT_name("Reg12")
+     150                      .dwattr $C$DW$15, DW_AT_TI_symbol_name("_Reg12")
+     151                      .dwattr $C$DW$15, DW_AT_location[DW_OP_addr _Reg12]
+     152                      .dwattr $C$DW$15, DW_AT_type(*$C$DW$T$6)
+     153                      .dwattr $C$DW$15, DW_AT_external
+     154                      .dwattr $C$DW$15, DW_AT_decl_file("..\aic3204_setup.h")
+     155                      .dwattr $C$DW$15, DW_AT_decl_line(0x0f)
+     156                      .dwattr $C$DW$15, DW_AT_decl_column(0x2b)
+     157                      .global _Reg13
+     158 000007               .bss    _Reg13,1,0,0
+     159              $C$DW$16        .dwtag  DW_TAG_variable, DW_AT_name("Reg13")
+     160                      .dwattr $C$DW$16, DW_AT_TI_symbol_name("_Reg13")
+     161                      .dwattr $C$DW$16, DW_AT_location[DW_OP_addr _Reg13]
+     162                      .dwattr $C$DW$16, DW_AT_type(*$C$DW$T$6)
+     163                      .dwattr $C$DW$16, DW_AT_external
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE    4
+
+     164                      .dwattr $C$DW$16, DW_AT_decl_file("..\aic3204_setup.h")
+     165                      .dwattr $C$DW$16, DW_AT_decl_line(0x0f)
+     166                      .dwattr $C$DW$16, DW_AT_decl_column(0x32)
+     167                      .global _Reg14
+     168 000008               .bss    _Reg14,1,0,0
+     169              $C$DW$17        .dwtag  DW_TAG_variable, DW_AT_name("Reg14")
+     170                      .dwattr $C$DW$17, DW_AT_TI_symbol_name("_Reg14")
+     171                      .dwattr $C$DW$17, DW_AT_location[DW_OP_addr _Reg14]
+     172                      .dwattr $C$DW$17, DW_AT_type(*$C$DW$T$6)
+     173                      .dwattr $C$DW$17, DW_AT_external
+     174                      .dwattr $C$DW$17, DW_AT_decl_file("..\aic3204_setup.h")
+     175                      .dwattr $C$DW$17, DW_AT_decl_line(0x0f)
+     176                      .dwattr $C$DW$17, DW_AT_decl_column(0x39)
+     177                      .global _Reg18
+     178 000009               .bss    _Reg18,1,0,0
+     179              $C$DW$18        .dwtag  DW_TAG_variable, DW_AT_name("Reg18")
+     180                      .dwattr $C$DW$18, DW_AT_TI_symbol_name("_Reg18")
+     181                      .dwattr $C$DW$18, DW_AT_location[DW_OP_addr _Reg18]
+     182                      .dwattr $C$DW$18, DW_AT_type(*$C$DW$T$6)
+     183                      .dwattr $C$DW$18, DW_AT_external
+     184                      .dwattr $C$DW$18, DW_AT_decl_file("..\aic3204_setup.h")
+     185                      .dwattr $C$DW$18, DW_AT_decl_line(0x0f)
+     186                      .dwattr $C$DW$18, DW_AT_decl_column(0x40)
+     187                      .global _Reg19
+     188 00000a               .bss    _Reg19,1,0,0
+     189              $C$DW$19        .dwtag  DW_TAG_variable, DW_AT_name("Reg19")
+     190                      .dwattr $C$DW$19, DW_AT_TI_symbol_name("_Reg19")
+     191                      .dwattr $C$DW$19, DW_AT_location[DW_OP_addr _Reg19]
+     192                      .dwattr $C$DW$19, DW_AT_type(*$C$DW$T$6)
+     193                      .dwattr $C$DW$19, DW_AT_external
+     194                      .dwattr $C$DW$19, DW_AT_decl_file("..\aic3204_setup.h")
+     195                      .dwattr $C$DW$19, DW_AT_decl_line(0x0f)
+     196                      .dwattr $C$DW$19, DW_AT_decl_column(0x47)
+     197                      .global _Reg20
+     198 00000b               .bss    _Reg20,1,0,0
+     199              $C$DW$20        .dwtag  DW_TAG_variable, DW_AT_name("Reg20")
+     200                      .dwattr $C$DW$20, DW_AT_TI_symbol_name("_Reg20")
+     201                      .dwattr $C$DW$20, DW_AT_location[DW_OP_addr _Reg20]
+     202                      .dwattr $C$DW$20, DW_AT_type(*$C$DW$T$6)
+     203                      .dwattr $C$DW$20, DW_AT_external
+     204                      .dwattr $C$DW$20, DW_AT_decl_file("..\aic3204_setup.h")
+     205                      .dwattr $C$DW$20, DW_AT_decl_line(0x0f)
+     206                      .dwattr $C$DW$20, DW_AT_decl_column(0x4e)
+     207                      .global _data1
+     208 00000c               .bss    _data1,1,0,0
+     209              $C$DW$21        .dwtag  DW_TAG_variable, DW_AT_name("data1")
+     210                      .dwattr $C$DW$21, DW_AT_TI_symbol_name("_data1")
+     211                      .dwattr $C$DW$21, DW_AT_location[DW_OP_addr _data1]
+     212                      .dwattr $C$DW$21, DW_AT_type(*$C$DW$T$8)
+     213                      .dwattr $C$DW$21, DW_AT_external
+     214                      .dwattr $C$DW$21, DW_AT_decl_file("../main.c")
+     215                      .dwattr $C$DW$21, DW_AT_decl_line(0x1d)
+     216                      .dwattr $C$DW$21, DW_AT_decl_column(0x07)
+     217                      .global _data2
+     218 00000d               .bss    _data2,1,0,0
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE    5
+
+     219              $C$DW$22        .dwtag  DW_TAG_variable, DW_AT_name("data2")
+     220                      .dwattr $C$DW$22, DW_AT_TI_symbol_name("_data2")
+     221                      .dwattr $C$DW$22, DW_AT_location[DW_OP_addr _data2]
+     222                      .dwattr $C$DW$22, DW_AT_type(*$C$DW$T$8)
+     223                      .dwattr $C$DW$22, DW_AT_external
+     224                      .dwattr $C$DW$22, DW_AT_decl_file("../main.c")
+     225                      .dwattr $C$DW$22, DW_AT_decl_line(0x1d)
+     226                      .dwattr $C$DW$22, DW_AT_decl_column(0x0e)
+     227                      .global _data3
+     228 00000e               .bss    _data3,1,0,0
+     229              $C$DW$23        .dwtag  DW_TAG_variable, DW_AT_name("data3")
+     230                      .dwattr $C$DW$23, DW_AT_TI_symbol_name("_data3")
+     231                      .dwattr $C$DW$23, DW_AT_location[DW_OP_addr _data3]
+     232                      .dwattr $C$DW$23, DW_AT_type(*$C$DW$T$8)
+     233                      .dwattr $C$DW$23, DW_AT_external
+     234                      .dwattr $C$DW$23, DW_AT_decl_file("../main.c")
+     235                      .dwattr $C$DW$23, DW_AT_decl_line(0x1d)
+     236                      .dwattr $C$DW$23, DW_AT_decl_column(0x15)
+     237                      .global _data4
+     238 00000f               .bss    _data4,1,0,0
+     239              $C$DW$24        .dwtag  DW_TAG_variable, DW_AT_name("data4")
+     240                      .dwattr $C$DW$24, DW_AT_TI_symbol_name("_data4")
+     241                      .dwattr $C$DW$24, DW_AT_location[DW_OP_addr _data4]
+     242                      .dwattr $C$DW$24, DW_AT_type(*$C$DW$T$8)
+     243                      .dwattr $C$DW$24, DW_AT_external
+     244                      .dwattr $C$DW$24, DW_AT_decl_file("../main.c")
+     245                      .dwattr $C$DW$24, DW_AT_decl_line(0x1d)
+     246                      .dwattr $C$DW$24, DW_AT_decl_column(0x1c)
+     247                      .global _k
+     248 000010               .bss    _k,1,0,0
+     249              $C$DW$25        .dwtag  DW_TAG_variable, DW_AT_name("k")
+     250                      .dwattr $C$DW$25, DW_AT_TI_symbol_name("_k")
+     251                      .dwattr $C$DW$25, DW_AT_location[DW_OP_addr _k]
+     252                      .dwattr $C$DW$25, DW_AT_type(*$C$DW$T$8)
+     253                      .dwattr $C$DW$25, DW_AT_external
+     254                      .dwattr $C$DW$25, DW_AT_decl_file("../main.c")
+     255                      .dwattr $C$DW$25, DW_AT_decl_line(0x1e)
+     256                      .dwattr $C$DW$25, DW_AT_decl_column(0x07)
+     257                      .global _x
+     258 000011               .bss    _x,255,0,0
+     259              $C$DW$26        .dwtag  DW_TAG_variable, DW_AT_name("x")
+     260                      .dwattr $C$DW$26, DW_AT_TI_symbol_name("_x")
+     261                      .dwattr $C$DW$26, DW_AT_location[DW_OP_addr _x]
+     262                      .dwattr $C$DW$26, DW_AT_type(*$C$DW$T$35)
+     263                      .dwattr $C$DW$26, DW_AT_external
+     264                      .dwattr $C$DW$26, DW_AT_decl_file("../main.c")
+     265                      .dwattr $C$DW$26, DW_AT_decl_line(0x23)
+     266                      .dwattr $C$DW$26, DW_AT_decl_column(0x07)
+     267                      .global _b
+     268 000110               .bss    _b,255,0,0
+     269              $C$DW$27        .dwtag  DW_TAG_variable, DW_AT_name("b")
+     270                      .dwattr $C$DW$27, DW_AT_TI_symbol_name("_b")
+     271                      .dwattr $C$DW$27, DW_AT_location[DW_OP_addr _b]
+     272                      .dwattr $C$DW$27, DW_AT_type(*$C$DW$T$35)
+     273                      .dwattr $C$DW$27, DW_AT_external
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE    6
+
+     274                      .dwattr $C$DW$27, DW_AT_decl_file("../main.c")
+     275                      .dwattr $C$DW$27, DW_AT_decl_line(0x24)
+     276                      .dwattr $C$DW$27, DW_AT_decl_column(0x07)
+     277                      .global _y
+     278 00020f               .bss    _y,255,0,0
+     279              $C$DW$28        .dwtag  DW_TAG_variable, DW_AT_name("y")
+     280                      .dwattr $C$DW$28, DW_AT_TI_symbol_name("_y")
+     281                      .dwattr $C$DW$28, DW_AT_location[DW_OP_addr _y]
+     282                      .dwattr $C$DW$28, DW_AT_type(*$C$DW$T$35)
+     283                      .dwattr $C$DW$28, DW_AT_external
+     284                      .dwattr $C$DW$28, DW_AT_decl_file("../main.c")
+     285                      .dwattr $C$DW$28, DW_AT_decl_line(0x25)
+     286                      .dwattr $C$DW$28, DW_AT_decl_column(0x07)
+     287                      .global _i
+     288 00030e               .bss    _i,1,0,0
+     289              $C$DW$29        .dwtag  DW_TAG_variable, DW_AT_name("i")
+     290                      .dwattr $C$DW$29, DW_AT_TI_symbol_name("_i")
+     291                      .dwattr $C$DW$29, DW_AT_location[DW_OP_addr _i]
+     292                      .dwattr $C$DW$29, DW_AT_type(*$C$DW$T$8)
+     293                      .dwattr $C$DW$29, DW_AT_external
+     294                      .dwattr $C$DW$29, DW_AT_decl_file("../main.c")
+     295                      .dwattr $C$DW$29, DW_AT_decl_line(0x26)
+     296                      .dwattr $C$DW$29, DW_AT_decl_column(0x07)
+     297              ;       C:\Program Files\TexasInstruments\ccsv4\tools\compiler\c5500\bin\acp55.exe -@C:\Users\Kiis\AppData\Lo
+     298 000000               .sect   ".text"
+     299                      .global _AIC3204_rset
+     300              
+     301              $C$DW$30        .dwtag  DW_TAG_subprogram, DW_AT_name("AIC3204_rset")
+     302                      .dwattr $C$DW$30, DW_AT_low_pc(_AIC3204_rset)
+     303                      .dwattr $C$DW$30, DW_AT_high_pc(0x00)
+     304                      .dwattr $C$DW$30, DW_AT_TI_symbol_name("_AIC3204_rset")
+     305                      .dwattr $C$DW$30, DW_AT_external
+     306                      .dwattr $C$DW$30, DW_AT_type(*$C$DW$T$8)
+     307                      .dwattr $C$DW$30, DW_AT_TI_begin_file("..\aic3204_setup.h")
+     308                      .dwattr $C$DW$30, DW_AT_TI_begin_line(0x07)
+     309                      .dwattr $C$DW$30, DW_AT_TI_begin_column(0x07)
+     310                      .dwattr $C$DW$30, DW_AT_decl_file("..\aic3204_setup.h")
+     311                      .dwattr $C$DW$30, DW_AT_decl_line(0x07)
+     312                      .dwattr $C$DW$30, DW_AT_decl_column(0x07)
+     313                      .dwattr $C$DW$30, DW_AT_TI_max_frame_size(0x06)
+     314                      .dwpsn  file "..\aic3204_setup.h",line 8,column 1,is_stmt,address _AIC3204_rset
+     315              
+     316                      .dwfde $C$DW$CIE, _AIC3204_rset
+     317              $C$DW$31        .dwtag  DW_TAG_formal_parameter, DW_AT_name("regnum")
+     318                      .dwattr $C$DW$31, DW_AT_TI_symbol_name("_regnum")
+     319                      .dwattr $C$DW$31, DW_AT_type(*$C$DW$T$9)
+     320                      .dwattr $C$DW$31, DW_AT_location[DW_OP_reg12]
+     321              $C$DW$32        .dwtag  DW_TAG_formal_parameter, DW_AT_name("regval")
+     322                      .dwattr $C$DW$32, DW_AT_TI_symbol_name("_regval")
+     323                      .dwattr $C$DW$32, DW_AT_type(*$C$DW$T$9)
+     324                      .dwattr $C$DW$32, DW_AT_location[DW_OP_reg13]
+     325              ;----------------------------------------------------------------------
+     326              ;   7 | Int16 AIC3204_rset( Uint16 regnum, Uint16 regval )                     
+     327              ;----------------------------------------------------------------------
+     328              ;*******************************************************************************
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE    7
+
+     329              ;* FUNCTION NAME: AIC3204_rset                                                 *
+     330              ;*                                                                             *
+     331              ;*   Function Uses Regs : AC0,AC0,T0,T1,AR0,XAR0,AR1,SP,M40,SATA,SATD,RDM,FRCT,*
+     332              ;*                        SMUL                                                 *
+     333              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     334              ;*   Total Frame Size   : 6 words                                              *
+     335              ;*                        (2 return address/alignment)                         *
+     336              ;*                        (4 local values)                                     *
+     337              ;*   Min System Stack   : 1 word                                               *
+     338              ;*******************************************************************************
+     339 000000       _AIC3204_rset:
+     340                      .dwcfi  cfa_offset, 1
+     341                      .dwcfi  save_reg_to_mem, 91, -1
+     342 000000 4EFB          AADD #-5, SP
+     343                      .dwcfi  cfa_offset, 6
+     344              $C$DW$33        .dwtag  DW_TAG_variable, DW_AT_name("regnum")
+     345                      .dwattr $C$DW$33, DW_AT_TI_symbol_name("_regnum")
+     346                      .dwattr $C$DW$33, DW_AT_type(*$C$DW$T$9)
+     347                      .dwattr $C$DW$33, DW_AT_location[DW_OP_bregx 0x24 0]
+     348              $C$DW$34        .dwtag  DW_TAG_variable, DW_AT_name("regval")
+     349                      .dwattr $C$DW$34, DW_AT_TI_symbol_name("_regval")
+     350                      .dwattr $C$DW$34, DW_AT_type(*$C$DW$T$9)
+     351                      .dwattr $C$DW$34, DW_AT_location[DW_OP_bregx 0x24 1]
+     352              $C$DW$35        .dwtag  DW_TAG_variable, DW_AT_name("cmd")
+     353                      .dwattr $C$DW$35, DW_AT_TI_symbol_name("_cmd")
+     354                      .dwattr $C$DW$35, DW_AT_type(*$C$DW$T$25)
+     355                      .dwattr $C$DW$35, DW_AT_location[DW_OP_bregx 0x24 2]
+     356              ;----------------------------------------------------------------------
+     357              ;   9 | Uint8 cmd[2];                                                          
+     358              ;----------------------------------------------------------------------
+     359 000002 C502          MOV T1, *SP(#1) ; |8| 
+     360 000004 C400          MOV T0, *SP(#0) ; |8| 
+     361                      .dwpsn  file "..\aic3204_setup.h",line 10,column 5,is_stmt
+     362              ;----------------------------------------------------------------------
+     363              ;  10 | cmd[0] = regnum & 0x007F;       // 7-bit Register Address              
+     364              ;----------------------------------------------------------------------
+     365 000006 2249          MOV T0, AR1
+     366 000008 187F          AND #0x007f, AR1, AC0 ; |10| 
+         00000a 09   
+     367 00000b C004          MOV AC0, *SP(#2) ; |10| 
+     368                      .dwpsn  file "..\aic3204_setup.h",line 11,column 5,is_stmt
+     369              ;----------------------------------------------------------------------
+     370              ;  11 | cmd[1] = regval;                // 8-bit Register Data                 
+     371              ;----------------------------------------------------------------------
+     372 00000d A902          MOV *SP(#1), AR1 ; |11| 
+     373 00000f C906          MOV AR1, *SP(#3) ; |11| 
+     374                      .dwpsn  file "..\aic3204_setup.h",line 13,column 5,is_stmt
+     375              ;----------------------------------------------------------------------
+     376              ;  13 | return USBSTK5515_I2C_write( AIC3204_I2C_ADDR, cmd, 2 );               
+     377              ;----------------------------------------------------------------------
+     378 000011 EC04          AMAR *SP(#2), XAR0
+         000013 8E   
+     379              
+     380 000014 7600          MOV #24, T0 ; |13| 
+         000016 1848 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE    8
+
+     381 000018 3D25  ||      MOV #2, T1
+     382              
+     383              $C$DW$36        .dwtag  DW_TAG_TI_branch
+     384                      .dwattr $C$DW$36, DW_AT_low_pc(0x00)
+     385                      .dwattr $C$DW$36, DW_AT_name("_USBSTK5515_I2C_write")
+     386                      .dwattr $C$DW$36, DW_AT_TI_call
+     387 00001a 6C00          CALL #_USBSTK5515_I2C_write ; |13| 
+         00001c 0000!
+     388                                                      ; call occurs [#_USBSTK5515_I2C_write] ; |13| 
+     389                      .dwpsn  file "..\aic3204_setup.h",line 14,column 1,is_stmt
+     390 00001e 4E05          AADD #5, SP
+     391                      .dwcfi  cfa_offset, 1
+     392              $C$DW$37        .dwtag  DW_TAG_TI_branch
+     393                      .dwattr $C$DW$37, DW_AT_low_pc(0x00)
+     394                      .dwattr $C$DW$37, DW_AT_TI_return
+     395 000020 4804          RET
+     396                                                      ; return occurs
+     397                      .dwattr $C$DW$30, DW_AT_TI_end_file("..\aic3204_setup.h")
+     398                      .dwattr $C$DW$30, DW_AT_TI_end_line(0x0e)
+     399                      .dwattr $C$DW$30, DW_AT_TI_end_column(0x01)
+     400                      .dwendentry
+     401                      .dwendtag $C$DW$30
+     402              
+     403 000022               .sect   ".text"
+     404                      .global _AIC3204_Init
+     405              
+     406              $C$DW$38        .dwtag  DW_TAG_subprogram, DW_AT_name("AIC3204_Init")
+     407                      .dwattr $C$DW$38, DW_AT_low_pc(_AIC3204_Init)
+     408                      .dwattr $C$DW$38, DW_AT_high_pc(0x00)
+     409                      .dwattr $C$DW$38, DW_AT_TI_symbol_name("_AIC3204_Init")
+     410                      .dwattr $C$DW$38, DW_AT_external
+     411                      .dwattr $C$DW$38, DW_AT_type(*$C$DW$T$8)
+     412                      .dwattr $C$DW$38, DW_AT_TI_begin_file("..\aic3204_setup.h")
+     413                      .dwattr $C$DW$38, DW_AT_TI_begin_line(0x12)
+     414                      .dwattr $C$DW$38, DW_AT_TI_begin_column(0x07)
+     415                      .dwattr $C$DW$38, DW_AT_decl_file("..\aic3204_setup.h")
+     416                      .dwattr $C$DW$38, DW_AT_decl_line(0x12)
+     417                      .dwattr $C$DW$38, DW_AT_decl_column(0x07)
+     418                      .dwattr $C$DW$38, DW_AT_TI_max_frame_size(0x02)
+     419                      .dwpsn  file "..\aic3204_setup.h",line 19,column 1,is_stmt,address _AIC3204_Init
+     420              
+     421                      .dwfde $C$DW$CIE, _AIC3204_Init
+     422              ;----------------------------------------------------------------------
+     423              ;  18 | Int16 AIC3204_Init(void)                                               
+     424              ;----------------------------------------------------------------------
+     425              ;*******************************************************************************
+     426              ;* FUNCTION NAME: AIC3204_Init                                                 *
+     427              ;*                                                                             *
+     428              ;*   Function Uses Regs : AC0,AC0,T0,T1,SP,M40,SATA,SATD,RDM,FRCT,SMUL         *
+     429              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+     430              ;*   Total Frame Size   : 2 words                                              *
+     431              ;*                        (2 return address/alignment)                         *
+     432              ;*   Min System Stack   : 1 word                                               *
+     433              ;*******************************************************************************
+     434 000022       _AIC3204_Init:
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE    9
+
+     435                      .dwcfi  cfa_offset, 1
+     436                      .dwcfi  save_reg_to_mem, 91, -1
+     437 000022 4EFF          AADD #-1, SP
+     438                      .dwcfi  cfa_offset, 2
+     439                      .dwpsn  file "..\aic3204_setup.h",line 21,column 5,is_stmt
+     440              ;----------------------------------------------------------------------
+     441              ;  21 | AIC3204_rset( 0, 0 );          // Select page 0                        
+     442              ;----------------------------------------------------------------------
+     443 000024 3C04          MOV #0, T0
+     444              $C$DW$39        .dwtag  DW_TAG_TI_branch
+     445                      .dwattr $C$DW$39, DW_AT_low_pc(0x00)
+     446                      .dwattr $C$DW$39, DW_AT_name("_AIC3204_rset")
+     447                      .dwattr $C$DW$39, DW_AT_TI_call
+     448              
+     449 000026 08FF          CALL #_AIC3204_rset ; |21| 
+         000028 D5   
+     450 000029 3D05  ||      MOV #0, T1
+     451              
+     452                                                      ; call occurs [#_AIC3204_rset] ; |21| 
+     453                      .dwpsn  file "..\aic3204_setup.h",line 22,column 5,is_stmt
+     454              ;----------------------------------------------------------------------
+     455              ;  22 | AIC3204_rset( 1, 1 );          // Reset codec                          
+     456              ;----------------------------------------------------------------------
+     457 00002b 3C14          MOV #1, T0
+     458              $C$DW$40        .dwtag  DW_TAG_TI_branch
+     459                      .dwattr $C$DW$40, DW_AT_low_pc(0x00)
+     460                      .dwattr $C$DW$40, DW_AT_name("_AIC3204_rset")
+     461                      .dwattr $C$DW$40, DW_AT_TI_call
+     462              
+     463 00002d 08FF          CALL #_AIC3204_rset ; |22| 
+         00002f CE   
+     464 000030 3D15  ||      MOV #1, T1
+     465              
+     466                                                      ; call occurs [#_AIC3204_rset] ; |22| 
+     467                      .dwpsn  file "..\aic3204_setup.h",line 23,column 5,is_stmt
+     468              ;----------------------------------------------------------------------
+     469              ;  23 | AIC3204_rset( 0, 1 );          // Select page 1                        
+     470              ;----------------------------------------------------------------------
+     471 000032 3C04          MOV #0, T0
+     472              $C$DW$41        .dwtag  DW_TAG_TI_branch
+     473                      .dwattr $C$DW$41, DW_AT_low_pc(0x00)
+     474                      .dwattr $C$DW$41, DW_AT_name("_AIC3204_rset")
+     475                      .dwattr $C$DW$41, DW_AT_TI_call
+     476              
+     477 000034 08FF          CALL #_AIC3204_rset ; |23| 
+         000036 C7   
+     478 000037 3D15  ||      MOV #1, T1
+     479              
+     480                                                      ; call occurs [#_AIC3204_rset] ; |23| 
+     481                      .dwpsn  file "..\aic3204_setup.h",line 24,column 5,is_stmt
+     482              ;----------------------------------------------------------------------
+     483              ;  24 | AIC3204_rset( 1, 8 );          // Disable crude AVDD generation from DV
+     484              ;     | DD                                                                     
+     485              ;----------------------------------------------------------------------
+     486 000039 3C14          MOV #1, T0
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   10
+
+     487              $C$DW$42        .dwtag  DW_TAG_TI_branch
+     488                      .dwattr $C$DW$42, DW_AT_low_pc(0x00)
+     489                      .dwattr $C$DW$42, DW_AT_name("_AIC3204_rset")
+     490                      .dwattr $C$DW$42, DW_AT_TI_call
+     491              
+     492 00003b 08FF          CALL #_AIC3204_rset ; |24| 
+         00003d C0   
+     493 00003e 3D85  ||      MOV #8, T1
+     494              
+     495                                                      ; call occurs [#_AIC3204_rset] ; |24| 
+     496                      .dwpsn  file "..\aic3204_setup.h",line 25,column 5,is_stmt
+     497              ;----------------------------------------------------------------------
+     498              ;  25 | AIC3204_rset( 2, 1 );          // Enable Analog Blocks, use LDO power  
+     499              ;----------------------------------------------------------------------
+     500 000040 3C24          MOV #2, T0
+     501              $C$DW$43        .dwtag  DW_TAG_TI_branch
+     502                      .dwattr $C$DW$43, DW_AT_low_pc(0x00)
+     503                      .dwattr $C$DW$43, DW_AT_name("_AIC3204_rset")
+     504                      .dwattr $C$DW$43, DW_AT_TI_call
+     505              
+     506 000042 08FF          CALL #_AIC3204_rset ; |25| 
+         000044 B9   
+     507 000045 3D15  ||      MOV #1, T1
+     508              
+     509                                                      ; call occurs [#_AIC3204_rset] ; |25| 
+     510                      .dwpsn  file "..\aic3204_setup.h",line 26,column 5,is_stmt
+     511              ;----------------------------------------------------------------------
+     512              ;  26 | AIC3204_rset( 0, 0 );          // Select page 0                        
+     513              ;----------------------------------------------------------------------
+     514 000047 3C04          MOV #0, T0
+     515              $C$DW$44        .dwtag  DW_TAG_TI_branch
+     516                      .dwattr $C$DW$44, DW_AT_low_pc(0x00)
+     517                      .dwattr $C$DW$44, DW_AT_name("_AIC3204_rset")
+     518                      .dwattr $C$DW$44, DW_AT_TI_call
+     519              
+     520 000049 08FF          CALL #_AIC3204_rset ; |26| 
+         00004b B2   
+     521 00004c 3D05  ||      MOV #0, T1
+     522              
+     523                                                      ; call occurs [#_AIC3204_rset] ; |26| 
+     524                      .dwpsn  file "..\aic3204_setup.h",line 28,column 5,is_stmt
+     525              ;----------------------------------------------------------------------
+     526              ;  28 | AIC3204_rset( 27, BCLK );      // BCLK and WCLK is set as o/p to AIC320
+     527              ;     | 4(Master)                                                              
+     528              ;----------------------------------------------------------------------
+     529 00004e 7600          MOV #27, T0 ; |28| 
+         000050 1B48 
+     530 000052 A531          MOV *(#_BCLK), T1 ; |28| 
+         000054 0000 
+         000056 03-  
+     531              $C$DW$45        .dwtag  DW_TAG_TI_branch
+     532                      .dwattr $C$DW$45, DW_AT_low_pc(0x00)
+     533                      .dwattr $C$DW$45, DW_AT_name("_AIC3204_rset")
+     534                      .dwattr $C$DW$45, DW_AT_TI_call
+     535 000057 08FF          CALL #_AIC3204_rset ; |28| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   11
+
+         000059 A6   
+     536                                                      ; call occurs [#_AIC3204_rset] ; |28| 
+     537                      .dwpsn  file "..\aic3204_setup.h",line 29,column 5,is_stmt
+     538              ;----------------------------------------------------------------------
+     539              ;  29 | AIC3204_rset( 28, 0x00 );      // Data ofset = 0                       
+     540              ;----------------------------------------------------------------------
+     541 00005a 7600          MOV #28, T0 ; |29| 
+         00005c 1C48 
+     542              $C$DW$46        .dwtag  DW_TAG_TI_branch
+     543                      .dwattr $C$DW$46, DW_AT_low_pc(0x00)
+     544                      .dwattr $C$DW$46, DW_AT_name("_AIC3204_rset")
+     545                      .dwattr $C$DW$46, DW_AT_TI_call
+     546              
+     547 00005e 08FF          CALL #_AIC3204_rset ; |29| 
+         000060 9D   
+     548 000061 3D05  ||      MOV #0, T1
+     549              
+     550                                                      ; call occurs [#_AIC3204_rset] ; |29| 
+     551                      .dwpsn  file "..\aic3204_setup.h",line 30,column 5,is_stmt
+     552              ;----------------------------------------------------------------------
+     553              ;  30 | AIC3204_rset( 4, 3 );          // PLL setting: PLLCLK <- MCLK, CODEC_CL
+     554              ;     | KIN <-PLL CLK                                                          
+     555              ;----------------------------------------------------------------------
+     556 000063 3C44          MOV #4, T0
+     557              $C$DW$47        .dwtag  DW_TAG_TI_branch
+     558                      .dwattr $C$DW$47, DW_AT_low_pc(0x00)
+     559                      .dwattr $C$DW$47, DW_AT_name("_AIC3204_rset")
+     560                      .dwattr $C$DW$47, DW_AT_TI_call
+     561              
+     562 000065 08FF          CALL #_AIC3204_rset ; |30| 
+         000067 96   
+     563 000068 3D35  ||      MOV #3, T1
+     564              
+     565                                                      ; call occurs [#_AIC3204_rset] ; |30| 
+     566                      .dwpsn  file "..\aic3204_setup.h",line 31,column 5,is_stmt
+     567              ;----------------------------------------------------------------------
+     568              ;  31 | AIC3204_rset( 6, J );          // PLL setting: J=7                     
+     569              ;----------------------------------------------------------------------
+     570 00006a A531          MOV *(#_J), T1 ; |31| 
+         00006c 0000 
+         00006e 00-  
+     571              $C$DW$48        .dwtag  DW_TAG_TI_branch
+     572                      .dwattr $C$DW$48, DW_AT_low_pc(0x00)
+     573                      .dwattr $C$DW$48, DW_AT_name("_AIC3204_rset")
+     574                      .dwattr $C$DW$48, DW_AT_TI_call
+     575              
+     576 00006f 08FF          CALL #_AIC3204_rset ; |31| 
+         000071 8C   
+     577 000072 3D64  ||      MOV #6, T0
+     578              
+     579                                                      ; call occurs [#_AIC3204_rset] ; |31| 
+     580                      .dwpsn  file "..\aic3204_setup.h",line 32,column 5,is_stmt
+     581              ;----------------------------------------------------------------------
+     582              ;  32 | AIC3204_rset( 7, Dhigh );       // PLL setting: HI_BYTE(D=1680)        
+     583              ;----------------------------------------------------------------------
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   12
+
+     584 000074 A531          MOV *(#_Dhigh), T1 ; |32| 
+         000076 0000 
+         000078 02-  
+     585              $C$DW$49        .dwtag  DW_TAG_TI_branch
+     586                      .dwattr $C$DW$49, DW_AT_low_pc(0x00)
+     587                      .dwattr $C$DW$49, DW_AT_name("_AIC3204_rset")
+     588                      .dwattr $C$DW$49, DW_AT_TI_call
+     589              
+     590 000079 08FF          CALL #_AIC3204_rset ; |32| 
+         00007b 82   
+     591 00007c 3D74  ||      MOV #7, T0
+     592              
+     593                                                      ; call occurs [#_AIC3204_rset] ; |32| 
+     594                      .dwpsn  file "..\aic3204_setup.h",line 33,column 5,is_stmt
+     595              ;----------------------------------------------------------------------
+     596              ;  33 | AIC3204_rset( 8, Dlow );       // PLL setting: LO_BYTE(D=1680)         
+     597              ;----------------------------------------------------------------------
+     598 00007e A531          MOV *(#_Dlow), T1 ; |33| 
+         000080 0000 
+         000082 01-  
+     599              $C$DW$50        .dwtag  DW_TAG_TI_branch
+     600                      .dwattr $C$DW$50, DW_AT_low_pc(0x00)
+     601                      .dwattr $C$DW$50, DW_AT_name("_AIC3204_rset")
+     602                      .dwattr $C$DW$50, DW_AT_TI_call
+     603              
+     604 000083 08FF          CALL #_AIC3204_rset ; |33| 
+         000085 78   
+     605 000086 3D84  ||      MOV #8, T0
+     606              
+     607                                                      ; call occurs [#_AIC3204_rset] ; |33| 
+     608                      .dwpsn  file "..\aic3204_setup.h",line 34,column 5,is_stmt
+     609              ;----------------------------------------------------------------------
+     610              ;  34 | AIC3204_rset( 30, BCLKN );      // For 32 bit clocks per frame in Maste
+     611              ;     | r mode ONLY                                                            
+     612              ;  35 |                                // BCLK=DAC_CLK/N =(12288000/8) = 1.536M
+     613              ;     | Hz = 32*fs                                                             
+     614              ;----------------------------------------------------------------------
+     615 000088 7600          MOV #30, T0 ; |34| 
+         00008a 1E48 
+     616 00008c A531          MOV *(#_BCLKN), T1 ; |34| 
+         00008e 0000 
+         000090 04-  
+     617              $C$DW$51        .dwtag  DW_TAG_TI_branch
+     618                      .dwattr $C$DW$51, DW_AT_low_pc(0x00)
+     619                      .dwattr $C$DW$51, DW_AT_name("_AIC3204_rset")
+     620                      .dwattr $C$DW$51, DW_AT_TI_call
+     621 000091 08FF          CALL #_AIC3204_rset ; |34| 
+         000093 6C   
+     622                                                      ; call occurs [#_AIC3204_rset] ; |34| 
+     623                      .dwpsn  file "..\aic3204_setup.h",line 36,column 5,is_stmt
+     624              ;----------------------------------------------------------------------
+     625              ;  36 | AIC3204_rset( 5, 0x91 );       // PLL setting: Power up PLL, P=1 and R=
+     626              ;     | 1                                                                      
+     627              ;----------------------------------------------------------------------
+     628 000094 7600          MOV #145, T1 ; |36| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   13
+
+         000096 9158 
+     629              $C$DW$52        .dwtag  DW_TAG_TI_branch
+     630                      .dwattr $C$DW$52, DW_AT_low_pc(0x00)
+     631                      .dwattr $C$DW$52, DW_AT_name("_AIC3204_rset")
+     632                      .dwattr $C$DW$52, DW_AT_TI_call
+     633              
+     634 000098 08FF          CALL #_AIC3204_rset ; |36| 
+         00009a 63   
+     635 00009b 3D54  ||      MOV #5, T0
+     636              
+     637                                                      ; call occurs [#_AIC3204_rset] ; |36| 
+     638                      .dwpsn  file "..\aic3204_setup.h",line 37,column 5,is_stmt
+     639              ;----------------------------------------------------------------------
+     640              ;  37 | AIC3204_rset( 13, 0 );         // Hi_Byte(DOSR) for DOSR = 128 decimal
+     641              ;     | or 0x0080 DAC oversamppling                                            
+     642              ;----------------------------------------------------------------------
+     643 00009d 3CD4          MOV #13, T0
+     644              $C$DW$53        .dwtag  DW_TAG_TI_branch
+     645                      .dwattr $C$DW$53, DW_AT_low_pc(0x00)
+     646                      .dwattr $C$DW$53, DW_AT_name("_AIC3204_rset")
+     647                      .dwattr $C$DW$53, DW_AT_TI_call
+     648              
+     649 00009f 08FF          CALL #_AIC3204_rset ; |37| 
+         0000a1 5C   
+     650 0000a2 3D05  ||      MOV #0, T1
+     651              
+     652                                                      ; call occurs [#_AIC3204_rset] ; |37| 
+     653                      .dwpsn  file "..\aic3204_setup.h",line 38,column 5,is_stmt
+     654              ;----------------------------------------------------------------------
+     655              ;  38 | AIC3204_rset( 14, Reg14 );      // Lo_Byte(DOSR) for DOSR = 128 decimal
+     656              ;     |  or 0x0080                                                             
+     657              ;----------------------------------------------------------------------
+     658 0000a4 A531          MOV *(#_Reg14), T1 ; |38| 
+         0000a6 0000 
+         0000a8 08-  
+     659              $C$DW$54        .dwtag  DW_TAG_TI_branch
+     660                      .dwattr $C$DW$54, DW_AT_low_pc(0x00)
+     661                      .dwattr $C$DW$54, DW_AT_name("_AIC3204_rset")
+     662                      .dwattr $C$DW$54, DW_AT_TI_call
+     663              
+     664 0000a9 08FF          CALL #_AIC3204_rset ; |38| 
+         0000ab 52   
+     665 0000ac 3DE4  ||      MOV #14, T0
+     666              
+     667                                                      ; call occurs [#_AIC3204_rset] ; |38| 
+     668                      .dwpsn  file "..\aic3204_setup.h",line 39,column 5,is_stmt
+     669              ;----------------------------------------------------------------------
+     670              ;  39 | AIC3204_rset( 20, Reg20 );      // AOSR for AOSR = 128 decimal or 0x008
+     671              ;     | 0 for decimation filters 1 to 6                                        
+     672              ;----------------------------------------------------------------------
+     673 0000ae 7600          MOV #20, T0 ; |39| 
+         0000b0 1448 
+     674 0000b2 A531          MOV *(#_Reg20), T1 ; |39| 
+         0000b4 0000 
+         0000b6 0B-  
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   14
+
+     675              $C$DW$55        .dwtag  DW_TAG_TI_branch
+     676                      .dwattr $C$DW$55, DW_AT_low_pc(0x00)
+     677                      .dwattr $C$DW$55, DW_AT_name("_AIC3204_rset")
+     678                      .dwattr $C$DW$55, DW_AT_TI_call
+     679 0000b7 08FF          CALL #_AIC3204_rset ; |39| 
+         0000b9 46   
+     680                                                      ; call occurs [#_AIC3204_rset] ; |39| 
+     681                      .dwpsn  file "..\aic3204_setup.h",line 40,column 5,is_stmt
+     682              ;----------------------------------------------------------------------
+     683              ;  40 | AIC3204_rset( 11, Reg11 );      // Power up NDAC and set NDAC value to
+     684              ;     | 2 (0x82)                                                               
+     685              ;----------------------------------------------------------------------
+     686 0000ba A531          MOV *(#_Reg11), T1 ; |40| 
+         0000bc 0000 
+         0000be 05-  
+     687              $C$DW$56        .dwtag  DW_TAG_TI_branch
+     688                      .dwattr $C$DW$56, DW_AT_low_pc(0x00)
+     689                      .dwattr $C$DW$56, DW_AT_name("_AIC3204_rset")
+     690                      .dwattr $C$DW$56, DW_AT_TI_call
+     691              
+     692 0000bf 08FF          CALL #_AIC3204_rset ; |40| 
+         0000c1 3C   
+     693 0000c2 3DB4  ||      MOV #11, T0
+     694              
+     695                                                      ; call occurs [#_AIC3204_rset] ; |40| 
+     696                      .dwpsn  file "..\aic3204_setup.h",line 41,column 5,is_stmt
+     697              ;----------------------------------------------------------------------
+     698              ;  41 | AIC3204_rset( 12, Reg12 );      // Power up MDAC and set MDAC value to
+     699              ;     | 7                                                                      
+     700              ;----------------------------------------------------------------------
+     701 0000c4 A531          MOV *(#_Reg12), T1 ; |41| 
+         0000c6 0000 
+         0000c8 06-  
+     702              $C$DW$57        .dwtag  DW_TAG_TI_branch
+     703                      .dwattr $C$DW$57, DW_AT_low_pc(0x00)
+     704                      .dwattr $C$DW$57, DW_AT_name("_AIC3204_rset")
+     705                      .dwattr $C$DW$57, DW_AT_TI_call
+     706              
+     707 0000c9 08FF          CALL #_AIC3204_rset ; |41| 
+         0000cb 32   
+     708 0000cc 3DC4  ||      MOV #12, T0
+     709              
+     710                                                      ; call occurs [#_AIC3204_rset] ; |41| 
+     711                      .dwpsn  file "..\aic3204_setup.h",line 42,column 5,is_stmt
+     712              ;----------------------------------------------------------------------
+     713              ;  42 | AIC3204_rset( 18, Reg18 );      // Power up NADC and set NADC value to
+     714              ;     | 7                                                                      
+     715              ;----------------------------------------------------------------------
+     716 0000ce 7600          MOV #18, T0 ; |42| 
+         0000d0 1248 
+     717 0000d2 A531          MOV *(#_Reg18), T1 ; |42| 
+         0000d4 0000 
+         0000d6 09-  
+     718              $C$DW$58        .dwtag  DW_TAG_TI_branch
+     719                      .dwattr $C$DW$58, DW_AT_low_pc(0x00)
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   15
+
+     720                      .dwattr $C$DW$58, DW_AT_name("_AIC3204_rset")
+     721                      .dwattr $C$DW$58, DW_AT_TI_call
+     722 0000d7 08FF          CALL #_AIC3204_rset ; |42| 
+         0000d9 26   
+     723                                                      ; call occurs [#_AIC3204_rset] ; |42| 
+     724                      .dwpsn  file "..\aic3204_setup.h",line 43,column 5,is_stmt
+     725              ;----------------------------------------------------------------------
+     726              ;  43 | AIC3204_rset( 19, Reg19 );      // Power up MADC and set MADC value to
+     727              ;     | 2 (0x82)                                                               
+     728              ;----------------------------------------------------------------------
+     729 0000da 7600          MOV #19, T0 ; |43| 
+         0000dc 1348 
+     730 0000de A531          MOV *(#_Reg19), T1 ; |43| 
+         0000e0 0000 
+         0000e2 0A-  
+     731              $C$DW$59        .dwtag  DW_TAG_TI_branch
+     732                      .dwattr $C$DW$59, DW_AT_low_pc(0x00)
+     733                      .dwattr $C$DW$59, DW_AT_name("_AIC3204_rset")
+     734                      .dwattr $C$DW$59, DW_AT_TI_call
+     735 0000e3 08FF          CALL #_AIC3204_rset ; |43| 
+         0000e5 1A   
+     736                                                      ; call occurs [#_AIC3204_rset] ; |43| 
+     737                      .dwpsn  file "..\aic3204_setup.h",line 47,column 5,is_stmt
+     738              ;----------------------------------------------------------------------
+     739              ;  47 | AIC3204_rset(  0, 0x01 );      // Select page 1                        
+     740              ;----------------------------------------------------------------------
+     741 0000e6 3C04          MOV #0, T0
+     742              $C$DW$60        .dwtag  DW_TAG_TI_branch
+     743                      .dwattr $C$DW$60, DW_AT_low_pc(0x00)
+     744                      .dwattr $C$DW$60, DW_AT_name("_AIC3204_rset")
+     745                      .dwattr $C$DW$60, DW_AT_TI_call
+     746              
+     747 0000e8 08FF          CALL #_AIC3204_rset ; |47| 
+         0000ea 13   
+     748 0000eb 3D15  ||      MOV #1, T1
+     749              
+     750                                                      ; call occurs [#_AIC3204_rset] ; |47| 
+     751                      .dwpsn  file "..\aic3204_setup.h",line 48,column 5,is_stmt
+     752              ;----------------------------------------------------------------------
+     753              ;  48 | AIC3204_rset( 12, 0x08 );      // LDAC AFIR routed to HPL              
+     754              ;----------------------------------------------------------------------
+     755 0000ed 3CC4          MOV #12, T0
+     756              $C$DW$61        .dwtag  DW_TAG_TI_branch
+     757                      .dwattr $C$DW$61, DW_AT_low_pc(0x00)
+     758                      .dwattr $C$DW$61, DW_AT_name("_AIC3204_rset")
+     759                      .dwattr $C$DW$61, DW_AT_TI_call
+     760              
+     761 0000ef 08FF          CALL #_AIC3204_rset ; |48| 
+         0000f1 0C   
+     762 0000f2 3D85  ||      MOV #8, T1
+     763              
+     764                                                      ; call occurs [#_AIC3204_rset] ; |48| 
+     765                      .dwpsn  file "..\aic3204_setup.h",line 49,column 5,is_stmt
+     766              ;----------------------------------------------------------------------
+     767              ;  49 | AIC3204_rset( 13, 0x08 );      // RDAC AFIR routed to HPR              
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   16
+
+     768              ;----------------------------------------------------------------------
+     769 0000f4 3CD4          MOV #13, T0
+     770              $C$DW$62        .dwtag  DW_TAG_TI_branch
+     771                      .dwattr $C$DW$62, DW_AT_low_pc(0x00)
+     772                      .dwattr $C$DW$62, DW_AT_name("_AIC3204_rset")
+     773                      .dwattr $C$DW$62, DW_AT_TI_call
+     774              
+     775 0000f6 08FF          CALL #_AIC3204_rset ; |49| 
+         0000f8 05   
+     776 0000f9 3D85  ||      MOV #8, T1
+     777              
+     778                                                      ; call occurs [#_AIC3204_rset] ; |49| 
+     779                      .dwpsn  file "..\aic3204_setup.h",line 50,column 5,is_stmt
+     780              ;----------------------------------------------------------------------
+     781              ;  50 | AIC3204_rset(  0, 0x00 );      // Select page 0                        
+     782              ;----------------------------------------------------------------------
+     783 0000fb 3C04          MOV #0, T0
+     784              $C$DW$63        .dwtag  DW_TAG_TI_branch
+     785                      .dwattr $C$DW$63, DW_AT_low_pc(0x00)
+     786                      .dwattr $C$DW$63, DW_AT_name("_AIC3204_rset")
+     787                      .dwattr $C$DW$63, DW_AT_TI_call
+     788              
+     789 0000fd 08FE          CALL #_AIC3204_rset ; |50| 
+         0000ff FE   
+     790 000100 3D05  ||      MOV #0, T1
+     791              
+     792                                                      ; call occurs [#_AIC3204_rset] ; |50| 
+     793                      .dwpsn  file "..\aic3204_setup.h",line 51,column 5,is_stmt
+     794              ;----------------------------------------------------------------------
+     795              ;  51 | AIC3204_rset( 64, 0x02 );      // Left vol=right vol                   
+     796              ;----------------------------------------------------------------------
+     797 000102 7600          MOV #64, T0 ; |51| 
+         000104 4048 
+     798              $C$DW$64        .dwtag  DW_TAG_TI_branch
+     799                      .dwattr $C$DW$64, DW_AT_low_pc(0x00)
+     800                      .dwattr $C$DW$64, DW_AT_name("_AIC3204_rset")
+     801                      .dwattr $C$DW$64, DW_AT_TI_call
+     802              
+     803 000106 08FE          CALL #_AIC3204_rset ; |51| 
+         000108 F5   
+     804 000109 3D25  ||      MOV #2, T1
+     805              
+     806                                                      ; call occurs [#_AIC3204_rset] ; |51| 
+     807                      .dwpsn  file "..\aic3204_setup.h",line 52,column 5,is_stmt
+     808              ;----------------------------------------------------------------------
+     809              ;  52 | AIC3204_rset( 65, 0x00 );      // Left DAC gain to 0dB VOL; Right track
+     810              ;     | s Left                                                                 
+     811              ;----------------------------------------------------------------------
+     812 00010b 7600          MOV #65, T0 ; |52| 
+         00010d 4148 
+     813              $C$DW$65        .dwtag  DW_TAG_TI_branch
+     814                      .dwattr $C$DW$65, DW_AT_low_pc(0x00)
+     815                      .dwattr $C$DW$65, DW_AT_name("_AIC3204_rset")
+     816                      .dwattr $C$DW$65, DW_AT_TI_call
+     817              
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   17
+
+     818 00010f 08FE          CALL #_AIC3204_rset ; |52| 
+         000111 EC   
+     819 000112 3D05  ||      MOV #0, T1
+     820              
+     821                                                      ; call occurs [#_AIC3204_rset] ; |52| 
+     822                      .dwpsn  file "..\aic3204_setup.h",line 53,column 5,is_stmt
+     823              ;----------------------------------------------------------------------
+     824              ;  53 | AIC3204_rset( 63, 0xd4 );      // Power up left,right data paths and se
+     825              ;     | t channel                                                              
+     826              ;----------------------------------------------------------------------
+     827 000114 7600          MOV #212, T1 ; |53| 
+         000116 D458 
+     828 000118 7600          MOV #63, T0 ; |53| 
+         00011a 3F48 
+     829              $C$DW$66        .dwtag  DW_TAG_TI_branch
+     830                      .dwattr $C$DW$66, DW_AT_low_pc(0x00)
+     831                      .dwattr $C$DW$66, DW_AT_name("_AIC3204_rset")
+     832                      .dwattr $C$DW$66, DW_AT_TI_call
+     833 00011c 08FE          CALL #_AIC3204_rset ; |53| 
+         00011e E1   
+     834                                                      ; call occurs [#_AIC3204_rset] ; |53| 
+     835                      .dwpsn  file "..\aic3204_setup.h",line 54,column 5,is_stmt
+     836              ;----------------------------------------------------------------------
+     837              ;  54 | AIC3204_rset(  0, 0x01 );      // Select page 1                        
+     838              ;----------------------------------------------------------------------
+     839 00011f 3C04          MOV #0, T0
+     840              $C$DW$67        .dwtag  DW_TAG_TI_branch
+     841                      .dwattr $C$DW$67, DW_AT_low_pc(0x00)
+     842                      .dwattr $C$DW$67, DW_AT_name("_AIC3204_rset")
+     843                      .dwattr $C$DW$67, DW_AT_TI_call
+     844              
+     845 000121 08FE          CALL #_AIC3204_rset ; |54| 
+         000123 DA   
+     846 000124 3D15  ||      MOV #1, T1
+     847              
+     848                                                      ; call occurs [#_AIC3204_rset] ; |54| 
+     849                      .dwpsn  file "..\aic3204_setup.h",line 55,column 5,is_stmt
+     850              ;----------------------------------------------------------------------
+     851              ;  55 | AIC3204_rset( 16, 0x00 );      // Unmute HPL , 0dB gain                
+     852              ;----------------------------------------------------------------------
+     853 000126 7600          MOV #16, T0 ; |55| 
+         000128 1048 
+     854              $C$DW$68        .dwtag  DW_TAG_TI_branch
+     855                      .dwattr $C$DW$68, DW_AT_low_pc(0x00)
+     856                      .dwattr $C$DW$68, DW_AT_name("_AIC3204_rset")
+     857                      .dwattr $C$DW$68, DW_AT_TI_call
+     858              
+     859 00012a 08FE          CALL #_AIC3204_rset ; |55| 
+         00012c D1   
+     860 00012d 3D05  ||      MOV #0, T1
+     861              
+     862                                                      ; call occurs [#_AIC3204_rset] ; |55| 
+     863                      .dwpsn  file "..\aic3204_setup.h",line 56,column 5,is_stmt
+     864              ;----------------------------------------------------------------------
+     865              ;  56 | AIC3204_rset( 17, 0x00 );      // Unmute HPR , 0dB gain                
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   18
+
+     866              ;----------------------------------------------------------------------
+     867 00012f 7600          MOV #17, T0 ; |56| 
+         000131 1148 
+     868              $C$DW$69        .dwtag  DW_TAG_TI_branch
+     869                      .dwattr $C$DW$69, DW_AT_low_pc(0x00)
+     870                      .dwattr $C$DW$69, DW_AT_name("_AIC3204_rset")
+     871                      .dwattr $C$DW$69, DW_AT_TI_call
+     872              
+     873 000133 08FE          CALL #_AIC3204_rset ; |56| 
+         000135 C8   
+     874 000136 3D05  ||      MOV #0, T1
+     875              
+     876                                                      ; call occurs [#_AIC3204_rset] ; |56| 
+     877                      .dwpsn  file "..\aic3204_setup.h",line 57,column 5,is_stmt
+     878              ;----------------------------------------------------------------------
+     879              ;  57 | AIC3204_rset(  9, 0x30 );      // Power up HPL,HPR                     
+     880              ;----------------------------------------------------------------------
+     881 000138 7600          MOV #48, T1 ; |57| 
+         00013a 3058 
+     882              $C$DW$70        .dwtag  DW_TAG_TI_branch
+     883                      .dwattr $C$DW$70, DW_AT_low_pc(0x00)
+     884                      .dwattr $C$DW$70, DW_AT_name("_AIC3204_rset")
+     885                      .dwattr $C$DW$70, DW_AT_TI_call
+     886              
+     887 00013c 08FE          CALL #_AIC3204_rset ; |57| 
+         00013e BF   
+     888 00013f 3D94  ||      MOV #9, T0
+     889              
+     890                                                      ; call occurs [#_AIC3204_rset] ; |57| 
+     891                      .dwpsn  file "..\aic3204_setup.h",line 58,column 5,is_stmt
+     892              ;----------------------------------------------------------------------
+     893              ;  58 | AIC3204_rset(  0, 0x00 );      // Select page 0                        
+     894              ;----------------------------------------------------------------------
+     895 000141 3C04          MOV #0, T0
+     896              $C$DW$71        .dwtag  DW_TAG_TI_branch
+     897                      .dwattr $C$DW$71, DW_AT_low_pc(0x00)
+     898                      .dwattr $C$DW$71, DW_AT_name("_AIC3204_rset")
+     899                      .dwattr $C$DW$71, DW_AT_TI_call
+     900              
+     901 000143 08FE          CALL #_AIC3204_rset ; |58| 
+         000145 B8   
+     902 000146 3D05  ||      MOV #0, T1
+     903              
+     904                                                      ; call occurs [#_AIC3204_rset] ; |58| 
+     905                      .dwpsn  file "..\aic3204_setup.h",line 59,column 5,is_stmt
+     906              ;----------------------------------------------------------------------
+     907              ;  59 | USBSTK5515_wait( 500 );        // Wait                                 
+     908              ;----------------------------------------------------------------------
+     909 000148 7601          MOV #500, AC0 ; |59| 
+         00014a F408 
+     910              $C$DW$72        .dwtag  DW_TAG_TI_branch
+     911                      .dwattr $C$DW$72, DW_AT_low_pc(0x00)
+     912                      .dwattr $C$DW$72, DW_AT_name("_USBSTK5515_wait")
+     913                      .dwattr $C$DW$72, DW_AT_TI_call
+     914 00014c 6C00          CALL #_USBSTK5515_wait ; |59| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   19
+
+         00014e 0000!
+     915                                                      ; call occurs [#_USBSTK5515_wait] ; |59| 
+     916                      .dwpsn  file "..\aic3204_setup.h",line 62,column 5,is_stmt
+     917              ;----------------------------------------------------------------------
+     918              ;  62 | AIC3204_rset( 0, 1 );          // Select page 1                        
+     919              ;----------------------------------------------------------------------
+     920 000150 3C04          MOV #0, T0
+     921              $C$DW$73        .dwtag  DW_TAG_TI_branch
+     922                      .dwattr $C$DW$73, DW_AT_low_pc(0x00)
+     923                      .dwattr $C$DW$73, DW_AT_name("_AIC3204_rset")
+     924                      .dwattr $C$DW$73, DW_AT_TI_call
+     925              
+     926 000152 08FE          CALL #_AIC3204_rset ; |62| 
+         000154 A9   
+     927 000155 3D15  ||      MOV #1, T1
+     928              
+     929                                                      ; call occurs [#_AIC3204_rset] ; |62| 
+     930                      .dwpsn  file "..\aic3204_setup.h",line 63,column 5,is_stmt
+     931              ;----------------------------------------------------------------------
+     932              ;  63 | AIC3204_rset( 0x34, 0x30 );    // STEREO 1 Jack                        
+     933              ;  64 |                                        // IN2_L to LADC_P through 40 ko
+     934              ;     | hm                                                                     
+     935              ;----------------------------------------------------------------------
+     936 000157 7600          MOV #48, T1 ; |63| 
+         000159 3058 
+     937 00015b 7600          MOV #52, T0 ; |63| 
+         00015d 3448 
+     938              $C$DW$74        .dwtag  DW_TAG_TI_branch
+     939                      .dwattr $C$DW$74, DW_AT_low_pc(0x00)
+     940                      .dwattr $C$DW$74, DW_AT_name("_AIC3204_rset")
+     941                      .dwattr $C$DW$74, DW_AT_TI_call
+     942 00015f 08FE          CALL #_AIC3204_rset ; |63| 
+         000161 9E   
+     943                                                      ; call occurs [#_AIC3204_rset] ; |63| 
+     944                      .dwpsn  file "..\aic3204_setup.h",line 65,column 5,is_stmt
+     945              ;----------------------------------------------------------------------
+     946              ;  65 | AIC3204_rset( 0x37, 0x30 );    // IN2_R to RADC_P through 40 kohmm     
+     947              ;----------------------------------------------------------------------
+     948 000162 7600          MOV #48, T1 ; |65| 
+         000164 3058 
+     949 000166 7600          MOV #55, T0 ; |65| 
+         000168 3748 
+     950              $C$DW$75        .dwtag  DW_TAG_TI_branch
+     951                      .dwattr $C$DW$75, DW_AT_low_pc(0x00)
+     952                      .dwattr $C$DW$75, DW_AT_name("_AIC3204_rset")
+     953                      .dwattr $C$DW$75, DW_AT_TI_call
+     954 00016a 08FE          CALL #_AIC3204_rset ; |65| 
+         00016c 93   
+     955                                                      ; call occurs [#_AIC3204_rset] ; |65| 
+     956                      .dwpsn  file "..\aic3204_setup.h",line 66,column 5,is_stmt
+     957              ;----------------------------------------------------------------------
+     958              ;  66 | AIC3204_rset( 0x36, 3 );       // CM_1 (common mode) to LADC_M through
+     959              ;     | 40 kohm                                                                
+     960              ;----------------------------------------------------------------------
+     961 00016d 7600          MOV #54, T0 ; |66| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   20
+
+         00016f 3648 
+     962              $C$DW$76        .dwtag  DW_TAG_TI_branch
+     963                      .dwattr $C$DW$76, DW_AT_low_pc(0x00)
+     964                      .dwattr $C$DW$76, DW_AT_name("_AIC3204_rset")
+     965                      .dwattr $C$DW$76, DW_AT_TI_call
+     966              
+     967 000171 08FE          CALL #_AIC3204_rset ; |66| 
+         000173 8A   
+     968 000174 3D35  ||      MOV #3, T1
+     969              
+     970                                                      ; call occurs [#_AIC3204_rset] ; |66| 
+     971                      .dwpsn  file "..\aic3204_setup.h",line 67,column 5,is_stmt
+     972              ;----------------------------------------------------------------------
+     973              ;  67 | AIC3204_rset( 0x39, 0xc0 );    // CM_1 (common mode) to RADC_M through
+     974              ;     | 40 kohm                                                                
+     975              ;----------------------------------------------------------------------
+     976 000176 7600          MOV #192, T1 ; |67| 
+         000178 C058 
+     977 00017a 7600          MOV #57, T0 ; |67| 
+         00017c 3948 
+     978              $C$DW$77        .dwtag  DW_TAG_TI_branch
+     979                      .dwattr $C$DW$77, DW_AT_low_pc(0x00)
+     980                      .dwattr $C$DW$77, DW_AT_name("_AIC3204_rset")
+     981                      .dwattr $C$DW$77, DW_AT_TI_call
+     982 00017e 08FE          CALL #_AIC3204_rset ; |67| 
+         000180 7F   
+     983                                                      ; call occurs [#_AIC3204_rset] ; |67| 
+     984                      .dwpsn  file "..\aic3204_setup.h",line 68,column 5,is_stmt
+     985              ;----------------------------------------------------------------------
+     986              ;  68 | AIC3204_rset( 0x3b, 0 );       // MIC_PGA_L unmute                     
+     987              ;----------------------------------------------------------------------
+     988 000181 7600          MOV #59, T0 ; |68| 
+         000183 3B48 
+     989              $C$DW$78        .dwtag  DW_TAG_TI_branch
+     990                      .dwattr $C$DW$78, DW_AT_low_pc(0x00)
+     991                      .dwattr $C$DW$78, DW_AT_name("_AIC3204_rset")
+     992                      .dwattr $C$DW$78, DW_AT_TI_call
+     993              
+     994 000185 08FE          CALL #_AIC3204_rset ; |68| 
+         000187 76   
+     995 000188 3D05  ||      MOV #0, T1
+     996              
+     997                                                      ; call occurs [#_AIC3204_rset] ; |68| 
+     998                      .dwpsn  file "..\aic3204_setup.h",line 69,column 5,is_stmt
+     999              ;----------------------------------------------------------------------
+    1000              ;  69 | AIC3204_rset( 0x3c, 0 );       // MIC_PGA_R unmute                     
+    1001              ;----------------------------------------------------------------------
+    1002 00018a 7600          MOV #60, T0 ; |69| 
+         00018c 3C48 
+    1003              $C$DW$79        .dwtag  DW_TAG_TI_branch
+    1004                      .dwattr $C$DW$79, DW_AT_low_pc(0x00)
+    1005                      .dwattr $C$DW$79, DW_AT_name("_AIC3204_rset")
+    1006                      .dwattr $C$DW$79, DW_AT_TI_call
+    1007              
+    1008 00018e 08FE          CALL #_AIC3204_rset ; |69| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   21
+
+         000190 6D   
+    1009 000191 3D05  ||      MOV #0, T1
+    1010              
+    1011                                                      ; call occurs [#_AIC3204_rset] ; |69| 
+    1012                      .dwpsn  file "..\aic3204_setup.h",line 70,column 5,is_stmt
+    1013              ;----------------------------------------------------------------------
+    1014              ;  70 | AIC3204_rset( 0, 0 );          // Select page 0                        
+    1015              ;----------------------------------------------------------------------
+    1016 000193 3C04          MOV #0, T0
+    1017              $C$DW$80        .dwtag  DW_TAG_TI_branch
+    1018                      .dwattr $C$DW$80, DW_AT_low_pc(0x00)
+    1019                      .dwattr $C$DW$80, DW_AT_name("_AIC3204_rset")
+    1020                      .dwattr $C$DW$80, DW_AT_TI_call
+    1021              
+    1022 000195 08FE          CALL #_AIC3204_rset ; |70| 
+         000197 66   
+    1023 000198 3D05  ||      MOV #0, T1
+    1024              
+    1025                                                      ; call occurs [#_AIC3204_rset] ; |70| 
+    1026                      .dwpsn  file "..\aic3204_setup.h",line 71,column 5,is_stmt
+    1027              ;----------------------------------------------------------------------
+    1028              ;  71 | AIC3204_rset( 0x51, 0xc0 );    // Powerup Left and Right ADC           
+    1029              ;----------------------------------------------------------------------
+    1030 00019a 7600          MOV #192, T1 ; |71| 
+         00019c C058 
+    1031 00019e 7600          MOV #81, T0 ; |71| 
+         0001a0 5148 
+    1032              $C$DW$81        .dwtag  DW_TAG_TI_branch
+    1033                      .dwattr $C$DW$81, DW_AT_low_pc(0x00)
+    1034                      .dwattr $C$DW$81, DW_AT_name("_AIC3204_rset")
+    1035                      .dwattr $C$DW$81, DW_AT_TI_call
+    1036 0001a2 08FE          CALL #_AIC3204_rset ; |71| 
+         0001a4 5B   
+    1037                                                      ; call occurs [#_AIC3204_rset] ; |71| 
+    1038                      .dwpsn  file "..\aic3204_setup.h",line 72,column 5,is_stmt
+    1039              ;----------------------------------------------------------------------
+    1040              ;  72 | AIC3204_rset( 0x52, 0 );       // Unmute Left and Right ADC            
+    1041              ;----------------------------------------------------------------------
+    1042 0001a5 7600          MOV #82, T0 ; |72| 
+         0001a7 5248 
+    1043              $C$DW$82        .dwtag  DW_TAG_TI_branch
+    1044                      .dwattr $C$DW$82, DW_AT_low_pc(0x00)
+    1045                      .dwattr $C$DW$82, DW_AT_name("_AIC3204_rset")
+    1046                      .dwattr $C$DW$82, DW_AT_TI_call
+    1047              
+    1048 0001a9 08FE          CALL #_AIC3204_rset ; |72| 
+         0001ab 52   
+    1049 0001ac 3D05  ||      MOV #0, T1
+    1050              
+    1051                                                      ; call occurs [#_AIC3204_rset] ; |72| 
+    1052                      .dwpsn  file "..\aic3204_setup.h",line 74,column 5,is_stmt
+    1053              ;----------------------------------------------------------------------
+    1054              ;  74 | AIC3204_rset( 0, 0 );                                                  
+    1055              ;----------------------------------------------------------------------
+    1056 0001ae 3C04          MOV #0, T0
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   22
+
+    1057              $C$DW$83        .dwtag  DW_TAG_TI_branch
+    1058                      .dwattr $C$DW$83, DW_AT_low_pc(0x00)
+    1059                      .dwattr $C$DW$83, DW_AT_name("_AIC3204_rset")
+    1060                      .dwattr $C$DW$83, DW_AT_TI_call
+    1061              
+    1062 0001b0 08FE          CALL #_AIC3204_rset ; |74| 
+         0001b2 4B   
+    1063 0001b3 3D05  ||      MOV #0, T1
+    1064              
+    1065                                                      ; call occurs [#_AIC3204_rset] ; |74| 
+    1066                      .dwpsn  file "..\aic3204_setup.h",line 75,column 5,is_stmt
+    1067              ;----------------------------------------------------------------------
+    1068              ;  75 | USBSTK5515_wait( 200 );        // Wait                                 
+    1069              ;----------------------------------------------------------------------
+    1070 0001b5 7600          MOV #200, AC0 ; |75| 
+         0001b7 C808 
+    1071              $C$DW$84        .dwtag  DW_TAG_TI_branch
+    1072                      .dwattr $C$DW$84, DW_AT_low_pc(0x00)
+    1073                      .dwattr $C$DW$84, DW_AT_name("_USBSTK5515_wait")
+    1074                      .dwattr $C$DW$84, DW_AT_TI_call
+    1075 0001b9 6C00          CALL #_USBSTK5515_wait ; |75| 
+         0001bb 0000!
+    1076                                                      ; call occurs [#_USBSTK5515_wait] ; |75| 
+    1077                      .dwpsn  file "..\aic3204_setup.h",line 77,column 5,is_stmt
+    1078              ;----------------------------------------------------------------------
+    1079              ;  77 | I2S0_SRGR = 0x0;                                                       
+    1080              ;----------------------------------------------------------------------
+    1081 0001bd E651          MOV #0, *port(#10244) ; |77| 
+         0001bf 0028 
+         0001c1 04   
+    1082                      .dwpsn  file "..\aic3204_setup.h",line 78,column 5,is_stmt
+    1083              ;----------------------------------------------------------------------
+    1084              ;  78 | I2S0_CR = 0x8010;    // 16-bit word, slave, enable I2C                 
+    1085              ;----------------------------------------------------------------------
+    1086 0001c2 FB51          MOV #32784, *port(#10240) ; |78| 
+         0001c4 8010 
+         0001c6 2800 
+    1087                      .dwpsn  file "..\aic3204_setup.h",line 79,column 5,is_stmt
+    1088              ;----------------------------------------------------------------------
+    1089              ;  79 | I2S0_ICMR = 0x3f;    // Enable interrupts                              
+    1090              ;----------------------------------------------------------------------
+    1091 0001c8 E651          MOV #63, *port(#10260) ; |79| 
+         0001ca 3F28 
+         0001cc 14   
+    1092                      .dwpsn  file "..\aic3204_setup.h",line 81,column 5,is_stmt
+    1093              ;----------------------------------------------------------------------
+    1094              ;  81 | return 0;                                                              
+    1095              ;----------------------------------------------------------------------
+    1096 0001cd 3C04          MOV #0, T0
+    1097                      .dwpsn  file "..\aic3204_setup.h",line 82,column 1,is_stmt
+    1098 0001cf 4E01          AADD #1, SP
+    1099                      .dwcfi  cfa_offset, 1
+    1100              $C$DW$85        .dwtag  DW_TAG_TI_branch
+    1101                      .dwattr $C$DW$85, DW_AT_low_pc(0x00)
+    1102                      .dwattr $C$DW$85, DW_AT_TI_return
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   23
+
+    1103 0001d1 4804          RET
+    1104                                                      ; return occurs
+    1105                      .dwattr $C$DW$38, DW_AT_TI_end_file("..\aic3204_setup.h")
+    1106                      .dwattr $C$DW$38, DW_AT_TI_end_line(0x52)
+    1107                      .dwattr $C$DW$38, DW_AT_TI_end_column(0x01)
+    1108                      .dwendentry
+    1109                      .dwendtag $C$DW$38
+    1110              
+    1111 0001d3               .sect   ".text"
+    1112                      .global _codec_init
+    1113              
+    1114              $C$DW$86        .dwtag  DW_TAG_subprogram, DW_AT_name("codec_init")
+    1115                      .dwattr $C$DW$86, DW_AT_low_pc(_codec_init)
+    1116                      .dwattr $C$DW$86, DW_AT_high_pc(0x00)
+    1117                      .dwattr $C$DW$86, DW_AT_TI_symbol_name("_codec_init")
+    1118                      .dwattr $C$DW$86, DW_AT_external
+    1119                      .dwattr $C$DW$86, DW_AT_TI_begin_file("..\aic3204_setup.h")
+    1120                      .dwattr $C$DW$86, DW_AT_TI_begin_line(0x5a)
+    1121                      .dwattr $C$DW$86, DW_AT_TI_begin_column(0x06)
+    1122                      .dwattr $C$DW$86, DW_AT_decl_file("..\aic3204_setup.h")
+    1123                      .dwattr $C$DW$86, DW_AT_decl_line(0x5a)
+    1124                      .dwattr $C$DW$86, DW_AT_decl_column(0x06)
+    1125                      .dwattr $C$DW$86, DW_AT_TI_max_frame_size(0x02)
+    1126                      .dwpsn  file "..\aic3204_setup.h",line 90,column 22,is_stmt,address _codec_init
+    1127              
+    1128                      .dwfde $C$DW$CIE, _codec_init
+    1129              ;*******************************************************************************
+    1130              ;* FUNCTION NAME: codec_init                                                   *
+    1131              ;*                                                                             *
+    1132              ;*   Function Uses Regs : SP,M40,SATA,SATD,RDM,FRCT,SMUL                       *
+    1133              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+    1134              ;*   Total Frame Size   : 2 words                                              *
+    1135              ;*                        (2 return address/alignment)                         *
+    1136              ;*   Min System Stack   : 1 word                                               *
+    1137              ;*******************************************************************************
+    1138 0001d3       _codec_init:
+    1139              ;----------------------------------------------------------------------
+    1140              ;  90 | void codec_init(void){                                                 
+    1141              ;----------------------------------------------------------------------
+    1142                      .dwcfi  cfa_offset, 1
+    1143                      .dwcfi  save_reg_to_mem, 91, -1
+    1144 0001d3 4EFF          AADD #-1, SP
+    1145                      .dwcfi  cfa_offset, 2
+    1146                      .dwpsn  file "..\aic3204_setup.h",line 94,column 2,is_stmt
+    1147              ;----------------------------------------------------------------------
+    1148              ;  94 | if              (Res == 16){BCLK = 0x0d;}                              
+    1149              ;----------------------------------------------------------------------
+    1150                      .dwpsn  file "..\aic3204_setup.h",line 94,column 19,is_stmt
+    1151              ;----------------------------------------------------------------------
+    1152              ;  95 | else if (Res == 24){BCLK = 0x2d;}                                      
+    1153              ;  96 | else if (Res == 32){BCLK = 0x3d;}                                      
+    1154              ;  97 | else {BCLK = 0x0d;}                                                    
+    1155              ;----------------------------------------------------------------------
+    1156 0001d5 E631          MOV #13, *(#_BCLK) ; |94| 
+         0001d7 0D00 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   24
+
+         0001d9 0003-
+    1157                      .dwpsn  file "..\aic3204_setup.h",line 94,column 31,is_stmt
+    1158 0001db 4A00          B $C$L1   ; |94| 
+    1159                                                      ; branch occurs ; |94| 
+    1160 0001dd       $C$L1:    
+    1161                      .dwpsn  file "..\aic3204_setup.h",line 99,column 2,is_stmt
+    1162              ;----------------------------------------------------------------------
+    1163              ;  99 | if              (ADCFs == 48) {J = 0x07; Dlow = 0x90; Dhigh =0x06; BCLK
+    1164              ;     | N = 0x88;                                                              
+    1165              ;----------------------------------------------------------------------
+    1166                      .dwpsn  file "..\aic3204_setup.h",line 99,column 22,is_stmt
+    1167 0001dd E631          MOV #7, *(#_J) ; |99| 
+         0001df 0700 
+         0001e1 0000-
+    1168                      .dwpsn  file "..\aic3204_setup.h",line 99,column 32,is_stmt
+    1169 0001e3 FB31          MOV #144, *(#_Dlow) ; |99| 
+         0001e5 0090 
+         0001e7 0000 
+         0001e9 01-  
+    1170                      .dwpsn  file "..\aic3204_setup.h",line 99,column 45,is_stmt
+    1171 0001ea E631          MOV #6, *(#_Dhigh) ; |99| 
+         0001ec 0600 
+         0001ee 0002-
+    1172                      .dwpsn  file "..\aic3204_setup.h",line 99,column 58,is_stmt
+    1173 0001f0 FB31          MOV #136, *(#_BCLKN) ; |99| 
+         0001f2 0088 
+         0001f4 0000 
+         0001f6 04-  
+    1174                      .dwpsn  file "..\aic3204_setup.h",line 100,column 8,is_stmt
+    1175              ;----------------------------------------------------------------------
+    1176              ; 100 | Reg11 = 0x82; Reg12 = 0x87; Reg13 = 0; Reg14 = 0x80;                   
+    1177              ;----------------------------------------------------------------------
+    1178 0001f7 FB31          MOV #130, *(#_Reg11) ; |100| 
+         0001f9 0082 
+         0001fb 0000 
+         0001fd 05-  
+    1179                      .dwpsn  file "..\aic3204_setup.h",line 100,column 22,is_stmt
+    1180 0001fe FB31          MOV #135, *(#_Reg12) ; |100| 
+         000200 0087 
+         000202 0000 
+         000204 06-  
+    1181                      .dwpsn  file "..\aic3204_setup.h",line 100,column 36,is_stmt
+    1182 000205 E631          MOV #0, *(#_Reg13) ; |100| 
+         000207 0000 
+         000209 0007-
+    1183                      .dwpsn  file "..\aic3204_setup.h",line 100,column 47,is_stmt
+    1184 00020b FB31          MOV #128, *(#_Reg14) ; |100| 
+         00020d 0080 
+         00020f 0000 
+         000211 08-  
+    1185                      .dwpsn  file "..\aic3204_setup.h",line 101,column 8,is_stmt
+    1186              ;----------------------------------------------------------------------
+    1187              ; 101 | Reg18 = 0x87; Reg19 = 0x82; Reg20 = 0x80;
+    1188              ;     |                                                                        
+    1189              ;----------------------------------------------------------------------
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   25
+
+    1190 000212 FB31          MOV #135, *(#_Reg18) ; |101| 
+         000214 0087 
+         000216 0000 
+         000218 09-  
+    1191                      .dwpsn  file "..\aic3204_setup.h",line 101,column 22,is_stmt
+    1192 000219 FB31          MOV #130, *(#_Reg19) ; |101| 
+         00021b 0082 
+         00021d 0000 
+         00021f 0A-  
+    1193                      .dwpsn  file "..\aic3204_setup.h",line 101,column 36,is_stmt
+    1194 000220 FB31          MOV #128, *(#_Reg20) ; |101| 
+         000222 0080 
+         000224 0000 
+         000226 0B-  
+    1195                      .dwpsn  file "..\aic3204_setup.h",line 102,column 8,is_stmt
+    1196              ;----------------------------------------------------------------------
+    1197              ; 103 | else if (ADCFs == 96) {J = 0x0e; Dlow = 0x20; Dhigh =0x0d; BCLKN = 0x84
+    1198              ;     | ;}                                                                     
+    1199              ; 105 | else if (ADCFs == 192){J = 0x08; Dlow = 0x80; Dhigh =0x7; BCLKN = 0x87;
+    1200              ;     |                                                                        
+    1201              ; 106 |                                                 Reg11 = 0x82; Reg12 = 0
+    1202              ;     | x84; Reg13 = 0x0; Reg14 = 64;                                          
+    1203              ; 107 |                                                 Reg18 = 0x82; Reg19 = 0
+    1204              ;     | x84; Reg20 = 64;                                                       
+    1205              ; 109 | else    {J = 0x07; Dlow = 0x90; Dhigh =0x06;}                          
+    1206              ;----------------------------------------------------------------------
+    1207 000227 4A00          B $C$L2   ; |102| 
+    1208                                                      ; branch occurs ; |102| 
+    1209 000229       $C$L2:    
+    1210                      .dwpsn  file "..\aic3204_setup.h",line 113,column 2,is_stmt
+    1211              ;----------------------------------------------------------------------
+    1212              ; 113 | AIC3204_Init();                                                        
+    1213              ;----------------------------------------------------------------------
+    1214              $C$DW$87        .dwtag  DW_TAG_TI_branch
+    1215                      .dwattr $C$DW$87, DW_AT_low_pc(0x00)
+    1216                      .dwattr $C$DW$87, DW_AT_name("_AIC3204_Init")
+    1217                      .dwattr $C$DW$87, DW_AT_TI_call
+    1218 000229 08FD          CALL #_AIC3204_Init ; |113| 
+         00022b F6   
+    1219                                                      ; call occurs [#_AIC3204_Init] ; |113| 
+    1220                      .dwpsn  file "..\aic3204_setup.h",line 115,column 1,is_stmt
+    1221 00022c 4E01          AADD #1, SP
+    1222                      .dwcfi  cfa_offset, 1
+    1223              $C$DW$88        .dwtag  DW_TAG_TI_branch
+    1224                      .dwattr $C$DW$88, DW_AT_low_pc(0x00)
+    1225                      .dwattr $C$DW$88, DW_AT_TI_return
+    1226 00022e 4804          RET
+    1227                                                      ; return occurs
+    1228                      .dwattr $C$DW$86, DW_AT_TI_end_file("..\aic3204_setup.h")
+    1229                      .dwattr $C$DW$86, DW_AT_TI_end_line(0x73)
+    1230                      .dwattr $C$DW$86, DW_AT_TI_end_column(0x01)
+    1231                      .dwendentry
+    1232                      .dwendtag $C$DW$86
+    1233              
+    1234 000230               .sect   ".text"
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   26
+
+    1235                      .global _main
+    1236              
+    1237              $C$DW$89        .dwtag  DW_TAG_subprogram, DW_AT_name("main")
+    1238                      .dwattr $C$DW$89, DW_AT_low_pc(_main)
+    1239                      .dwattr $C$DW$89, DW_AT_high_pc(0x00)
+    1240                      .dwattr $C$DW$89, DW_AT_TI_symbol_name("_main")
+    1241                      .dwattr $C$DW$89, DW_AT_external
+    1242                      .dwattr $C$DW$89, DW_AT_TI_begin_file("../main.c")
+    1243                      .dwattr $C$DW$89, DW_AT_TI_begin_line(0x2c)
+    1244                      .dwattr $C$DW$89, DW_AT_TI_begin_column(0x06)
+    1245                      .dwattr $C$DW$89, DW_AT_decl_file("../main.c")
+    1246                      .dwattr $C$DW$89, DW_AT_decl_line(0x2c)
+    1247                      .dwattr $C$DW$89, DW_AT_decl_column(0x06)
+    1248                      .dwattr $C$DW$89, DW_AT_TI_max_frame_size(0x02)
+    1249                      .dwpsn  file "../main.c",line 45,column 1,is_stmt,address _main
+    1250              
+    1251                      .dwfde $C$DW$CIE, _main
+    1252              ;----------------------------------------------------------------------
+    1253              ;  44 | void main( void )                                                      
+    1254              ;----------------------------------------------------------------------
+    1255              ;*******************************************************************************
+    1256              ;* FUNCTION NAME: main                                                         *
+    1257              ;*                                                                             *
+    1258              ;*   Function Uses Regs : T0,AR1,AR3,XAR3,SP,CARRY,TC1,M40,SATA,SATD,RDM,FRCT, *
+    1259              ;*                        SMUL                                                 *
+    1260              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+    1261              ;*   Total Frame Size   : 2 words                                              *
+    1262              ;*                        (2 return address/alignment)                         *
+    1263              ;*   Min System Stack   : 1 word                                               *
+    1264              ;*******************************************************************************
+    1265 000230       _main:
+    1266                      .dwcfi  cfa_offset, 1
+    1267                      .dwcfi  save_reg_to_mem, 91, -1
+    1268 000230 4EFF          AADD #-1, SP
+    1269                      .dwcfi  cfa_offset, 2
+    1270                      .dwpsn  file "../main.c",line 47,column 5,is_stmt
+    1271              ;----------------------------------------------------------------------
+    1272              ;  47 | USBSTK5515_init( );                                                    
+    1273              ;----------------------------------------------------------------------
+    1274              $C$DW$90        .dwtag  DW_TAG_TI_branch
+    1275                      .dwattr $C$DW$90, DW_AT_low_pc(0x00)
+    1276                      .dwattr $C$DW$90, DW_AT_name("_USBSTK5515_init")
+    1277                      .dwattr $C$DW$90, DW_AT_TI_call
+    1278 000232 6C00          CALL #_USBSTK5515_init ; |47| 
+         000234 0000!
+    1279                                                      ; call occurs [#_USBSTK5515_init] ; |47| 
+    1280                      .dwpsn  file "../main.c",line 48,column 2,is_stmt
+    1281              ;----------------------------------------------------------------------
+    1282              ;  48 | codec_init ();                                                         
+    1283              ;----------------------------------------------------------------------
+    1284              $C$DW$91        .dwtag  DW_TAG_TI_branch
+    1285                      .dwattr $C$DW$91, DW_AT_low_pc(0x00)
+    1286                      .dwattr $C$DW$91, DW_AT_name("_codec_init")
+    1287                      .dwattr $C$DW$91, DW_AT_TI_call
+    1288 000236 08FF          CALL #_codec_init ; |48| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   27
+
+         000238 9A   
+    1289                                                      ; call occurs [#_codec_init] ; |48| 
+    1290                      .dwpsn  file "../main.c",line 49,column 2,is_stmt
+    1291              ;----------------------------------------------------------------------
+    1292              ;  49 | initAll();                                                             
+    1293              ;----------------------------------------------------------------------
+    1294              $C$DW$92        .dwtag  DW_TAG_TI_branch
+    1295                      .dwattr $C$DW$92, DW_AT_low_pc(0x00)
+    1296                      .dwattr $C$DW$92, DW_AT_name("_initAll")
+    1297                      .dwattr $C$DW$92, DW_AT_TI_call
+    1298 000239 0800          CALL #_initAll ; |49| 
+         00023b 9F   
+    1299                                                      ; call occurs [#_initAll] ; |49| 
+    1300                      .dwpsn  file "../main.c",line 51,column 21,is_stmt
+    1301              ;----------------------------------------------------------------------
+    1302              ;  51 | while ( 1 )                                                            
+    1303              ;----------------------------------------------------------------------
+    1304 00023c       $C$L3:    
+    1305 00023c       $C$DW$L$_main$2$B:
+    1306                      .dwpsn  file "../main.c",line 53,column 14,is_stmt
+    1307              ;----------------------------------------------------------------------
+    1308              ;  53 | if (I2S0_IR == 0)                                                      
+    1309              ;----------------------------------------------------------------------
+    1310 00023c A951          MOV *port(#10256), AR1 ; |53| 
+         00023e 2810 
+    1311 000240 6799          BCC $C$L5,AR1 != #0 ; |53| 
+    1312                                                      ; branchcc occurs ; |53| 
+    1313 000242       $C$DW$L$_main$2$E:
+    1314 000242       $C$DW$L$_main$3$B:
+    1315                      .dwpsn  file "../main.c",line 55,column 20,is_stmt
+    1316              ;----------------------------------------------------------------------
+    1317              ;  55 | while((Rcv & I2S0_IR) == 0);  // Wait for interrupt pending flag       
+    1318              ;----------------------------------------------------------------------
+    1319 000242 DC51          BTST #3, *port(#10256), TC1 ; |55| 
+         000244 3028 
+         000246 10   
+    1320 000247 6464          BCC $C$L5,TC1 ; |55| 
+    1321                                                      ; branchcc occurs ; |55| 
+    1322 000249       $C$DW$L$_main$3$E:
+    1323 000249       $C$L4:    
+    1324 000249       $C$DW$L$_main$4$B:
+    1325 000249 DC51          BTST #3, *port(#10256), TC1 ; |55| 
+         00024b 3028 
+         00024d 10   
+    1326 00024e 0474          BCC $C$L4,!TC1 ; |55| 
+         000250 F8   
+    1327                                                      ; branchcc occurs ; |55| 
+    1328 000251       $C$DW$L$_main$4$E:
+    1329 000251       $C$L5:    
+    1330 000251       $C$DW$L$_main$5$B:
+    1331                      .dwpsn  file "../main.c",line 56,column 17,is_stmt
+    1332              ;----------------------------------------------------------------------
+    1333              ;  56 | k=100;                                                                 
+    1334              ;----------------------------------------------------------------------
+    1335 000251 E631          MOV #100, *(#_k) ; |56| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   28
+
+         000253 6400 
+         000255 0010-
+    1336                      .dwpsn  file "../main.c",line 57,column 17,is_stmt
+    1337              ;----------------------------------------------------------------------
+    1338              ;  57 | data3 = I2S0_W0_MSW_R;  // 16 bit left channel received audio data     
+    1339              ;----------------------------------------------------------------------
+    1340 000257 A951          MOV *port(#10281), AR1 ; |57| 
+         000259 2829 
+    1341 00025b C931          MOV AR1, *(#_data3) ; |57| 
+         00025d 0000 
+         00025f 0E-  
+    1342                      .dwpsn  file "../main.c",line 58,column 16,is_stmt
+    1343              ;----------------------------------------------------------------------
+    1344              ;  58 | data1 = I2S0_W0_LSW_R;                                                 
+    1345              ;----------------------------------------------------------------------
+    1346 000260 A951          MOV *port(#10280), AR1 ; |58| 
+         000262 2828 
+    1347 000264 C931          MOV AR1, *(#_data1) ; |58| 
+         000266 0000 
+         000268 0C-  
+    1348                      .dwpsn  file "../main.c",line 59,column 16,is_stmt
+    1349              ;----------------------------------------------------------------------
+    1350              ;  59 | data4 = I2S0_W1_MSW_R;  // 16 bit right channel received audio data    
+    1351              ;----------------------------------------------------------------------
+    1352 000269 A951          MOV *port(#10285), AR1 ; |59| 
+         00026b 282D 
+    1353 00026d C931          MOV AR1, *(#_data4) ; |59| 
+         00026f 0000 
+         000271 0F-  
+    1354                      .dwpsn  file "../main.c",line 60,column 16,is_stmt
+    1355              ;----------------------------------------------------------------------
+    1356              ;  60 | data2 = I2S0_W1_LSW_R;                                                 
+    1357              ;  62 | //asm(" bset XF");                                                     
+    1358              ;----------------------------------------------------------------------
+    1359 000272 A951          MOV *port(#10284), AR1 ; |60| 
+         000274 282C 
+    1360 000276 C931          MOV AR1, *(#_data2) ; |60| 
+         000278 0000 
+         00027a 0D-  
+    1361                      .dwpsn  file "../main.c",line 63,column 16,is_stmt
+    1362              ;----------------------------------------------------------------------
+    1363              ;  63 | asm(" bclr XF");                                                       
+    1364              ;----------------------------------------------------------------------
+    1365 00027b 46D2   bclr XF
+    1366                      .dwpsn  file "../main.c",line 65,column 16,is_stmt
+    1367              ;----------------------------------------------------------------------
+    1368              ;  65 | if(i == N)                                                             
+    1369              ;----------------------------------------------------------------------
+    1370 00027d F031          CMP *(#_i) == #255, TC1 ; |65| 
+         00027f 00FF 
+         000281 0003 
+         000283 0E-  
+    1371 000284 6374          BCC $C$L6,!TC1 ; |65| 
+    1372                                                      ; branchcc occurs ; |65| 
+    1373 000286       $C$DW$L$_main$5$E:
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   29
+
+    1374 000286       $C$DW$L$_main$6$B:
+    1375                      .dwpsn  file "../main.c",line 67,column 17,is_stmt
+    1376              ;----------------------------------------------------------------------
+    1377              ;  67 | i = -1;                                                                
+    1378              ;----------------------------------------------------------------------
+    1379 000286 E631          MOV #-1, *(#_i) ; |67| 
+         000288 FF00 
+         00028a 030E-
+    1380 00028c       $C$DW$L$_main$6$E:
+    1381 00028c       $C$L6:    
+    1382 00028c       $C$DW$L$_main$7$B:
+    1383                      .dwpsn  file "../main.c",line 69,column 16,is_stmt
+    1384              ;----------------------------------------------------------------------
+    1385              ;  69 | x[i] = data3;                                                          
+    1386              ;----------------------------------------------------------------------
+    1387 00028c A431          MOV *(#_i), T0 ; |69| 
+         00028e 0003 
+         000290 0E-  
+    1388 000291 A931          MOV *(#_data3), AR1 ; |69| 
+         000293 0000 
+         000295 0E-  
+    1389 000296 EC31          AMOV #_x, XAR3 ; |69| 
+         000298 BE00 
+         00029a 0011-
+    1390 00029c C96B          MOV AR1, *AR3(T0) ; |69| 
+    1391                      .dwpsn  file "../main.c",line 70,column 16,is_stmt
+    1392              ;----------------------------------------------------------------------
+    1393              ;  70 | i++;                                                                   
+    1394              ;  71 | //CPFIR(x,b,N,y,i);                                                    
+    1395              ;----------------------------------------------------------------------
+    1396 00029e F731          ADD #1, *(#_i) ; |70| 
+         0002a0 0001 
+         0002a2 0003 
+         0002a4 0E-  
+    1397                      .dwpsn  file "../main.c",line 72,column 17,is_stmt
+    1398              ;----------------------------------------------------------------------
+    1399              ;  72 | CPFIR();                                                               
+    1400              ;----------------------------------------------------------------------
+    1401              $C$DW$93        .dwtag  DW_TAG_TI_branch
+    1402                      .dwattr $C$DW$93, DW_AT_low_pc(0x00)
+    1403                      .dwattr $C$DW$93, DW_AT_name("_CPFIR")
+    1404                      .dwattr $C$DW$93, DW_AT_TI_call
+    1405 0002a5 6C00          CALL #_CPFIR ; |72| 
+         0002a7 0000!
+    1406                                                      ; call occurs [#_CPFIR] ; |72| 
+    1407                      .dwpsn  file "../main.c",line 74,column 16,is_stmt
+    1408              ;----------------------------------------------------------------------
+    1409              ;  74 | asm(" bset XF");                                                       
+    1410              ;----------------------------------------------------------------------
+    1411 0002a9 46D3   bset XF
+    1412                      .dwpsn  file "../main.c",line 77,column 22,is_stmt
+    1413              ;----------------------------------------------------------------------
+    1414              ;  77 | while((Xmit & I2S0_IR) == 0);  // Wait for interrupt pending flag      
+    1415              ;----------------------------------------------------------------------
+    1416 0002ab DC51          BTST #5, *port(#10256), TC1 ; |77| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   30
+
+         0002ad 5028 
+         0002af 10   
+    1417 0002b0 6464          BCC $C$L8,TC1 ; |77| 
+    1418                                                      ; branchcc occurs ; |77| 
+    1419 0002b2       $C$DW$L$_main$7$E:
+    1420 0002b2       $C$L7:    
+    1421 0002b2       $C$DW$L$_main$8$B:
+    1422 0002b2 DC51          BTST #5, *port(#10256), TC1 ; |77| 
+         0002b4 5028 
+         0002b6 10   
+    1423 0002b7 0474          BCC $C$L7,!TC1 ; |77| 
+         0002b9 F8   
+    1424                                                      ; branchcc occurs ; |77| 
+    1425 0002ba       $C$DW$L$_main$8$E:
+    1426 0002ba       $C$L8:    
+    1427 0002ba       $C$DW$L$_main$9$B:
+    1428                      .dwpsn  file "../main.c",line 78,column 16,is_stmt
+    1429              ;----------------------------------------------------------------------
+    1430              ;  78 | asm(" bclr XF");                                                       
+    1431              ;----------------------------------------------------------------------
+    1432 0002ba 46D2   bclr XF
+    1433                      .dwpsn  file "../main.c",line 79,column 5,is_stmt
+    1434              ;----------------------------------------------------------------------
+    1435              ;  79 | I2S0_W0_MSW_W = data3;  // 16 bit left channel transmit audio data     
+    1436              ;----------------------------------------------------------------------
+    1437 0002bc A931          MOV *(#_data3), AR1 ; |79| 
+         0002be 0000 
+         0002c0 0E-  
+    1438 0002c1 C951          MOV AR1, *port(#10249) ; |79| 
+         0002c3 2809 
+    1439                      .dwpsn  file "../main.c",line 80,column 16,is_stmt
+    1440              ;----------------------------------------------------------------------
+    1441              ;  80 | I2S0_W0_LSW_W = 0;                                                     
+    1442              ;----------------------------------------------------------------------
+    1443 0002c5 E651          MOV #0, *port(#10248) ; |80| 
+         0002c7 0028 
+         0002c9 08   
+    1444                      .dwpsn  file "../main.c",line 81,column 16,is_stmt
+    1445              ;----------------------------------------------------------------------
+    1446              ;  81 | I2S0_W1_MSW_W = data4;  // 16 bit right channel transmit audio data    
+    1447              ;----------------------------------------------------------------------
+    1448 0002ca A931          MOV *(#_data4), AR1 ; |81| 
+         0002cc 0000 
+         0002ce 0F-  
+    1449 0002cf C951          MOV AR1, *port(#10253) ; |81| 
+         0002d1 280D 
+    1450                      .dwpsn  file "../main.c",line 82,column 16,is_stmt
+    1451              ;----------------------------------------------------------------------
+    1452              ;  82 | I2S0_W1_LSW_W = 0;                                                     
+    1453              ;----------------------------------------------------------------------
+    1454 0002d3 E651          MOV #0, *port(#10252) ; |82| 
+         0002d5 0028 
+         0002d7 0C   
+    1455                      .dwpsn  file "../main.c",line 51,column 21,is_stmt
+    1456 0002d8 06FF          B $C$L3   ; |51| 
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   31
+
+         0002da 61   
+    1457                                                      ; branch occurs ; |51| 
+    1458 0002db       $C$DW$L$_main$9$E:
+    1459                      .dwcfi  cfa_offset, 1
+    1460              
+    1461              $C$DW$94        .dwtag  DW_TAG_TI_loop
+    1462                      .dwattr $C$DW$94, DW_AT_name("C:\Users\Kiis\Dropbox\Uni\7. semester\AAT7\Code\DSP\aic3204\Debug\main.
+    1463                      .dwattr $C$DW$94, DW_AT_TI_begin_file("../main.c")
+    1464                      .dwattr $C$DW$94, DW_AT_TI_begin_line(0x33)
+    1465                      .dwattr $C$DW$94, DW_AT_TI_end_line(0x54)
+    1466              $C$DW$95        .dwtag  DW_TAG_TI_loop_range
+    1467                      .dwattr $C$DW$95, DW_AT_low_pc($C$DW$L$_main$2$B)
+    1468                      .dwattr $C$DW$95, DW_AT_high_pc($C$DW$L$_main$2$E)
+    1469              $C$DW$96        .dwtag  DW_TAG_TI_loop_range
+    1470                      .dwattr $C$DW$96, DW_AT_low_pc($C$DW$L$_main$3$B)
+    1471                      .dwattr $C$DW$96, DW_AT_high_pc($C$DW$L$_main$3$E)
+    1472              $C$DW$97        .dwtag  DW_TAG_TI_loop_range
+    1473                      .dwattr $C$DW$97, DW_AT_low_pc($C$DW$L$_main$5$B)
+    1474                      .dwattr $C$DW$97, DW_AT_high_pc($C$DW$L$_main$5$E)
+    1475              $C$DW$98        .dwtag  DW_TAG_TI_loop_range
+    1476                      .dwattr $C$DW$98, DW_AT_low_pc($C$DW$L$_main$6$B)
+    1477                      .dwattr $C$DW$98, DW_AT_high_pc($C$DW$L$_main$6$E)
+    1478              $C$DW$99        .dwtag  DW_TAG_TI_loop_range
+    1479                      .dwattr $C$DW$99, DW_AT_low_pc($C$DW$L$_main$7$B)
+    1480                      .dwattr $C$DW$99, DW_AT_high_pc($C$DW$L$_main$7$E)
+    1481              $C$DW$100       .dwtag  DW_TAG_TI_loop_range
+    1482                      .dwattr $C$DW$100, DW_AT_low_pc($C$DW$L$_main$9$B)
+    1483                      .dwattr $C$DW$100, DW_AT_high_pc($C$DW$L$_main$9$E)
+    1484              
+    1485              $C$DW$101       .dwtag  DW_TAG_TI_loop
+    1486                      .dwattr $C$DW$101, DW_AT_name("C:\Users\Kiis\Dropbox\Uni\7. semester\AAT7\Code\DSP\aic3204\Debug\main
+    1487                      .dwattr $C$DW$101, DW_AT_TI_begin_file("../main.c")
+    1488                      .dwattr $C$DW$101, DW_AT_TI_begin_line(0x37)
+    1489                      .dwattr $C$DW$101, DW_AT_TI_end_line(0x37)
+    1490              $C$DW$102       .dwtag  DW_TAG_TI_loop_range
+    1491                      .dwattr $C$DW$102, DW_AT_low_pc($C$DW$L$_main$4$B)
+    1492                      .dwattr $C$DW$102, DW_AT_high_pc($C$DW$L$_main$4$E)
+    1493                      .dwendtag $C$DW$101
+    1494              
+    1495              
+    1496              $C$DW$103       .dwtag  DW_TAG_TI_loop
+    1497                      .dwattr $C$DW$103, DW_AT_name("C:\Users\Kiis\Dropbox\Uni\7. semester\AAT7\Code\DSP\aic3204\Debug\main
+    1498                      .dwattr $C$DW$103, DW_AT_TI_begin_file("../main.c")
+    1499                      .dwattr $C$DW$103, DW_AT_TI_begin_line(0x4d)
+    1500                      .dwattr $C$DW$103, DW_AT_TI_end_line(0x4d)
+    1501              $C$DW$104       .dwtag  DW_TAG_TI_loop_range
+    1502                      .dwattr $C$DW$104, DW_AT_low_pc($C$DW$L$_main$8$B)
+    1503                      .dwattr $C$DW$104, DW_AT_high_pc($C$DW$L$_main$8$E)
+    1504                      .dwendtag $C$DW$103
+    1505              
+    1506                      .dwendtag $C$DW$94
+    1507              
+    1508                      .dwattr $C$DW$89, DW_AT_TI_end_file("../main.c")
+    1509                      .dwattr $C$DW$89, DW_AT_TI_end_line(0x55)
+    1510                      .dwattr $C$DW$89, DW_AT_TI_end_column(0x01)
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   32
+
+    1511                      .dwendentry
+    1512                      .dwendtag $C$DW$89
+    1513              
+    1514 0002db               .sect   ".text"
+    1515                      .global _initAll
+    1516              
+    1517              $C$DW$105       .dwtag  DW_TAG_subprogram, DW_AT_name("initAll")
+    1518                      .dwattr $C$DW$105, DW_AT_low_pc(_initAll)
+    1519                      .dwattr $C$DW$105, DW_AT_high_pc(0x00)
+    1520                      .dwattr $C$DW$105, DW_AT_TI_symbol_name("_initAll")
+    1521                      .dwattr $C$DW$105, DW_AT_external
+    1522                      .dwattr $C$DW$105, DW_AT_TI_begin_file("../main.c")
+    1523                      .dwattr $C$DW$105, DW_AT_TI_begin_line(0x57)
+    1524                      .dwattr $C$DW$105, DW_AT_TI_begin_column(0x06)
+    1525                      .dwattr $C$DW$105, DW_AT_decl_file("../main.c")
+    1526                      .dwattr $C$DW$105, DW_AT_decl_line(0x57)
+    1527                      .dwattr $C$DW$105, DW_AT_decl_column(0x06)
+    1528                      .dwattr $C$DW$105, DW_AT_TI_max_frame_size(0x02)
+    1529                      .dwpsn  file "../main.c",line 88,column 1,is_stmt,address _initAll
+    1530              
+    1531                      .dwfde $C$DW$CIE, _initAll
+    1532              ;----------------------------------------------------------------------
+    1533              ;  87 | void initAll(void)                                                     
+    1534              ;----------------------------------------------------------------------
+    1535              ;*******************************************************************************
+    1536              ;* FUNCTION NAME: initAll                                                      *
+    1537              ;*                                                                             *
+    1538              ;*   Function Uses Regs : T0,AR1,AR2,AR3,XAR3,SP,CARRY,TC1,M40,SATA,SATD,RDM,  *
+    1539              ;*                        FRCT,SMUL                                            *
+    1540              ;*   Stack Frame        : Compact (No Frame Pointer, w/ debug)                 *
+    1541              ;*   Total Frame Size   : 2 words                                              *
+    1542              ;*                        (1 return address/alignment)                         *
+    1543              ;*                        (1 local values)                                     *
+    1544              ;*   Min System Stack   : 1 word                                               *
+    1545              ;*******************************************************************************
+    1546 0002db       _initAll:
+    1547              ;----------------------------------------------------------------------
+    1548              ;  89 | Int16 cnt;                                                             
+    1549              ;  90 | // Clear array                                                         
+    1550              ;----------------------------------------------------------------------
+    1551                      .dwcfi  cfa_offset, 1
+    1552                      .dwcfi  save_reg_to_mem, 91, -1
+    1553 0002db 4EFF          AADD #-1, SP
+    1554                      .dwcfi  cfa_offset, 2
+    1555              $C$DW$106       .dwtag  DW_TAG_variable, DW_AT_name("cnt")
+    1556                      .dwattr $C$DW$106, DW_AT_TI_symbol_name("_cnt")
+    1557                      .dwattr $C$DW$106, DW_AT_type(*$C$DW$T$8)
+    1558                      .dwattr $C$DW$106, DW_AT_location[DW_OP_bregx 0x24 0]
+    1559                      .dwpsn  file "../main.c",line 91,column 6,is_stmt
+    1560              ;----------------------------------------------------------------------
+    1561              ;  91 | for(cnt=0;cnt<=N;cnt++)                                                
+    1562              ;----------------------------------------------------------------------
+    1563 0002dd E600          MOV #0, *SP(#0) ; |91| 
+         0002df 00   
+    1564                      .dwpsn  file "../main.c",line 91,column 12,is_stmt
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   33
+
+    1565 0002e0 7600          MOV #255, AR2 ; |91| 
+         0002e2 FFA8 
+    1566 0002e4 A900          MOV *SP(#0), AR1 ; |91| 
+    1567 0002e6 12A4          CMP AR1 > AR2, TC1 ; |91| 
+         0002e8 90   
+    1568 0002e9 0464          BCC $C$L10,TC1 ; |91| 
+         0002eb 2D   
+    1569                                                      ; branchcc occurs ; |91| 
+    1570 0002ec       $C$L9:    
+    1571 0002ec       $C$DW$L$_initAll$2$B:
+    1572                      .dwpsn  file "../main.c",line 93,column 3,is_stmt
+    1573              ;----------------------------------------------------------------------
+    1574              ;  93 | x[cnt] = 0;                                                            
+    1575              ;----------------------------------------------------------------------
+    1576 0002ec 2294          MOV AR1, T0 ; |93| 
+    1577 0002ee EC31          AMOV #_x, XAR3 ; |93| 
+         0002f0 BE00 
+         0002f2 0011-
+    1578 0002f4 E66B          MOV #0, *AR3(T0) ; |93| 
+         0002f6 00   
+    1579                      .dwpsn  file "../main.c",line 94,column 3,is_stmt
+    1580              ;----------------------------------------------------------------------
+    1581              ;  94 | b[cnt] = 0;                                                            
+    1582              ;----------------------------------------------------------------------
+    1583 0002f7 A400          MOV *SP(#0), T0 ; |94| 
+    1584 0002f9 EC31          AMOV #_b, XAR3 ; |94| 
+         0002fb BE00 
+         0002fd 0110-
+    1585 0002ff E66B          MOV #0, *AR3(T0) ; |94| 
+         000301 00   
+    1586                      .dwpsn  file "../main.c",line 95,column 3,is_stmt
+    1587              ;----------------------------------------------------------------------
+    1588              ;  95 | y[cnt] = 0;                                                            
+    1589              ;----------------------------------------------------------------------
+    1590 000302 A400          MOV *SP(#0), T0 ; |95| 
+    1591 000304 EC31          AMOV #_y, XAR3 ; |95| 
+         000306 BE00 
+         000308 020F-
+    1592 00030a E66B          MOV #0, *AR3(T0) ; |95| 
+         00030c 00   
+    1593                      .dwpsn  file "../main.c",line 91,column 19,is_stmt
+    1594 00030d F700          ADD #1, *SP(#0) ; |91| 
+         00030f 0001 
+    1595                      .dwpsn  file "../main.c",line 91,column 12,is_stmt
+    1596 000311 A900          MOV *SP(#0), AR1 ; |91| 
+    1597 000313 12A8          CMP AR1 <= AR2, TC1 ; |91| 
+         000315 90   
+    1598 000316 0464          BCC $C$L9,TC1 ; |91| 
+         000318 D3   
+    1599                                                      ; branchcc occurs ; |91| 
+    1600 000319       $C$DW$L$_initAll$2$E:
+    1601 000319       $C$L10:    
+    1602                      .dwpsn  file "../main.c",line 97,column 1,is_stmt
+    1603 000319 4E01          AADD #1, SP
+    1604                      .dwcfi  cfa_offset, 1
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   34
+
+    1605              $C$DW$107       .dwtag  DW_TAG_TI_branch
+    1606                      .dwattr $C$DW$107, DW_AT_low_pc(0x00)
+    1607                      .dwattr $C$DW$107, DW_AT_TI_return
+    1608 00031b 4804          RET
+    1609                                                      ; return occurs
+    1610              
+    1611              $C$DW$108       .dwtag  DW_TAG_TI_loop
+    1612                      .dwattr $C$DW$108, DW_AT_name("C:\Users\Kiis\Dropbox\Uni\7. semester\AAT7\Code\DSP\aic3204\Debug\main
+    1613                      .dwattr $C$DW$108, DW_AT_TI_begin_file("../main.c")
+    1614                      .dwattr $C$DW$108, DW_AT_TI_begin_line(0x5b)
+    1615                      .dwattr $C$DW$108, DW_AT_TI_end_line(0x60)
+    1616              $C$DW$109       .dwtag  DW_TAG_TI_loop_range
+    1617                      .dwattr $C$DW$109, DW_AT_low_pc($C$DW$L$_initAll$2$B)
+    1618                      .dwattr $C$DW$109, DW_AT_high_pc($C$DW$L$_initAll$2$E)
+    1619                      .dwendtag $C$DW$108
+    1620              
+    1621                      .dwattr $C$DW$105, DW_AT_TI_end_file("../main.c")
+    1622                      .dwattr $C$DW$105, DW_AT_TI_end_line(0x61)
+    1623                      .dwattr $C$DW$105, DW_AT_TI_end_column(0x01)
+    1624                      .dwendentry
+    1625                      .dwendtag $C$DW$105
+    1626              
+    1627              ;******************************************************************************
+    1628              ;* UNDEFINED EXTERNAL REFERENCES                                              *
+    1629              ;******************************************************************************
+    1630                      .global _USBSTK5515_init
+    1631                      .global _USBSTK5515_wait
+    1632                      .global _USBSTK5515_I2C_write
+    1633                      .global _CPFIR
+    1634              
+    1635              ;*******************************************************************************
+    1636              ;* TYPE INFORMATION                                                            *
+    1637              ;*******************************************************************************
+    1638              $C$DW$T$4       .dwtag  DW_TAG_base_type
+    1639                      .dwattr $C$DW$T$4, DW_AT_encoding(DW_ATE_boolean)
+    1640                      .dwattr $C$DW$T$4, DW_AT_name("bool")
+    1641                      .dwattr $C$DW$T$4, DW_AT_byte_size(0x01)
+    1642              $C$DW$T$5       .dwtag  DW_TAG_base_type
+    1643                      .dwattr $C$DW$T$5, DW_AT_encoding(DW_ATE_signed_char)
+    1644                      .dwattr $C$DW$T$5, DW_AT_name("signed char")
+    1645                      .dwattr $C$DW$T$5, DW_AT_byte_size(0x01)
+    1646              $C$DW$T$6       .dwtag  DW_TAG_base_type
+    1647                      .dwattr $C$DW$T$6, DW_AT_encoding(DW_ATE_unsigned_char)
+    1648                      .dwattr $C$DW$T$6, DW_AT_name("unsigned char")
+    1649                      .dwattr $C$DW$T$6, DW_AT_byte_size(0x01)
+    1650              $C$DW$T$19      .dwtag  DW_TAG_pointer_type
+    1651                      .dwattr $C$DW$T$19, DW_AT_type(*$C$DW$T$6)
+    1652                      .dwattr $C$DW$T$19, DW_AT_address_class(0x17)
+    1653              
+    1654              $C$DW$T$25      .dwtag  DW_TAG_array_type
+    1655                      .dwattr $C$DW$T$25, DW_AT_type(*$C$DW$T$6)
+    1656                      .dwattr $C$DW$T$25, DW_AT_language(DW_LANG_C)
+    1657                      .dwattr $C$DW$T$25, DW_AT_byte_size(0x02)
+    1658              $C$DW$110       .dwtag  DW_TAG_subrange_type
+    1659                      .dwattr $C$DW$110, DW_AT_upper_bound(0x01)
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   35
+
+    1660                      .dwendtag $C$DW$T$25
+    1661              
+    1662              $C$DW$T$7       .dwtag  DW_TAG_base_type
+    1663                      .dwattr $C$DW$T$7, DW_AT_encoding(DW_ATE_signed_char)
+    1664                      .dwattr $C$DW$T$7, DW_AT_name("wchar_t")
+    1665                      .dwattr $C$DW$T$7, DW_AT_byte_size(0x01)
+    1666              $C$DW$T$8       .dwtag  DW_TAG_base_type
+    1667                      .dwattr $C$DW$T$8, DW_AT_encoding(DW_ATE_signed)
+    1668                      .dwattr $C$DW$T$8, DW_AT_name("short")
+    1669                      .dwattr $C$DW$T$8, DW_AT_byte_size(0x01)
+    1670              
+    1671              $C$DW$T$35      .dwtag  DW_TAG_array_type
+    1672                      .dwattr $C$DW$T$35, DW_AT_type(*$C$DW$T$8)
+    1673                      .dwattr $C$DW$T$35, DW_AT_language(DW_LANG_C)
+    1674                      .dwattr $C$DW$T$35, DW_AT_byte_size(0xff)
+    1675              $C$DW$111       .dwtag  DW_TAG_subrange_type
+    1676                      .dwattr $C$DW$111, DW_AT_upper_bound(0xfe)
+    1677                      .dwendtag $C$DW$T$35
+    1678              
+    1679              $C$DW$T$9       .dwtag  DW_TAG_base_type
+    1680                      .dwattr $C$DW$T$9, DW_AT_encoding(DW_ATE_unsigned)
+    1681                      .dwattr $C$DW$T$9, DW_AT_name("unsigned short")
+    1682                      .dwattr $C$DW$T$9, DW_AT_byte_size(0x01)
+    1683              $C$DW$T$10      .dwtag  DW_TAG_base_type
+    1684                      .dwattr $C$DW$T$10, DW_AT_encoding(DW_ATE_signed)
+    1685                      .dwattr $C$DW$T$10, DW_AT_name("int")
+    1686                      .dwattr $C$DW$T$10, DW_AT_byte_size(0x01)
+    1687              $C$DW$T$11      .dwtag  DW_TAG_base_type
+    1688                      .dwattr $C$DW$T$11, DW_AT_encoding(DW_ATE_unsigned)
+    1689                      .dwattr $C$DW$T$11, DW_AT_name("unsigned int")
+    1690                      .dwattr $C$DW$T$11, DW_AT_byte_size(0x01)
+    1691              $C$DW$T$39      .dwtag  DW_TAG_typedef, DW_AT_name("size_t")
+    1692                      .dwattr $C$DW$T$39, DW_AT_type(*$C$DW$T$11)
+    1693                      .dwattr $C$DW$T$39, DW_AT_language(DW_LANG_C)
+    1694                      .dwattr $C$DW$T$39, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/inc
+    1695                      .dwattr $C$DW$T$39, DW_AT_decl_line(0x19)
+    1696                      .dwattr $C$DW$T$39, DW_AT_decl_column(0x19)
+    1697              $C$DW$T$12      .dwtag  DW_TAG_base_type
+    1698                      .dwattr $C$DW$T$12, DW_AT_encoding(DW_ATE_signed)
+    1699                      .dwattr $C$DW$T$12, DW_AT_name("long")
+    1700                      .dwattr $C$DW$T$12, DW_AT_byte_size(0x02)
+    1701              $C$DW$T$40      .dwtag  DW_TAG_typedef, DW_AT_name("fpos_t")
+    1702                      .dwattr $C$DW$T$40, DW_AT_type(*$C$DW$T$12)
+    1703                      .dwattr $C$DW$T$40, DW_AT_language(DW_LANG_C)
+    1704                      .dwattr $C$DW$T$40, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/inc
+    1705                      .dwattr $C$DW$T$40, DW_AT_decl_line(0x27)
+    1706                      .dwattr $C$DW$T$40, DW_AT_decl_column(0x0e)
+    1707              $C$DW$T$13      .dwtag  DW_TAG_base_type
+    1708                      .dwattr $C$DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
+    1709                      .dwattr $C$DW$T$13, DW_AT_name("unsigned long")
+    1710                      .dwattr $C$DW$T$13, DW_AT_byte_size(0x02)
+    1711              $C$DW$T$14      .dwtag  DW_TAG_base_type
+    1712                      .dwattr $C$DW$T$14, DW_AT_encoding(DW_ATE_signed)
+    1713                      .dwattr $C$DW$T$14, DW_AT_name("long long")
+    1714                      .dwattr $C$DW$T$14, DW_AT_byte_size(0x04)
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   36
+
+    1715                      .dwattr $C$DW$T$14, DW_AT_bit_size(0x28)
+    1716                      .dwattr $C$DW$T$14, DW_AT_bit_offset(0x18)
+    1717              $C$DW$T$15      .dwtag  DW_TAG_base_type
+    1718                      .dwattr $C$DW$T$15, DW_AT_encoding(DW_ATE_unsigned)
+    1719                      .dwattr $C$DW$T$15, DW_AT_name("unsigned long long")
+    1720                      .dwattr $C$DW$T$15, DW_AT_byte_size(0x04)
+    1721                      .dwattr $C$DW$T$15, DW_AT_bit_size(0x28)
+    1722                      .dwattr $C$DW$T$15, DW_AT_bit_offset(0x18)
+    1723              $C$DW$T$16      .dwtag  DW_TAG_base_type
+    1724                      .dwattr $C$DW$T$16, DW_AT_encoding(DW_ATE_float)
+    1725                      .dwattr $C$DW$T$16, DW_AT_name("float")
+    1726                      .dwattr $C$DW$T$16, DW_AT_byte_size(0x02)
+    1727              $C$DW$T$17      .dwtag  DW_TAG_base_type
+    1728                      .dwattr $C$DW$T$17, DW_AT_encoding(DW_ATE_float)
+    1729                      .dwattr $C$DW$T$17, DW_AT_name("double")
+    1730                      .dwattr $C$DW$T$17, DW_AT_byte_size(0x02)
+    1731              $C$DW$T$18      .dwtag  DW_TAG_base_type
+    1732                      .dwattr $C$DW$T$18, DW_AT_encoding(DW_ATE_float)
+    1733                      .dwattr $C$DW$T$18, DW_AT_name("long double")
+    1734                      .dwattr $C$DW$T$18, DW_AT_byte_size(0x02)
+    1735              
+    1736              $C$DW$T$20      .dwtag  DW_TAG_structure_type
+    1737                      .dwattr $C$DW$T$20, DW_AT_byte_size(0x0c)
+    1738              $C$DW$112       .dwtag  DW_TAG_member
+    1739                      .dwattr $C$DW$112, DW_AT_type(*$C$DW$T$10)
+    1740                      .dwattr $C$DW$112, DW_AT_name("fd")
+    1741                      .dwattr $C$DW$112, DW_AT_TI_symbol_name("_fd")
+    1742                      .dwattr $C$DW$112, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+    1743                      .dwattr $C$DW$112, DW_AT_accessibility(DW_ACCESS_public)
+    1744                      .dwattr $C$DW$112, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/incl
+    1745                      .dwattr $C$DW$112, DW_AT_decl_line(0x1d)
+    1746                      .dwattr $C$DW$112, DW_AT_decl_column(0x0b)
+    1747              $C$DW$113       .dwtag  DW_TAG_member
+    1748                      .dwattr $C$DW$113, DW_AT_type(*$C$DW$T$19)
+    1749                      .dwattr $C$DW$113, DW_AT_name("buf")
+    1750                      .dwattr $C$DW$113, DW_AT_TI_symbol_name("_buf")
+    1751                      .dwattr $C$DW$113, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+    1752                      .dwattr $C$DW$113, DW_AT_accessibility(DW_ACCESS_public)
+    1753                      .dwattr $C$DW$113, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/incl
+    1754                      .dwattr $C$DW$113, DW_AT_decl_line(0x1e)
+    1755                      .dwattr $C$DW$113, DW_AT_decl_column(0x16)
+    1756              $C$DW$114       .dwtag  DW_TAG_member
+    1757                      .dwattr $C$DW$114, DW_AT_type(*$C$DW$T$19)
+    1758                      .dwattr $C$DW$114, DW_AT_name("pos")
+    1759                      .dwattr $C$DW$114, DW_AT_TI_symbol_name("_pos")
+    1760                      .dwattr $C$DW$114, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+    1761                      .dwattr $C$DW$114, DW_AT_accessibility(DW_ACCESS_public)
+    1762                      .dwattr $C$DW$114, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/incl
+    1763                      .dwattr $C$DW$114, DW_AT_decl_line(0x1f)
+    1764                      .dwattr $C$DW$114, DW_AT_decl_column(0x16)
+    1765              $C$DW$115       .dwtag  DW_TAG_member
+    1766                      .dwattr $C$DW$115, DW_AT_type(*$C$DW$T$19)
+    1767                      .dwattr $C$DW$115, DW_AT_name("bufend")
+    1768                      .dwattr $C$DW$115, DW_AT_TI_symbol_name("_bufend")
+    1769                      .dwattr $C$DW$115, DW_AT_data_member_location[DW_OP_plus_uconst 0x6]
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   37
+
+    1770                      .dwattr $C$DW$115, DW_AT_accessibility(DW_ACCESS_public)
+    1771                      .dwattr $C$DW$115, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/incl
+    1772                      .dwattr $C$DW$115, DW_AT_decl_line(0x20)
+    1773                      .dwattr $C$DW$115, DW_AT_decl_column(0x16)
+    1774              $C$DW$116       .dwtag  DW_TAG_member
+    1775                      .dwattr $C$DW$116, DW_AT_type(*$C$DW$T$19)
+    1776                      .dwattr $C$DW$116, DW_AT_name("buff_stop")
+    1777                      .dwattr $C$DW$116, DW_AT_TI_symbol_name("_buff_stop")
+    1778                      .dwattr $C$DW$116, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
+    1779                      .dwattr $C$DW$116, DW_AT_accessibility(DW_ACCESS_public)
+    1780                      .dwattr $C$DW$116, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/incl
+    1781                      .dwattr $C$DW$116, DW_AT_decl_line(0x21)
+    1782                      .dwattr $C$DW$116, DW_AT_decl_column(0x16)
+    1783              $C$DW$117       .dwtag  DW_TAG_member
+    1784                      .dwattr $C$DW$117, DW_AT_type(*$C$DW$T$11)
+    1785                      .dwattr $C$DW$117, DW_AT_name("flags")
+    1786                      .dwattr $C$DW$117, DW_AT_TI_symbol_name("_flags")
+    1787                      .dwattr $C$DW$117, DW_AT_data_member_location[DW_OP_plus_uconst 0xa]
+    1788                      .dwattr $C$DW$117, DW_AT_accessibility(DW_ACCESS_public)
+    1789                      .dwattr $C$DW$117, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/incl
+    1790                      .dwattr $C$DW$117, DW_AT_decl_line(0x22)
+    1791                      .dwattr $C$DW$117, DW_AT_decl_column(0x16)
+    1792                      .dwendtag $C$DW$T$20
+    1793              
+    1794                      .dwattr $C$DW$T$20, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/inc
+    1795                      .dwattr $C$DW$T$20, DW_AT_decl_line(0x1c)
+    1796                      .dwattr $C$DW$T$20, DW_AT_decl_column(0x10)
+    1797              $C$DW$T$44      .dwtag  DW_TAG_typedef, DW_AT_name("FILE")
+    1798                      .dwattr $C$DW$T$44, DW_AT_type(*$C$DW$T$20)
+    1799                      .dwattr $C$DW$T$44, DW_AT_language(DW_LANG_C)
+    1800                      .dwattr $C$DW$T$44, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/inc
+    1801                      .dwattr $C$DW$T$44, DW_AT_decl_line(0x23)
+    1802                      .dwattr $C$DW$T$44, DW_AT_decl_column(0x03)
+    1803              $C$DW$T$41      .dwtag  DW_TAG_base_type
+    1804                      .dwattr $C$DW$T$41, DW_AT_encoding(DW_ATE_signed_char)
+    1805                      .dwattr $C$DW$T$41, DW_AT_name("signed char")
+    1806                      .dwattr $C$DW$T$41, DW_AT_byte_size(0x01)
+    1807              $C$DW$T$42      .dwtag  DW_TAG_pointer_type
+    1808                      .dwattr $C$DW$T$42, DW_AT_type(*$C$DW$T$41)
+    1809                      .dwattr $C$DW$T$42, DW_AT_address_class(0x17)
+    1810              $C$DW$T$43      .dwtag  DW_TAG_typedef, DW_AT_name("va_list")
+    1811                      .dwattr $C$DW$T$43, DW_AT_type(*$C$DW$T$42)
+    1812                      .dwattr $C$DW$T$43, DW_AT_language(DW_LANG_C)
+    1813                      .dwattr $C$DW$T$43, DW_AT_decl_file("C:/Program Files/TexasInstruments/ccsv4/tools/compiler/c5500/inc
+    1814                      .dwattr $C$DW$T$43, DW_AT_decl_line(0x0d)
+    1815                      .dwattr $C$DW$T$43, DW_AT_decl_column(0x0f)
+    1816                      .dwattr $C$DW$CU, DW_AT_language(DW_LANG_C)
+    1817              
+    1818              ;***************************************************************
+    1819              ;* DWARF CIE ENTRIES                                           *
+    1820              ;***************************************************************
+    1821              
+    1822              $C$DW$CIE       .dwcie 91
+    1823                      .dwcfi  cfa_register, 36
+    1824                      .dwcfi  cfa_offset, 0
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   38
+
+    1825                      .dwcfi  undefined, 0
+    1826                      .dwcfi  undefined, 1
+    1827                      .dwcfi  undefined, 2
+    1828                      .dwcfi  undefined, 3
+    1829                      .dwcfi  undefined, 4
+    1830                      .dwcfi  undefined, 5
+    1831                      .dwcfi  undefined, 6
+    1832                      .dwcfi  undefined, 7
+    1833                      .dwcfi  undefined, 8
+    1834                      .dwcfi  undefined, 9
+    1835                      .dwcfi  undefined, 10
+    1836                      .dwcfi  undefined, 11
+    1837                      .dwcfi  undefined, 12
+    1838                      .dwcfi  undefined, 13
+    1839                      .dwcfi  same_value, 14
+    1840                      .dwcfi  same_value, 15
+    1841                      .dwcfi  undefined, 16
+    1842                      .dwcfi  undefined, 17
+    1843                      .dwcfi  undefined, 18
+    1844                      .dwcfi  undefined, 19
+    1845                      .dwcfi  undefined, 20
+    1846                      .dwcfi  undefined, 21
+    1847                      .dwcfi  undefined, 22
+    1848                      .dwcfi  undefined, 23
+    1849                      .dwcfi  undefined, 24
+    1850                      .dwcfi  undefined, 25
+    1851                      .dwcfi  same_value, 26
+    1852                      .dwcfi  same_value, 27
+    1853                      .dwcfi  same_value, 28
+    1854                      .dwcfi  same_value, 29
+    1855                      .dwcfi  same_value, 30
+    1856                      .dwcfi  same_value, 31
+    1857                      .dwcfi  undefined, 32
+    1858                      .dwcfi  undefined, 33
+    1859                      .dwcfi  undefined, 34
+    1860                      .dwcfi  undefined, 35
+    1861                      .dwcfi  undefined, 36
+    1862                      .dwcfi  undefined, 37
+    1863                      .dwcfi  undefined, 38
+    1864                      .dwcfi  undefined, 39
+    1865                      .dwcfi  undefined, 40
+    1866                      .dwcfi  undefined, 41
+    1867                      .dwcfi  undefined, 42
+    1868                      .dwcfi  undefined, 43
+    1869                      .dwcfi  undefined, 44
+    1870                      .dwcfi  undefined, 45
+    1871                      .dwcfi  undefined, 46
+    1872                      .dwcfi  undefined, 47
+    1873                      .dwcfi  undefined, 48
+    1874                      .dwcfi  undefined, 49
+    1875                      .dwcfi  undefined, 50
+    1876                      .dwcfi  undefined, 51
+    1877                      .dwcfi  undefined, 52
+    1878                      .dwcfi  undefined, 53
+    1879                      .dwcfi  undefined, 54
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   39
+
+    1880                      .dwcfi  undefined, 55
+    1881                      .dwcfi  undefined, 56
+    1882                      .dwcfi  undefined, 57
+    1883                      .dwcfi  undefined, 58
+    1884                      .dwcfi  undefined, 59
+    1885                      .dwcfi  undefined, 60
+    1886                      .dwcfi  undefined, 61
+    1887                      .dwcfi  undefined, 62
+    1888                      .dwcfi  undefined, 63
+    1889                      .dwcfi  undefined, 64
+    1890                      .dwcfi  undefined, 65
+    1891                      .dwcfi  undefined, 66
+    1892                      .dwcfi  undefined, 67
+    1893                      .dwcfi  undefined, 68
+    1894                      .dwcfi  undefined, 69
+    1895                      .dwcfi  undefined, 70
+    1896                      .dwcfi  undefined, 71
+    1897                      .dwcfi  undefined, 72
+    1898                      .dwcfi  undefined, 73
+    1899                      .dwcfi  undefined, 74
+    1900                      .dwcfi  undefined, 75
+    1901                      .dwcfi  undefined, 76
+    1902                      .dwcfi  undefined, 77
+    1903                      .dwcfi  undefined, 78
+    1904                      .dwcfi  undefined, 79
+    1905                      .dwcfi  undefined, 80
+    1906                      .dwcfi  undefined, 81
+    1907                      .dwcfi  undefined, 82
+    1908                      .dwcfi  undefined, 83
+    1909                      .dwcfi  undefined, 84
+    1910                      .dwcfi  undefined, 85
+    1911                      .dwcfi  undefined, 86
+    1912                      .dwcfi  undefined, 87
+    1913                      .dwcfi  undefined, 88
+    1914                      .dwcfi  undefined, 89
+    1915                      .dwcfi  undefined, 90
+    1916                      .dwcfi  undefined, 91
+    1917                      .dwendentry
+    1918              
+    1919              ;***************************************************************
+    1920              ;* DWARF REGISTER MAP                                          *
+    1921              ;***************************************************************
+    1922              
+    1923              $C$DW$118       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1924                      .dwattr $C$DW$118, DW_AT_location[DW_OP_reg0]
+    1925              $C$DW$119       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0")
+    1926                      .dwattr $C$DW$119, DW_AT_location[DW_OP_reg1]
+    1927              $C$DW$120       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC0_G")
+    1928                      .dwattr $C$DW$120, DW_AT_location[DW_OP_reg2]
+    1929              $C$DW$121       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1930                      .dwattr $C$DW$121, DW_AT_location[DW_OP_reg3]
+    1931              $C$DW$122       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1")
+    1932                      .dwattr $C$DW$122, DW_AT_location[DW_OP_reg4]
+    1933              $C$DW$123       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC1_G")
+    1934                      .dwattr $C$DW$123, DW_AT_location[DW_OP_reg5]
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   40
+
+    1935              $C$DW$124       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1936                      .dwattr $C$DW$124, DW_AT_location[DW_OP_reg6]
+    1937              $C$DW$125       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2")
+    1938                      .dwattr $C$DW$125, DW_AT_location[DW_OP_reg7]
+    1939              $C$DW$126       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC2_G")
+    1940                      .dwattr $C$DW$126, DW_AT_location[DW_OP_reg8]
+    1941              $C$DW$127       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1942                      .dwattr $C$DW$127, DW_AT_location[DW_OP_reg9]
+    1943              $C$DW$128       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3")
+    1944                      .dwattr $C$DW$128, DW_AT_location[DW_OP_reg10]
+    1945              $C$DW$129       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AC3_G")
+    1946                      .dwattr $C$DW$129, DW_AT_location[DW_OP_reg11]
+    1947              $C$DW$130       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T0")
+    1948                      .dwattr $C$DW$130, DW_AT_location[DW_OP_reg12]
+    1949              $C$DW$131       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T1")
+    1950                      .dwattr $C$DW$131, DW_AT_location[DW_OP_reg13]
+    1951              $C$DW$132       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T2")
+    1952                      .dwattr $C$DW$132, DW_AT_location[DW_OP_reg14]
+    1953              $C$DW$133       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("T3")
+    1954                      .dwattr $C$DW$133, DW_AT_location[DW_OP_reg15]
+    1955              $C$DW$134       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0")
+    1956                      .dwattr $C$DW$134, DW_AT_location[DW_OP_reg16]
+    1957              $C$DW$135       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR0")
+    1958                      .dwattr $C$DW$135, DW_AT_location[DW_OP_reg17]
+    1959              $C$DW$136       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1")
+    1960                      .dwattr $C$DW$136, DW_AT_location[DW_OP_reg18]
+    1961              $C$DW$137       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR1")
+    1962                      .dwattr $C$DW$137, DW_AT_location[DW_OP_reg19]
+    1963              $C$DW$138       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2")
+    1964                      .dwattr $C$DW$138, DW_AT_location[DW_OP_reg20]
+    1965              $C$DW$139       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR2")
+    1966                      .dwattr $C$DW$139, DW_AT_location[DW_OP_reg21]
+    1967              $C$DW$140       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3")
+    1968                      .dwattr $C$DW$140, DW_AT_location[DW_OP_reg22]
+    1969              $C$DW$141       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR3")
+    1970                      .dwattr $C$DW$141, DW_AT_location[DW_OP_reg23]
+    1971              $C$DW$142       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4")
+    1972                      .dwattr $C$DW$142, DW_AT_location[DW_OP_reg24]
+    1973              $C$DW$143       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR4")
+    1974                      .dwattr $C$DW$143, DW_AT_location[DW_OP_reg25]
+    1975              $C$DW$144       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5")
+    1976                      .dwattr $C$DW$144, DW_AT_location[DW_OP_reg26]
+    1977              $C$DW$145       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR5")
+    1978                      .dwattr $C$DW$145, DW_AT_location[DW_OP_reg27]
+    1979              $C$DW$146       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6")
+    1980                      .dwattr $C$DW$146, DW_AT_location[DW_OP_reg28]
+    1981              $C$DW$147       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR6")
+    1982                      .dwattr $C$DW$147, DW_AT_location[DW_OP_reg29]
+    1983              $C$DW$148       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7")
+    1984                      .dwattr $C$DW$148, DW_AT_location[DW_OP_reg30]
+    1985              $C$DW$149       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XAR7")
+    1986                      .dwattr $C$DW$149, DW_AT_location[DW_OP_reg31]
+    1987              $C$DW$150       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FP")
+    1988                      .dwattr $C$DW$150, DW_AT_location[DW_OP_regx 0x20]
+    1989              $C$DW$151       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XFP")
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   41
+
+    1990                      .dwattr $C$DW$151, DW_AT_location[DW_OP_regx 0x21]
+    1991              $C$DW$152       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("PC")
+    1992                      .dwattr $C$DW$152, DW_AT_location[DW_OP_regx 0x22]
+    1993              $C$DW$153       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SP")
+    1994                      .dwattr $C$DW$153, DW_AT_location[DW_OP_regx 0x23]
+    1995              $C$DW$154       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XSP")
+    1996                      .dwattr $C$DW$154, DW_AT_location[DW_OP_regx 0x24]
+    1997              $C$DW$155       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BKC")
+    1998                      .dwattr $C$DW$155, DW_AT_location[DW_OP_regx 0x25]
+    1999              $C$DW$156       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK03")
+    2000                      .dwattr $C$DW$156, DW_AT_location[DW_OP_regx 0x26]
+    2001              $C$DW$157       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BK47")
+    2002                      .dwattr $C$DW$157, DW_AT_location[DW_OP_regx 0x27]
+    2003              $C$DW$158       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST0")
+    2004                      .dwattr $C$DW$158, DW_AT_location[DW_OP_regx 0x28]
+    2005              $C$DW$159       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST1")
+    2006                      .dwattr $C$DW$159, DW_AT_location[DW_OP_regx 0x29]
+    2007              $C$DW$160       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST2")
+    2008                      .dwattr $C$DW$160, DW_AT_location[DW_OP_regx 0x2a]
+    2009              $C$DW$161       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ST3")
+    2010                      .dwattr $C$DW$161, DW_AT_location[DW_OP_regx 0x2b]
+    2011              $C$DW$162       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP")
+    2012                      .dwattr $C$DW$162, DW_AT_location[DW_OP_regx 0x2c]
+    2013              $C$DW$163       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP05")
+    2014                      .dwattr $C$DW$163, DW_AT_location[DW_OP_regx 0x2d]
+    2015              $C$DW$164       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("MDP67")
+    2016                      .dwattr $C$DW$164, DW_AT_location[DW_OP_regx 0x2e]
+    2017              $C$DW$165       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC0")
+    2018                      .dwattr $C$DW$165, DW_AT_location[DW_OP_regx 0x2f]
+    2019              $C$DW$166       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0")
+    2020                      .dwattr $C$DW$166, DW_AT_location[DW_OP_regx 0x30]
+    2021              $C$DW$167       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA0_H")
+    2022                      .dwattr $C$DW$167, DW_AT_location[DW_OP_regx 0x31]
+    2023              $C$DW$168       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0")
+    2024                      .dwattr $C$DW$168, DW_AT_location[DW_OP_regx 0x32]
+    2025              $C$DW$169       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA0_H")
+    2026                      .dwattr $C$DW$169, DW_AT_location[DW_OP_regx 0x33]
+    2027              $C$DW$170       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRS1")
+    2028                      .dwattr $C$DW$170, DW_AT_location[DW_OP_regx 0x34]
+    2029              $C$DW$171       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BRC1")
+    2030                      .dwattr $C$DW$171, DW_AT_location[DW_OP_regx 0x35]
+    2031              $C$DW$172       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1")
+    2032                      .dwattr $C$DW$172, DW_AT_location[DW_OP_regx 0x36]
+    2033              $C$DW$173       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RSA1_H")
+    2034                      .dwattr $C$DW$173, DW_AT_location[DW_OP_regx 0x37]
+    2035              $C$DW$174       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1")
+    2036                      .dwattr $C$DW$174, DW_AT_location[DW_OP_regx 0x38]
+    2037              $C$DW$175       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("REA1_H")
+    2038                      .dwattr $C$DW$175, DW_AT_location[DW_OP_regx 0x39]
+    2039              $C$DW$176       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CSR")
+    2040                      .dwattr $C$DW$176, DW_AT_location[DW_OP_regx 0x3a]
+    2041              $C$DW$177       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RPTC")
+    2042                      .dwattr $C$DW$177, DW_AT_location[DW_OP_regx 0x3b]
+    2043              $C$DW$178       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDP")
+    2044                      .dwattr $C$DW$178, DW_AT_location[DW_OP_regx 0x3c]
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   42
+
+    2045              $C$DW$179       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("XCDP")
+    2046                      .dwattr $C$DW$179, DW_AT_location[DW_OP_regx 0x3d]
+    2047              $C$DW$180       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN0")
+    2048                      .dwattr $C$DW$180, DW_AT_location[DW_OP_regx 0x3e]
+    2049              $C$DW$181       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TRN1")
+    2050                      .dwattr $C$DW$181, DW_AT_location[DW_OP_regx 0x3f]
+    2051              $C$DW$182       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA01")
+    2052                      .dwattr $C$DW$182, DW_AT_location[DW_OP_regx 0x40]
+    2053              $C$DW$183       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA23")
+    2054                      .dwattr $C$DW$183, DW_AT_location[DW_OP_regx 0x41]
+    2055              $C$DW$184       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA45")
+    2056                      .dwattr $C$DW$184, DW_AT_location[DW_OP_regx 0x42]
+    2057              $C$DW$185       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSA67")
+    2058                      .dwattr $C$DW$185, DW_AT_location[DW_OP_regx 0x43]
+    2059              $C$DW$186       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("BSAC")
+    2060                      .dwattr $C$DW$186, DW_AT_location[DW_OP_regx 0x44]
+    2061              $C$DW$187       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CARRY")
+    2062                      .dwattr $C$DW$187, DW_AT_location[DW_OP_regx 0x45]
+    2063              $C$DW$188       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC1")
+    2064                      .dwattr $C$DW$188, DW_AT_location[DW_OP_regx 0x46]
+    2065              $C$DW$189       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("TC2")
+    2066                      .dwattr $C$DW$189, DW_AT_location[DW_OP_regx 0x47]
+    2067              $C$DW$190       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("M40")
+    2068                      .dwattr $C$DW$190, DW_AT_location[DW_OP_regx 0x48]
+    2069              $C$DW$191       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SXMD")
+    2070                      .dwattr $C$DW$191, DW_AT_location[DW_OP_regx 0x49]
+    2071              $C$DW$192       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("ARMS")
+    2072                      .dwattr $C$DW$192, DW_AT_location[DW_OP_regx 0x4a]
+    2073              $C$DW$193       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("C54CM")
+    2074                      .dwattr $C$DW$193, DW_AT_location[DW_OP_regx 0x4b]
+    2075              $C$DW$194       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATA")
+    2076                      .dwattr $C$DW$194, DW_AT_location[DW_OP_regx 0x4c]
+    2077              $C$DW$195       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SATD")
+    2078                      .dwattr $C$DW$195, DW_AT_location[DW_OP_regx 0x4d]
+    2079              $C$DW$196       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("RDM")
+    2080                      .dwattr $C$DW$196, DW_AT_location[DW_OP_regx 0x4e]
+    2081              $C$DW$197       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("FRCT")
+    2082                      .dwattr $C$DW$197, DW_AT_location[DW_OP_regx 0x4f]
+    2083              $C$DW$198       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("SMUL")
+    2084                      .dwattr $C$DW$198, DW_AT_location[DW_OP_regx 0x50]
+    2085              $C$DW$199       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("INTM")
+    2086                      .dwattr $C$DW$199, DW_AT_location[DW_OP_regx 0x51]
+    2087              $C$DW$200       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR0LC")
+    2088                      .dwattr $C$DW$200, DW_AT_location[DW_OP_regx 0x52]
+    2089              $C$DW$201       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR1LC")
+    2090                      .dwattr $C$DW$201, DW_AT_location[DW_OP_regx 0x53]
+    2091              $C$DW$202       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR2LC")
+    2092                      .dwattr $C$DW$202, DW_AT_location[DW_OP_regx 0x54]
+    2093              $C$DW$203       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR3LC")
+    2094                      .dwattr $C$DW$203, DW_AT_location[DW_OP_regx 0x55]
+    2095              $C$DW$204       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR4LC")
+    2096                      .dwattr $C$DW$204, DW_AT_location[DW_OP_regx 0x56]
+    2097              $C$DW$205       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR5LC")
+    2098                      .dwattr $C$DW$205, DW_AT_location[DW_OP_regx 0x57]
+    2099              $C$DW$206       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR6LC")
+TMS320C55x Assembler PC v4.3.8 Wed Nov 09 11:17:58 2016
+
+Tools Copyright (c) 1996-2010 Texas Instruments Incorporated
+main.asm                                                             PAGE   43
+
+    2100                      .dwattr $C$DW$206, DW_AT_location[DW_OP_regx 0x58]
+    2101              $C$DW$207       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("AR7LC")
+    2102                      .dwattr $C$DW$207, DW_AT_location[DW_OP_regx 0x59]
+    2103              $C$DW$208       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CDPLC")
+    2104                      .dwattr $C$DW$208, DW_AT_location[DW_OP_regx 0x5a]
+    2105              $C$DW$209       .dwtag  DW_TAG_TI_assign_register, DW_AT_name("CIE_RETA")
+    2106                      .dwattr $C$DW$209, DW_AT_location[DW_OP_regx 0x5b]
+    2107                      .dwendtag $C$DW$CU
+    2108              
+    2108              
+    2108              
+
+No Assembly Errors, No Assembly Warnings

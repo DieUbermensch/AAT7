@@ -1,0 +1,248 @@
+\section{Cancellation path}
+\subsection{Purpose}
+The purpose of this experiment is to determine the impulse response of the cancellation path, i.e. the transfer-function between the "source-loudspeaker" and the "error-microphone (ear)".
+		
+\subsection{AAU number list}
+\begin{table}[h]
+	\centering
+	\ra{1.3}
+	\begin{tabular}{ c c c } \toprule
+		{Item}	& {Description} 						& {AAU-no}. \\ \bottomrule 
+		1	&	B\&K Head And Torso Simulator "Henry" Type 4128	& 08453		\\
+		2	&	B\&K Ear Simulator Type 4159			& 08453		\\
+		3	&	Sennheiser HD 200	Headphones			& 33379		\\
+		4	&	Roland Edirol UA-25EX Audio Capture		& 64696		\\
+		5	&	Vision B3565 Computer					& NaN		\\
+		6	&	B\&K Microphone Power Supply Type 2804	& 07304		\\
+		%5	&	B\&K \textonehalf'' Condenser Microphone Type 4134 & 61447\\
+		%6	&	B\&K Sound Calibrator Type 4231			& 78301		\\ 
+		7	&	B\&K Sound Intensity Calibrator Type 3541	& 08597	\\ \bottomrule
+	\end{tabular}
+	\caption{Table over equipment used in test.}
+	\label{tab:UsedEquipmentListningCP}
+\end{table}
+
+\subsection{Diagrams}
+\begin{figure}[H]
+	\centering
+<<<<<<< HEAD
+	\tikzsetnextfilename{CancellationPath}
+	\input{figures/CancellationPath_MATLAB_Figures/CancellationPath.tex}
+%	\includegraphics[width=0.7\textwidth]{Shematic_CalcellationPath.pdf}
+	\caption{Total overview of the system.}
+=======
+	\includegraphics[width=0.7\textwidth]{Shematic_CalcellationPath.pdf}
+	\caption{Total overview of the system. (Oliver needs to make the drawing)}
+>>>>>>> 5ef874cb658ba5b124dc77315e9b8db18b65f625
+	\label{SchematicOverview}
+\end{figure}
+
+\subsection{Settings/Description}
+\label{SettingsCacellationPath}
+
+Calibration of the microphone and associated preamplifier is done on the computer using Simulink\textsuperscript{\textregistered}. The following settings are present:
+
+\subsubsection{Control and calibration}
+\begin{itemize}
+	\item 93.2 dB (-0.8 is subtracted from 94 dB due to adapters) $@$ 250 Hz is used as calibration signal
+	\item Microphone sensitivity is controlled to 11.6 $m$V/Pa
+	\item Calibration signal yields an amplitude of 0.6 relative to 0 dBFS
+	\item Calibration signal yields a spike at 95.5 dB SPL, which requires a -2.3 dB SPL adjustment
+\end{itemize}
+
+\subsubsection{Equipment settings}
+\begin{itemize}
+	\item This experiment is performed with a sampling rate of, $F_{s}$ = 48,000 Hz
+	\item Item 4 (sound capture card):
+		\begin{itemize}
+			\item "SENS(INPUT 1/L)" is set to +0 dB"
+			\item "SENS(INPUT 2/R)" is set to +0 dB"
+			\item "PHONES" is set to maximum volume
+		\end{itemize}		
+	\item Item 5 (computer) is set to 0 dBFS
+\end{itemize}
+
+
+\subsection{Pictures}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{CancellationPath_and_Headphones/FullSetup.jpg}
+%	\caption{Full setup of experiment (Note that "outside" microphone is not in use in the experiment).} 
+%	\label{FullSetupCancellationPath}
+%\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{CancellationPath_and_Headphones/CloseUpFace.jpg}
+	\caption{Close up of experiment (Note that "outside" microphone is not in use in the experiment).}
+	\label{CloseUpCancellationPath}
+\end{figure}
+
+\subsection{Procedure}
+\subsubsection{Set-up}
+\begin{enumerate}
+	\item Set instruments to comply with the list in \ref{SettingsCacellationPath}
+	\item Control and calibrate item 2 using item 7
+	\item Place item 3 onto item 1 ("Henry"'s head and ears)
+	\item Insert item 2's connector into input of item 6
+	\item Connect item 6 to item 4 and connect item 4 to item 5 via USB
+	\item Insert item 3's connector into output of item 4
+	\item Connect cable from item 4's output to item 4's input
+\end{enumerate}
+
+\subsubsection{Performing the experiment}
+\begin{enumerate}
+	\item Open Simulink\textsuperscript{\textregistered} and open and run file "SimulinkSystemCancellationPath.xls"
+	\begin{itemize} 
+		\item The simulations outputs a logarithmic chirp from 20 Hz to 20,000 Hz at 0 dBFS over the span of five seconds
+		\item The simulation runs for six seconds
+	\end{itemize}
+	%\item Through Simulink\textsuperscript{\textregistered} play "LogChirp.wav" from item 5 via item 4
+	\item Rename outputted file "Mic" and "Ref" to "Mic[i].wav" and Ref[i].wav" \footnote{[i] indicates the iteration of the experiment}
+	\begin{itemize}
+		\item[] Perform this experiment for a total of 5 times
+	\end{itemize}
+\end{enumerate}
+If there is a discontinuity  on the recorded signal(s) discard that recording.
+
+
+\subsubsection{Data Extraction}
+\begin{enumerate}
+	%\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m".
+	\item Open MATLAB\textsuperscript{\textregistered} and run script "CancellationPathScript.m"
+\end{enumerate}
+From the performing of the experiment, 10 files has been generated:
+\begin{itemize}
+	\item Mic1.wav - Mic5.wav
+	\item Ref1.wav - Ref5.wav
+\end{itemize}
+
+These files are the results of performing the six second simulation which gives a number of 288,768 samples, for each generated .wav-file.
+An example showing outputted Mic1 and Ref1 are shown in  \autoref{AmplitudePlotCancellationPath}.
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{CancellationPathAmplitudePlot2}
+	\input{figures/CancellationPath_MATLAB_Figures/Amplitudeplot2.tex}
+	\caption{Time plot of the cancellation path.}
+	\label{AmplitudePlotCancellationPath}
+\end{figure}
+
+MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m" is used for data extraction and analysis.
+
+
+
+\subsection{Analysis}
+The impulse response of the "cancellation path" is to be found.
+This is done by first finding the frequency response of the "cancellation path", which is found by taking the cross correlation between Mic[i] and Ref[i]. This is done by taking the FT (Fourier Transform of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
+
+
+
+\begin{equation}\label{FrequencyResponseEq2}
+%H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
+H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
+\end{equation}
+Where:
+\begin{itemize}
+	%\item " $*$ " denotes the complex conjugation
+	\item $H(f)$ is the FT of the 'Cancellation Path'
+	\item $Y(f)$ is the FT of the recorded microphone signals, Mic[i]
+	\item $X(f)$ is the FT of the recorded reference signals, Ref[i]
+\end{itemize}
+
+The frequency response of the cancellation path is shown at \autoref{FrequencyResponsePlotCancellationPath}.
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{CancellationPathFrequencyResponse1}
+	\input{figures/CancellationPath_MATLAB_Figures/CP_freqresp.tex}
+	\caption{Frequency response plot of the cancellation path}
+	\label{FrequencyResponsePlotCancellationPath}
+\end{figure}
+
+
+
+The impulse response of this "cancellation path" is found by taking the IFT (Inverse Fourier Transform) of the frequency response.
+The impulse response is shown on \autoref{CancellationPathImpulseResponse}.
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{CancellationPathImpulseResponse1}
+	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.tex}
+	\caption{Impulse response plot of the cancellation path}
+	\label{CancellationPathImpulseResponse}
+\end{figure}
+
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.85\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.png}
+%	\caption{Impulse Response plot of the cancellation path (NOT TIKZ).}
+%	\label{CancellationPathImpulseResponse}
+%\end{figure}
+
+Converting the impulse response from magnitude to dB, gives the time decay which reveals the SNR (Signal to Noise Ratio) of the system, and from the read off SNR is found to be $\sim$ 50 dB SNR, as seen on \autoref{TimeDecayPlotCancellationPath}.
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.85\textwidth]{CancellationPath_MATLAB_Figures/CancellationPathTimeDecay.png}
+%	\caption{Time decay plot of the cancellation path (NOT TIKZ).}
+%	\label{TimeDecayPlotCancellationPath}
+%\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{TimeDecayPlotCancellationPath1}
+	\input{figures/CancellationPath_MATLAB_Figures/TimeDecayPlotCancellationPath.tex}
+	\caption{Time decay plot of the cancellation path}
+	\label{TimeDecayPlotCancellationPath}
+\end{figure}
+
+
+Taking the first 256 coefficients of the impulse response gives the following cropped impulse response, as seen on \autoref{CancellationPathImpulseResponseCrop}.
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{CancellationPathImpulseResponseCrop1}
+	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponseCrop.tex}
+	\caption{Cropped impulse response plot of the cancellation path}
+	\label{CancellationPathImpulseResponseCrop}
+\end{figure}
+To verify that the frequency response of the cropped impulse response approximately equals that of the non-cropped impulse response the two frequency responses are compared. This can be seen on \autoref{CancellationPathImpulseResponseCompare}.
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{CancellationPathImpulseResponseCompare1}
+	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponseCompare.tex}
+	\caption{Cropped Impulse response plot of the cancellation path}
+	\label{CancellationPathImpulseResponseCompare}
+\end{figure}
+
+From \autoref{CancellationPathImpulseResponseCompare} it can be concluded that 256 coefficients is sufficient. 
+
+\subsection{Error Sources / Tolerances}
+\begin{itemize}
+	\item Placement of the actuators and test-devices
+	\item Instrument inaccuracies see \autoref{TolerancesCP}
+	\item Low-frequency background noise
+\end{itemize}
+
+\begin{table}[h]
+	\centering
+	\ra{1.3}
+	\begin{tabular}{ c c l } \toprule
+		{Item}	& 		{Description} 	& {Tolerance ([dB$_{re20\mu P}$])}.	 \\ \bottomrule 
+		2	&	B\&K Ear Simulator Type 4159				& $\pm$ 1.5 	\\
+		%3	&	Sennheiser HD 200 Headphones				& x		\\
+		4	&	Roland Edirol UA-25EX Audio Capture			& $\pm$ 1.0	\\
+		%6	&	B\&K Microphone Power Supply Type 2804		& 2 \%	\\ 
+		7	&	B\&K Sound Intensity Calibrator Type 3541	& $\pm$ 0.2	\\ \bottomrule
+			&	Total tolerance								& $\pm$ 2.7	\\ \bottomrule	
+	\end{tabular}
+	\caption{Table showing error tolerances for used equipment.}
+	\label{TolerancesCP}
+\end{table}
+
+\subsection{Conclusion}
+It can be concluded that an impulse response of 256 coefficients, see \autoref{CancellationPathImpulseResponse}, is found for the "Cancellation path".
+%The impulse response on  shows the coefficients of the system, and a file containing all 256 is generated with the name "CoeffientsCP.mat"

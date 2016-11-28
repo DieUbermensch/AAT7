@@ -1,0 +1,49 @@
+\begin{tikzpicture}
+
+
+\begin{axis}[%
+width=5.5in,
+height=2.566in,
+scale only axis,
+%point meta min=-119.999592255047,
+%point meta max=-13.064611467143,
+axis on top,
+xmin=20,
+xmax=20000,
+xlabel={Time [s]},
+ylabel={Amplitude [$\cdot$ \textsubscript{re. 0 dBFS}]},
+ymin=-50,
+ymax=50,
+%ytick=\empty,
+axis background/.style={fill=white},
+name=border,
+ymajorgrids,
+xmode=log,
+%xmajorgrids
+]
+\addplot [forget plot] graphics [xmin=20,xmax=20000,ymin=-50,ymax=50] {CancellationPath_MATLAB_Figures/figure2.pdf};
+
+
+\end{axis}
+
+%\node[
+%draw=black,
+%%thick,
+%%rounded corners=1pt,
+%below left=2mm
+%] at (border.north east) {\renewcommand{\arraystretch}{0.8}
+%	\begin{tabular}{@{}r@{ }l@{}}
+%	\raisebox{2pt}{\tikz{\draw[MATLABblue] (0,0) -- (5mm,0);}}&Ref1\\
+%	\raisebox{2pt}{\tikz{\draw[MATLABorange] (0,0) -- (5mm,0);}}&Mic1\\
+%	\end{tabular}};
+
+
+
+%    \begin{customlegend}[legend entries={$a$,$e^x$,C,$d$},legend style={at={(6.5,0.6)},anchor=center}]
+%    \addlegendimage{red,fill=black!50!red,area legend}
+%    \addlegendimage{red,fill=black!50!red,sharp plot}
+%    \addlegendimage{red,fill=black!50!red,mark=*,sharp plot}
+%    \addlegendimage{red,fill=black!50!red,ybar,ybar legend}
+%    \end{customlegend}
+
+\end{tikzpicture}%
