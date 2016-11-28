@@ -76,9 +76,11 @@ void main( void )
       	        if(i == N)
       	        {
       	        	i = 0;
+      	        	iLMS = 0;
       	        }
       	        x[i] = data3;
        	        y[i] = FIR(x,b,N,i);
+       	        FXLMS(x, b, 1, NLMS, constants);
        	        data3 = y[i];
        	        data4 = y[i];      	               
        	        i++;

@@ -10,41 +10,6 @@ CG_TOOL_ROOT := C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/com
 
 ORDERED_OBJS += \
 $(GEN_CMDS_QUOTED) \
-"./API/src/vectors.obj" \
-"./API/src/evm5515_i2c.obj" \
-"./API/src/evm5515_gpio.obj" \
-"./API/src/evm5515.obj" \
-"./API/src/csl_wdt.obj" \
-"./API/src/csl_usb.obj" \
-"./API/src/csl_uhpi.obj" \
-"./API/src/csl_uart.obj" \
-"./API/src/csl_sysctrl.obj" \
-"./API/src/csl_spi.obj" \
-"./API/src/csl_sdio.obj" \
-"./API/src/csl_sar.obj" \
-"./API/src/csl_rtc.obj" \
-"./API/src/csl_pll.obj" \
-"./API/src/csl_nand.obj" \
-"./API/src/csl_msc.obj" \
-"./API/src/csl_mmcsd_ataIf.obj" \
-"./API/src/csl_mmcsd.obj" \
-"./API/src/csl_mem.obj" \
-"./API/src/csl_mcspi.obj" \
-"./API/src/csl_mcbsp.obj" \
-"./API/src/csl_lcdc.obj" \
-"./API/src/csl_irqplug.obj" \
-"./API/src/csl_intc.obj" \
-"./API/src/csl_i2s.obj" \
-"./API/src/csl_i2c_ioExpander.obj" \
-"./API/src/csl_i2c.obj" \
-"./API/src/csl_hid.obj" \
-"./API/src/csl_gpt.obj" \
-"./API/src/csl_gpio.obj" \
-"./API/src/csl_emif.obj" \
-"./API/src/csl_dma.obj" \
-"./API/src/csl_dat.obj" \
-"./API/src/csl_cdc.obj" \
-"./API/src/csl_audioClass.obj" \
 "./include/usbstk5515_led.obj" \
 "./include/usbstk5515_i2c.obj" \
 "./include/usbstk5515_gpio.obj" \
@@ -63,10 +28,8 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include include/subdir_vars.mk
--include API/src/subdir_vars.mk
 -include subdir_rules.mk
 -include include/subdir_rules.mk
--include API/src/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -159,17 +122,16 @@ all: aic3204Slave.out
 aic3204Slave.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Linker'
-	"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/bin/cl55" -g --define=CHIP_C5515 --diag_warning=225 --ptrdiff_size=16 --algebraic --memory_model=small --asm_source=algebraic -z -m"aic3204Slave.map" --warn_sections -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/include" --reread_libs --rom_model -o "aic3204Slave.out" $(ORDERED_OBJS)
+	"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/bin/cl55" -g --define=CHIP_C5515 --diag_warning=225 --ptrdiff_size=16 --algebraic --small_enum --memory_model=small --asm_source=mnemonic -z -m"aic3204Slave.map" --warn_sections -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/lib" -i"C:/Program Files (x86)/Texas Instruments/cssv424/ccsv4/tools/compiler/c5500/include" --reread_libs --rom_model -o "aic3204Slave.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(C5500_EXECUTABLE_OUTPUTS__QTD) "aic3204Slave.out"
-	-$(RM) ".\Functions.obj" ".\main.obj" ".\include\usbstk5515.obj" ".\include\usbstk5515_gpio.obj" ".\include\usbstk5515_i2c.obj" ".\include\usbstk5515_led.obj" ".\API\src\csl_audioClass.obj" ".\API\src\csl_cdc.obj" ".\API\src\csl_dat.obj" ".\API\src\csl_dma.obj" ".\API\src\csl_emif.obj" ".\API\src\csl_gpio.obj" ".\API\src\csl_gpt.obj" ".\API\src\csl_hid.obj" ".\API\src\csl_i2c.obj" ".\API\src\csl_i2c_ioExpander.obj" ".\API\src\csl_i2s.obj" ".\API\src\csl_intc.obj" ".\API\src\csl_irqplug.obj" ".\API\src\csl_lcdc.obj" ".\API\src\csl_mcbsp.obj" ".\API\src\csl_mcspi.obj" ".\API\src\csl_mem.obj" ".\API\src\csl_mmcsd.obj" ".\API\src\csl_mmcsd_ataIf.obj" ".\API\src\csl_msc.obj" ".\API\src\csl_nand.obj" ".\API\src\csl_pll.obj" ".\API\src\csl_rtc.obj" ".\API\src\csl_sar.obj" ".\API\src\csl_sdio.obj" ".\API\src\csl_spi.obj" ".\API\src\csl_sysctrl.obj" ".\API\src\csl_uart.obj" ".\API\src\csl_uhpi.obj" ".\API\src\csl_usb.obj" ".\API\src\csl_wdt.obj" ".\API\src\evm5515.obj" ".\API\src\evm5515_gpio.obj" ".\API\src\evm5515_i2c.obj" 
-	-$(RM) ".\API\src\vectors.obj" 
-	-$(RM) ".\Functions.pp" ".\API\src\csl_irqplug.pp" ".\API\src\vectors.pp" 
-	-$(RM) ".\main.pp" ".\include\usbstk5515.pp" ".\include\usbstk5515_gpio.pp" ".\include\usbstk5515_i2c.pp" ".\include\usbstk5515_led.pp" ".\API\src\csl_audioClass.pp" ".\API\src\csl_cdc.pp" ".\API\src\csl_dat.pp" ".\API\src\csl_dma.pp" ".\API\src\csl_emif.pp" ".\API\src\csl_gpio.pp" ".\API\src\csl_gpt.pp" ".\API\src\csl_hid.pp" ".\API\src\csl_i2c.pp" ".\API\src\csl_i2c_ioExpander.pp" ".\API\src\csl_i2s.pp" ".\API\src\csl_intc.pp" ".\API\src\csl_lcdc.pp" ".\API\src\csl_mcbsp.pp" ".\API\src\csl_mcspi.pp" ".\API\src\csl_mem.pp" ".\API\src\csl_mmcsd.pp" ".\API\src\csl_mmcsd_ataIf.pp" ".\API\src\csl_msc.pp" ".\API\src\csl_nand.pp" ".\API\src\csl_pll.pp" ".\API\src\csl_rtc.pp" ".\API\src\csl_sar.pp" ".\API\src\csl_sdio.pp" ".\API\src\csl_spi.pp" ".\API\src\csl_sysctrl.pp" ".\API\src\csl_uart.pp" ".\API\src\csl_uhpi.pp" ".\API\src\csl_usb.pp" ".\API\src\csl_wdt.pp" ".\API\src\evm5515.pp" ".\API\src\evm5515_gpio.pp" ".\API\src\evm5515_i2c.pp" 
+	-$(RM) ".\Functions.obj" ".\main.obj" ".\include\usbstk5515.obj" ".\include\usbstk5515_gpio.obj" ".\include\usbstk5515_i2c.obj" ".\include\usbstk5515_led.obj" 
+	-$(RM) ".\Functions.pp" 
+	-$(RM) ".\main.pp" ".\include\usbstk5515.pp" ".\include\usbstk5515_gpio.pp" ".\include\usbstk5515_i2c.pp" ".\include\usbstk5515_led.pp" 
 	-@echo ' '
 
 .PHONY: all clean dependents

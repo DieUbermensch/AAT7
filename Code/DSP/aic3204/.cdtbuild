@@ -51,6 +51,9 @@
 </tool>
 <macros expandEnvironmentMacros="true"/>
 </toolChain>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.C5500.Debug.1186441741./aic3204/main.c" name="main.c" rcbsApplicability="disable" resourcePath="/aic3204/main.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.compilerDebug.1162093177./aic3204/main.c">
+<tool id="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.compilerDebug.1162093177./aic3204/main.c" name="C5500 Compiler" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.compilerDebug.1162093177"/>
+</resourceConfiguration>
 </configuration>
 <macros/>
 </project>
