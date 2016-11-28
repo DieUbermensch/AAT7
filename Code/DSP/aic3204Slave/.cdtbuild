@@ -25,15 +25,14 @@
 <listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/aic3204Slave/include}&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/aic3204Slave/Debug}&quot;"/>
-<listOptionValue builtIn="false" value="&quot;${workspace_loc:/aic3204Slave/API/inc}&quot;"/>
-<listOptionValue builtIn="false" value="&quot;${workspace_loc:/aic3204Slave/API/src}&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/aic3204Slave/Debug/include}&quot;"/>
 </option>
 <option id="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.DEFINE.1187149989" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.DEFINE" valueType="definedSymbols">
 <listOptionValue builtIn="false" value="CHIP_C5515"/>
 </option>
 <option id="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.ALGEBRAIC.671094456" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.ALGEBRAIC" value="true" valueType="boolean"/>
-<option id="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.ASM_SOURCE.1554876719" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.ASM_SOURCE" value="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.ASM_SOURCE.algebraic" valueType="enumerated"/>
+<option id="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.ASM_SOURCE.1554876719" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.ASM_SOURCE" value="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.ASM_SOURCE.mnemonic" valueType="enumerated"/>
+<option id="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.SMALL_ENUM.359878499" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.compilerID.SMALL_ENUM" value="true" valueType="boolean"/>
 </tool>
 <tool id="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.linkerDebug.318084604" name="C5500 Linker" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.exe.linkerDebug">
 <option id="com.ti.ccstudio.buildDefinitions.C5500_4.3.linkerID.OUTPUT_FILE.551287794" superClass="com.ti.ccstudio.buildDefinitions.C5500_4.3.linkerID.OUTPUT_FILE" value="&quot;aic3204Slave.out&quot;" valueType="string"/>

@@ -93,5 +93,4 @@ K_DEPS__QTD :=
 SUBDIRS := \
 . \
 include \
-API/src \
 

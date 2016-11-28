@@ -4,7 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../main.c 
+../FIRFIlterTest.c 
 
 ASM_SRCS += \
 ../Functions.asm 
@@ -16,26 +16,26 @@ ASM_DEPS += \
 ./Functions.pp 
 
 OBJS += \
-./Functions.obj \
-./main.obj 
+./FIRFIlterTest.obj \
+./Functions.obj 
 
 C_DEPS += \
-./main.pp 
+./FIRFIlterTest.pp 
 
 OBJS__QTD += \
-".\Functions.obj" \
-".\main.obj" 
+".\FIRFIlterTest.obj" \
+".\Functions.obj" 
 
 ASM_DEPS__QTD += \
 ".\Functions.pp" 
 
 C_DEPS__QTD += \
-".\main.pp" 
+".\FIRFIlterTest.pp" 
+
+C_SRCS_QUOTED += \
+"../FIRFIlterTest.c" 
 
 ASM_SRCS_QUOTED += \
 "../Functions.asm" 
-
-C_SRCS_QUOTED += \
-"../main.c" 
 
 
