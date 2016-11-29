@@ -34,12 +34,10 @@ Int16 data1 = 0, data2 = 0, data3 = 0, data4 = 0;
 
 //FIR
 extern Int16 FIR(Int16 *x, Int16 *b, Int16 order, Int16 index);
-#define N 16
+#define N 5
 Int16 x[N];
-//Int16 b[] = {0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD};
-//Int16 b[] = {0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000}; //Passthrough filter
-Int16 b[] = {0x709,0x737,0x760,0x783,0x7A1,0x7B8,0x7C8,0x7D2,0x7D5,0x7D2,0x7C8,0x7B8,0x7A1,0x783,0x760,0x737,0x709}; //Ref Filter
-
+Int16 b[] = {0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD,0xCCD};
+//Int16 b[] = {1,0,0,0,0,0,0,0,0,0};
 Int16 y[N];
 Int16 i = 0;
 
@@ -52,6 +50,10 @@ Int16 u = 1; //Is multiplied in initialize function
 Int16 iLMS = 0;
 Int16 e = 1;
 Int16 constants[2];
+
+
+
+
 
 
 void main( void )
@@ -69,34 +71,12 @@ void main( void )
       	        data4 = I2S0_W1_MSW_R;  // 16 bit right channel received audio data
       	        data2 = I2S0_W1_LSW_R;
 
-      	        //asm(" bset XF");
-      	        /* Signal processing */
-      	        asm(" bclr XF");
-      	        
-      	        if(i == N)
-      	        {
-      	        	i = 0;
-      	        	iLMS = 0;
-      	        }
-      	        x[i] = data3;
-       	        y[i] = FIR(x,b,N,i);
-       	        FXLMS(x, b, 1, NLMS, constants);
-       	        data3 = y[i];
-       	        data4 = y[i];      	               
-       	        i++;
-       	        iLMS++;
-      	        asm(" bset XF");
-
-
-
-
-
 				/* Write Digital audio */
       	        //while((Xmit & I2S0_IR) == 0);  // Wait for interrupt pending flag
       	        asm(" bclr XF");
-				I2S0_W0_MSW_W = y[i-1];  // 16 bit left channel transmit audio data
+				I2S0_W0_MSW_W = data3;  // 16 bit left channel transmit audio data
       	        I2S0_W0_LSW_W = 0;
-      	        I2S0_W1_MSW_W = y[i-1];  // 16 bit right channel transmit audio data
+      	        I2S0_W1_MSW_W = data4;  // 16 bit right channel transmit audio data
       	        I2S0_W1_LSW_W = 0;
       	        
 			}
