@@ -1,0 +1,111 @@
+
+\section{Test of Consumer Headphones}
+
+\subsection{Purpose}
+The purpose of this section is to determine how well the existing consumer headphones available today perform, both on stationary signals but also stochastic speech signals.
+
+
+
+
+\subsection{AAU number list}
+\begin{table}[H]
+	\centering
+	\ra{1.3}
+	\begin{tabular}{ c c c } \toprule
+		{Item}	& {Description} 						& {AAU-no}. \\ \bottomrule 
+		1	&	B\&K Head And Torso Simulator "Henry" Type 4128	& 08453	\\
+		2	&	B\&K Ear Simulator Type 4159				& 08453		\\
+		3	&	Soundcard RME Fireface 802					& 86838		\\
+		4	&	Computer running simulink					& NaN		\\
+		5	&	B\&K Sound Calibrator Type 4230				& 08155		\\ 
+		6	&	Genelec speaker								& 33990		\\ 
+		7	& 	B\&K Microphone Power Supply Type 2804		& 07304		\\
+		\bottomrule
+	\end{tabular}
+	\caption{Table over equipment used in test.}
+	\label{tab:UsedEquipmentListConsumerHP}
+\end{table}
+
+
+
+\subsection{Diagram}
+
+
+
+\subsection{Settings/Description}
+	\subsubsection{Equipment settings}
+	
+	
+\subsection{Picture}
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		%	\tikzsetnextfilename{AttenuationSetup}
+		%	\input{figures/AttenuationExperiment/SchematicSetup.tex}
+		\includegraphics[width=\textwidth]{../Journal/Experiments/TestofConsumerHeadphones/Pictures/OtherBrandsSetupBack.jpg}
+		\caption{Set-up from the back.}
+		%\label{fig:AttenuationSetup}
+	\end{subfigure}\qquad
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{../Journal/Experiments/TestofConsumerHeadphones/Pictures/OtherBrandsSetupAngle.jpg}
+		\caption{Set-up form an angle.}
+		%\label{fig:SetupFront}
+		\vspace{2ex}
+		\includegraphics[width=\textwidth]{../Journal/Experiments/TestofConsumerHeadphones/Pictures/OtherBrandsSetupSide.jpg}
+		\caption{Set-up form the back.}
+		%\label{fig:SetupBack}
+	\end{subfigure}
+	\caption{The test set-up form different angles.}
+\label{fig:OtherBrandsPicture}
+\end{figure}
+
+
+\subsection{Procedure}
+	\subsubsection{Set-up}
+	\subsubsection{Performing Experiment}
+	
+\subsection{Data Extraction}
+\begin{enumerate}
+	\item Open MATLAB\textsuperscript{\textregistered} and run script "evaluatePerformance.m"
+\end{enumerate}
+
+From performing the experiment, a list of files were generated, two for each device tested; one with ANC enabled and one with ANC disabled.
+The difference between the enabled and the disabled is plotted on the graph below, for each device tested. The list can be seen below
+
+\begin{itemize}
+	\item "DenonANCon.wav"		(Denon AH GC20 w/ ANC)
+	\item "DenonANCoff.wav"		(Denon AH GC20 w/o ANC)
+	\item "Bose15ANCon.wav"		(Bose QuietComfort 15 w/ ANC)
+	\item "Bose15ANCoff.wav"	(Bose QuietComfort 15 w/o ANC)
+	\item "Bose25ANCon.wav"		(Bose QuietComfort 25 w/ ANC)
+	\item "Bose25ANCoff.wav"	(Bose QuietComfort 25 w/o ANC)
+\end{itemize}
+
+
+\begin{figure}[H]
+	\centering
+	%\tikzsetnextfilename{OtherBrands}
+	\includegraphics[width=0.8\textwidth]{../Journal/Experiments/TestofConsumerHeadphones/OtherBrandsComparison.png}
+	\caption{Comparison between Denon AH GC20(Blue), Bose QuietComfort 15(Orange), Bose QuietComfort 25(Yellow) and more to come....}
+	\label{OtherBrandsTest}
+\end{figure}
+FIGURE SHALL BE MADE PRETTY
+
+
+\subsection{Analysis}
+MATH GOES HERE
+
+
+
+\subsection{Conclusion}
+It was found that bla bla
+
+
+
+
+
+
+
+
+
