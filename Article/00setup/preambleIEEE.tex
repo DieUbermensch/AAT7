@@ -1,15 +1,14 @@
-\documentclass[10pt,fleqn,twoside,a4paper]{IEEEtran}
 \usepackage{etex}
 % Select encoding of your inputs.
 \usepackage[utf8]{inputenc}
 
 % Make latex understand and use the typographic
 % rules of the language used in the document.
-\usepackage[english, danish]{babel}
+\usepackage[english]{babel}
 
 % Use the vector font Latin Modern which is going
 % to be the default font in latex in the future.
-\usepackage{lmodern}
+%\usepackage{lmodern}
 % Use vector arrows in mathmode
 \usepackage{esvect}
 
@@ -25,11 +24,11 @@
 \usepackage{graphicx}
 
 % Set up how figure and table captions are displayed
-\usepackage{caption}
-\captionsetup{%
-  font=footnotesize,% set font size to footnotesize
-  labelfont=bf % bold label (e.g., Figure 3.2) font
-}
+%\usepackage{caption}
+%\captionsetup{%
+%	font=footnotesize,% set font size to footnotesize
+%	labelfont=bf % bold label (e.g., Figure 3.2) font
+%}
 
 % Enable row combination in tables
 \usepackage{multirow}
@@ -67,82 +66,6 @@
 % Page Layout
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Change margins, papersize, etc of the document
-\usepackage[
-  left=25mm,% left margin on an odd page %tidligere 25mm for baade right og left
-  right=25mm,% right margin on an odd page
-  top=35mm,
-  ]{geometry}
-  
-% Modify how \chapter, \section, etc. look
-% The titlesec package is very configureable
-%\usepackage{titlesec}
-%\makeatletter
-%\def\ttl@mkchap@i#1#2#3#4#5#6#7{%
-%    \ttl@assign\@tempskipa#3\relax\beforetitleunit
-%    \vspace{\@tempskipa}%<<<<<< REMOVE THE * AFTER \vspace
-%    \global\@afterindenttrue
-%    \ifcase#5 \global\@afterindentfalse\fi
-%    \ttl@assign\@tempskipb#4\relax\aftertitleunit
-%    \ttl@topmode{\@tempskipb}{%
-%        \ttl@select{#6}{#1}{#2}{#7}}%
-%    \ttl@finmarks  % Outside the box!
-%    \@ifundefined{ttlp@#6}{}{\ttlp@write{#6}}}
-%\makeatother
-
-%\titlespacing{\chapter}{0pt}{0pt}{10pt}
-%\titlespacing{\section}{0pt}{0pt}{-5pt}
-%\titlespacing{\subsection}{0pt}{8pt}{5pt}
-%\titlespacing{\subsubsection}{0pt}{6pt}{10pt}
-
-%%\titleformat*{\section}{\normalfont\Large\bfseries}\color{aaublue}}
-%\titleformat{\section}
-%  {\normalfont\scshape}{\thesection}{1em}{}
-%\titleformat{\subsection}
-%{\normalfont\scshape}{\thesubsection}{1em}{}
-%%\titleformat*{\subsection}{\normalfont\large\bfseries}%\color{aaublue}}
-%\titleformat{\subsubsection}{\normalfont\scshape}{\thesubsubsection}{0.5em}{}
-%%\titleformat*{\subsubsection}{\normalfont\normalsize\bfseries}%\color{aaublue}}
-%%\titleformat*{\paragraph}{\normalfont\normalsize\bfseries\color{aaublue}}
-%%\titleformat*{\subparagraph}{\normalfont\normalsize\bfseries\color{aaublue}}
-
-%Formatting chapter headers. Predefined styles that can be used as option to the package: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, PetersLenny and Bjornstrup
-
-%\usepackage[Sonny]{fncychap}
-
-\usepackage{titlesec, blindtext, color}
-%\definecolor{gray75}{gray}{0.75}
-\newcommand{\hsp}{\hspace{20pt}}
-%\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp{|}\hsp}{0pt}{\Huge\bfseries}
-\titleformat{\chapter}[hang]{\bfseries}{\thechapter\hsp{|}\hsp}{0pt}{\bfseries}
-
-
-% Change the headers and footers
-\usepackage{fancyhdr}
-\setlength{\headheight}{15pt}
-\pagestyle{fancy}
-\fancyhf{} %delete everything
-\renewcommand{\headrulewidth}{0pt} %remove the horizontal line in the header
-\fancyhead[RO,LE]{\small\nouppercase\leftmark} %even page - chapter title
-
-\fancyhead[LO]{}
-\fancyhead[RE]{} 
-\fancyhead[CE]{}
-\fancyhead[CO]{}
-
-\fancyfoot[RE,LO]{\thepage}
-\fancyfoot[LE,RO]{B205} %page number on all pages
-\fancyfoot[CE,CO]{}
-
-
-
-% change first page of all chapters header and footer to fancy style
-\makeatletter
-\let\ps@plain\ps@fancy
-\makeatother
-
-% Do not stretch the content of a page. Instead,
-% insert white space at the bottom of the page
-\raggedbottom
 
 % Enable arithmetics with length. Useful when typesetting the layout.
 \usepackage{calc}
@@ -159,8 +82,8 @@
 %\bibliographystyle{00setup/apalike}
 
 %%Ieeetran
-\usepackage[square, numbers, comma, sort&compress]{natbib}			
-\bibliographystyle{ieeetr}
+\usepackage[square,sort,comma,numbers]{natbib}	
+\bibliographystyle{abbrv}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Misc
@@ -225,7 +148,7 @@
 
 % remove all indentations
 \setlength\parindent{0pt}
-\parskip 5mm
+%\parskip 5mm
 \usepackage{verbatim}
 
 
@@ -319,8 +242,8 @@
 
 
 \usepackage{float}
-\usepackage{caption}
-\usepackage{subcaption}
+%\usepackage{caption}
+%\usepackage{subcaption}
 \usepackage{siunitx}
 \sisetup{decimalsymbol=comma}
 \sisetup{detect-weight}
@@ -407,6 +330,11 @@
 % ¤¤ Opsætning af enheder ¤¤ % 
 \newcommand{\enhed}[1]{\hfill[\mathrm{#1}]}   % Skriv \enhed{"din enhed"} og dem bliver rykket til højre
 
+\usepackage{caption}
+\captionsetup{%
+	font=footnotesize,% set font size to footnotesize
+	labelfont=bf % bold label (e.g., Figure 3.2) font
+}
 
 
 \usepackage{multicol}
@@ -415,3 +343,18 @@
 \renewcommand{\LettrineTextFont}{\normalfont}
 
 \usepackage[footnote,draft,silent,nomargin]{fixme}
+
+
+
+%% Macros
+
+\newcommand{\chapref}[1]{Chapter \ref{#1}: \nameref{#1}}
+\newcommand{\secref}[1]{Section \ref{#1}: \nameref{#1}}
+\newcommand{\figref}[1]{\emph{Figure: \ref{#1}}}
+\newcommand{\appref}[1]{Appendix \ref{#1}}
+\newcommand{\tabref}[1]{\emph{Table: \ref{#1}}}
+\newcommand{\coderef}[1]{\emph{Listings: \ref{#1}}}
+\renewcommand{\eqref}[1]{\emph{Equation: (\ref{#1})}}
+
+\newcommand{\iic}[0]{I²C }
+
