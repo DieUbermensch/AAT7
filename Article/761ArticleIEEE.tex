@@ -1,0 +1,43 @@
+\documentclass[conference]{IEEEtran}
+
+\ifCLASSINFOpdf
+\else
+\fi
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\input{00setup/preambleIEEE.tex}
+\input{00setup/Tikz.tex}
+
+\begin{document}
+
+\title{Active Noise Control of Speech in Headphones using Linear Prediction}
+
+\author{\IEEEauthorblockN{Mikkel Krogh Simonsen, Kasper Kiis Jensen, Maxime Démurger, Oliver Palmhøj Jokumsen, \\ Christian Claumarch}
+\IEEEauthorblockA{Aalborg University - Acoustics and Audio Technology - 1$^{st}$ Semester \\
+\{mksi13, kkje13, ojokum12, cclaum16, mdemur16\}@student.aau.dk}
+}
+
+\maketitle
+
+\begin{abstract}
+Active Noise Control (ANC) is a widely used technique. However most solutions are targeted at attenuating static noise with limited bandwidth. This paper focusses on using prediction to improve performance for non stationary signals.
+The solution proposed uses an FIR-filter adapted by an Filtered-$x$ Least Mean Square (FXLMS)-algorithm combined with Linear Prediction (LP) to attenuate a speech signal. This solution uses the quasi-periodic properties of speech to estimate the upcoming content of a speech signal. Thereby decreasing the sample delay in the system which increases bandwidth, yielding better attenuation.
+\end{abstract}
+
+\IEEEpeerreviewmaketitle
+
+\input{1Article/Introduction.tex}
+\input{1Article/Methods.tex}
+\input{1Article/Results.tex}
+\input{1Article/Conclusion.tex}
+
+
+\bibliography{00setup/mybib}
+
+
+
+
+% that's all folks
+\end{document}
+
+
