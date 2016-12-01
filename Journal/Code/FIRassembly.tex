@@ -1,9 +1,8 @@
 
 \section{FIR function in assembly}
-
-
 \subsection{Description}
 This function filters an input signal with a set of filter coefficients with a given length (order).
+
 
 \subsection{Syntax} 
 \begin{lstlisting}
@@ -38,7 +37,7 @@ This function filters an input signal with a set of filter coefficients with a g
 ;		void FIR(  	Int16 *x,	=> AR0
 ;			  		Int16 *b, 	=> AR1
 ;			   		Int16 N, 	=> T0
-;			   		Int16 i)		=> T1
+;			   		Int16 i)	=> T1
 
 
 
@@ -56,3 +55,7 @@ SFTL AC0, #-15				; Bit shift to fit Q15
 MOV AC0,T0					; Output sample
 RET
 \end{lstlisting}
+
+
+
+

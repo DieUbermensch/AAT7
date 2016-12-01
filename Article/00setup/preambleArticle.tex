@@ -1,4 +1,4 @@
-\documentclass[10pt,fleqn,twoside,a4paper]{article}
+\documentclass[10pt,fleqn,twoside,a4paper]{IEEEtran}
 \usepackage{etex}
 % Select encoding of your inputs.
 \usepackage[utf8]{inputenc}
@@ -75,19 +75,19 @@
   
 % Modify how \chapter, \section, etc. look
 % The titlesec package is very configureable
-\usepackage{titlesec}
-\makeatletter
-\def\ttl@mkchap@i#1#2#3#4#5#6#7{%
-    \ttl@assign\@tempskipa#3\relax\beforetitleunit
-    \vspace{\@tempskipa}%<<<<<< REMOVE THE * AFTER \vspace
-    \global\@afterindenttrue
-    \ifcase#5 \global\@afterindentfalse\fi
-    \ttl@assign\@tempskipb#4\relax\aftertitleunit
-    \ttl@topmode{\@tempskipb}{%
-        \ttl@select{#6}{#1}{#2}{#7}}%
-    \ttl@finmarks  % Outside the box!
-    \@ifundefined{ttlp@#6}{}{\ttlp@write{#6}}}
-\makeatother
+%\usepackage{titlesec}
+%\makeatletter
+%\def\ttl@mkchap@i#1#2#3#4#5#6#7{%
+%    \ttl@assign\@tempskipa#3\relax\beforetitleunit
+%    \vspace{\@tempskipa}%<<<<<< REMOVE THE * AFTER \vspace
+%    \global\@afterindenttrue
+%    \ifcase#5 \global\@afterindentfalse\fi
+%    \ttl@assign\@tempskipb#4\relax\aftertitleunit
+%    \ttl@topmode{\@tempskipb}{%
+%        \ttl@select{#6}{#1}{#2}{#7}}%
+%    \ttl@finmarks  % Outside the box!
+%    \@ifundefined{ttlp@#6}{}{\ttlp@write{#6}}}
+%\makeatother
 
 %\titlespacing{\chapter}{0pt}{0pt}{10pt}
 %\titlespacing{\section}{0pt}{0pt}{-5pt}
@@ -195,9 +195,9 @@
 %%% Table of contents %%%%%  
 \setcounter{tocdepth}{1}
 
-\renewcommand{\cftpartpresnum}{Part~}
-\let\cftoldpartfont\cftpartfont
-\renewcommand{\cftpartfont}{\cftoldpartfont\cftpartpresnum}
+%\renewcommand{\cftpartpresnum}{Part~}
+%\let\cftoldpartfont\cftpartfont
+%\renewcommand{\cftpartfont}{\cftoldpartfont\cftpartpresnum}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hyperlinks
