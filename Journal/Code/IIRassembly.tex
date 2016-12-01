@@ -6,14 +6,14 @@ This function filters an input signal with a set of filter coefficients with a g
 
 \subsection{Syntax} 
 \begin{lstlisting}
-	extern Int16 IIR(Int16 *x, Int16 *b, Int16 order, Int16 index);
+	Int16 simpleiir(Int16 *buffer,Int16 iirorder,Int16 * output, Int16 buffsize,Int16 * acoeffs, Int16 * bcoeffs);
 \end{lstlisting}
 
 \subsection{Diagram}
 \begin{figure} [h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{../Journal/Code/IIRfilter}
-	\caption{Diagram of a 2nd order Direct-form II IIR filter}
+	\caption{Diagram of a 2nd order Direct-form I IIR filter}
 	\label{Fig:FIR_filter}
 \end{figure}
 
@@ -22,36 +22,65 @@ This function filters an input signal with a set of filter coefficients with a g
 
 \subsubsection{variables}
 \begin{lstlisting}
-	Int16 	*x 		//The input signal
-	Int16	*b		//The filter coefficients
-	Int16	order	//The order of the filter (length of x & b)
-	Int16	index	//The index of the newest x sample
-	Int16	return	//Returns the output of the filter (y(n))
+	Int16 	*buffer 	//input buffer
+	Int16	*iirorder	//Number of biquads
+	Int16	*output	//output buffer
+	Int16 	buffsize	//size of the buffer
+	Int16 * acoeffs		//a coefficients
+	Int16 * bcoeffs	//b coefficients
 \end{lstlisting}
 
 \subsubsection{code}
 \begin{lstlisting} [language={[x86masm]Assembler}]
-	.global _FIR;
-
-;------------------------------------------------------
-;		void FIR(  	Int16 *x,	=> AR0
-;			  		Int16 *b, 	=> AR1
-;			   		Int16 N, 	=> T0
-;			   		Int16 i)		=> T1
-
-
-
-_FIR:	
-MOV #0, AC0					; Clear AC1
-MOV mmap(AR0),BSA01			; Set base Adress for buffer
-MOV mmap(T0), BK03			; Set buffer size to filter order
-MOV *(#T1),AR0				; Start from ith sample
-bset AR0LC					; Set pointer as circular
-SUB #1,T0					; Setup Repititions
-MOV T0,CSR					; Setup Repititions
-RPT CSR						; Repeat order times
-MAC *AR0-,*AR1+,AC0 		; Do filter convolution
-SFTL AC0, #-15				; Bit shift to fit Q15
-MOV AC0,T0					; Output sample
-RET
+	.global _simpleiir
+       
+_simpleiir:
+      pshm  ST1_55             ; Save ST1, ST2, and ST3
+      pshm  ST2_55
+      pshm  ST3_55
+      
+      mov #0,AC0				;clear accumulator
+      add #1,AR1				;go to y(n-1) 
+      sub #1,T0                 ;Number of samples - 1
+      mov T0,BRC0            	;Setup loop to blkSize-1
+      rptblocal sample_loop-1
+      mac *AR0+,*AR3+,AC0 		;x(n) 	to accumulator
+      mac *AR0+,*AR3+,AC0 		;x(n-1) to accumulator
+      mac *AR0+,*AR3+,AC0 		;x(n-2) to accumulator
+      mac *AR1+,*AR2+,AC0 		;this should be y(n-1)    
+      mac *AR1+,*AR2+,AC0 		;this should be y(n-2)   
+      mov  AC0,*AR0 
+sample_loop
+      mov  HI(AC0),T0
+                   
+      popm  ST3_55                 ; Restore ST1, ST2, and ST3
+      popm  ST2_55
+      popm  ST1_55
+      ret
+	
+      .end
 \end{lstlisting}
+
+\subsection{Test}
+A low pass second order filter have been designed using FDA Tool in Matlab. The following coefficients have been generated: a (line 1) and b (line 2) with an overall gain of 0.2180 (around 13dB)
+\begin{lstlisting}
+-0,351328328	 0,329689257	
+ 1				 1,999229009	  1
+\end{lstlisting}
+
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{FrequencyResponseDesign}
+	\input{../Journal/Code/Test/FrequencyResponseDesign.tex}
+	\caption{Attenuation achieved by the system for different system delays.}
+	\label{Fig:FrequencyResponseDesignIIR}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{FrequencyResponse}
+	\input{../Journal/Code/Test/FrequencyResponse.tex}
+	\caption{Attenuation achieved by the system for different system delays.}
+	\label{Fig:FrequencyResponseIIR}
+\end{figure}
