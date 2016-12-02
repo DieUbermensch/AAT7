@@ -12,9 +12,8 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=6.028in,
-height=4.754in,
-at={(1.011in,0.642in)},
+width=2.3in,
+height=2in,
 scale only axis,
 xmin=50,
 xmax=4000,
@@ -25,9 +24,9 @@ ymax=20,
 ylabel={attenuation [dB]},
 ymajorgrids,
 axis background/.style={fill=white},
-title style={font=\bfseries},
-title={Comparison of Smoothened curves},
-legend style={legend cell align=left,align=left,draw=white!15!black}
+% title style={font=\bfseries},
+% title={Comparison of Smoothened curves},
+%legend style={legend cell align=left,align=left,draw=white!15!black}
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%
@@ -7938,7 +7937,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 3999.95833376736	-0.259270228598898\\
 4000.45832855908	-0.257999405222846\\
 };
-\addlegendentry{Denon};
+%\addlegendentry{Denon};
 
 \addplot [color=mycolor2,solid,forget plot]
   table[row sep=crcr]{%
@@ -15849,7 +15848,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 3999.95833376736	6.81874067138073\\
 4000.45832855908	6.81161849951918\\
 };
-\addlegendentry{B\&O H8};
+%\addlegendentry{B\&O H8};
 
 \addplot [color=mycolor3,solid,forget plot]
   table[row sep=crcr]{%
@@ -23760,7 +23759,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 3999.95833376736	2.58842058046936\\
 4000.45832855908	2.5847210127791\\
 };
-\addlegendentry{Bose QC15};
+%\addlegendentry{Bose QC15};
 
 \addplot [color=mycolor4,solid,forget plot]
   table[row sep=crcr]{%
@@ -31671,7 +31670,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 3999.95833376736	6.29335454760826\\
 4000.45832855908	6.28829641067023\\
 };
-\addlegendentry{Bose QC15};
+%\addlegendentry{Bose QC15};
 
 \end{axis}
 \end{tikzpicture}%

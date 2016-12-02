@@ -1,8 +1,13 @@
 \section{Dicussion}
+The system parameters for the predictor are chosen based on an examination of \autoref{fig:fsPredict} for $f_s$, \fxnote{ref to fs:delay} for $P$, \autoref{fig:PredictN} for $N$, \autoref{fig:PredictO} for $O$ and \autoref{fig:PredictM} for M.
+\\\\
+It can be seen from \autoref{fig:fsPredict} that the higher the $f_s$ the higher the PG. This can be attributed to prediction being dependent on how much time needs to be predicted into the future. Which is because if the same number of samples is predicted at different $f_s$ then the higher the $f_s$ the less time needs to be predicted out in the future shown in \fxnote{ref to fs:delay} given that a higher $f_s$ results in a smaller converter delay. Therefore the higher the $f_s$ is to be prefered up until a DSP cannot handle more computational load or uses to much power. In this instance $f_s$ is chosen to be $TBD$ Hz. 
+\\\\
+Using $f_s$ equal to $TBD$ Hz P can be determined from \fxnote{ref to fs:delay} to be $TBD$ $\mu$s which is equal to $TBD$ samples. $N$ is detemined by examinating \autoref{fig:PredictN}. Here it can be seen that $N$ increases up until $TBD$ where it flattens out. Therefore $N$ is determined to be $TBD$ because a larger $N$ does not give a higher PG. The same examination is done for $O$ and $M$ from \autoref{fig:PredictO} and \autoref{fig:PredictM}- This results in $O$ determined to $TBD$ and $M$ determined to $TBD$.   
 
-$fs$ is determined by examining if a higher $fs$ will result in a higher PG, shown on \autoref{fig:fsPredict}. This is assumed because $fs$ is linear proportional to the converter delay as seen on \fxnote{Fs:delay figure in introduction}. This means that an equal amount of samples which must be predicted independent on $fs$, which results in the higher the $fs$ the less time needs to be predicted. 
+% $f_s$ is determined by examining if a higher $f_s$ will result in a higher PG, shown on \autoref{fig:fsPredict}. This is assumed because $f_s$ is linear proportional to the converter delay as seen on \fxnote{Fs:delay figure in introduction}. This means that an equal amount of samples which must be predicted independent on $f_s$, which results in the higher the $f_s$ the less time needs to be predicted. 
 
-The determination of the parameters are choosen based on having the largest PG with the lowest value of $N$, $O$ and $M$. $N$ is determined to be 500, $O$ is determined to be 300 and $M$ is determined to be 50. These values will be used in the predictor.
+% The determination of the parameters are chosen based on having the largest PG with the lowest value of $N$, $O$ and $M$. $N$ is determined to be 500, $O$ is determined to be 300 and $M$ is determined to be 50. These values will be used in the predictor.
 
 
 

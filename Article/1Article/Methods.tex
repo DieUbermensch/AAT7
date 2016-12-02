@@ -85,8 +85,7 @@ Calculating $\hat{R^{-1}}$ is computationally heavy on a DSP. Therefore to estim
 Using equation \ref{eq:Predictor} in cascade where $\hat{x}[n+2]$ is estimated using $\hat{x}[n+1]$ and $x[n]$ up until $\hat{x}[n+P]$. 
 
 \subsection{Feedforward LP FXLMS}
-The adaptive ANC system combined with the predictor is shown on \autoref{fig:LPFXLMS}. Here the predictor will be inserted before the ANC system. The predictor need to compensate for both the ADC delay and the DAC delay, which are assumed to have the same delay ($i=\frac{P}{2}$). 
-%Therefore the predictor needs to predict ($P$) $880$ $\mu s$ out which is equvialent to 42 samples with fs equal to 48000 Hz.      
+The adaptive ANC system combined with the predictor is shown on \autoref{fig:LPFXLMS}. Here the predictor will be inserted before the ANC system. The predictor need to compensate for both the ADC delay and the DAC delay, which are assumed to have the same delay ($i=\frac{P}{2}$).   
 
 \begin{figure}[H]
 	\centering
@@ -107,3 +106,10 @@ f[n+P]=\sum^{P-1}_{j=0}c_j\hat{x}[(n+P)-j]+\sum^{L-1}_{j=P}c_jx[(n+P)-j]
 \end{equation}
 
 The reasoning behind inputting both $\hat{x}[n+P]$ and $x[n]$ is that it will give a more precise result, than if only $\hat{x}[n+P]$ was inputtet into the ANC system. This is because less predicted samples will be inputtet into the ANC system which should result in a more precise $y[n+P]$. The input $e[n]$ is not predicted due to an easier solution being delaying $f[n+P]$ $i$ times. This results in $f[n+\frac{P}{2}]$ which coincides with $e[n+\frac{P}{2}]$ as shown on \autoref{fig:LPFXLMS}. Delaying instead of predicting will yield a slower reaction time however it will be much less computational heavy for a DSP.       
+
+\subsection{Prediction Gain}
+For the purpose of testing LP prediction gain (PG) shown in \autoref{eq:PG} will be used. 
+\begin{equation}\label{eq:PG}
+PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg) = 10 log_{10}\bigg(\frac{E\{x^2[n]\}}{E\{\varepsilon^2[n]\}}\bigg)
+\end{equation}
+where PG is the ratio between the variance of the input signal $x[n]$ and the variance of the prediction error $\varepsilon$ in (dB). The higher the PG the better the prediction is.

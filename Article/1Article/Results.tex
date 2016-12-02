@@ -1,20 +1,12 @@
-\section*{Results}
-\subsection{Prediction Gain}
-For the purpose of testing LP prediction gain (PG) shown in \autoref{eq:PG} will be used. 
-\begin{equation}\label{eq:PG}
-PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg) = 10 log_{10}\bigg(\frac{E\{x^2[n]\}}{E\{\varepsilon^2[n]\}}\bigg)
-\end{equation}
-where PG is the ratio between the variance of the input signal $x[n]$ and the variance of the prediction error $\varepsilon$ in (dB). The higher the PG the better the prediction is.
-
-
-
+\section{Results}
 \subsection{Determining System Parameters}
-The parameters which should be detemined are $fs$, $N$, $O$, and $M$ using \autoref{eq:PG} and $P$.         
-The PG in relation to $fs$ is shown on \autoref{fig:fsPredict}.
+The parameters which should be detemined are $f_s$, $N$, $O$, and $M$ using \autoref{eq:PG} and $P$.         
+The PG in relation to $f_s$ is shown on \autoref{fig:fsPredict}.
 
 \begin{figure}[H]
 	\centering
-	\textbf{\textit{Here is going to be a graph of PG determined by fs}}
+	\tikzsetnextfilename{FsTest}
+	\input{figures/ArticleIllustrations/FSvar.tex}
 	\caption{PG }
 	\label{fig:fsPredict}
 \end{figure}
@@ -25,10 +17,20 @@ The PG in relation to $N$, $O$ and $M$ is seen on \autoref{fig:PredictParameters
 \begin{figure}[H]
 	\centering
 	\textbf{\textit{Here is going to be a graph of PG determined by N}}
+	\caption{PG }
+	\label{fig:PredictN}
+\end{figure}
+\begin{figure}[H]
+	\centering
 	\textbf{\textit{Here is going to be a graph of PG determined by O}}
+	\caption{PG }
+	\label{fig:PredictO}
+\end{figure}
+\begin{figure}[H]
+	\centering
 	\textbf{\textit{Here is going to be a graph of PG determined by M}}
 	\caption{PG }
-	\label{fig:PredictParameters}
+	\label{fig:PredictM}
 \end{figure}
 
 \subsection{Simulation of Feedforward LP FXLMS}
