@@ -62,7 +62,7 @@ From the examination of the three different topologies it is concluded that a fe
 
 \newpage 
 \section{System Design} \label{sec:systemDesign}
-This appendix will go through the design of the system using a feedforward topology. The ANC system will be placed on a headphone with the microphones placed as seen on \autoref{fig:SystemHeadphone}. A \fxnote{dummy} will be used as the HATS during tests. This means that the cancellation path will have a constant impulse response. 
+This appendix will go through the design of the system using a feedforward topology. The ANC system will be placed on a headphone with the microphones placed as seen on \autoref{fig:SystemHeadphone}. A \fxnote{dummy} will be used as the HATS during tests. This means that the cancellation path will have a time invariant impulse response. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Articleillustrations/SystemOverview}
@@ -190,7 +190,7 @@ The basic system in \autoref{fig:BasicSystem} has been setup in Simulink, as see
 	\label{fig:SimulinkANC}
 \end{figure} 
 
-The functions for the different impulse responses and the control filter is a standard sample-by-sample FIR filter, while the FXLMS algorithm is \autoref{eq:FXLMSw_j(k+1)} implemented with a convergence factor of 0.005. The delay of the ADC and DAC is set to 0 samples.\fxnote{Which results do we need}
+The functions for the different impulse responses and the control filter is a standard sample-by-sample FIR filter, while the FXLMS algorithm is \autoref{eq:FXLMSw_j(k+1)} implemented with a convergence factor of 0.005. This convergence factor is chosen to by experiment to be as large as possible, without getting an unstable system as described by Hansen \cite{Hansen2}. The delay of the ADC and DAC is set to 0 samples.\fxnote{Which results do we need}
 
 
 
