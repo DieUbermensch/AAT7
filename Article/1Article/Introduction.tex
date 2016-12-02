@@ -8,9 +8,9 @@ Noise canceling headphones are used in various environments which have different
 
 \begin{figure}[H]
 	\centering
-	%\textbf{\textit{Here is going to be a graph of different}}
-	%\textbf{\textit{ headphones tested with non stationary signals (Speech)}}
-	\includegraphics[width=1\columnwidth]{figures/missingfigure}
+	\textbf{\textit{Here is going to be a graph of different}}
+	\textbf{\textit{ headphones tested with non stationary signals (Speech)}}
+	%\includegraphics[width=1\columnwidth]{figures/missingfigure}
 	\caption{It is clearly seen that speech is not attenuated by current headphones.}
 	\label{fig:ANCcompare}
 \end{figure}
@@ -22,7 +22,9 @@ The problem of a feedforward system, shown in figure \ref{fig:SystemOverview}, i
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/BasicOverviewZoomed}
+	%\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/BasicOverviewZoomed}
+	\tikzsetnextfilename{BasicOverviewZoomed}
+	\input{figures/ArticleIllustrations/BasicOverviewZoomed.tex}
 	\caption{Simplified circumaural ANC Headphone fitted on an ear. Showing the reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).}
 	\label{fig:SystemOverview}
 \end{figure}

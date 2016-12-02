@@ -8,7 +8,9 @@ The system in \autoref{fig:ANCFeedforward} outputs a control signal $y[n]$, whic
 
 
 \begin{figure}[H]
-	\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/ANCFeedForward}
+	%\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/ANCFeedForward}
+		\tikzsetnextfilename{ANCFeedForward}
+		\input{figures/ArticleIllustrations/ANCFeedForward.tex}
 	\caption{Adaptive feedforward ANC system.}
 	\label{fig:ANCFeedforward}
 \end{figure}
@@ -51,7 +53,9 @@ The outlines of the prediction system is shown in figure \ref{fig:LinearPredicti
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\columnwidth]{figures/ArticleIllustrations/WienerHopf}
+	\tikzsetnextfilename{WienerHopf}
+	\input{figures/ArticleIllustrations/WienerHopf.tex}
+	%\includegraphics[width=\columnwidth]{figures/ArticleIllustrations/WienerHopf}
 	\caption{Linear prediction system.}
 	\label{fig:LinearPredictionOverview}
 \end{figure}
