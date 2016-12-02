@@ -8,7 +8,9 @@ The system in \autoref{fig:ANCFeedforward} outputs a control signal $y[n]$, whic
 
 
 \begin{figure}[H]
-	\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/ANCFeedForward}
+	%\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/ANCFeedForward}
+		\tikzsetnextfilename{ANCFeedForward}
+		\input{figures/ArticleIllustrations/ANCFeedForward.tex}
 	\caption{Adaptive feedforward ANC system.}
 	\label{fig:ANCFeedforward}
 \end{figure}
@@ -51,7 +53,9 @@ The outlines of the prediction system is shown in figure \ref{fig:LinearPredicti
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\columnwidth]{figures/ArticleIllustrations/WienerHopf}
+	\tikzsetnextfilename{WienerHopf}
+	\input{figures/ArticleIllustrations/WienerHopf.tex}
+	%\includegraphics[width=\columnwidth]{figures/ArticleIllustrations/WienerHopf}
 	\caption{Linear prediction system.}
 	\label{fig:LinearPredictionOverview}
 \end{figure}
@@ -113,11 +117,11 @@ where PG is the ratio between the variance of the input signal $x[n]$ and the va
 The determination of the parameters are choosen based on having the largest PG with the lowest value of $N$, $O$ and $M$. $N$ is determined to be 500, $O$ is determined to be 300 and $M$ is determined to be 50. These values will be used in the predictor.
 
 \subsection{Feedforward LP FXLMS}
-The adaptive ANC system combined with the predictor is shown on \autoref{fig:LPFXLMS}. Here the predictor will be inserted before the ANC system. The predictor need to compensate for both the ADC delay and the DAC delay, which are assumed to have the same delay. Therefore the predictor needs to predict $880$ $\mu s$ out which is equvialent to 42 samples with fs equal to 48000 Hz.      
+The adaptive ANC system combined with the predictor is shown on \autoref{fig:LPFXLMS}. Here the predictor will be inserted before the ANC system. The predictor need to compensate for both the ADC delay and the DAC delay, which are assumed to have the same delay. Therefore the predictor needs to predict ($P$) $880$ $\mu s$ out which is equvialent to 42 samples with fs equal to 48000 Hz.      
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{CombinedSystem}
+	\tikzsetnextfilename{CombinedSystem2}
 	\input{figures/ArticleIllustrations/CombinedSystem.tex}
 	\caption{Combined system}
 	\label{fig:LPFXLMS}
