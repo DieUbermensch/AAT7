@@ -23,20 +23,16 @@ The system in \autoref{fig:ANCFeedforward} outputs a control signal $y[n]$, whic
 %\end{figure}
 
 
-\textbf{Control Filter}, shown in \autoref{eq:Output}, is initialized with the inverse of the measured impulse response of the represented transfer function. An order of 256 taps is chosen based on subjective testing in simulation.
+Control Filter, shown in \autoref{eq:Output}, is initialized with the inverse of the measured impulse response of the represented transfer function. An order of 256 taps is chosen based on subjective testing in simulation.
 \vspace{-3mm} % yeah I know - Sorry Mikkel!
 \begin{equation}\label{eq:Output}
 y[n]=\sum_{j=0}^{L-1}b_j[n]x[n-j]
 \end{equation}
-where $b_j[n]$ is the weight coefficients written as  $b[n]=[b_0[n],b_1[n], \cdots, b_{L-1}[n]]^T$.
-\\\\
-\textbf{FXLMS} is the optimization algorithm which updates the control filter coefficients using the FXLMS method shown in \autoref{eq:FXLMS}.
+where $b_j[n]$ is the weight coefficients written as  $b[n]=[b_0[n],b_1[n], \cdots, b_{L-1}[n]]^T$. FXLMS is the optimization algorithm which updates the control filter coefficients using the FXLMS method shown in \autoref{eq:FXLMS}.
 \begin{equation}\label{eq:FXLMS}
 b_j[n+1] = b_j[n] - 2\mu e[n]f[n-j]
 \end{equation}
-where $\mu$ is the convergence factor, $e[n]$ is the error and $f[n]$ is the reference convolved with the Cancellation Path.
-\\\\
-\textbf{Cancellation Path} (CP) shown in \autoref{eq:CP}.
+where $\mu$ is the convergence factor, $e[n]$ is the error and $f[n]$ is the reference convolved with the Cancellation Path (CP) shown in \autoref{eq:CP}.
 \begin{equation}\label{eq:CP}
 f[n]=\sum_{j=0}^{L-1}c_jx[n-j]
 \end{equation}
@@ -88,42 +84,15 @@ Calculating $\hat{R^{-1}}$ is computationally heavy on a DSP. Therefore to estim
 
 Using equation \ref{eq:Predictor} in cascade where $\hat{x}[n+2]$ is estimated using $\hat{x}[n+1]$ and $x[n]$ up until $\hat{x}[n+P]$. 
 
-\subsection{Determining System Parameters}
-The parameters which should be detemined are $fs$, $N$, $O$, $M$ and $P$. fs is determined   
-
-
-\begin{figure}[H]
-	\centering
-	\textbf{\textit{Here is going to be a graph of PG determined by fs}}
-	\caption{PG }
-	\label{fig:fsPredict}
-\end{figure}
-
-
-These are detemined respectively using a Prediction Gain ($PG$) to find the optimum value. The PG is defined in \autoref{eq:PG}. 
-\begin{equation}\label{eq:PG}
-PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg) = 10 log_{10}\bigg(\frac{E\{x^2[n]\}}{E\{\varepsilon^2[n]\}}\bigg)
-\end{equation}
-where PG is the ratio between the variance of the input signal $x[n]$ and the variance of the prediction error $\varepsilon$ in (dB). The higher the PG the better the prediction is. The PG of variable $N$, $O$ and $M$ is seen on \autoref{fig:PredictParameters}. 
-\begin{figure}[H]
-	\centering
-	\textbf{\textit{Here is going to be a graph of PG determined by N}}
-	\textbf{\textit{Here is going to be a graph of PG determined by O}}
-	\textbf{\textit{Here is going to be a graph of PG determined by M}}
-	\caption{PG }
-	\label{fig:PredictParameters}
-\end{figure}
-
-The determination of the parameters are choosen based on having the largest PG with the lowest value of $N$, $O$ and $M$. $N$ is determined to be 500, $O$ is determined to be 300 and $M$ is determined to be 50. These values will be used in the predictor.
-
 \subsection{Feedforward LP FXLMS}
-The adaptive ANC system combined with the predictor is shown on \autoref{fig:LPFXLMS}. Here the predictor will be inserted before the ANC system. The predictor need to compensate for both the ADC delay and the DAC delay, which are assumed to have the same delay. Therefore the predictor needs to predict ($P$) $880$ $\mu s$ out which is equvialent to 42 samples with fs equal to 48000 Hz.      
+The adaptive ANC system combined with the predictor is shown on \autoref{fig:LPFXLMS}. Here the predictor will be inserted before the ANC system. The predictor need to compensate for both the ADC delay and the DAC delay, which are assumed to have the same delay ($i=\frac{P}{2}$). 
+%Therefore the predictor needs to predict ($P$) $880$ $\mu s$ out which is equvialent to 42 samples with fs equal to 48000 Hz.      
 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{CombinedSystem2}
 	\input{figures/ArticleIllustrations/CombinedSystem.tex}
-	\caption{Combined system}
+	\caption{Combined system of LP and feedforward FXLMS.}
 	\label{fig:LPFXLMS}
 \end{figure}
 
@@ -137,3 +106,4 @@ y[n+P]=\sum^{P-1}_{j=0}b_j[n]\hat{x}[(n+P)-j]+\sum^{L-1}_{j=P}b_j[n]x[(n+P)-j]
 f[n+P]=\sum^{P-1}_{j=0}c_j\hat{x}[(n+P)-j]+\sum^{L-1}_{j=P}c_jx[(n+P)-j]
 \end{equation}
 
+The reasoning behind inputting both $\hat{x}[n+P]$ and $x[n]$ is that it will give a more precise result, than if only $\hat{x}[n+P]$ was inputtet into the ANC system. This is because less predicted samples will be inputtet into the ANC system which should result in a more precise $y[n+P]$. The input $e[n]$ is not predicted due to an easier solution being delaying $f[n+P]$ $i$ times. This results in $f[n+\frac{P}{2}]$ which coincides with $e[n+\frac{P}{2}]$ as shown on \autoref{fig:LPFXLMS}. Delaying instead of predicting will yield a slower reaction time however it will be much less computational heavy for a DSP.       

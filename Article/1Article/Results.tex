@@ -1,15 +1,37 @@
 \section*{Results}
+\subsection{Prediction Gain}
+For the purpose of testing LP prediction gain (PG) shown in \autoref{eq:PG} will be used. 
+\begin{equation}\label{eq:PG}
+PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg) = 10 log_{10}\bigg(\frac{E\{x^2[n]\}}{E\{\varepsilon^2[n]\}}\bigg)
+\end{equation}
+where PG is the ratio between the variance of the input signal $x[n]$ and the variance of the prediction error $\varepsilon$ in (dB). The higher the PG the better the prediction is.
 
-At this point in time all results are not yet certain, however we will give an idea of how they are going to turn out.
-As presented in the paper thus far, we know what kind of noise we would like to cancel out and how we want to do it. The following list tells which graph will be used to show the results of the acceptance tests.
 
-\begin{itemize}
-\item Prediction gain - The difference between the input signal and the estimated signal, measured in dB. Used in the LP part.
-\item A plot comparison of frequency response between: A pure signal, a signal with FXLMS noise attenuation and a signal with LP combined with FXLMS attenuation
-\item An expansion of \autoref{Fig:Reference to noise ratio}: As of now only attenuation is showed, but in the future another graph in the figure will show the attenuation of the FXLMS combined with LP - which should yield better attenuation at larger delays.
 
-\end{itemize}
+\subsection{Determining System Parameters}
+The parameters which should be detemined are $fs$, $P$, $N$, $O$, and $M$ using \autoref{eq:PG}.         
+The PG of variable $fs$ is shown on \autoref{fig:fsPredict}.
 
+\begin{figure}[H]
+	\centering
+	\textbf{\textit{Here is going to be a graph of PG determined by fs}}
+	\caption{PG }
+	\label{fig:fsPredict}
+\end{figure}
+
+
+%These are detemined respectively using a Prediction Gain ($PG$) to find the optimum value. 
+The PG of variable $N$, $O$ and $M$ is seen on \autoref{fig:PredictParameters}. 
+\begin{figure}[H]
+	\centering
+	\textbf{\textit{Here is going to be a graph of PG determined by N}}
+	\textbf{\textit{Here is going to be a graph of PG determined by O}}
+	\textbf{\textit{Here is going to be a graph of PG determined by M}}
+	\caption{PG }
+	\label{fig:PredictParameters}
+\end{figure}
+
+\subsection{Simulation of Feedforward LP FXLMS}
 
 \begin{figure}[H]
 	\centering
@@ -18,6 +40,25 @@ As presented in the paper thus far, we know what kind of noise we would like to 
 	\caption{Attenuation achieved by the system for different system delays.}
 	\label{Fig:Reference to noise ratio}
 \end{figure}
+
+
+
+
+
+
+
+
+% At this point in time all results are not yet certain, however we will give an idea of how they are going to turn out.
+% As presented in the paper thus far, we know what kind of noise we would like to cancel out and how we want to do it. The following list tells which graph will be used to show the results of the acceptance tests.
+
+% \begin{itemize}
+% \item Prediction gain - The difference between the input signal and the estimated signal, measured in dB. Used in the LP part.
+% \item A plot comparison of frequency response between: A pure signal, a signal with FXLMS noise attenuation and a signal with LP combined with FXLMS attenuation
+% \item An expansion of \autoref{Fig:Reference to noise ratio}: As of now only attenuation is showed, but in the future another graph in the figure will show the attenuation of the FXLMS combined with LP - which should yield better attenuation at larger delays.
+
+% \end{itemize}
+
+
 
 
 %\vspace{5in}

@@ -1,4 +1,12 @@
 \section{Dicussion}
+
+$fs$ is determined by examining if a higher $fs$ will result in a higher PG, shown on \autoref{fig:fsPredict}. This is assumed because $fs$ is linear proportional to the converter delay as seen on \fxnote{Fs:delay figure in introduction}. This means that an equal amount of samples which must be predicted independent on $fs$, which results in the higher the $fs$ the less time needs to be predicted. 
+
+The determination of the parameters are choosen based on having the largest PG with the lowest value of $N$, $O$ and $M$. $N$ is determined to be 500, $O$ is determined to be 300 and $M$ is determined to be 50. These values will be used in the predictor.
+
+
+
+
 \subsection*{Real time limitations}
 Placement of error microphone.
 
