@@ -123,7 +123,7 @@ The adaptive ANC system combined with the predictor is shown on \autoref{fig:LPF
 	\label{fig:LPFXLMS}
 \end{figure}
 
-The adaptive ANC will input both the predicted input $\hat{x}[n+P]$ and the measured input $x[n]$.  
+The adaptive ANC will input both the predicted input $\hat{x}[n+P]$ and the measured input $x[n]$, in the control filter and the CP. This will expand \autoref{eq:Output} and \autoref{eq:CP} into \autoref{eq:ControlExpanded} and \autoref{eq:CPExpanded}.   
 
 \begin{equation}\label{eq:ControlExpanded}
 y[n+P]=\sum^{P-1}_{j=0}b_j[n]\hat{x}[(n+P)-j]+\sum^{L-1}_{j=P}b_j[n]x[(n+P)-j]
@@ -132,3 +132,4 @@ y[n+P]=\sum^{P-1}_{j=0}b_j[n]\hat{x}[(n+P)-j]+\sum^{L-1}_{j=P}b_j[n]x[(n+P)-j]
 \begin{equation}\label{eq:CPExpanded}
 f[n+P]=\sum^{P-1}_{j=0}c_j\hat{x}[(n+P)-j]+\sum^{L-1}_{j=P}c_jx[(n+P)-j]
 \end{equation}
+
