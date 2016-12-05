@@ -12,10 +12,11 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=5in,
+width=5.5in,
 height=3.5in,
 at={(1.011in,0.642in)},
 scale only axis,
+xmode=log,
 xmin=50,
 xmax=4000,
 xlabel={frequency [Hz]},
@@ -7938,7 +7939,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 4000	-0.27479\\
 4000.5	-0.26695\\
 };
-\addlegendentry{Denon};
+%\addlegendentry{Denon};
 
 \addplot [color=mycolor2,solid,forget plot]
   table[row sep=crcr]{%
@@ -15849,7 +15850,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 4000	5.0807\\
 4000.5	5.0785\\
 };
-\addlegendentry{B\&O H8};
+%\addlegendentry{B\&O H8};
 
 \addplot [color=mycolor3,solid,forget plot]
   table[row sep=crcr]{%
@@ -23760,7 +23761,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 4000	1.7589\\
 4000.5	1.7596\\
 };
-\addlegendentry{Bose QC15};
+%\addlegendentry{Bose QC15};
 
 \addplot [color=mycolor4,solid,forget plot]
   table[row sep=crcr]{%
@@ -31671,7 +31672,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 4000	4.297\\
 4000.5	4.3027\\
 };
-\addlegendentry{Bose QC25};
+%\addlegendentry{Bose QC25};
 
 \end{axis}
 \end{tikzpicture}%

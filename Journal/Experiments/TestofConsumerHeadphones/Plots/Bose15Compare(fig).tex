@@ -10,13 +10,13 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=6.028in,
-height=4.754in,
+width=5.5in,
+height=2.5in,
 at={(1.011in,0.642in)},
 scale only axis,
 unbounded coords=jump,
 xmode=log,
-xmin=0,
+xmin=50,
 xmax=4e+03,
 xminorticks=true,
 xlabel={frequency [Hz]},
@@ -28,7 +28,7 @@ ylabel={attenuation [dB]},
 ymajorgrids,
 axis background/.style={fill=white},
 title style={font=\bfseries},
-title={Bose QuietComfort 15},
+%title={Bose QuietComfort 15},
 legend style={at={(0.03,0.03)},anchor=south west,legend cell align=left,align=left,draw=white!15!black}
 ]
 \addplot [color=mycolor1,solid,forget plot]
@@ -8066,9 +8066,9 @@ nan	nan\\
 4e+03	0.151\\
 4e+03	1.03\\
 };
-\addlegendentry{Original Response};
+%\addlegendentry{Original Response};
 
-\addplot[only marks,mark=x,mark options={},mark size=1.5000pt,color=mycolor2] plot table[row sep=crcr]{%
+\addplot[only marks,mark=*,mark options={},mark size=2.000pt,color=mycolor2] plot table[row sep=crcr]{%
 0.5	0.1\\
 1	6.1\\
 2	0.08\\
@@ -8109,7 +8109,7 @@ nan	nan\\
 4.4e+03	1.7\\
 101	-7\\
 };
-\addlegendentry{Fit points};
+%\addlegendentry{Fit points};
 
 \addplot [color=green,solid,line width=1.0pt,forget plot]
   table[row sep=crcr]{%
@@ -16124,7 +16124,7 @@ nan	nan\\
 4e+03	1.76\\
 4e+03	1.76\\
 };
-\addlegendentry{Fitted curve};
+%\addlegendentry{Fitted curve};
 
 \end{axis}
 \end{tikzpicture}%

@@ -10,13 +10,13 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=6.028in,
-height=4.754in,
+width=5.5in,
+height=2.5in,
 at={(1.011in,0.642in)},
 scale only axis,
 unbounded coords=jump,
 xmode=log,
-xmin=0,
+xmin=50,
 xmax=4e+03,
 xminorticks=true,
 xlabel={frequency [Hz]},
@@ -28,8 +28,7 @@ ylabel={attenuation [dB]},
 ymajorgrids,
 axis background/.style={fill=white},
 title style={font=\bfseries},
-title={Bang \& Olufsen H8},
-legend style={at={(0.03,0.03)},anchor=south west,legend cell align=left,align=left,draw=white!15!black}
+%legend style={at={(0.03,0.03)},anchor=south west,legend cell align=left,align=left,draw=white!15!black}
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%
@@ -8074,9 +8073,9 @@ nan	nan\\
 4e+03	6.7\\
 4e+03	4.55\\
 };
-\addlegendentry{Original Response};
+%\addlegendentry{Original Response};
 
-\addplot[only marks,mark=x,mark options={},mark size=1.5000pt,color=mycolor2] plot table[row sep=crcr]{%
+\addplot[only marks,mark=*,mark options={},mark size=2.000pt,color=mycolor2] plot table[row sep=crcr]{%
 0.5	2.54\\
 1	4.2\\
 2	1.77\\
@@ -8117,7 +8116,7 @@ nan	nan\\
 4.4e+03	5\\
 101	-6.2\\
 };
-\addlegendentry{Fit points};
+%\addlegendentry{Fit points};
 
 \addplot [color=green,solid,line width=1.0pt,forget plot]
   table[row sep=crcr]{%
@@ -16132,7 +16131,7 @@ nan	nan\\
 4e+03	5.08\\
 4e+03	5.08\\
 };
-\addlegendentry{Fitted curve};
+%\addlegendentry{Fitted curve};
 
 \end{axis}
 \end{tikzpicture}%
