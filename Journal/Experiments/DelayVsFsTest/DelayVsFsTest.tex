@@ -12,6 +12,9 @@ The conversion delay inside the platform is in this project not neglectable and 
 To measure the delay of the conversion time the codec is setup to the desired sampling frequency. This is done 
 
 
+
+
+
 \subsection{Choice of equipment}
 
 
@@ -59,6 +62,40 @@ To measure the delay of the conversion time the codec is setup to the desired sa
 
 
 \subsection{Procedure}
+
+\begin{lstlisting} [language=C]
+void main( void )
+{
+/* Initialize Board and Codec - look in "aic3204_setup.h" */
+USBSTK5515_init();
+codec_init ();
+initAll();
+
+while ( 1 )
+{
+/* Read Digital audio */
+while((Rcv & I2S0_IR) == 0);  // Wait for interrupt pending flag
+	data3 = I2S0_W0_MSW_R;  // 16 bit left channel received audio data
+	data1 = I2S0_W0_LSW_R;
+	data4 = I2S0_W1_MSW_R;  // 16 bit right channel received audio data
+	data2 = I2S0_W1_LSW_R;
+
+
+//asm(" bset XF");
+
+
+/* Write Digital audio */
+	while((Xmit & I2S0_IR) == 0);  // Wait for interrupt pending flag
+	asm(" bset XF");
+	I2S0_W0_MSW_W = data3;  // 16 bit left channel transmit audio data
+	I2S0_W0_LSW_W = 0;
+	I2S0_W1_MSW_W = data4;  // 16 bit right channel transmit audio data
+	I2S0_W1_LSW_W = 0;
+	}
+}
+\end{lstlisting}
+
+
 
 \subsection{Data Extraction}
 
