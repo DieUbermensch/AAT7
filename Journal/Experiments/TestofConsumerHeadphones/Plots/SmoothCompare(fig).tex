@@ -12,23 +12,25 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=2.3in,
-height=2in,
+width=2.7in,
+height=1.75in,
 scale only axis,
 xmin=50,
 xmax=4000,
-xlabel={frequency [Hz]},
+xlabel={Frequency [Hz]},
 xmajorgrids,
+yminorgrids,
 ymin=-35,
 ymax=20,
-ylabel={attenuation [dB]},
+ytick={-35,-25,...,20},
+ylabel={Attenuation [dB]},
 ymajorgrids,
 axis background/.style={fill=white},
 % title style={font=\bfseries},
 % title={Comparison of Smoothened curves},
 %legend style={legend cell align=left,align=left,draw=white!15!black}
 ]
-\addplot [color=mycolor1,solid,forget plot]
+\addplot [color=mycolor1,solid,forget plot,thick]
   table[row sep=crcr]{%
 49.999479172092	-5.93053751363949\\
 50.4994739638129	-6.0044995049473\\
@@ -4032,7 +4034,7 @@ axis background/.style={fill=white},
 2049.47865126405	1.17867510359643\\
 2049.97864605577	1.17894208764414\\
 };
-\addplot [color=mycolor1,solid]
+\addplot [color=mycolor1,solid,thick]
   table[row sep=crcr]{%
 2049.97864605577	1.17894208764414\\
 2050.47864084749	1.17920645371117\\
@@ -7939,7 +7941,7 @@ axis background/.style={fill=white},
 };
 %\addlegendentry{Denon};
 
-\addplot [color=mycolor2,solid,forget plot]
+\addplot [color=mycolor2,solid,forget plot,thick]
   table[row sep=crcr]{%
 49.999479172092	-0.0951079628097791\\
 50.4994739638129	-0.146502941108005\\
@@ -11943,7 +11945,7 @@ axis background/.style={fill=white},
 2049.47865126405	4.40149469746024\\
 2049.97864605577	4.40408576229095\\
 };
-\addplot [color=mycolor2,solid]
+\addplot [color=mycolor2,solid,thick]
   table[row sep=crcr]{%
 2049.97864605577	4.40408576229095\\
 2050.47864084749	4.40667056299921\\
@@ -15850,7 +15852,7 @@ axis background/.style={fill=white},
 };
 %\addlegendentry{B\&O H8};
 
-\addplot [color=mycolor3,solid,forget plot]
+\addplot [color=mycolor3,solid,forget plot,thick]
   table[row sep=crcr]{%
 49.999479172092	-3.21998156904695\\
 50.4994739638129	-3.27144693262418\\
@@ -19854,7 +19856,7 @@ axis background/.style={fill=white},
 2049.47865126405	4.30705061620249\\
 2049.97864605577	4.3057284005071\\
 };
-\addplot [color=mycolor3,solid]
+\addplot [color=mycolor3,solid,thick]
   table[row sep=crcr]{%
 2049.97864605577	4.3057284005071\\
 2050.47864084749	4.30440156058204\\
@@ -23761,7 +23763,7 @@ axis background/.style={fill=white},
 };
 %\addlegendentry{Bose QC15};
 
-\addplot [color=mycolor4,solid,forget plot]
+\addplot [color=mycolor4,solid,forget plot,thick]
   table[row sep=crcr]{%
 49.999479172092	-12.8879141039629\\
 50.4994739638129	-12.992717451898\\
@@ -27765,7 +27767,7 @@ axis background/.style={fill=white},
 2049.47865126405	5.95905905661474\\
 2049.97864605577	5.95305586432259\\
 };
-\addplot [color=mycolor4,solid]
+\addplot [color=mycolor4,solid,thick]
   table[row sep=crcr]{%
 2049.97864605577	5.95305586432259\\
 2050.47864084749	5.94705517145247\\

@@ -1,6 +1,7 @@
 %% Introduction
 \section*{Introduction}
-\lettrine[lines=2]{A}{ctive} Noise Control (ANC) is a used method in a wide variety of applications. Research is being done in creating silents zones \cite{SilentZones}, improving room acoustics using multiple loudspeakers \cite{CAPS} and is already available in various headphones.
+\lettrine[lines=2]{A}{ctive} Noise Control 
+(ANC) is a used method in a wide variety of applications. Research is being done in creating silents zones \cite{SilentZones}, improving room acoustics using multiple loudspeakers \cite{CAPS} and is already available in various headphones.
 \\\\
 Noise canceling headphones are used in various environments which have different noise characteristics. These characteristics vary from periodic low frequency noise (10-200 Hz), e.g. from machinery and helicopter rotor \cite{LowFrequency}, mid-range frequency noise (200-4000 Hz), e.g. speech \cite{MidFrequency}, to high frequency noise (4-20 kHz), e.g. turbine noise \cite{LowFrequency}. The high frequency noise is naturally attenuated by using a closed headphone cup \cite{naturalAttenuation} and static low frequency noise are attenuated by the present consumer headphones \cite{naturalAttenuation}. The attenuation of speech using ANC in present market ANC headphones can be shown in figure \ref{fig:ANCcompare}.
 %\footnote{Numbers and sources will be added to the statements}.   
@@ -19,7 +20,6 @@ Noise canceling headphones are used in various environments which have different
 This paper focuses on improving attenuation of speech. Speech will hence be seen as the primary noise source. The solution will be based on a digital feedforward system using the Filtered-X Least Mean Squares (FXLMS). The solution is chosen due to it being the optimal system for non stationary signals \cite{Hansen2}. The general solutions in ANC are described thoroughly by Hansen et al. \cite{Hansen}.
 \\\\
 The problem of a feedforward system, shown in figure \ref{fig:SystemOverview}, is the dependency of noise having a larger propagation delay from the noise is measured (1) to a headphone loudspeaker (2) can produce a counter-phase signal in the desired point (3). 
-
 \begin{figure}[H]
 	\centering
 	%\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/BasicOverviewZoomed}
@@ -28,8 +28,23 @@ The problem of a feedforward system, shown in figure \ref{fig:SystemOverview}, i
 	\caption{Simplified circumaural ANC Headphone fitted on an ear. Showing the reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).}
 	\label{fig:SystemOverview}
 \end{figure}
+When implemented in a real-time system delay will occur, introduced by sampling and processing of the signal. For instance, using on a cost-wise $\Sigma\Delta$ - converter a sampling/conversion delay is introduced. The specific delay values can be seen on table \ref{tab:DelayResults}.
 
-When implemented in a real-time system delay will occur, introduced by sampling and processing of the signal. For instance, measured on a cost-wise $\Sigma\Delta$ - converter\footnote{TLV320AIC3204} a sampling/conversion delay in the range of 220 $\mu$s to 880 $\mu$s is introduced, depending on a sampling frequency of 192 kHz to 48 kHz respectively. Assuming a $\text{0}^{\circ}$ angle of incident, which is the ideal case, the reference microphone must be placed 75.5 mm to 302 mm further out from the error microphone, to compensate for the delay. Instead a Linear Prediction (LP) scheme is proposed as a solution. In speech encoding Wiener filtering is often used therefore the Wiener filtering is the choosen prediction method \cite{Speech}.
+%delay in the range of 220 $\mu$s to 880 $\mu$s is introduced, depending on a sampling frequency of 192 kHz to 48 kHz respectively.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ccc}
+		Fs[kHz] & Delay [$\mu$ S] & Delay [n] \\ \hline \hline
+		48 & 900 & 43 \\ 
+		96 & 450 & 43 \\
+		192 & 225 & 43 
+	\end{tabular} 
+	\caption{The measured delay of TLV320AIC3204 in both time and samples according to the sampling frequency}
+	\label{tab:DelayResults}
+\end{table}
+
+Assuming a $\text{0}^{\circ}$ angle of incident, which is the ideal case, the reference microphone must be placed 75.5 mm to 302 mm further out from the error microphone, to compensate for the delay. Instead a Linear Prediction (LP) scheme is proposed as a solution. In speech encoding Wiener filtering is often used therefore the Wiener filtering is the choosen prediction method \cite{Speech}.
 % This reduces computation time and overall
 %Consumer ANC headphones has a bandwidth that does not cover the entire frequency area of speech. This paper examines how to extend the bandwidth.
 %To increase bandwidth a prediction algorithm is proposed as a potential solution. 
