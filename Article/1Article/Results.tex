@@ -1,15 +1,27 @@
 \section{Results}
 \subsection{Determining System Parameters}
 The parameters which should be detemined are $f_s$, $N$, $O$, and $M$ using \autoref{eq:PG} and $P$.         
-The PG in relation to $f_s$ is shown on \autoref{fig:fsPredict}.
+The PG in relation to $f_s$ is shown on \autoref{tb:fsPredict}.
 
-\begin{figure}[H]
-	\centering
-	\tikzsetnextfilename{FsTest}
-	\input{figures/ArticleIllustrations/FSvar.tex}
-	\caption{PG }
-	\label{fig:fsPredict}
-\end{figure}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+$f_s$ {[}kHz{]} & 8 & 16 & 24 & 48 & 96 & 192 \\ \hline
+PG {[}dB{]} & 13.522 & 15.950 & 14.722 & 20.831 & 35.031 & 43.803 \\ \hline
+\end{tabular}
+\caption{My caption}
+\label{tb:fsPredict}
+\end{table}
+
+
+% \begin{figure}[H]
+% 	\centering
+% 	\tikzsetnextfilename{FsTest}
+% 	\input{figures/ArticleIllustrations/FSvar.tex}
+% 	\caption{PG }
+% 	\label{fig:fsPredict}
+% \end{figure}
 
 
 %These are detemined respectively using a Prediction Gain ($PG$) to find the optimum value. 
