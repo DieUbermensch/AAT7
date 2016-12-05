@@ -19,6 +19,7 @@ The purpose of this section is to determine the attenuation of the ANC on existi
 		5	&	B\&K Sound Calibrator Type 4230				& 08155		\\ 
 		6	&	Genelec speaker								& 33990		\\ 
 		7	& 	B\&K Microphone Power Supply Type 2804		& 07304		\\
+		8	&	DSP Freedom Board Rev. 1 & NaN		\\
 		\bottomrule
 		& Tested Headphones & \\
 		\bottomrule
@@ -105,7 +106,7 @@ The purpose of this section is to determine the attenuation of the ANC on existi
 
 	\subsubsection{Performing Experiment}
 	\begin{enumerate}
-		\item Open Simulink\textsuperscript{\textregistered} and open and run file "OtherBrands.xls"
+		\item Open Simulink\textsuperscript{\textregistered} and open and run file \path{OtherBrands.xls}
 		\begin{itemize} 
 			\item The simulations outputs a speech signal at 0 dBFS over the span of 12 seconds
 			\begin{itemize}
@@ -114,7 +115,7 @@ The purpose of this section is to determine the attenuation of the ANC on existi
 			\end{itemize}
 			\item The simulation runs for 14 seconds
 		\end{itemize}
-		\item Rename generated file "GeneratedANC" according to headphone tested, and whether or not ANC was enabled. E.g. "Denonon[1].wav" for the first test of the Denon AH GC20 headhpone with ANC enabled. Names in "evaluatePerformance.m"-script is named accordingly.
+		\item Rename generated file \path{GeneratedANC} according to headphone tested, and whether or not ANC was enabled. E.g. \path{Denonon[1].wav} for the first test of the Denon AH GC20 headhpone with ANC enabled. Names in \path{evaluatePerformance.m}-script is named accordingly.
 				\begin{itemize}
 			\item[] Perform this experiment for as many headphones as desired.
 		\end{itemize}
@@ -123,21 +124,21 @@ The purpose of this section is to determine the attenuation of the ANC on existi
 		
 \subsection{Data Extraction}
 \begin{enumerate}
-	\item Open MATLAB\textsuperscript{\textregistered} and run script "evaluatePerformance.m"
+	\item Open MATLAB\textsuperscript{\textregistered} and run script \path{evaluatePerformance.m}
 \end{enumerate}
 
 From performing the experiment, a list of files were generated, ten for each device tested; five with ANC enabled and five with ANC disabled.
 The difference between the enabled and the disabled is plotted on the graph below, for each device tested. The list can be seen below
 
 \begin{itemize}
-	\item "Denonon[i].wav"		(Denon AH GC20 w/ ANC)
-	\item "Denonoff[i].wav"		(Denon AH GC20 w/o ANC)
-	\item "BoseQC15on[i].wav"		(Bose QuietComfort 15 w/ ANC)
-	\item "BoseQC15off[i].wav"		(Bose QuietComfort 15 w/o ANC)
-	\item "BoseQC25on[i].wav"		(Bose QuietComfort 25 w/ ANC)
-	\item "BoseQC25off[i].wav"		(Bose QuietComfort 25 w/o ANC)
-	\item "BOH8on[i].wav"			(B\&O BEOPLAY H8 w/ ANC)
-	\item "BOH8off[i].wav"		(B\&O BEOPLAY H8 w/o ANC)
+	\item \path{Denonon[i].wav}			(Denon AH GC20 w/ ANC)
+	\item \path{Denonoff[i].wav}		(Denon AH GC20 w/o ANC)
+	\item \path{BoseQC15on[i].wav}		(Bose QuietComfort 15 w/ ANC)
+	\item \path{BoseQC15off[i].wav}		(Bose QuietComfort 15 w/o ANC)
+	\item \path{BoseQC25on[i].wav}		(Bose QuietComfort 25 w/ ANC)
+	\item \path{BoseQC25off[i].wav}		(Bose QuietComfort 25 w/o ANC)
+	\item \path{BOH8on[i].wav}			(B\&O BEOPLAY H8 w/ ANC)
+	\item \path{BOH8off[i].wav}			(B\&O BEOPLAY H8 w/o ANC)
 	\footnote{[i] indicates the iteration of the experiment}
 \end{itemize}
 
@@ -147,7 +148,7 @@ The five files of each ANC setting for each headphone is then meaned and cross c
 This difference is then plotted for all headphones on \autoref{fig:OtherBrandsTestCompare}.
 \\
 The impulse response of the difference between enabled and disabled recorded signals is to be found.
-This is done by finding the frequency response of the "signal", which the cross correlation between e.g. "Denonon[i].wav" and "Denonon[i].wav" This is done by taking the FT of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
+This is done by finding the frequency response of the "signal", which the cross correlation between e.g. \path{Denonon[i].wav} and \path{Denonon[i].wav} This is done by taking the FT of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
 
 
 \begin{equation}\label{FrequencyResponseEq2}
@@ -162,29 +163,48 @@ Where:
 	\item $X(f)$ is the FT of the recorded signals, with ANC disabled, Denonoff[i]
 \end{itemize}
 
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{.48\textwidth}
+	\centering
+	\includegraphics[width=1\textwidth]{../Article/tikz/ComparedConusmerHPAppSub1}
+	\end{subfigure}
+%	\hfill
+	\begin{subfigure}[b]{.48\textwidth}
+		\centering
+	\includegraphics[width=1\textwidth]{../Article/tikz/ComparedConusmerHPAppSub2}
+	\end{subfigure}
+	\begin{subfigure}[b]{.48\textwidth}
+	\centering
+	\includegraphics[width=1\textwidth]{../Article/tikz/ComparedConusmerHPAppSub3}
+	\end{subfigure}
+%	\hfill
+	\begin{subfigure}[b]{.48\textwidth}
+	\centering
+	\includegraphics[width=1\textwidth]{../Article/tikz/ComparedConusmerHPAppSub4}
+	\end{subfigure}
+\end{figure}
+
 
 \begin{figure}[H]
 	\centering
-	%\tikzsetnextfilename{OtherBrands}
-	\includegraphics[width=0.8\textwidth]{../Journal/Experiments/TestofConsumerHeadphones/OtherBrandsComparison.png}
-	\caption{Comparison between Denon AH GC20(Blue), Bose QuietComfort 15(Orange), Bose QuietComfort 25(Yellow), B\&O BEOPLAY H8(Green)  and more to come....}
+	\tikzsetnextfilename{ComparedConusmerHPApp}
+	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/SmoothCompareAppendix(fig).tex}
+	\caption{Denon, B\&O H8 Bose QC15 Bose QC25.}
 	\label{fig:OtherBrandsTestCompare}
 \end{figure}
 
 \subsection{Conclusion}
 The relative difference between a headphones attenuation with and without ANC was found for four different consumer headphones.
 
+
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{ComparedConusmerHP}
-	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/SmoothCompareAppendix(fig).tex}
-	\caption{Denon (blue), B\&O H8 (red) Bose QC15 (Yellow) Bose QC25 (Purple).}
-	\label{fig:ANCcompare}
+	\tikzsetnextfilename{ComparedConusmerHPAppSub4}
+	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/CunsumerHpSubplot4(fig).tex}
+	\caption{Denon, B\&O H8 Bose QC15 Bose QC25.}
+	\label{fig:OtherBrandsTestCompare}
 \end{figure}
-
-
-
-
 
 
 
