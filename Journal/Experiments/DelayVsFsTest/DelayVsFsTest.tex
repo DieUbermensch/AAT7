@@ -1,9 +1,22 @@
 \section{Determining hardware delay} \label{sec:HardwareDelay}
 
+The following section describes testing of the conversion delay in the chosen implementation platform.
+
 \subsection{Purpose}
+
+The conversion delay inside the platform is in this project not neglectable and has to be measured and accounted for. With the conversion delay determined it is possible to simulate more accurate. % It is necessary to account for the delay if implentation should ocour.
+
+
+\subsection{Settings/Description}
+
+To measure the delay of the conversion time the codec is setup to the desired sampling frequency. This is done 
+
+
+\subsection{Choice of equipment}
 
 
 \subsection{AAU num list}
+
 \begin{table}[H]
 	\centering
 	\ra{1.3}
@@ -29,16 +42,21 @@
 	\label{fig:SchematicDelayExperiment}
 \end{figure}
 
+\subsection{Picture}
 
-\subsection{Settings/Description}
+\begin{figure}[H]
+	\centering
+\includegraphics[width=0.75\textwidth]{Hardware/DelaySetup}
+	\caption{Schematic overview of the experiment.}
+	\label{fig:DelayExperimentSetu}
+\end{figure}
 
-\subsection{Choice of equipment}
 
 \subsection{Control and calibration}
 
 \subsection{Equipment settings}
 
-\subsection{Picture}
+
 
 \subsection{Procedure}
 
@@ -50,7 +68,7 @@
 	\centering
 	\tikzsetnextfilename{DelaySetupCSVRead}
 	\input{figures/Hardware/DelayGraph.tex}
-	\caption{Readout of the oscilloscope}
+	\caption{Readout form the oscilloscope showing steps at different sampling frequencies. Note that step has been offset for visual overview.}
 	\label{fig:SchematicDelayExperiment}
 \end{figure}
 
@@ -60,8 +78,8 @@
 	\begin{tabular}{ccc}
 		Fs[kHz] & Delay [$\mu$ S] & Delay [n] \\ \hline \hline
 		48 & 900 & 43 \\ 
-		96 & 450 & 22 \\ 
-		192 & 225 & 11
+		96 & 450 & 43 \\ 
+		192 & 225 & 43
 	\end{tabular} 
 	\caption{The measured delay in both time and samples according to the sampling frequency}
 	\label{tab:DelayResults}
