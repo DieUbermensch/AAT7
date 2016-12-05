@@ -11,7 +11,7 @@ The purpose of this section is to determine the attenuation of the ANC on existi
 	\centering
 	\ra{1.3}
 	\begin{tabular}{ c c c } \toprule
-		{Item}	& {Description} 						& {AAU-no}. \\ \bottomrule 
+		{Item}	& {Description} 							& {AAU-no}. \\ \bottomrule 
 		1	&	B\&K Head And Torso Simulator "Henry" Type 4128	& 08453	\\
 		2	&	B\&K Ear Simulator Type 4159				& 08453		\\
 		3	&	Soundcard RME Fireface 802					& 86838		\\
@@ -19,11 +19,10 @@ The purpose of this section is to determine the attenuation of the ANC on existi
 		5	&	B\&K Sound Calibrator Type 4230				& 08155		\\ 
 		6	&	Genelec speaker								& 33990		\\ 
 		7	& 	B\&K Microphone Power Supply Type 2804		& 07304		\\
-		8	&	DSP Freedom Board Rev. 1 & NaN		\\
+		8	&	DSP Freedom Board Rev. 1 					& NaN		\\
 		\bottomrule
 		& Tested Headphones & \\
 		\bottomrule
-	
 		8 & Denon AH GC20 & NaN \\
 		8 & Bose QuietComfort 15 & NaN \\
 		8 & Bose QuietComfort 25 & NaN \\
@@ -171,6 +170,7 @@ Where:
 	\item $X(f)$ is the FT of the recorded signals, with ANC disabled, Denonoff[i]
 \end{itemize}
 
+In figure \autoref{4waycompareconsumer} the responses for the tested headphones can be seen. Not that a more smooth fitted curve has been applied, for better comparison between the four tested headphones.
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{.48\textwidth}
@@ -191,38 +191,30 @@ Where:
 	\centering
 	\includegraphics[width=1\textwidth]{../Article/tikz/ComparedConusmerHPAppSub4}
 	\end{subfigure}
+	\label{4waycompareconsumer}
+	\caption{All tests plotted with fitted curves. }
 \end{figure}
 
+In figure \autoref{OtherBrandsTestCompare} the fitted comparison can be seen, this representation provides a better overview of the four-way comparison.
 
-<<<<<<< HEAD
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{ComparedConusmerHPApp}
 	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/SmoothCompareAppendix(fig).tex}
-	\caption{Denon, B\&O H8 Bose QC15 Bose QC25.}
+	\caption{Comparison of the Denon, B\&O H8 Bose QC15 Bose QC25.}
 	\label{fig:OtherBrandsTestCompare}
 \end{figure}
-=======
+
+
 %\begin{figure}[H]
 %	\centering
-%	\tikzsetnextfilename{ComparedConusmerHP}
-%	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/SmoothCompareAppendix(fig).tex}
-%	\caption{Denon (blue), B\&O H8 (red) Bose QC15 (Yellow) Bose QC25 (Purple).}
-%	\label{fig:ANCcompare}
+%	\tikzsetnextfilename{ComparedConusmerHPAppSub1}	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/CunsumerHpSubplot1(fig).tex}
+%	\caption{hej}
 %\end{figure}
->>>>>>> 73d5ce9ed1ed059396c4ad9c248ae93afc444a71
 
 \subsection{Conclusion}
-The relative difference between a headphones attenuation with and without ANC was found for four different consumer headphones.
+The relative difference between a headphones attenuation with and without ANC was found for four different consumer headphones. And the testers concluded that the B\&O H8 had the best active part.
 
-
-\begin{figure}[H]
-	\centering
-	\tikzsetnextfilename{ComparedConusmerHPAppSub4}
-	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/CunsumerHpSubplot4(fig).tex}
-	\caption{Denon, B\&O H8 Bose QC15 Bose QC25.}
-	\label{fig:OtherBrandsTestCompare}
-\end{figure}
 
 
 
