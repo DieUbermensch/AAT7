@@ -1,11 +1,17 @@
-\section{Dicussion}
+\section{Discussion}
+
 The system parameters for the predictor are chosen based on an examination of \autoref{tb:fsPredict} for $f_s$, \fxnote{ref to fs:delay} for $P$, \autoref{fig:PredictN} for $N$, \autoref{fig:PredictO} for $O$ and \autoref{fig:PredictM} for M.
 \\\\
 It can be seen from \autoref{tb:fsPredict} that the higher the $f_s$ the higher the PG. This can be attributed to prediction being dependent on how much time needs to be predicted into the future. 
 %Which is because if the same number of samples is predicted at different $f_s$ then the higher the $f_s$ the less time needs to be predicted out in the future shown in \fxnote{ref to fs:delay} given that a higher $f_s$ results in a smaller converter delay. 
 Therefore the higher the $f_s$ is to be prefered up until a DSP cannot handle more computational load or uses to much power. In this instance $f_s$ is chosen to be $48$ kHz. 
 \\\\
-Using $f_s$ equal to $48$ kHz P can be determined from \fxnote{ref to fs:delay} to be $TBD$ $\mu$s which is equal to $TBD$ samples. $N$ is detemined by examinating \autoref{fig:PredictN}. PG is very low for P equal 40 therefore parameters for both P equal 10, 20 and 40 are made. Here it can be seen that $N$ increases up until approximately $400$ where it flattens out. Therefore $N$ is determined to be $TBD$ because a larger $N$ does not give a higher PG. The same examination is done for $O$ and $M$ from \autoref{fig:PredictO} and \autoref{fig:PredictM}- This results in $O$ determined to $TBD$ and $M$ determined to $TBD$.   
+Using $f_s$ equal to $48$ kHz P can be determined from \fxnote{ref to fs:delay} to be $TBD$ $\mu$s which is equal to $TBD$ samples. $N$ is detemined by examinating \autoref{fig:PredictN}. PG is very low for P equal 40 therefore parameters for P equal 10, 20 and 40 are determined. Here it can be seen that $N$ increases up until approximately $400$ where PG becomes stable. Therefore $N$ is determined to be $400$ because a larger $N$ does not result in a higher PG. The same examination is done for $O$ and $M$ from \autoref{fig:PredictO} and \autoref{fig:PredictM}.
+
+
+
+This results in $O$ determined to $TBD$ and $M$ determined to $TBD$.   
+
 
 % $f_s$ is determined by examining if a higher $f_s$ will result in a higher PG, shown on \autoref{tb:fsPredict}. This is assumed because $f_s$ is linear proportional to the converter delay as seen on \fxnote{Fs:delay figure in introduction}. This means that an equal amount of samples which must be predicted independent on $f_s$, which results in the higher the $f_s$ the less time needs to be predicted. 
 

@@ -1,6 +1,8 @@
 \section{Results}
+All results are obtained using Simulink Matlab which are build as described in Methods.  
+
 \subsection{Determining System Parameters}
-The parameters which should be detemined are $f_s$, $N$, $O$, and $M$ using \autoref{eq:PG} and $P$.         
+The parameters which should be detemined are $f_s$, $N$, $O$, and $M$.         
 The PG in relation to $f_s$ is shown on \autoref{tb:fsPredict}.
 
 \begin{table}[H]
@@ -10,7 +12,7 @@ The PG in relation to $f_s$ is shown on \autoref{tb:fsPredict}.
 $f_s$ {[}kHz{]} & 8 & 16 & 24 & 48 & 96 & 192 \\ \hline
 PG {[}dB{]} & 13.522 & 15.950 & 14.722 & 20.831 & 35.031 & 43.803 \\ \hline
 \end{tabular}
-\caption{My caption}
+\caption{PG as a function of $f_S$.}
 \label{tb:fsPredict}
 \end{table}
 
@@ -30,7 +32,7 @@ The PG in relation to $N$, $O$ and $M$ is seen on \autoref{fig:PredictParameters
 	\centering
 	\tikzsetnextfilename{NTest}	
 	\input{figures/Articleillustrations/NVar.tex}
-	\caption{PG as a function on N for different P. P=1 (blue), P=10 (red), P=20 (yellow), P=42 (purple)}
+	\caption{PG as a function on N for different P. P=10 (blue), P=20 (red), P=40 (yellow)}
 	\label{fig:PredictN}
 \end{figure}
 \begin{figure}[H]
