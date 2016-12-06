@@ -87,7 +87,7 @@ Calibration of the microphone and associated preamplifier is done on the compute
 
 \subsubsection{Performing the experiment}
 \begin{enumerate}
-	\item Open Simulink\textsuperscript{\textregistered} and open and run file "SimulinkSystemCancellationPath.xls"
+	\item Open Simulink\textsuperscript{\textregistered} and open and run file \path{SimulinkSystemCancellationPath.xls}
 	\begin{itemize} 
 		\item The simulations outputs a logarithmic chirp from 20 Hz to 20,000 Hz at 0 dBFS over the span of five seconds
 		\item The simulation runs for six seconds
@@ -104,7 +104,7 @@ If there is a discontinuity  on the recorded signal(s) discard that recording.
 \subsubsection{Data Extraction}
 \begin{enumerate}
 	%\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m".
-	\item Open MATLAB\textsuperscript{\textregistered} and run script "CancellationPathScript.m"
+	\item Open MATLAB\textsuperscript{\textregistered} and run script \path{CancellationPathScript.m}
 \end{enumerate}
 From the performing of the experiment, 10 files has been generated:
 \begin{itemize}
@@ -123,7 +123,7 @@ An example showing outputted Mic1 and Ref1 are shown in  \autoref{AmplitudePlotC
 	\label{AmplitudePlotCancellationPath}
 \end{figure}
 
-MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m" is used for data extraction and analysis.
+MATLAB\textsuperscript{\textregistered}-script \path{CancellationPathScript.m} is used for data extraction and analysis.
 
 
 
@@ -203,6 +203,8 @@ Taking the first 256 coefficients of the impulse response gives the following cr
 	\caption{Cropped impulse response plot of the cancellation path}
 	\label{CancellationPathImpulseResponseCrop}
 \end{figure}
+A microphone with external polarization was used, it implies that positive pressures mesured leads to negative voltage \autoref{michandbook}. It affects the phase response by 180 degrees and inverse the sign of the impulse response. 
+
 To verify that the frequency response of the cropped impulse response approximately equals that of the non-cropped impulse response the two frequency responses are compared. This can be seen on \autoref{CancellationPathImpulseResponseCompare}.
 
 \begin{figure}[H]
@@ -213,7 +215,7 @@ To verify that the frequency response of the cropped impulse response approximat
 	\label{CancellationPathImpulseResponseCompare}
 \end{figure}
 
-From \autoref{CancellationPathImpulseResponseCompare} it can be concluded that 256 coefficients is sufficient. 
+From \autoref{CancellationPathImpulseResponseCompare}, 250 coefficients are sufficient to represent the impulse response with accuracy.  256 coefficients being more easy when it comes to binary operations, this value will be chosen. 
 
 \subsection{Error Sources / Tolerances}
 \begin{itemize}

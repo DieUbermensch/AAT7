@@ -4,7 +4,7 @@
 The purpose of this test is to compare the assembly FIR function. Using the performance of the filter to determine whether the function works as intended.
 
 \subsection{Introduction}
-First, a filter is designed in MATLAB\textsuperscript{\textregistered}, as a reference to the designed filter to be tested. By running "PerformFIRExperiment.m" the filter coefficients are determined using fdatool, and filters are designed as such:
+First, a filter is designed in MATLAB\textsuperscript{\textregistered}, as a reference to the designed filter to be tested. By running \path{PerformFIRExperiment.m} the filter coefficients are determined using fdatool, and filters are designed as such:
 
 A LP FIR Butterworth filter was designed using the following specifications:
 
@@ -125,8 +125,8 @@ The Q15 coefficients are converted into hexadecimal values, in order to implemen
 
 \subsection{Data Extraction}
 	\begin{enumerate}
-		\item Open MATLAB\textsuperscript{\textregistered} and run script "SweptSineLoad.m" to extract and plot data from test
-		\item Run "PerformFIRExperiment.m" to extract and plot data from generated and simulated filters
+		\item Open MATLAB\textsuperscript{\textregistered} and run script \path{SweptSineLoad.m} to extract and plot data from test
+		\item Run \path{PerformFIRExperiment.m} to extract and plot data from generated and simulated filters
 	\end{enumerate}
 
 \autoref{Fig:FIRComparison} shows comparison between all three filters.
