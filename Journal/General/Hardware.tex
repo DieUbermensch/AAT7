@@ -106,29 +106,29 @@ The I2S bus is using regular TTL levels, this is assumed to be handled internall
 
 The TLV320AIC3204 codec samples an analogue input with a resolution of 16-bit at a rate of 48 kHz. The gain in both the DAC and ADC can be controlled individually via register 83+84 for the ADC and 65+63 for the DAC. In order to ensure low chance of overflow the gain is tuned to achieve approximately 0x7f00 when max amplitude is reached. The codec is furthermore tuned to have a 0 dB gain of both the ADC and DAC to ensure coherency of the input/output signal.
 
-The gain is by experiment determined to be:
-\begin{itemize}
-	\item DAC: XX
-	\item ADC: XX
-\end{itemize}
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}[b]{.45\textwidth}
-		\centering
-		\includegraphics[width=0.75\textwidth]{missingfigure}
-		\caption{Oscilloscope reading of the input output signal}
-		\label{fig:I2Sconfig}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{.45\textwidth}
-		\centering
-		\includegraphics[width=0.75\textwidth]{missingfigure}
-		\caption{Digital readout of the DSP internal memory of the sampled signal}
-		\label{fig:I2STiming}
-	\end{subfigure}	
-	\caption{The figures show the readout from the test used to determine the gain values.}
-\end{figure}
+%The gain is by experiment determined to be:
+%\begin{itemize}
+%	\item DAC: XX
+%	\item ADC: XX
+%\end{itemize}
+%
+%\begin{figure}[H]
+%	\centering
+%	\begin{subfigure}[b]{.45\textwidth}
+%		\centering
+%		\includegraphics[width=0.75\textwidth]{missingfigure}
+%		\caption{Oscilloscope reading of the input output signal}
+%		\label{fig:I2Sconfig}
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}[b]{.45\textwidth}
+%		\centering
+%		\includegraphics[width=0.75\textwidth]{missingfigure}
+%		\caption{Digital readout of the DSP internal memory of the sampled signal}
+%		\label{fig:I2STiming}
+%	\end{subfigure}	
+%	\caption{The figures show the readout from the test used to determine the gain values.}
+%\end{figure}
 
 
 \subsubsection*{MEMS}
