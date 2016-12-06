@@ -142,7 +142,7 @@ The data from the experiment is saved as a \path{.CSV} file. These files can be 
 Each file contains the 2Hz and corresponding output of the codec, with a resolution of 8000 points over a period of 1.2 milliseconds.
 
 
-\subsection{Analysis}
+\subsection{Analysis}\label{sec:AnalysisFsDelay}
 
 On figure \ref{fig:ScopeDelayExperiment} the three outputs from each test are plotted on the same figure.
 
@@ -194,12 +194,11 @@ It can be shown, in equation \ref{eq:sampleDelay}, that the delay of conversion 
 
 \subsection{Accuracy \& Error sources}
 
-
-
+The steps are captured using a single 8000-points frame. as shown in figure \ref{fig:ScopeDelayExperiment}. It can be seen that the output was noisy and had a slew-rate of $\pm$ 10 $\mu s$ on every trail. The measurements noted in section \ref{sec:AnalysisFsDelay} were measured at the start of the step eliminating the effect of the slew-rate. However if implemented this has to be taken into account.
 
 \subsection{Conclusion}
 
-
+The conversion delay of the chosen platform is to large to be efficient for an actual implementation. The delay of the system forces it to become none-causal, deeming the platform not suitable for implementation. It should however be noted that a change in converter type could solve the problem, this has not been further analyzed due to the scope of the project.
 
 
 
