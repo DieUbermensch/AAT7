@@ -6,6 +6,7 @@
 %
 \begin{tikzpicture}
 
+
 \begin{axis}[%
 width=2.0in,
 height=2in,
@@ -14,12 +15,16 @@ scale only axis,
 point meta min=-0.551769511455843,
 point meta max=10.0207598959184,
 unbounded coords=jump,
-xmin=0,
+xmin=100,
 xmax=3000,
 xlabel={N},
 xmajorgrids,
-ymin=0,
-ymax=3000,
+ymin=100,
+ymax=2900,
+ytick={100,500,...,2900},
+yticklabels={1,5,...,29},
+xtick={100,500,...,2900},
+xticklabels={1,5,...,29},
 ylabel={O},
 ymajorgrids,
 axis background/.style={fill=white},
