@@ -1,40 +1,48 @@
 \section{Results}
-All results are obtained using Simulink Matlab which are build as described in Methods. 
+All results are obtained using Simulink\textsuperscript{\textregistered} which are systems build as described in Methods. The speech used throughout is Track 5 from the Archimedes project CD resampled to the used $f_s$.  
+\\\\
+The results are divied into firstly determining the parameters of the predictor and secondly testing the attenuation of feedforward FXLMS system compared to the feedforward LP FXLMS system.   
 
 \subsection{Determining System Parameters}
-The parameters which should be detemined are $f_s$, $N$, $O$, and $M$.         
-The PG in relation to $f_s$ is shown on \autoref{tb:fsPredict}.
+The parameters which should be detemined are $f_s$, $P$, $N$ and $O$,.         
+The PG in relation to $f_s$ is shown in \autoref{tb:fsPredict}.
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
-$f_s$ {[}kHz{]} & 8 & 16 & 24 & 48 & 96 & 192 \\ \hline
+$f_s$ {[}kHz{]} & 8 & 16 & 24 & 48 & 96 & 192 \\ \hline 
+$N$ {[}$\cdot${]} & 100 & 200 & 300 & 600 & 1200 & 2400 \\ \hline 
 PG {[}dB{]} & 13.522 & 15.950 & 14.722 & 20.831 & 35.031 & 43.803 \\ \hline
 \end{tabular}
-\caption{PG as a function of $f_S$.}
+\caption{PG as a function of $f_S$. Parameters for the simulation are $O=0$ and $P=1$.}
 \label{tb:fsPredict}
 \end{table}
 
+To compare $f_s$ N must be scaled to represent the same time interval. $f_s$ is chosen to be 48 kHz. P is chosen to 40 samples.  
+The PG as a function of $N$ and $O$ is seen on \autoref{fig:Predict40}. 
 
-% \begin{figure}[H]
-% 	\centering
-% 	\tikzsetnextfilename{FsTest}
-% 	\input{figures/ArticleIllustrations/FSvar.tex}
-% 	\caption{PG }
-% 	\label{fig:fsPredict}
-% \end{figure}
-
-
-%These are detemined respectively using a Prediction Gain ($PG$) to find the optimum value. 
-The PG in relation to $N$, $O$ and $M$ is seen on \autoref{fig:PredictParameters}. 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{NTest}	
-	\input{figures/Articleillustrations/NVar.tex}
-	\caption{PG as a function on N for different P. P=10 (blue), P=20 (red), P=40 (yellow)}
+	\tikzsetnextfilename{HammingNOP10}	
+	\input{figures/Articleillustrations/HammingNOP10.tex}
+	\caption{PG as a function of different N and O with $P=40$.}
+	\label{fig:Predict40}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{HammingNOP10}	
+	\input{figures/Articleillustrations/HammingNOP10.tex}
+<<<<<<< HEAD
+	\caption{PG as plotted for different N and O}
+	\label{fig:Predict10}
+=======
+	\caption{PG as plotted for different N and O. axis are shown in hundreds}
 	\label{fig:PredictN}
 \end{figure}
+
+
 \begin{figure}[H]
 	\centering
 	\textbf{\textit{Here is going to be a graph of PG determined by O}}
@@ -46,10 +54,10 @@ The PG in relation to $N$, $O$ and $M$ is seen on \autoref{fig:PredictParameters
 	\textbf{\textit{Here is going to be a graph of PG determined by M}}
 	\caption{PG }
 	\label{fig:PredictM}
+>>>>>>> e2ae5b7f376f7e36b286c57cc9364311907a16bc
 \end{figure}
 
 \subsection{Simulation of Feedforward LP FXLMS}
-
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{DelayRatio}
