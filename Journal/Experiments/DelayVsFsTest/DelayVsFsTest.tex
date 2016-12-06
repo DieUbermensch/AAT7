@@ -1,9 +1,31 @@
 \section{Determining hardware delay} \label{sec:HardwareDelay}
 
+The following section describes testing of the conversion delay in the chosen implementation platform.
+
 \subsection{Purpose}
+
+The conversion delay inside the platform is in this project not neglectable and has to be measured and accounted for. With the conversion delay determined it is possible to simulate more accurate. % It is necessary to account for the delay if implentation should ocour.
+
+
+\subsection{Settings/Description}
+
+The DSP will be measured 
+
+\begin{enumerate}
+	\item stuff to do
+\end{enumerate}
+
+
+
+
+
+
+
+\subsection{Choice of equipment}
 
 
 \subsection{AAU num list}
+Table \ref{tab:MeasDelayTable} shows the used equipment in the experiment. 
 \begin{table}[H]
 	\centering
 	\ra{1.3}
@@ -19,7 +41,9 @@
 	\label{tab:MeasDelayTable}
 \end{table}
 
-\subsection{Diagram}
+\subsection{Diagram \& picture of setup}
+
+The TMS320C5515eZdsp is connected to the DSP Freedom board where the TLV320AIC3204 codec is connected via 3.5mm minijack cable (dashed lines) to the board. The oscilloscopes probes are then connected to the on-board BNC connectors. This is shown on figure \ref{fig:SchematicDelayExperiment}. A picture of the setup is shown on figure \ref{fig:DelayExperimentSetup}.
 
 \begin{figure}[H]
 	\centering
@@ -30,30 +54,98 @@
 \end{figure}
 
 
-\subsection{Settings/Description}
 
-\subsection{Choice of equipment}
+\begin{figure}[H]
+	\centering
+\includegraphics[width=0.75\textwidth]{Hardware/DelaySetup}
+	\caption{Schematic overview of the experiment.}
+	\label{fig:DelayExperimentSetup}
+\end{figure}
+
 
 \subsection{Control and calibration}
 
 \subsection{Equipment settings}
 
-\subsection{Picture}
+
 
 \subsection{Procedure}
 
+\begin{lstlisting} [language=C]
+void main( void )
+{
+/* Initialize Board and Codec - look in "aic3204_setup.h" */
+USBSTK5515_init();
+codec_init ();
+%initAll();
+while ( 1 )
+{
+/* Read Digital audio */
+	while((Rcv & I2S0_IR) == 0);  // Wait for interrupt pending flag
+		data3 = I2S0_W0_MSW_R;    // 16 bit left channel received audio data
+		data1 = I2S0_W0_LSW_R;
+		data4 = I2S0_W1_MSW_R;    // 16 bit right channel received audio data
+		data2 = I2S0_W1_LSW_R;
+		asm(" bset XF");	  	  // Set XF flag high
+/* Write Digital audio */
+	while((Xmit & I2S0_IR) == 0);  // Wait for interrupt pending flag
+		asm(" bclr XF");		   // Set XF flag low
+		I2S0_W0_MSW_W = data3;     // 16 bit left channel transmit audio data
+		I2S0_W0_LSW_W = 0;
+		I2S0_W1_MSW_W = data4;     // 16 bit right channel transmit audio data
+		I2S0_W1_LSW_W = 0;
+	}
+}
+\end{lstlisting}
+
+
+
 \subsection{Data Extraction}
 
+The data from the experiment is saved as a \path{.CSV} file. These files can be found at:
+\begin{itemize}
+	\item \path{48kHz2Hz500mV.csv}
+	\item \path{96kHz2Hz500mV.csv}
+	\item \path{192kHz2Hz500mV.csv}
+\end{itemize}
+
+Each file contains the 2Hz and corresponding output of the codec, with a resolution of 8000 points over a period of 1.2 milliseconds.
+
+
 \subsection{Analysis}
+
+On figure \ref{ScopeDelayExperiment} the three outputs from each test are plotted on the same figure, shown in figure \ref{fig:ScopeDelayExperiment}.  
 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{DelaySetupCSVRead}
 	\input{figures/Hardware/DelayGraph.tex}
-	\caption{Readout of the oscilloscope}
-	\label{fig:SchematicDelayExperiment}
+	\caption{Readout form the oscilloscope showing steps at different sampling frequencies. Note that step has been offset for visual overview.}
+	\label{fig:ScopeDelayExperiment}
 \end{figure}
 
-\subsection{Error Sources}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ccc}
+		Fs[kHz] & Delay [$\mu$ S] & Delay [n] \\ \hline \hline
+		48 & 900 & 43 \\ 
+		96 & 450 & 43 \\ 
+		192 & 225 & 43
+	\end{tabular} 
+	\caption{The measured delay in both time and samples according to the sampling frequency}
+	\label{tab:DelayResults}
+\end{table}
+
+
+\subsection{Accuracy \& Error sources}
+
+
+
 
 \subsection{Conclusion}
+
+
+
+
+

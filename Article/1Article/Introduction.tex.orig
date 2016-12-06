@@ -1,44 +1,45 @@
 %% Introduction
-\section{Introduction}
-\lettrine[lines=2]{A}{ctive} Noise Control (ANC) is a used method in a wide variety of applications. Research is being done in creating silents zones\cite{SilentZones}, improving room acoustics using multiple loudspeakers\cite{CAPS} and is already available in various headphones.
-% for noise cancellation, both for professional and consumer use. 
-
-<<<<<<< HEAD
-Noise canceling headphones are used in various environments which have different noise characteristics. These characteristics vary from periodic low frequency noise (X-Y Hz), e.g. from machinery and plane turbines\cite{LowFrequency}, mid-range frequency noise (Y-Z Hz), e.g. speech\cite{MidFrequency}, to high frequency noise (Z-Q Hz), e.g. X\cite{HighFrequency}. The high frequency noise are naturally attenuated by using a closed headphone cup\cite{naturalAttenuation} and static low frequency noise are attenuated by the present consumer ANC headphones\cite{ConsumerANC}. Speech can be shown in figure \ref{fig:ANCcompare}, not to be attenuated by active noise cancellation in present market ANC headphones.  
-=======
-Noise canceling headphones are used in various environments which have different noise characteristics. These characteristics vary from periodic low frequency noise (60-400Hz), e.g. from machinery and helicopter rotor\cite{LowFrequency}, med-range frequency noise (100-4000Hz), e.g. speech\cite{MidFrequency}, to high frequency noise (8-12 Hz), e.g. turbine noise\cite{LowFrequency}. The high frequency noise is naturally attenuated by using a closed headphone cup\cite{naturalAttenuation} and static low frequency noise are attenuated by the present consumer headphones\cite{ConsumerANC}.
->>>>>>> 78d96655f6b817d2f166d741c07e8ed51829fc16
+\section*{Introduction}
+\lettrine[lines=2]{A}{ctive} Noise Control (ANC) is a used method in a wide variety of applications. Research is being done in creating silents zones \cite{SilentZones}, improving room acoustics using multiple loudspeakers \cite{CAPS} and is already available in various headphones.
+\\\\
+Noise canceling headphones are used in various environments which have different noise characteristics. These characteristics vary from periodic low frequency noise (10-200 Hz), e.g. from machinery and helicopter rotor \cite{LowFrequency}, mid-range frequency noise (200-4000 Hz), e.g. speech \cite{MidFrequency}, to high frequency noise (4-20 kHz), e.g. turbine noise \cite{LowFrequency}. The high frequency noise is naturally attenuated by using a closed headphone cup \cite{naturalAttenuation} and static low frequency noise are attenuated by the present consumer headphones \cite{naturalAttenuation}. The attenuation of speech using ANC in present market ANC headphones can be shown in figure \ref{fig:ANCcompare}.
 %\footnote{Numbers and sources will be added to the statements}.   
 %%ANC are used by companies such as Bang \& Olufsen and Lyngdorf Audio in their proprietary technology as Active Room Compensation\texttrademark and RoomPerfect\texttrademark respectively, to control noise in a room using loudspeakers. Headphone industries have adapted it into cancellation of noise and is used 
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{ComparedConusmerHP}
+	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/SmoothCompare(fig).tex}
+	%\includegraphics[width=1\columnwidth]{figures/missingfigure}
+	\caption{Denon (blue), B\&O H8 (red) Bose QC15 (Yellow) Bose QC25 (Purple).}
+	\label{fig:ANCcompare}
+\end{figure}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> c020d87194c3d9022aa765a161d483f6d8fb1725
+=======
+>>>>>>> c020d87194c3d9022aa765a161d483f6d8fb1725
+This paper focuses on improving attenuation of speech. Speech will hence be seen as the primary noise source. The solution will be based on a digital feedforward system using the Filtered-X Least Mean Squares (FXLMS). The solution is chosen due to it being the optimal system for non stationary signals \cite{Hansen2}. The general solutions in ANC are described thoroughly by Hansen et al. \cite{Hansen}.
+\\\\
+The problem of a feedforward system, shown in figure \ref{fig:SystemOverview}, is the dependency of noise having a larger propagation delay from the noise is measured (1) to a headphone loudspeaker (2) can produce a counter-phase signal in the desired point (3). 
 
 \begin{figure}[H]
 	\centering
-	\textbf{\textit{Here is going to be a graph of different}}
-	\textbf{\textit{ headphones tested with non stationary signals (Speech)}}
-	\caption{It is clearly seen that speech is not attenuated by current headphones.}
-	\label{fig:ANCcompare}
+	%\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/BasicOverviewZoomed}
+	\tikzsetnextfilename{BasicOverviewZoomed}
+	\input{figures/ArticleIllustrations/BasicOverviewZoomed.tex}
+	\caption{Simplified circumaural ANC Headphone fitted on an ear. Showing the reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).}
+	\label{fig:SystemOverview}
 \end{figure}
 
-
-This paper will be focusing on attenuation of speech using an ANC-system. Speech will hence be seen as the primary noise source. The solution will be based on a digital feedforward system using the Filtered-X Least Mean Squares (FXLMS). The solution is chosen due to it being the optimal system for non stationary signals\cite{Hansen2}. The general solutions in ANC are described thoroughly by Hansen et al. \cite{Hansen}.
-
-The problem of a feedforward system, shown in figure \ref{fig:SystemOverview}, is the dependency of noise having a larger propagation delay from the noise is measured (1) to a headphone loudspeaker(2) can produce a counter-phase signal in the desired point(3). 
-
-{
-	\centering
-	\includegraphics[width=0.5\columnwidth]{figures/ArticleIllustrations/BasicOverviewZoomed}
-	\captionof{figure}{Simplified circumaural ANC Headphone fitted on ear. Showing the reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).}
-	\label{fig:SystemOverview}
-}
-
-When implemented in a real-time system delay will occur, introduced by sampling and processing of the signal. For instance, measured on a cost-wise $\Sigma\Delta$-converter a sampling/conversion delay in the range of 220 to 880 $\mu$s is introduced, depending on a sampling frequency of 192 kHz to 48 kHz respectively. Assuming a $\text{0}^{\circ}$ angle of incident, which is the ideal case, the reference microphone must be placed 75.5 mm to 302 mm further out from the error microphone, to compensate for the delay. In order to compensate for the introduced delay a Linear Prediction (LP)-scheme is proposed as a solution.
+When implemented in a real-time system delay will occur, introduced by sampling and processing of the signal. For instance, measured on a cost-wise $\Sigma\Delta$ - converter\footnote{TLV320AIC3204} a sampling/conversion delay in the range of 220 $\mu$s to 880 $\mu$s is introduced, depending on a sampling frequency of 192 kHz to 48 kHz respectively. Assuming a $\text{0}^{\circ}$ angle of incident, which is the ideal case, the reference microphone must be placed 75.5 mm to 302 mm further out from the error microphone, to compensate for the delay. Instead a Linear Prediction (LP) scheme is proposed as a solution. In speech encoding Wiener filtering is often used therefore the Wiener filtering is the choosen prediction method \cite{Speech}.
 % This reduces computation time and overall
 %Consumer ANC headphones has a bandwidth that does not cover the entire frequency area of speech. This paper examines how to extend the bandwidth.
 %To increase bandwidth a prediction algorithm is proposed as a potential solution. 
-In order to do prediction, certain signal characteristics must be known. Prediction of speech is described by Wai C. Chu \cite{Speech}. 
-%In this paper we will combine the reference solution with the prediction of speech to increase the bandwidth of a real time system.  
-
-The paper is split into two parts. The first part describes the feedforward FXLMS system and how to predict speech using linear prediction. The second part describes simulations and the implementation. Performance of the feedforward FXLMS system with and without prediction are determined and compared.
+Prediction of speech is described by Wai C. Chu \cite{Speech}. 
+\\\\
+This paper firstly presents the feedforward FXLMS system and prediction by Wiener filtering, secondly presents the results of the proposed solution, thirdly discusses the results and lastly concludes on the proposed solution.
         
 %why performance decreases with increased frequency and
 
