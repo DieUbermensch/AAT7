@@ -129,18 +129,18 @@ MATLAB\textsuperscript{\textregistered}-script \path{CancellationPathScript.m} i
 
 \subsection{Analysis}
 The impulse response of the CP is to be found.
-Firstly the cross correlation between Mic[i] and Ref[i] is found. This is done by cross correlating the two signals signals. Secondly the signal is taken into the frequency domain by applying the FT to the signal. This is expressed in \autoref{FrequencyResponseEq2}.
+First the cross correlation between Mic[i] and Ref[i] is found. This is done by cross correlating the two signals signals. Secondly the signal is taken into the frequency domain by applying the FT to the signal. This is expressed in \autoref{FrequencyResponseCPEq2}.
 
 
 
-\begin{equation}\label{FrequencyResponseEq2}
+\begin{equation}\label{FrequencyResponseCPEq2}
 %H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
 H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
 \end{equation}
 Where:
 \begin{description}
 	%\item " $*$ " denotes the complex conjugation
-	\item $H(f)$ is the FT of the 'Cancellation Path'.
+	\item $H(f)$ is the FT of the CP.
 	\item $Y(f)$ is the FT of the recorded microphone signals, Mic[i].
 	\item $X(f)$ is the FT of the recorded reference signals, Ref[i].
 \end{description}
@@ -209,7 +209,7 @@ To verify that the frequency response of the cropped impulse response approximat
 	\centering
 	\tikzsetnextfilename{CancellationPathImpulseResponseCompare1}
 	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponseCompare.tex}
-	\caption{Comparison of the frequency response of 256 coefficients vs 288,768 coefficients.}
+	\caption{Comparison of the frequency response of 256 coefficients vs. 288,768 coefficients.}
 	\label{CancellationPathImpulseResponseCompare}
 \end{figure}
 
@@ -217,8 +217,8 @@ From \autoref{CancellationPathImpulseResponseCompare}, 250 coefficients is shown
 
 \subsection{Error Sources / Tolerances}
 \begin{itemize}
-	\item Placement of the actuators and test-devices. (Position of the headset on the ear  influence the frequency response at high frequency which is not the main scope of study)
-	\item Instrument inaccuracies see \autoref{TolerancesCP}
+	\item Placement of the actuators and test-devices. (Position of the headset on the ear  influence the frequency response at high frequency which is not the main scope of study).
+	\item Instrument inaccuracies see \autoref{TolerancesCP}.
 \end{itemize}
 
 \begin{table}[h]
