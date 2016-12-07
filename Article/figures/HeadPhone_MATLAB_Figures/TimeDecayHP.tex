@@ -15,6 +15,8 @@
 \begin{axis}[%
 width=5.5in,
 height=2.566in,
+scaled x ticks = false,
+x tick label style={/pgf/number format/fixed},
 at={(0.758in,0.481in)},
 scale only axis,
 unbounded coords=jump,
@@ -900,7 +902,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 0.09975	-117.871378234036\\
 0.100020833333333	-105.206905519634\\
 };
-\addlegendentry{Test1};
+%\addlegendentry{Test1};
 
 \addplot [color=mycolor2,solid]
   table[row sep=crcr]{%
@@ -1773,7 +1775,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 0.0997708333333333	-91.3370163649899\\
 0.100020833333333	-84.8176227293125\\
 };
-\addlegendentry{Test2};
+%\addlegendentry{Test2};
 
 \addplot [color=mycolor3,solid]
   table[row sep=crcr]{%
@@ -2646,7 +2648,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 0.0997083333333333	-84.8283044281799\\
 0.100020833333333	-104.580663627212\\
 };
-\addlegendentry{Test3};
+%\addlegendentry{Test3};
 
 \addplot [color=mycolor4,solid]
   table[row sep=crcr]{%
@@ -3519,7 +3521,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 0.0997708333333333	-84.3074783945757\\
 0.100020833333333	-82.9947606849273\\
 };
-\addlegendentry{Test4};
+%\addlegendentry{Test4};
 
 \addplot [color=mycolor5,solid]
   table[row sep=crcr]{%
@@ -4392,7 +4394,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 0.0997708333333333	-90.8233323920557\\
 0.100020833333333	-103.493450288562\\
 };
-\addlegendentry{Test5};
+%\addlegendentry{Test5};
 
 \end{axis}
 \end{tikzpicture}%

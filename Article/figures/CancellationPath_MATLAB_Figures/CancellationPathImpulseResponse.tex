@@ -15,6 +15,8 @@
 \begin{axis}[%
 width=5.5in,
 height=2.566in,
+scaled y ticks = false,
+y tick label style={/pgf/number format/fixed},
 at={(1.011in,0.642in)},
 scale only axis,
 xmin=0,
@@ -23,7 +25,7 @@ xlabel={Time [s]},
 xmajorgrids,
 ymin=-0.1,
 ymax=0.1,
-ylabel={Amplitude[.]},
+ylabel={Amplitude[dBFS]},
 ymajorgrids,
 axis background/.style={fill=white},
 legend style={legend cell align=left,align=left,draw=white!15!black}
@@ -899,7 +901,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 5.98454166666667	0.00311924919053786\\
 6	-0.00198461433143804\\
 };
-\addlegendentry{Test1};
+%\addlegendentry{Test1};
 
 \addplot [color=mycolor2,solid]
   table[row sep=crcr]{%
@@ -1772,7 +1774,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 5.9789375	-0.00240452496426676\\
 6	-8.09493351611492e-05\\
 };
-\addlegendentry{Test2};
+%\addlegendentry{Test2};
 
 \addplot [color=mycolor3,solid]
   table[row sep=crcr]{%
@@ -2645,7 +2647,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 5.97935416666667	-0.00353502299684743\\
 6	0.00068182714938938\\
 };
-\addlegendentry{Test3};
+%\addlegendentry{Test3};
 
 \addplot [color=mycolor4,solid]
   table[row sep=crcr]{%
@@ -3518,7 +3520,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 5.97558333333333	0.00310860938028603\\
 6	0.000798176585993545\\
 };
-\addlegendentry{Test4};
+%\addlegendentry{Test4};
 
 \addplot [color=mycolor5,solid]
   table[row sep=crcr]{%
@@ -4391,7 +4393,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 5.9851875	-0.00210565106248979\\
 6	0.00125387559266562\\
 };
-\addlegendentry{Test5};
+%\addlegendentry{Test5};
 
 \end{axis}
 \end{tikzpicture}%

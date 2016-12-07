@@ -1,7 +1,7 @@
-\section{Measuring a transfer function}\label{Sec:MeasATransFunc}
-This section describes the mathematics used in the measurement system. The System can estimate a transfer function H(f) of a system using a reference signal containing all frequencies of interest. Typically  a logarithmic sine sweep. The user should ensure that the entire reference signal is recorded. This probably requires some zero padding of the time signal before playback.
+\section{Measuring A Transfer Function}\label{Sec:MeasATransFunc}
+This section describes the mathematics used in the measurement system. The system can estimate a transfer function H(f) of a system using a reference signal containing all frequencies of interest, typically  a logarithmic sine sweep. The user should ensure that the entire reference signal is recorded. This probably requires some zero padding of the time signal before playback. For further documentation, the reader should consult \cite{TutorialMeasurementPowerSpectra}.
 \subsection{Transfer functions in general}
-The general way of expressing a transfer function in frequency domain is
+The general way of expressing a transfer function in frequency domain is:
 \begin{equation}
 H(f)=\frac{Y(f)}{X(f)}
 \label{Eq:TranferFunction}
@@ -9,13 +9,14 @@ H(f)=\frac{Y(f)}{X(f)}
 Where $X(f)$ is the Fourier transform of the input signal and $Y(f)$ is the Fourier transform of the the output.  
 
 \subsection{Transfer functions two port system}
-In a typical setup you want to meassure the transfer function of a single component, could be a loudspeaker. An amplifier is needed to drive the loudspeaker, but the amplifiers transfer function is not of interest. A two port system allows you to use a meassured signal, from somewhere in the signal chain, as a reference. 
+In a typical setup you want to measure the transfer function of a single device, e.g. a loudspeaker. An amplifier is needed to drive the loudspeaker, but the amplifiers transfer function is not of interest. A two port system allows you to use a measured signal, from somewhere in the signal chain, as a reference. 
 \begin{equation}
 H(f)=\frac{Y(f)}{X(f)}=\frac{\mathscr{F}(y(t))\times\mathscr{F}^{\ast}(x(t))}{\mathscr{F}(x(t))\times\mathscr{F}^{\ast}(x(t))}
 \label{Eq:TranferFunctionTwoPort}
 \end{equation}
-Where $X(f)$ is the auto-spectrum of the reference signal and $Y(f)$ cross-spectrum of the reference signal and the measured signal.\\
-$x(t)$ and $y(t)$ are of course measured in time domain and to obtain the cross-spectrum and auto-spectrum, $X(f)$ and $Y(f)$ are calculated.
+Where $\star $ denotes the cross-correlation and $\ast $ denotes the convolution, and 
+ $X(f)$ is the auto-spectrum of the reference signal and $Y(f)$ cross-spectrum of the reference signal and the measured signal. Found by auto- and cross correlation respectively.\\
+$x(t)$ and $y(t)$ are measured in time domain and to obtain the cross-spectrum and auto-spectrum, $X(f)$ and $Y(f)$ are calculated.
 %\begin{equation}
 %Y(f)=\mathscr{F}(y(t))\times\mathscr{F}^{\ast}(x(t)) \text{ \& } X(f)=\mathscr{F}(x(t))\times\mathscr{F}^{\ast}(x(t))
 %\label{Eq:cross-spectrum}
@@ -35,7 +36,4 @@ H(f)=\dfrac{\mathscr{F}(y(t)\star x(t))} {\mathscr{F}(x(t)\star x(t))}=
 \dfrac{\mathscr{F}(y(t)\ast x(-t))} {\mathscr{F}(x(t)\ast x(-t))}
 \label{Eq:Xcorr method}
 \end{equation}  
-where $\star $ denotes the cross-correlation and $\ast $ denotes the convolution. %The deconvolution should be made as a division in frequency domain as this is more robust towards noise in the system. 
-
-\subsection{Ref}
-%\cite{TutorialMeasurementPowerSpectra}
+ %The deconvolution should be made as a division in frequency domain as this is more robust towards noise in the system. 

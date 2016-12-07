@@ -1,6 +1,6 @@
 \section{Headphone Transfer-Function} \label{sec:HPjournal}
 \subsection{Purpose}
-The purpose of the experiment is to determine the impulse response of of the  headphones, i.e. the transfer-function between the 'reference-microphone' and the 'source-loudspeaker'
+The purpose of the experiment is to determine the impulse response of the  headphones, i.e. the transfer-function between the 'reference-microphone' and the 'source-loudspeaker'.
 
 \subsection{AAU number list}
 \begin{table}[H]
@@ -40,8 +40,8 @@ The purpose of the experiment is to determine the impulse response of of the  he
 	\centering
 	\tikzsetnextfilename{Setup}
 	\input{figures/CancellationPath_MATLAB_Figures/Headphone.tex}
-	\caption{test}
-	\label{test}
+	\caption{Total overview of the system.}
+	\label{SchematicOverviewHP}
 \end{figure}
 
 \subsection{Settings/Description}
@@ -50,12 +50,11 @@ Calibration of the microphone and associated preamplifier is done on the compute
 
 \subsubsection{Control and calibration}
 \begin{itemize}
-
-	\item 93.6 dB due to being a pressure field $@$ 1 $k$Hz is used as calibration signal
-	\item Microphone sensitivity is controlled to 110 $m$V/Pa
-	\item Measurement amplifier is set to -10 dB default
-	\item Calibration signal yields an amplitude of 0.87 relative to 0 dBFS
-	\item  Calibration signal yields a spike at 101.3 dB SPL, which requires a -7.7 dB SPL adjustment
+	\item 93.6 dB due to being a pressure field $@$ 1 $k$Hz is used as calibration signal.
+	\item Microphone sensitivity is controlled to 110 $m$V/Pa.
+	\item Measurement amplifier is set to -10 dB default.
+	\item Calibration signal yields an amplitude of 0.87 relative to 0 dBFS.
+	\item Calibration signal yields a spike at 101.3 dB SPL $@$ 1 $k$Hz, which requires a -7.7 dB SPL. adjustment
 \end{itemize}
 \subsubsection{Equipment settings}
 \begin{itemize}
@@ -63,27 +62,25 @@ Calibration of the microphone and associated preamplifier is done on the compute
 	\item Outside microphone is placed 12.6 mm from headphone cup
 	\item For item 4 (sound capture card):
 	\begin{itemize}
-		\item "SENS(INPUT 1/L)" is set to +0 dB"
-		\item "SENS(INPUT 2/R)" is set to +0 dB"
-		\item "PHONES" is set to maximum volume
+		\item "SENS(INPUT 1/L)" is set to +0 dB.
+		\item "SENS(INPUT 2/R)" is set to +0 dB.
+		\item "PHONES" is set to maximum volume.
 	\end{itemize}		
 	\item For item 6 (measuring amplifier):
 		\begin{itemize}
-			\item "Input Section Gain" is set to +20 dB in proportion to calibration
-			\item 22.4 $k$Hz low-pass filter is enabled
-			\item 22.4 $k$Hz high-pass filter is enabled 
+			\item "Input Section Gain" is set to +20 dB in proportion to calibration.
+			\item 22.4 $k$Hz low-pass filter is enabled.
+			\item 22.4 $k$Hz high-pass filter is enabled.
 		\end{itemize}
 	\item Item 5 (computer) is set to 0 dBFS
 \end{itemize}
 
-
-
-\subsubsection{Picture}
+\subsubsection{Pictures}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{CancellationPath_and_Headphones/CloseUpMicNew.jpg}
 	\caption{Full setup of experiment.}
-	\label{CloseupCancellationPath}
+	\label{CloseupHeadphone}
 \end{figure}
 
 %\begin{figure}[H]
@@ -96,35 +93,35 @@ Calibration of the microphone and associated preamplifier is done on the compute
 \subsection{Procedure}
 \subsubsection{Set-up}
 \begin{enumerate}
-	\item Set instruments to comply with the list in \ref{SettingsHeadPhones}
-	\item Control and calibrate item 2 using item 7
-	\item Place item 3 onto item 1 ("Henry"'s head and ears)
-	\item Insert item 2's onto item 8 and connect to input of item 6
-	\item Connect item 6 to item 4 and connect item 4 to item 5 via USB
-	\item Insert item 3's connector into output of item 4
+	\item Set instruments to comply with the list in \ref{SettingsHeadPhones}.
+	\item Control and calibrate item 2 using item 7.
+	\item Place item 3 onto item 1 ("Henry"'s head and ears).
+	\item Insert item 2's onto item 8 and connect to input of item 6.
+	\item Connect item 6 to item 4 and connect item 4 to item 5 via USB.
+	\item Insert item 3's connector into output of item 4.
 \end{enumerate}
 
 \subsubsection{Performing the experiment}
 \begin{enumerate}
-	\item Open Simulink \textsuperscript{\textregistered} and run file  \path{SimulinkSystemHeadPhone.xls}
-	\item Through Simulink\textsuperscript{\textregistered} play "LogChirp.wav" from item 5 via item 4
-	\item Record and save, and name "Mic[i].wav" and Ref[i].wav" from item 4 onto item 5 \footnote{[i] indicates the iteration of the experiment}
+	\item Start Simulink \textsuperscript{\textregistered} and run file  \path{SimulinkSystemHeadPhone.xls}.
+	\item The simulations outputs a logarithmic chirp from 20 Hz to 20,000 Hz with an amplitude of 0 dBFS over the span of five seconds.
+	\item Record and save, and name "Mic[i].wav" and Ref[i].wav" from item 4 onto item 5 \footnote{[i] indicates the iteration of the experiment.}
 	\begin{itemize}
-		\item[] Perform this experiment for a total of 5 times
+		\item[] Perform this experiment for a total of five times.
 	\end{itemize}
 \end{enumerate}
-If there is a discontinuity  on the recorded signal(s) discard that recording.
+If  a discontinuity in the recorded signal(s) occurs, then discard that recording and reperform the experiment for the current iteration.
 
 \subsubsection{Data Extraction}
 \begin{enumerate}
 	%\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "HeadPhoneScript.m".
-	\item Open MATLAB\textsuperscript{\textregistered} and run script \path{HeadPhoneScript.m}
+	\item Open MATLAB\textsuperscript{\textregistered} and run script \path{HeadPhoneScript.m}.
 \end{enumerate}
 
-From the performing of the experiment, 10 files has been generated:
+From the performing of the experiment, ten files has been generated:
 \begin{itemize}
-	\item HPMic1.wav - HPMic5.wav
-	\item HPRef1.wav - HPRef5.wav
+	\item HPMic1.wav - HPMic5.wav.
+	\item HPRef1.wav - HPRef5.wav.
 \end{itemize}
 
 These files are the results of performing the six second simulation which gives a number of 288,768 samples, for each generated .wav-file.
@@ -141,7 +138,7 @@ An example showing outputted HPMic1 and HPRef1 are shown in  \autoref{HeadPhoneA
 	\centering
 	\tikzsetnextfilename{HeadPhoneAmplitudePlot2}
 	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneAmplitudePlot2.tex}
-	\caption{Amplitude plot of HPRef1 and HPMic1.}
+	\caption{Time plot of the cancellation path with the headphone reference signal(blue) and the headphone microphone signal(orange).}
 	\label{HeadPhoneAmplitudePlot}
 \end{figure}
 
@@ -149,21 +146,21 @@ MATLAB\textsuperscript{\textregistered}-script \path{HeadPhoneScript.m} is used 
 
 
 \subsection{Analysis}
-The impulse response of the "headphone transfer-function" is to be found.
-This is done by first finding the frequency response of the "headphone transfer-function", which is found by taking the cross correlation between HPMic[i] and HPRef[i]. This is done by taking the FT (Fourier Transform of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
+The impulse response of the CP is to be found.
+First the cross correlation between Mic[i] and Ref[i] is found. This is done by cross correlating the two signals signals. Secondly the signal is taken into the frequency domain by applying the FT to the signal. This is expressed in \autoref{FrequencyResponseHPEq2}.
 
 
 
-\begin{equation}\label{FrequencyResponseEq2}
+\begin{equation}\label{FrequencyResponseHPEq2}
 %H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
 H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
 \end{equation}
 Where:
 \begin{itemize}
 	%\item " $*$ " denotes the complex conjugation
-	\item $H(f)$ is the FT of the 'headphone transfer-function'
-	\item $Y(f)$ is the FT of the recorded microphone signals, HPMic[i]
-	\item $X(f)$ is the FT of the recorded reference signals, HPRef[i]
+	\item $H(f)$ is the FT of the 'headphone transfer-function'.
+	\item $Y(f)$ is the FT of the recorded microphone signals, HPMic[i].
+	\item $X(f)$ is the FT of the recorded reference signals, HPRef[i].
 \end{itemize}
 
 
@@ -173,14 +170,14 @@ The frequency response of the headphones transfer-function is shown at \autoref{
 	\centering
 	\tikzsetnextfilename{HeadPhoneFrequencyResponse2}
 	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneFrequencyResponse3.tex}
-	\caption{Frequency Response plot of the headphones}
+	\caption{Five iterations of frequency response-test plotted of the headphones.}
 	\label{HeadPhoneFrequencyResponsePlot}
 \end{figure}
 
 
 
-The impulse response of this system is found by taking the IFT (Inverse Fourier Transform) of the frequency responses.
-The impulse responses looks as shown on \autoref{HeadPhoneImpulseResponse}.
+The impulse response of this system is found by taking the Inverse Fourier Transform (IFT) of the frequency responses.
+The impulse responses look as shown on \autoref{HeadPhoneImpulseResponse}.
 
 
 \begin{figure}[H]
@@ -199,13 +196,13 @@ The impulse responses looks as shown on \autoref{HeadPhoneImpulseResponse}.
 %	\label{CancellationPathImpulseResponse}
 %\end{figure}
 
-Converting the impulse response from magnitude to dB, gives the time decay which reveals the SNR (Signal to Noise Ratio) of the system, see \autoref{TimeDecayPlotHeadphone}, and from the read off SNR is found to be $\sim$ 30 dB SNR.
+Converting the impulse response from magnitude to dB, gives the time decay which reveals the SNR  of the system, see \autoref{TimeDecayPlotHeadphone}, and from the read off SNR is found to be $\sim$ 30 dB SNR.
 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{TimeDecayHP}
 	\input{figures/HeadPhone_MATLAB_Figures/TimeDecayHP.tex}
-	\caption{Time Decay plot of the headphone transfer-function}
+	\caption{Five iterations of time decay-test plotted of the headphone transfer-function}
 	\label{TimeDecayPlotHeadphone}
 \end{figure}
 
@@ -215,7 +212,7 @@ Taking the first 256 coefficients of the impulse response gives the following cr
 	\centering
 	\tikzsetnextfilename{HPFIR}
 	\input{figures/HeadPhone_MATLAB_Figures/ImpRespCropHP.tex}
-	\caption{Impulse response of the cropped impulse response}
+	\caption{Five iterations of the impulse response zoomed in.}
 	\label{fig:ImpRespCropHP}
 \end{figure}
 
@@ -225,7 +222,7 @@ Test 2's impulse is used as the correct impulse response. To verify that the fre
 	\centering
 	\tikzsetnextfilename{FreqCompHP}
 	\input{figures/HeadPhone_MATLAB_Figures/CompHpImp.tex}
-	\caption{Comparison of the frequency response of 256 coefficients vs 288,768 coefficients.}
+	\caption{Comparison of the frequency response of 256 coefficients vs. 288,768 coefficients.}
 	\label{fig:CompImpHP}
 \end{figure}
 
@@ -234,16 +231,16 @@ From \autoref{fig:CompImpHP} it can be concluded that 256 coefficients is suffic
 
 \subsection{Error Sources/Tolerances}
 \begin{itemize}
-	\item Placement of the actuators and test-devices Mesurements conducted using a microphone clip with swing arm in horizontal position. Error within +/- 0.5 dB. \citep{BK1985}	
-	\item Instrument inaccuracies see \autoref{TolerancesHP}
-	\item Movement of instruments 
-	\item Low-frequency background noise (Under 50 Hz reflections starts appearing in the anechoic chamber but it's not our scope)
+	\item Placement of the actuators and test-devices Mesurements conducted using a microphone clip with swing arm in horizontal position. Error within $\pm$ 0.5 dB. \citep{BK1985}.	
+	\item Instrument inaccuracies see \autoref{TolerancesHP}.
+	\item Movement of instruments .
+	\item Low-frequency background noise (Under 50 Hz reflections starts appearing in the anechoic chamber but it's not our scope).
 \end{itemize}
 
 \begin{table}[H]
 	\centering
 	\ra{1.3}
-	\begin{tabular}{ c c l } \toprule
+	\begin{tabular}{ c c c } \toprule
 	{Item}	& 		{Description} 							& {Tolerance ([dB$_{re20\mu P}$]}.\\ \bottomrule 
 		2	&	B\&K 1'' Condenser Microphone Type 4179 	& $\pm$ 1		\\
 		3	&	Sennheiser HDA 200 Headphones				& $\pm$ 3.0		\\
