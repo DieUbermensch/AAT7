@@ -4,10 +4,21 @@ It can be seen from \autoref{tb:fsPredict} that the higher the $f_s$ the higher 
 %Which is because if the same number of samples is predicted at different $f_s$ then the higher the $f_s$ the less time needs to be predicted out in the future shown in \fxnote{ref to fs:delay} given that a higher $f_s$ results in a smaller converter delay. 
 Therefore a higher $f_s$ is to be prefered up until a DSP cannot handle the computational load or uses to much power. For this simulation $f_s$ is chosen to be $48$ $k$Hz to yield a higher PG. If a real time implementation is to be made a lower $f_s$ is probably to be considered. A $f_s$ of 8 $k$Hz is often used for speech encoding where Wiener filtering is also used \cite{Speech}.       
 \\\\
-Using $f_s$ equal to $48$ $k$Hz the required P is 43 samples. With $P=43$ the optimal parameters for the predictor was found using \autoref{fig:Predict43} to be $N=1200$ and $O=1100$ based on maximizing PG. The optimum PG is equal to 10.0 dB. Because PG for $P=43$ is low a simulation of $P=10$ is made to determine if the optimal $N$ and $O$ have changed. From \autoref{fig:Predict10} $N$ and $O$ are verified to have same optimal values as for $P=43$. If computational cost was to be considered when chosing $N$ and $O$ lower values can yield almost similar PG. As an example using $N=600$ and $O=500$ a PG of 9.5 dB is achieved.  
+Using $f_s$ equal to $48$ $k$Hz the required $P$ is 43 samples. With $P=43$ the optimal parameters for the predictor was found using \autoref{fig:Predict43} to be $N=1700$ and $O=1600$ based on maximizing PG. The optimum PG is equal to 5.4 dB. Because PG for $P=43$ is low, a simulation of $P=10$ is made to determine if the optimal $N$ and $O$ have changed. From \autoref{fig:Predict10} $N$ and $O$ are 1200 and 1100 respectively with a PG of 10.0 dB. If $N=1200$ and $O=1100$ for $P=43$ is chosen this would give a PG of 5.2 dB which results in a difference of only 0.2 dB and the computational cost is much lower therefore these are chosen. The LPC order $M$ can be chosen to be much smaller than $N$ according to \cite{Speech}, however by experiment it was found that this is only true for $P$ small. With $P=10$ $M=N$ is required to yield a high PG. 
+\\\\
+P bla bla bla
+\\\\
+When the two systems with and without LP are compared as shown in \autoref{Fig:delayRatio} it is obvious that the system with LP is superior to the system without of there is a system delay. As an example with a system delay of 10 samples an increased attenuation of 34 dB is achieved. However at 43 samples an increased attenuation of 6.2 dB is achieved. It should be noted that although an inrease in attenuation is achieved the perceived sound with high P's is distorted because of the low PG as shown in     
+\\\\
+If implementing a feedforward LP FXLMS system in a product certain previously assumptions must be reconsidered. In the test setup as shown in \autoref{fig:SystemOverview} the error microphone is placed inside the ear which is of course not practical in a product. This can be solved by the use of different techniques as described in \cite{Hansen}.  
+\\\\
+When chosing converters a total system delay should be as low as possible. However the predictor is capable of predicting accurately up to around 10 samples at $f_s=48$ $k$Hz, allowing for a system delay of that magnitude.
+\\\\
 
 
 
+System delay?
+Is it doable?
 
 
 % Using $f_s$ equal to $48$ kHz P can be determined from \fxnote{ref to fs:delay} to be $TBD$ $\mu$s which is equal to $TBD$ samples. $N$ is detemined by examinating \autoref{fig:PredictN}. PG is very low for P equal 40 therefore parameters for P equal 10, 20 and 40 are determined. Here it can be seen that $N$ increases up until approximately $400$ where PG becomes stable. Therefore $N$ is determined to be $400$ because a larger $N$ does not result in a higher PG. The same examination is done for $O$ and $M$ from \autoref{fig:PredictO} and \autoref{fig:PredictM}.
@@ -22,13 +33,7 @@ Using $f_s$ equal to $48$ $k$Hz the required P is 43 samples. With $P=43$ the op
 % The determination of the parameters are chosen based on having the largest PG with the lowest value of $N$, $O$ and $M$. $N$ is determined to be 500, $O$ is determined to be 300 and $M$ is determined to be 50. These values will be used in the predictor.
 
 
-
-
-\subsection*{Real time limitations}
-Placement of error microphone.
-
-
-
 \section{Conclusion}
 
 \section*{Acknowledgements}
+Flemming Christensen, Claus Skipper Jensen, Søren Bech. 
