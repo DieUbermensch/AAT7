@@ -1,14 +1,18 @@
 
-\section{The aengle of Incidences influence on the headphone transfer function} \label{sec:AngleOfIncidence}
+\section{The angle of Incidences influence on the headphone transfer function} \label{sec:AngleOfIncidence}
+
+All data from this experiment can be found at
+ \path{CD:\\Appendices\Appendix H - The Angles of Incidences Influence on the Headphone Transfer-Function\..}
 
 \subsection{Purpose}
 The purpose of this experiment is to determine if the angle of incidence has any influence on the headphone transfer function. 
 
-The hypothesis is that the angle on incidence influences both the time delay and magnitude response of the transfer functions.
-
-Measurements will only be performed in a horizontal plane. 
+The hypothesis is that the angle on incidence influences both the time delay and magnitude response of the transfer functions. Measurements will only be performed in a horizontal plane. 
 
 \subsection{AAU num list}
+
+Table \ref{tab:AngleOfIncideceHP} list the equipment used during the experiment.
+
 \begin{table}[H]
 	\centering
 	\ra{1.3}
@@ -27,11 +31,14 @@ Measurements will only be performed in a horizontal plane.
 		11	& 	B\&K Microphone Power Supply Type 2804		& 07304		\\
 		\bottomrule
 	\end{tabular}
-	\caption{Table over equipment used in test.}
+	\caption{Table over equipment used during the experiment.}
 	\label{tab:AngleOfIncideceHP}
 \end{table}
 
 \subsection{Diagram}
+
+Figure \ref{fig:AngleOfIndDiagram} shows the idea assumed behind the experiment. By rotating the head, it is possible to determine the difference in time between the Speaker microphone and Reference microphone. The calculation is done based upon figure \ref{Fig:AngleOfIcidenceTriangleCalculation} and is further described in section \ref{sec:AngleDescription}.
+
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{.4\textwidth}
@@ -54,7 +61,7 @@ Measurements will only be performed in a horizontal plane.
 \end{figure}
 
 
-\subsection{Settings/Description}
+\subsection{Description}\label{sec:AngleDescription}
 The experiment uses a single speaker to measure angles of incidence. Therefore either the speaker has to be moved around or the HATS will have to be turned to the right angles. \\
 Adjusting the angle is done by rotating the HATS around the centre of the HATS leaving the speaker in place. This creates a triangle between the speaker, microphone and inner microphone of the HATS. The resolution of the scale on the HATS is 2\degrees. The baseline of the triangle is from the microphone to the inner microphone, and angle is adjusted according to that line.
 The following angles are examined:
@@ -71,23 +78,50 @@ The following angles are examined:
 %The script is based on two triangles that share a corner, the turning point, and a side to the speaker. The two triangles share the same angle at the turning point. This creates for two equations with two unknowns using the cosine relation and the fact that the side opposite the turning point should have a length "x" in one triangle and "x" + an amount of samples in the other triangle. Using this the angle can  be found.
 
 \begin{figure}[H]
-	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/TriangleCalculation.pdf}
-	\label{Fig:AngleOfIcidenceTriangleCalculation}
-	\caption{The two triangles spanned by the center of the HATS, the speaker and two of the microphones. M1 is the speakerMic and M2 is the Ref}
+%	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/TriangleCalculation.pdf}
+\tikzsetnextfilename{AngleOfIcidenceTriangleCalculation}
+\begin{tikzpicture}
+\draw (4,0) node (v3) {} -- (-1,0);
+\draw (-1,0) -- (-3,0);
+\draw (-3,0) -- (-3,-0.6);
+\draw (-1,0) node (v1) {} -- (-1,-0.6);
+\draw (-5,5) node (v2) {} -- (-1,0) -- (-5,5) node (v4) {} -- (-3,0);
+\draw (4,0) -- (-5,5);
+\node at (-5.1,5.7) {Speaker};
+\node at (-3,-0.9) {SpeakerMic};
+\node at (-1,-0.9) {Ref};
+\node at (5.3,-0.1) {Turning Point};
+\node at (2.8,0.2) {Angle};
+\node at (0.7,2.5) {$Dist_{Speaker}$};
+\node at (-1.9,2) {$x+i$};
+\node at (-4.2,2) {$x$};
+\end{tikzpicture}
+\label{Fig:AngleOfIcidenceTriangleCalculation}
+\caption{The two triangles spanned by the center of the HATS, the speaker and two of the microphones.}
 \end{figure}  
 
 
 \subsection{Set-up}
+
+A schematically overview of the experiment is shown in figure \ref{Fig:AngleOfIncidenceSetup}. The experiment is controlled via the RME Fireface 802, which acts as both the recording device and signal generator. A picture of the setup is shown in figure \ref{AngIncidenceSetup}.
+
 \begin{figure}[H]
-	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/AngleOfIncidenceSetup.pdf}
+	\centering
+	\includegraphics[width=0.75\textwidth]{../Journal/Experiments/AngleOfIncidence/AngleOfIncidenceSetup.pdf}
 	\caption{Setup of experiment on angle of incidence.}
 	\label{Fig:AngleOfIncidenceSetup}
 \end{figure}
 
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/AngInSetup.jpg}
+	\label{AngIncidenceSetup}	
+	\caption{Setup of the experiment.}
+\end{figure}
+
 \subsection{Choice of equipment}
 The experiment aims to be valid in the frequency range 50Hz to 20 $k$Hz. This means that all equipment used should cover that frequency range. \\\\
-The experiment uses a total of three microphones. The error microphone located inside the HATS's ear is given by the type fitted to the dummy. The SpeakerMic should be as small as possible in order to avoid influencing the transfer functions that are being measured. For this the very small Knowles FG-23329 is used. The Ref microphone has less restrictions on size and placement. This allows for the choice of a good standard measurement microphone, B\&K 4134. \\\\
-For the speaker the limiting criteria is the lower roll off, especially in an anechoic chamber were reflections does not offer any amplification of lower frequencies. However transfer functions between the microphones are measured, so absolute flatness is not critical. The Genelec 1031-A is chosen. \\\\
+The experiment uses a total of three microphones. The error microphone located inside the HATS's ear is given by the type fitted to the dummy. The SpeakerMic should be as small as possible in order to avoid influencing the transfer functions that are being measured. For this a Knowles FG-23329 is used, since this being the smallest readily available. The Ref microphone has less restrictions on size and placement. This allows for the choice of a standard measurement microphone, here the B\&K 4134 is chosen. \\\\
+For the speaker, the limiting criteria is the lower roll off, especially in an anechoic chamber were reflections does not offer any amplification of lower frequencies. However transfer functions between the microphones are measured, so absolute flatness is not critical. The Genelec 1031-A is chosen. \\\\
 The measurement system uses a RME Fireface 802 controlled using Simulink\textsuperscript{\textregistered}. Data extraction is made using the method described in \autoref{Sec:MeasATransFunc}.
 
 \subsection{Control and calibration}
@@ -95,9 +129,9 @@ The speaker is placed 1.6 meters from the center of the HATS. \\\\
 The two microphones SpeakerMic and Ref are fixed at distances 8.85 cm and 12.45 cm from the center of the HATS respectively. The SpeakerMic is fitted just in front of the headphone speaker using medical tape.\\\\
 For each microphone and pre-amplifier calibrations are made on the computer using Simulink\textsuperscript{\textregistered}.
 \begin{itemize}
-	\item For the Ref microphone, calibration is made at 1 $k$Hz using the B\&K 4230 as calibrator. This should yield a signal of 93.6 dB as it is a pressure field microphone. The measured intensity in MATLAB\textsuperscript{\textregistered} was 68.99 so all measurements are multiplied by 17.00 to get a calibrated signal in MATLAB\textsuperscript{\textregistered}. 
-	\item For the Error microphone, calibration is made at 1 $k$Hz using the B\&K 4230 as calibrator with adapter B\&K 0741 for the ear of the HATS. This should yield a signal of 95.6 dB. The measured intensity in MATLAB\textsuperscript{\textregistered} was 78.22 so all measurements are multiplied by 7.40 to get a calibrated signal in Matlab. 
-	\item For the speakerMic, calibration is made using a earplug cut in half and fitted around the microphone, as an adapter. This simple adapter allows the B\&K 4230 to be used as calibrator. The measured output level is 84.37, and should have been 94.0 dB . Therefore all measurements are multiplied by 3.03 to get a calibrated signal in MATLAB\textsuperscript{\textregistered}
+	\item For the Ref microphone, calibration is made at 1 $k$Hz using the B\&K 4230 as calibrator. This should yield a signal of 93.6 dB as it is a pressure field microphone. The measured intensity in MATLAB\textsuperscript{\textregistered} was 68.99 dB so all measurements are multiplied by 17.00 to get a calibrated signal in MATLAB\textsuperscript{\textregistered}. 
+	\item For the Error microphone, calibration is made at 1 $k$Hz using the B\&K 4230 as calibrator with adapter B\&K 0741 for the ear of the HATS. This should yield a signal of 95.6 dB. The measured intensity in MATLAB\textsuperscript{\textregistered} was 78.22 dB so all measurements are multiplied by 7.40 to get a calibrated signal in MATLAB\textsuperscript{\textregistered}. 
+	\item For the speakerMic, calibration is made using a earplug cut in half and fitted around the microphone, as an adapter. This simple adapter allows the B\&K 4230 to be used as calibrator. The measured output level is 84.37 dB, and should have been 94.0 dB . Therefore all measurements are multiplied by 3.03 to get a calibrated signal in MATLAB\textsuperscript{\textregistered}
 \end{itemize}
  
 \subsection{Equipment settings}
@@ -105,7 +139,7 @@ For each microphone and pre-amplifier calibrations are made on the computer usin
 	\item This experiment is performed with a sampling rate of, $F_{s}$ = 48 $k$Hz.
 	\item The Ref microphone is placed just outside the headset in-line with the ear and speaker unit. 
 	\item The SpeakerMic is placed inside the headphone, as close to the speaker unit as possible. 
-	\item For the sound card take care to turn on the "inst"-option in the mixing console. The following gain settings are present: 		
+	\item For on the RME, the "inst"-option is turned on in the mixing console. The following gain settings are present: 		
 	\begin{itemize}
 		\item Line level gain is 0 dB
 		\item Error Microphones has gain +30 dB
@@ -126,50 +160,71 @@ For each microphone and pre-amplifier calibrations are made on the computer usin
 	\end{lstlisting}
 \end{itemize}
 
-\subsection{Picture}
-\begin{figure}[H]
-	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/AngInSetup.jpg}
-	\label{AngIncidenceSetup}	
-	\caption{Setup of the experiment.}
-\end{figure}
 
 
 \subsection{Procedure}
 \begin{enumerate}
 	\item Set the HATS to the desired test angle. 
 	\item Open Simulink\textsuperscript{\textregistered} and run file \path{SimulinkAngleOfIndence.xls}.
-	\item Run Simulink\textsuperscript{\textregistered} to play "LogChirp.wav" through the speaker.
-	\item Record and save, and name "Mic[i].wav", "SpM[i].wav", "loop[i].wav" and Ref[i].wav"\footnote{[i] indicates the angle of the experiment}.
+	\item Run Simulink\textsuperscript{\textregistered} to play \path{LogChirp.wav} through the speaker.
+	\item Record and save, and name \path{Mic[i].wav}, \path{SpM[i].wav}, \path{loop[i].wav} and \path{Ref[i].wav}\footnote{[i] indicates the angle of the experiment}.
 	\item Repeat the experiment for all angles.
 \end{enumerate}
 
 \subsection{Data Extraction}
-The data is saved during the experiment.
+
+All data is automatically stored when the script \path{SimulinkAngleOfIndence.xls} is run.
+
+
 
 \subsection{Analysis}
 The cross correlation method described in \autoref{Sec:MeasATransFunc} is used to find the transfer functions. The Reference microphone is used as input signal and the speakerMic is used as output. The system under test is the cup of the headphone. 
 Below the frequency response and time response of the system is plotted. 
 \begin{figure}[H]
-	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/TransRef2Speaker.png}
+	\tikzsetnextfilename{AngOfIncFreq}
+	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncFreq.tex}
 	\label{Fig:AngOfIncFreq}
-	\caption{The frequency response from different angles.}
+	\caption{Transfer Function from Ref to Speaker - Frequency domain}
 \end{figure}
 It can be seen, that apart from some resonances the frequency response does not change drastically. Especially in the lower frequency regions, where the ANC system will work. 
 
-\begin{figure}[H]
-	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/impulseRef2Speaker.png}
-	\label{Fig:AngOfIncTime}
-	\caption{The time response from different angles.}
-\end{figure}
+%\begin{figure}[H]
+%	\tikzsetnextfilename{AngOfIncTime}
+%	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncTime.tex}
+%	\label{Fig:AngOfIncTime}
+%	\caption{Transfer Function from Ref to Speaker - Time domain 256 coefficients}
+%\end{figure}
 The figure shows the first 256 filter coefficients of a FIR filter with the same frequency response as the cup of the headphone. We are interested in the delay between the impulses, therefore a plot with a zoom is shown below.
-\begin{figure}[H]
-	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/impulsezoomRef2Speaker.png}
-	\label{Fig:AngOfIncTimezoom}
-	\caption{The time response from different angles (zoomed).}
-\end{figure} 
+%\begin{figure}[H]
+%	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/impulsezoomRef2Speaker.png}
+%	\label{Fig:AngOfIncTimezoom}
+%	\caption{The time response from different angles (zoomed).}
+%\end{figure} 
 As expected the impulses are approximately delayed versions of each other. The on axis (0\degrees) yields the longest delay between the Ref microphone and SpeakerMic. The 90\degrees  case yields no delay at all. 
 
-\subsection{Error Sources}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{\textwidth}
+	\tikzsetnextfilename{AngOfIncTime}
+	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncTime.tex}
+	\label{Fig:AngOfIncTime}
+	\caption{Transfer Function from Reference microphone to Speaker - 256 samples}
+	\end{subfigure} 
+	\begin{subfigure}[b]{\textwidth}
+	\tikzsetnextfilename{AngOfIncTimeZoom}
+	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncTimeZoom.tex}
+	\label{Fig:AngOfIncTimezoom}
+	\caption{Zoomed graph of figure \ref{Fig:AngOfIncTime}, showing the first 30 Samples}
+	\end{subfigure}
+	\caption{The Transfer function showed at different angles with a incrementation of $10^{\circ}$}
+	\label{fig:AngOfIncResult}
+\end{figure}
+
+
+\subsection{Accuracy}
+
+It should be noted that the anechoic room housed both preamplifiers, tripods and stands. Furthermore the speaker microphone may have resulted in a small air gab when placed on the HATS. It appears not to have changes during the measurements based on consistency in the results, but i can have caused small deviation.
 
 \subsection{Conclusion}
-If only one microphone is placed on the outside of the cup, some calculation time is lost. The largest calculation time is achieved when sound propagates from the side of the wearer. If sound comes from the front no calculation time is left. 
+If only one microphone is placed on the outside of the cup, some calculation time is lost. The largest calculation time is achieved when sound propagates from the side of the wearer. If sound comes from the front there is no calculation time left. 
