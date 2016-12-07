@@ -1,16 +1,16 @@
 \section{Speech} \label{sec:Speech}
-This section will give a short introduction to speech examine the characteristics of speech. 
+This section will give a short introduction to speech and will show an examination of the characteristics of speech.
 
-"Speech is generated as an acoustic wave that is radiated from the nostrils and the mouth when air is expelled from the lungs with the resulting flow of air petubed by the constrictions insede the body."
+Speech is generated when an acoustical wave is radiated from the nostrils and the mouth when air is expelled from the lungs, with the resulting flow of air petubed by the constrictions inside the body.
 
-Speech can be intepreted as an acoustic filter with time varying frequency response formed by the different parts of the human speech production system. Speech can be classified in to two main classes: voiced or unvoiced, where voiced sounds are characterized by strong periodicity in the sound with the fundamental frequency refered to as the pitch frequency, or simply pitch. Where the pitch ranges from 50 to 250 Hz for men and 120 to 500 Hz for women. Unvoiced sounds on the other hand are random. For a more detailed explanation refer to \fxnote{Source}. 
+Speech can be interpreted as an acoustic filter, with time varying frequency response. It is formed by the different parts of the human speech production system. Speech can be subclassified in to two main classes; \textit{voiced} and \textit{unvoiced}. Voiced sounds are characterized by strong periodicity in the soundwave, here the fundamental frequency referred  to as the "pitch frequency", or simply as "pitch". Where the pitch ranges from 50 Hz to 250 Hz for men and 120 Hz to 500 Hz for women. Unvoiced sounds on the other hand are almost completely random. For a more detailed explanation refer to \fxnote{Source}. 
 
-An example of the "problems" uttered by a man is given in \autoref{fig:voicedUnvoiced}, where the characteristics of voiced and unvoiced can be seen. 
+An example of the word "problems" spoken by a man is given in \autoref{fig:voicedUnvoiced}, where the characteristics of voiced and unvoiced can be seen. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/Speech/VoicedvsUnvoiced}
-	\caption{Example of speech waveform uttered by a male subject about the word ‘‘problems.’’ The expanded views of a voiced frame and an unvoiced frame are shown, with the magnitude of the Fourier transorm plotted. The frame is 256 samples in length.}
+	\caption{Example of speech waveform uttered by a male subject about the word ‘‘problems.’’ The expanded views of a voiced frame and an unvoiced frame are shown, with the magnitude of the Fourier Transform (FT) plotted. The frame is 256 samples in length.}
 	\label{fig:voicedUnvoiced}
 \end{figure}   
 
@@ -29,11 +29,11 @@ From the example some conclusions can be made:
 \end{itemize}
 
 
-There is not always a clearly distinction between unvoiced and voiced, e.g. during transitions there will be randomness from voiced to unvoiced, vice versa and quasiperiodicity, and it can therefore be difficult to judge if a signal frame is strictly voiced or unvoiced. 
+There is not always a clear distinction between unvoiced and voiced speech. An example would be during transitions between the two, there will be randomness from voiced to unvoiced and vice versa, along with quasiperiodicity It can therefore be difficult to judge if a signal frame is strictly voiced or unvoiced. 
 
-Signal processing on speech is normally done on a frame by frame basis. The lenght of the frame is typically choosen such that the characteristics of the speech signal remain almost within a frame. A typical length of a frame would be between 20 - 30 ms where it can be stated that a speech signal will be Wide Sense Stationary (WSS).  
+Signal processing on speech is normally done on a frame by frame basis. The length of the frame is typically chosen such that the characteristics of the speech signal remain almost within a single frame. A typical length of a frame would be 20 $m$s - 30 $m$s where it can be stated that a speech signal will be Wide Sense Stationary (WSS).  
 
-The human speech production system can be simple modelled using a white noise source and a time varying autoregressive (AR) filter as seen on \autoref{fig:modelSpeech}. 
+The human speech production system can be modeled simply using a white noise source and a time varying autoregressive (AR) filter as seen on \autoref{fig:modelSpeech}. 
 
 \begin{figure}[H]
 	\centering
@@ -42,4 +42,7 @@ The human speech production system can be simple modelled using a white noise so
 	\label{fig:modelSpeech}
 \end{figure}      
 
-By the use of linear prediction it is possible to estimate the coefficients of the time varying filter from an observed speech signal. 
+By the use of linear prediction (LP) it is possible to estimate the coefficients of the time varying filter from an observed speech signal. 
+\fxnote{Maybe elaborate on this?}
+
+
