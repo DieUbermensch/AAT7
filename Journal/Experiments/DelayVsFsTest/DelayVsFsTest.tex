@@ -1,18 +1,12 @@
 \section{Determining Hardware Delay} \label{sec:HardwareDelay}
 
-The following section describes testing of the conversion delay in the chosen implementation platform.
+The following section describes a test determining the conversion delay on the chosen implementation platform.
 
 \subsection{Purpose}
 
-The conversion delay inside the platform is in this project not neglectable and has to be measured and accounted for. With the conversion delay determined it is possible to simulate more accurate. % It is necessary to account for the delay if implentation should ocour.
+The conversion delay inside the platform plays an important part in this project, and has to be measured and accounted for. With the conversion delay determined it is possible to simulate more accurately.
 
-
-\subsection{Settings/Description}
-
-To determine the sampling delay of the system a simple example is used, where the sample is passed through the system without any interaction. This ensures that the minimum time spent for conversion is used. A step on the input signal will result in an delayed output step. The time difference in the steps will directly be seen as the conversion delay of the system. The delay takes into account the needed time for oversampling and reconstruction in the $\Sigma \Delta$ converters.
-
-
-\subsection{Equipment used}
+\subsection{AAU number list}
 Table \ref{tab:MeasDelayTable} shows the used equipment in the experiment. These items have been selected due to the low frequencies being measured. The Analog Discovery 2 has a bandwidth of 25 Mhz and 100M Samples/s, making the resolution sufficient.  
 \begin{table}[H]
 	\centering
@@ -50,8 +44,10 @@ The TMS320C5515eZdsp is connected to the DSP Freedom board where the TLV320AIC32
 \end{figure}
 
 
-\subsection{Equipment settings}
+\subsection{Settings/Description}
+To determine the sampling delay of the system a simple example is used, where the sample is passed through the system without any interaction. This ensures that the minimum time spent for conversion is used. A step on the input signal will result in an delayed output step. The time difference in the steps will directly be seen as the conversion delay of the system. The delay takes into account the needed time for oversampling and reconstruction in the $\Sigma\Delta$-converters.
 
+\subsubsection{Equipment settings}
 To ensure that the DSP is running at the desired frequencies, a probing of the development boards XF pin is done. This pin is flipped according to the sampling frequency, shown in listing \ref{lst:samplingbasic}, line 15 \& 19. The output of the 48 and 192 khz is show in figure \ref{fig:countingthefs}. 
 \begin{figure}[H]
 	\centering
@@ -104,9 +100,7 @@ I2S0_W1_LSW_W = 0;
 
 
 \subsection{Procedure}
-
-The experiment was conducted in the following order:
-
+\subsubsection{Set-up}
 \begin{enumerate}
 	\item The DSP is mounted onto the DSP Freedom Board
 	\item  Connect the DSP board with 3.5 mm mini-jack cable to Input 1 and 2.
@@ -115,6 +109,10 @@ The experiment was conducted in the following order:
 	\end{enumerate}
 	\item Connect OUT1 and IN1 from the oscilloscope to Input 1 on the board with BNC cables.
 	\item Connect IN2 from the oscilloscope to the Input 2 on the board.
+\end{enumerate}
+
+\subsubsection{Performing the experiment}
+\begin{enumerate}
 	\item Start Code Composer Studio V.6 and load \path{AIC3204C6.cproject}
 	\item Change sampling frequency in \path{aic3204_Setup.h} by changing the defined ADCFs to:
 	\begin{enumerate}
@@ -130,7 +128,7 @@ The experiment was conducted in the following order:
 \end{enumerate}
 
 
-\subsection{Data Extraction}
+\subsection{Data extraction}
 
 The data from the experiment is saved as a \path{.CSV} file. These files can be found at:
 \begin{itemize}
@@ -139,7 +137,7 @@ The data from the experiment is saved as a \path{.CSV} file. These files can be 
 	\item \path{192kHz2Hz500mV.csv}
 \end{itemize}
 
-Each file contains the 2Hz and corresponding output of the codec, with a resolution of 8000 points over a period of 1.2 milliseconds.
+Each file contains the 2 Hz and corresponding output of the codec, with a resolution of 8000 points over a period, T = 1.2 $m$s.
 
 
 \subsection{Analysis}\label{sec:AnalysisFsDelay}
@@ -148,17 +146,17 @@ On figure \ref{fig:ScopeDelayExperiment} the three outputs from each test are pl
 
 \begin{itemize}
 	\item The \textcolor{MATLABblue}{blue} graph shows input step.
-	\item The \textcolor{MATLABpurple}{purple} shows the 192 kHz output
+	\item The \textcolor{MATLABpurple}{purple} shows the 192 $k$Hz output
 	\begin{itemize}
-		\item corresponding to 225 $\mu s$
+		\item corresponding to 225 $\mu$s
 	\end{itemize}
-	\item The \textcolor{MATLAByellow}{yellow} shows the 96 kHz output
+	\item The \textcolor{MATLAByellow}{yellow} shows the 96 $k$Hz output
 	\begin{itemize}
-		\item corresponding to 450 $\mu s$
+		\item corresponding to 450 $\mu$s
 	\end{itemize}
-	\item The \textcolor{MATLABorange}{orange} shows the 48 kHz output
+	\item The \textcolor{MATLABorange}{orange} shows the 48 $k$Hz output
 	\begin{itemize}
-		\item corresponding to 900 $\mu s$
+		\item corresponding to 900 $\mu$s
 	\end{itemize}
 \end{itemize}
  
@@ -167,14 +165,14 @@ On figure \ref{fig:ScopeDelayExperiment} the three outputs from each test are pl
 	\centering
 	\tikzsetnextfilename{DelaySetupCSVRead}
 	\input{figures/Hardware/DelayGraph.tex}
-	\caption{Readout form the oscilloscope showing steps at different sampling frequencies. Note that step has been offset for visual overview.}
+	\caption{Readout form the oscilloscope showing steps at different f$_s$ = 2 Hz(blue), f$_s$ = 48 $k$Hz(orange), f$_s$ = 96 $k$Hz(yellow) and f$_s$ = 192 $k$Hz(purple). Note that step has been offset for visual overview.}
 	\label{fig:ScopeDelayExperiment}
 \end{figure}
 
-It can be shown, in equation \ref{eq:sampleDelay}, that the delay of conversion corresponds to a delay of 43 samples.
+In equation \ref{eq:sampleDelay} it is seen that the delay of conversion corresponds to a delay of 43 samples.
 
 \begin{equation}\label{eq:sampleDelay}
-	\frac{N}{S} \cdot S = \frac{48000N}{1s} \cdot 900\cdot 10^{-6}s = 43 \text{ Samples [N]} 
+	\frac{N}{S} \cdot S = \frac{48000N}{1s} \cdot 900\cdot 10^{-6}\text{s} = 43 \text{ Samples [N]} 
 \end{equation}
 
 
@@ -192,13 +190,12 @@ It can be shown, in equation \ref{eq:sampleDelay}, that the delay of conversion 
 %\end{table}
 
 
-\subsection{Accuracy \& Error sources}
+\subsection{Accuracy \& error sources}
 
-The steps are captured using a single 8000-points frame. as shown in figure \ref{fig:ScopeDelayExperiment}. It can be seen that the output was noisy and had a slew-rate of $\pm$ 10 $\mu s$ on every trail. The measurements noted in section \ref{sec:AnalysisFsDelay} were measured at the start of the step eliminating the effect of the slew-rate. However if implemented this has to be taken into account.
+The steps are captured using a single 8000-points frame, as shown in figure \ref{fig:ScopeDelayExperiment}. It is seen that the output was noisy and had a slew-rate of $\pm$ 10 $\mu $s on all trails. The measurements noted in section \ref{sec:AnalysisFsDelay} were measured at the start of the step eliminating the effect of the slew-rate. However if implemented this has to be taken into account.
 
 \subsection{Conclusion}
-
-The conversion delay of the chosen platform is to large to be efficient for an actual implementation. The delay of the system forces it to become none-causal, deeming the platform not suitable for implementation. It should however be noted that a change in converter type could solve the problem, this has not been further analyzed due to the scope of the project.
+The conversion delay of the chosen platform is too large to be efficient for an actual implementation. The delay of the system forces it to become non-causal, deeming the platform not suitable for implementation. It should however be noted that a change in converter type or samplerate could solve the problem, this has not been further analyzed due to the scope of this project.
 
 
 
