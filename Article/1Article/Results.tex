@@ -4,7 +4,7 @@ All results are obtained using Simulink\textsuperscript{\textregistered} which a
 The results are divied into firstly determining the parameters of the predictor and secondly testing the attenuation of feedforward FXLMS system compared to the feedforward LP FXLMS system.   
 
 \subsection{Determining System Parameters}
-The parameters which should be detemined are $f_s$, $P$, $N$ and $O$,.         
+The parameters which should be detemined are $f_s$, $P$, $N$ and $O$.         
 The PG in relation to $f_s$ is shown in \autoref{tb:fsPredict}.
 
 \begin{table}[H]
@@ -19,30 +19,32 @@ PG {[}dB{]} & 13.522 & 15.950 & 14.722 & 20.831 & 35.031 & 43.803 \\ \hline
 \label{tb:fsPredict}
 \end{table}
 
-To compare $f_s$ N must be scaled to represent the same time interval. $f_s$ is chosen to be 48 kHz. P is chosen to 40 samples.  
-The PG as a function of $N$ and $O$ is seen on \autoref{fig:Predict40}. 
+To compare $f_s$ N must be scaled to represent the same time interval. $f_s$ is chosen to be 48 kHz. P is chosen to 43 samples which is the same as the converter delay shown in \autoref{tab:DelayResults}.  
+The PG as a function of $N$ and $O$ is seen on \autoref{fig:Predict43}. 
 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{HammingNOP10}	
 	\input{figures/Articleillustrations/HammingNOP10.tex}
-	\caption{PG as a function of different N and O with $P=40$.}
-	\label{fig:Predict40}
+	\caption{PG as a function of different N and O with $P=43$.}
+	\label{fig:Predict43}
 \end{figure}
 
+The PG of \autoref{fig:Predict43} is deemed a little low therefore a simulation is also made for $P=10$ shown in \autoref{fig:Predict10}.
+
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{HammingNOP10}	
 	\input{figures/Articleillustrations/HammingNOP10.tex}
-<<<<<<< HEAD
-	\caption{PG as plotted for different N and O}
+	\caption{PG as a function of different N and O with $P=10$.}
 	\label{fig:Predict10}
-=======
-	\caption{PG as plotted for different N and O. axis are shown in hundreds}
-	\label{fig:PredictN}
 \end{figure}
 
+From \autoref{fig:Predict40} and \autoref{fig:Predict10} parameters $N$ and $O$ are chosen to be 1200 and 1100.
+\subsection{Simulation of Feedforward LP FXLMS}
 
+<<<<<<< HEAD
+=======
 \begin{figure}[H]
 	\centering
 	\textbf{\textit{Here is going to be a graph of PG determined by O}}
@@ -55,8 +57,8 @@ The PG as a function of $N$ and $O$ is seen on \autoref{fig:Predict40}.
 	\caption{PG }
 	\label{fig:PredictM}
 \end{figure}
+>>>>>>> 0c29f11a59226f23e98d56754be971c8e199c5bd
 
-\subsection{Simulation of Feedforward LP FXLMS}
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{DelayRatio}
