@@ -78,7 +78,7 @@ where $\hat{R}$ is the covariance matrix $\hat{C}_{xx}$, $\bar{\hat{a}}$ is the 
  \begin{equation}\label{eq:normal2}
 \bar{\hat{a}} = \hat{-R^{-1}} \bar{\hat{r}}_x
 \end{equation}
-Calculating $\hat{R^{-1}}$ is computationally heavy on a DSP. Therefore to estimate the LPCs the Levinson-Durbin method is used \cite{LinearPrediction}. Prediction using Wiener filtering, shown in equation \ref{eq:Predictor}, can then be applied to the current frame for prediction of the next frame. To decrease the computational load $M$ LPCs should be used. 
+Calculating $\hat{R^{-1}}$ is computationally heavy on a DSP. Therefore to estimate the LPCs the Levinson-Durbin method is used \cite{LinearPrediction}. Prediction using Wiener filtering, shown in equation \ref{eq:Predictor}, can then be applied to the current frame for prediction of the next frame. To decrease the computational load only LPCs with a impactfull magnitude should be used. These are the first 50-400 LPCs and the LPCs located at the respective pitch frequency of the speech \cite{Speech}.      
 
 \begin{equation}\label{eq:Predictor}
 \hat{x}[n+p] =- \sum^{M-1}_{i=1}\hat{a}_i[n]x[(n+p)-i]
