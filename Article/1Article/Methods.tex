@@ -24,7 +24,7 @@ The system in \autoref{fig:ANCFeedforward} outputs a control signal $y[n]$, whic
 
 
 Control Filter, shown in \autoref{eq:Output}, is initialized with the inverse of the measured impulse response of the represented transfer function. An order of 960 taps is chosen to represent frequencies down to 50 Hz.
-\vspace{-3mm} % yeah I know - Sorry Mikkel!
+%NO fucks given!
 \begin{equation}\label{eq:Output}
 y[n]=\sum_{j=0}^{L-1}b_j[n]x[n-j]
 \end{equation}
@@ -107,7 +107,7 @@ The adaptive ANC system combined with the predictor is shown on \autoref{fig:LPF
 	\label{fig:LPFXLMS}
 \end{figure}
 
-The adaptive ANC inputs the predicted input $\hat{x}[n+P]$ and the measured input $x[n]$, in the control filter and the CP. This will expand \autoref{eq:Output} and \autoref{eq:CP} into \autoref{eq:ControlExpanded} and \autoref{eq:CPExpanded}.   
+The adaptive ANC inputs the predicted input $\hat{x}[n+P]$ and the measured input $x[n]$, in the control filter and the CP. This will expand \autoref{eq:Output} and \autoref{eq:CP} into \autoref{eq:ControlExpanded} and \autoref{eq:CPExpanded} respectively.   
 
 \begin{equation}\label{eq:ControlExpanded}
 y[n+P]=\sum^{P-1}_{j=0}b_j[n]\hat{x}[(n+P)-j]+\sum^{L-1}_{j=P}b_j[n]x[(n+P)-j]
