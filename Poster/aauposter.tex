@@ -72,6 +72,14 @@
 % Adds new math symbols
 \usepackage{amssymb}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Awesome Stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\usepackage[americanresistors,americaninductors,americancurrents, americanvoltages]{circuitikz}
+\input{Tikz.tex}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Colours
 % http://en.wikibooks.org/wiki/LaTeX/Colors
@@ -145,7 +153,8 @@
 % Some changes that cannot be made in the preamble
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % set the background of the poster
-\background{
+
+\background{	
   \begin{tikzpicture}[remember picture,overlay]%
     %the poster background color
     \fill[fill=aaublue3] (current page.north west) rectangle (current page.south east);
@@ -153,6 +162,7 @@
     \fill [fill=aaublue1] (current page.north west) rectangle ([yshift=-\headerheight] current page.north east);
   \end{tikzpicture}
 }
+
 % if you want to reduce the space before and after equations, use and adjust
 % the following lines
 %\addtolength{\abovedisplayskip}{-2mm}
@@ -161,6 +171,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % General poster setup
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \begin{poster}{
   %general options for the poster
   grid=false,
@@ -249,4 +261,5 @@
 
 
 \end{poster}
+
 \end{document}
