@@ -1,12 +1,35 @@
-You cannot use floats in the baposter template. However, you can use figure captions by using {\tt \textbackslash captionof} instead of {\tt \textbackslash caption}. This is demonstrated in Fig.~\ref{fig:figlabel}. Moreover, you can also use {\tt \textbackslash label} and {\tt \textbackslash ref} to make references to your figures and/or tables.
-\begin{center}
-	\includegraphics{aau_logo_new}
-	\captionof{figure}{Here is a figure caption}
-	\label{fig:figlabel}
-\end{center}
-As you can see, the text background is not white. If your figures do not have a transparent background, this may look too ugly for you. You can of course change the background colour through the {\tt boxColorOne} option. Alternatively, you can make the background transparent. In Matlab, the following example demonstrates how this is done\par
-{\tt
-	f1 = figure(1);\\
-	set(f1,'Color','none');
-}\par
-You can also use {\tt pgfplots} \cite{pgfplots} for plotting your Matlab data. This is not that hard and the resulting plots are much nicer than Matlab plots, so I will strongly recommend that you have a look at {\tt pgfplots} right here \url{http://sourceforge.net/projects/pgfplots/}.
+
+
+\begin{centering}
+	
+	\begin{raggedright}
+		lala
+	\end{raggedright}
+
+	\begin{raggedleft}
+		\includegraphics{figures/HammingNOP10.pdf}
+		\captionof{figure}{}
+		\label{fig:HammingNOP10}
+	\end{raggedleft}
+	
+	
+
+
+\end{centering}
+
+
+
+
+
+%You cannot use floats in the baposter template. However, you can use figure captions by using {\tt \textbackslash captionof} instead of {\tt \textbackslash caption}. This is demonstrated in Fig.~\ref{fig:figlabel}. Moreover, you can also use {\tt \textbackslash label} and {\tt \textbackslash ref} to make references to your figures and/or tables.
+%\begin{center}
+%	\includegraphics{aau_logo_new}
+%	\captionof{figure}{Here is a figure caption}
+%	\label{fig:figlabel}
+%\end{center}
+%As you can see, the text background is not white. If your figures do not have a transparent background, this may look too ugly for you. You can of course change the background colour through the {\tt boxColorOne} option. Alternatively, you can make the background transparent. In Matlab, the following example demonstrates how this is done\par
+%{\tt
+%	f1 = figure(1);\\
+%	set(f1,'Color','none');
+%}\par
+%You can also use {\tt pgfplots} \cite{pgfplots} for plotting your Matlab data. This is not that hard and the resulting plots are much nicer than Matlab plots, so I will strongly recommend that you have a look at {\tt pgfplots} right here \url{http://sourceforge.net/projects/pgfplots/}.
