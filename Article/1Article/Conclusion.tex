@@ -1,39 +1,25 @@
 \section{Discussion}
 %The system parameters for the predictor are chosen based on an examination of \autoref{tb:fsPredict} for $f_s$, \fxnote{ref to fs:delay} for $P$, \autoref{fig:PredictN} for $N$, \autoref{fig:PredictO} for $O$ and \autoref{fig:PredictM} for M.
-It can be seen from \autoref{tb:fsPredict} that the higher the $f_s$ the higher the PG. This can be attributed to prediction being dependent on how much time needs to be predicted, less time needs to be predicted at higher $f_s$ as shown in \autoref{tab:DelayResults}.  
+It can be seen from \autoref{tb:fsPredict} that a higher $f_s$ yields a higher PG. This can be attributed to prediction being dependent on how much time needs to be predicted, less time needs to be predicted at higher $f_s$ as shown in \autoref{tab:DelayResults}.  
 %Which is because if the same number of samples is predicted at different $f_s$ then the higher the $f_s$ the less time needs to be predicted out in the future shown in \fxnote{ref to fs:delay} given that a higher $f_s$ results in a smaller converter delay. 
-Therefore a higher $f_s$ is to be prefered up until a DSP cannot handle the computational load or uses to much power. For this simulation $f_s$ is chosen to be $48$ $k$Hz to yield a higher PG. If a real time implementation is to be made a lower $f_s$ is probably to be considered. A $f_s$ of 8 $k$Hz is often used for speech encoding where Wiener filtering is also used \cite{Speech}.       
+Therefore a higher $f_s$ is to be prefered up until a DSP cannot handle the computational load or uses to much power. For this simulation $f_s$ is chosen to be $48$ $k$Hz to yield a high PG. 
+Using $f_s$ equal to $48$ $k$Hz the required $P$ is 43 samples. With $P=43$ the optimal parameters for the predictor was found in \autoref{fig:Predict43} to be $N=1700$ and $O=1600$ based on maximizing PG. The optimum PG is equal to 5.4 dB. 
 \\\\
-Using $f_s$ equal to $48$ $k$Hz the required $P$ is 43 samples. With $P=43$ the optimal parameters for the predictor was found using \autoref{fig:Predict43} to be $N=1700$ and $O=1600$ based on maximizing PG. The optimum PG is equal to 5.4 dB. Because PG for $P=43$ is low, a simulation of $P=10$ is made to determine if the optimal $N$ and $O$ have changed. From \autoref{fig:Predict10} $N$ and $O$ are 1200 and 1100 respectively with a PG of 10.0 dB. If $N=1200$ and $O=1100$ for $P=43$ is chosen this would give a PG of 5.2 dB which results in a difference of only 0.2 dB and the computational cost is much lower therefore these are chosen. The LPC order $M$ can be chosen to be much smaller than $N$ according to \cite{Speech}, however by experiment it was found that this is only true for $P$ small. With $P=10$ $M=N$ is required to yield a high PG. 
+The converter delay at $f_s=192$ $k$Hz is a quarter of the delay at $f_s=48$ $k$Hz. To utilize the fast conversion time multirate processing could be used. If the signal is sampled at 192 $k$Hz, decimated to 48 $k$Hz, prediction of roughly 10 samples is adequate. The decimation and subsequent interpolation should be done using 1. order IIR filters to avoid delays. In \autoref{fig:Predict10} the optimum $N$ and $O$ are 1200 and 1100 respectively with a PG of 10.0 dB. 
 \\\\
-P bla bla bla
+The LPC order $M$ can be chosen to be much smaller than $N$ according to \cite{Speech}, however by experiment it was found that this is only true for $P$ small. With $P=10$, $M=N$ is required to yield a high PG. 
 \\\\
-When the two systems with and without LP are compared as shown in \autoref{Fig:delayRatio} it is obvious that the system with LP is superior to the system without of there is a system delay. As an example with a system delay of 10 samples an increased attenuation of 34 dB is achieved. However at 43 samples an increased attenuation of 6.2 dB is achieved. It should be noted that although an inrease in attenuation is achieved the perceived sound with high P's is distorted because of the low PG as shown in     
+\autoref{fig:PredictP} shows that PG decreases with higher $P$ however the visualization does not show the subjective sound quality of the predicted signal. At $P$ greater than approximately 14 the signal is distorted.    
 \\\\
-If implementing a feedforward LP FXLMS system in a product certain previously assumptions must be reconsidered. In the test setup as shown in \autoref{fig:SystemOverview} the error microphone is placed inside the ear which is of course not practical in a product. This can be solved by the use of different techniques as described in \cite{Hansen}.  
+When the two simulated ANC systems with and without LP are compared as shown in \autoref{Fig:delayRatio} it is obvious that the system with LP is superior to the system without LP. With a system delay of 10 samples an increased attenuation of 34 dB is achieved. At 43 samples system delay an increased attenuation of only 6.2 dB is achieved. As mentioned distortion is introduced for high P's which results in a large decrease in attenuation as shown in \autoref{Fig:delayRatio} because the distortion is not attenuated by the FXLMS.
 \\\\
-When chosing converters a total system delay should be as low as possible. However the predictor is capable of predicting accurately up to around 10 samples at $f_s=48$ $k$Hz, allowing for a system delay of that magnitude.
+The frequency response of the feedforward LP FXLMS shown in \autoref{} is similar to the frequency response of the feedforward FXLMS however with a higher attenuation. Listening to the output of the two ANC systems the difference in attenuation is clearly audiable. Showing that the concept of LP combined with FXLMS yields higher attenuation of speech in simulation     
 \\\\
+If implementing a feedforward LP FXLMS system in a product certain previous assumptions must be reconsidered. In the test setup shown in \autoref{fig:SystemOverview} the error microphone is placed inside the ear which is of course not practical in a product. This can be solved by the use of different techniques e.g. virtual sensing or virtual sound pressure as described in \cite{Hansen2}. If a real time implementation is to be made a lower $f_s$ should be considered. The predictor is very computational heavy and therefore lowering $f_s$ to 8 $k$Hz should be considered. 8 $k$Hz is often used for speech encoding where Wiener filtering is also used \cite{Speech}.
 
-
-
-System delay?
-Is it doable?
-
-
-% Using $f_s$ equal to $48$ kHz P can be determined from \fxnote{ref to fs:delay} to be $TBD$ $\mu$s which is equal to $TBD$ samples. $N$ is detemined by examinating \autoref{fig:PredictN}. PG is very low for P equal 40 therefore parameters for P equal 10, 20 and 40 are determined. Here it can be seen that $N$ increases up until approximately $400$ where PG becomes stable. Therefore $N$ is determined to be $400$ because a larger $N$ does not result in a higher PG. The same examination is done for $O$ and $M$ from \autoref{fig:PredictO} and \autoref{fig:PredictM}.
-
-
-
-% This results in $O$ determined to $TBD$ and $M$ determined to $TBD$.   
-
-
-% $f_s$ is determined by examining if a higher $f_s$ will result in a higher PG, shown on \autoref{tb:fsPredict}. This is assumed because $f_s$ is linear proportional to the converter delay as seen on \fxnote{Fs:delay figure in introduction}. This means that an equal amount of samples which must be predicted independent on $f_s$, which results in the higher the $f_s$ the less time needs to be predicted. 
-
-% The determination of the parameters are chosen based on having the largest PG with the lowest value of $N$, $O$ and $M$. $N$ is determined to be 500, $O$ is determined to be 300 and $M$ is determined to be 50. These values will be used in the predictor.
 
 
 \section{Conclusion}
 
 \section*{Acknowledgements}
-Flemming Christensen, Claus Skipper Jensen, Søren Bech. 
+The group would like to thank Flemming Christensen for supervision, Claus Skipper Jensen for technical assistance and Søren Bech for lending a pair of Beoplay H8 for testing. 

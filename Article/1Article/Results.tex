@@ -24,23 +24,35 @@ The PG as a function of $N$ and $O$ is seen on \autoref{fig:Predict43}.
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{HammingNOP10}	
-	\input{figures/Articleillustrations/HammingNOP10.tex}
-	\caption{PG as a function of different N and O with $P=43$.}
+	\tikzsetnextfilename{HammingNOP43}	
+	\input{figures/Articleillustrations/HammingNOP43.tex}
+	\caption{PG as a function of different N and O with $P=43$. N and O are in hundreds.}
 	\label{fig:Predict43}
 \end{figure}
 
-The PG of \autoref{fig:Predict43} is deemed a little low therefore a simulation is also made for $P=10$ shown in \autoref{fig:Predict10}.
+A simulation is also made for $P=10$ shown in \autoref{fig:Predict10}.
 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{HammingNOP10}	
 	\input{figures/Articleillustrations/HammingNOP10.tex}
-	\caption{PG as a function of different N and O with $P=10$.}
+	\caption{PG as a function of different N and O with $P=10$. N and O are in hundreds.}
 	\label{fig:Predict10}
 \end{figure}
 
-From \autoref{fig:Predict43} and \autoref{fig:Predict10} parameters $N$ and $O$ are chosen to be 1200 and 1100.
+From \autoref{fig:Predict43} and \autoref{fig:Predict10} parameters $N$ and $O$ are chosen to be 1200 and 1100 respectively which is optimal for $P=10$. If $N=1200$ and $O=1100$ for $P=43$ is chosen this would give a PG of 5.2 dB which results in a difference of 0.2 dB compared to optimum.
+The predictor is simulated with varying $P$ using the chosen parameters and shown in \autoref{fig:PredictP}.
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{Pvar}	
+	\input{figures/Articleillustrations/Pvar.tex}
+	\caption{PG as a function of P.}
+	\label{fig:PredictP}
+\end{figure}
+
+
+
 \subsection{Simulation of Feedforward LP FXLMS}
 The attenuation of Feedforward FXLMS compared with feedforward LP FXLMS with different system delays is shown in \autoref{Fig:delayRatio}.
 \begin{figure}[H]
