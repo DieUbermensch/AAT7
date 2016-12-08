@@ -29,6 +29,7 @@
 *.auxlock
 *.dpth
 *.md5
+*.tex.orig
 
 main.pdf
 761Article.pdf

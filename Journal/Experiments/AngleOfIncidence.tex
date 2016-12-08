@@ -90,8 +90,8 @@ The following angles are examined:
 	\begin{tabular}{c c c c c c c c c c} \toprule
 		0\degrees & 10\degrees & 20\degrees & 30\degrees & 40\degrees & 50\degrees & 60\degrees & 70\degrees & 80\degrees & 90\degrees \\ \bottomrule
 	\end{tabular}
-\label{Tab:AngleOfInciMeasAngles}
 \caption{Angles that measurements should be performed at. 0\degrees  is the situation in \autoref{fig:AngOfIndOnax}.}
+\label{Tab:AngleOfInciMeasAngles}
 \end{table}
  
 \subsubsection{Control and calibration}
@@ -134,28 +134,28 @@ For each microphone and pre-amplifier calibrations are made on the computer usin
 % The following Matlab code is used to calculate the angles at which measurements should be performed. The first measurement is performed at a 180\degrees angle. This determines the length of the baseline (maxI in the code below). After determining the angles of interest can be calculated.  \\
 %The script is based on two triangles that share a corner, the turning point, and a side to the speaker. The two triangles share the same angle at the turning point. This creates for two equations with two unknowns using the cosine relation and the fact that the side opposite the turning point should have a length "x" in one triangle and "x" + an amount of samples in the other triangle. Using this the angle can  be found.
 
-\begin{figure}[H]
-%	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/TriangleCalculation.pdf}
-\tikzsetnextfilename{AngleOfIcidenceTriangleCalculation}
-\begin{tikzpicture}
-\draw (4,0) node (v3) {} -- (-1,0);
-\draw (-1,0) -- (-3,0);
-\draw (-3,0) -- (-3,-0.6);
-\draw (-1,0) node (v1) {} -- (-1,-0.6);
-\draw (-5,5) node (v2) {} -- (-1,0) -- (-5,5) node (v4) {} -- (-3,0);
-\draw (4,0) -- (-5,5);
-\node at (-5.1,5.7) {Speaker};
-\node at (-3,-0.9) {SpeakerMic};
-\node at (-1,-0.9) {Ref};
-\node at (5.3,-0.1) {Turning Point};
-\node at (2.8,0.2) {Angle};
-\node at (0.7,2.5) {$Dist_{Speaker}$};
-\node at (-1.9,2) {$x+i$};
-\node at (-4.2,2) {$x$};
-\end{tikzpicture}
-\label{Fig:AngleOfIcidenceTriangleCalculation}
-\caption{The two triangles spanned by the center of the HATS, the speaker and two of the microphones.}
-\end{figure}  
+%\begin{figure}[H]
+%%	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/TriangleCalculation.pdf}
+%\tikzsetnextfilename{AngleOfIcidenceTriangleCalculation}
+%\begin{tikzpicture}
+%\draw (4,0) node (v3) {} -- (-1,0);
+%\draw (-1,0) -- (-3,0);
+%\draw (-3,0) -- (-3,-0.6);
+%\draw (-1,0) node (v1) {} -- (-1,-0.6);
+%\draw (-5,5) node (v2) {} -- (-1,0) -- (-5,5) node (v4) {} -- (-3,0);
+%\draw (4,0) -- (-5,5);
+%\node at (-5.1,5.7) {Speaker};
+%\node at (-3,-0.9) {SpeakerMic};
+%\node at (-1,-0.9) {Ref};
+%\node at (5.3,-0.1) {Turning Point};
+%\node at (2.8,0.2) {Angle};
+%\node at (0.7,2.5) {$Dist_{Speaker}$};
+%\node at (-1.9,2) {$x+i$};
+%\node at (-4.2,2) {$x$};
+%\end{tikzpicture}
+%\label{Fig:AngleOfIcidenceTriangleCalculation}
+%\caption{The two triangles spanned by the center of the HATS, the speaker and two of the microphones.}
+%\end{figure}  
 
 \subsection{Procedure}
 \subsubsection{Set-up}
@@ -170,8 +170,8 @@ A schematically overview of the experiment is shown in figure \ref{Fig:AngleOfIn
 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/AngInSetup.jpg}
-	\label{AngIncidenceSetup}	
 	\caption{Setup of the experiment.}
+	\label{AngIncidenceSetup}	
 \end{figure}
 
 
@@ -198,8 +198,9 @@ Below the frequency response and time response of the system is plotted.
 \begin{figure}[H]
 	\tikzsetnextfilename{AngOfIncFreq}
 	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncFreq.tex}
+	\caption{Transfer Function from Ref to Speaker - Frequency domain}
+
 	\label{Fig:AngOfIncFreq}
-	\caption{Transfer Function from Ref to Speaker - Frequency domain.}
 \end{figure}
 It can be seen, that apart from some resonances the frequency response does not change drastically. Especially in the lower frequency regions, where the ANC system operates. 
 
@@ -223,14 +224,14 @@ As expected the impulses are approximately delayed versions of each other. The o
 	\begin{subfigure}[b]{\textwidth}
 	\tikzsetnextfilename{AngOfIncTime}
 	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncTime.tex}
+	\caption{Transfer Function from Reference microphone to Speaker - showing 960 samples, it is clearly seen the lack of attenuation at low frequencies.}
 	\label{Fig:AngOfIncTime}
-	\caption{Transfer Function from Reference microphone to Speaker - 256 samples}
 	\end{subfigure} 
 	\begin{subfigure}[b]{\textwidth}
 	\tikzsetnextfilename{AngOfIncTimeZoom}
 	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncTimeZoom.tex}
 	\label{Fig:AngOfIncTimezoom}
-	\caption{Zoomed graph of figure \ref{Fig:AngOfIncTime}, showing the first 30 Samples}
+	\caption{Zoomed graph of figure \ref{Fig:AngOfIncTime}, showing the first 30 Samples. With each incrementation it is seen that the delay decreases.}
 	\end{subfigure}
 	\caption{The Transfer function showed at different angles with a incrementation of $10^{\circ}$}
 	\label{fig:AngOfIncResult}
