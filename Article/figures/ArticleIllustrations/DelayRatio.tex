@@ -10,9 +10,8 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=2.5in,
-height=2in,
-at={(0.758in,0.481in)},
+width=2.8in,
+height=1.8in,
 scale only axis,
 xmin=0,
 xmax=50,
@@ -20,6 +19,7 @@ xmajorgrids,
 xlabel={Delay in samples [$\cdot$]},
 ymin=0,
 ymax=70,
+ytick={0,10,...,70},
 ymajorgrids,
 ylabel={Attenuation [dB]},
 axis background/.style={fill=white}
@@ -80,20 +80,5 @@ table[row sep=crcr]{%
 	48	1.74470077738877\\
 	50	0.5254168140125\\
 };
-\end{axis}
-
-\begin{axis}[%
-width=5.833in,
-height=4.375in,
-at={(0in,0in)},
-scale only axis,
-xmin=0,
-xmax=1,
-ymin=0,
-ymax=1,
-hide axis,
-axis x line*=bottom,
-axis y line*=left
-]
 \end{axis}
 \end{tikzpicture}%
