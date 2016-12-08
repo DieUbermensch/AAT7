@@ -4,6 +4,9 @@
 %  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
 %where you can also make suggestions and rate matlab2tikz.
 %
+
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
 \begin{tikzpicture}
 
 \begin{axis}[%
@@ -12,6 +15,7 @@ height=2in,
 at={(1.011in,0.642in)},
 scale only axis,
 %scaled y ticks = false,
+xmode=log,
 xmin=50,
 xmax=4000,
 xlabel={Frequency [Hz]},
@@ -24,7 +28,7 @@ axis background/.style={fill=white},
 title style={font=\bfseries},
 %title={Comparison}
 ]
-\addplot [color=green,solid,line width=1.5pt,forget plot]
+\addplot [color=mycolor1,solid,line width=1.5pt,forget plot]
   table[row sep=crcr]{%
 49.9997916675347	-24.7040827083329\\
 49.9997916675347	-24.7040827083329\\
@@ -895,10 +899,10 @@ title style={font=\bfseries},
 3991.18337006929	-5.6681469608254\\
 4000.18333256945	-5.77268553461671\\
 };
-\addplot [color=green,solid,line width=1.5pt,forget plot]
+\addplot [color=mycolor2,solid,line width=1.5pt,forget plot]
   table[row sep=crcr]{%
-0	-72.6421308021809\\
-0	-72.6421308021809\\
+0.001	-72.6421308021809\\
+0.001	-72.6421308021809\\
 75.5996850013125	-73.7509423378231\\
 110.599539168587	-73.5551163728045\\
 221.199078337174	-71.0073462884573\\

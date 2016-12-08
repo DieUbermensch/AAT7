@@ -59,13 +59,19 @@ The attenuation of Feedforward FXLMS compared with feedforward LP FXLMS with dif
 	\centering
 	\tikzsetnextfilename{DelayRatio}
 	\input{figures/ArticleIllustrations/DelayRatio.tex}
-	\caption{Attenuation of Feedforward FXLMS (blue) compared with feedforward LP FXLMS (red) with different system delays.}
+	\caption{Attenuation of feedforward FXLMS (blue) compared with feedforward LP FXLMS (red) with different system delays.}
 	\label{Fig:delayRatio}
 \end{figure}
-In \autoref{Fig:delayRatio} P is set equal to the system delay in the feedforward LP FXLMS. The reason for starting with a system delay of two is that if there were no delay the feedforward FXLMS system would reach an attenuation of infinity.  
+In \autoref{Fig:delayRatio} P is set equal to the system delay in the feedforward LP FXLMS. The reason for starting with a system delay of two is that if there were no delay the feedforward FXLMS system would reach an attenuation of infinity. The smoothed frequency response of the two systems are shown in \autoref{fig:ANCcompareALL}.  
 
-
-
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{ComparedConusmerHPOur}
+	\input{../Article/Figures/ArticleIllustrations/SmoothCompareOur(fig).tex}
+	\caption{Frequency response of feedforward FXLMS (blue) compared with feedforward LP FXLMS (red). Results was smoothed using polynomial fits with a tolerance of $\pm$ TBD.}
+	\label{fig:ANCcompareALL}
+\end{figure}        
+        
 
 
 

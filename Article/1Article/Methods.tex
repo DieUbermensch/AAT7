@@ -44,7 +44,7 @@ where $c_j$ is the coefficient of a measured transfer-function from the headphon
 
 
 \subsection{Characteristics of Speech}
-Speech can be split into two main classes, voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 - 500 Hz). Unvoiced sounds are characterized as random. Speech is a non stationary signal and can only be assumed Wide Sense Stationary (WSS) for periods of 20 - 30 ms \cite{Speech}. 
+Speech is a quasiperiodic signal which can be split into two main classes, voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 - 500 Hz). Unvoiced sounds are characterized as random. Speech is a non stationary signal and can only be assumed Wide Sense Stationary (WSS) for periods of 20 - 30 ms \cite{Speech}. 
 
 \subsection{Linear Prediction of Speech}
 The outlines of the prediction system is shown in figure \ref{fig:LinearPredictionOverview}. The system predicts $\hat{x}[n+P]$ by utilizing adaptive linear prediction coefficients (LPCs) $\hat{\bar{a}}$, in a Wiener filter, determined using a framebased Auto Correlation Function (ACF) $\hat{r}_x[l]$ \cite{LinearPrediction}.   
