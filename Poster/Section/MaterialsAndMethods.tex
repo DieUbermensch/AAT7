@@ -1,9 +1,13 @@
-A standard FXLMS adaptive algorithm is used to find the counter phase signal of the noise. The filter coefficients are adopted using the error measured with microphone (3) using the formula:
-\\ $b_j[n+1] = b_j[n] - 2\mu e[n]f[n-j]$\\
-This system is combined with a linear Wiener predictor, that allows for prediction of future samples.    
+A standard filtered x least mean square (FXLMS) adaptive algorithm is used to find the counter phase signal of the noise. The filter coefficients are adapted using the error measured with microphone (3) using the formula:
+\begin{equation*}
+	b_j[n+1] = b_j[n] - 2\mu e[n]f[n-j]
+\end{equation*}	 
+This system is combined with a linear Wiener filter, that allows for prediction of future samples.    
 \begin{centering}
 	\includegraphics[width=\textwidth]{figures/CombinedSystem2.pdf}
 \end{centering}
-The performance of the predictor can be objectively evaluated by calculating Prediction Gain (PG). \\
-$PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg)$\\
+The performance of the predictor can be objectively evaluated by calculating Prediction Gain (PG).
+\begin{equation*}
+	PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg)
+\end{equation*}
 Where a large PG is preferred. 

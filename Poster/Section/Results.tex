@@ -9,8 +9,8 @@
 \end{minipage}
 
 \begin{minipage}{.5\columnwidth}
-	\textbf{Prediction gain for different delays}\\
-	This figure shows the performance of the predictor for different prediction lengths (P). If no system delay is present, e.g. no prediction is needed because the FXLMS algorithm (blue) achieves infinite attenuation. The attenuation of the non predicting algorithm decrease a lot with small delays. The predicting FXLMS algorithm however attenuate speech by 40+ dB for delays up to 14 samples at 48 $k$Hz.
+	\textbf{Attenuation for different system delays}\\
+	The predictor is capable of compensating for system delays by predicting P samples ahead	 If no system delay is present no prediction is needed, because the FXLMS algorithm (blue) achieves infinite attenuation. The attenuation of the non predicting algorithm decrease a lot with small delays. The predicting FXLMS algorithm however attenuate speech by 40+ dB for delays up to 14 samples at 48 $k$Hz.
 \end{minipage}% This must go next to `\end{minipage}`
 \begin{minipage}{0.5\columnwidth}
 	\includegraphics[width=\textwidth]{figures/DelayRatio.pdf}
