@@ -3,9 +3,9 @@
 It can be seen from \autoref{tb:fsPredict} that a higher $f_s$ yields a higher $PG$. This can be attributed to prediction being dependent on how much time needs to be predicted, less time needs to be predicted at higher $f_s$ as shown in \autoref{tab:DelayResults}.  
 %Which is because if the same number of samples is predicted at different $f_s$ then the higher the $f_s$ the less time needs to be predicted out in the future shown in \fxnote{ref to fs:delay} given that a higher $f_s$ results in a smaller converter delay. 
 Therefore a higher $f_s$ is to be prefered up until a DSP cannot handle the computational cost. For this simulation $f_s$ is chosen to be $48$ $k$Hz to yield a high PG. 
-Using $f_s$ equal to $48$ $k$Hz the required $P$ is 43 samples. With $P=43$ the optimal parameters for the predictor was found in \autoref{fig:Predict43} to be $N=1700$ and $O=1600$ based on maximizing $PG$. The optimum $PG$ is equal to 5.4 dB. 
+Using $f_s$ equal to $48$ $k$Hz the required $P$ is 43 samples.  
 \\\\
-The converter delay at $f_s=192$ $k$Hz is a quarter of the delay at $f_s=48$ $k$Hz. To utilize the fast conversion time multirate processing could be used. If the signal is sampled at 192 $k$Hz, decimated to 48 $k$Hz, prediction of roughly 10 samples is adequate. The decimation and subsequent interpolation should be done using 1. order IIR filters to avoid delays. In \autoref{fig:Predict10} the optimum $N$ and $O$ are 1200 and 1100 respectively with a $PG$ of 10.0 dB. 
+The converter delay at $f_s=192$ $k$Hz is a quarter of the delay at $f_s=48$ $k$Hz. To utilize the fast conversion time multirate processing could be used. If the signal is sampled at 192 $k$Hz, decimated to 48 $k$Hz, prediction of roughly 10 samples is adequate. The decimation and subsequent interpolation should be done using 1. order IIR filters to avoid delays.  
 \\\\
 The LPC order $M$ can be chosen to be much smaller than $N$ according to \cite{Speech}, however by experiment it was found that this is only true for $P$ small. With $P=10$, $M=N$ is required to yield a high $PG$. 
 \\\\
@@ -20,9 +20,9 @@ If implementing a feedforward LP FXLMS system in a product certain previous assu
 
 
 \section{Conclusion}
-The proposed method of combining FXLMS with LP ($P=10$) has proven to improve the attenuation of a speech signal (50 Hz-4000 Hz) by 34 dB compared to a FXLMS system without LP. This is because the LP algorithm is capable of compensating for the delay introduced by sampling and reconstruction. The sampling delay of a $\Sigma\Delta$-converter can be reduced by sampling at a high frequency and processing in multirate also yielding a smaller computational cost. This will be required if implementing the simulated system.    
+The proposed method of combining FXLMS with LP ($P=10$) has proven to improve the attenuation of a speech signal (50 Hz -- 4000 Hz) by 34 dB compared to a FXLMS system without LP. This is because the LP algorithm is capable of compensating for the delay introduced by sampling and reconstruction. The sampling delay of a $\Sigma\Delta$-converter can be reduced by sampling at a high frequency and processing in multirate also yielding a smaller computational cost. This will be required if implementing the simulated system.    
 \\\\
-The predictor is reliant on short term stationary signals in order to predict future samples. The method used is Wiener filtering, which is often used in speech encoding, coupled in cascade for predicting $P$ samples. This method of predicting results in a $PG$ of 10 dB when predicting 10 samples and the speech is understandable.    
+The predictor is reliant on short term stationary signals in order to predict future samples. The method used is Wiener filtering, which is often used in speech encoding, coupled in cascade for predicting $P$ samples. This method of predicting results in a $PG$ of 10 dB when predicting 10 samples and the speech not heavily distorted.    
 \\\\
 In order to utilize the proposed system in real time certain challenges must be overcome. The primary challenge being the computational cost of implementing LP. If however these challenges can be overcome the potential increase in attenuation is large.   
 

@@ -4,7 +4,7 @@
 \lettrine[lines=2]{A}{ctive} Noise Control 
 (ANC) is a method used in a wide variety of applications. Research in creating silent zones are being conducted \cite{SilentZones}, improving room acoustics using multiple loudspeakers \cite{CAPS} and is already available in various headphones.
 \\\\
-Noise canceling headphones are used in various environments with different noise characteristics. These characteristics vary from periodic low frequency noise (10 Hz-200 Hz), e.g. from machinery and helicopter rotor \cite{LowFrequency}, to mid-range frequency noise (200 Hz-4000 Hz), e.g. speech \cite{MidFrequency}, to high frequency noise (4 Hz-20 $k$Hz), e.g. turbine noise \cite{LowFrequency}. The high frequency noise is naturally attenuated by using a closed headphone cup \cite{naturalAttenuation}, and present consumer headphones are able to attenuate low frequency periodic noise \cite{naturalAttenuation}. The attenuation of speech using ANC in present market ANC headphones can be shown in figure \ref{fig:ANCcompare}. \\\\
+Noise canceling headphones are used in various environments with different noise characteristics. These characteristics vary from periodic low frequency noise (10 Hz -- 200 Hz), e.g. from machinery and helicopter rotor \cite{LowFrequency}, to mid-range frequency noise (200 Hz -- 4000 Hz), e.g. speech \cite{MidFrequency}, to high frequency noise (4 Hz-20 $k$Hz), e.g. turbine noise \cite{LowFrequency}. The high frequency noise is naturally attenuated by using a closed headphone cup \cite{naturalAttenuation}, and present consumer headphones are able to attenuate low frequency periodic noise \cite{naturalAttenuation}. The attenuation of speech using ANC in present market ANC headphones is shown in figure \ref{fig:ANCcompare}. \\\\
 
 %\footnote{Numbers and sources will be added to the statements}.   
 %%ANC are used by companies such as Bang \& Olufsen and Lyngdorf Audio in their proprietary technology as Active Room Compensation\texttrademark and RoomPerfect\texttrademark respectively, to control noise in a room using loudspeakers. Headphone industries have adapted it into cancellation of noise and is used 
@@ -15,7 +15,7 @@ This paper focuses on improving attenuation of speech. Hence speech will be seen
 	\centering
 	\tikzsetnextfilename{ComparedConusmerHP}
 	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/SmoothCompare(fig).tex}
-	\caption{Denon AH-GC20 (blue), B\&O H8 (red) Bose QC15 (yellow) Bose QC25 (purple). Measured in anechoic chamber, averaged over five measurements where the headphones was refitted between measurements. Results were smoothened using polynomial fits with a maximum deviation of 10 dB.}
+	\caption{Denon AH-GC20, Bose QC25, Bose QC15 and B\&O H8 measured in anechoic chamber, averaged over five measurements where the headphones was refitted between measurements. Results are filtered using a 1/3 octave filter bank.}
 	\label{fig:ANCcompare}
 \end{figure}
 
@@ -42,19 +42,19 @@ When implemented in a real-time system, delays are introduced by sampling and pr
 	\hline
 	$f_s$ {[}$k$Hz{]} & 48 & 96 & 192 \\ \hline
 	Delay {[}$\mu$s{]} & 900 & 450 & 225 \\ \hline
-	Delay in samples {[}$\cdot${]} & 43 & 43 & 43 \\ \hline
+	Delay {[}samples{]} & 43 & 43 & 43 \\ \hline
 \end{tabular}
 	\caption{The measured delay of TLV320AIC3204 in both time and samples according to the sampling frequency}
 	\label{tab:DelayResults}
 \end{table}
 
-Assuming a $\text{0}^{\circ}$ angle of incident, which is the ideal case, the reference microphone must be placed 75.5 $m$m to 302 $m$m further out from the error microphone, to compensate for the delay. Instead a Linear Prediction (LP) scheme is proposed as a solution. In speech encoding Wiener filtering is often used therefore the Wiener filtering is the choosen prediction method \cite{Speech}.
+Assuming a $\text{0}^{\circ}$ angle of incident, which is the ideal case, the reference microphone must be placed 75.5 $m$m -- 302 $m$m further out from the error microphone, to compensate for the delay. Instead a Linear Prediction (LP) scheme is proposed as a solution. In speech encoding Wiener filtering is often used therefore the Wiener filtering is the choosen prediction method \cite{Speech}.
 % This reduces computation time and overall
 %Consumer ANC headphones has a bandwidth that does not cover the entire frequency area of speech. This paper examines how to extend the bandwidth.
 %To increase bandwidth a prediction algorithm is proposed as a potential solution. 
 Prediction of speech is described by Wai C. Chu \cite{Speech}. 
 \\\\
-This paper firstly presents the feedforward FXLMS system and prediction by Wiener filtering, secondly it presents the results of the proposed solution, thirdly it discusses the results and lastly it concludes on the proposed solution.
+This paper presents and compares the feedforward FXLMS system and the feedforward LP FXLMS system using Wiener filtering. 
         
         
        
