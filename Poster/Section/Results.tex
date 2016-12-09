@@ -1,5 +1,5 @@
 
- \begin{minipage}{.5\columnwidth}
+ \begin{minipage}{.4\columnwidth}
 	 	\textbf{Optimizing predictor framelength and overlap}\\
 		Here the parameters framelength (N) and the overlap of the frames (O) are changed in order to determine the values for which the PG is optimized. The optimal coefficients are N=1200 and O=1100, however these can be reduced without hurting the performance significantly.
 	\label{fig:HammingNOP10}
@@ -8,7 +8,7 @@
 	\includegraphics[width=\textwidth]{figures/HammingNOP10.pdf}
 \end{minipage}
 
-\begin{minipage}{.5\columnwidth}
+\begin{minipage}{.4\columnwidth}
 	\textbf{Attenuation for different system delays}\\
 	The predictor is capable of compensating for system delays by predicting P samples ahead	 If no system delay is present no prediction is needed, because the FXLMS algorithm (blue) achieves infinite attenuation. The attenuation of the non predicting algorithm decrease a lot with small delays. The predicting FXLMS algorithm however attenuate speech by 40+ dB for delays up to 14 samples at 48 $k$Hz.
 \end{minipage}% This must go next to `\end{minipage}`
@@ -16,7 +16,7 @@
 	\includegraphics[width=\textwidth]{figures/DelayRatio.pdf}
 \end{minipage}
 
-\begin{minipage}{.5\columnwidth}
+\begin{minipage}{.4\columnwidth}
 	\textbf{Frequencyresponse of the two systems}\\
 The attenuation ot different frequencies for the FXLMS (blue) and the LP FXLMS (red) systems. The frequency content is not changed much by the added predictor, but the attenuation is increased by 30+ dB. 
 \end{minipage}% This must go next to `\end{minipage}`
