@@ -39,7 +39,7 @@ Where: $\mu$ is the convergence factor, $e[n]$ is the error and $f[n]$ is the re
 \begin{equation}\label{eq:CP}
 f[n]=\sum_{j=0}^{L-1}c_jx[n-j]
 \end{equation}
-Where: $c_j$ is the coefficient of a measured transfer-function from the headphone loudspeaker to the error microphone in the ear of a Head and Torso Simulator (HATS). In the literature \cite{Hansen} the CP is adaptively adjusted, but it is assumed constant because the position of the headphone does not change while measured on a HATS. This assumption is made because it is irrelevant for verifying if LP is a plausible solution. 
+Where: $c_j$ is the coefficient of a measured transfer-function from the headphone loudspeaker to the error microphone in the ear of a Head and Torso Simulator (HATS). In the literature \cite{Hansen} the CP is adaptively adjusted, but it is assumed constant because the position of the headphone does not change while measured on a HATS. 
 
 
 %When implementing the system, delays exist due to the anti-aliasing and reconstruction filters. The delays of the system exceeds the propagation time of sound from the reference microphone to the headphone loudspeaker resulting in poor performance. Therefore an LP-algorithm is proposed to predict future samples in order to decrease the effect of the time delays.
@@ -47,7 +47,7 @@ Where: $c_j$ is the coefficient of a measured transfer-function from the headpho
 
 
 \subsection{Characteristics of Speech}
-Speech is characterized quasiperiodic signal which can be split into two main classes; voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 Hz-500 Hz). Unvoiced sounds are characterized as stochastic. Speech is a non stationary signal and can only be assumed Wide Sense Stationary (WSS) for periods of 20 $m$s-30 $m$s \cite{Speech}. 
+Speech is characterized quasiperiodic signal which can be split into two main classes; voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 Hz -- 500 Hz). Unvoiced sounds are characterized as stochastic. Speech is a non stationary signal and can only be assumed Wide Sense Stationary (WSS) for periods of 20 $m$s -- 30 $m$s \cite{Speech}. 
 
 \subsection{Linear Prediction of Speech}
 The outlines of the prediction system is shown in figure \ref{fig:LinearPredictionOverview}. The system predicts $\hat{x}[n+P]$ by adapting linear prediction coefficients (LPCs) $\hat{\bar{a}}$, in a Wiener filter, determined using a framebased Auto Correlation Function (ACF) $\hat{r}_x[l]$ \cite{LinearPrediction}.   
@@ -81,7 +81,7 @@ Where: $\hat{R}$ is the covariance matrix $\hat{C}_{xx}$, $\bar{\hat{a}}$ is the
  \begin{equation}\label{eq:normal2}
 \bar{\hat{a}} = \hat{-R^{-1}} \bar{\hat{r}}_x
 \end{equation}
-Calculating $\hat{R}^{-1}$ is computationally heavy on a DSP. Therefore to estimate the LPCs the Levinson-Durbin method is used \cite{LinearPrediction}. Prediction using Wiener filtering, shown in equation \ref{eq:Predictor}, can then be applied to the current frame for prediction of the next frame. To decrease the computational cost only LPCs with an impactfull magnitude should be used. These are the first 50-400 LPCs and the LPCs located at the respective pitch frequency of the speech \cite{Speech}.      
+Calculating $\hat{R}^{-1}$ is computationally heavy on a DSP. Therefore to estimate the LPCs the Levinson-Durbin method is used \cite{LinearPrediction}. Prediction using Wiener filtering, shown in equation \ref{eq:Predictor}, can then be applied to the current frame for prediction of the next frame. To decrease the computational cost only LPCs with an impactfull magnitude should be used. These are the first 50 -- 400 LPCs and the LPCs located at the respective pitch frequency of the speech \cite{Speech}.      
 
 \begin{equation}\label{eq:Predictor}
 \hat{x}[n+p] =- \sum^{M-1}_{i=1}\hat{a}_i[n]x[(n+p)-i]
