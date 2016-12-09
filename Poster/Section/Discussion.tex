@@ -1,11 +1,5 @@
-Here is an example of an equation
-\begin{equation}
-f_X(x|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{\frac{1}{2\sigma^2}(x-\mu)^2\right\}
-\end{equation}
-
- \begin{minipage}{.25\textwidth}
- 	I believe it now!! There is no spoon! \#\LaTeX $\heartsuit$
- \end{minipage}% This must go next to `\end{minipage}`
- \begin{minipage}{.75\textwidth}
- 	\includegraphics[width=\textwidth]{figures/HammingNOP10}
- \end{minipage}
+\begin{itemize}
+\item The proposed method of combining LP with FXLMS has proven through simulations to increase the attenuation of a system, where delays in converters are present. \\
+\item The predictor is capable of predicting up to 14 samples at 48 $k$Hz. When attempting to predict further the predicted signal distorts. If the distorted signal is then passed through the FXLMS algorithm the distortion is not attenuated, resulting in annoying background noise.\\
+\item In order to make a real time implementation of the algorithm certain practicalities should be considered. Firstly the error microphone(3) can not be placed inside the users ear. Secondly the computational load of the predictor should be decreased, possibly by working at a lower sampling frequency as in telecommunications. This could be implemented as a multirate system, to also allow playback of signals with higher fs. 
+\end{itemize}
