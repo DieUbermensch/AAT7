@@ -1,6 +1,6 @@
 \section{Linear Prediction}
 Linear Prediction (LP) is proposed in order to compensate for the delay introduced by sampling and reconstructing acoustical signals. The delays have high impact on the performance of an ANC system. \\
-The proposed predictor uses Wiener filtering to predict the next sample based on the autocorrelation (ACF) of some previous samples. The prediction algorithem is then coupled in cascade in order to predict multiple samples. 
+The proposed predictor uses Wiener filtering to predict the next sample based on the autocorrelation (ACF) of some previous samples. The prediction algorithm is then coupled in cascade in order to predict multiple samples. 
 
 \begin{figure}[H]
 	\centering
@@ -21,11 +21,18 @@ The system predicts $\hat{x}[n+P]$ by adapting linear prediction coefficients $\
 \end{itemize}
 
 
-\subsection{ACF}
-\begin{equation}\label{eq:nonrecursive}
+\subsection{Auto Correlation estimation}
+The full autocorrelation would be an infinite time series, which would be impossible to calculate and it would not be useful as speech is not Wide Sense Stationary through infinite time. The short time stationarity of speech is used by only estimating the ACF for a short time frame determined by N/fs. The ACF is estimated using \autoref{eq:Appnonrecursive}.
+\begin{equation}\label{eq:Appnonrecursive}
 %%r_x[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} x_l[n]w_l[m-n]
 \hat{r}_x[l] = \sum^{N}_{n=\left| l\right|} x_l[n]w_l[N-n]
 \end{equation}
+Where: l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window that can be applied to emphasize ?SOMETHING?. Some experimenting has been made using different windows. It was found that a Hamming window yielded best performance, but a rectangular window yielded almost similar results while saving a computations, as multiplying all samples by one can be omitted. A Barnwell window is proposed by \cite{speech}, but has been found to yield poorer results than a rectangular window.   
+
+
+check the where - also in article\\\\
+We claim something about 50-400 LPC in article\\
+Is the WF equation not allready cascaded? Or not really. A sum over p is missing?\\
 
 \subsection{ Wiener Hopf - finding the Linear Prediction Coefficients}
  The Linear Prediction Coefficients (LPCs) are determined using \autoref{eq:normal}, known as the Wiener-Hopf equation.
@@ -36,11 +43,18 @@ Where: $\hat{R}$ is the covariance matrix $\hat{C}_{xx}$, $\bar{\hat{a}}$ is the
 \begin{equation}\label{eq:normal2}
 \bar{\hat{a}} = \hat{-R^{-1}} \bar{\hat{r}}_x
 \end{equation}
+Calculating $\hat{R}^{-1}$ is computationally heavy, therefore to estimate the LPCs the Levinson-Durbin method is used. 
+
+Write HERE Oliver - levinson durbin\\
 
 
-levinson durbin
 
 \subsection{Wiener filter}
+A Wiener filter is used in cascade, where $\hat{x}[n+2]$ is estimated using $\hat{x}[n+1]$ and $x[n]$ up until $\hat{x}[n+P]$. 
+\begin{equation}\label{eq:AppPredictor}
+\hat{x}[n+p] =- \sum^{M-1}_{i=1}\hat{a}_i[n]x[(n+p)-i]
+\end{equation}
+The Wiener filter resembles an FIR filter, where the previous inputs are used in combination with the LPCs to predict the next sample. 
 
 \subsection{cascade of predict 1}
 
