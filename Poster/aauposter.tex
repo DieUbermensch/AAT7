@@ -72,8 +72,8 @@
 %\usepackage{sansmathfonts}
 %\usepackage[scaled=0.86]{beramono} % for code listings
 
-\usepackage{sfmath}
-%\usepackage{amsmath}
+%\usepackage{sfmath}
+\usepackage{amsmath}
 %\usepackage{sansmath}
 % Adds new math symbols
 \usepackage{amssymb}
@@ -249,11 +249,11 @@
 \input{Section/Discussion.tex}
 \end{posterbox}
 
-\begin{posterbox}[name=conclusion,column=3,below=discussion,height=0.3]{Conclusion}
+\begin{posterbox}[name=conclusion,column=3,below=discussion]{Conclusion}
 	\input{Section/Conclusion.tex}
 \end{posterbox}
 
-\begin{posterbox}[name=Acks,column=3,below=conclusion,above=bottom]{Acknowledgment}
+\begin{posterbox}[name=Acks,column=3,below=conclusion,above=bottom,,height=0.1]{Acknowledgment}
 	\input{Section/Acknowledgment.tex}
 \end{posterbox}
 
