@@ -10,18 +10,22 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=2.8in,
-height=1.8in,
+width=3in,
+height=1.75in,
 scale only axis,
 xmin=0,
 xmax=50,
 xmajorgrids,
-xlabel={Delay [samples]},
+xlabel={\textrm{Delay [samples]}},
 ymin=0,
 ymax=70,
+ylabel style={yshift=0.1em},
+xlabel style={yshift=-0.1em},
 ytick={0,10,...,70},
 ymajorgrids,
-ylabel={Attenuation [dB]},
+ylabel={\textrm{Attenuation [dB]}},
+xticklabel shift={.1cm},
+yticklabel shift={.1cm},
 axis background/.style={fill=white}
 ]
 \addplot [color=mycolor2,solid,line width=1.5pt,forget plot]
