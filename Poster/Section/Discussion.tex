@@ -1,6 +1,7 @@
 \large
 \begin{itemize}
-\item Combining LP with FXLMS has proven through simulations to increase the attenuation of a system, where delays are present. \\
-\item The predictor is capable of predicting 14 samples at 48 $k$Hz. When predicting 14+ samples the predicted signal distorts. If the distorted signal is then passed through the FXLMS algorithm the distortion is not attenuated.\\
-\item In order to make a real time implementation of the algorithm certain practicalities should be considered. Firstly the error microphone(3) can not be placed inside the users ear. Secondly the computational load of the predictor should be decrease. %Possibly by using a multirate system. %working at a lower sampling frequency as in telecommunications. This could be implemented as a multirate system, to also allow playback of signals with higher fs. 
+\item Combining LP with FXLMS has, through simulations, proven to increase the attenuation of a system where delays are present. \\
+\item The predictor is capable of predicting 14 samples at 48 $k$Hz. When predicting $>$14 samples the predicted signal distorts. If the distorted signal is then passed through the FXLMS algorithm the distortion will not be attenuated.\\
+\item In order to make a real time implementation of the algorithm, certain physical parameters must be considered; firstly the error microphone(3) can not be placed inside the users ear. \\ Secondly the computational cost of the predictor should be decreased.
+%Possibly by using a multirate system. %working at a lower sampling frequency as in telecommunications. This could be implemented as a multirate system, to also allow playback of signals with higher fs. 
 \end{itemize}
