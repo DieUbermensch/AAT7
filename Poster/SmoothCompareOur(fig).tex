@@ -10,26 +10,30 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=2.8in,
-height=1.8in,
+width=3in,
+height=1.75in,
 scale only axis,
 %scaled y ticks = false,
 xmode=log,
 xmin=50,
 xmax=4000,
-xlabel={Frequency [Hz]},
+xlabel={\textrm{Frequency [Hz]}},
 xmajorgrids,
 ymin=0,
 ymax=80,
-xtick={50,400,800,2000,4000},
-xticklabels={50,400,800,2000,4000},
-ylabel={Attenuation [dB]},
+ylabel style={yshift=0.1em},
+xlabel style={yshift=-0.1em},
+%xtick={50,400,800,2000,4000},
+%xticklabels={50,400,800,2000,4000},
+ylabel={\textrm{Attenuation [dB]}},
 ymajorgrids,
 axis background/.style={fill=white},
 title style={font=\bfseries},
+xticklabel shift={.1cm},
+yticklabel shift={.1cm}
 %title={Comparison}
 ]
-\addplot [color=mycolor1,solid,forget plot]
+\addplot [color=mycolor1,solid,forget plot,very thick]
 table[row sep=crcr]{%
 	25.1188643150958	75.5409608467358\\
 	31.6227766016838	75.9431721759286\\
@@ -62,7 +66,7 @@ table[row sep=crcr]{%
 	15848.9319246111	26.8153847070164\\
 	19952.6231496888	29.0588757352211\\
 };
-\addplot [color=mycolor2,solid,forget plot]
+\addplot [color=mycolor2,solid,forget plot,very thick]
 table[row sep=crcr]{%
 	25.1188643150958	62.5141418875785\\
 	31.6227766016838	61.3079673738348\\
