@@ -18,12 +18,12 @@ This is a simulation showing the performance of the proposed prediction algorith
 \subsection{Implementation}
 
 \subsubsection{variables}
-A lot of variables, are declared in the simulation and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. The values below are used to test the performance of the simulated algorithm. 
+A lot of variables, are declared in the simulation and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
 \begin{lstlisting} [language=MATLAB]
-N =200; 		%is the frame length used as memory in the prediction and the prediction order
-updateRate=1;	%is the overlap in the buffer
-prediction=20;  %is how far the algorithm should predict 
-fs=8000; 		%is the sample frequency of the input signal 
+N; 				%is the frame length used as memory in the prediction and the prediction order
+Overlp;			%is the overlap in the buffer
+prediction; 	%is how far the algorithm should predict 
+fs; 			%is the sample frequency of the input signal 
 w=hamming(N)	% could be replaced by other window functions.
 \end{lstlisting}
 The following sections will show the code for the individual blocks. \\
@@ -73,50 +73,92 @@ xhat = xIn(1,N+prediction);
 end
 \end{lstlisting}
 
-\subsection{Test}
-Prediction gain is used to evaluate the performance of the predictor. Prediction gain (PG) is given as:
+\subsection{Prediction Gain}
+Prediction gain PG is used to evaluate the performance of the predictor. PGis given as:
 \begin{equation}
 	PG=10 \cdot log_{10}(\frac{\sigma^2_{input_signal}}{\sigma^2_{error}})
 \end{equation} 
-A PG=0 means no prediction can be achieved. A higher PG means better prediction. \\\\
+A PG=0 means no prediction can be achieved. A higher PG means better prediction.
 
+\subsection{Test setup.}
+It is required to run the simulation with a lot of different parameters. Rather than going for a random trial and error approach a systematic variation approach was chosen. If a person should control the simulations manually a lot of time would be spent, waiting for the algorithm to run. Therefore an automated test setup was constructed. The automation consists of 4 parts. 
+\begin{enumerate}
+	\item The prediction simulation
+	\item An initiation 
+	\item Saving data
+	\item A script controlling parameters. 
+\end{enumerate}  
+
+Below an example of the 3 controlling scripts are shown. The script saving data is the only one that is constant. The other scripts should be modified to calculate using the desired combination of parameters.
+
+\textbf{Init.m}
+\begin{lstlisting} [language=MATLAB]
+fs = 48000;
+ts = 1/fs; 
+% Predictor 
+% N = 50; %Frame
+% M = N;   %Coefficients
+% overlap = 0; %updaterate
+% prediction = 1; % How far should the prediction be
+w = hamming(N); 
+% w = rectwin(N);
+%w = barnwell(N,0.98);
+% w = fliplr(w);
+\end{lstlisting}
+
+\textbf{SaveData.m}
+\begin{lstlisting} [language=MATLAB]
+	PG=10*log10(var(Ref)/var(ErrorSig));
+	
+	fname = sprintf(['fs' num2str(fs ) '_N' num2str(N) '_O' num2str(overlap) ...              '_M' num2str(M) '_P' num2str((prediction)) '.mat']);
+	
+	save(fname,'fs','N','overlap','M','prediction','PG');
+\end{lstlisting}
+
+\textbf{RunSim.m}
+\begin{lstlisting} [language=MATLAB]
+	clear 
+	prediction=10;
+	
+	for N=100:100:3000
+		M=N;
+		for overlap=0:100:N-100
+			sim('Predictora.slx')
+			disp(['overlap=' num2str(overlap) 'done'])
+		end
+		disp(['N=' num2str(N) ' done'])
+	end
+	
+	disp('I am done')	
+\end{lstlisting}
+
+
+Afterwards the script "loadData.m" can be used to structure the stores .mat  files in a single array.\\
+\textbf{LoadData.m}
+\begin{lstlisting} [language=MATLAB]
+	clear
+	close all
+	fs=48000;
+	prediction=10;
+	counter=0;
+	
+	for N=100:100:3000
+	M=N;
+		for overlap=0:100:N-100
+			fname = sprintf(['fs' num2str(fs) '_N' num2str(N) '_O' num2str(overlap) '_M' num2str(M) '_P' num2str((prediction)) '.mat']);
+			load(fname)
+			counter=counter+1;
+			result(counter,:)=[fs N overlap M prediction PG]; 
+		end
+	end
+	
+	disp('I am done')
+\end{lstlisting}
+
+ 
+\subsection{Determining N and O}
 Firstly the performance with different prediction orders is measured. This is the frame length parameter (N). \\ 
-Here the "prediction" length is set to 42. The "updateRate" is set as the frame length under test (no overlap). When the best non overlapping frame length is found, the best overlap will be tested. The window used is the Hamming window.   
-\begin{table}[H]
-	\centering
-	\begin{tabular}{c c} \toprule
-		Prediction order 	& Prediction gain 	\\ \bottomrule
-		1					& 					\\
-		2					&					\\
-		5					&					\\
-		10					&					\\
-		20					&					\\
-		50					&					\\
-		100					&					\\
-		200					&					\\
-		500					&					\\ \bottomrule
-	\end{tabular}
-\label{Tab:PredictionOrderGain}
-\caption{Prediction order and the calculated PG}
-\end{table}
-It is found that a predicion order of XXX provides sufficient predicion gain. \\
-
-Secondly different "updateRates" are evaluated with the chosen prediction order. 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{c c} \toprule
-		updateRate		 	& Prediction gain 	\\ \bottomrule
-		1					& 					\\
-		2					&					\\
-		5					&					\\
-		10					&					\\
-		20					&					\\
-		50					&					\\
-		100					&					\\ \bottomrule
-	\end{tabular}
-	\label{Tab:PredUpdateRateGain}
-	\caption{The calculated PG for different "updateRates"}
-\end{table}
+Here the "prediction" length is set to 10. Overlap is set varied from 0 to N-100. The used window is the Hamming window. 
 
 
 
