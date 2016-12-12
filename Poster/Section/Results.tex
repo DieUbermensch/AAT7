@@ -1,8 +1,17 @@
 \large
+<<<<<<< HEAD
+\begin{minipage}{.45\columnwidth}
+ 	\begin{center}
+ 		\textbf{Optimizing predictor framelength and overlap}
+ 	\end{center}
+\vspace{-3mm}
+The parameter's framelength,$N$ and the overlap of the frames, $N$ are varied in order to determine the values for which the $PG$ is optimized. The optimal coefficients are $N=1200$ and $O=1100$.
+=======
 
 \begin{minipage}{.43\columnwidth}
 	 	\textbf{Optimizing predictor framelength and overlap}\\
 		Here the parameters framelength (N) and the overlap of the frames (O) are varied in order to determine the values for which the PG is optimized. The optimal coefficients are N=1200 and O=1100.
+>>>>>>> 6ebe59ae55f3d684a5a72b755461f659ac41c7cc
 	\label{fig:HammingNOP10}
 \end{minipage}% This must go next to `\end{minipage}`
 \hspace{4mm}
@@ -10,12 +19,21 @@
 %	\includegraphics[width=\textwidth]{figures/HammingNOP10.pdf}
 	\input{HammingNOP10.tex}
 \end{minipage}
-
 \vspace{4mm}
+<<<<<<< HEAD
+\begin{minipage}{.45\columnwidth}
+	\begin{center}
+		\textbf{Attenuation for different system delays}
+	\end{center}
+\vspace{-3mm}
+If no system delay is present no prediction is needed, because the FXLMS algorithm (\textcolor{MATLABblue}{---}) achieves infinite attenuation.\\ 
+The attenuation of the non predicting algorithm decrease a lot with small delays. The predicting FXLMS algorithm however attenuate speech by 40+ dB for delays up to 14 samples at 48 $k$Hz.
+=======
 \begin{minipage}{.43\columnwidth}
 	\textbf{Attenuation for different system delays}\\
 	 If no system delay is present no prediction is needed, because the FXLMS algorithm (blue) achieves infinite attenuation.\\ 
 	 The attenuation of the non predicting algorithm decrease a lot with small delays. The predicting FXLMS algorithm however attenuate speech by 40+ dB for delays up to 14 samples at 48 $k$Hz.
+>>>>>>> 6ebe59ae55f3d684a5a72b755461f659ac41c7cc
 \end{minipage}% This must go next to `\end{minipage}`
 \hspace{4mm}
 \begin{minipage}{0.5\columnwidth}
@@ -24,9 +42,18 @@
 \end{minipage}
 \vspace{4mm}
 
+<<<<<<< HEAD
+\begin{minipage}{.45\columnwidth}
+	\begin{center}
+		\textbf{Frequencyresponse of the two systems}
+	\end{center}
+\vspace{-3mm}
+The attenuation for different frequencies for the FXLMS (\textcolor{MATLABblue}{---}) and the LP FXLMS (\textcolor{MATLABred}{---}) systems. The frequency content is not changed much by the predictor, but the attenuation is increased by 30+ dB. 
+=======
 \begin{minipage}{.43\columnwidth}
 \textbf{Frequencyresponse of the two systems}\\
 The attenuation for different frequencies for the FXLMS (blue) and the LP FXLMS (red) systems. The frequency content is not changed much by the predictor, but the attenuation is increased by 30+ dB. 
+>>>>>>> 6ebe59ae55f3d684a5a72b755461f659ac41c7cc
 \end{minipage}% This must go next to `\end{minipage}`
 \hspace{4mm}
 \begin{minipage}{0.5\columnwidth}
