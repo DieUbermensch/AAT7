@@ -27,12 +27,16 @@ The full autocorrelation would be an infinite time series, which would be imposs
 %%r_x[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} x_l[n]w_l[m-n]
 \hat{r}_x[l] = \sum^{N}_{n=\left| l\right|} x_l[n]w_l[N-n]
 \end{equation}
-Where: l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window that can be applied to emphasize ?SOMETHING?. Some experimenting has been made using different windows. It was found that a Hamming window yielded best performance, but a rectangular window yielded almost similar results while saving a computations, as multiplying all samples by one can be omitted. A Barnwell window is proposed by \cite{speech}, but has been found to yield poorer results than a rectangular window.   
+Where: l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window that can be applied to emphasize ?SOMETHING?. Some experimenting has been made using different windows. It was found that a Hamming window yielded best performance, but a rectangular window yielded almost similar results while saving a computations, as multiplying all samples by one can be omitted. A Barnwell window is proposed by \cite{speech}, but has been found to yield poorer results than both other windows.   
 
 
 check the where - also in article\\\\
 We claim something about 50-400 LPC in article\\
 Is the WF equation not allready cascaded? Or not really. A sum over p is missing?\\
+We lack a new CP\\
+We lack a journal on measuring performance of ANC headphones\\
+We lack HP and CP in article.\\
+
 
 \subsection{ Wiener Hopf - finding the Linear Prediction Coefficients}
  The Linear Prediction Coefficients (LPCs) are determined using \autoref{eq:normal}, known as the Wiener-Hopf equation.
