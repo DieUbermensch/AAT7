@@ -1,4 +1,4 @@
-\section{Discussion}
+\section{Discussion} \label{sec:discussion}
 %The system parameters for the predictor are chosen based on an examination of \autoref{tb:fsPredict} for $f_s$, \fxnote{ref to fs:delay} for $P$, \autoref{fig:PredictN} for $N$, \autoref{fig:PredictO} for $O$ and \autoref{fig:PredictM} for M.
 It can be seen from \autoref{tb:fsPredict} that a higher $f_s$ yields a higher $PG$. This can be attributed to prediction being dependent on how much time needs to be predicted, less time needs to be predicted at higher $f_s$ as shown in \autoref{tab:DelayResults}.  
 %Which is because if the same number of samples is predicted at different $f_s$ then the higher the $f_s$ the less time needs to be predicted out in the future shown in \fxnote{ref to fs:delay} given that a higher $f_s$ results in a smaller converter delay. 
@@ -15,18 +15,18 @@ When the two simulated ANC systems with and without LP are compared as shown in 
 \\\\
 The frequency response of the feedforward LP FXLMS shown in \autoref{fig:ANCcompareALL} is similar to the frequency response of the feedforward FXLMS however with a higher attenuation. Listening to the output of the two ANC systems the difference in attenuation is clearly audiable. Showing that the concept of LP combined with FXLMS yields higher attenuation of speech in simulation     
 \\\\
-If implementing a feedforward LP FXLMS system in a product certain previous assumptions must be reconsidered. In the test setup shown in \autoref{fig:SystemOverview} the error microphone is placed inside the ear which is of course not practical in a product. This can be solved by the use of different techniques e.g. virtual sensing or virtual sound pressure as described in \cite{Hansen2}. If a real time implementation is to be made, a lower $f_s$ should be considered. The predictor is very computational heavy and therefore lowering $f_s$ to 8 $k$Hz should be considered. 8 $k$Hz is often used for speech encoding where Wiener filtering is also used \cite{Speech}.
+If implementing a feedforward LP FXLMS system in a product certain previous assumptions must be reconsidered. In the test setup shown in \autoref{fig:SystemOverview} the error microphone is placed inside the ear which is of course not practical in a product. This can be solved by the use of different techniques e.g. virtual sensing or virtual sound pressure as described in \cite{Hansen2}. If a real time implementation is to be made, a lower $f_s$ should be considered. The predictor is very computationally heavy and therefore lowering $f_s$ to 8 $k$Hz should be considered. 8 $k$Hz is often used for speech encoding where Wiener filtering is also used \cite{Speech}.
 
 
 
 \section{Conclusion}
 The proposed method of combining FXLMS with LP ($P=10$) has proven to improve the attenuation of a speech signal (50 Hz -- 4000 Hz) by 34 dB compared to a FXLMS system without LP. This is because the LP algorithm is capable of compensating for the delay introduced by sampling and reconstruction. The sampling delay of a $\Sigma\Delta$-converter can be reduced by sampling at a high frequency and processing in multirate also yielding a smaller computational cost. This will be required if implementing the simulated system.    
 \\\\
-The predictor is reliant on short term stationary signals in order to predict future samples. The method used is Wiener filtering, which is often used in speech encoding, coupled in cascade for predicting $P$ samples. This method of predicting results in a $PG$ of 10 dB when predicting 10 samples and the speech not heavily distorted.    
+The predictor is reliant on short term stationary signals in order to predict future samples. The method used is Wiener filtering, which is often used in speech encoding, coupled in cascade for predicting $P$ samples. This method of predicting results in a $PG$ of 10 dB when predicting 10 samples and the predicted speech is not heavily distorted.    
 \\\\
 In order to utilize the proposed system in real time certain challenges must be overcome. The primary challenge being the computational cost of implementing LP. If however these challenges can be overcome the potential increase in attenuation is large.   
 
 
 
 \section*{Acknowledgements}
-The group would like to thank Flemming Christensen for supervision, Claus Skipper Jensen for technical assistance and Søren Bech for lending a pair of Beoplay H8 for testing. 
+The group would like to thank Associate Professor Flemming Christensen for supervision, Engineering Assistant Claus Skipper Jensen for technical assistance and Professor Søren Bech for lending a pair of Beoplay H8 for testing. 
