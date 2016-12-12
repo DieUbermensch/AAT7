@@ -43,15 +43,15 @@ We lack HP and CP in article.\\
 \begin{equation}\label{eq:normal}
 \hat{R}  \bar{a} = -\bar{\hat{r}}_x
 \end{equation}
-Where: $\hat{R}$ is the covariance matrix $\hat{C}_{xx}$, $\bar{\hat{a}}$ is the LPCs $\bar{\hat{a}} = [\hat{a}_0 , \hat{a}_1, \dotsc, \hat{a}_{N-1}]^T$ and $\bar{\hat{r}}_x$ is the ACF, $\bar{\hat{r}}_x = [\hat{r}_x[1] , \hat{r}_x[2], \dotsc, \hat{r}_x[N]]^T$. \autoref{eq:normal} can be rewritten as shown in \autoref{eq:normal2} yielding the LPCs directly.  
+Where; $\hat{R}$ is the covariance matrix $\hat{C}_{xx}$, $\bar{\hat{a}}$ is the LPCs $\bar{\hat{a}} = [\hat{a}_0 , \hat{a}_1, \dotsc, \hat{a}_{N-1}]^T$ and $\bar{\hat{r}}_x$ is the ACF, $\bar{\hat{r}}_x = [\hat{r}_x[1] , \hat{r}_x[2], \dotsc, \hat{r}_x[N]]^T$. \autoref{eq:normal} can be rewritten as shown in \autoref{eq:normal2} yielding the LPCs directly.  
 \begin{equation}\label{eq:normal2}
 \bar{\hat{a}} = \hat{-R^{-1}} \bar{\hat{r}}_x
 \end{equation}
 Calculating $\hat{R}^{-1}$ is computationally heavy, therefore to estimate the LPCs the Levinson-Durbin method is used. 
 
 \subsubsection{Levinson-Durbin}
-Levinson-Durbin is a method which can be used to find the estimated LPCs of a problem, recursively. \\
-The algorithm takes the coefficients of the ACF in order to compute the RCs, the algorithm can be seen below: \\
+Levinson-Durbin is a method which can be used to find the estimated LPCs of a problem, recursively. It is characterized by being power efficient, as it does not directly invert a matrix, but rather estimates it.
+The algorithm takes the coefficients of the ACF in order to compute the RCs, which lastly yields the LPCs. The algorithm can be seen below3:\\\\
 The coefficient order, $l$ is initialized to 0, which means the predictor for order 0 is found first:
 \begin{equation}\label{LDInit}
 	J_0=R[0]
@@ -73,11 +73,11 @@ Lastly a minimizer for the mean-squared predictor is computed, for the $l$'th or
 \begin{equation}\label{LDStep2}
 	J_1 = J_{l-1} (1-k_l^2)
 \end{equation}
-Lastly gives the LPCs:
+This gives the LPCs:
 \begin{equation}
 	a_i = a_i^{M}; \hspace{10mm} i = 1,2 \dotsc , M
 \end{equation}
-The Levinson-Durbin algorithm is characterized by being power efficient, as it does not directly invert a matrix, but rather estimates it.
+
 
 \subsection{Wiener filter}
 A Wiener filter is used in cascade, where $\hat{x}[n+2]$ is estimated using $\hat{x}[n+1]$ and $x[n]$ up until $\hat{x}[n+P]$. 
