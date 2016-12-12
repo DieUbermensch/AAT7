@@ -38,7 +38,7 @@ We lack a journal on measuring performance of ANC headphones\\
 We lack HP and CP in article.\\
 
 
-\subsection{ Wiener Hopf - finding the Linear Prediction Coefficients}
+\subsection{ Wiener Hopf - Finding the Linear Prediction Coefficients}
  The Linear Prediction Coefficients (LPCs) are determined using \autoref{eq:normal}, known as the Wiener-Hopf equation.
 \begin{equation}\label{eq:normal}
 \hat{R}  \bar{a} = -\bar{\hat{r}}_x
@@ -49,9 +49,35 @@ Where: $\hat{R}$ is the covariance matrix $\hat{C}_{xx}$, $\bar{\hat{a}}$ is the
 \end{equation}
 Calculating $\hat{R}^{-1}$ is computationally heavy, therefore to estimate the LPCs the Levinson-Durbin method is used. 
 
-Write HERE Oliver - levinson durbin\\
-
-
+\subsubsection{Levinson-Durbin}
+Levinson-Durbin is a method which can be used to find the estimated LPCs of a problem, recursively. \\
+The algorithm takes the coefficients of the ACF in order to compute the RCs, the algorithm can be seen below: \\
+The coefficient order, $l$ is initialized to 0, which means the predictor for order 0 is found first:
+\begin{equation}\label{LDInit}
+	J_0=R[0]
+\end{equation}
+The algorithm works recursively, and the next step iterates for a total number of the framelength, $M$ in order to compute RCs for each $l$.
+\begin{equation}\label{LDStep1}
+	k_l=\frac{1}{J_{l-1}} \left ( R[l] + \sum_{i=1}^{l-1} a_i^{(l-1)}R[l-i]   \right) 
+\end{equation}
+The LPC are then likewise calculated iteratively, from the already found RCs: 
+\vspace{-0mm}
+\begin{equation}\label{LDStep2_1}
+	a_l^{(l)} = -k_1,
+\end{equation}
+\vspace{-10mm}
+\begin{equation}\label{LDStep2_2}
+a_i^{(l)} = a_i^{(l-1)} - k_l a_{l-i}^{(l-1)} ; \hspace{10mm} i = 1,2,\dotsc,l-1
+\end{equation}
+Lastly a minimizer for the mean-squared predictor is computed, for the $l$'th order computation:
+\begin{equation}\label{LDStep2}
+	J_1 = J_{l-1} (1-k_l^2)
+\end{equation}
+Lastly gives the LPCs:
+\begin{equation}
+	a_i = a_i^{M}; \hspace{10mm} i = 1,2 \dotsc , M
+\end{equation}
+The Levinson-Durbin algorithm is characterized by being power efficient, as it does not directly invert a matrix, but rather estimates it.
 
 \subsection{Wiener filter}
 A Wiener filter is used in cascade, where $\hat{x}[n+2]$ is estimated using $\hat{x}[n+1]$ and $x[n]$ up until $\hat{x}[n+P]$. 
@@ -82,7 +108,7 @@ As seen in \autoref{eq:App_PG} the PG is calculated based on a ratio between the
 %	\caption{Text here.}
 %\end{figure}
 
-\subsection{Levinson-Durbin}
+
 
 
 
