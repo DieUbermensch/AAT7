@@ -56,7 +56,7 @@ The coefficient order, $l$ is initialized to 0, which means the predictor for or
 \begin{equation}\label{LDInit}
 	J_0=R[0]
 \end{equation}
-The algorithm works recursively, and the next step iterates for a total number of the framelength, $M$ in order to compute RCs for each $l$.
+The algorithm works recursively, and the next step iterates for a total number of the prediction order, $M$ to compute RCs for each $l$.
 \begin{equation}\label{LDStep1}
 	k_l=\frac{1}{J_{l-1}} \left ( R[l] + \sum_{i=1}^{l-1} a_i^{(l-1)}R[l-i]   \right) 
 \end{equation}
