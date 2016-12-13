@@ -49,26 +49,36 @@ end
 
 \subsubsection{Lenvinson Durbin}
 \begin{lstlisting} [language=MATLAB]
-function k = LevinsonDurbin(r,N,M)
-%Takes an 1xM length vector from AutocorrelationFunction
-%     N = Framelength;
-%     M = Order;
-%     r = ACF;
+function a = LevinsonDurbin(r, M)
 
-%Initializatin
-J = zeros(1,M);
-k = zeros(1,M);
-J(1) = r(1);
+% r0     ACF at lag 0
+% r      ACF from lag 1 to m+1. It's like a Coloumstyle input
+% m      Prediction order
+% a      LP coefficients
+r0=r(1);
+r=r(2:end);
 
-for i = 1:(M+1) %Loop 1     
-	%Compute lth RC
-	k(i) = (1/J(i)) * (r(i+1)+(a*r(i)));
+% INITIALIZATION - What do we know when we start?
+a = zeros(M+1,1);       % Define the coloumn we are calculating
+a(1) = 1;               % The zero order prediction
+E = r0;                 % Error at lag 0 is the r0 in the ACF
+a(2) = -r(1) / r0;      % The first order prediction
+k(1) = a(2);            % k values are reflection coefficients
+q = r(1);               % The Q-Value
+
+
+% RECURSION - Moving on from the basics
+for i = 1:M-1
+E = E + ( q * k(i) );                   
+q = r(i+1);
+q = q + sum( r( 1:i) .* a(i+1:-1:2) );
+k(i+1) = -q / E;
+tmp (1:i) = k(i+1) .* a(i+1:-1:2) ;
+a( 2:i+1) = a( 2:i+1) + tmp(1:i)';
+a(i+2) = k(i+1) ;
 end
-
-for j = 1:(M-1)
-	a(j)=a(j-1)-k(i)*a(j)
-	J(i) = k(i-1)*(1-k(i)^2)
-end
+% Same output syntax as matlab
+a = a';
 \end{lstlisting}
 
 \subsubsection{Recursive filter}
@@ -198,7 +208,7 @@ The results are stored in different files automatically, and are shown in \autor
  
 \subsection{Automated tests - $N$ \& $O$}
 Firstly the performance with different prediction orders is measured. This is the frame length parameter ($N$). \\ 
-Here the $P$ is set to 43. $N$ is varied from 0-3000 in steps of 100. Overlap, $O$ is set varied from 0 to N-100. The used window is the Hamming window. 
+Here the $P$ is set to 43. $N$ is varied from 0-3000 in steps of 100. Overlap, $O$ is set varied from 0 to N-100. The used window is the Hamming window. The results are plotted using the surf() function i Matlab, and the viewing angle is set to "from above" resulting in a 2D plot. It should be noted that the measured points are the crossings of the black lines and not the coloured squares. The mesh() plot could be used to avoid this, if a less readable plot could be accepted. 
 
 \begin{figure}[H]
 	\centering
