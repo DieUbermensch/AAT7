@@ -27,30 +27,51 @@ The full autocorrelation would be an infinite time series, which would be imposs
 %%r_x[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} x_l[n]w_l[m-n]
 \hat{r}_x[l] = \sum^{N}_{n=\left| l\right|} x_l[n]w_l[N-n]
 \end{equation}
+<<<<<<< HEAD
 Where: l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window that can be applied to emphasize ?SOMETHING?. Some experimenting has been made using different windows. It was found that a Hamming window yielded best performance, but a rectangular window yielded almost similar results while saving a computations, as multiplying all samples by one can be omitted. A Barnwell window is proposed by \cite{Speech}, but has been found to yield poorer results than both other windows.   
+=======
+Where: l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window that can be applied to emphasize specific parts of the signal. A Hamming window emphasizes the middle part of the signal in the middle of the frame. Here a periodicity is reliable, compared to a periodicity at the border of the frame, which might be a random occurrence Some experimenting has been made using different windows. It was found that a Hamming window yielded best performance, but a rectangular window yielded almost similar results while saving a computations, as multiplying all samples by one can be omitted. A Barnwell window is proposed by \cite{Speech}, but has been found to yield poorer results than both other windows.   
+>>>>>>> 00f8be4620b36c0b3251947d8f11b398e1337551
 
-
-check the where - also in article\\\\
-We claim something about 50-400 LPC in article\\
-Is the WF equation not allready cascaded? Or not really. A sum over p is missing?\\
-We lack a new CP\\
-We lack a journal on measuring performance of ANC headphones\\
-We lack HP and CP in article.\\
-
-
-\subsection{ Wiener Hopf - finding the Linear Prediction Coefficients}
+\subsection{ Wiener Hopf - Finding the Linear Prediction Coefficients}
  The Linear Prediction Coefficients (LPCs) are determined using \autoref{eq:normal}, known as the Wiener-Hopf equation.
 \begin{equation}\label{eq:normal}
 \hat{R}  \bar{a} = -\bar{\hat{r}}_x
 \end{equation}
-Where: $\hat{R}$ is the covariance matrix $\hat{C}_{xx}$, $\bar{\hat{a}}$ is the LPCs $\bar{\hat{a}} = [\hat{a}_0 , \hat{a}_1, \dotsc, \hat{a}_{N-1}]^T$ and $\bar{\hat{r}}_x$ is the ACF, $\bar{\hat{r}}_x = [\hat{r}_x[1] , \hat{r}_x[2], \dotsc, \hat{r}_x[N]]^T$. \autoref{eq:normal} can be rewritten as shown in \autoref{eq:normal2} yielding the LPCs directly.  
+Where; $\hat{R}$ is the covariance matrix $\hat{C}_{xx}$, $\bar{\hat{a}}$ is the LPCs $\bar{\hat{a}} = [\hat{a}_0 , \hat{a}_1, \dotsc, \hat{a}_{N-1}]^T$ and $\bar{\hat{r}}_x$ is the ACF, $\bar{\hat{r}}_x = [\hat{r}_x[1] , \hat{r}_x[2], \dotsc, \hat{r}_x[N]]^T$. \autoref{eq:normal} can be rewritten as shown in \autoref{eq:normal2} yielding the LPCs directly.  
 \begin{equation}\label{eq:normal2}
 \bar{\hat{a}} = \hat{-R^{-1}} \bar{\hat{r}}_x
 \end{equation}
 Calculating $\hat{R}^{-1}$ is computationally heavy, therefore to estimate the LPCs the Levinson-Durbin method is used. 
 
-Write HERE Oliver - levinson durbin\\
-
+\subsubsection{Levinson-Durbin}
+Levinson-Durbin is a method which can be used to find the estimated LPCs of a problem, recursively. It is characterized by being power efficient, as it does not directly invert a matrix, but rather estimates it.
+The algorithm takes the coefficients of the ACF in order to compute the RCs, which lastly yields the LPCs. The algorithm can be seen below3:\\\\
+The coefficient order, $l$ is initialized to 0, which means the predictor for order 0 is found first:
+\begin{equation}\label{LDInit}
+	J_0=R[0]
+\end{equation}
+The algorithm works recursively, and the next step iterates for a total number of the prediction order, $M$ to compute RCs for each $l$.
+\begin{equation}\label{LDStep1}
+	k_l=\frac{1}{J_{l-1}} \left ( R[l] + \sum_{i=1}^{l-1} a_i^{(l-1)}R[l-i]   \right) 
+\end{equation}
+The LPC are then likewise calculated iteratively, from the already found RCs: 
+\vspace{-0mm}
+\begin{equation}\label{LDStep2_1}
+	a_l^{(l)} = -k_1,
+\end{equation}
+\vspace{-10mm}
+\begin{equation}\label{LDStep2_2}
+a_i^{(l)} = a_i^{(l-1)} - k_l a_{l-i}^{(l-1)} ; \hspace{10mm} i = 1,2,\dotsc,l-1
+\end{equation}
+Lastly a minimizer for the mean-squared predictor is computed, for the $l$'th order computation:
+\begin{equation}\label{LDStep2}
+	J_1 = J_{l-1} (1-k_l^2)
+\end{equation}
+This gives the LPCs:
+\begin{equation}
+	a_i = a_i^{M}; \hspace{10mm} i = 1,2 \dotsc , M
+\end{equation}
 
 
 \subsection{Wiener filter}
@@ -81,3 +102,24 @@ As seen in \autoref{eq:App_PG} the PG is calculated based on a ratio between the
 %	\label{Fig:LPCompare}
 %	\caption{Text here.}
 %\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

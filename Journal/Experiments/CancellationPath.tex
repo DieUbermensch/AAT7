@@ -129,6 +129,8 @@ MATLAB\textsuperscript{\textregistered}-script \path{CancellationPathScript.m} i
 
 \subsection{Analysis}
 The impulse response of the CP is to be found.
+Note that a microphone with external polarization was used. It means that there is a 180\textdegree phase difference between pre- and external polarized microphones, i.e. a positive pressure leads to negative voltage. The externally polarized microphone is considered to be out of phase. \cite{michandbook}
+
 First the cross correlation between Mic[i] and Ref[i] is found. This is done by cross correlating the two signals signals. Secondly the signal is taken into the frequency domain by applying the FT to the signal. This is expressed in \autoref{FrequencyResponseCPEq2}.
 
 
@@ -201,7 +203,6 @@ Taking the first 256 coefficients of the impulse response gives the following cr
 	\caption{Cropped impulse response plot of the cancellation path}
 	\label{CancellationPathImpulseResponseCrop}
 \end{figure}
-A microphone with external polarization was used, it implies that positive pressures mesured leads to negative voltage \cite{michandbook}. It affects the phase response by 180 degrees and inverts the sign of the impulse response. 
 
 To verify that the frequency response of the cropped impulse response approximately equals that of the non-cropped impulse response the two frequency responses are compared. This can be seen on \autoref{CancellationPathImpulseResponseCompare}. Note that the two lines are almost completely on top of each other.
 

@@ -1,0 +1,82 @@
+\section{Voice Recording}
+This appendix describes the recording and subsequent manipulation of the sound used in the demonstration of the project results. The recording is in English. The speaker is a man with English as his second language. 
+
+\subsection{Recording of speech}
+\begin{table}[H]
+	\centering
+	\ra{1.3}
+	\begin{tabular}{ c c c } \toprule
+		{Item}	& {Description} 						& {AAU-no}. \\ \bottomrule 
+		1	& Microphone 	& 	\\
+		2	& Soundcard RME Fireface 802	& 86838 		\\
+		3	& Computer running Matlab	 & 	NAN	\\
+		\bottomrule
+	\end{tabular}
+	\caption{Table over equipment used for recording speech.}
+	\label{tab:VoiceRec}
+\end{table}
+The recording of speech is performed in an anechoic chamber, where a male speaker is situated 1 m from the microphone. The used microphone is supplied with Phantom Power from the sound card. \\ 
+Computer->RME fireface -> mic with Phantom Power. Drawing\\\\
+
+The parameters chosen for the recording, prediction and cancellation is
+\begin{itemize}
+	\item $N=1200$
+	\item $O=1100$
+	\item $M=1200$
+	\item $P=10$
+	\item Delay equal to $P=10$
+	\item $f_s =48000$ Hz
+	\item $\mu= lala$
+\end{itemize}
+
+
+\subsection{The manuscript}
+The manuscript is devided into sections, where different operations are made. Each section is stored in separate audio files for easier manipulation of the individual parts. 
+ 
+\textbf{Normal voice}\\
+This recording will demonstrate the performance of a Filtered X Least Mean Squares ANC algorithm combined with a Linear Prediction Algorithm. This was unfiltered sound. 
+
+\textbf{HP filtered sound}\\
+Imagine that you have now put headphones on. I am speaking to you from outside a headphone.
+
+\textbf{FXLMS}\\
+This resembles the experience you would get from a normal ANC headphone, when a person is speaking outside the headphone. 
+
+\textbf{The predicted sound}\\
+This is the predictor predicting 25 $m$s ahead in time. You are listening to an estimate of what I am going to say. Next you will listen to the filtered signal. 
+
+\textbf{LP FXLMS}\\
+You can not hear me now can you? If not it works!
+
+\textbf{Summary}\\
+Did it work for you? \\\\
+The sections in the manuscript are filtered in the following way
+\begin{table}[H]
+	\centering
+	\ra{1.3}
+	\begin{tabular}{ c c } \toprule
+		{Section}				& {Manipulation} \\ \bottomrule 
+		Normal Voice			& No manipulation  	\\
+		HP filtered sound		& Filtered with HP transfer function \\
+		FXLMS					& Filtered with FXLMS	\\
+		The predicted signal 	& The output of the predictor	\\
+		LP FXLMS 				& The output of the proposed algorithm	\\
+		Summary 				& No manipulation	\\
+		\bottomrule
+	\end{tabular}
+	\caption{Manipulation of the different parts of the recording.}
+	\label{tab:VoiceRecSections}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
