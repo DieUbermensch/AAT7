@@ -152,20 +152,18 @@ This difference is then plotted for all headphones on \autoref{fig:OtherBrandsTe
 \\
 The impulse response of the difference between enabled and disabled recorded signals is to be found.
 This is done by finding the frequency response of the "signal", which the cross correlation between e.g. \path{Denonon[i].wav} and \path{Denonon[i].wav} This is done by taking the FT of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
-
-
 \begin{equation}\label{FrequencyResponseEq2}
 %H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
 H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
 \end{equation}
 Where:
+\vspace{-3mm}
 \begin{itemize}
 	%\item " $*$ " denotes the complex conjugation
 	\item $H(f)$ is the FT of the "difference between the signals".
 	\item $Y(f)$ is the FT of the recorded signals, with ANC enabled,  Denonon[i].
 	\item $X(f)$ is the FT of the recorded signals, with ANC disabled, Denonoff[i].
 \end{itemize}
-
 In figure \autoref{fig:BOH8Comp}-\autoref{fig:DenonComp} the responses for the tested headphones can be seen. Not that a more smooth fitted curve has been applied, for better comparison between the four tested headphones.
 
 \begin{figure}[H]
