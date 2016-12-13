@@ -3,7 +3,7 @@
 
 
 \subsection{Description}
-This is a simulation showing the performance of the proposed prediction algorithm. It is not fine tuned in this version but allows for choice of settings corresponding to the need of a specific use case.  
+This appendix shows the performance of the proposed prediction algorithm. It is not fine tuned in this version but allows for choice of settings corresponding to the need of a specific use case.  
 
 
 \subsection{Diagram}
@@ -21,10 +21,11 @@ This is a simulation showing the performance of the proposed prediction algorith
 A lot of variables, are declared in the simulation and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
 \begin{lstlisting} [language=MATLAB]
 N; 				%is the frame length used as memory in the prediction and the prediction order
-Overlp;			%is the overlap in the buffer
-prediction; 	%is how far the algorithm should predict 
+overlap;		%is the overlap in the buffer "O"
+prediction; 	%is how far the algorithm should predict "P"
 fs; 			%is the sample frequency of the input signal 
-w=hamming(N)	% could be replaced by other window functions.
+w=hamming(N)	% could be replaced by other window functions
+M;				% is equal to N in all cases
 \end{lstlisting}
 The following sections will show the code for the individual blocks. \\
 The ACF estimation estimates the autocorrelation function using the equation...
@@ -48,8 +49,25 @@ end
 
 \subsubsection{Lenvinson Durbin}
 \begin{lstlisting} [language=MATLAB]
-function a = fcn(r,N)
-a=levinson(r,N)';
+function k = LevinsonDurbin(r,N,M)
+%Takes an 1xM length vector from AutocorrelationFunction
+%     N = Framelength;
+%     M = Order;
+%     r = ACF;
+
+%Initializatin
+J = zeros(1,M);
+k = zeros(1,M);
+J(1) = r(1);
+
+for i = 1:(M+1) %Loop 1     
+	%Compute lth RC
+	k(i) = (1/J(i)) * (r(i+1)+(a*r(i)));
+end
+
+for j = 1:(M-1)
+	a(j)=a(j-1)-k(i)*a(j)
+	J(i) = k(i-1)*(1-k(i)^2)
 end
 \end{lstlisting}
 
@@ -83,15 +101,16 @@ A PG=0 means no prediction can be achieved. A higher PG means better prediction.
 \subsection{Test setup.}
 It is required to run the simulation with a lot of different parameters. Rather than going for a random trial and error approach a systematic variation approach was chosen. If a person should control the simulations manually a lot of time would be spent, waiting for the algorithm to run. Therefore an automated test setup was constructed. The automation consists of 4 parts. 
 \begin{enumerate}
-	\item The prediction simulation
+	\item The prediction simulink
 	\item An initiation 
 	\item Saving data
-	\item A script controlling parameters. 
+	\item A script controlling parameters 
 \end{enumerate}  
 
-Below an example of the 3 controlling scripts are shown. The script saving data is the only one that is constant. The other scripts should be modified to calculate using the desired combination of parameters.
+Below an example of the 3 controlling scripts are shown. The  scripts should be modified to run the simulator using the desired combination of parameters.
 
-\textbf{Init.m}
+\textbf{Init.m}\\
+If a variable is not controlled in "RunSim.m" it should be set here. 
 \begin{lstlisting} [language=MATLAB]
 fs = 48000;
 ts = 1/fs; 
@@ -106,7 +125,8 @@ w = hamming(N);
 % w = fliplr(w);
 \end{lstlisting}
 
-\textbf{SaveData.m}
+\textbf{SaveData.m}\\
+It is possible to modify the save function to store all variables, including the calculated audio. This however results in approximately 5 $M$B of data pr simulation.  
 \begin{lstlisting} [language=MATLAB]
 	PG=10*log10(var(Ref)/var(ErrorSig));
 	
@@ -133,7 +153,7 @@ w = hamming(N);
 \end{lstlisting}
 
 
-Afterwards the script "loadData.m" can be used to structure the stores .mat  files in a single array.\\
+Afterwards the script "loadData.m" can be used to structure the saved .mat  files in a single matrix.\\
 \textbf{LoadData.m}
 \begin{lstlisting} [language=MATLAB]
 	clear
@@ -155,10 +175,54 @@ Afterwards the script "loadData.m" can be used to structure the stores .mat  fil
 	disp('I am done')
 \end{lstlisting}
 
+\subsection{Non automated test - $f_s$}
+When testing the predictor for different $f_s$ automated testing can not be used, as the audio file used by the predictor has to be changed to the version with the correct sample rate. \\ 
+In the "Init.m" file $N$ should be equal to $\frac{f_s}{N}$, $O=0$ and $P=1$. The following steps should be taken for each $f_s$ under test.
+\begin{itemize}
+	\item Choose the correct audio file in Simulink. 
+	\item Set the fs parameter in "Init.m". 
+\end{itemize}
+The results are stored in different files automatically, and are shown in \autoref{tb:fsPredictApp}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|}
+	\hline
+	$f_s$ {[}$k$Hz{]} & 8 & 16 & 24 & 48 & 96 & 192 \\ \hline 
+	$N$ {[}samples{]} & 100 & 200 & 300 & 600 & 1200 & 2400 \\ \hline 
+	PG {[}dB{]} & 13.5 & 15.950 & 14.7 & 20.8 & 35.0 & 43.8 \\ \hline
+\end{tabular}
+\caption{$PG$ as a function of $f_S$. Parameters for the simulation are $O=0$ and $P=1$.}
+\label{tb:fsPredictApp}
+\end{table}  
  
-\subsection{Determining N and O}
-Firstly the performance with different prediction orders is measured. This is the frame length parameter (N). \\ 
-Here the "prediction" length is set to 10. Overlap is set varied from 0 to N-100. The used window is the Hamming window. 
+\subsection{Automated tests - $N$ \& $O$}
+Firstly the performance with different prediction orders is measured. This is the frame length parameter ($N$). \\ 
+Here the $P$ is set to 43. $N$ is varied from 0-3000 in steps of 100. Overlap, $O$ is set varied from 0 to N-100. The used window is the Hamming window. 
 
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{HammingNOP43App}	
+	\input{figures/Articleillustrations/HammingNOP43.tex}
+	\caption{$PG$ as a function of different $N$ and $O$ with $P=43$. $N$ and $O$ are in hundreds.}
+	\label{fig:Predict43App}
+\end{figure}
 
+The same experiment is performed with $P=10$.
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{HammingNOP10App}	
+	\input{figures/Articleillustrations/HammingNOP10.tex}
+	\caption{$PG$ as a function of different $N$ and $O$ with $P=10$. $N$ and $O$ are in hundreds.}
+	\label{fig:Predict10App}
+\end{figure}
+
+Using $N=1200$ and $O=1100$ the performance of the predictor for different P is determined. 
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{PvarApp}	
+	\input{figures/Articleillustrations/Pvar.tex}
+	\caption{$PG$ as a function of $P$. $N=1200$ and $O=1100$}
+	\label{fig:PredictPApp}
+\end{figure}
 
