@@ -1,5 +1,6 @@
-\section{System Design} \label{sec:systemDesign}
+\section{Design of FXLMS system} \label{sec:systemDesign}
 This appendix will go through the design of the system using a feedforward topology. The ANC system will be placed in a headphone with the microphones placed as seen on \autoref{fig:SystemHeadphone}. A B\&K TYPE 4128-C will be used as the HATS during tests. This means that the cancellation path will have a linear time invariant (LTI) impulse response. 
+
 
 
 \begin{figure}[H]
@@ -118,7 +119,7 @@ With the definition of the FXLMS given, the system in \autoref{fig:BasicSystem},
 
 
 
-
+\newpage
 \section{Simulation of ANC} \label{sec:ANCSimulation}
 \subsection{Description}
 This appendix describes the simulation of ANC. The system shown in \autoref{fig:BasicSystem} has been setup in Simulink\textsuperscript{\textregistered}, as shown in \autoref{fig:SimulinkRealWorld} and \autoref{fig:SimulinkANC} showing the "real world"-simulation and the alogrithm-simulation, respectively. There has been inserted a delay of 1 in the input of the error because Simulink will not compile if this is not done. To compensate for this a delay of 1 has been inserted in the CP as well in the ANC algortihm.   
@@ -253,6 +254,7 @@ for n = 1:L
 b(n,1) = bold(n,1)-2*u*e*xIn(1,n);
 end
 
+
 %set the new coefficient as the old for next run
 for n = 1:L
 bold(n,1) = b(n,1);
@@ -261,3 +263,13 @@ end
 
 \subsection{Test of ANC algorithm}
 A simulation of the ANC system with different ADC and DAC delay is to be made to see if delays affect the attenuation of the system. 
+
+\subsection{Results}
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{DelayRatioAppendix}
+	\input{figures/BasicSystem/DelayRatio.tex}
+	\caption{Attenuation of feedforward FXLMS (blue) compared with feedforward LP FXLMS (red) with different system delays.}
+	\label{Fig:delayRatioAppendix}
+\end{figure}
