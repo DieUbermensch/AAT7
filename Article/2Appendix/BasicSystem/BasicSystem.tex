@@ -1,8 +1,8 @@
-\section{Basic Active Noise Cancelling System} \label{sec:BasicSystem}
+\section{Active Noise Control Topologies} \label{sec:BasicSystem}
 This appendix will go through the various basic Active Noise Control (ANC) system topologies and explain the chosen topology in detail. \\
 When it comes to canceling noise, there are three basic topologies; feedforward, feedback and hybrid feedforward/feedback. These topologies each have their advantages and disadvantages and naturally a suitable topology must be chosen.
 
-A general ANC system uses, depending on the topology, either one or two signals as input to an adaptive optimization algorithm. The inputs are used to determine coefficients for a control filter that calculates an estimation of the transfer function from the feedforward microphone (Reference Microphone) to the transducer. Another general thing for ANC systems is to use an Filtered-x Least Mean Squares (FXLMS) algorithm to update the and adapt coefficients in a control filter and a Least Mean Squares (LMS) algorithm to update the estimate of the cancellation path.\\
+A general ANC system, depending on the topology, uses either one or two signals as input to an adaptive optimization algorithm. The inputs are used to determine coefficients for a control filter that calculates an estimation of the transfer function from the feedforward microphone (Reference Microphone) to the transducer. Another general thing for ANC systems is to use an Filtered-x Least Mean Squares (FXLMS) algorithm to update the and adapt coefficients in a control filter and a Least Mean Squares (LMS) algorithm to update the estimate of the cancellation path.\\
 In a special "ideal" case the filter would be a FIR filter with a -1 tap. This is assuming no delay or magnitude change in either the physical world or in the ANC system and no feedback from the transducer to the feedforward microphone. This is of course not the case in reality. 
 
 
@@ -10,13 +10,13 @@ In a special "ideal" case the filter would be a FIR filter with a -1 tap. This i
 A feedforward ANC system consists of the following as shown in \autoref{fig:feedforwardTopology}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{figures/BasicSystem/feedforward}
+	\includegraphics[width=0.65\textwidth]{figures/BasicSystem/feedforward}
 	\caption{Block diagram showing typical control system layout, with on-line cancellation path identification. \cite{Hansen2}}
 	\label{fig:feedforwardTopology}
 \end{figure}
 Where:
 \begin{itemize}
-\item \textbf{Reference microphone:} The microphone which picks up the noise to be canceled 
+\item \textbf{Reference microphone:} The microphone which picks up the noise to be canceled. 
 \item \textbf{Error microphone:} The microphone which measures the residual between the noise and the output of the ANC system.
 \item \textbf{Control filter:} Estimation of the transfer function from the reference microphone to the transducer. 
 \item \textbf{Adaptive FXLMS algorithm:} An FXLMS optimization algorithm for the coefficients of the control filter.
@@ -26,7 +26,7 @@ Where:
 
 The feedforward topology uses a reference microphone to pick up the noise which is fed into the control filter which is the estimated impulse response of the path from the reference microphone to the transducer. The control filter can either be realized as a FIR filter if there is no feedback from the transducer to the reference microphone. An IIR filter should be used if there is feedback. It should be noted that if the filter is chosen to be an IIR filter there is a possibility of not getting a global minimum in the FXLMS algorithm.
 
-The advantage of the feedforward topology is that it can cancel all types of sound. The disadvantage is that in order for the feedforward to have a good performance, the delay of the system must be less than the propagation time of the sound from the reference microphone to the transducer.    
+The advantage of the feedforward topology is that it can cancel all types of sound. The disadvantage is that in order for the feedforward to have a good performance, the delay of the system must be less than the propagation time of the sound from the reference microphone to the error microphone.    
 
 
 
@@ -35,12 +35,12 @@ The advantage of the feedforward topology is that it can cancel all types of sou
 A feedback ANC system consists of the following as seen on \autoref{fig:feedbackTopology}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{figures/BasicSystem/feedback}
+	\includegraphics[width=0.65\textwidth]{figures/BasicSystem/feedback}
 	\caption{Adaptive feedback controller with on-line cancellation path identification. (Maybe switched with headphone figure).}
 	\label{fig:feedbackTopology}
 \end{figure}
 
-In its essence, the feedback topology is very similar to the feedforward, only with the dirrerence that it uses a pseudo-reference signal synthesized from the error microphone to cancel out periodic noise. The disadvantage of the feedback topology is then that it cannot cancel out non-periodic noise.    
+In its essence, the feedback topology is very similar to the feedforward, only with the difference that it uses a pseudo-reference signal synthesized from the error microphone to cancel out periodic noise. The disadvantage of the feedback topology is then that it cannot cancel out non-periodic noise.    
 
 
 
@@ -48,12 +48,12 @@ In its essence, the feedback topology is very similar to the feedforward, only w
 A hybrid feedforward/feedback ANC system consists of the following as seen on \autoref{fig:hybridTopology}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{figures/BasicSystem/hybrid}
+	\includegraphics[width=0.65\textwidth]{figures/BasicSystem/hybrid}
 	\caption{Configuration for hybrid feedforward/feedback control system. (Maybe switched with headphone figure).}
 	\label{fig:hybridTopology}
 \end{figure}
 
-The hybrid feedforward/feedback aims to utilize topologies' advantages to get increased performance, using feedback to cancel periodic noise and feedforward to cancel non-periodic noise. However the disadvantage introduced by the hybrid topology is that the system is more complex than the other two topologies.   
+The hybrid feedforward/feedback aims to utilize both topologies' advantages to get increased performance, using feedback to cancel periodic noise and feedforward to cancel non-periodic noise. However the disadvantage introduced by the hybrid topology is that the system is more complex than the other two topologies.   
 
 
 From the examination of the three different topologies it is concluded that a feedforward system will be used. The reasoning behind this choice is that the feedback system only is capable of canceling periodic noise. The hybrid feedforward/feedbacks increased performance comes from using the feedback part to reduce long term periodic noise which is only existent in speech signals to a limited degree. With the topology chosen a system design using headphones can now be derived. 
