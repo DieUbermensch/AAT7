@@ -1,0 +1,56 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=2.8in,
+height=1.8in,
+scale only axis,
+xmin=0,
+xmax=50,
+xmajorgrids,
+xlabel={Delay [samples]},
+ymin=0,
+ymax=30,
+ytick={0,5,...,30},
+ymajorgrids,
+ylabel={Attenuation [dB]},
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1,line width=1.5pt,solid,forget plot]
+table[row sep=crcr]{%
+	2	25.5751628128288\\
+	4	20.0199680852144\\
+	6	17.0442763613153\\
+	8	15.1060127156582\\
+	10	13.7310612019933\\
+	12	12.6685774343164\\
+	14	11.7903474171974\\
+	16	11.0441690144364\\
+	18	10.3883064900616\\
+	20	9.78797702825996\\
+	22	9.23075404560805\\
+	24	8.7110676592604\\
+	26	8.22176906503967\\
+	28	7.77006791263877\\
+	30	7.35426684398216\\
+	32	6.94907270624338\\
+	34	6.5323972441528\\
+	36	6.08060777493347\\
+	38	5.57101511941803\\
+	40	4.99733350616245\\
+	42	4.35167702165293\\
+	44	3.61433096515684\\
+	46	2.757705271237\\
+	48	1.74470077738877\\
+	50	0.5254168140125\\
+};
+\end{axis}
+\end{tikzpicture}%
