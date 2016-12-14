@@ -19,14 +19,13 @@ Note that this is indeed inly testing the active part, and not the passive dampi
 		5	&	B\&K Sound Calibrator Type 4230				& 08155		\\ 
 		6	&	Genelec speaker								& 33990		\\ 
 		7	& 	B\&K Microphone Power Supply Type 2804		& 07304		\\
-		8	&	DSP Freedom Board Rev. 1 					& NaN		\\
 								\bottomrule
 							& Tested Headphones 			& 			\\
 								\bottomrule
-		8	& Denon AH GC20 								& NaN 		\\
-		8	& Bose QuietComfort 15 							& NaN 		\\
-		8	& Bose QuietComfort 25						 	& NaN		\\
-		8	& B\&O BEOPLAY H8 								& NaN		\\
+		8(a)	& Denon AH GC20 								& NaN 		\\
+		8(b)	& Bose QuietComfort 15 							& NaN 		\\
+		8(c)	& Bose QuietComfort 25						 	& NaN		\\
+		8(d)	& B\&O BEOPLAY H8 								& NaN		\\
 								\bottomrule
 	\end{tabular}
 	\caption{Table over equipment used in test.}
@@ -54,13 +53,13 @@ Note that this is indeed inly testing the active part, and not the passive dampi
 
 \subsubsection{Equipment settings}
 \begin{itemize}
-	\item This experiment is performed with a sampling rate, $F_{s}$ = 48 $k$Hz. 
-	\item For Item 5 take care to turn on the "inst"-option in the mixing console. The following gain settings are present: 		
+	\item This experiment is performed with a sampling rate, $f_{s}$ = 48 $k$Hz. 
+	\item For Item 3 take care to turn on the "inst"-option in the mixing console. The following gain settings are present: 		
 	\begin{itemize}
 		\item Line level gain is 0 dB
-		\item Error Microphones has gain +30 dB
-		\item Ref Microphones has gain +48 dB
-		\item Speaker Microphones has gain +48 dB
+		\item Ear Microphones has gain +30 dB
+		%\item Ref Microphones has gain +48 dB
+		%\item Speaker Microphones has gain +48 dB
 	\end{itemize}
 	\item All settings on the computer is set to 0 dBFS
 \end{itemize}
@@ -147,23 +146,26 @@ The difference between the enabled and the disabled is plotted on the graph belo
 The impulse response of the CP is to be found.
 Note that a microphone with external polarization was used. It means that there is a $180^\circ$ phase difference between pre- and external polarized microphones, i.e. a positive pressure leads to negative voltage. The externally polarized microphone is considered to be out of phase. \cite{michandbook}
 
-The five files of each ANC setting for each headphone is then meaned and cross correlated with the opposing ANC-setting of the same headphone, to find the relative difference between the headphones on- and off ANC-setting.\\
-This difference is then plotted for all headphones on \autoref{fig:OtherBrandsTestCompare}.
-\\
-The impulse response of the difference between enabled and disabled recorded signals is to be found.
-This is done by finding the frequency response of the "signal", which the cross correlation between e.g. \path{Denonon[i].wav} and \path{Denonon[i].wav} This is done by taking the FT of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
-\begin{equation}\label{FrequencyResponseEq2}
-%H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
-H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
-\end{equation}
-Where:
-\vspace{-3mm}
-\begin{itemize}
-	%\item " $*$ " denotes the complex conjugation
-	\item $H(f)$ is the FT of the "difference between the signals".
-	\item $Y(f)$ is the FT of the recorded signals, with ANC enabled,  Denonon[i].
-	\item $X(f)$ is the FT of the recorded signals, with ANC disabled, Denonoff[i].
-\end{itemize}
+The cross correlation method described in \autoref{Sec:MeasATransFunc} is used to find the transfer functions. 
+
+%The five files of each ANC setting for each headphone is then meaned and cross correlated with the opposing ANC-setting of the same headphone, to find the relative difference between the headphones on- and off ANC-setting.\\
+%This difference is then plotted for all headphones on \autoref{fig:OtherBrandsTestCompare}.
+%\\
+%The impulse response of the difference between enabled and disabled recorded signals is to be found.
+%This is done by finding the frequency response of the "signal", which the cross correlation between e.g. \path{Denonon[i].wav} and \path{Denonon[i].wav} This is done by taking the FT of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
+%\begin{equation}\label{FrequencyResponseEq2}
+%%H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
+%H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
+%\end{equation}
+%Where:
+%\vspace{-3mm}
+%\begin{itemize}
+%	%\item " $*$ " denotes the complex conjugation
+%	\item $H(f)$ is the FT of the "difference between the signals".
+%	\item $Y(f)$ is the FT of the recorded signals, with ANC enabled,  Denonon[i].
+%	\item $X(f)$ is the FT of the recorded signals, with ANC disabled, Denonoff[i].
+%\end{itemize}
+
 In figure \autoref{fig:BOH8Comp}-\autoref{fig:DenonComp} the responses for the tested headphones can be seen. Not that a more smooth fitted curve has been applied, for better comparison between the four tested headphones.
 
 \begin{figure}[H]
