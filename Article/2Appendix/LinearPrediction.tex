@@ -27,26 +27,39 @@ The full autocorrelation would be an infinite time series, which would be imposs
 %%r_x[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} x_l[n]w_l[m-n]
 \hat{r}_x[l] = \sum^{N}_{n=\left| l\right|} x_l[n]w_l[N-n]
 \end{equation}
-<<<<<<< HEAD
 Where: l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window that can be applied to emphasize ?SOMETHING?. Some experimenting has been made using different windows. It was found that a Hamming window yielded best performance, but a rectangular window yielded almost similar results while saving a computations, as multiplying all samples by one can be omitted. A Barnwell window is proposed by \cite{Speech}, but has been found to yield poorer results than both other windows.   
-=======
 Where: l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window that can be applied to emphasize specific parts of the signal. A Hamming window emphasizes the middle part of the signal in the middle of the frame. Here a periodicity is reliable, compared to a periodicity at the border of the frame, which might be a random occurrence Some experimenting has been made using different windows. It was found that a Hamming window yielded best performance, but a rectangular window yielded almost similar results while saving a computations, as multiplying all samples by one can be omitted. A Barnwell window is proposed by \cite{Speech}, but has been found to yield poorer results than both other windows.   
->>>>>>> 00f8be4620b36c0b3251947d8f11b398e1337551
 
 \subsection{ Wiener Hopf - Finding the Linear Prediction Coefficients}
- The Linear Prediction Coefficients (LPCs) are determined using \autoref{eq:normal}, known as the Wiener-Hopf equation.
+ The Linear Prediction Coefficients (LPCs) are determined using \autoref{eq:normal}, known as the Wiener-Hopf equation. The LPC's are found by minimize the mean squared prediction error given as.
+ \begin{equation}
+ 	E\{e^2[n]\}=E\{(x[n]+\sum_{i=1}^{M}a_ix[n-i] )^2\}
+ \end{equation}
+ The minimum error is found by minimizing the derivative of J with respect to $a_i$ and setting it equal to zero. 
+ \begin{equation}\label{eq:minPredError}
+ \frac{\partial E\{e^2[n]\}}{\partial a_k} =2E\{(x[n]+\sum_{i=1}^{M}a_ix[n-i] )x[n-k]\}=0
+ \end{equation}
+ for $k = 1, 2, \cdots, M$. \autoref{eq:minPredError} can be rearranged to yield.
+ \begin{equation}
+ 	E\{x[n]x[n-k]\}+\sum_{i=1}^{M}a_iE\{x[n-i]x[n-k]\}=0
+ \end{equation} 
+ Or in terms of autocorrelations. 
+ \begin{equation}
+ R_s[k]+\sum_{i=1}^{M}a_iR_s[i-k]=0
+ \end{equation} 
+ This can be rewritten and put in matrix form yielding the Wiener-Hopf \autoref{eq:normal}
 \begin{equation}\label{eq:normal}
-\hat{R}  \bar{a} = -\bar{\hat{r}}_x
+R  \bar{a} = -\bar{r}_x
 \end{equation}
-Where; $\hat{R}$ is the covariance matrix $\hat{C}_{xx}$, $\bar{\hat{a}}$ is the LPCs $\bar{\hat{a}} = [\hat{a}_0 , \hat{a}_1, \dotsc, \hat{a}_{N-1}]^T$ and $\bar{\hat{r}}_x$ is the ACF, $\bar{\hat{r}}_x = [\hat{r}_x[1] , \hat{r}_x[2], \dotsc, \hat{r}_x[N]]^T$. \autoref{eq:normal} can be rewritten as shown in \autoref{eq:normal2} yielding the LPCs directly.  
+Where; $R$ is the covariance matrix $C_{xx}$, $\bar{a}$ is the LPCs $a = [a_0 , a_1, \dots, a_{N-1}]^T$ and $\bar{r}_x$ is the ACF, $\bar{r}_x = [r_x[1] , r_x[2], \dotsc, r_x[N]]^T$. \autoref{eq:normal} can be rewritten as shown in \autoref{eq:normal2} yielding the LPCs directly.  
 \begin{equation}\label{eq:normal2}
-\bar{\hat{a}} = \hat{-R^{-1}} \bar{\hat{r}}_x
+\bar{a} = -R^{-1} \bar{r}_x
 \end{equation}
-Calculating $\hat{R}^{-1}$ is computationally heavy, therefore to estimate the LPCs the Levinson-Durbin method is used. 
+Calculating $R^{-1}$ is computationally heavy, therefore to estimate the LPCs the Levinson-Durbin method is used. 
 
 \subsubsection{Levinson-Durbin}
-Levinson-Durbin is a method which can be used to find the estimated LPCs of a problem, recursively. It is characterized by being power efficient, as it does not directly invert a matrix, but rather estimates it.
-The algorithm takes the coefficients of the ACF in order to compute the RCs, which lastly yields the LPCs. The algorithm can be seen below3:\\\\
+Levinson-Durbin is a method which can be used to estimate the LPCs of a problem, recursively. It is characterized by being power efficient, as it does not directly invert a matrix, but rather estimates it.
+The algorithm takes the coefficients of the ACF in order to compute the Reflection Coefficients (RCs), which lastly yields the LPCs. The algorithm can be seen below:\\\\
 The coefficient order, $l$ is initialized to 0, which means the predictor for order 0 is found first:
 \begin{equation}\label{LDInit}
 	J_0=R[0]
@@ -56,11 +69,10 @@ The algorithm works recursively, and the next step iterates for a total number o
 	k_l=\frac{1}{J_{l-1}} \left ( R[l] + \sum_{i=1}^{l-1} a_i^{(l-1)}R[l-i]   \right) 
 \end{equation}
 The LPC are then likewise calculated iteratively, from the already found RCs: 
-\vspace{-0mm}
 \begin{equation}\label{LDStep2_1}
 	a_l^{(l)} = -k_1,
 \end{equation}
-\vspace{-10mm}
+%\vspace{-10mm}
 \begin{equation}\label{LDStep2_2}
 a_i^{(l)} = a_i^{(l-1)} - k_l a_{l-i}^{(l-1)} ; \hspace{10mm} i = 1,2,\dotsc,l-1
 \end{equation}
