@@ -214,12 +214,13 @@ To verify that the frequency response of the cropped impulse response approximat
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{CancellationPathImpulseResponseCompare1}
-	\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponseCompare.tex}
+	%\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponseCompare.tex}
+	\input{figures/CancellationPath_MATLAB_Figures/compfilter.tex}
 	\caption{Comparison of the frequency response of 256 coefficients vs. 288,768 coefficients.}
 	\label{CancellationPathImpulseResponseCompare}
 \end{figure}
 
-From \autoref{CancellationPathImpulseResponseCompare}, 250 coefficients is shown ot be sufficient for representing the impulse response with good accuracy. However 256 coefficients is deemed being more practical when it comes to binary operations, this value is chosen. 
+From \autoref{CancellationPathImpulseResponseCompare}, 256 coefficients is shown to be sufficient for representing the impulse response with good accuracy. 
 
 \subsection{Error Sources / Tolerances}
 \begin{itemize}
