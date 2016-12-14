@@ -1,11 +1,9 @@
 \large
-The feedforward system uses a Filtered-$x$ Least Mean Square (FXLMS) algorithm:
-\begin{equation}
-b_j[n+1] = b_j[n] - 2\mu e[n] \cdot f[n-j]
-\end{equation}
-
-
-
+The feedforward system uses a Filtered-$x$ Least Mean Square (FXLMS) algorithm
+%:
+%\begin{equation}
+%b_j[n+1] = b_j[n] - 2\mu e[n] \cdot f[n-j]
+%\end{equation}
 The algorithm adapts the impulse response of the control filter, outputting a counterphase signal. \cite{HansenSnyder}
 
 \vspace{2mm}
@@ -27,10 +25,12 @@ The algorithm adapts the impulse response of the control filter, outputting a co
 
 \vspace{2mm}
 
-Wiener filtering is used for LP of future samples, using the Wiener-Hopf equation:
-\begin{equation}
-\hat{R}\bar{a} = -\bar{\hat{r}}_x
-\end{equation}
+Wiener filtering is used for LP of future samples
+
+%, using the Wiener-Hopf equation:
+%\begin{equation}
+%\hat{R}\bar{a} = -\bar{\hat{r}}_x
+%\end{equation}
 
 
 
