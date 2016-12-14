@@ -12,9 +12,9 @@ The algorithm adapts the impulse response of the control filter, outputting a co
 
 \resizebox{1\columnwidth}{!}{
 \begin{tikzpicture}
-\draw  (-2.9,0.98) rectangle node[text width=2.5cm,align=center] {\textrm{Cancellation \\ path}}(-0.35,-0.21);
-\draw  (0.97,0.88) rectangle node[text width=2.5cm,align=center] {\textrm{FXLMS Algorithm}} (3.47,-0.22);
-\draw  (-1.45,2.52) rectangle node[text width=1.5cm,align=center,fill=white] {\textrm{Control filter}} (0.42,1.39);
+\draw  (-2.9,0.98) rectangle node[text width=2.5cm,align=center] {Cancellation \\ path}(-0.35,-0.21);
+\draw  (0.97,0.88) rectangle node[text width=2.5cm,align=center] {FXLMS Algorithm} (3.47,-0.22);
+\draw  (-1.45,2.52) rectangle node[text width=1.5cm,align=center,fill=white] {Control filter} (0.42,1.39);
 \draw[->] (-0.35,0.18) -- node[above]{$f[n]$} (0.97,0.18);
 \draw [->](-2,2.03) -- (-2,0.98);
 \draw [->](-2.81,2.04) node[left,above=2.5]{$x[n]$} -- (-1.45,2.04);
@@ -47,10 +47,10 @@ Where the characteristics of speech are determined in a frame based autocorrelat
 \begin{tikzpicture}
 
 %% Boxes
-\draw  (-3,3) rectangle node[text width=2cm,align=center] {\textrm{Wiener Filter}}(-1,4.34);
-\draw  (-1,2.38) rectangle node[text width=2cm,align=center] {\textrm{ACF}}(-3,0.94);
-\draw  (-4,2.38) rectangle node[text width=2cm,align=center,below=10.55] {\textrm{Buffer}}(-6,0.94);
-\draw  (0,2.38) rectangle node[text width=1.5cm,align=center] {\textrm{Wiener- Hopf}}(2,0.94);
+\draw  (-3,3) rectangle node[text width=2cm,align=center] {Wiener Filter}(-1,4.34);
+\draw  (-1,2.38) rectangle node[text width=2cm,align=center] {ACF}(-3,0.94);
+\draw  (-4,2.38) rectangle node[text width=2cm,align=center,below=10.55] {Buffer}(-6,0.94);
+\draw  (0,2.38) rectangle node[text width=1.5cm,align=center] {Wiener- Hopf}(2,0.94);
 
 
 
