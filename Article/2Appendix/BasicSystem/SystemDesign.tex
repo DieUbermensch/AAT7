@@ -1,4 +1,4 @@
-\section{System Design} \label{sec:systemDesign}
+\section{Design of FXLMS system} \label{sec:systemDesign}
 This appendix will go through the design of the system using a feedforward topology. The ANC system will be placed in a headphone with the microphones placed as seen on \autoref{fig:SystemHeadphone}. A B\&K TYPE 4128-C will be used as the HATS during tests. This means that the cancellation path will have a time invariant impulse response. 
 
 
@@ -125,5 +125,14 @@ The basic system shown in \autoref{fig:BasicSystem} has been setup in Simulink\t
 
 The functions for the different impulse responses and the control filter is a standard sample-by-sample FIR filter, while the FXLMS algorithm is \autoref{eq:FXLMSw_j(k+1)} implemented with a convergence factor of 0.005. This convergence factor is chosen to by experiment to be as large as possible, without getting an unstable system as described by Hansen \cite{Hansen2}. The delay of the ADC and DAC is set to 0 samples.\fxnote{Which results do we need}
 
+\subsection{Results}
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{DelayRatioAppendix}
+	\input{figures/BasicSystem/DelayRatio.tex}
+	\caption{Attenuation of feedforward FXLMS (blue) compared with feedforward LP FXLMS (red) with different system delays.}
+	\label{Fig:delayRatioAppendix}
+\end{figure}
 
 
