@@ -1,5 +1,27 @@
 \section{Total System} \label{sec:TotalSystem}
-This appendix will describe the total system which is the ANC system shown on \autoref{fig:SimulinkANC} and the predictor shown on \autoref{Fig:PredictionSimulink} 
+This appendix will describe the total system, shown on \autoref{fig:totalSystem}, which is the ANC system shown on \autoref{fig:SimulinkANC} and the predictor shown on \autoref{Fig:PredictionSimulink}. These are already described so will not be described again. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{missingfigure}
+	\caption{Total ANC system.}
+	\label{fig:totalSystem}
+\end{figure}
+The system shown on \autoref{fig:totalSystem} utilize both the predicted input $\hat{x}[n]$ and the measured input $x[n]$, in the control filter and CP. This expands \autoref{eq:Outputapp} to \autoref{eq:ControlExpandedapp} and \autoref{eq:CPapp} to \autoref{eq:CPExpandedapp}.
+\begin{equation}\label{eq:Outputapp}
+y[n]=\sum_{j=0}^{L-1}b_j[n]x[n-j]
+\end{equation}
+\begin{equation}\label{eq:CPapp}
+f[n]=\sum_{j=0}^{L-1}c_jx[n-j]
+\end{equation}
+\begin{equation}\label{eq:ControlExpandedapp}
+y[n+P]=\sum^{P-1}_{j=0}b_j[n]\hat{x}[(n+P)-j]+\sum^{L-1}_{j=P}b_j[n]x[(n+P)-j]
+\end{equation}
+
+\begin{equation}\label{eq:CPExpandedapp}
+f[n+P]=\sum^{P-1}_{j=0}c_j\hat{x}[(n+P)-j]+\sum^{L-1}_{j=P}c_jx[(n+P)-j]
+\end{equation}
+
+No other changes has been made to the total system and it is the system which will be used for simulation.
 
 
 \section{Simulink Total Test} \label{sec:SimulinkTotalSystem}
@@ -12,13 +34,66 @@ This appendix will simulate the ANC system, shown on \autoref{fig:totalSystem}, 
 	\centering
 	\includegraphics[width=1\textwidth]{figures/GrandTest/TotalSystem}
 	\caption{Total ANC system in Simulink.}
-	\label{fig:totalSystem}
+	\label{fig:SimulinktotalSystem}
 \end{figure}
 
 
 \subsection{Variables}
+\begin{lstlisting} [language=MATLAB]
+N 			= 1200; 		%is the frame length 
+overlap 	= 1100;			%is the overlap in the buffer "O"
+prediction 	= 10; 			%is how far the algorithm should predict "P"
+fs 			= 48000; 		%is the sample frequency of the input signal 
+w           = hamming(N)	% could be replaced by other window functions
+M           = N;			% is equal to N in all cases
+L  			= 960;  	 	%is the length of the filter
+HPCoef;  		 			%is the coeffiecients for the measured HP
+CPCoef;  		 			%is the coeffiecients for the measured CP
+u  			= 0.001;		%is the convergence factor
+delay 			 			%is the delay of the ADC delay and DAC delay
+\end{lstlisting}
 
+\subsection{Functions}
 
+\begin{lstlisting} [language=MATLAB, caption=Simulink Expanded control filter function., label=Lst:controlFilterExpandedReal]
+function y = fcn(xhat,x,b,L,prediction)
+
+%Setup of interal variables
+persistent xIn;     %buffer for input
+
+if isempty(xIn)
+  xIn=zeros(1,L);
+end
+
+xIn = [xhat xIn(1:prediction-1) x xIn(prediction+1:end-1)];
+
+% FIR filter
+y = xIn*b;
+\end{lstlisting}
+
+\begin{lstlisting} [language=MATLAB, caption=Simulink Expanded CP function., label=Lst:cpExpandedReal]
+function y  = fcn(x,xhat,CPCoef,L,prediction)
+
+%Setup of interal variables
+persistent xIn;     %buffer for input
+
+%Setup of internal variables if the variables are not defined
+if isempty(xIn)
+  xIn=zeros(1,L);
+end
+
+%buffer for input
+xIn = [xhat xIn(1:prediction-1) x xIn(prediction+1:end-1)];
+
+y = xIn*CPCoef;
+\end{lstlisting}
 
 \subsection{Test setup}
 
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{delayTestTotal}	
+	\input{figures/GrandTest/DelayRatioTotal.tex}
+	\caption{ Attenuation of feedforward FXLMS (blue) compared with feedforward LP FXLMS (red) with different system delays.}
+	\label{fig:delayRatioTotal}
+\end{figure}
