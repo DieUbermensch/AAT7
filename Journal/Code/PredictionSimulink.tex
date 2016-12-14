@@ -47,13 +47,26 @@ r=sum(temp')';
 end
 \end{lstlisting}
 
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{ACFtest}	
+	\input{figures/PredictionAppendix/ACFEst.tex}
+	\caption{Implemented ACT estimator (red) compared with Matlabs build in xcorr (blue) - Identical results}
+	\label{fig:ACFTest}
+\end{figure}
+The result of the ACF estimation is compared to the matlab xcorr function, with no difference in results.   
 \subsubsection{Lenvinson Durbin}
 \begin{lstlisting} [language=MATLAB]
 function a = LevinsonDurbin(r, M)
+<<<<<<< HEAD
+% r      ACF It's a Coloumn input
+% M      Prediction order
+=======
 
 % r0     ACF at lag 0
 % r      ACF from lag 1 to m+1. It's like a Coloumstyle input
 % m      Prediction order
+>>>>>>> b15dd6f690d179ad98832bdc7f18e0b42a471396
 % a      LP coefficients
 r0=r(1);
 r=r(2:end);
@@ -69,6 +82,15 @@ q = r(1);               % The Q-Value
 
 % RECURSION - Moving on from the basics
 for i = 1:M-1
+<<<<<<< HEAD
+	E = E + ( q * k(i) );                   
+	q = r(i+1);
+	q = q + sum( r( 1:i) .* a(i+1:-1:2) );
+	k(i+1) = -q / E;
+	tmp (1:i) = k(i+1) .* a(i+1:-1:2) ;
+	a( 2:i+1) = a( 2:i+1) + tmp(1:i)';
+	a(i+2) = k(i+1) ;
+=======
 E = E + ( q * k(i) );                   
 q = r(i+1);
 q = q + sum( r( 1:i) .* a(i+1:-1:2) );
@@ -76,10 +98,19 @@ k(i+1) = -q / E;
 tmp (1:i) = k(i+1) .* a(i+1:-1:2) ;
 a( 2:i+1) = a( 2:i+1) + tmp(1:i)';
 a(i+2) = k(i+1) ;
+>>>>>>> b15dd6f690d179ad98832bdc7f18e0b42a471396
 end
 % Same output syntax as matlab
 a = a';
 \end{lstlisting}
+The result of the Levinson Durbin is compared to the matlab function, with no difference in results.   
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{LDtest}	
+	\input{figures/PredictionAppendix/levDurbTest.tex}
+	\caption{Implemented Levinson Durbin (red) compared with Matlabs build in function(blue) - Identical results}
+	\label{fig:LDTest}
+\end{figure}
 
 \subsubsection{Recursive filter}
 \begin{lstlisting} [language=MATLAB]
@@ -100,13 +131,6 @@ end
 xhat = xIn(1,N+prediction);
 end
 \end{lstlisting}
-
-\subsection{Prediction Gain}
-Prediction gain PG is used to evaluate the performance of the predictor. PGis given as:
-\begin{equation}
-	PG=10 \cdot log_{10}(\frac{\sigma^2_{input_signal}}{\sigma^2_{error}})
-\end{equation} 
-A PG=0 means no prediction can be achieved. A higher PG means better prediction.
 
 \subsection{Test setup.}
 It is required to run the simulation with a lot of different parameters. Rather than going for a random trial and error approach a systematic variation approach was chosen. If a person should control the simulations manually a lot of time would be spent, waiting for the algorithm to run. Therefore an automated test setup was constructed. The automation consists of 4 parts. 
