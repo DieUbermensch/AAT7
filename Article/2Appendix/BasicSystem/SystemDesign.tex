@@ -1,5 +1,6 @@
-\section{System Design} \label{sec:systemDesign}
+\section{Design of FXLMS system} \label{sec:systemDesign}
 This appendix will go through the design of the system using a feedforward topology. The ANC system will be placed in a headphone with the microphones placed as seen on \autoref{fig:SystemHeadphone}. A B\&K TYPE 4128-C will be used as the HATS during tests. This means that the cancellation path will have a linear time invariant (LTI) impulse response. 
+
 
 
 \begin{figure}[H]
@@ -105,24 +106,172 @@ With the definition of the FXLMS given, the system in \autoref{fig:BasicSystem},
 
 
 
-\subsection{Simulation} 
-The system shown in \autoref{fig:BasicSystem} has been setup in Simulink\textsuperscript{\textregistered}, as shown in \autoref{fig:SimulinkRealWorld} and \autoref{fig:SimulinkANC} showing the "real world"-simulation and the alogrithm-simulation, respectively.
 
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Simulation of ANC} \label{sec:ANCSimulation}
+\subsection{Description}
+This appendix describes the simulation of ANC. The system shown in \autoref{fig:BasicSystem} has been setup in Simulink\textsuperscript{\textregistered}, as shown in \autoref{fig:SimulinkRealWorld} and \autoref{fig:SimulinkANC} showing the "real world"-simulation and the alogrithm-simulation, respectively. There has been inserted a delay of 1 in the input of the error because Simulink will not compile if this is not done. To compensate for this a delay of 1 has been inserted in the CP as well in the ANC algortihm.   
+
+\subsection{Diagrams}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{figures/BasicSystem/SimulinkRealWorld}
+	\includegraphics[width=0.85\textwidth]{figures/BasicSystem/SimulinkRealWorld}
 	\caption{Simulink of "real world".}
 	\label{fig:SimulinkRealWorld}
 \end{figure}    
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{figures/BasicSystem/SimulinkANC}
+	\includegraphics[width=0.85\textwidth]{figures/BasicSystem/SimulinkANC}
 	\caption{Simulink of "ANC algorithm".}
 	\label{fig:SimulinkANC}
 \end{figure} 
 
-The functions for the different impulse responses and the control filter is a standard sample-by-sample FIR filter, while the FXLMS algorithm is \autoref{eq:FXLMSw_j(k+1)} implemented with a convergence factor of 0.001. This convergence factor is chosen to by experiment to be as large as possible, without getting an unstable system as described by Hansen \cite{Hansen2}. The delay of the ADC and DAC is set to 0 samples.\fxnote{Which results do we need}
+\subsection{Variables}
+The variables for the simulation are listed in 
+\begin{lstlisting} [language=MATLAB, caption=Simulink HP function., label=Lst:hpReal]
+fs = 48000; 	 %is the sample frequency of the input signal
+L  = 960;  	 	 %is the length of the filter
+HPCoef;  		 %is the coeffiecients for the measured HP
+CPCoef;  		 %is the coeffiecients for the measured CP
+u  = 0.001;		 %is the convergence factor
+delay 			 %is the delay of the ADC delay and DAC delay
+\end{lstlisting}
+
+\subsection{Functions}
+In the "real world" HP and CP are sample-by-sample FIR filters with the measured coefficicents from \fxnote{Reference to journals}. The functions are listed in \autoref{Lst:hpReal} and  \autoref{Lst:cpReal} respectively. 
+
+\begin{lstlisting} [language=MATLAB, caption=Simulink HP function., label=Lst:hpReal]
+function y  = fcn(x,HPCoef,L)
+
+%Setup of interal variables
+persistent xIn;     %buffer for input
+
+%Setup of internal variables if the variables are not defined
+if isempty(xIn)
+  xIn=zeros(L,1);
+end
+
+%buffer for input
+xIn = [x xIn(1:end-1)];
+
+y = xIn'*HPCoef;
+\end{lstlisting}
+
+\begin{lstlisting} [language=MATLAB, caption=Simulink CP function., label=Lst:cpReal]
+function y  = fcn(x,CPCoef,L)
+
+%Setup of interal variables
+persistent xIn; %buffer for input
+
+%Setup of internal variables if the variables are not defined
+if isempty(xIn)
+  xIn=zeros(L,1);
+end
+
+%buffer for input
+xIn = [x xIn(1:end-1)];
+
+y = xIn'*CPCoef;
+\end{lstlisting}
+
+In the ANC algorithm the control filter and CP are also sample-by-sample FIR filters using adaptive coefficients and the CP coefficients respectively. The functions are listed in \autoref{Lst:control} and  \autoref{Lst:cpAL} respectively. 
 
 
+\begin{lstlisting} [language=MATLAB, caption=Simulink control filter function., label=Lst:control]
+function y = fcn(x,b,L,prediction)
 
+%Setup of interal variables
+persistent xIn;     %buffer for input
+
+if isempty(xIn)
+  xIn=zeros(1,L);
+end
+
+xIn = [x xIn(1:end-1)];
+
+% FIR filter
+y = xIn*b;
+\end{lstlisting}
+
+\begin{lstlisting}[language=MATLAB, caption=Simulink CP function inside algorithm., label=Lst:cpAL]
+function y  = fcn(x,CPCoef,L,prediction)
+
+%Setup of interal variables
+persistent xIn;     %buffer for input
+
+%Setup of internal variables if the variables are not defined
+if isempty(xIn)
+  xIn=zeros(1,L);
+end
+
+%buffer for input
+xIn = [x xIn(1:end-1)];
+
+y = xIn*CPCoef;
+\end{lstlisting}
+
+The last function in the ANC algorithm is the FXLMS derived in \autoref{subsec:fxlms}. This is listed in \autoref{Lst:fxlms}.
+
+\begin{lstlisting} [language=MATLAB, caption=Simulink FXLMS function., label=Lst:fxlms]
+function b  = fcn(x,u,e,HPCoef,L,prediction)
+
+%Setup of interal variables
+persistent n;       %sample number
+persistent bold;    %old coefficient
+persistent xIn;     %buffer for input
+
+%Setup of internal variables if the variables are not defined
+if isempty(bold)
+%   bold = zeros(L,1);
+  bold = -HPCoef; 
+end
+if isempty(xIn)
+  xIn=zeros(1,L);
+end
+if isempty(n)
+  n=0;
+end
+
+xIn = [x xIn(1:end-1)];
+
+b = zeros(L,1);
+
+%FXLMS algorithm
+for n = 1:L
+b(n,1) = bold(n,1)-2*u*e*xIn(1,n);
+end
+
+
+%set the new coefficient as the old for next run
+for n = 1:L
+bold(n,1) = b(n,1);
+end
+\end{lstlisting}
+
+\subsection{Test of ANC algorithm}
+A simulation of the ANC system with different ADC and DAC delay is to be made to see if delays affect the attenuation of the system. The delays are varied from 0 to 50 in steps of 2. For each simulation the RMS of the output is compared to the RMS of the input filtered with the HP transfer function using \autoref{eq:testANC}.
+\begin{equation}\label{eq:testANC}
+	Attenuation=20*log_{10}(\frac{\sqrt{HPfiltered^2}}{\sqrt{ANCsig^2}})
+\end{equation}
+When the simulation is done with no delay, all sound is cancelled. The attenuation is therefore infinity, which is not possible to plot. All other results are shown in \autoref{Fig:delayRatioAppendix}
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{DelayRatioAppendix}
+	\input{figures/BasicSystem/DelayRatio.tex}
+	\caption{Attenuation of feedforward FXLMS (blue) with different system delays.}
+	\label{Fig:delayRatioAppendix}
+\end{figure}

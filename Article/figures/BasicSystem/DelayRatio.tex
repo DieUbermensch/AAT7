@@ -10,52 +10,20 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=3in,
-height=1.75in,
+width=2.8in,
+height=1.8in,
 scale only axis,
 xmin=0,
 xmax=50,
 xmajorgrids,
-xlabel={Delay [100 $\times$ samples]},
+xlabel={Delay [samples]},
 ymin=0,
-ymax=70,
-ylabel style={yshift=0.3em},
-xlabel style={yshift=-0.2em},
-ytick={0,10,...,70},
+ymax=30,
+ytick={0,5,...,30},
 ymajorgrids,
 ylabel={Attenuation [dB]},
-xticklabel shift={.1cm},
-yticklabel shift={.1cm},
 axis background/.style={fill=white}
 ]
-\addplot [color=mycolor2,solid,line width=1.5pt,forget plot]
-  table[row sep=crcr]{%
-2	66.5420250310586\\
-4	52.9717264302022\\
-6	49.4175149424998\\
-8	46.8717703569681\\
-10	47.5886347675082\\
-12	48.5221420089092\\
-14	36.1913078215459\\
-16	24.6480360536532\\
-18	18.5625963047043\\
-20	15.9345988709594\\
-22	15.2225924490026\\
-24	14.4941735350858\\
-26	13.5145912190769\\
-28	12.5242379572864\\
-30	11.8400523957144\\
-32	11.4203165228037\\
-34	11.2428861871564\\
-36	11.1050592495872\\
-38	10.862823901561\\
-40	10.6158645117455\\
-42	10.3154480278615\\
-44	9.97867799972119\\
-46	9.61958031033587\\
-48	9.31052791122033\\
-50	9.08997582022533\\
-};
 \addplot [color=mycolor1,line width=1.5pt,solid,forget plot]
 table[row sep=crcr]{%
 	2	25.5751628128288\\

@@ -38,7 +38,7 @@
 \usepackage{helvet}
 % Change the default font family from roman to sans serif
 \renewcommand{\familydefault}{\sfdefault} % for text
-%\usepackage[helvet]{sfmath} % for math
+\usepackage[helvet]{sfmath} % for math
 % Choose the font encoding
 \usepackage[T1]{fontenc}
 
@@ -249,13 +249,13 @@
 \input{Section/Discussion.tex}
 \end{posterbox}
 
-\begin{posterbox}[name=conclusion,column=3,below=discussion]{Conclusion}
+\begin{posterbox}[name=conclusion,column=3,below=discussion,above=bottom]{Conclusion}
 	\input{Section/Conclusion.tex}
 \end{posterbox}
 
-\begin{posterbox}[name=Acks,column=3,below=conclusion,above=bottom,,height=0.1]{Acknowledgment}
-	\input{Section/Acknowledgment.tex}
-\end{posterbox}
+%\begin{posterbox}[name=Acks,column=3,below=conclusion,above=bottom,,height=0.1]{Acknowledgment}
+%	\input{Section/Acknowledgment.tex}
+%\end{posterbox}
 
 
 \begin{posterbox}[name=refs,column=1,span=2,above=bottom]{References}
