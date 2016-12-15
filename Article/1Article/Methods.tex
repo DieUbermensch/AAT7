@@ -87,7 +87,7 @@ The outline of the prediction system is shown in figure \ref{fig:LinearPredictio
 \end{figure}
 
 
-The ACF is estimated by nonrecursive estimation, shown in \autoref{eq:nonrecursive}, with framelength N. The nonrecursive estimation relies on a well defined window in order to increase the periodicity of the ACF. This is done by weighting the center of the frame highest, assuming highest periodicity in the center of a frame. Therefore a Hamming window, w is applied being one of the most widely used in speech encoding \cite{LinearPrediction}. Furthermore overlapping, $O$ can be used to increase the update rate of the ACF without having a small framelength.  
+The ACF is estimated by biased nonrecursive estimation, shown in \autoref{eq:nonrecursive}, with framelength N. The nonrecursive estimation uses a well defined window in order to avoid discontinuities. Therefore a Hamming window, w is applied being one of the most widely used in speech encoding \cite{LinearPrediction}. Furthermore overlapping, $O$ can be used to increase the update rate of the ACF without having a small framelength.  
 \begin{equation}\label{eq:nonrecursive}
 %%r_x[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} x_l[n]w_l[m-n]
 \hat{r}_x[l] = \sum^{N}_{n=\left| l\right|} x_l[n]w_l[N-n]
