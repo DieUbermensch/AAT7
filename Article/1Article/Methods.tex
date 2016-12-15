@@ -53,12 +53,12 @@ The recordings are used to calculate the transfer functions using the cross corr
 H(f)=\dfrac{\mathscr{F}(y(t)\ast x(-t))} {\mathscr{F}(x(t)\ast x(-t))}
 \label{Eq:Xcorr method}
 \end{equation}
-where $y(t)$ is the signal recorded with spmMic and (3). $x(t)$ is the signal recorded with (1) and the loopback. The full impulse responses are not used in the simulation, only frequencies above 50 Hz, corresponding to the first 960 coefficients, are used.   
+where $y(t)$ is the signal recorded with spmMic and (3). $x(t)$ is the signal recorded with (1) and the loopback.    
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{CancellationPathImpulseResponseCompareHP}
 	\input{figures/ArticleIllustrations/compfilterHP.tex}
-	\caption{Comparison of the headphone frequency response, made with a FFT of 960 coefficients (orange) vs. 386,024 (blue) coefficients.}
+	\caption{Comparison of HP, made with a FFT of 960 coefficients (orange) vs. 386,024 (blue) coefficients.}
 	\label{CancellationPathImpulseResponseCompare}
 \end{figure}
 
@@ -69,6 +69,7 @@ where $y(t)$ is the signal recorded with spmMic and (3). $x(t)$ is the signal re
 	\caption{Comparison of the cancellation path frequency response, made with a FFT of 960 coefficients (orange) vs. 480,256 (blue) coefficients.}
 	\label{CancellationPathImpulseResponseCompare}
 \end{figure}
+The full impulse responses are not used in the simulation. Only frequencies above 50 Hz, corresponding to the first 960 coefficients, are used.
 
 \subsection{Characteristics of Speech}
 Speech is characterized quasiperiodic signal which can be split into two main classes; voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 Hz -- 500 Hz). Unvoiced sounds are characterized as stochastic. Speech is a non stationary signal and can only be assumed Wide Sense Stationary (WSS) for periods of 20 $m$s -- 30 $m$s \cite{Speech}. 
