@@ -44,7 +44,23 @@ Where: $c_j$ is the coefficient of a measured transfer-function from the headpho
 
 %When implementing the system, delays exist due to the anti-aliasing and reconstruction filters. The delays of the system exceeds the propagation time of sound from the reference microphone to the headphone loudspeaker resulting in poor performance. Therefore an LP-algorithm is proposed to predict future samples in order to decrease the effect of the time delays.
 \subsection{Measuring HP and CP Transfer Functions}
-The two transfer functions HP and CP were measured on a set of Beyerdynamic DT 770 Headphones in an anechoic chamber using a HATS. The setup is similar to \autoref{fig:SystemOverview} except the DSP (4) is replaced by a soundcard. When measuring HP a small microphone (spmMic) is placed by the headphone loudspeaker (2) and a loudspeaker is placed 1.6 m from the center of the HATS at 0\textdegree angle of incidence.  
+The two transfer functions HP and CP were measured on a set of Beyerdynamic DT 770 Headphones in an anechoic chamber using a HATS. The setup is similar to \autoref{fig:SystemOverview} except the DSP (4) is replaced by a soundcard. When measuring HP a small microphone (spmMic) is placed by the headphone loudspeaker (2) and a loudspeaker is placed 1.6 m from the center of the HATS at 0\textdegree angle of incidence. A logarithmic chirp (50 Hz -- 24 $k$Hz) is played through the loudspeaker and recorded using the reference microphone (1) and spmMic. \\\\
+
+The measurement of CP is done by playing a logarithmic chirp (50 Hz -- 24 $k$Hz) with the headphone loudspeaker (2) and recording using the error microphone (3) and a loopback.
+\\\\
+The recordings are used to calculate the transfer functions using the cross correlations shown in \autoref{Eq:Xcorr method} \cite{TutorialMeasurementPowerSpectra}.   
+\begin{equation}
+H(f)=\dfrac{\mathscr{F}(y(t)\ast x(-t))} {\mathscr{F}(x(t)\ast x(-t))}
+\label{Eq:Xcorr method}
+\end{equation}
+where $y(t)$ is the signal recorded with spmMic and (3). $x(t)$ is the signal recorded with (1) and the loopback.    
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{CancellationPathImpulseResponseCompareHP}
+	\input{figures/ArticleIllustrations/compfilterHP.tex}
+	\caption{Comparison of HP, made with a FFT of 960 coefficients (orange) vs. 386,024 (blue) coefficients.}
+	\label{CancellationPathImpulseResponseCompare}
+\end{figure}
 
 \begin{figure}[H]
 	\centering
@@ -53,24 +69,7 @@ The two transfer functions HP and CP were measured on a set of Beyerdynamic DT 7
 	\caption{Comparison of the cancellation path frequency response, made with a FFT of 960 coefficients (orange) vs. 480,256 (blue) coefficients.}
 	\label{CancellationPathImpulseResponseCompare}
 \end{figure}
-   
-The measurement of HP is done by playing a logarithmic chirp (50 Hz -- 24 $k$Hz) with the loudspeaker and recording using the reference microphone (1) and spmMic.  
-\\\\
-The measurement of CP is done by playing a logarithmic chirp (50 Hz -- 24 $k$Hz) with the headphone loudspeaker (2) and recording using the error microphone (3) and a loopback.
-\\\\
-The recordings are used to calculate the transfer functions using the cross correlations shown in \autoref{Eq:Xcorr method} \cite{TutorialMeasurementPowerSpectra}.   
-\begin{equation}
-H(f)=\dfrac{\mathscr{F}(y(t)\ast x(-t))} {\mathscr{F}(x(t)\ast x(-t))}
-\label{Eq:Xcorr method}
-\end{equation}
-
-\begin{figure}[H]
-	\centering
-	\tikzsetnextfilename{CancellationPathImpulseResponseCompareHP}
-	\input{figures/ArticleIllustrations/compfilterHP.tex}
-	\caption{Comparison of the headphone frequency response, made with a FFT of 960 coefficients (orange) vs. 386,024 (blue) coefficients.}
-	\label{CancellationPathImpulseResponseCompare}
-\end{figure}
+The full impulse responses are not used in the simulation. Only frequencies above 50 Hz, corresponding to the first 960 coefficients, are used.
 
 \subsection{Characteristics of Speech}
 Speech is characterized quasiperiodic signal which can be split into two main classes; voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 Hz -- 500 Hz). Unvoiced sounds are characterized as stochastic. Speech is a non stationary signal and can only be assumed Wide Sense Stationary (WSS) for periods of 20 $m$s -- 30 $m$s \cite{Speech}. 
