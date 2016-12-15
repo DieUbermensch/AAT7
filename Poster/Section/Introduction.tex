@@ -32,10 +32,24 @@
 %ANC headphones are used to attenuate various noise sources, among these are speech.
 
 
-Active Noise Control (ANC) headphones lack the ability to attenuate speech.
-In order to remedy this problem, a feedforward system is necessary.
-This feedforward topology introduces delay, which decreases the attenuation of the system.
-In order to compensate for delay, a Linear Prediction (LP) scheme is proposed.
+%Active Noise Control (ANC) headphones lack the ability to attenuate speech.
+%In order to remedy this problem, a feedforward system is necessary.
+%This feedforward topology introduces delay, which decreases the attenuation of the system.
+%In order to compensate for delay, a Linear Prediction (LP) scheme is proposed.
+
+
+
+% C verison:
+Active Noise Control (ANC) headphones have limited speech attenuation.
+When using a digital solution, delays are introduced, which decreases attenuation. This can be remedied with Linear Prediction (LP).
+%This feedforward topology introduces delay, which decreases the attenuation of the system.
+\vspace{-2mm}
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{figures/BasicOverviewZoomed.pdf}
+\end{center}
+\vspace{-2mm}
+The simulated feedforward test setup consists of a reference microphone (1), a headphone speaker (2), an error microphone (3) and a DSP (4).
+
 
 
  
