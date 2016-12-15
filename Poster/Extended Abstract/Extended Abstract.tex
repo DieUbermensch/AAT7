@@ -1,0 +1,70 @@
+\documentclass[12pt,a4paper,openright]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\usepackage{float}
+
+\newcommand{\reals}{\mathop{\mathbb{R}}}
+\newcommand{\argmin}{\mathop{\rm argmin}}
+\newcommand{\argmax}{\mathop{\rm argmax}}
+
+\usepackage{mathtools,xparse}
+\newcommand{\Lagr}{\mathcal{L}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\NewDocumentCommand{\normL}{ s O{} m }{%
+	\IfBooleanTF{#1}{\norm*{#3}}{\norm[#2]{#3}}_{L_2(\Omega)}%
+}
+\begin{document}
+	
+	
+\begin{abstract}
+	Active Noise Control (ANC) is a widely used technique in consumer headphones for attenuating noise. ANC is a very viable technique for attenuating periodic noise e.g. machinery but has limited ability to attenuate quasiperioc noise e.g. speech (50 Hz -- 4000 Hz). This paper therefore focuses on attenuation of speech, as it is a rather untouched area. \\
+	For ANC, both feed- forward/back is used, but also a combined version. For attenuating speech specifically, feedforward is generally chosen. An ANC system generally consists of an FIR-filter adapted by an algorithm, in this case the Filtered-$x$ Least Mean Square (FXLMS)-algorithm is used. This along with an microphone for measuring a feedback signal makes up the design og the system.
+	However for a DSP system, conversion from analogue to digital domain is needed, which calls for the need for using converts. The $\Sigma\Delta$-converter, which is the most widely used Analogue/Digital Converter (ADC) introduces delays of 225 $\mu$s -- 900 $\mu$s which decreases the attenuation of this ANC system. \\
+	To compensate for this decrease in performance, a Linear Prediction (LP) scheme is introduced in order to remedy this problem.\\
+	Cascaded Wiener filtering is used to predict incoming samples of the system, using the Wiener-Hope equation, with the characteristics of the speech signal is determined by a frame based Autocorrelation Function (ACF) - this technique allows for a 10 sample prediction ahead in time, corresponding to 225 $\mu$s at 48 $k$Hz.\\
+	Experiments and simulations was conducted ti find the optimal LP parameters, in terms of Framelength, Overlap and resulting Prediction Gain. These results were used to estimate the performance of the LP FXLMS system compared to the FXLMS. Results were compared using a 1/3 octave filter-bank
+	
+	When combining LP and FXLMS into a system, the performance of the system was found by simulation to have up to 30 dB larger than the system without LP. The combined system yields a high attenuation for all frequencies in the speech area.
+	
+	To further enhance the attenuation, a multirate scheme is proposed. A signal sampled at 192 $k$Hz decimated to 48 $k$Hz requires prediction of 10 samples.  
+	\\\\ %HUH?
+	No real time implementation is attempted because the computation cost of the LP is $\approx$ 15,000 instructions per sample, and calls for a smaller computational cost or a more powerful platform, thus a feasible solution was not obtainable at this point.        
+\end{abstract}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
