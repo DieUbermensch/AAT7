@@ -1,0 +1,47 @@
+\documentclass[12pt,a4paper,openright]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\usepackage{float}
+\usepackage{mathtools,xparse}
+\newcommand{\Lagr}{\mathcal{L}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\NewDocumentCommand{\normL}{ s O{} m }{%
+	\IfBooleanTF{#1}{\norm*{#3}}{\norm[#2]{#3}}_{L_2(\Omega)}%
+}
+\begin{document}
+\title{Poster Presentation}
+
+\section{Introduction}
+	ANC -> bad speech -> -> Feedforward -> Delay LP -> We do simulation
+
+\section{Methods}
+	FXLMS -> LP (Wiener med Wiener-Hofs fra ACF(LPC))
+	
+\section{Results of Simulation}
+	\begin{itemize}
+		\item LP Parameters (Framelength, N - Overlap, O - Prediction Gain, PG)
+		\item -> No delay, no LP needed - it just works! -> For delay use LP FXLMS
+	-> For optimal parameters gives >40 dB for delays below 14 @ 48 kHz.
+		\item Compared in 1/3 -> LP FXLMS gives up to 30 dB
+	\end{itemize}
+\section{Discussion}
+\begin{itemize}
+	\item 	High instruction count with optimal parameters too high -> LP FXLMS er bare godt, lower P the better -> Multirate can be used
+	\item LP FXLMS compared to FXLMS is better for higher freqs
+	\item counter-counter-phase at 2400 Hz, which gives gain instead of attenuation.
+\end{itemize}
+\section{Conclusion}
+	\begin{itemize}
+		\item All in all the preposition works -> we attenuate speech greatly - up to 30 dB with LP for P=10
+		\item But it is unfeasible this way due to computational cost, with these parameters we need 15000 instructions/sample. Our DSP's are too slow :(
+	\end{itemize}
+
+\end{document}
+
+
+%The highere frequency, the more ("smaller") delays matter.
