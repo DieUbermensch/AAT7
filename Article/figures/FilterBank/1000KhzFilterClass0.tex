@@ -9,15 +9,16 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=9.947in,
-height=9.393in,
-at={(0.448in,0.409in)},
+width=5in,
+height=2.5in,
 scale only axis,
-unbounded coords=jump,
+%unbounded coords=jump,
+xtick={700,800,900,1000,...,1500},
+xticklabels={700,800,900,1000,...,1500},
 xmode=log,
-xmin=718,
-xmax=1.44e+03,
-xminorticks=true,
+xmin=700,
+xmax=1500,
+xminorticks=false,
 xlabel={Frequency (Hz)},
 xmajorgrids,
 xminorgrids,
@@ -25,10 +26,9 @@ ymin=-14.8,
 ymax=2.47,
 ylabel={Magnitude (dB)},
 ymajorgrids,
-axis background/.style={fill=white},
-title={Octave filter response: ANSI S1.11-2004 class 0 mask}
+axis background/.style={fill=white}
 ]
-\addplot [color=green,dashed,forget plot]
+\addplot [color=red,dashed,forget plot,line width = 1.5 pt]
   table[row sep=crcr]{%
 185	-75\\
 327	-62\\
@@ -50,7 +50,7 @@ title={Octave filter response: ANSI S1.11-2004 class 0 mask}
 3.05e+03	-62\\
 5.39e+03	-75\\
 };
-\addplot [color=green,dashed,forget plot]
+\addplot [color=red,dashed,forget plot,line width = 1.5 pt]
   table[row sep=crcr]{%
 185	nan\\
 327	nan\\
@@ -72,7 +72,7 @@ title={Octave filter response: ANSI S1.11-2004 class 0 mask}
 3.05e+03	nan\\
 5.39e+03	nan\\
 };
-\addplot [color=mycolor1,solid,forget plot]
+\addplot [color=mycolor1,solid,forget plot,line width = 1.5 pt]
   table[row sep=crcr]{%
 3	-253\\
 3.01	-253\\
