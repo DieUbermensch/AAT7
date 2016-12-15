@@ -15,7 +15,10 @@ When the two simulated ANC systems with and without LP are compared as shown in 
 \\\\
 The frequency response of the feedforward LP FXLMS shown in \autoref{fig:ANCcompareALL} is similar to the frequency response of the feedforward FXLMS however with a higher attenuation. Listening to the output of the two ANC systems the difference in attenuation is clearly audiable. Showing that the concept of LP combined with FXLMS yields higher attenuation of speech in simulation     
 \\\\
-If implementing a feedforward LP FXLMS system in a product certain previous assumptions must be reconsidered. In the test setup shown in \autoref{fig:SystemOverview} the error microphone is placed inside the ear which is of course not practical in a product. This can be solved by the use of different techniques e.g. virtual sensing or virtual sound pressure as described in \cite{Hansen2}. If a real time implementation is to be made, a lower $f_s$ should be considered. The predictor is very computationally heavy and therefore lowering $f_s$ to 8 $k$Hz should be considered. 8 $k$Hz is often used for speech encoding where Wiener filtering is also used \cite{Speech}.
+If implementing a feedforward LP FXLMS system in a product certain previous assumptions must be reconsidered. In the test setup shown in \autoref{fig:SystemOverview} the error microphone is placed inside the ear which is of course not practical in a product. This can be solved by the use of different techniques e.g. virtual sensing or virtual sound pressure as described in \cite{Hansen2}. The computational cost of the predictor is very high, from \autoref
+{eq:Cost} using the chosen parameters 15,000 instructions are needed pr sample. The cost can be lowered by lowering fs or by choosing smaller N and O, however this will decrease the performance of the system.  
+
+% If a real time implementation is to be made, a lower $f_s$ should be considered. The predictor is very computationally heavy and therefore lowering $f_s$ to 8 $k$Hz should be considered. 8 $k$Hz is often used for speech encoding where Wiener filtering is also used \cite{Speech}. 
 
 
 
