@@ -10,8 +10,8 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=3in,
-height=1.75in,
+width=2.8in,
+height=1.55in,
 scale only axis,
 %scaled y ticks = false,
 xmode=log,
@@ -97,5 +97,39 @@ yticklabel shift={.1cm}
 1.38e+04	13.8\\
 1.79e+04	4.07\\
 };
+%% Difference
+%\addplot[const plot,color=black,solid,forget plot,dashed,line width =1.5pt] plot table[row sep=crcr] {%
+%	21.9	-0.173\\
+%	27.5	-0.221\\
+%	34.7	-0.25\\
+%	43.6	-0.32\\
+%	54.9	0.271\\
+%	69.1	0.135\\
+%	87.1	0.197\\
+%	110	4.55\\
+%	138	2.2\\
+%	174	1.03\\
+%	219	3.43\\
+%	275	4.71\\
+%	347	12.9\\
+%	436	21.7\\
+%	549	29\\
+%	691	30.2\\
+%	871	30.5\\
+%	1.1e+03	34.7\\
+%	1.38e+03	36.5\\
+%	1.74e+03	30.4\\
+%	2.19e+03	32.4\\
+%	2.75e+03	25\\
+%	3.47e+03	21.5\\
+%	4.36e+03	8.12\\
+%	5.49e+03	7.14\\
+%	6.91e+03	2.4\\
+%	8.71e+03	-1.21\\
+%	1.1e+04	4.14\\
+%	1.38e+04	-0.574\\
+%	1.79e+04	-1.12\\
+%};
+
 \end{axis}
 \end{tikzpicture}%

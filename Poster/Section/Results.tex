@@ -6,12 +6,14 @@ The parameters; framelength $N$ and the overlap of frames $O$ are varied for $P=
  	The optimal parameters are found to be $N=1200$ and $O=1100$.
 	\label{fig:HammingNOP10}
 \end{minipage}% This must go next to `\end{minipage}`
-\hspace{4mm}
+\hspace{5mm}
 \begin{minipage}[]{0.5\columnwidth}
+	\begin{center}
 	\input{HammingNOP10.tex}
+	\end{center}
 \end{minipage}
 
-\vspace{4mm}
+\vspace{6mm}
 \begin{minipage}{.43\columnwidth}
 	\textbf{System Delay Attenuation}\\
 Without system delays, prediction is unnecessary, as the FXLMS algorithm (\textcolor{MATLABblue}{---}) alone, will achieve infinite attenuation. For increasing system delay, a LP FXLMS (\textcolor{MATLABred}{---}), using the optimal parameters, has an increased attenuation of minimum 40 dB for delays below 14 samples at 48 $k$Hz.
@@ -19,11 +21,13 @@ Without system delays, prediction is unnecessary, as the FXLMS algorithm (\textc
 %	If no system delay is present no prediction is needed, because the FXLMS algorithm (\textcolor{MATLABblue}{---}) achieves infinite attenuation.
 %	The attenuation of the non-predicting algorithm decreases with delay. The predicting algorithm (\textcolor{MATLABred}{---}) however attenuate speech by $\geq$ 40 dB for delays of up to 14 samples at 48 $k$Hz.
 \end{minipage}% This must go next to `\end{minipage}`
-\hspace{4mm}
+\hspace{5mm}
 \begin{minipage}{0.5\columnwidth}
+	\begin{center}
 	\input{DelayRatio.tex}
+	\end{center}
 \end{minipage}
-\vspace{4mm}
+\vspace{6mm}
 
 \begin{minipage}{.43\columnwidth}
 \textbf{Frequency response comparison}\\
@@ -34,7 +38,9 @@ The attenuation of the LP FXLMS is increased by up to 30 dB.
 
 %	The attenuation of different frequencies for the FXLMS (\textcolor{MATLABblue}{---}) and the LP FXLMS  systems. The frequency content is not changed much by the predictor, 
 \end{minipage}% This must go next to `\end{minipage}`
-\hspace{4mm}
+\hspace{5mm}
 \begin{minipage}{0.5\columnwidth}
+	\begin{center}
 	\input{SmoothCompareOur(fig).tex}
+	\end{center}
 \end{minipage}
