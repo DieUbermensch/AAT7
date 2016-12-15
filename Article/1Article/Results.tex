@@ -13,7 +13,7 @@ The $PG$ in relation to $f_s$ is shown in \autoref{tb:fsPredict}.
 \hline
 $f_s$ {[}$k$Hz{]} & 8 & 16 & 24 & 48 & 96 & 192 \\ \hline 
 $N$ {[}samples{]} & 100 & 200 & 300 & 600 & 1200 & 2400 \\ \hline 
-PG {[}dB{]} & 13.5 & 15.950 & 14.7 & 20.8 & 35.0 & 43.8 \\ \hline
+$PG$ {[}dB{]} & 13.5 & 15.950 & 14.7 & 20.8 & 35.0 & 43.8 \\ \hline
 \end{tabular}
 \caption{$PG$ as a function of $f_S$. Parameters for the simulation are $O=0$ and $P=1$.}
 \label{tb:fsPredict}
@@ -26,7 +26,7 @@ $PG$ as a function of $N$ and $O$ is seen on \autoref{fig:Predict43}.
 	\centering
 	\tikzsetnextfilename{HammingNOP43}	
 	\input{figures/Articleillustrations/HammingNOP43.tex}
-	\caption{$PG$ as a function of different $N$ and $O$ with $P=43$. $N$ and $O$ are in hundreds.}
+	\caption{$PG$ as a function of different $N$ and $O$ with $P=43$. $N$ and $O$ are in hundreds. The tested points are the corner points.}
 	\label{fig:Predict43}
 \end{figure}
 With $P=43$ the optimal parameters for the predictor was found to be $N=1700$ and $O=1600$ based on maximizing $PG$. The optimum $PG$ is equal to 5.4 dB.
@@ -36,7 +36,7 @@ A simulation is also made for $P=10$ shown in \autoref{fig:Predict10}.
 	\centering
 	\tikzsetnextfilename{HammingNOP10}	
 	\input{figures/Articleillustrations/HammingNOP10.tex}
-	\caption{$PG$ as a function of different $N$ and $O$ with $P=10$. $N$ and $O$ are in hundreds.}
+	\caption{$PG$ as a function of different $N$ and $O$ with $P=10$. $N$ and $O$ are in hundreds. The tested points are the corner points.}
 	\label{fig:Predict10}
 \end{figure}
 In \autoref{fig:Predict10} the optimum $N$ and $O$ are 1200 and 1100 respectively with a $PG$ of 10.0 dB.\\

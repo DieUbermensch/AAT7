@@ -5,7 +5,7 @@ It can be seen from \autoref{tb:fsPredict} that a higher $f_s$ yields a higher $
 Therefore a higher $f_s$ is to be prefered up until a DSP cannot handle the computational cost. For this simulation $f_s$ is chosen to be $48$ $k$Hz to yield a high PG. 
 Using $f_s$ equal to $48$ $k$Hz the required $P$ is 43 samples.  
 \\\\
-The converter delay at $f_s=192$ $k$Hz is a quarter of the delay at $f_s=48$ $k$Hz. To utilize the fast conversion time multirate processing could be used. If the signal is sampled at 192 $k$Hz, decimated to 48 $k$Hz, prediction of roughly 10 samples is adequate. The decimation and subsequent interpolation should be done using 1. order IIR filters to avoid delays.  
+The converter delay at $f_s=192$ $k$Hz is a quarter of the delay at $f_s=48$ $k$Hz. To utilize the fast conversion time multirate processing could be used. If the signal is sampled at 192 $k$Hz, then decimated to 48 $k$Hz, prediction of roughly 10 samples is adequate. The decimation and subsequent interpolation should be done using 1st order IIR filters to avoid delays.  
 \\\\
 The LPC order $M$ can be chosen to be much smaller than $N$ according to \cite{Speech}, however by experiment it was found that this is only true for $P$ small. With $P=10$, $M=N$ is required to yield a high $PG$. 
 \\\\
@@ -13,17 +13,17 @@ The LPC order $M$ can be chosen to be much smaller than $N$ according to \cite{S
 \\\\
 When the two simulated ANC systems with and without LP are compared as shown in \autoref{Fig:delayRatio} it is obvious that the system with LP is superior to the system without LP. With a system delay of 10 samples an increased attenuation of 34 dB is achieved. At 43 samples system delay an increased attenuation of only 6.2 dB is achieved. As mentioned distortion is introduced for high $P$s which results in a large decrease in attenuation as shown in \autoref{Fig:delayRatio} because the distortion is not attenuated by the FXLMS.
 \\\\
-The frequency response of the feedforward LP FXLMS shown in \autoref{fig:ANCcompareALL} is similar to the frequency response of the feedforward FXLMS however with a higher attenuation. Listening to the output of the two ANC systems the difference in attenuation is clearly audiable. Showing that the concept of LP combined with FXLMS yields higher attenuation of speech in simulation     
+The frequency response of the feedforward LP FXLMS shown in \autoref{fig:ANCcompareALL} shows that the attenuation is much larger than the feedforward FXLMS at higher frequencies, where the feedforward FXLMS algorithm struggles. Listening to the output of the two ANC systems the difference in attenuation is clearly audible. This shows that the concept of LP combined with FXLMS yields higher attenuation of speech in simulation.     
 \\\\
 If implementing a feedforward LP FXLMS system in a product certain previous assumptions must be reconsidered. In the test setup shown in \autoref{fig:SystemOverview} the error microphone is placed inside the ear which is of course not practical in a product. This can be solved by the use of different techniques e.g. virtual sensing or virtual sound pressure as described in \cite{Hansen2}. The computational cost of the predictor is very high, from \autoref
-{eq:Cost} using the chosen parameters 15,000 instructions are needed pr sample. The cost can be lowered by lowering fs or by choosing smaller N and O, however this will decrease the performance of the system.  
+{eq:Cost}, using the chosen parameters 15,000 instructions are needed per sample. The cost can be lowered by lowering fs or by choosing smaller N and O, however this will decrease the performance of the system.  
 
 % If a real time implementation is to be made, a lower $f_s$ should be considered. The predictor is very computationally heavy and therefore lowering $f_s$ to 8 $k$Hz should be considered. 8 $k$Hz is often used for speech encoding where Wiener filtering is also used \cite{Speech}. 
 
 
 
 \section{Conclusion}
-The proposed method of combining FXLMS with LP ($P=10$) has proven to improve the attenuation of a speech signal (50 Hz -- 4000 Hz) by 34 dB compared to a FXLMS system without LP. This is because the LP algorithm is capable of compensating for the delay introduced by sampling and reconstruction. The sampling delay of a $\Sigma\Delta$-converter can be reduced by sampling at a high frequency and processing in multirate also yielding a smaller computational cost. This will be required if implementing the simulated system.    
+The proposed method of combining FXLMS with LP ($P=10$) has proven to improve the attenuation of a speech signal (50 Hz -- 4000 Hz) by 34 dB compared to a FXLMS system without LP. This is because the LP algorithm is capable of compensating for the delay introduced by sampling and reconstruction. The sampling delay of a $\Sigma\Delta$-converter can be reduced by sampling at a high frequency and processing in multirate also yielding a smaller computational cost. %This will be required if implementing the simulated system.    
 \\\\
 The predictor is reliant on short term stationary signals in order to predict future samples. The method used is Wiener filtering, which is often used in speech encoding, coupled in cascade for predicting $P$ samples. This method of predicting results in a $PG$ of 10 dB when predicting 10 samples and the predicted speech is not heavily distorted.    
 \\\\
