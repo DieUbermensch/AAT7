@@ -75,11 +75,14 @@
 %Nice-looking reference to other chapters
 \newcommand{\chapref}[1]{Chapter \ref{#1}: \nameref{#1}}
 \newcommand{\secref}[1]{Section \ref{#1}: \nameref{#1}}
-\newcommand{\figref}[1]{\emph{Figure: \ref{#1}}}
+\newcommand{\figref}[1]{figure \ref{#1}}
 \newcommand{\appref}[1]{Appendix \ref{#1}}
 \newcommand{\tabref}[1]{\emph{Table: \ref{#1}}}
 \newcommand{\coderef}[1]{\emph{Listings: \ref{#1}}}
-\renewcommand{\eqref}[1]{\emph{Equation: (\ref{#1})}}
+\renewcommand{\eqref}[1]{eq. (\ref{#1})}
+
+\renewcommand{\equationautorefname}{eq. }
+\renewcommand{\figureautorefname}{figure }
 
 \newcommand{\iic}[0]{I²C }
 
