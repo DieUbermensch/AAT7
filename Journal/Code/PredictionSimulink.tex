@@ -28,7 +28,7 @@ w=hamming(N)	% could be replaced by other window functions
 M;				% is equal to N in all cases
 \end{lstlisting}
 The following sections will show the code for the individual blocks. \\
-The ACF estimation estimates the autocorrelation function using the equation...
+The ACF estimation estimates the autocorrelation function using \autoref{eq:Appnonrecursive}
 \subsubsection{ACF Estimation}
 \begin{lstlisting} [language=MATLAB]
 function r = fcn(x,w,updateRate,N)
