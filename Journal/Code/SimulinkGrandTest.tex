@@ -27,7 +27,7 @@ No other changes has been made to the total system and it is the system which wi
 \section{Simulink Total Test} \label{sec:SimulinkTotalSystem}
 
 \subsection{Description}
-This appendix will simulate the ANC system, shown on \autoref{fig:totalSystem}, which is a combination of the ANC system show on \autoref{fig:SimulinkANC} and the predictor shown on \autoref{Fig:PredictionSimulink}. The simulation will test if the combined LP FXLMS system is dependent on delays if the same delay is predicted by the predictor. All functions for the ANC system and predictor are already described in \autoref{sec:ANCSimulation} and \autoref{sec:predicSimulink} respectively. 
+This appendix will simulate the ANC system, shown on \autoref{fig:totalSystem}, which is a combination of the ANC system show on \autoref{fig:SimulinkANC} and the predictor shown on \autoref{Fig:PredictionSimulink}. The simulation will test if the combined LP FXLMS system is dependent on delays if the same delay is predicted by the predictor. All functions for the ANC system and predictor are already described in \autoref{sec:ANCSimulation} and \autoref{sec:predicSimulink} respectively. The "real world" simulink system is shown on \autoref{fig:SimulinkRealWorld}.
 
 \subsection{Diagram}
 \begin{figure}[H]
@@ -88,7 +88,16 @@ xIn = [xhat xIn(1:prediction-1) x xIn(prediction+1:end-1)];
 y = xIn*CPCoef;
 \end{lstlisting}
 
-\subsection{Test setup}
+\subsection{Simulation Test of Total System}
+A simulation of the total system with different ADC and DAC delay is to be made to see if delays affect the attenuation of the system. The delays are varied from 0 to 50 in steps of 2. For each simulation the RMS of the output is compared to the RMS of the input filtered with the HP transfer function using \autoref{eq:testANC2}. 
+
+\begin{equation}\label{eq:testANC2}
+	Attenuation=20*log_{10}\bigg(\frac{\sqrt{\sum\limits_{i=1}^{N}HPSig^2[n-i]}}{\sqrt{\sum\limits_{i=1}^{N}ANCsig^2[n-i]}}\bigg)
+\end{equation}
+
+When the simulation is done with no delay, all sound is cancelled. The attenuation is therefore infinity, which is not possible to plot. All other results are shown on \autoref{fig:delayRatioTotal} together with the results of the system with no predictor described in \autoref{sec:ANCSimulation}.
+
+
 
 \begin{figure}[H]
 	\centering
