@@ -1,0 +1,60 @@
+\section{Third octave filter bank}
+
+
+\subsection{Purpose}
+
+
+\subsection{Design}
+
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{1000KhzFilterClass0}
+	\input{figures/FilterBank/1000KhzFilterClass0.tex}
+	\caption{1000KhzFilterClass0}
+	\label{fig:1000KhzFilterClass0}
+\end{figure}
+
+\subsection{code}
+
+Using MATLAB 2016b it is possible to generate each filter bank with the \verb|octaveFilter| function
+
+
+\subsection{test}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+			\tikzsetnextfilename{Signal01k1k10k}
+			\input{figures/FilterBank/Signal01k1k10k.tex}
+		\caption{Signal01k1k10k}
+		\label{fig:Signal01k1k10k}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+			\tikzsetnextfilename{OctFilter01k1k10k}
+			\input{figures/FilterBank/OctFilter01k1k10k.tex}
+		\caption{OctFilter01k1k10k}
+		\label{fig:OctFilter01k1k10k}
+	\end{subfigure}	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+			\tikzsetnextfilename{PinkNoise5sec}
+			\input{figures/FilterBank/PinkNoise5sec.tex}
+		\caption{PinkNoise5sec}
+		\label{fig:PinkNoise5sec}
+	\end{subfigure}	
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\tikzsetnextfilename{OctFilterPink}
+		\input{figures/FilterBank/OctFilterPink.tex}
+		\caption{OctFilterPink.}
+		\label{fig:OctFilterPink}
+	\end{subfigure}	
+
+	\caption{Picture of setup and the specific schematic.}
+\end{figure}
+
+

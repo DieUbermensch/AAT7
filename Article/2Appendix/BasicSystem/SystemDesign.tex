@@ -264,7 +264,7 @@ end
 \subsection{Test of ANC algorithm}
 A simulation of the ANC system with different ADC and DAC delay is to be made to see if delays affect the attenuation of the system. The delays are varied from 0 to 50 in steps of 2. For each simulation the RMS of the output is compared to the RMS of the input filtered with the HP transfer function using \autoref{eq:testANC}.
 \begin{equation}\label{eq:testANC}
-	Attenuation=20*log_{10}(\frac{\sqrt{HPfiltered^2}}{\sqrt{ANCsig^2}})
+		Attenuation=20*log_{10}\bigg(\frac{\sqrt{\sum\limits_{i=1}^{N}HPSig^2[n-i]}}{\sqrt{\sum\limits_{i=1}^{N}ANCsig^2[n-i]}}\bigg)
 \end{equation}
 When the simulation is done with no delay, all sound is cancelled. The attenuation is therefore infinity, which is not possible to plot. All other results are shown in \autoref{Fig:delayRatioAppendix}
 

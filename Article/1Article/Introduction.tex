@@ -4,24 +4,24 @@
 \lettrine[lines=2]{A}{ctive} Noise Control 
 (ANC) is a method used in a wide variety of applications. Research in creating silent zones is being conducted \cite{SilentZones}, improving room acoustics using multiple loudspeakers \cite{CAPS} and is already available in various headphones.
 \\\\
-Noise canceling headphones are used in various environments with different noise characteristics. These characteristics vary from periodic low frequency noise (10 Hz -- 200 Hz), e.g. from machinery and helicopter rotors \cite{LowFrequency}, to mid-range frequency noise (200 Hz -- 4000 Hz), e.g. speech \cite{MidFrequency}, to high frequency noise (4 $k$Hz-20 $k$Hz), e.g. turbine noise \cite{LowFrequency}. The high frequency noise is passively attenuated by using a closed headphone cup \cite{naturalAttenuation}, and present consumer headphones are able to attenuate low frequency periodic noise \cite{naturalAttenuation}. The attenuation of speech using ANC in present market ANC headphones is shown in figure \ref{fig:ANCcompare}. \\\\
+Noise canceling headphones are used in various environments with different noise characteristics. These characteristics vary from periodic low frequency noise (10 Hz -- 200 Hz), e.g. from machinery and helicopter rotors \cite{LowFrequency}, to mid-range frequency noise (200 Hz -- 4000 Hz), e.g. speech \cite{MidFrequency}, to high frequency noise (4 $k$Hz -- 20 $k$Hz), e.g. turbine noise \cite{LowFrequency}. The high frequency noise is passively attenuated by using a closed headphone cup \cite{naturalAttenuation}, and present consumer headphones are able to attenuate low frequency periodic noise \cite{naturalAttenuation}. The attenuation of speech using ANC in present market ANC headphones is shown in figure \ref{fig:ANCcompare}. \\\\
 
 %\footnote{Numbers and sources will be added to the statements}.   
 %%ANC are used by companies such as Bang \& Olufsen and Lyngdorf Audio in their proprietary technology as Active Room Compensation\texttrademark and RoomPerfect\texttrademark respectively, to control noise in a room using loudspeakers. Headphone industries have adapted it into cancellation of noise and is used 
 
-This paper focuses on improving attenuation of speech. Hence speech will be seen as the only noise source. The solution proposed is based on a digital feedforward system using Filtered-$x$ Least Mean Squares (FXLMS). The solution is chosen due to it being the optimal system for non stationary signals \cite{Hansen2}. The general solutions in ANC are described thoroughly by Hansen et al. \cite{Hansen}.
+This paper focuses on improving attenuation of speech. Hence speech will be seen as the only noise source. The solution proposed is based on a digital feedforward system using Filtered-$x$ Least Mean Squares (FXLMS). The solution is chosen due to it being the optimal system for non-stationary signals \cite{Hansen2}. The general solutions in ANC are described thoroughly by Hansen et al. \cite{Hansen}.
 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{ComparedConusmerHP}
 	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/SmoothCompare(fig).tex}
-	\caption{Denon AH-GC20, Bose QC25, Bose QC15 and B\&O H8 measured in anechoic chamber, averaged over five measurements where the headphones was refitted between measurements. Results are filtered using a class 0 1/3 octave filter bank\cite{OctaveBand}.}
+	\caption{Denon AH-GC20, Bose QC25, Bose QC15 and B\&O H8 measured in anechoic chamber, averaged over five measurements where the headphones was refitted between measurements. Results are filtered using a class 0 1/3 octave filter bank \cite{OctaveBand}.}
 	\label{fig:ANCcompare}
 \end{figure}
 
 
 
-The problem of a feedforward system, shown in figure \ref{fig:SystemOverview}, is the dependency of the system delay being smaller than the propagation time from the noise measured (1), to the error microphone (3). 
+The problem of a feedforward system is the dependency of the system delay being smaller than the propagation time from the noise measured (1), to the error microphone (3), shown in \autoref{fig:SystemOverview}.
 \begin{figure}[H]
 	\centering
 	%\includegraphics[width=1\columnwidth]{figures/ArticleIllustrations/BasicOverviewZoomed}
