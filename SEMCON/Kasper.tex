@@ -1,19 +1,115 @@
 \section{Introduction}
-
-\begin{frame}{Introduction}{Current market is shit!}		
-
-\begin{center}
-	\includegraphics[width=0.5\textwidth]{figures/ComparedConusmerHP}
-\end{center}
-
-
+\subsection{What is Active Noise Control (ANC)}
+\begin{frame}{Introduction}{What is ANC}		
+	\begin{itemize}
+		\item Counterphase signal
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{Introduction}{Can you hear me now?}		
+
+
+
+
+\begin{frame}{Introduction}{Limits of ANC}		
+
+
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item Frequency dependent attenuation	
+				\end{itemize}
+				\vspace{8.5mm}
+		\begin{center}
+	 		\input{figures/250Hz.tex}
+	 		%\caption{250 Hz}
+	 	\end{center}
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+			\begin{itemize}
+				\item[\textcolor{MATLABblue}{---}] Original signal
+				\item[\textcolor{MATLABblue}{- -}] Counterphase signal
+				\item[\textcolor{red}{---}] Error
+			\end{itemize}
+		\begin{center}
+	 		\input{figures/2500Hz.tex}
+	 		%\caption{2500 Hz}
+	 	\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Introduction}{Limits of ANC}		
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Frequency dependent attenuation	
+			\end{itemize}
+			\vspace{8.5mm}			
+		\begin{center}
+	 		\input{figures/250HzDelayed.tex}
+	 		%\caption{250 Hz}
+	 	\end{center}
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+		\begin{itemize}
+			\item[\textcolor{MATLABblue}{---}] Original signal
+			\item[\textcolor{MATLABblue}{- -}] Counterphase signal
+			\item[\textcolor{red}{---}] Error
+		\end{itemize}
+		\begin{center}
+	 		\input{figures/2500HzDelayed.tex}
+	 		%\caption{2500 Hz}
+	 	\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Introduction}{Problem with ANC}		
 	\begin{itemize}
-		\item Yeah.. you buy from me
-		\item i give you good price
-	\end{itemize}	
+		\item Conversion delay
+	\end{itemize}
+\end{frame}
+
+\subsection{Present consumer headphones}
+\begin{frame}{Introduction}{Present consumer headphones}
+	\begin{itemize}	
+	\item How well does the consumer headphones attenuate?
+	\begin{columns}
+		\begin{column}{0.27\textwidth}
+		\begin{itemize}
+			\item Denon AH-GC20
+			\item Bose QC25 
+			\item Bose QC15 	
+			\item B\&O H8 	
+		\end{itemize}
+		\end{column}
+		\begin{column}{0.6\textwidth} 
+		\begin{itemize}
+			\item[] 2.200 kr (2016)
+			\item[] 2.799 kr (2016)
+			\item[] 2.696 kr (2011)
+			\item[] 3.495 kr (2016)
+		\end{itemize}
+		\end{column}
+	\end{columns}
+	\end{itemize}			
+%	\begin{itemize}
+%		\begin{itemize}
+%			\item Denon AH-GC20 -- 2.200 kr (2016)
+%			\item Bose QC25 	-- 2.799 kr (2016)
+%			\item Bose QC15 	-- 2.696 kr (2011)
+%			\item B\&O H8 		-- 3.495 kr (2016)
+%		\end{itemize}
+%	\end{itemize}
+	\begin{center}
+		\input{figures/SmoothCompare(fig).tex}
+	\end{center}	
 \end{frame}
 
 
