@@ -32,22 +32,26 @@
 \headcommand {\beamer@subsectionentry {0}{2}{2}{11}{Linear Prediction}}\headcommand {\beamer@subsectionpages {10}{10}}
 \headcommand {\slideentry {2}{2}{1}{11/11}{Linear Prediction}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\sectionentry {3}{Results}{12}{Results}{0}}
-\headcommand {\beamer@sectionpages {10}{11}}
-\headcommand {\beamer@subsectionpages {11}{11}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{12}{Simulation}}\headcommand {\beamer@subsectionpages {12}{11}}
-\headcommand {\sectionentry {4}{Discussion}{12}{Discussion}{0}}
-\headcommand {\beamer@sectionpages {12}{11}}
-\headcommand {\beamer@subsectionpages {12}{11}}
-\headcommand {\beamer@subsectionentry {0}{4}{1}{12}{Computation}}\headcommand {\beamer@subsectionpages {12}{11}}
-\headcommand {\sectionentry {5}{Conclusion}{12}{Conclusion}{0}}
-\headcommand {\beamer@sectionpages {12}{11}}
-\headcommand {\beamer@subsectionpages {12}{11}}
-\headcommand {\beamer@subsectionentry {0}{5}{1}{12}{Listen}}\headcommand {\beamer@subsectionpages {12}{11}}
-\headcommand {\slideentry {5}{1}{1}{12/12}{Listen}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{12}{Combined system}}\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\slideentry {2}{3}{1}{12/12}{Combined system}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\beamer@partpages {1}{12}}
+\headcommand {\sectionentry {3}{Simulations Results}{13}{Simulations Results}{0}}
+\headcommand {\beamer@sectionpages {10}{12}}
 \headcommand {\beamer@subsectionpages {12}{12}}
-\headcommand {\beamer@sectionpages {12}{12}}
-\headcommand {\beamer@documentpages {12}}
-\headcommand {\def \inserttotalframenumber {10}}
+\headcommand {\slideentry {3}{0}{1}{13/13}{}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\sectionentry {4}{Discussion}{14}{Discussion}{0}}
+\headcommand {\beamer@sectionpages {13}{13}}
+\headcommand {\beamer@subsectionpages {13}{13}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{14}{Computation}}\headcommand {\beamer@subsectionpages {14}{13}}
+\headcommand {\sectionentry {5}{Conclusion}{14}{Conclusion}{0}}
+\headcommand {\beamer@sectionpages {14}{13}}
+\headcommand {\beamer@subsectionpages {14}{13}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{14}{Listen}}\headcommand {\beamer@subsectionpages {14}{13}}
+\headcommand {\slideentry {5}{1}{1}{14/14}{Listen}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\beamer@partpages {1}{19}}
+\headcommand {\beamer@subsectionpages {14}{19}}
+\headcommand {\beamer@sectionpages {14}{19}}
+\headcommand {\beamer@documentpages {19}}
+\headcommand {\def \inserttotalframenumber {12}}
