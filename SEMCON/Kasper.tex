@@ -1,27 +1,27 @@
 \section{Introduction}
 \subsection{What is Active Noise Control (ANC)}
 \begin{frame}{Introduction}{What is ANC}		
-	\begin{itemize}
-		\item Counterphase signal
-	\end{itemize}
-\end{frame}
-
-
-
-
-
-\begin{frame}{Introduction}{Limits of ANC}		
-	\begin{itemize}
-		\item Frequency dependent attenuation	
-	\end{itemize}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item The basic theory of ANC
+					\begin{itemize}
+						\item 250 Hz
+						\item 2500 Hz 
+					\end{itemize}	
+				\end{itemize}
+			\vspace{-2.5mm}	
 		\begin{center}
 	 		\input{figures/250Hz.tex}
 	 		%\caption{250 Hz}
 	 	\end{center}
 		\end{column}
 		\begin{column}{0.5\textwidth} 
+			\begin{itemize}
+				\item[\textcolor{MATLABblue}{---}] Original signal
+				\item[\textcolor{MATLABblue}{- -}] Counterphase signal
+				\item[\textcolor{red}{---}] Error
+			\end{itemize}
 		\begin{center}
 	 		\input{figures/2500Hz.tex}
 	 		%\caption{2500 Hz}
@@ -32,18 +32,49 @@
 
 
 
-\begin{frame}{Introduction}{Limits of ANC}		
+
+
+\begin{frame}{Introduction}{How does ANC work}		
 	\begin{itemize}
-		\item Frequency dependent attenuation	
+		\item Feedforward system
+		\begin{itemize}
+			\item 1: Reference microphone
+			\item 2: Headphone loudspeaker
+			\item 3: Error mirophone
+			\item 4: Digital signal Processor (DSP)
+		\end{itemize}
 	\end{itemize}
+	\begin{center}
+	 	\input{figures/BasicOverviewZoomed}
+	 	%\caption{2500 Hz}
+	\end{center}
+\end{frame}
+
+
+
+
+\begin{frame}{Introduction}{Problem of ANC}		
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Counter phase signal delayed 10 samples	
+				\begin{itemize}
+					\item 250 Hz
+					\item 2500 Hz 
+				\end{itemize}	
+			\end{itemize}
+			\vspace{-6.5mm}			
 		\begin{center}
 	 		\input{figures/250HzDelayed.tex}
 	 		%\caption{250 Hz}
 	 	\end{center}
 		\end{column}
 		\begin{column}{0.5\textwidth} 
+		\begin{itemize}
+			\item[\textcolor{MATLABblue}{---}] Original signal
+			\item[\textcolor{MATLABblue}{- -}] Counterphase signal
+			\item[\textcolor{red}{---}] Error
+		\end{itemize}
 		\begin{center}
 	 		\input{figures/2500HzDelayed.tex}
 	 		%\caption{2500 Hz}
@@ -56,11 +87,14 @@
 
 
 
-\begin{frame}{Introduction}{Problem with ANC}		
+\begin{frame}{Introduction}{Stationary vs non-stationary signals}		
 	\begin{itemize}
 		\item Conversion delay
 	\end{itemize}
 \end{frame}
+
+
+
 
 \subsection{Present consumer headphones}
 \begin{frame}{Introduction}{Present consumer headphones}
@@ -85,21 +119,20 @@
 		\end{column}
 	\end{columns}
 	\end{itemize}			
-%	\begin{itemize}
-%		\begin{itemize}
-%			\item Denon AH-GC20 -- 2.200 kr (2016)
-%			\item Bose QC25 	-- 2.799 kr (2016)
-%			\item Bose QC15 	-- 2.696 kr (2011)
-%			\item B\&O H8 		-- 3.495 kr (2016)
-%		\end{itemize}
-%	\end{itemize}
 	\begin{center}
-		\includegraphics[width=0.5\textwidth]{figures/ComparedConusmerHP}
+		\input{figures/SmoothCompare(fig).tex}
 	\end{center}	
 \end{frame}
 
 
 
+
+
+\begin{frame}{Introduction}{A solution for the problem}		
+	\begin{itemize}
+		\item Conversion delay
+	\end{itemize}
+\end{frame}
 
 
 \section{Methods}
@@ -126,7 +159,3 @@
 \section{Conclusion}
 
 \subsection{Listen}
-
-\begin{frame}{Opbygning}{Decimator}	
-
-\end{frame}

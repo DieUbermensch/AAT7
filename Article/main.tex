@@ -85,12 +85,12 @@
 %%%%%%%%%%%%%% Adjusting the titles and fonts %%%%%%%%%%%%%%%%%%%%%%
 \pagestyle{fancy}
 \titlespacing{\chapter}{0pt}{0pt}{10pt}
-\titlespacing{\section}{0pt}{0pt}{-8pt}
-\titlespacing{\subsection}{0pt}{8pt}{-8pt}
-\titlespacing{\subsubsection}{0pt}{6pt}{-8pt}
-\titleformat{\section}{\fontsize{13}{14}\scshape}{\thesection}{1em}{}
-\titleformat{\subsection}{\fontsize{13}{14}\scshape}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalfont\scshape\bfseries}{\thesubsubsection}{0.5em}{}
+\titlespacing{\section}{0pt}{0pt}{-5pt}
+\titlespacing{\subsection}{0pt}{8pt}{5pt}
+\titlespacing{\subsubsection}{0pt}{6pt}{10pt}
+\titleformat{\section}[hang]{\Large\bfseries}{\thesection\hsp\textcolor{black}{|}\hsp}{0pt}{\Large\bfseries}
+\titleformat{\subsection}[hang]{\fontsize{14}{15}\bfseries}{\thesubsection}{10pt}{\fontsize{14}{15}\bfseries}
+\titleformat{\subsubsection}[hang]{\bfseries}{\thesubsubsection}{10pt}{\bfseries}
 
 
 %%%%%%%%%%%%%% Article %%%%%%%%%%%%%%%%%%%%%%
@@ -104,7 +104,8 @@
 %\input{1Article/Conclusion.tex}
 %\bibliography{00setup/mybib}
 %\end{multicols}
-
+\newpage
+\listoftodos
 \newpage
 \tableofcontents
 \include{2Appendix/AppendixIntro}
