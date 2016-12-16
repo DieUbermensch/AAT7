@@ -52,6 +52,32 @@
 
 
 
+\subsection{Problem of ANC}
+\begin{frame}{Introduction}{Problem of ANC}		
+	\begin{itemize}
+		\item Feedforward problem
+		\item Sampling and reconstruction delay.
+		\begin{itemize}
+			\item Anti Aliasing filter
+			\item Reconstructions filter
+		\end{itemize}
+		\item The measured delay of a Sigma Delta converter TLV320AIC3204
+	\end{itemize}
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|r|r|r|}
+	\hline
+	$f_s$ {[}$k$Hz{]} & 48 & 96 & 192 \\ \hline
+	Delay {[}$\mu$s{]} & 900 & 450 & 225 \\ \hline
+	Delay {[}samples{]} & 43 & 43 & 43 \\ \hline
+	\end{tabular}
+	\end{table}
+\end{frame}
+
+
+
+
+
 
 \begin{frame}{Introduction}{Problem of ANC}		
 	\begin{columns}
@@ -87,9 +113,23 @@
 
 
 
-\begin{frame}{Introduction}{Stationary vs non-stationary signals}		
+\begin{frame}{Introduction}{Speech vs Periodic Noise}		
 	\begin{itemize}
-		\item Conversion delay
+		\item Signal Characteristics
+		\begin{itemize}
+			\item Periodic Signals
+			\begin{itemize}
+				\item Periodic
+				\item Strict Sense Stationary (SSS)
+			\end{itemize}
+			\item Speech Signals
+			\begin{itemize}
+				\item Quasiperiodic
+				\item Can be assumed Wide Sense Stationary for 20 $m$s -- 30 $m$s 
+			\end{itemize}
+		\end{itemize}
+		\item Periodic noise is easy to cancel
+		\item Speech noise is difficult to cancel
 	\end{itemize}
 \end{frame}
 
@@ -106,7 +146,7 @@
 			\item Denon AH-GC20
 			\item Bose QC25 
 			\item Bose QC15 	
-			\item B\&O H8 	
+			\item BeoPlay H8 	
 		\end{itemize}
 		\end{column}
 		\begin{column}{0.6\textwidth} 
@@ -129,27 +169,44 @@
 
 
 \begin{frame}{Introduction}{A solution for the problem}		
-	\begin{itemize}
-		\item Conversion delay
-	\end{itemize}
+	\centering{Combining a feedforward Filtered-x Least Mean Square (FXLMS) algorithm with Linear prediction (LP) scheme to compensate for delay.}
 \end{frame}
 
 
 \section{Methods}
 
+\subsection{Feedforward FXLMS}
+\begin{frame}{Methods}{Feedforward FXLMS}
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+
+			\end{column}
+			\begin{column}{0.5\textwidth} 
+			\resizebox{1.1\columnwidth}{!}{		
+			\input{figures/Expansion.tex}}
+			\end{column}
+		\end{columns}
+
+\end{frame}
 
 
+\subsection{Linear Prediction}
+\begin{frame}{Methods}{Linear Prediction}		
+
+\end{frame}
+
+\subsection{Combined system}
+\begin{frame}{Methods}{Combined system}		
+
+\end{frame}
+
+\section{Simulations Results}
+
+\begin{frame}{Methods}{Optimal parameters}		
+
+\end{frame}
 
 
-
-
-\subsection{Adaptive Filtered-x least mean squares FIR algorithm}
-
-\subsection{Wiener filtering}
-
-\section{Results}
-
-\subsection{Simulation}
 
 
 \section{Discussion}
