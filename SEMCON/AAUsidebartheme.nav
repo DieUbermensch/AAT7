@@ -13,32 +13,34 @@
 \headcommand {\beamer@framepages {4}{4}}
 \headcommand {\slideentry {1}{1}{3}{5/5}{What is Active Noise Control (ANC)}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\beamer@subsectionentry {0}{1}{2}{6}{Present consumer headphones}}\headcommand {\beamer@subsectionpages {3}{5}}
-\headcommand {\slideentry {1}{2}{1}{6/6}{Present consumer headphones}{0}}
+\headcommand {\slideentry {1}{1}{4}{6/6}{What is Active Noise Control (ANC)}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\sectionentry {2}{Methods}{7}{Methods}{0}}
-\headcommand {\beamer@sectionpages {3}{6}}
-\headcommand {\beamer@subsectionpages {6}{6}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{7}{Adaptive Filtered-x least mean squares FIR algorithm}}\headcommand {\beamer@subsectionpages {7}{6}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{7}{Wiener filtering}}\headcommand {\beamer@subsectionpages {7}{6}}
-\headcommand {\sectionentry {3}{Results}{7}{Results}{0}}
-\headcommand {\beamer@sectionpages {7}{6}}
-\headcommand {\beamer@subsectionpages {7}{6}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{7}{Simulation}}\headcommand {\beamer@subsectionpages {7}{6}}
-\headcommand {\sectionentry {4}{Discussion}{7}{Discussion}{0}}
-\headcommand {\beamer@sectionpages {7}{6}}
-\headcommand {\beamer@subsectionpages {7}{6}}
-\headcommand {\beamer@subsectionentry {0}{4}{1}{7}{Computation}}\headcommand {\beamer@subsectionpages {7}{6}}
-\headcommand {\sectionentry {5}{Conclusion}{7}{Conclusion}{0}}
-\headcommand {\beamer@sectionpages {7}{6}}
-\headcommand {\beamer@subsectionpages {7}{6}}
-\headcommand {\beamer@subsectionentry {0}{5}{1}{7}{Listen}}\headcommand {\beamer@subsectionpages {7}{6}}
-\headcommand {\slideentry {5}{1}{1}{7/7}{Listen}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{7}{Present consumer headphones}}\headcommand {\beamer@subsectionpages {3}{6}}
+\headcommand {\slideentry {1}{2}{1}{7/7}{Present consumer headphones}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {5}{1}{2}{8/8}{Listen}{0}}
+\headcommand {\sectionentry {2}{Methods}{8}{Methods}{0}}
+\headcommand {\beamer@sectionpages {3}{7}}
+\headcommand {\beamer@subsectionpages {7}{7}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{8}{Adaptive Filtered-x least mean squares FIR algorithm}}\headcommand {\beamer@subsectionpages {8}{7}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{8}{Wiener filtering}}\headcommand {\beamer@subsectionpages {8}{7}}
+\headcommand {\sectionentry {3}{Results}{8}{Results}{0}}
+\headcommand {\beamer@sectionpages {8}{7}}
+\headcommand {\beamer@subsectionpages {8}{7}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{8}{Simulation}}\headcommand {\beamer@subsectionpages {8}{7}}
+\headcommand {\sectionentry {4}{Discussion}{8}{Discussion}{0}}
+\headcommand {\beamer@sectionpages {8}{7}}
+\headcommand {\beamer@subsectionpages {8}{7}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{8}{Computation}}\headcommand {\beamer@subsectionpages {8}{7}}
+\headcommand {\sectionentry {5}{Conclusion}{8}{Conclusion}{0}}
+\headcommand {\beamer@sectionpages {8}{7}}
+\headcommand {\beamer@subsectionpages {8}{7}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{8}{Listen}}\headcommand {\beamer@subsectionpages {8}{7}}
+\headcommand {\slideentry {5}{1}{1}{8/8}{Listen}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\beamer@partpages {1}{8}}
-\headcommand {\beamer@subsectionpages {7}{8}}
-\headcommand {\beamer@sectionpages {7}{8}}
-\headcommand {\beamer@documentpages {8}}
-\headcommand {\def \inserttotalframenumber {6}}
+\headcommand {\slideentry {5}{1}{2}{9/9}{Listen}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\beamer@partpages {1}{9}}
+\headcommand {\beamer@subsectionpages {8}{9}}
+\headcommand {\beamer@sectionpages {8}{9}}
+\headcommand {\beamer@documentpages {9}}
+\headcommand {\def \inserttotalframenumber {7}}
