@@ -28,22 +28,26 @@ Generally people seem to use feedforward systems for this, and even though this 
 The method for doing ANC is with an adaptive filter - a filter whose coefficients are altered with an algorithm - the FXLMS.
 Now back to the LP - to help with the delay problem we're introducing a LP scheme:
 Figure 1 describes that the wiener filter is used for predicting future samples, notice the symbols describing the Wiener-Hopf equation is adapting the Wiener-filter.\\
-$\Hat{R}\bar{a} = -\bar{\hat{r}}_x$ \\
-As those familiar with matrix computation will know - doing the inverse of a matrix takes a lot of iterations, and is as such very heavy computationally wise, and as such we're using the Levinson-Durbin method to estimate the inverse of the $C_{xx}$ - matrix, which is then input in the Wiener-hopf and then along it goes in the system.
+$\Hat{R}\bar{a} = -\bar{\hat{r}}_x$ .\\
+As those familiar with matrix computation will know - doing the inverse of a matrix takes a lot of iterations, and is as such very heavy computationally wise, and as such we're using the Levinson-Durbin method to estimate the inverse of the Covariance-matrix, which is then input in the Wiener-hopf and then along it goes in the system.
 And here we can see where we actually do the ANC - with the control-filter adapted, and with the TF of the cancellation path, which is the path from 2 to 3.
 	
 \section{Results of Simulation}
-The first simulation was a "brute force" test, where we tested the Prediction Gain, PG) for various different Framelengths, N and Overlap, O. Where a higher PG obviously is better, i.e. where the graph is most yellow.
+The first simulation was a "brute force" test, where we tested the Prediction Gain, (PG) for various different Framelengths, \textbf{N} and Overlap, \textbf{O}. Where a higher PG obviously is better, i.e. where the graph is most yellow.
 We found the optimal parameters to be $N=1200$ and $O=1100$.\\\\
 And we made a comparison of the FXLMS vs. the LP FXLMS. As we can see, with no delays the FXLMS is capable of achieving an infinite attenuation, so in a perfect world we wouldn't need LP - however this world is obviously not perfect, so we \textit{need} the LP. The red line illustrates the performance of that one.\\\\
 Lastly we've compared the frequency responses to each other, to determine whether the LP altered the characteristics of the signal, not how there is up to 30 dB in improves attenuation for the LP.\\
 
 \section{Discussion}
-Something that might be a drawback is the computational cost of this scheme, it is expensive to run LP with FXLMS, in fact it costs 15000 instructions pr. sample. A way of working around this problem, is to utilize multirate.\\
-It should be noted that for some high frequencies, for FXLMS, the delay wraps around and at some point our counterphase signal become counter-counter-phase and actually gains the noise. Another reason to get rid of delays.
+Something that is seen as a drawback is the computational cost of this scheme, it is expensive to run LP with FXLMS, in fact it costs 15,000 instructions pr. sample.\\ 
+It should be noted that for some high frequencies, for FXLMS, the delay adds up at some point, as in the "upkeep gets higher". This mean our counterphase signal become counter-counter-phase and actually gains the noise. \\
+
+In further development, one would try to utilize multirate in the system, this way we could get rid of delays, and also bring down the computational cost to something more feasible.
+
 
 \section{Conclusion}
 All in all the proposed tech works, and it was possible to attenuate speech greatly - up to 30 dB even, for delay of 10 samples.\\
-However it proved to be heavy on computational cost, and was therefor not feasible to implement on a DSP - though got it to work in simulation, however not in real-time.
+However it proved to be heavy on computational cost, and was therefor not feasible to implement on a DSP - though it works in simulation, however not in real-time, which is why we have these results that we have.\\\\
+
 But if you would like to step over to this rack, you can scan the QR-code, put on a pair of headphones and then you can listen for yourself. It's pretty cool if I have to say it myself.
 \end{document}
