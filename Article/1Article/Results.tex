@@ -1,12 +1,12 @@
 \section{Results}
-All results are obtained using Simulink\textsuperscript{\textregistered} to simulate systems build as described in \autoref{sec:methods} Methods. The speech used throughout is from the Archimedes project CD\footnote{CD B\&O 101 Track 5 "Male speech" 0:00-0:10} resampled to the used $f_s$.  
+All results are obtained using Simulink\textsuperscript{\textregistered} to simulate systems built as described in \autoref{sec:methods} Methods. The speech used throughout is from the Archimedes project CD\footnote{CD B\&O 101 Track 5 "Male speech" 0:00-0:10} resampled to the used $f_s$.  
 \\\\
 The results are divided into firstly determining the parameters of the predictor and secondly testing the attenuation of the feedforward FXLMS system compared to the feedforward LP FXLMS system.   
 
 \subsection{Determining System Parameters}
 The parameters which should be detemined are $f_s$, $P$, $N$, $O$ and $M$.         
 The $PG$ in relation to $f_s$ is shown in \autoref{tb:fsPredict}.
-
+To compare different sample rates, $N$ must be scaled to represent the same time interval.  
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|c|c|c|c|c|c|}
@@ -19,8 +19,7 @@ $PG$ {[}dB{]} & 13.5 & 15.950 & 14.7 & 20.8 & 35.0 & 43.8 \\ \hline
 \label{tb:fsPredict}
 \end{table}
 
-To compare $f_s$, $N$ must be scaled to represent the same time interval. $f_s$ is chosen to 48 $k$Hz. $P$ is chosen to 43 samples which is the same as the converter delay shown in \autoref{tab:DelayResults}.  
-$PG$ as a function of $N$ and $O$ is seen on \autoref{fig:Predict43}. 
+To determine the optimum  $N$ and $O$, $PG$ as a function of $N$ and $O$ is calculated. The result is illustrated on \autoref{fig:Predict43}, where $f_s$ is chosen to 48 $k$Hz. $P$ is chosen to 43 samples which is the same as the converter delay shown in \autoref{tab:DelayResults}. 
 
 \begin{figure}[H]
 	\centering
@@ -29,7 +28,7 @@ $PG$ as a function of $N$ and $O$ is seen on \autoref{fig:Predict43}.
 	\caption{$PG$ as a function of different $N$ and $O$ with $P=43$. The tested points are the corner points.}
 	\label{fig:Predict43}
 \end{figure}
-With $P=43$ the optimal parameters for the predictor was found to be $N=1700$ and $O=1600$ based on maximizing $PG$. The optimum $PG$ is equal to 5.4 dB.
+With $P=43$ the optimal parameters for the predictor were found to be $N=1700$ and $O=1600$ based on maximizing $PG$. The optimum $PG$ is equal to 5.4 dB.
 A simulation is also made for $P=10$ shown in \autoref{fig:Predict10}.
 
 \begin{figure}[H]
@@ -39,7 +38,7 @@ A simulation is also made for $P=10$ shown in \autoref{fig:Predict10}.
 	\caption{$PG$ as a function of different $N$ and $O$ with $P=10$. The tested points are the corner points.}
 	\label{fig:Predict10}
 \end{figure}
-In \autoref{fig:Predict10} the optimum $N$ and $O$ are 1200 and 1100 respectively with a $PG$ of 10.0 dB.\\
+In \autoref{fig:Predict10} the optimum $N$ and $O$ are 1200 and 1100, respectively, with a $PG$ of 10.0 dB.\\
 
 From \autoref{fig:Predict43} and \autoref{fig:Predict10} parameters $N$ and $O$ are chosen to be 1200 and 1100 respectively which is optimal for $P=10$. If $N=1200$ and $O=1100$ for $P=43$ is chosen this would give a $PG$ of 5.2 dB which results in a 0.2 dB lower $PG$ compared to optimum.
 The predictor is simulated with varying $P$ using the chosen parameters and shown in \autoref{fig:PredictP}.
@@ -63,7 +62,7 @@ The attenuation of feedforward FXLMS compared with feedforward LP FXLMS with dif
 	\caption{Attenuation of the feedforward FXLMS (blue)  compared to the feedforward LP FXLMS (red) with different system delays.}
 	\label{Fig:delayRatio}
 \end{figure}
-In \autoref{Fig:delayRatio} $P$ is set equal to the system delay in the feedforward LP FXLMS. The reason for starting with a system delay of two is that if there were no delay the feedforward FXLMS system would reach an attenuation of infinity. At $P=10$ in increased attenuation of 34 dB is achieved. The frequency responses of the two systems with delay and $P$ equal to 10 are shown in \autoref{fig:ANCcompareALL}.  
+In \autoref{Fig:delayRatio} $P$ is set equal to the system delay in the feedforward LP FXLMS. The reason for starting with a system delay of two is that if there were no delay the feedforward FXLMS system would reach an attenuation of infinity. At $P=10$ an increased attenuation of 34 dB is achieved. The frequency responses of the two systems with delay and $P$ equal to 10 are shown in \autoref{fig:ANCcompareALL}.  
 
 \begin{figure}[H]
 	\centering
@@ -72,7 +71,7 @@ In \autoref{Fig:delayRatio} $P$ is set equal to the system delay in the feedforw
 	\caption{Frequency response of feedforward FXLMS (blue) compared with feedforward LP FXLMS (red). Results are filtered using a class 0 1/3 octave filter bank \cite{OctaveBand}.}
 	\label{fig:ANCcompareALL}
 \end{figure}        
-At frequencies above 400 Hz the attenuation of the feedforward FXLMS system drops, whereas the feedforward LP FXLMS systems attenuation is maintained above 20 dB in the entire speech region. The feedforward FXLMS has a gain of 5 dB at 2500 Hz.  
+At frequencies above 400 Hz the attenuation of the feedforward FXLMS system drops, whereas the feedforward LP FXLMS system's attenuation is maintained above 20 dB in the entire speech region. The feedforward FXLMS has a gain of 5 dB at 2500 Hz.  
         
 
 
