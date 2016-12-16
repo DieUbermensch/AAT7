@@ -1,8 +1,8 @@
 
 \section{Test of Consumer Headphones}
 \subsection{Purpose}
-The purpose of this section is to determine the attenuation of the ANC on existing consumer headphones, that are available today, for stochastic speech signals.
-Note that this is indeed inly testing the active part, and not the passive damping made by the cuff.
+The purpose of this section is to determine the attenuation of the ANC on existing consumer headphones, for stochastic speech signals. 
+Note that only the active part is tested, and not the passive damping made by the headphone cup.
 
 
 \subsection{AAU number list}
@@ -44,8 +44,8 @@ Note that this is indeed inly testing the active part, and not the passive dampi
 \subsection{Settings/Description}
 \subsubsection{Control and calibration}
 \begin{itemize}
-	\item Item 6  is placed 1.6 meters from the Item 1.
-	\item Item 2 calibrations are made on the computer using Simulink\textsuperscript{\textregistered}.
+	\item The speaker (6) is placed 1.6 meters from the Item 1.
+	\item The microphone in the Hats (2) is calibrated on the computer using Simulink\textsuperscript{\textregistered}.
 	\begin{itemize} 
 		\item Calibration is made @ 1 $k$Hz using Item 5 with adapter for Item 2. This should yield a signal of 95.6 dB. The measured intensity in MATLAB\textsuperscript{\textregistered} however was 78.12 so all measurements are multiplied by 7.48 to get a calibrated signal in Matlab\textsuperscript{\textregistered}.
 	\end{itemize}
@@ -54,7 +54,7 @@ Note that this is indeed inly testing the active part, and not the passive dampi
 \subsubsection{Equipment settings}
 \begin{itemize}
 	\item This experiment is performed with a sampling rate, $f_{s}$ = 48 $k$Hz. 
-	\item For Item 3 take care to turn on the "inst"-option in the mixing console. The following gain settings are present: 		
+	\item In the mixing console on the computer 3 take care to turn on the "inst"-option. The following gain settings are present: 		
 	\begin{itemize}
 		\item Line level gain is 0 dB
 		\item Ear Microphones has gain +30 dB
@@ -88,11 +88,11 @@ Note that this is indeed inly testing the active part, and not the passive dampi
 \subsection{Procedure}
 	\subsubsection{Set-up}
 	\begin{enumerate}
-		\item Connect cable from Item 3's "Out 1L" to Item 6's "Line in"
-		\item Connect cable from Item 3's "Out 1R" to Item 3's "In 1L"
-		\item Connect cable from Item 2 to Item 7's "Input"
-		\item Connect cable from Item 7's "Output" to Item 3's "IN 2R"
-		\item Connect USB-cable from Item 4 to Item 3
+		\item Connect cable from the RMEs "Out 1L" to the speakers "Line in"
+		\item Connect cable from the RME's "Out 1R" to the RME's "In 1L"
+		\item Connect cable from the microphone in the ear simulator (2) to the microphone power supply's (7) "Input"
+		\item Connect cable from the microphone power supply's "Output" to the RME's "IN 2R"
+		\item Connect USB-cable from the computer to the RME
 	\end{enumerate}
 
 	\subsubsection{Performing Experiment}
@@ -107,11 +107,9 @@ Note that this is indeed inly testing the active part, and not the passive dampi
 			\item The simulation runs for 14 seconds
 		\end{itemize}
 		\item Rename generated file \path{GeneratedANC} according to headphone tested, and whether or not ANC was enabled. E.g. \path{Denonon[1].wav} for the first test of the Denon AH GC20 headhpone with ANC enabled. Names in \path{evaluatePerformance.m}-script is named accordingly.
-				\begin{itemize}
-			\item[] Perform this experiment for as many headphones as desired.
-		\end{itemize}
+
 	\end{enumerate}
-	
+	Perform this experiment five times for each headphone where the headphone is removed and remounted on the HATS between measurements. 
 		
 \subsection{Data Extraction}
 \begin{enumerate}
@@ -119,7 +117,7 @@ Note that this is indeed inly testing the active part, and not the passive dampi
 \end{enumerate}
 
 From performing the experiment, a list of files were generated, ten for each device tested; five with ANC enabled and five with ANC disabled.
-The difference between the enabled and the disabled is plotted on the graph below, for each device tested. The list can be seen below
+The difference between the enabled and the disabled is plotted on the graph below, for each device tested. The list can be seen below, where [i] indicates the iteration of the experiment
 
 \begin{itemize}
 	\item \path{Denonon[i].wav}			(Denon AH GC20 w/ ANC)
@@ -130,43 +128,11 @@ The difference between the enabled and the disabled is plotted on the graph belo
 	\item \path{BoseQC25off[i].wav}		(Bose QuietComfort 25 w/o ANC)
 	\item \path{BOH8on[i].wav}			(B\&O BEOPLAY H8 w/ ANC)
 	\item \path{BOH8off[i].wav}			(B\&O BEOPLAY H8 w/o ANC)
-	\item \path{Denonon[i].wav}		(Denon AH GC20 w/ ANC)
-	\item \path{Denonoff[i].wav}		(Denon AH GC20 w/o ANC)
-	\item \path{BoseQC15on[i].waw}		(Bose QuietComfort 15 w/ ANC)
-	\item \path{BoseQC15off[i].wav}		(Bose QuietComfort 15 w/o ANC)
-	\item \path{BoseQC25on[i].wav}		(Bose QuietComfort 25 w/ ANC)
-	\item \path{BoseQC25off[i].wav}		(Bose QuietComfort 25 w/o ANC)
-	\item \path{BOH8on[i].wav}			(B\&O BEOPLAY H8 w/ ANC)
-	\item \path{BOH8off[i].wav}		(B\&O BEOPLAY H8 w/o ANC)
-	\footnote{[i] indicates the iteration of the experiment}
 \end{itemize}
 
 
 \subsection{Analysis}
-The impulse response of the CP is to be found.
-Note that a microphone with external polarization was used. It means that there is a $180^\circ$ phase difference between pre- and external polarized microphones, i.e. a positive pressure leads to negative voltage. The externally polarized microphone is considered to be out of phase. \cite{michandbook}
-
-The cross correlation method described in \autoref{Sec:MeasATransFunc} is used to find the transfer functions. 
-
-%The five files of each ANC setting for each headphone is then meaned and cross correlated with the opposing ANC-setting of the same headphone, to find the relative difference between the headphones on- and off ANC-setting.\\
-%This difference is then plotted for all headphones on \autoref{fig:OtherBrandsTestCompare}.
-%\\
-%The impulse response of the difference between enabled and disabled recorded signals is to be found.
-%This is done by finding the frequency response of the "signal", which the cross correlation between e.g. \path{Denonon[i].wav} and \path{Denonon[i].wav} This is done by taking the FT of the cross correlated signals, seen in \autoref{FrequencyResponseEq2}.
-%\begin{equation}\label{FrequencyResponseEq2}
-%%H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
-%H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
-%\end{equation}
-%Where:
-%\vspace{-3mm}
-%\begin{itemize}
-%	%\item " $*$ " denotes the complex conjugation
-%	\item $H(f)$ is the FT of the "difference between the signals".
-%	\item $Y(f)$ is the FT of the recorded signals, with ANC enabled,  Denonon[i].
-%	\item $X(f)$ is the FT of the recorded signals, with ANC disabled, Denonoff[i].
-%\end{itemize}
-
-In figure \autoref{fig:BOH8Comp}-\autoref{fig:DenonComp} the responses for the tested headphones can be seen. Not that a more smooth fitted curve has been applied, for better comparison between the four tested headphones.
+In figure \autoref{fig:BOH8Comp} -- \autoref{fig:DenonComp} the frequency responses for the tested headphones can be seen. The frequency responses are made using the method described in \autoref{sec:OctaveBank}. Only the part containing male voice is analysed.
 
 \begin{figure}[H]
 	\centering
@@ -191,6 +157,7 @@ In figure \autoref{fig:BOH8Comp}-\autoref{fig:DenonComp} the responses for the t
 	\caption{Bose QuietComfort 25 measured in an anechoic chamber and averaged over five measurements, results were filtered using a 1/3 octave filter bank.}
 	\label{fig:QC25Comp}
 \end{figure}
+According to the measurement Bose QuietComfort 25 gains significantly between 1 $k$Hz and 2 $k$Hz. This is not perceived when using the headphone, and might be an error in the measurement. 
 
 \begin{figure}[H]
 	\centering
@@ -200,7 +167,15 @@ In figure \autoref{fig:BOH8Comp}-\autoref{fig:DenonComp} the responses for the t
 	\label{fig:DenonComp}
 \end{figure}
 
-In figure \autoref{fig:OtherBrandsTestCompare} the fitted comparison can be seen, this representation provides a better overview of the four-way comparison.
+In figure \autoref{fig:OtherBrandsTestCompare} a comparison can be seen, this representation provides a better overview of the attenuation of four headphones.
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{ComparedConusmerHPApp}
+	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/SmoothCompare(fig).tex}
+	\caption{Denon AH-GC20(red), Bose QC25 (purple), Bose QC15(yellow) and B\&O H8(blue) measured in anechoic chamber, averaged over five measurements where the headphones was refitted between measurements.}
+	\label{fig:OtherBrandsTestCompare}
+\end{figure}
+
 
 %\begin{figure}[H]
 %	\centering
@@ -212,8 +187,7 @@ In figure \autoref{fig:OtherBrandsTestCompare} the fitted comparison can be seen
 
 
 \subsection{Conclusion}
-The relative difference between a headphones attenuation with and without ANC was found for four different consumer headphones. And the testers concluded that the Bose QuietComfort 25 H8 had the best active part.
-
+The relative difference between a headphones attenuation with and without ANC was found for four different consumer headphones.
 
 
 
