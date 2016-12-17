@@ -26,9 +26,7 @@ If a feedforward LP FXLMS system is to be implemented in a product certain previ
 \section{Conclusion}
 The proposed method of combining FXLMS with LP ($P=10$) has proven to improve the attenuation of a speech signal (50 Hz -- 4000 Hz) by 34 dB compared to a FXLMS system without LP. This is because the LP algorithm is capable of compensating for the delay introduced by sampling and reconstruction. The sampling delay of a $\Sigma\Delta$-converter can be reduced by sampling at a high $f_s$ and processing in multirate, which would also yield a smaller computational cost. %This will be required if implementing the simulated system.    
 \\\\
-The predictor is reliant on short term stationary signals in order to predict future samples. The method used is Wiener filtering, which is often used in speech encoding, coupled in cascade for predicting $P$ samples. This method of prediction results in a $PG$ of 10 dB when predicting 10 samples.    
-\\\\
-In order to utilize the proposed system in real time certain challenges must be addressed. The primary challenge is the computational cost of >15,000 instruction per sample if implementing LP.    
+The predictor is reliant on short term stationary signals in order to predict future samples. The method used is Wiener filtering, which is often used in speech encoding, coupled in cascade for predicting $P$ samples. This method of prediction results in a $PG$ of 10 dB when predicting 10 samples. In order to utilize the proposed system in real time certain challenges must be addressed. The primary challenge is the computational cost of >15,000 instruction per sample if implementing LP.    
 
 
 
