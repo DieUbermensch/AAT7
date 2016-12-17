@@ -1,13 +1,12 @@
 \section{Determining Hardware Delay} \label{sec:HardwareDelay}
 
-The following section describes a test determining the conversion delay on the chosen implementation platform.
-
 \subsection{Purpose}
+The following section describes a test determining the conversion delay on the Texas Instruments TMS320C5515 eZdsp.
 
-The conversion delay inside the platform plays an important part in this project, and has to be measured and accounted for. With the conversion delay determined it is possible to simulate more accurately.
+The conversion delay of the platform is important when chosing parameters for the simulated predictor. With the conversion delay determined it is possible to  make the simulations with a feasible delay. 
 
 \subsection{AAU number list}
-Table \ref{tab:MeasDelayTable} shows the used equipment in the experiment. These items have been selected due to the low frequencies being measured. The Analog Discovery 2 has a bandwidth of 25 Mhz and 100M Samples/s, making the resolution sufficient.  
+Table \ref{tab:MeasDelayTable} shows the equipment used in the experiment. These items have been selected due to the low frequencies being measured. The Analog Discovery 2 has a bandwidth of 25 Mhz and 100M Samples/s, making the resolution sufficient.  
 \begin{table}[H]
 	\centering
 	\ra{1.3}
@@ -22,10 +21,8 @@ Table \ref{tab:MeasDelayTable} shows the used equipment in the experiment. These
 	\caption{Table over equipment used in test.}
 	\label{tab:MeasDelayTable}
 \end{table}
-
-\subsection{Diagram \& picture of setup}
-
-The TMS320C5515eZdsp is connected to the DSP Freedom board where the TLV320AIC3204 codec is connected via 3.5mm minijack cable (dashed lines) to the board. The oscilloscopes probes are then connected to the on-board BNC connectors. This is shown on figure \ref{fig:SchematicDelayExperiment}. It should be noted that even though the Freedom Board is equipped with 16 kHz first order lowpass filter, the probes were applied "behind" the filters. this can be seen on figure \ref{fig:DelayExperimentSetup}. However the signal should not be affected since the step is 2 Hz in frequency. 
+\todoMikkel{Not that freedom thing! And refference the appendix about it, if you want to mention it. }
+\subsection{Diagram}
 
 \begin{figure}[H]
 	\centering
@@ -35,19 +32,10 @@ The TMS320C5515eZdsp is connected to the DSP Freedom board where the TLV320AIC32
 	\label{fig:SchematicDelayExperiment}
 \end{figure}
 
-
-\begin{figure}[H]
-	\centering
-\includegraphics[width=0.75\textwidth]{Hardware/DelaySetup}
-	\caption{Picture of the experiment}
-	\label{fig:DelayExperimentSetup}
-\end{figure}
-
-
 \subsection{Settings/Description}
-To determine the sampling delay of the system a simple example is used, where the sample is passed through the system without any interaction. This ensures that the minimum time spent for conversion is used. A step on the input signal will result in an delayed output step. The time difference in the steps will directly be seen as the conversion delay of the system. The delay takes into account the needed time for oversampling and reconstruction in the $\Sigma\Delta$-converters.
 
-\subsubsection{Equipment settings}
+
+\subsubsection{Calibration}
 To ensure that the DSP is running at the desired frequencies, a probing of the development boards XF pin is done. This pin is flipped according to the sampling frequency, shown in listing \ref{lst:samplingbasic}, line 15 \& 19. The output of the 48 and 192 khz is show in figure \ref{fig:countingthefs}. 
 \begin{figure}[H]
 	\centering
@@ -67,6 +55,13 @@ To ensure that the DSP is running at the desired frequencies, a probing of the d
 	\caption{High frequency counter showing the sampling frequency of the DSP}
 	\label{fig:countingthefs}
 \end{figure}
+
+
+\subsubsection{Equipment settings}
+The TMS320C5515eZdsp is connected to the DSP Freedom board where the TLV320AIC3204 codec is connected via 3.5mm minijack cable (dashed lines in \autoref{fig:SchematicDelayExperiment} ) to the board. The oscilloscopes probes are then connected to the on-board BNC connectors. This is shown on figure \ref{fig:SchematicDelayExperiment}. It should be noted that even though the Freedom Board is equipped with 16 kHz first order lowpass filter, the probes were applied "behind" the filters. this can be seen on figure \ref{fig:DelayExperimentSetup}. However the signal should not be affected since the step is 2 Hz in frequency.
+\todoMikkel{I don't understand the step op 2 Hz in frequency thing? ... Ahh that's your step thing. Is it a 2 Hz square wave, because that will be affected by a lp filter!}
+
+To determine the sampling delay of the system a simple program is used, where the samples are passed through the system without any interaction. This ensures that no time is spent for calculations in the program. A step on the input signal will result in an delayed step on the output. The time difference in the steps will yield the conversion delay of the system directly. The delay takes into account the needed time for AA-filtering after oversampling and reconstruction in the $\Sigma\Delta$-converters.
 
 Listing \ref{lst:samplingbasic} shows the main code for looping the stereo codec. The code shows the sampling of the input register when ready, and writing to the output register when ready. 
 
@@ -98,6 +93,14 @@ I2S0_W1_LSW_W = 0;
 \end{lstlisting}
 
 
+\subsection{Pictures}
+
+\begin{figure}[H]
+	\centering
+\includegraphics[width=0.75\textwidth]{Hardware/DelaySetup}
+	\caption{Picture of the setup for determining hardware delay}
+	\label{fig:DelayExperimentSetup}
+\end{figure}
 
 \subsection{Procedure}
 \subsubsection{Set-up}
@@ -105,7 +108,7 @@ I2S0_W1_LSW_W = 0;
 	\item The DSP is mounted onto the DSP Freedom Board
 	\item  Connect the DSP board with 3.5 mm mini-jack cable to Input 1 and 2.
 	\begin{enumerate}
-		\item This ensures that bypass of the lowpass filters are possible
+		\item This ensures that bypass of the lowpass filters is possible
 	\end{enumerate}
 	\item Connect OUT1 and IN1 from the oscilloscope to Input 1 on the board with BNC cables.
 	\item Connect IN2 from the oscilloscope to the Input 2 on the board.
@@ -124,13 +127,13 @@ I2S0_W1_LSW_W = 0;
 	\item The oscilloscope is set to trigger at the rise of IN1
 	\item Apply a 2 Hz square wave to OUT1 on the oscilloscope
 	\item Save measurement IN1 and IN2 on oscilloscope in a \path{.CSV} file
-	\item Repeat with different value in step 6
+	\item Repeat with different ADCFs in step 6
 \end{enumerate}
-
+\todoMikkel{It should be clear how I perform step 7? I see no easy variable to change :D:D:D:D:D }
 
 \subsection{Data extraction}
 
-The data from the experiment is saved as a \path{.CSV} file. These files can be found at:
+The data from the experiment is saved as \path{.CSV} files. These files can be found at:
 \begin{itemize}
 	\item \path{48kHz2Hz500mV.csv}
 	\item \path{96kHz2Hz500mV.csv}
@@ -141,10 +144,7 @@ Each file contains the 2 Hz and corresponding output of the codec, with a resolu
 
 
 \subsection{Analysis}\label{sec:AnalysisFsDelay}
-The impulse response of the CP is to be found.
-Note that a microphone with external polarization was used. It means that there is a 180\textdegree phase difference between pre- and external polarized microphones, i.e. a positive pressure leads to negative voltage. The externally polarized microphone is considered to be out of phase. \cite{michandbook}
-
-On figure \ref{fig:ScopeDelayExperiment} the three outputs from each test are plotted on the same figure.
+The outputs from the three test are plotted on figure \ref{fig:ScopeDelayExperiment}.
 
 \begin{itemize}
 	\item The blue line (\textcolor{MATLABblue}{---}) graph shows input step.
@@ -167,7 +167,7 @@ On figure \ref{fig:ScopeDelayExperiment} the three outputs from each test are pl
 	\centering
 	\tikzsetnextfilename{DelaySetupCSVRead}
 	\input{figures/Hardware/DelayGraph.tex}
-	\caption{Readout form the oscilloscope showing steps at different f$_s$ = 2 Hz(blue), f$_s$ = 48 $k$Hz(orange), f$_s$ = 96 $k$Hz(yellow) and f$_s$ = 192 $k$Hz(purple). Note that step has been offset for visual overview.}
+	\caption{Readout form the oscilloscope showing steps at different f$_s$ . The blue line is the step, f$_s$ = 48 $k$Hz(orange), f$_s$ = 96 $k$Hz(yellow) and f$_s$ = 192 $k$Hz(purple). Note that step has been offset for visual overview.}
 	\label{fig:ScopeDelayExperiment}
 \end{figure}
 
@@ -176,6 +176,7 @@ In equation \ref{eq:sampleDelay} it is seen that the delay of conversion corresp
 \begin{equation}\label{eq:sampleDelay}
 	\frac{N}{S} \cdot S = \frac{48000N}{1s} \cdot 900\cdot 10^{-6}\text{s} = 43 \text{ Samples [N]} 
 \end{equation}
+\todoMikkel{Du har lidt mange S'er i den formel, og jeg aner ikke hvad de står for?? samples har enheden samples, ikke N}
 
 
 
@@ -194,10 +195,12 @@ In equation \ref{eq:sampleDelay} it is seen that the delay of conversion corresp
 
 \subsection{Accuracy \& error sources}
 
-The steps are captured using a single 8000-points frame, as shown in figure \ref{fig:ScopeDelayExperiment}. It is seen that the output was noisy and had a slew-rate of $\pm$ 10 $\mu $s on all trails. The measurements noted in section \ref{sec:AnalysisFsDelay} were measured at the start of the step eliminating the effect of the slew-rate. However if implemented this has to be taken into account.
+The steps are captured using a single 8000-points frame, as shown in figure \ref{fig:ScopeDelayExperiment}. The output was noisy and had a slew-rate of $\pm$ 10 $\mu $s on all trails. The measurements noted in section \ref{sec:AnalysisFsDelay} were measured at the start of the step eliminating the effect of the slew-rate. However if implemented this has to be taken into account.
+\todoMikkel{Det med slew-rate har jeg ikke forstand på - hvad mener du med if implemented? Som i implementeret FXLMS? for det møder aldrig steps! }
 
 \subsection{Conclusion}
-The conversion delay of the chosen platform is too large to be efficient for an actual implementation. The delay of the system forces it to become non-causal, deeming the platform not suitable for implementation. It should however be noted that a change in converter type or samplerate could solve the problem, this has not been further analyzed due to the scope of this project.
-
+The conversion delay of the chosen platform is determined to be 43 samples at 48 $k$Hz, 96 $k$Hz and 192 $k$Hz corresponding to 900 $\mu$s, 450 $\mu$s and 225 $\mu$s, respectively.
+% too large to be efficient for an actual implementation. The delay of the system forces it to become non-causal, deeming the platform not suitable for implementation. It should however be noted that a change in converter type or samplerate could solve the problem, this has not been further analyzed due to the scope of this project.
+\todoMikkel{Jeg har slettet din konklussion - ikke noget med at se det brede perspektiv! }
 
 
