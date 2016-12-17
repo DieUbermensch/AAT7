@@ -13,15 +13,14 @@ This appendix will go through the design of the system using a feedforward topol
 
 Because the cancellation path is LTI, the adaptive algorithm adjusting the cancellation path (CP) estimate will be omitted from the system. This means that the copy of the CP estimate will be a constant impulse response. The CP has been found as described in \autoref{sec:CPjournalDT770}. The used feedforward control system is shown in \autoref{fig:BasicSystem} and is described in \autoref{sec:BasicSystem}.
 
-\todoMikkel{Tikz me! And add x(t), y(t) and e(t) as in article - maybe tikz is not important} 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{ArticleIllustrations/ANCFeedForward}
-	\caption{Block diagram of basic system without adaptive CP.}
-	\label{fig:BasicSystem}
-\end{figure}   
-
+	\tikzsetnextfilename{ANCFeedForwardAppendix}
+	\input{figures/ArticleIllustrations/ANCFeedForwardAppendix.tex}
+	\caption{Block diagram of adaptive feedforward ANC system. Expansion of DSP (4) from \autoref{fig:SystemOverview}.}
+	\label{fig:ANCFeedforwardAppendix}
+\end{figure}
 
 
 

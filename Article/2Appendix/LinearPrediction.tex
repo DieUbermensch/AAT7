@@ -58,7 +58,7 @@ Where; $R$ is the covariance matrix $C_{xx}$, $\bar{a}$ is the LPCs $\bar{a} = [
 Calculating $R^{-1}$ is computationally heavy, therefore to estimate the LPCs the Levinson-Durbin method is used. 
 
 \subsubsection{Levinson-Durbin}
-Levinson-Durbin is a method which can be used to estimate the LPCs of a problem, recursively. It is characterized by being power efficient, as it does not directly invert a matrix, but rather estimates it. \todoMikkel{som i strømbesparende? Det er da et helt nyt hensyn at tage her midt i matematikken :D }
+Levinson-Durbin is a method which can be used to estimate the LPCs of a problem, recursively. It is characterized by being computational efficient, as it does not directly invert a matrix, but rather estimates it.
 The algorithm takes the coefficients of the ACF in order to compute the Reflection Coefficients (RCs), which lastly yields the LPCs. The algorithm can be seen below:\\\\
 The coefficient order, $l$, is initialized to 0, which means the predictor for order 0 is found first:
 \begin{equation}\label{LDInit}
