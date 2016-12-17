@@ -50,7 +50,7 @@ Calibration of the microphone and associated preamplifier is done on the compute
 
 \subsubsection{Control and calibration}
 \begin{itemize}
-	\item 93.6 dB due to being a pressure field. 1 $k$Hz is used as calibration signal. \todoOliver{again calibration??}
+	\item 93.6 dB due to being a pressure field. 1 $k$Hz is used as calibration signal. %\todoOliver{again calibration??. Oliver: It's what is says on the calibrator. It's not the HATS ear this time}
 	\item Microphone sensitivity is controlled to 110 $m$V/Pa.
 	\item Measurement amplifier is set to -10 dB default.
 	\item Calibration signal yields an amplitude of 0.87 relative to 0 dBFS. \todoKiis{what is this information? and is it used?}
@@ -64,13 +64,15 @@ Calibration of the microphone and associated preamplifier is done on the compute
 	\begin{itemize}
 		\item "SENS(INPUT 1/L)" is set to +0 dB.
 		\item "SENS(INPUT 2/R)" is set to +0 dB.
-		\item "PHONES" is set to maximum volume. \todoOliver{again max volume??}
+		\item "PHONES" is set to maximum volume. %\todoOliver{again max volume??}
 	\end{itemize}		
 	\item The measuring amplifier:
 		\begin{itemize}
-			\item "Input Section Gain" is set to +20 dB in proportion to calibration. \todoOliver{so +10dB?? Write that }
+			\item "Input Section Gain" is set to +10 dB.
+			% \todoOliver{so +10dB?? Write that }
 			\item 22.4 $k$Hz low-pass filter is enabled.
-			\item 22.4 $k$Hz high-pass filter is enabled. \todoOliver{And very little sound is let through????}
+			\item 22.4 $k$Hz high-pass filter is enabled.
+			 %\todoOliver{And very little sound is let through. Oliver: okay this doens't make much sense, but recordings are fine}
 		\end{itemize}
 	\item All gains on the computer is set to 0 dBFS
 \end{itemize}
@@ -124,7 +126,8 @@ From the performing of the experiment, ten files has been generated:
 	\item Ref1.wav, Ref2.wav, Ref3.wav, Ref4.wav and Ref5.wav
 \end{itemize}
 
-These files are the results of performing the six second simulation which gives a number of 288,768 samples, for each generated .wav-file. \todoOliver{Again - not 6*48000??}
+These files are the results of performing the six second simulation which gives a number of 288,768 samples, for each generated .wav-file. 
+%\todoOliver{Again - not 6*48000??} Oliver: Same answer as in CP.
 The recorded HPMic1 and HPRef1 are shown in \autoref{HeadPhoneAmplitudePlot}.
 
 %\begin{figure}[H]
@@ -193,7 +196,8 @@ Converting the impulse response from magnitude to dB, gives the time decay which
 	\caption{Five iterations of time decay-test plotted of the headphone transfer-function}
 	\label{TimeDecayPlotHeadphone}
 \end{figure}
-\todoOliver{There is a hole in this plot? At least I have one?? missing data from 0  to 0.01}
+\todoOliver{There is a hole in this plot? At least I have one?? missing data from 0  to 0.01
+Oliver: Yeah it's from reducing the plot when tikzing, not sure what can be done about it.}
 
 Taking the first 256 coefficients of the impulse response gives the following cropped impulse response, as seen on \autoref{fig:ImpRespCropHP}.
 
@@ -220,10 +224,10 @@ Test 2's result are used for further test. To verify that the frequency response
 
 \subsection{Error Sources/Tolerances}
 \begin{itemize}
-	\item Placement of the actuators and test-devices. \todoOliver{again do we just mean headphone?}	
+	\item Placement of headphones % \todoOliver{again do we just mean headphone? Yes we do}	
 	 \item Mesurements conducted using a microphone clip with swing arm in horizontal position. Error within $\pm$ 0.5 dB. \citep{BK1985}. 
 	\item Instrument inaccuracies see \autoref{TolerancesHP}.
-	\item Movement of instruments. \todoOliver{Did they move? Who moved them?? If they didn't move don't write this}
+% \todoOliver{Did they move? Who moved them?? If they didn't move don't write this}
 %	\item Low-frequency background noise (Under 50 Hz reflections starts appearing in the anechoic chamber but it's not our scope).
 \end{itemize}
 
@@ -246,4 +250,5 @@ Test 2's result are used for further test. To verify that the frequency response
 
 \subsection{Conclusion}
 It can be concluded that an impulse response of 256 coefficients, see \autoref{fig:ImpRespCropHP}, is found for the 'headphone transfer-function'.
-\todoOliver{I disagree. The 256 coefficients are about 10dB off at 50 Hz - that's too much!}
+\todoOliver{I disagree. The 256 coefficients are about 10dB off at 50 Hz - that's too much!
+Oliver: yeah, this we probably need to discuss}
