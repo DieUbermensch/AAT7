@@ -15,13 +15,15 @@ at={(1.011in,0.642in)},
 scale only axis,
 xmin=0,
 xmax=7,
-xlabel={time},
+xmajorgrids,
+ymajorgrids,
+yminorgrids,
+xlabel={Time [s]},
 ymin=-1.5,
 ymax=1.5,
-ylabel={amplitude},
+ylabel={Amplitude [dBFS]},
 axis background/.style={fill=white},
 title style={font=\bfseries},
-title={impulse response}
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%
