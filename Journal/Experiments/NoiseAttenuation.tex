@@ -16,7 +16,7 @@ The materials used for the experiments is noted in table \ref{tab:UsedEquipmentL
 		2      	&  Beyerdynamic DT770pro				& 2037-18	\\
 		3      	&  Soundcard RME Fireface 802           & 86838		\\
 		4      	&  Computer	running Simulink			& NaN		\\  
-		5		&  Head And Torse Simulator "Valdemar" with SPL-meter					& 2150-04	\\
+		5		&  Head And Torso Simulator "Valdemar" with SPL-meter					& 2150-04	\\
 		6      	&  Genelec speaker A					& 33984		\\
 		7      	&  Genelec speaker B					& 33989		\\
 		8      	&  Genelec speaker C					& 33987		\\
@@ -34,12 +34,12 @@ The materials used for the experiments is noted in table \ref{tab:UsedEquipmentL
 	\centering
 	\begin{tabular}{c c} \toprule
 		\centering
-		Height of:			 			& Measurement [cm] 	\\ \bottomrule
+		 Item:			 			& Height [cm] 	\\ \bottomrule
 		Speakers					  	& 100				\\
 		The ear of participant			& 110				\\ 
 		Table							& 90				\\ \bottomrule 
 	\end{tabular}
-	\caption{Height of setup. Speakers are placed with tweeters in the bottom.}
+	\caption{Height of setup. Speakers are placed with tweeters downwards.}
 	\label{Tab:NoiseAttenuationDimensions}
 \end{table}
 
@@ -62,7 +62,7 @@ The materials used for the experiments is noted in table \ref{tab:UsedEquipmentL
 
 \subsection{Settings/Description}
 The setting aim at reproducing noise in an office, this is done by creating a sound field with four speakers. 
-The thought behind the experiment is to reproduce a real life situation in an office. Speech and office background noise is played on four speakers. Speaker C and D in figure play speech signals and speaker A and B play ambient office noise, as shown in \ref{Fig:NoiseAttenuationExperimet}. The listener whom is seated in front of the speakers will wear a pair of headphones playing speech. This setup emulates a phone call in a noisy office. The test will run six times for each test participant. The first test is a "trial" and will not be used in data analysis. The following three will run at "high level" and he last two test will run at "low level"  according to table \ref{tab:SPLCalibration}. 
+The thought behind the experiment is to reproduce a real life situation in an office. Speech and office background noise is played on four speakers. Speaker C and D in \autoref{Fig:NoiseAttenuationExperimet} play speech signals and speaker A and B play ambient office noise. The listener whom is seated in front of the speakers will wear a pair of headphones playing speech. This setup emulates a phone call in a noisy office. The test will run six times for each test participant. The first test is a "trial" and will not be used in data analysis. The following three will run at "high level" and he last two test will run at "low level" with the SPLs shown in \autoref{tab:SPLCalibration}. 
 
 The participant has control of a slider using a keyboard adjusting the sound level of the 4 speakers in the room, allowing them to attenuate the background noise. their role will be to find the noise level where they can understand the speech on the headset, without being disturbed significantly by the noisy environment. The slider has a range from 0 dB to -40 dB with steps of 0.4dB. 
 
@@ -95,7 +95,7 @@ The same method is used to find the SPL of the sound in the headphones. The head
 %	\tikzsetnextfilename{AttenuationSetup}
 %	\input{figures/AttenuationExperiment/SchematicSetup.tex}
 	\includegraphics[width=\textwidth]{AttenuationExperiment/AttenuationSetup}
-	\caption{Schematic overview of the setup. "5" is the participant during tests or the HATS during calibration.}
+	\caption{Schematic overview of the setup. "5" is the participant during tests or Valdemar during calibration.}
 	\label{fig:AttenuationSetup}
   \end{subfigure}\qquad
     \begin{subfigure}[b]{0.4\textwidth}
@@ -107,7 +107,7 @@ The same method is used to find the SPL of the sound in the headphones. The head
     \caption{Setup from the front.}
     \label{fig:SetupBack}
   \end{subfigure}
-  \caption{Picture of setup and the specific schematic.}
+  \caption{Picture of setup and the specific schematic. The guy wearing a headset is the participant.}
 \end{figure}
 
 
@@ -119,11 +119,11 @@ The same method is used to find the SPL of the sound in the headphones. The head
 	\item Run Simulink \path{AttenuationTest.slx} with testnumber equal to 1 and gain slider at 0 dBFS.
 	\item The participant selects noise level using arrow keys on the keyboard.
 	\item Operator notes the attenuation value chosen by the participant.
-	\item Repeat step 4-6, with testnumber equal to 2 through 6.
+	\item Repeat step 4-6, with testnumber 2 through 6.
 \end{enumerate}
 
 \subsubsection{Information}\label{subsubsec:attenuationInformation}
-The participant should read the instructions themselves to minimize how interaction between operator and participant influences the results. It is of course possible to ask questions.   
+The participant should read the instructions themselves to minimize how interaction between operator and participant influences the results. In case the participant has questions after reading the instruction the operator can answer.   
 Ask the participant to read the following printout:
 
 \textit{Imagine that you are sitting in a busy office environment. You are trying to hear a person speaking to you in a pair of headphones. \\\\
@@ -146,7 +146,7 @@ If you are in doubt of anything please ask the operator before fitting the headp
 %\end{enumerate}
 
 \subsection{Data Extraction}
-Results will be extracted manually from Simulink to a table during the test.
+Results will be extracted manually from Simulink to a table during the test and noted in \autoref{tab:ListeningResults}
 %For each test the following table will be filled \\
 %\begin{table}[H]
 %\centering
@@ -184,9 +184,11 @@ Results will be extracted manually from Simulink to a table during the test.
 		12 & -7.6 & -4.4 & -1.6	 & -5.6 & 	-7.6   \\
 		\hline
 	\end{tabular}
-	\caption{Results of the listening test. The value above is set at 0 for calculations see section \ref{SubSec:ErrSouNoiAtt} for more information.}
+	\caption{Results of the listening test. }
 	\label{tab:ListeningResults}
 \end{table}
+
+\todoMax{The test not used in analysis should be in the table above. Enumerate it "test 0" }
 
 %\begin{table}[H]
 %	\centering
@@ -241,7 +243,7 @@ The test shows that the participants are quite static in their choice of attenua
 %Our first attempt to model the achieved data is a limited success. A normal distribution was considered but the data did not fit well, since the data seems the be skewed. Conforming to the QQ plots, data are bouncing not randomly distributed around the line and our population does not follow a normal distribution. A one sided normal distribution fit is used since is conforms better with the results and will provide good predictability. Figure \ref{fig:ResAttExp} contains the figures extracted from our Matlab analysis. \\
 It should be remembered that 0 dB is gain compared to maximum noise level. As can be seen in table \ref{tab:SPLCalibration} a signal to noise ratio of 1 is present when the noise is attenuated 6 dB for high level tests. \\\\
 Figure \ref{fig:ResAttExp} shows that at least a quarter of the participants does not need a signal to noise ratio greater than 1 to not be disturbed by the noise. This group of people are probably not very interested in noise canceling headphones in the situation described to them in the experiment. \\
-It can also be seen in the box plot, that the majority (3/4) of participants are satisfied with a reduction of 15 dB corresponding to a SNR of -10 dB. This value is chosen as the guideline for required attenuation of the system. Some of the last quarter of the participants were extremely sensitive to noise, and it would prove difficult to make a system that would satisfy their needs. 
+It can also be seen in the box plot, that the majority (3/4) of participants are satisfied with an attenuation of 15 dB corresponding to a SNR of 10 dB. This value is chosen as the guideline for required attenuation of the system. Some of the last quarter of the participants were extremely sensitive to noise, and it would prove difficult to make a system that would satisfy their needs. 
 
 \begin{figure}[H]
 	\centering
@@ -250,11 +252,13 @@ It can also be seen in the box plot, that the majority (3/4) of participants are
 	\caption{Box plot showing the mean of each test with respective quartiles plotted.}
 	\label{fig:ResAttExp}
 \end{figure}
+to
 
 \subsection{Changes after pilot test}
+Before performing the experiment a pilot test was conducted. This section briefly discus the changed made to the original test design. 
 During the pilot the instructions were shorter and read aloud. This resulted in a lot of questions after the instructions was given. For the main test a written instruction set was written to better prepare the participants for the upcoming test, so people could reread sections if needed. This resulted in fewer questions after the instruction. \\
 The amount of tests per participant was also increased, which allowed testing at more than one gain setting in the headphones. \\
-Small corrections to the physical setup was also made. 
+The speakers were lowered and turned upside down to put the tweeter closer to ear height. 
 
 \subsection{Notes from operator}
 \begin{itemize}
