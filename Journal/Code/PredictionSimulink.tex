@@ -3,7 +3,7 @@
 
 
 \subsection{Description}
-This appendix shows the performance of the proposed prediction algorithm. It is not fine tuned in this version but allows for choice of settings corresponding to the need of a specific use case.  
+This appendix shows the performance of the proposed prediction algorithm. It is not with fine tuned parameters in this version but allows for choice of settings corresponding to the need of a specific use case.  
 
 
 \subsection{Diagram}
@@ -13,13 +13,11 @@ This appendix shows the performance of the proposed prediction algorithm. It is 
 	\caption{Overview of simulation of the prediction algorithm.}
 	\label{Fig:PredictionSimulink}
 \end{figure}
+\todoChristian{insert new figure with a correct soundfile - maybe fix filenames as well??}
 
-
-\subsection{Implementation}
-
-\subsubsection{variables}
+\subsection{variables}
 A lot of variables, are declared in the simulation and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
-\begin{lstlisting} [language=MATLAB]
+\begin{lstlisting} [language=MATLAB, caption=Variables]
 N; 				%is the frame length used as memory in the prediction and the prediction order
 overlap;		%is the overlap in the buffer "O"
 prediction; 	%is how far the algorithm should predict "P"
@@ -27,10 +25,15 @@ fs; 			%is the sample frequency of the input signal
 w=hamming(N)	% could be replaced by other window functions
 M;				% is equal to N in all cases
 \end{lstlisting}
-The following sections will show the code for the individual blocks. \\
-The ACF estimation estimates the autocorrelation function using \autoref{eq:Appnonrecursive}
+
+\subsection{Functions}
+The following sections will show the code and for the individual blocks. 
+
+
+
 \subsubsection{ACF Estimation}
-\begin{lstlisting} [language=MATLAB]
+The ACF estimation estimates the autocorrelation function using \autoref{eq:Appnonrecursive}
+\begin{lstlisting} [language=MATLAB, caption=ACF estimation.]
 function r = fcn(x,w,updateRate,N)
 persistent temp;
 
@@ -47,6 +50,7 @@ r=sum(temp')';
 end
 \end{lstlisting}
 
+The result of the ACF estimation is compared to the matlab xcorr function in autoref{fig:ACFTest}, with no difference in results. The window used is a rectangular window, so the calculation of xcorr is mirrored.  
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{ACFtest}	
@@ -54,9 +58,10 @@ end
 	\caption{Implemented ACF estimator (red) compared with Matlabs build in xcorr (blue) - Identical results}
 	\label{fig:ACFTest}
 \end{figure}
-The result of the ACF estimation is compared to the matlab xcorr function, with no difference in results.   
+ 
+
 \subsubsection{Lenvinson Durbin}
-\begin{lstlisting} [language=MATLAB]
+\begin{lstlisting} [language=MATLAB, caption=Levinson Durbin ]
 function a = LevinsonDurbin(r, M)
 % r      ACF It's a Coloumn input
 % M      Prediction order
@@ -96,7 +101,7 @@ end
 % Same output syntax as matlab
 a = a';
 \end{lstlisting}
-The result of the Levinson Durbin is compared to the matlab function, with no difference in results.   
+In \autoref{fig:LDTest} the result of the Levinson Durbin is compared to the matlab function, "levinson", with no difference in results.   
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{LDtest}	
@@ -106,7 +111,7 @@ The result of the Levinson Durbin is compared to the matlab function, with no di
 \end{figure}
 
 \subsubsection{Recursive filter}
-\begin{lstlisting} [language=MATLAB]
+\begin{lstlisting} [language=MATLAB, caption=Recursive filter -- Wiener filter]
 function xhat = fcn(x,a,prediction,N)
 %#codegen
 persistent xIn;     %buffer for input
@@ -125,7 +130,10 @@ xhat = xIn(1,N+prediction);
 end
 \end{lstlisting}
 
-\subsection{Non automated test - $f_s$}
+\subsection{Test}
+
+\subsubsection{Testing the predictor for different $f_s$ -- Non automated test}
+\todoChristian{Are we adding a path here?}
 When testing the predictor for different $f_s$ automated testing can not be used, as the audio file used by the predictor has to be changed to the version with the correct sample rate. \\ 
 In the "Init.m" file $N$ should be equal to $\frac{f_s}{N}$, $O=0$ and $P=1$. The following steps should be taken for each $f_s$ under test.
 \begin{itemize}
@@ -146,10 +154,10 @@ The results are stored in different files automatically, and are shown in \autor
 \label{tb:fsPredictApp}
 \end{table}  
  
-\subsection{Automated tests - $N$ \& $O$}
+\subsubsection{Automated tests - $N$ \& $O$}
 Here the automated test setup described in \autoref{sec:SimulinkAuto} is used.\\ 
-Firstly the performance with different prediction orders is measured. This is the frame length parameter ($N$). \\ 
-Here the $P$ is set to 43. $N$ is varied from 0-3000 in steps of 100. Overlap, $O$ is set varied from 0 to N-100. The used window is the Hamming window. The results are plotted using the surf() function i Matlab, and the viewing angle is set to "from above" resulting in a 2D plot. It should be noted that the measured points are the crossings of the black lines and not the coloured squares. The mesh() plot could be used to avoid this, if a less readable plot could be accepted. 
+The PG with different prediction orders is measured. This is the frame length parameter ($N$). The overlap parameter ($O$) is also varied. \\ 
+Here the $P$ is set to 43. $N$ is varied from 100-3000 in steps of 100. Overlap, $O$ is varied from 0 to N-100. The used window is the Hamming window. The results are plotted using the surf function i Matlab, and the viewing angle is set to "from above" resulting in a 2D plot. It should be noted that the measured points are the crossings of the black lines and not the coloured squares. The mesh() plot could be used to avoid this, if a less readable plot could be accepted. 
 
 \begin{figure}[H]
 	\centering
@@ -168,7 +176,7 @@ The same experiment is performed with $P=10$.
 	\label{fig:Predict10App}
 \end{figure}
 
-Using $N=1200$ and $O=1100$ the performance of the predictor for different P is determined. 
+Using $N=1200$ and $O=1100$ the PG of the predictor for different P is determined. 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{PvarApp}	
