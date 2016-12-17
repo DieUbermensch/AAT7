@@ -18,40 +18,54 @@
 \headcommand {\beamer@framepages {6}{6}}
 \headcommand {\slideentry {1}{2}{3}{7/7}{Problem of ANC}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\beamer@subsectionentry {0}{1}{3}{8}{Present consumer headphones}}\headcommand {\beamer@subsectionpages {5}{7}}
-\headcommand {\slideentry {1}{3}{1}{8/8}{Present consumer headphones}{0}}
+\headcommand {\slideentry {1}{2}{4}{8/8}{Problem of ANC}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {1}{3}{2}{9/9}{Present consumer headphones}{0}}
+\headcommand {\slideentry {1}{2}{5}{9/9}{Problem of ANC}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\sectionentry {2}{Methods}{10}{Methods}{0}}
-\headcommand {\beamer@sectionpages {3}{9}}
-\headcommand {\beamer@subsectionpages {8}{9}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{10}{Feedforward FXLMS}}\headcommand {\beamer@subsectionpages {10}{9}}
-\headcommand {\slideentry {2}{1}{1}{10/10}{Feedforward FXLMS}{0}}
+\headcommand {\slideentry {1}{2}{6}{10/10}{Problem of ANC}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{11}{Linear Prediction}}\headcommand {\beamer@subsectionpages {10}{10}}
-\headcommand {\slideentry {2}{2}{1}{11/11}{Linear Prediction}{0}}
+\headcommand {\sectionentry {2}{Methods}{11}{Methods}{0}}
+\headcommand {\beamer@sectionpages {3}{10}}
+\headcommand {\beamer@subsectionpages {5}{10}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{11}{Feedforward FXLMS}}\headcommand {\beamer@subsectionpages {11}{10}}
+\headcommand {\slideentry {2}{1}{1}{11/11}{Feedforward FXLMS}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{12}{Combined system}}\headcommand {\beamer@subsectionpages {11}{11}}
-\headcommand {\slideentry {2}{3}{1}{12/12}{Combined system}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{12}{Linear Prediction}}\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\slideentry {2}{2}{1}{12/12}{Linear Prediction}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\sectionentry {3}{Simulations Results}{13}{Simulations Results}{0}}
-\headcommand {\beamer@sectionpages {10}{12}}
-\headcommand {\beamer@subsectionpages {12}{12}}
-\headcommand {\slideentry {3}{0}{1}{13/13}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{13}{Multirate Processing}}\headcommand {\beamer@subsectionpages {12}{12}}
+\headcommand {\slideentry {2}{3}{1}{13/13}{Multirate Processing}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\sectionentry {4}{Discussion}{14}{Discussion}{0}}
-\headcommand {\beamer@sectionpages {13}{13}}
-\headcommand {\beamer@subsectionpages {13}{13}}
-\headcommand {\beamer@subsectionentry {0}{4}{1}{14}{Computation}}\headcommand {\beamer@subsectionpages {14}{13}}
-\headcommand {\sectionentry {5}{Conclusion}{14}{Conclusion}{0}}
-\headcommand {\beamer@sectionpages {14}{13}}
-\headcommand {\beamer@subsectionpages {14}{13}}
-\headcommand {\beamer@subsectionentry {0}{5}{1}{14}{Listen}}\headcommand {\beamer@subsectionpages {14}{13}}
-\headcommand {\slideentry {5}{1}{1}{14/14}{Listen}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{14}{Combined system}}\headcommand {\beamer@subsectionpages {13}{13}}
+\headcommand {\slideentry {2}{4}{1}{14/14}{Combined system}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\beamer@partpages {1}{14}}
-\headcommand {\beamer@subsectionpages {14}{14}}
-\headcommand {\beamer@sectionpages {14}{14}}
-\headcommand {\beamer@documentpages {14}}
-\headcommand {\def \inserttotalframenumber {12}}
+\headcommand {\slideentry {2}{4}{2}{15/15}{Combined system}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\slideentry {2}{4}{3}{16/16}{Combined system}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\sectionentry {3}{Simulations Results}{17}{Simulations Results}{0}}
+\headcommand {\beamer@sectionpages {11}{16}}
+\headcommand {\beamer@subsectionpages {14}{16}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{17}{Linear Prediction Parameters}}\headcommand {\beamer@subsectionpages {17}{16}}
+\headcommand {\slideentry {3}{1}{1}{17/17}{Linear Prediction Parameters}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\slideentry {3}{1}{2}{18/18}{Linear Prediction Parameters}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{19}{Attenuation Performance}}\headcommand {\beamer@subsectionpages {17}{18}}
+\headcommand {\slideentry {3}{2}{1}{19/19}{Attenuation Performance}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\slideentry {3}{2}{2}{20/20}{Attenuation Performance}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\sectionentry {4}{Discussion}{21}{Discussion}{0}}
+\headcommand {\beamer@sectionpages {17}{20}}
+\headcommand {\beamer@subsectionpages {19}{20}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{21}{Computational Cost}}\headcommand {\beamer@subsectionpages {21}{20}}
+\headcommand {\slideentry {4}{1}{1}{21/21}{Computational Cost}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\slideentry {4}{1}{2}{22/22}{Computational Cost}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\beamer@partpages {1}{22}}
+\headcommand {\beamer@subsectionpages {21}{22}}
+\headcommand {\beamer@sectionpages {21}{22}}
+\headcommand {\beamer@documentpages {22}}
+\headcommand {\def \inserttotalframenumber {20}}
