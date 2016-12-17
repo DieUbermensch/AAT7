@@ -43,8 +43,8 @@ Calibration of the microphone and associated preamplifier is done on the compute
 \subsubsection{Control and calibration}
 \begin{itemize}
 	%\item Microphone sensitivity is controlled to 11.6 $m$V/Pa.
-	\item Error micro calibration signal yields a spike at 61 dB SPL @1000 Hz, which then requires a +34.5 dB SPL adjustment.
-	\item Reference micro calibration signal yields a spike at 66.07 dB SPL @1000 Hz, which then requires a +28 dB SPL adjustment.
+	\item Error micro calibration signal yields a spike at 61 dB SPL @1000 Hz, the expected value is 95,6 dB which then requires a +34.6 dB SPL adjustment.
+	\item Reference micro calibration signal yields a spike at 66.07 dB SPL @1000 Hz, the expected value is 94 dB which then requires a +28 dB SPL adjustment.
 \end{itemize}
 \todoMax{write what they should have been}
 
@@ -80,22 +80,24 @@ Calibration of the microphone and associated preamplifier is done on the compute
 \subsubsection{Set-up}
 \begin{enumerate}
 	\item Set instruments to comply with the list in \ref{SettingsCacellationPath}.
-	\item Control and calibrate item 2 using item 9.
-	\item Control and calibrate item 4 using item 5.
-	\item Place item 3 onto item 1 ("Henry"'s head and ears).
-	\item Insert item 2's connector into input of item 8.
-	\item Connect item 8 to item 4 and connect item 6 to item 7 via USB.
-	\item Insert item 3's connector into input1/L of item 6.
-	\item Insert item 5's connector into input1/R of item 6.
+	\item Calibrate the ear simulator 2 using the calibrator.
+	\item Calibrate the error microphone using the calibrator.
+	\item Place the headphone onto the head and torso simulator.
+	\item Insert the head and torso's connector into input of the microphone power supply.
+	\item Connect the error microphone to the pre-amplifier
+	\item Connect the soundcard to the computer.
+	\item Insert the microphone power supply output connector into input1/L of the soundcard
+	\item Insert the error microphone pre-amplifier output connector into input1/R of the soundcard.
+	\item connect the headphone into the phones output of the soundcard.
 \end{enumerate}
-\todoMax{Sry we have moved away from this way of writing it with Item, as it's confusing as hell. Would you mind changing it to match the corrected CP trans?}
+
 
 \subsubsection{Performing the experiment}
 \begin{enumerate}
 	\item Start Simulink\textsuperscript{\textregistered} and open and run file \path{SimulinkSystemCancellationPath.xls}.
 	\begin{itemize} 
 		\item The simulations outputs a logarithmic chirp from 20 Hz to 20,000 Hz with an amplitude of 0 dBFS over the span of five seconds.
-		\item The simulation runs for seconds. \todoMax{I think we used 7 - pls check}
+		\item The simulation runs for 7 seconds. \todoMax{I think we used 7 - pls check}
 	\end{itemize}
 	%\item Through Simulink\textsuperscript{\textregistered} play "LogChirp.wav" from item 5 via item 4
 	
@@ -116,7 +118,7 @@ From performing of the experiment, two files have been generated:
 	\item spmMic.wav
 \end{itemize}
 
-These files are the results of performing the six \todoMax{check - also the amount of samples of course} second simulation which gives a number of 288,768 samples, for each generated .wav-file.
+These files are the results of performing the six second simulation which gives a number of 336,896 samples, for each generated .wav-file.
 The recorded errMic and spmMic is shown in  \autoref{DT770AmplitudePlotCancellationPath}.
 
 \begin{figure}[H]
@@ -134,8 +136,7 @@ MATLAB\textsuperscript{\textregistered}-script \path{DT770CancellationPathScript
 
 \subsection{Analysis}
 The impulse response of the CP is to be found.
-Note that a microphone with external polarization was used. It means that there is a 180\textdegree phase difference between pre- and external polarized microphones, i.e. a positive pressure leads to negative voltage. The externally polarized microphone is considered to be out of phase. \cite{michandbook}
-\todoMax{Here we use two prepolarized mics?? So should se no 180 phase shift. The answer is that the spmMic does not invert phase (I guess)}
+Note that a the error microphone has a 180\textdegree phase inversion. Therefore all impulses are inverted. When the data is later used it should be inverted again to yield the correct phase. \cite{michandbook}
 
 To extract the frequency response the method described in \autoref{Sec:MeasATransFunc} is used.
 
@@ -204,8 +205,10 @@ Converting the impulse response from magnitude to dB, gives the time decay which
 	\label{DT770TimeDecayPlotCancellationPath}
 \end{figure}
 
-Taking the first 256 coefficients of the impulse response gives the following cropped impulse response, as seen on \autoref{DT770CancellationPathImpulseResponseCrop}.
-\todoMax{Should be 960 coef - the 256 is a very old wrong number}
+Taking the first 960 coefficients of the impulse response gives a good reproduction of frequencies over 50Hz, therefore we choose to crop the impulse response and take the first 960 samples.
+
+In order to have an idea of the impulse response,  \autoref{DT770CancellationPathImpulseResponseCrop} display the first 200 samples of the impulse response.
+
 
 \begin{figure}[H]
 	\centering
