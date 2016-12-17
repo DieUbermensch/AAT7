@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+\section{DT770 Cancellation Path Impulse Response} \label{sec:DT770CPjournal}
+=======
 \section{DT770 Cancellation Path Impulse Response} \label{sec:CPjournalDT770}
+>>>>>>> 9dfdf1570daca87b358911ba670e01b1ed1041a9
 \subsection{Purpose}
 The purpose of this experiment is to make a model of the CP, by determining its impulse response of the, i.e. the transfer-function between the "source-loudspeaker" and the "error-microphone (ear)".
 		
@@ -11,12 +15,14 @@ The purpose of this experiment is to make a model of the CP, by determining its 
 		1	&	B\&K Head And Torso Simulator "Henry" Type 4128	& 08453		\\
 		2	&	B\&K Ear Simulator Type 4159			& 08453		\\
 		3	&	beyerdynamic DT 770	Headphones			& 33379		\\
-		4	&	RME FireFace 802		& 86838		\\
-		5	&	Computer					& NaN		\\
-		6	&	B\&K Microphone Power Supply Type 2804 	& 07304		\\
+		4	&	Knowles FG-23329 microphone					& NaN		\\
+		5	&	Preamp for FG-23329  microphone	& NaN\\
+		6	&	Roland Edirol UA-25EX Audio Capture		& 64696			\\
+		7	&	Computer					& NaN		\\
+		8	&	B\&K Microphone Power Supply Type 2804 	& 07304		\\
 		%5	&	B\&K \textonehalf'' Condenser Microphone Type 4134 & 61447\\
 		%6	&	B\&K Sound Calibrator Type 4231			& 78301		\\ 
-		7	&	B\&K Sound Intensity Calibrator Type 3541	& 08597	\\ \bottomrule
+		9	&	B\&K Sound Intensity Calibrator Type 3541	& 08597	\\ \bottomrule
 	\end{tabular}
 	\caption{Table over equipment used in test.}
 	\label{tab:UsedEquipmentListningCP}
@@ -26,7 +32,7 @@ The purpose of this experiment is to make a model of the CP, by determining its 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{figureexperimentDT770}
-	\input{figures/CancellationPath_MATLAB_Figures/figureexperimentDT770.tex}
+	\includegraphics[width=\textwidth]{figures/DT700CancellationPath/newcancellationpath.pdf}
 %	\includegraphics[width=0.7\textwidth]{Shematic_CalcellationPath.pdf}
 	\caption{Total overview of the system.}
 	\label{SchematicOverviewCP}
@@ -40,20 +46,19 @@ Calibration of the microphone and associated preamplifier is done on the compute
 \subsubsection{Control and calibration}
 \begin{itemize}
 	%\item Microphone sensitivity is controlled to 11.6 $m$V/Pa.
-	\item Calibration signal yields an amplitude of 0.6 relative to 0 dBFS.
-	\item Calibration signal yields a spike at 80.5 dB SPL @1000 Hz, which then requires a +15 dB SPL adjustment.
+	\item Error micro calibration signal yields a spike at 61 dB SPL @1000 Hz, which then requires a +34.5 dB SPL adjustment.
+	\item Reference micro calibration signal yields a spike at 66.07 dB SPL @1000 Hz, which then requires a +28 dB SPL adjustment.
 \end{itemize}
 
 \subsubsection{Equipment settings}
 \begin{itemize}
 	\item This experiment is performed with a sampling rate of, $F_{s}$ = 48 $k$Hz.
-	\item Item 4 (RME Fireface):
+	\item Item 4 (Edirol audio capture):
 		\begin{itemize}
-			\item "MIC/LINE INPUT 11" (M/L 11) gain is set to +47 dB (phono level).
-			\item "MIC/LINE INPUT 12" (M/L 12) gain is set to +21 dB (line level).
-			\item "PHONES (ch 9/10)" gain is set to 5.
-			\item "OUT 5" gain is 0.
-		\end{itemize}		
+			\item "SENS(INPUT 1/L)" is set at half value (pointing upwards).
+			\item "SENS(INPUT 2/R)" is set at half value (pointing upwards).
+			\item "PHONES" is set at half value (pointing upwards)
+		\end{itemize}				
 	\item Item 5 (computer) is set to 0 dBFS.
 \end{itemize}
 
@@ -70,19 +75,20 @@ Calibration of the microphone and associated preamplifier is done on the compute
 	\centering
 	\includegraphics[width=0.8\textwidth]{DT700CancellationPath/DT770CP.jpg}
 	\caption{Close up of experiment.}
-	\label{CloseUpCancellationPath}
+	\label{DT770CloseUpCancellationPath}
 \end{figure}
 \newpage
 \subsection{Procedure}
 \subsubsection{Set-up}
 \begin{enumerate}
 	\item Set instruments to comply with the list in \ref{SettingsCacellationPath}.
-	\item Control and calibrate item 2 using item 7.
+	\item Control and calibrate item 2 using item 9.
+	\item Control and calibrate item 4 using item 5.
 	\item Place item 3 onto item 1 ("Henry"'s head and ears).
-	\item Insert item 2's connector into input of item 6.
-	\item Connect item 6 to item 4 and connect item 4 to item 5 via USB.
-	\item Insert item 3's connector into output of item 4.
-	\item Connect cable from item 4's output to item 4's input.
+	\item Insert item 2's connector into input of item 8.
+	\item Connect item 8 to item 4 and connect item 6 to item 7 via USB.
+	\item Insert item 3's connector into input1/L of item 6.
+	\item Insert item 5's connector into input1/R of item 6.
 \end{enumerate}
 
 \subsubsection{Performing the experiment}
@@ -93,12 +99,11 @@ Calibration of the microphone and associated preamplifier is done on the compute
 		\item The simulation runs for six seconds.
 	\end{itemize}
 	%\item Through Simulink\textsuperscript{\textregistered} play "LogChirp.wav" from item 5 via item 4
-	\item Rename outputted files "Mic" and "Ref" to "Mic[i].wav" and "Ref[i].wav" \footnote{[i] indicates the iteration of the experiment.}
-	\begin{itemize}
-		\item[] Perform this experiment for a total of five times.
-	\end{itemize}
+	
+	
 \end{enumerate}
-If  a discontinuity in the recorded signal(s) occurs, then discard that recording and reperform the experiment for the current iteration.
+
+If  a discontinuity in the recorded signal(s) occurs, then discard that recording and reperform the experiment.
 
 
 \subsubsection{Data Extraction}
@@ -106,14 +111,14 @@ If  a discontinuity in the recorded signal(s) occurs, then discard that recordin
 	%\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m".
 	\item Start MATLAB\textsuperscript{\textregistered} and run script \path{CancellationPathScript.m}.
 \end{enumerate}
-From performing of the experiment, ten files has been generated:
+From performing of the experiment, two files has been generated:
 \begin{itemize}
-	\item Mic1.wav - Mic5.wav
-	\item Ref1.wav - Ref5.wav
+	\item errMic.wav 
+	\item spmMic.wav
 \end{itemize}
 
 These files are the results of performing the six second simulation which gives a number of 288,768 samples, for each generated .wav-file.
-An example showing outputted Mic1 and Ref1 is shown in  \autoref{AmplitudePlotCancellationPath}.
+An example showing outputted errMic and spmMic is shown in  \autoref{DT770AmplitudePlotCancellationPath}.
 
 \begin{figure}[H]
 	\centering
@@ -121,10 +126,10 @@ An example showing outputted Mic1 and Ref1 is shown in  \autoref{AmplitudePlotCa
 	%\input{figures/CancellationPath_MATLAB_Figures/Amplitudeplot2.tex}
 	\input{figures/DT700CancellationPath/calib.tex}
 	\caption{Time plot of the cancellation path with the reference signal(blue) and the microphone signal(orange).}
-	\label{AmplitudePlotCancellationPath}
+	\label{DT770AmplitudePlotCancellationPath}
 \end{figure}
 
-MATLAB\textsuperscript{\textregistered}-script \path{CancellationPathScript.m} is used for data extraction and analysis.
+MATLAB\textsuperscript{\textregistered}-script \path{DT770CancellationPathScript.m} is used for data extraction and analysis.
 
 
 
@@ -148,7 +153,7 @@ Where:
 	\item $X(f)$ is the FT of the recorded reference signals, Ref[i].
 \end{description}
 
-The frequency response of the CP is shown in \autoref{FrequencyResponsePlotCancellationPath}.
+The frequency response of the CP is shown in \autoref{DT770FrequencyResponsePlotCancellationPath}.
 
 \begin{figure}[H]
 	\centering
@@ -156,11 +161,11 @@ The frequency response of the CP is shown in \autoref{FrequencyResponsePlotCance
 	%\input{figures/CancellationPath_MATLAB_Figures/CP_freqresp.tex}
 	\input{figures/DT700CancellationPath/freqresponse.tex}
 	\caption{Frequency response plot of the cancellation path.}
-	\label{FrequencyResponsePlotCancellationPath}
+	\label{DT770FrequencyResponsePlotCancellationPath}
 \end{figure}
 
 The impulse response of this CP is found by taking the IFT (Inverse Fourier Transform) of the frequency response.
-The impulse response is shown on \autoref{CancellationPathImpulseResponse}.
+The impulse response is shown on \autoref{DT770CancellationPathImpulseResponse}.
 
 \begin{figure}[H]
 	\centering
@@ -168,7 +173,7 @@ The impulse response is shown on \autoref{CancellationPathImpulseResponse}.
 	%\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponse.tex}
 	\input{figures/DT700CancellationPath/impulseresponsefull.tex}
 	\caption{Impulse response plot of the cancellation path see \autoref{CancellationPathImpulseResponseCrop} for zoomed in version.}
-	\label{CancellationPathImpulseResponse}
+	\label{DT770CancellationPathImpulseResponse}
 \end{figure}
 
 
@@ -179,7 +184,7 @@ The impulse response is shown on \autoref{CancellationPathImpulseResponse}.
 %	\label{CancellationPathImpulseResponse}
 %\end{figure}
 
-Converting the impulse response from magnitude to dB, gives the time decay which reveals the Signal to Noise Ratio (SNR) of the system, and from the read off SNR is found to be $\sim$ 40 dB SNR, as seen on \autoref{TimeDecayPlotCancellationPath}.
+Converting the impulse response from magnitude to dB, gives the time decay which reveals the Signal to Noise Ratio (SNR) of the system, and from the read off SNR is found to be $\sim$ 40 dB SNR, as seen on \autoref{DT770TimeDecayPlotCancellationPath}.
 
 %\begin{figure}[H]
 %	\centering
@@ -194,10 +199,10 @@ Converting the impulse response from magnitude to dB, gives the time decay which
 	%\input{figures/CancellationPath_MATLAB_Figures/TimeDecayPlotCancellationPath.tex}
 	\input{figures/DT700CancellationPath/snr.tex}
 	\caption{Time decay plot of the cancellation path}
-	\label{TimeDecayPlotCancellationPath}
+	\label{DT770TimeDecayPlotCancellationPath}
 \end{figure}
 
-Taking the first 256 coefficients of the impulse response gives the following cropped impulse response, as seen on \autoref{CancellationPathImpulseResponseCrop}.
+Taking the first 256 coefficients of the impulse response gives the following cropped impulse response, as seen on \autoref{DT770CancellationPathImpulseResponseCrop}.
 
 \begin{figure}[H]
 	\centering
@@ -205,10 +210,10 @@ Taking the first 256 coefficients of the impulse response gives the following cr
 	%\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponseCrop.tex}
 	\input{figures/DT700CancellationPath/impulseresponse.tex}
 	\caption{Cropped impulse response plot of the cancellation path}
-	\label{CancellationPathImpulseResponseCrop}
+	\label{DT770CancellationPathImpulseResponseCrop}
 \end{figure}
 
-To verify that the frequency response of the cropped impulse response approximately equals that of the non-cropped impulse response the two frequency responses are compared. This can be seen on \autoref{CancellationPathImpulseResponseCompare}. Note that the two lines are almost completely on top of each other.
+To verify that the frequency response of the cropped impulse response approximately equals that of the non-cropped impulse response the two frequency responses are compared. This can be seen on \autoref{DT770CancellationPathImpulseResponseCompare}. Note that the two lines are almost completely on top of each other.
 
 \begin{figure}[H]
 	\centering
@@ -216,15 +221,15 @@ To verify that the frequency response of the cropped impulse response approximat
 	%\input{figures/CancellationPath_MATLAB_Figures/CancellationPathImpulseResponseCompare.tex}
 	\input{figures/DT700CancellationPath/compfilter.tex}
 	\caption{Comparison of the frequency response of 256 coefficients vs. 288,768 coefficients.}
-	\label{CancellationPathImpulseResponseCompare}
+	\label{DT770CancellationPathImpulseResponseCompare}
 \end{figure}
 
-From \autoref{CancellationPathImpulseResponseCompare}, 256 coefficients is shown to be sufficient for representing the impulse response with good accuracy. 
+From \autoref{DT770CancellationPathImpulseResponseCompare}, 256 coefficients is shown to be sufficient for representing the impulse response with good accuracy. 
 
 \subsection{Error Sources / Tolerances}
 \begin{itemize}
 	\item Placement of the actuators and test-devices. (Position of the headset on the ear  influence the frequency response at high frequency which is not the main scope of study).
-	\item Instrument inaccuracies see \autoref{TolerancesCP}.
+	\item Instrument inaccuracies see \autoref{DT770TolerancesCP}.
 \end{itemize}
 
 \begin{table}[h]
@@ -234,15 +239,15 @@ From \autoref{CancellationPathImpulseResponseCompare}, 256 coefficients is shown
 		{Item}	& 		{Description} 	& {Tolerance ([dB$_{re20\mu P}$])}.	 \\ \bottomrule 
 		2	&	B\&K Ear Simulator Type 4159				& $\pm$ 1.5 	\\
 		%3	&	Sennheiser HD 200 Headphones				& x		\\
-		4	&	RME Fireface 802			& $\pm$ 1.0	\\
+		4	&	Roland Edirol UA-25EX Audio Capture			& $\pm$ 1.0\\
 		%6	&	B\&K Microphone Power Supply Type 2804		& 2 \%	\\ 
 		7	&	B\&K Sound Intensity Calibrator Type 3541	& $\pm$ 0.2	\\ \bottomrule
 			&	Total tolerance								& $\pm$ 2.7	\\ \bottomrule	
 	\end{tabular}
 	\caption{Table showing error tolerances for used equipment.}
-	\label{TolerancesCP}
+	\label{DT770TolerancesCP}
 \end{table}
 
 \subsection{Conclusion}
-It can be concluded that an impulse response in the form of 256 coefficients, see \autoref{CancellationPathImpulseResponse}, is found for the "Cancellation path".
+It can be concluded that an impulse response in the form of 256 coefficients, see \autoref{DT770CancellationPathImpulseResponse}, is found for the "Cancellation path".
 %The impulse response on  shows the coefficients of the system, and a file containing all 256 is generated with the name "CoeffientsCP.mat"
