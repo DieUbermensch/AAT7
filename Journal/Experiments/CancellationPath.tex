@@ -1,4 +1,6 @@
 \section{Cancellation Path Impulse Response} \label{sec:CPjournal}
+\textbf{Note:} This was the initial experiment to determine the impulse response of the used headphone, later the headphone was changed and a new experiment was done. The results of this experiment is there for obsolete.
+
 \subsection{Purpose}
 The purpose of this experiment is to make a model of the CP, by determining its impulse response, i.e. the transfer-function between the "source-loudspeaker" and the "error-microphone (ear)".
 		
@@ -132,7 +134,7 @@ MATLAB\textsuperscript{\textregistered}-script \path{CancellationPathScript.m} i
 
 \subsection{Analysis}
 The impulse response of the CP is to be found.
-Note that a microphone with external polarization was used. There is a 180\textdegree phase difference between pre- and external polarized microphones, i.e. a positive pressure leads to negative voltage. Therefore the externally polarized microphone signal is counterphase to the loopback. \cite{michandbook}
+Note that a microphone with external polarization was used. Note that a the Ref microphone has a 180\textdegree phase inversion. Therefore all impulses are inverted. When the data is later used it should be inverted again to yield the correct phase. \cite{michandbook}
 
 %First the cross correlation between Mic[i] and Ref[i] is found. This is done by cross correlating the two signals signals. Secondly the signal is taken into the frequency domain by applying the FT to the signal. This is expressed in \autoref{FrequencyResponseCPEq2}.
 To extract the frequency response the method described in \autoref{Sec:MeasATransFunc} is used.
@@ -212,7 +214,8 @@ Taking the first 256 coefficients of the impulse response gives the following cr
 \end{figure}
 
 To verify that the frequency response of the cropped impulse response approximately equals that of the non-cropped impulse response the two frequency responses are compared. This can be seen on \autoref{CancellationPathImpulseResponseCompare}. Note that the two lines are almost completely on top of each other.
-\todoKiis{should we plot differences?}
+%\todoKiis{should we plot differences?}
+%Oliver: in my opinion this is just fine.
 
 \begin{figure}[H]
 	\centering
@@ -243,11 +246,13 @@ From \autoref{CancellationPathImpulseResponseCompare}, 256 coefficients is shown
 		7	&	B\&K Sound Intensity Calibrator Type 3541	& $\pm$ 0.2	\\ \bottomrule
 			&	Total tolerance								& $\pm$ 2.7	\\ \bottomrule	
 	\end{tabular}
-	\caption{Table showing error tolerances for used equipment. \todoKiis{Should we have refs on this?}}
+	\caption{Table showing error tolerances for used equipment.}
+	\todoKiis{Should we have refs on this? . Oliver: we can if if it's needed, refs are at uni}
+
 	\label{TolerancesCP}
 \end{table}
 
 \subsection{Conclusion}
-It can be concluded that an impulse response in the form of 256 coefficients, see \autoref{CancellationPathImpulseResponse}, is found for the "Cancellation path". \todoKiis{again 256? Should we make a note in the top, that it's an old document?}
+It can be concluded that an impulse response in the form of 256 coefficients, see \autoref{CancellationPathImpulseResponse}, is found for the "Cancellation path". %\todoKiis{again 256? Should we make a note in the top, that it's an old document?}
 %The impulse response on  shows the coefficients of the system, and a file containing all 256 is generated with the name "CoeffientsCP.mat"
 
