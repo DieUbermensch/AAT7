@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 \section{DT770 Cancellation Path Impulse Response} \label{sec:DT770CPjournal}
-=======
-\section{DT770 Cancellation Path Impulse Response} \label{sec:CPjournalDT770}
->>>>>>> 9dfdf1570daca87b358911ba670e01b1ed1041a9
 \subsection{Purpose}
 The purpose of this experiment is to make a model of the CP, by determining its impulse response of the, i.e. the transfer-function between the "source-loudspeaker" and the "error-microphone (ear)".
 		
@@ -37,6 +33,7 @@ The purpose of this experiment is to make a model of the CP, by determining its 
 	\caption{Total overview of the system.}
 	\label{SchematicOverviewCP}
 \end{figure}
+\todoMax{The amplifiers are both in the anechoic }
 
 \subsection{Settings/Description}
 \label{SettingsCacellationPath}
@@ -49,17 +46,18 @@ Calibration of the microphone and associated preamplifier is done on the compute
 	\item Error micro calibration signal yields a spike at 61 dB SPL @1000 Hz, which then requires a +34.5 dB SPL adjustment.
 	\item Reference micro calibration signal yields a spike at 66.07 dB SPL @1000 Hz, which then requires a +28 dB SPL adjustment.
 \end{itemize}
+\todoMax{write what they should have been}
 
 \subsubsection{Equipment settings}
 \begin{itemize}
-	\item This experiment is performed with a sampling rate of, $F_{s}$ = 48 $k$Hz.
-	\item Item 4 (Edirol audio capture):
+	\item This experiment is performed with a sampling rate of, $f_{s}$ = 48 $k$Hz.
+	\item The Roland Edirol:
 		\begin{itemize}
 			\item "SENS(INPUT 1/L)" is set at half value (pointing upwards).
 			\item "SENS(INPUT 2/R)" is set at half value (pointing upwards).
 			\item "PHONES" is set at half value (pointing upwards)
 		\end{itemize}				
-	\item Item 5 (computer) is set to 0 dBFS.
+	\item All gains on the computer is set to 0 dBFS.
 \end{itemize}
 
 
@@ -90,20 +88,21 @@ Calibration of the microphone and associated preamplifier is done on the compute
 	\item Insert item 3's connector into input1/L of item 6.
 	\item Insert item 5's connector into input1/R of item 6.
 \end{enumerate}
+\todoMax{Sry we have moved away from this way of writing it with Item, as it's confusing as hell. Would you mind changing it to match the corrected CP trans?}
 
 \subsubsection{Performing the experiment}
 \begin{enumerate}
 	\item Start Simulink\textsuperscript{\textregistered} and open and run file \path{SimulinkSystemCancellationPath.xls}.
 	\begin{itemize} 
 		\item The simulations outputs a logarithmic chirp from 20 Hz to 20,000 Hz with an amplitude of 0 dBFS over the span of five seconds.
-		\item The simulation runs for six seconds.
+		\item The simulation runs for seconds. \todoMax{I think we used 7 - pls check}
 	\end{itemize}
 	%\item Through Simulink\textsuperscript{\textregistered} play "LogChirp.wav" from item 5 via item 4
 	
 	
 \end{enumerate}
 
-If  a discontinuity in the recorded signal(s) occurs, then discard that recording and reperform the experiment.
+If a drop-out in the recorded signal(s) occurs, then discard that recording and redo the experiment.
 
 
 \subsubsection{Data Extraction}
@@ -111,21 +110,21 @@ If  a discontinuity in the recorded signal(s) occurs, then discard that recordin
 	%\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "CancellationPathScript.m".
 	\item Start MATLAB\textsuperscript{\textregistered} and run script \path{CancellationPathScript.m}.
 \end{enumerate}
-From performing of the experiment, two files has been generated:
+From performing of the experiment, two files have been generated:
 \begin{itemize}
 	\item errMic.wav 
 	\item spmMic.wav
 \end{itemize}
 
-These files are the results of performing the six second simulation which gives a number of 288,768 samples, for each generated .wav-file.
-An example showing outputted errMic and spmMic is shown in  \autoref{DT770AmplitudePlotCancellationPath}.
+These files are the results of performing the six \todoMax{check - also the amount of samples of course} second simulation which gives a number of 288,768 samples, for each generated .wav-file.
+The recorded errMic and spmMic is shown in  \autoref{DT770AmplitudePlotCancellationPath}.
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{CancellationPathAmplitudePlot3}
+	\tikzsetnextfilename{CancellationPathAmplitudePlot3DT770}
 	%\input{figures/CancellationPath_MATLAB_Figures/Amplitudeplot2.tex}
 	\input{figures/DT700CancellationPath/calib.tex}
-	\caption{Time plot of the cancellation path with the reference signal(blue) and the microphone signal(orange).}
+	\caption{Time plot of the cancellation path with the spmMic signal(blue) and the errMic signal(orange).}
 	\label{DT770AmplitudePlotCancellationPath}
 \end{figure}
 
@@ -136,22 +135,25 @@ MATLAB\textsuperscript{\textregistered}-script \path{DT770CancellationPathScript
 \subsection{Analysis}
 The impulse response of the CP is to be found.
 Note that a microphone with external polarization was used. It means that there is a 180\textdegree phase difference between pre- and external polarized microphones, i.e. a positive pressure leads to negative voltage. The externally polarized microphone is considered to be out of phase. \cite{michandbook}
+\todoMax{Here we use two prepolarized mics?? So should se no 180 phase shift. The answer is that the spmMic does not invert phase (I guess)}
 
-First the cross correlation between Mic[i] and Ref[i] is found. This is done by cross correlating the two signals signals. Secondly the signal is taken into the frequency domain by applying the FT to the signal. This is expressed in \autoref{FrequencyResponseCPEq2}.
+To extract the frequency response the method described in \autoref{Sec:MeasATransFunc} is used.
 
-
-
-\begin{equation}\label{FrequencyResponseCPEq2}
-%H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
-H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
-\end{equation}
-Where:
-\begin{description}
-	%\item " $*$ " denotes the complex conjugation
-	\item $H(f)$ is the FT of the CP.
-	\item $Y(f)$ is the FT of the recorded microphone signals, Mic[i].
-	\item $X(f)$ is the FT of the recorded reference signals, Ref[i].
-\end{description}
+%First the cross correlation between Mic[i] and Ref[i] is found. This is done by cross correlating the two signals signals. Secondly the signal is taken into the frequency domain by applying the FT to the signal. This is expressed in \autoref{FrequencyResponseCPEq2}.
+%
+%
+%
+%\begin{equation}\label{FrequencyResponseCPEq2}
+%%H(f) = \frac{Y(m_{\mu}) *  X(r_{\mu})}{X(r_{\mu}) *  X(r_{\mu})}
+%H(f) = \frac{Y(f) \cdot X\textsuperscript{*}(f)}{X(f) \cdot X\textsuperscript{*}(f)}
+%\end{equation}
+%Where:
+%\begin{description}
+%	%\item " $*$ " denotes the complex conjugation
+%	\item $H(f)$ is the FT of the CP.
+%	\item $Y(f)$ is the FT of the recorded microphone signals, Mic[i].
+%	\item $X(f)$ is the FT of the recorded reference signals, Ref[i].
+%\end{description}
 
 The frequency response of the CP is shown in \autoref{DT770FrequencyResponsePlotCancellationPath}.
 
@@ -164,7 +166,7 @@ The frequency response of the CP is shown in \autoref{DT770FrequencyResponsePlot
 	\label{DT770FrequencyResponsePlotCancellationPath}
 \end{figure}
 
-The impulse response of this CP is found by taking the IFT (Inverse Fourier Transform) of the frequency response.
+The impulse response of this CP is found by taking the inverse Fourier transform of the frequency response.
 The impulse response is shown on \autoref{DT770CancellationPathImpulseResponse}.
 
 \begin{figure}[H]
@@ -203,6 +205,7 @@ Converting the impulse response from magnitude to dB, gives the time decay which
 \end{figure}
 
 Taking the first 256 coefficients of the impulse response gives the following cropped impulse response, as seen on \autoref{DT770CancellationPathImpulseResponseCrop}.
+\todoMax{Should be 960 coef - the 256 is a very old wrong number}
 
 \begin{figure}[H]
 	\centering
@@ -231,6 +234,7 @@ From \autoref{DT770CancellationPathImpulseResponseCompare}, 256 coefficients is 
 	\item Placement of the actuators and test-devices. (Position of the headset on the ear  influence the frequency response at high frequency which is not the main scope of study).
 	\item Instrument inaccuracies see \autoref{DT770TolerancesCP}.
 \end{itemize}
+\todoOliver{When you have fixed this in the other journals tell Max so he can fix it here}
 
 \begin{table}[h]
 	\centering
