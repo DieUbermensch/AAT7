@@ -9,10 +9,11 @@ This appendix will go through the design of the system using a feedforward topol
 	\caption{Illustration of the HATS wearing a headphone fitted with a ANC solution.}
 	\label{fig:SystemHeadphone}
 \end{figure}  
+\todoKiis{I don't think we ever name 1,2,3 and 4 in the appendixes?}
 
-Because the cancellation path is LTI, the adaptive algorithm adjusting the cancellation path (CP) estimate will not be in the system. This means that the copy of the CP estimate will be a constant impulse response. The CP has been found as described in \autoref{sec:CPjournal}. The used feedforward control system is shown in \autoref{fig:BasicSystem} and is described in \autoref{sec:BasicSystem}.
+Because the cancellation path is LTI, the adaptive algorithm adjusting the cancellation path (CP) estimate will be omitted from the system. This means that the copy of the CP estimate will be a constant impulse response. The CP has been found as described in \autoref{sec:CPjournalDT770}. The used feedforward control system is shown in \autoref{fig:BasicSystem} and is described in \autoref{sec:BasicSystem}.
 
-\todoMikkel{Tikz me! And add x(t), y(t) and e(t) as in article} 
+\todoMikkel{Tikz me! And add x(t), y(t) and e(t) as in article - maybe tikz is not important} 
 
 \begin{figure}[H]
 	\centering
@@ -31,7 +32,7 @@ The FXLMS is a gradient descent algorithm which iteratively changes the coeffici
 \end{equation}
 Where:
 \begin{description}
-	\item[\text{$\nabla \bar{J}$}] is the gradient of the error surface at the location given by the current weight coefficient.
+	\item[\text{$\nabla \bar{J}(k)$}] is the gradient of the error surface at the location given by the current weight coefficient.
 	\item[\text{$\mu$}] is a convergence factor.
 	\item[\text{$\bar{b}(k)$}] is the weight coefficients of the control filter written as  $\bar{b}(k)=[b_0(k),b_1(k) ,\cdots, b_{L-1}(k)]^T$.
 \end{description}
@@ -68,7 +69,7 @@ Where:
 $s(k)$ can be formulated as equation \ref{eq:FXLMSs(k)}.
 
 \begin{equation}\label{eq:FXLMSs(k)}
-s(k) = [\bar{b}^T(k)\bar{x}(k)]*\bar{c}(k)\approx \bar{y}(k)*\bar{\hat{c}}(k) = \sum_{j=0}^{M-1}\hat{c}_j(k)y(k-j)
+s(k) = [\bar{b}^T(k)\bar{x}(k)]*\bar{c}(k) = \bar{y}(k)*\bar{\hat{c}}(k) = \sum_{j=0}^{M-1}\hat{c}_j(k)y(k-j)
 \end{equation}
 Where:
 \begin{description}
@@ -90,7 +91,7 @@ Where:
 By using equation \ref{eq:FXLMSs(k)2} substituted into equation \ref{eq:FXLMSGradientW(k)}, the error of the surface gradient can be written as equation \ref{eq:FXLMSNablaJ}:
 
 \begin{equation}\label{eq:FXLMSNablaJ}
-\nabla \bar{J} = 2e(k)\frac{\partial s(k)}{\partial \bar{b}(k)} = 2e(k)f(k)
+\nabla \bar{J}(k) = 2e(k)\frac{\partial s(k)}{\partial \bar{b}(k)} = 2e(k)f(k)
 \end{equation}
 
 Which yields equation \ref{eq:FXLMSw(k+1)}:
@@ -124,7 +125,7 @@ With the definition of the FXLMS given, the system in \autoref{fig:BasicSystem},
 \newpage
 \section{Simulation of ANC} \label{sec:ANCSimulation}
 \subsection{Description}
-This appendix describes the simulation of ANC. The system shown in \autoref{fig:BasicSystem} has been setup in Simulink\textsuperscript{\textregistered}, as shown in \autoref{fig:SimulinkRealWorld} and \autoref{fig:SimulinkANC} showing the "real world"-simulation and the alogrithm-simulation, respectively. There has been inserted a delay of 1 in the input of the error because Simulink will not compile if this is not done. To compensate for this a delay of 1 has been inserted in the CP as well in the ANC algortihm.   
+This appendix describes the simulation of ANC. The system shown in \autoref{fig:BasicSystem} has been setup in Simulink\textsuperscript{\textregistered}. Figure \ref{fig:SimulinkRealWorld} and \autoref{fig:SimulinkANC} shows the "real world"-simulation and the ANC alogrithm-simulation, respectively. There has been inserted a delay of 1 sample in the input of the error because Simulink will not compile if this is not done. To compensate for this a delay of 1 sample has been inserted in the CP as well in the ANC algorithm The delayed error signal corresponds to a real world scenario, where the error signal will always be delayed compared to the control signal.   
 
 \subsection{Diagrams}
 \begin{figure}[H]
@@ -137,7 +138,7 @@ This appendix describes the simulation of ANC. The system shown in \autoref{fig:
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figures/BasicSystem/SimulinkANC}
-	\caption{Simulink of "ANC algorithm".}
+	\caption{Simulink of "ANC algorithm" from the block on figure \ref{fig:SimulinkRealWorld}.}
 	\label{fig:SimulinkANC}
 \end{figure} 
 
@@ -146,14 +147,14 @@ The variables for the simulation are listed in
 \begin{lstlisting} [language=MATLAB, caption=Simulink HP function., label=Lst:hpReal]
 fs = 48000; 	 %is the sample frequency of the input signal
 L  = 960;  	 	 %is the length of the filter
-HPCoef;  		 %is the coeffiecients for the measured HP
-CPCoef;  		 %is the coeffiecients for the measured CP
+HPCoef;  		 %is the coeffiecients for the measured HP (length L)
+CPCoef;  		 %is the coeffiecients for the measured CP (length L)
 u  = 0.001;		 %is the convergence factor
-delay 			 %is the delay of the ADC delay and DAC delay
+delay 			 %is the total simulated delay of the ADC and DAC 
 \end{lstlisting}
 
 \subsection{Functions}
-In the "real world" HP and CP are sample-by-sample FIR filters with the measured coefficicents from \fxnote{Reference to journals}. The functions are listed in \autoref{Lst:hpReal} and  \autoref{Lst:cpReal} respectively. 
+In the "real world" simulation HP and CP are sample-by-sample FIR filters with the measured coefficients from \autoref{sec:HPjournal} and  \fxnote{\todoMax{Ref new CP}}. The functions are listed in \autoref{Lst:hpReal} and  \autoref{Lst:cpReal} respectively. 
 
 \begin{lstlisting} [language=MATLAB, caption=Simulink HP function., label=Lst:hpReal]
 function y  = fcn(x,HPCoef,L)
@@ -193,7 +194,7 @@ In the ANC algorithm the control filter and CP are also sample-by-sample FIR fil
 
 
 \begin{lstlisting} [language=MATLAB, caption=Simulink control filter function., label=Lst:control]
-function y = fcn(x,b,L,prediction)
+function y = fcn(x,b,L)
 
 %Setup of interal variables
 persistent xIn;     %buffer for input
@@ -209,7 +210,7 @@ y = xIn*b;
 \end{lstlisting}
 
 \begin{lstlisting}[language=MATLAB, caption=Simulink CP function inside algorithm., label=Lst:cpAL]
-function y  = fcn(x,CPCoef,L,prediction)
+function y  = fcn(x,CPCoef,L)
 
 %Setup of interal variables
 persistent xIn;     %buffer for input
@@ -228,7 +229,7 @@ y = xIn*CPCoef;
 The last function in the ANC algorithm is the FXLMS derived in \autoref{subsec:fxlms}. This is listed in \autoref{Lst:fxlms}.
 
 \begin{lstlisting} [language=MATLAB, caption=Simulink FXLMS function., label=Lst:fxlms]
-function b  = fcn(x,u,e,HPCoef,L,prediction)
+function b  = fcn(x,u,e,HPCoef,L)
 
 %Setup of interal variables
 persistent n;       %sample number
@@ -263,8 +264,10 @@ bold(n,1) = b(n,1);
 end
 \end{lstlisting}
 
+\todoMikkel{autoref to appendix still has a capital A. I prefer small a, Kiss does not care. You decide!}
+
 \subsection{Test of ANC algorithm}
-A simulation of the ANC system with different ADC and DAC delay is to be made to see if delays affect the attenuation of the system. The delays are varied from 0 to 50 in steps of 2. For each simulation the RMS of the output is compared to the RMS of the input filtered with the HP transfer function using \autoref{eq:testANC}.
+A simulation of the ANC system with different ADC and DAC delay han been made to examine if delays affect the attenuation of the system. The delays are varied from 0 to 50 in steps of 2. The simulation is made using the automated testing as described in \autoref{sec:SimulinkAuto}. For each simulation the RMS of the output is compared to the RMS of the input filtered with the HP transfer function using \autoref{eq:testANC}.
 \begin{equation}\label{eq:testANC}
 		Attenuation=20*log_{10}\bigg(\frac{\sqrt{\sum\limits_{i=1}^{N}HPSig^2[n-i]}}{\sqrt{\sum\limits_{i=1}^{N}ANCsig^2[n-i]}}\bigg)
 \end{equation}
@@ -274,6 +277,9 @@ When the simulation is done with no delay, all sound is cancelled. The attenuati
 	\centering
 	\tikzsetnextfilename{DelayRatioAppendix}
 	\input{figures/BasicSystem/DelayRatio.tex}
-	\caption{Attenuation of feedforward FXLMS (blue) with different system delays.}
+	\caption{Attenuation of feedforward FXLMS with different system delays.}
 	\label{Fig:delayRatioAppendix}
 \end{figure}
+
+\subsection{Conclusion}
+In a simulated real world infinite attenuation can be achieved if no delays are introduced. If simulated delays from sampling and reconstructing sound are introduced the performance of the ANC system decrease.
