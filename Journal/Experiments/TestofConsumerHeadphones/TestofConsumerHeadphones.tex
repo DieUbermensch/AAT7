@@ -14,7 +14,7 @@ Note that only the active part is tested, and not the passive damping made by th
 								\bottomrule 
 		1	&	B\&K Head And Torso Simulator "Henry" Type 4128	& 08453	\\
 		2	&	B\&K Ear Simulator Type 4159				& 08453		\\
-		3	&	Soundcard RME Fireface 802					& 86838		\\
+		3	&	Sound card RME Fireface 802					& 86838		\\
 		4	&	Computer running simulink					& NaN		\\
 		5	&	B\&K Sound Calibrator Type 4230				& 08155		\\ 
 		6	&	Genelec speaker								& 33990		\\ 
@@ -40,24 +40,25 @@ Note that only the active part is tested, and not the passive damping made by th
 	\caption{Diagram of the test set-up.}
 	\label{OtherBrandsDiagram}
 \end{figure}
+\todoOliver{Change "ear" to "ear canal" It's kind of pointing at the microphone, avoidable? If the microphone symbol does not need explaining neither does the speaker symbol. The speaker symbol is not correct. The triangle should be on top of the bar. Directions on arrows! as for the microphone. It's RM[E] Fireface}
 
 \subsection{Settings/Description}
 \subsubsection{Control and calibration}
 \begin{itemize}
-	\item The speaker (6) is placed 1.6 meters from the Item 1.
+	\item The speaker (6) is placed 1.6 meters from the HATS.
 	\item The microphone in the Hats (2) is calibrated on the computer using Simulink\textsuperscript{\textregistered}.
 	\begin{itemize} 
-		\item Calibration is made @ 1 $k$Hz using Item 5 with adapter for Item 2. This should yield a signal of 95.6 dB. The measured intensity in MATLAB\textsuperscript{\textregistered} however was 78.12 so all measurements are multiplied by 7.48 to get a calibrated signal in Matlab\textsuperscript{\textregistered}.
+		\item Calibration is made @ 1 $k$Hz using the calibrator with adapter for the ear simulator. This should yield a signal of 95.6 dB. The measured intensity in MATLAB\textsuperscript{\textregistered} however was 78.12 so all measurements are multiplied by 7.48 to get a calibrated signal in Matlab\textsuperscript{\textregistered}.
 	\end{itemize}
 \end{itemize}
 
 \subsubsection{Equipment settings}
 \begin{itemize}
-	\item This experiment is performed with a sampling rate, $f_{s}$ = 48 $k$Hz. 
+	\item This experiment is performed with a sampling rate of, $f_{s}$ = 48 $k$Hz. 
 	\item In the mixing console on the computer 3 take care to turn on the "inst"-option. The following gain settings are present: 		
 	\begin{itemize}
 		\item Line level gain is 0 dB
-		\item Ear Microphones has gain +30 dB
+		\item Ear Microphones has gain +30 dB set on the front of the RME
 		%\item Ref Microphones has gain +48 dB
 		%\item Speaker Microphones has gain +48 dB
 	\end{itemize}
@@ -75,7 +76,7 @@ Note that only the active part is tested, and not the passive damping made by th
 	\end{subfigure}\qquad
 	\begin{subfigure}[b]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{../Journal/Experiments/TestofConsumerHeadphones/Pictures/OtherBrandsSetupAngle.jpg}
-		\caption{Set-up form an angle.}
+		\caption{Set-up from an angle.}
 		\vspace{2ex}
 		\includegraphics[width=\textwidth]{../Journal/Experiments/TestofConsumerHeadphones/Pictures/OtherBrandsSetupSide.jpg}
 		\caption{Set-up form the side.}
@@ -116,8 +117,7 @@ Note that only the active part is tested, and not the passive damping made by th
 	\item Open MATLAB\textsuperscript{\textregistered} and run script \path{evaluatePerformance.m}
 \end{enumerate}
 
-From performing the experiment, a list of files were generated, ten for each device tested; five with ANC enabled and five with ANC disabled.
-The difference between the enabled and the disabled is plotted on the graph below, for each device tested. The list can be seen below, where [i] indicates the iteration of the experiment
+From performing the experiment, a list of files were generated, ten for each device tested; five with ANC enabled and five with ANC disabled. The list can be seen below, where [i] indicates the iteration of the experiment.
 
 \begin{itemize}
 	\item \path{Denonon[i].wav}			(Denon AH GC20 w/ ANC)
@@ -132,7 +132,8 @@ The difference between the enabled and the disabled is plotted on the graph belo
 
 
 \subsection{Analysis}
-In figure \autoref{fig:BOH8Comp} -- \autoref{fig:DenonComp} the frequency responses for the tested headphones can be seen. The frequency responses are made using the method described in \autoref{sec:OctaveBank}. Only the part containing male voice is analysed.
+The difference between the enabled and the disabled ANC is plotted on figures \ref{fig:BOH8Comp}, \ref{fig:QC15Comp}, \ref{fig:QC25Comp} and \ref{fig:DenonComp} for each headphone tested.
+ The frequency responses are made using the method described in \autoref{sec:OctaveBank}. Only the part containing male voice is analysed. The averaging is made by putting all five recordings through the filter bank after one another. 
 
 \begin{figure}[H]
 	\centering

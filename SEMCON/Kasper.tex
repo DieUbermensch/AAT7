@@ -269,8 +269,33 @@
 \end{frame}
 
 \subsection{Combined system}
-\begin{frame}{Methods}{Combined system}		
-
+\begin{frame}{Methods}{Combined system}	
+			\begin{columns}
+				\begin{column}{0.4\textwidth}
+					\begin{itemize}
+						\item Control filter
+						\begin{itemize}
+							\item Transfer function from (1) to (2)
+							\item Adaptive
+						\end{itemize}
+						\item Cancelation path
+						\begin{itemize}
+							\item Transfer function from (2) to (3)
+							\item Linear Time Invariant 
+						\end{itemize}
+						\item Adaptive FXLMS Algorithm
+						\begin{itemize}
+							\item Transfer function from (2) to (3)
+							\item Linear Time Invariant 
+						\end{itemize}
+					\end{itemize}
+				\end{column}
+				\begin{column}{0.6\textwidth} 
+					\resizebox{0.9\columnwidth}{!}{		
+						\input{figures/Totalsystemoverview.tex}}
+				\end{column}
+			\end{columns}
+	
 \end{frame}
 
 \section{Simulations Results}
