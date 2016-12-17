@@ -118,7 +118,7 @@ Table \ref{tab:UsedEquipmentListningFIRTest} shows the equipment used to perform
 	\begin{tabular}{ c c c } \toprule
 	{Item}	& {Description} 								& {AAU-no}. 	\\ \bottomrule 
 	1	&	Computer w. NI-PCI-4461 using Swept Sine FRF VI	& NaN			\\
-	2	&	DSP freedom board rev. 1 						& NaN			\\
+	2	&	DSP expansion board rev. 1 						& NaN			\\
 	3	&	Computer running Code Composer Studio			& 2037-18		\\
 	4	&	TMSC5515 eZDSP 									& NaN			\\
 	\bottomrule
@@ -126,7 +126,6 @@ Table \ref{tab:UsedEquipmentListningFIRTest} shows the equipment used to perform
 	\caption{Table over equipment used in test.}
 	\label{tab:UsedEquipmentListningFIRTest}
 \end{table}
-\todoMikkel{Someone said freedom board}
 
 \subsubsection{Diagram \& setup}
 
@@ -212,11 +211,9 @@ The data from the experiment is loaded as follows:
 	\centering
 	\tikzsetnextfilename{Testing}
 	\input{figures/Hardware/FIRtest.tex}
-	\caption{16-tap FIR filter with the kasier window applied using a 2 $\beta$ value.}
+	\caption{16-tap FIR filter with the kasier window applied using a $\beta$ value of 2. The blue graph is generated using quantized MATLAB coefficients and the red is measured using a sine sweep} 
 	\label{Fig:FIRComparison}
 \end{figure}
-
-\todoMikkel{what's what? Are the blue lines also quantized? What about the filtering is that still done using full resolution??}
 
 \subsection{Conclusion}
 The test yielded a $\approx$ 0.5 dB of difference on the main lope, and slight deviation and gain in the side lobes. The filter does however perform as desired with the designed filter coefficient and is assumed fully functional.
