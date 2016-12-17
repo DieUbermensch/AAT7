@@ -36,6 +36,8 @@
 
 \begin{frame}{Introduction}{How does ANC work}		
 	\begin{itemize}
+		\item Headphone cups attenuate high frequencies passively
+		\item Lower frequencies must be attenuated actively 
 		\item Feedforward system
 		\begin{itemize}
 			\item 1: Reference microphone
@@ -54,7 +56,9 @@
 
 \subsection{Problem of ANC}
 \begin{frame}{Introduction}{Problem of ANC}		
-	\begin{itemize}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+		\begin{itemize}
 		\item Feedforward problem
 		\item Sampling and reconstruction delay.
 		\begin{itemize}
@@ -62,16 +66,25 @@
 			\item Reconstructions filter
 		\end{itemize}
 		\item The measured delay of a Sigma Delta converter TLV320AIC3204
-	\end{itemize}
-	\begin{table}[H]
-	\centering
-	\begin{tabular}{|l|r|r|r|}
-	\hline
-	$f_s$ {[}$k$Hz{]} & 48 & 96 & 192 \\ \hline
-	Delay {[}$\mu$s{]} & 900 & 450 & 225 \\ \hline
-	Delay {[}samples{]} & 43 & 43 & 43 \\ \hline
-	\end{tabular}
-	\end{table}
+		\item Spacing between microphones
+		\begin{itemize}
+			\item Min: 75.5 $m$m
+			\item Max: 302 $m$m
+		\end{itemize}
+		\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|l|r|r|r|}
+				\hline
+				$f_s$ {[}$k$Hz{]} & 48 & 96 & 192 \\ \hline
+				Delay {[}$\mu$s{]} & 900 & 450 & 225 \\ \hline
+				Delay {[}samples{]} & 43 & 43 & 43 \\ \hline
+			\end{tabular}
+		\end{table}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 
@@ -125,7 +138,8 @@
 			\item Speech Signals
 			\begin{itemize}
 				\item Quasiperiodic
-				\item Can be assumed Wide Sense Stationary for 20 $m$s -- 30 $m$s 
+				\item 50 Hz -- 4000 Hz
+				\item Can be assumed Wide Sense Stationary (WSS) for 20 $m$s -- 30 $m$s 
 			\end{itemize}
 		\end{itemize}
 		\item Periodic noise is easy to cancel
@@ -136,7 +150,6 @@
 
 
 
-\subsection{Present consumer headphones}
 \begin{frame}{Introduction}{Present consumer headphones}
 	\begin{itemize}	
 	\item How well does the consumer headphones attenuate?
@@ -164,12 +177,18 @@
 	\end{center}	
 \end{frame}
 
-
-
+\begin{frame}{Introduction}{Summary}		
+	\begin{itemize}
+		\item ANC attenuate infinitely ideally
+		\item Delays are introduced by sampling and reconstruction
+		\item Periodic signals can be attenuated infinitely
+		\item Speech signals are not attenuated very well
+	\end{itemize}
+\end{frame}
 
 
 \begin{frame}{Introduction}{A solution for the problem}		
-	\centering{Combining a feedforward Filtered-x Least Mean Square (FXLMS) algorithm with Linear prediction (LP) scheme to compensate for delay.}
+	\centering{Combining a feedforward ANC algorithm with a Linear prediction (LP) scheme to compensate for delay.}
 \end{frame}
 
 
@@ -192,8 +211,7 @@
 				\end{itemize}
 				\item Adaptive FXLMS Algorithm
 				\begin{itemize}
-					\item Transfer function from (2) to (3)
-					\item Linear Time Invariant 
+					\item Optimization problem
 				\end{itemize}
 			\end{itemize}
 			\end{column}
@@ -208,52 +226,219 @@
 
 \subsection{Linear Prediction}
 \begin{frame}{Methods}{Linear Prediction}		
-
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Auto Correlation Function estimation 
+				\begin{itemize}
+					\item Frame length N
+					\item Overlap O
+				\end{itemize}
+				\item Wiener hopf equation: $\hat{R}  \bar{a} = -\bar{\hat{r}}_x$
+				\begin{itemize}
+					\item Inverting matrix
+					\item Levinson Durbin
+				\end{itemize}
+				\item Wiener filtering in cascade
+				\begin{itemize}
+					\item Prediction order P
+				\end{itemize}
+			\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth} 
+			\resizebox{1.0\columnwidth}{!}{		
+			\input{figures/WienerHopf.tex}}
+			\end{column}
+		\end{columns}
 \end{frame}
+
+
+\subsection{Multirate Processing}
+\begin{frame}{Methods}{Multirate Processing}	
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\begin{itemize}
+			\item Multirate Processing for reducing conversion delay
+			\begin{itemize}
+				\item High sample rate
+				\item Low processing rate
+			\end{itemize}
+			\item Smaller prediction order
+			\begin{itemize}
+				\item 10 instead of 43
+			\end{itemize}
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.5\textwidth} 
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|l|r|r|r|}
+				\hline
+				$f_s$ {[}$k$Hz{]} & 48 & 96 & 192 \\ \hline
+				Delay {[}$\mu$s{]} & 900 & 450 & 225 \\ \hline
+				Delay {[}samples{]} & 43 & 43 & 43 \\ \hline
+			\end{tabular}
+		\end{table}
+	\end{column}
+\end{columns}
+\end{frame}
+
+
+
 
 \subsection{Combined system}
 \begin{frame}{Methods}{Combined system}	
-			\begin{columns}
-				\begin{column}{0.4\textwidth}
-					\begin{itemize}
-						\item Control filter
-						\begin{itemize}
-							\item Transfer function from (1) to (2)
-							\item Adaptive
-						\end{itemize}
-						\item Cancelation path
-						\begin{itemize}
-							\item Transfer function from (2) to (3)
-							\item Linear Time Invariant 
-						\end{itemize}
-						\item Adaptive FXLMS Algorithm
-						\begin{itemize}
-							\item Transfer function from (2) to (3)
-							\item Linear Time Invariant 
-						\end{itemize}
-					\end{itemize}
-				\end{column}
-				\begin{column}{0.6\textwidth} 
-					\resizebox{0.9\columnwidth}{!}{		
-						\input{figures/Totalsystemoverview.tex}}
-				\end{column}
-			\end{columns}
-	
+\begin{columns}
+	\begin{column}{0.4\textwidth}
+		\begin{itemize}
+			\item Input for control filter and CP
+			\begin{itemize}
+			\item $x[n]$
+			\item $\hat{x}[n+P]$
+			\end{itemize}
+			\item CP delayed for compensation of error microphone delay
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.6\textwidth} 
+		\resizebox{0.9\columnwidth}{!}{		
+			\input{figures/Totalsystemoverview.tex}}
+	\end{column}
+\end{columns}
 \end{frame}
+
+
+
+
+
+\begin{frame}{Methods}{Summary}	
+\begin{itemize}
+	\item Delays are introduced due to sampling and reconstruction
+	\item Delays are reduced using multirate processing
+	\item Compensation by Linear Prediction using Wiener filtering
+	\item Noise cancelling using a feedforward FXLMS algorithm
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Methods}{How to test}	
+\begin{itemize}
+	\item Simulink 
+	\item Prediction Gain
+	\item Cross correlations 
+	\item Not entirely sure what to put here
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
 
 \section{Simulations Results}
 
-\begin{frame}{Methods}{Optimal parameters}		
+\subsection{Linear Prediction Parameters}
+\begin{frame}{Simulation Results}{Optimal parameters}		
+\begin{columns}
+	\begin{column}{0.4\textwidth}
+		\begin{itemize}
+			\item Prediction order P = 43
+			\item Optimal parameters
+			\begin{itemize}
+				\item Frame length N = 1600
+				\item Overlap O = 1500
+			\end{itemize}
+			\item Prediction Gain PG = 5.4 dB
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.6\textwidth} 
+		\resizebox{0.9\columnwidth}{!}{		
+			\input{figures/HammingNOP43.tex}}
+	\end{column}
+\end{columns}
+\end{frame}
 
+\begin{frame}{Simulation Results}{Optimal parameters}		
+\begin{columns}
+	\begin{column}{0.4\textwidth}
+	\begin{itemize}
+		\item Prediction order P = 10
+		\item Optimal parameters
+		\begin{itemize}
+			\item Frame length N = 1200
+			\item Overlap O = 1100
+		\end{itemize}
+		\item Prediction Gain PG = 10 dB
+	\end{itemize}
+	\end{column}
+	\begin{column}{0.6\textwidth} 
+		\resizebox{0.9\columnwidth}{!}{		
+			\input{figures/HammingNOP10.tex}}
+	\end{column}
+\end{columns}
 \end{frame}
 
 
 
 
+
+
+\subsection{Attenuation Performance}
+\begin{frame}{Simulation Results}{Attenuation Performance}		
+\begin{columns}
+	\begin{column}{0.4\textwidth}
+	\begin{itemize}
+		\item ANC attenuation with varying system delay
+		\begin{itemize}
+			\item Feedforward FXLMS 
+			\item Feedforward LP FXLMS 
+		\end{itemize}
+	\end{itemize}
+	\end{column}
+	\begin{column}{0.6\textwidth} 
+		\resizebox{0.9\columnwidth}{!}{		
+			\input{figures/DelayRatio.tex}}
+	\end{column}
+\end{columns}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Simulation Results}{Frequency response}		
+\begin{columns}
+	\begin{column}{0.4\textwidth}
+		\begin{itemize}
+			\item Frequency response
+			\begin{itemize}
+				\item Feedforward FXLMS 
+				\item Feedforward LP FXLMS 
+			\end{itemize}
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.6\textwidth} 
+		\resizebox{0.9\columnwidth}{!}{		
+			\input{figures/SmoothCompareOur(fig).tex}}
+	\end{column}
+\end{columns}
+\end{frame}
+
+
 \section{Discussion}
+\subsection{Computational Cost}
 
-\subsection{Computation}
+\begin{frame}{Discussion}{Computational Cost}		
+\begin{itemize}
+\item Computational cost of System (instructions pr. sample)
+	\begin{itemize}
+		\item Linear Prediction: 55000 
+		\item Feedforward FXLMS: 4000 
+		\item Multirate: $\leq$ 100
+	\end{itemize}
+	\item Figure missing of different DSP maximum instruction pr sample at 48 kHz
+\end{itemize}
 
-\section{Conclusion}
-
-\subsection{Listen}
+\end{frame}
