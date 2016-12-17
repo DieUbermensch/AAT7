@@ -54,7 +54,30 @@
 
 \subsection{Problem of ANC}
 \begin{frame}{Introduction}{Problem of ANC}		
-	\begin{itemize}
+	% \begin{itemize}
+	% 	\item Feedforward problem
+	% 	\item Sampling and reconstruction delay.
+	% 	\begin{itemize}
+	% 		\item Anti Aliasing filter
+	% 		\item Reconstructions filter
+	% 	\end{itemize}
+	% 	\item The measured delay of a Sigma Delta converter TLV320AIC3204
+	% \end{itemize}
+	% \begin{table}[H]
+	% \centering
+	% \begin{tabular}{|l|r|r|r|}
+	% \hline
+	% $f_s$ {[}$k$Hz{]} & 48 & 96 & 192 \\ \hline
+	% Delay {[}$\mu$s{]} & 900 & 450 & 225 \\ \hline
+	% Delay {[}samples{]} & 43 & 43 & 43 \\ \hline
+	% \end{tabular}
+	% \end{table}
+
+
+
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+		\begin{itemize}
 		\item Feedforward problem
 		\item Sampling and reconstruction delay.
 		\begin{itemize}
@@ -62,16 +85,28 @@
 			\item Reconstructions filter
 		\end{itemize}
 		\item The measured delay of a Sigma Delta converter TLV320AIC3204
-	\end{itemize}
-	\begin{table}[H]
-	\centering
-	\begin{tabular}{|l|r|r|r|}
-	\hline
-	$f_s$ {[}$k$Hz{]} & 48 & 96 & 192 \\ \hline
-	Delay {[}$\mu$s{]} & 900 & 450 & 225 \\ \hline
-	Delay {[}samples{]} & 43 & 43 & 43 \\ \hline
-	\end{tabular}
-	\end{table}
+		\item Spacing between microphones
+		\begin{itemize}
+			\item Min: 75.5 $m$m
+			\item Max: 302 $m$m
+		\end{itemize}
+		\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|l|r|r|r|}
+				\hline
+				$f_s$ {[}$k$Hz{]} & 48 & 96 & 192 \\ \hline
+				Delay {[}$\mu$s{]} & 900 & 450 & 225 \\ \hline
+				Delay {[}samples{]} & 43 & 43 & 43 \\ \hline
+			\end{tabular}
+		\end{table}
+		\end{column}
+	\end{columns}
+
+
+
 \end{frame}
 
 
@@ -169,7 +204,7 @@
 
 
 \begin{frame}{Introduction}{A solution for the problem}		
-	\centering{Combining a feedforward Filtered-x Least Mean Square (FXLMS) algorithm with Linear prediction (LP) scheme to compensate for delay.}
+	\centering{Combining a feedforward Filtered-x Least Mean Square (FXLMS) algorithm with a Linear prediction (LP) scheme to compensate for delay.}
 \end{frame}
 
 
@@ -192,8 +227,7 @@
 				\end{itemize}
 				\item Adaptive FXLMS Algorithm
 				\begin{itemize}
-					\item Transfer function from (2) to (3)
-					\item Linear Time Invariant 
+					\item Optimization problem
 				\end{itemize}
 			\end{itemize}
 			\end{column}
@@ -208,7 +242,30 @@
 
 \subsection{Linear Prediction}
 \begin{frame}{Methods}{Linear Prediction}		
-
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Auto Correlation Function estimation 
+				\begin{itemize}
+					\item Frame length N
+					\item Overlap O
+				\end{itemize}
+				\item Wiener hopf equation: $\hat{R}  \bar{a} = -\bar{\hat{r}}_x$
+				\begin{itemize}
+					\item Inverting matrix
+					\item Levinson Durbin
+				\end{itemize}
+				\item Wiener filtering in cascade
+				\begin{itemize}
+					\item Prediction order P
+				\end{itemize}
+			\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth} 
+			\resizebox{1.0\columnwidth}{!}{		
+			\input{figures/WienerHopf.tex}}
+			\end{column}
+		\end{columns}
 \end{frame}
 
 \subsection{Combined system}
@@ -218,7 +275,7 @@
 
 \section{Simulations Results}
 
-\begin{frame}{Methods}{Optimal parameters}		
+\begin{frame}{Simulation Results}{Optimal parameters}		
 
 \end{frame}
 
