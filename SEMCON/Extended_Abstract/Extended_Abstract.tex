@@ -1,0 +1,58 @@
+% This file was converted to LaTeX by Writer2LaTeX ver. 1.2
+% see http://writer2latex.sourceforge.net for more info
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english, danish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,textcomp}
+\usepackage{color}
+\usepackage[top=2.54cm,bottom=2.54cm,left=2.54cm,right=2.54cm,nohead,nofoot]{geometry}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{hhline}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue}
+% Footnote rule
+%\setlength{\skip\footins}{0.119cm}
+%\renewcommand\footnoterule{\vspace*{-0.018cm}\setlength\leftskip{0pt}\setlength\rightskip{0pt plus 1fil}\noindent\textcolor{black}{\rule{0.25\columnwidth}{0.018cm}}\vspace*{0.101cm}}
+\title{}
+\begin{document}
+	%\[%\clearpage\clearpage\setcounter{page}{1}{\centering\color{black}
+	
+	{\centering
+		\subsection*{Active Noise Control of Speech in Headphones using Linear Prediction}}
+	
+	{\centering
+		\textit{Kasper Kiis Jensen$^{\star \star}$, Oliver Palmhøj Jokumsen$^{\star}$,\\ Christian Claumarch, Mikkel Krogh Simonsen, Maxime Démurger,}
+		\par}
+	{\centering
+		\textbf{Acoustics and Audio Technology Group 761}
+		\par}
+	
+	\bigskip
+	
+	\paragraph{Introduction}
+	Active Noise Control (ANC) is a widely used technique in consumer headphones for attenuating noise. ANC is a very viable technique for attenuating periodic noise e.g. machinery but has limited ability to attenuate quasi-periodic noise e.g. speech (50 Hz - 4000 Hz). This paper will focus on attenuation of speech, as it is, to the authors knowledge, a rather untouched area. 
+	
+	\paragraph{Methods and Proposals}
+	Both feedforward and feedback systems can be used for ANC, sometimes in combination. For attenuating speech specifically, feedforward is generally a necessity. The ANC system consists of an FIR-filter adapted by an algorithm, in this case the Filtered-$x$ Least Mean Squares (FXLMS)-algorithm is used. The feedforward FXLMS uses an error microphone to adapt the filter. 
+	If realized with a DSP system, conversion from analogue to digital domain is needed, introducing conversion delays. A cost-wisely heavy $\Sigma\Delta$-converter introduces delays of 225 $\mu$s -- 900 $\mu$s which would decreases the attenuation of an ANC system. \\
+	To compensate for this decrease in performance, a Linear Prediction (LP) scheme is proposed.
+	Cascaded Wiener filtering is used to predict future samples, using the Wiener Hopf equation. The characteristics of the speech signal are estimated by a frame based autocorrelation function (ACF), using the Levinson-Durbin algorithm. The predictor is used to predict 10 samples prediction, corresponding to 225 $\mu$s at 48 $k$Hz.
+	
+	\paragraph{Simulation Results}
+	The optimal LP parameters, in terms of Framelength, Overlap and resulting Prediction Gain is found through simulations. The parameters were used to estimate the performance of the LP FXLMS system compared to the FXLMS. The results were compared using a 1/3 octave filter-bank.\\
+	When combining LP and FXLMS, the performance of the system is found by simulation to have up to 30 dB in increased attenuation. The combined system is proven to yields a high attenuation for all frequencies in the speech area.
+	
+	\paragraph{Discussion}
+	The chosen prediction length is determined by the delays for the $\Sigma\Delta$-converter. In a multirate system a signal sampled at 192 $k$Hz decimated to 48 $k$Hz requires prediction of 10 samples.  
+	A real time implementation is shown to be unfeasible, due to the computation cost of the LP is $>$15,000 instructions per sample, and is therefore not attempted.
+	
+	
+	\paragraph{References}
+	\begin{description}
+		\item{[1]}		{SpeechCoding} Wai C. Chu: \emph{Speech Coding Algorithms}, Wiley $1^{st}$ Edition 2013
+		\item{[2]}		{HansenSnyder} Colin Hansen and Scott Snyder and Xiaojun Qiu and Laura Brooks and Danielle Moreau  : \emph{Active Control of Noise and Vibration}, CRC Press $2^{nd}$ Edition 2012
+	\end{description}
+\end{document}
