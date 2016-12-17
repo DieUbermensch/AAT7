@@ -1,11 +1,12 @@
-\section{Total System} \label{sec:TotalSystem}
-This appendix will describe the total system, shown on \autoref{fig:totalSystem}, which is the ANC system shown on \autoref{fig:SimulinkANC} and the predictor shown on \autoref{Fig:PredictionSimulink}. These are already described so will not be described again. 
+\section{Combined System} \label{sec:TotalSystem}
+This appendix will describe the total system, shown on \autoref{fig:totalSystem}, which is the combination of the ANC system shown on \autoref{fig:SimulinkANC} and the predictor shown on \autoref{Fig:PredictionSimulink}. These are already described so they will not be described again. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{missingfigure}
-	\caption{Total ANC system.}
+	\caption{Total ANC system. }
 	\label{fig:totalSystem}
 \end{figure}
+\todoMikkel{figure! Also both Figure and Equation is still with capital letters}
 The system shown on \autoref{fig:totalSystem} utilize both the predicted input $\hat{x}[n]$ and the measured input $x[n]$, in the control filter and CP. This expands \autoref{eq:Outputapp} to \autoref{eq:ControlExpandedapp} and \autoref{eq:CPapp} to \autoref{eq:CPExpandedapp}.
 \begin{equation}\label{eq:Outputapp}
 y[n]=\sum_{j=0}^{L-1}b_j[n]x[n-j]
@@ -23,8 +24,8 @@ f[n+P]=\sum^{P-1}_{j=0}c_j\hat{x}[(n+P)-j]+\sum^{L-1}_{j=P}c_jx[(n+P)-j]
 
 No other changes has been made to the total system and it is the system which will be used for simulation.
 
-
-\section{Simulink Total Test} \label{sec:SimulinkTotalSystem}
+\newpage
+\section{Simulink Combined System Test} \label{sec:SimulinkTotalSystem}
 
 \subsection{Description}
 This appendix will simulate the ANC system, shown on \autoref{fig:totalSystem}, which is a combination of the ANC system show on \autoref{fig:SimulinkANC} and the predictor shown on \autoref{Fig:PredictionSimulink}. The simulation will test if the combined LP FXLMS system is dependent on delays if the same delay is predicted by the predictor. All functions for the ANC system and predictor are already described in \autoref{sec:ANCSimulation} and \autoref{sec:predicSimulink} respectively. The "real world" simulink system is shown on \autoref{fig:SimulinkRealWorld}.
@@ -39,7 +40,7 @@ This appendix will simulate the ANC system, shown on \autoref{fig:totalSystem}, 
 
 
 \subsection{Variables}
-\begin{lstlisting} [language=MATLAB]
+\begin{lstlisting} [language=MATLAB, caption=Variables]
 N 			= 1200; 		%is the frame length 
 overlap 	= 1100;			%is the overlap in the buffer "O"
 prediction 	= 10; 			%is how far the algorithm should predict "P"
@@ -88,14 +89,14 @@ xIn = [xhat xIn(1:prediction-1) x xIn(prediction+1:end-1)];
 y = xIn*CPCoef;
 \end{lstlisting}
 
-\subsection{Simulation Test of Total System}
-A simulation of the total system with different ADC and DAC delay is to be made to see if delays affect the attenuation of the system. The delays are varied from 0 to 50 in steps of 2. For each simulation the RMS of the output is compared to the RMS of the input filtered with the HP transfer function using \autoref{eq:testANC2}. 
+\subsection{Test}
+A simulation of the total system with different ADC and DAC delay is to be made to see if delays affect the attenuation of the system. The delays are varied from 2 to 50 in steps of 2. For each simulation the RMS of the output is compared to the RMS of the input filtered with the HP transfer function using \autoref{eq:testANC2}. 
 
 \begin{equation}\label{eq:testANC2}
 	Attenuation=20*log_{10}\bigg(\frac{\sqrt{\sum\limits_{i=1}^{N}HPSig^2[n-i]}}{\sqrt{\sum\limits_{i=1}^{N}ANCsig^2[n-i]}}\bigg)
 \end{equation}
 
-When the simulation is done with no delay, all sound is cancelled. The attenuation is therefore infinity, which is not possible to plot. All other results are shown on \autoref{fig:delayRatioTotal} together with the results of the system with no predictor described in \autoref{sec:ANCSimulation}.
+The combined algorithm is not simulated a delay 0, as the predictor would be redundant. All other results are shown on \autoref{fig:delayRatioTotal} together with the results of the system with no predictor described in \autoref{sec:ANCSimulation}.
 
 
 
@@ -103,6 +104,10 @@ When the simulation is done with no delay, all sound is cancelled. The attenuati
 	\centering
 	\tikzsetnextfilename{delayTestTotal}	
 	\input{figures/GrandTest/DelayRatioTotal.tex}
-	\caption{ Attenuation of feedforward FXLMS (blue) compared with feedforward LP FXLMS (red) with different system delays.}
+	\caption{ Attenuation of feedforward FXLMS (blue) compared with feedforward LP FXLMS (red) with different system delays. The blue line is identical to that in \autoref{Fig:delayRatioAppendix} }
 	\label{fig:delayRatioTotal}
 \end{figure}
+\todoMikkel{I would like the frequency thing as well! }
+
+\subsection{Conclusion}
+The combined Feedforward LP FXLMS algorithm increase the attenuation of speech compared to a feedforward FXLMS algorithm. 
