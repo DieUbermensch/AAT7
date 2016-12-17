@@ -39,7 +39,8 @@ Calibration of the microphone and associated preamplifier is done on the compute
 
 \subsubsection{Control and calibration}
 \begin{itemize}
-	\item 93.6 dB due to being a pressure field microphone $@$ 250 Hz is used as calibration signal. \todoOliver{We have later found 95.6dB using an other calibrator - are you certain about this value???}
+	\item 95.6 dB due to being a pressure field microphone $@$ 250 Hz is used as calibration signal. 
+	%\todoOliver{We have later found 95.6dB using an other calibrator - are you certain about this value???}
 	\item Microphone sensitivity is controlled to 11.6 $m$V/Pa.
 	\item Calibration signal yields an amplitude of 0.6 relative to 0 dBFS.
 	\item Calibration signal yields a spike of 95.5 dB SPL @250 Hz, which then requires a -2.3 dB SPL adjustment.
@@ -52,7 +53,9 @@ Calibration of the microphone and associated preamplifier is done on the compute
 		\begin{itemize}
 			\item "SENS(INPUT 1/L)" is set to +0 dB.
 			\item "SENS(INPUT 2/R)" is set to +0 dB.
-			\item "PHONES" is set to maximum volume. \todoOliver{Should we mention, that this might be a bad idea?-meybe listen if recordings are distorted??}\
+			\item "PHONES" is set to maximum volume. 
+			%\todoOliver{Should we mention, that this might be a bad idea?-meybe listen if recordings are distorted??}\ 
+			%Oliver: I don't think so, but I'll check the recordings
 		\end{itemize}		
 	\item All gain on the computer is set to 0 dBFS.
 \end{itemize}
@@ -110,7 +113,9 @@ From performing of the experiment, ten files has been generated:
 	\item Ref1.wav, Ref2.wav, Ref3.wav, Ref4.wav and Ref5.wav
 \end{itemize}
 
-These files are the results of performing the six second simulation which gives a number of 288,768 samples, \todoOliver{This is not 48000 *6 ??} for each generated .wav-file.
+These files are the results of performing the six second simulation which gives a number of 288,768 samples, 
+%\todoOliver{This is not 48000 *6 ??} for each generated .wav-file.
+%Oliver: For the first recording we got that amount of samples, not sure of the reason for this though, but those are the numbers Kiis gave me :P
 The recorded Mic1 and Ref1 is shown in  \autoref{AmplitudePlotCancellationPath}.
 
 \begin{figure}[H]
@@ -154,7 +159,8 @@ The frequency response of the CP is shown in \autoref{FrequencyResponsePlotCance
 	\caption{Frequency response plot of the cancellation path.}
 	\label{FrequencyResponsePlotCancellationPath}
 \end{figure}
-\todoOliver{Is this freqresp averaged over the 5 measurements?}
+%\todoOliver{Is this freqresp averaged over the 5 measurements?}
+%Should be - I'll check
 
 The impulse response of this CPs is found by taking the IFT (Inverse Fourier Transform) of the five frequency responses. 
 The impulse responses are shown on \autoref{CancellationPathImpulseResponse}.
@@ -220,7 +226,8 @@ From \autoref{CancellationPathImpulseResponseCompare}, 256 coefficients is shown
 
 \subsection{Error Sources / Tolerances}
 \begin{itemize}
-	\item Placement of the actuators and test-devices. (Position of the headset on the ear  influence the frequency response at high frequency which is not the main scope of study). \todoOliver{Do we just mean the headphones? Because then write headphones}
+	\item Placement of the headphones. (Position of the headphone on the ear  influences the frequency response at high frequencies which is not the main scope of study). 
+	%\todoOliver{Do we just mean the headphones? Because then write headphones}
 	\item Instrument inaccuracies see \autoref{TolerancesCP}.
 \end{itemize}
 
