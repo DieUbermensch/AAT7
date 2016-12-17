@@ -1,23 +1,23 @@
 \section{Voice Recording}
-This appendix describes the recording and subsequent manipulation of the sound used in the demonstration of the project results. The recording is in English. The speaker is a man with English as his second language. 
+\subsection{Purpose}
+This appendix describes the recording and subsequent manipulation of the sound used in the demonstration of the project results. The recording is in English. The speaker is a man with English as his secondary language. 
 
-\subsection{Recording of speech}
+\subsection{AAU number list}
 \begin{table}[H]
 	\centering
 	\ra{1.3}
 	\begin{tabular}{ c c c } \toprule
 		{Item}	& {Description} 						& {AAU-no}. \\ \bottomrule 
 		1	& Røde NT2000 	& aau14440-00	\\
-		2	& Soundcard RME Fireface 802	& 86838 		\\
+		2	& Sound card RME Fireface 802	& 86838 		\\
 		3	& Computer running Matlab 2016a	 & 	NAN	\\
 		\bottomrule
 	\end{tabular}
 	\caption{Table over equipment used for recording speech.}
 	\label{tab:VoiceRec}
 \end{table}
-The recording of speech is performed in an anechoic chamber, where a male speaker is situated 1 m from the microphone. The used microphone is supplied with Phantom Power from the sound card. \\ 
 
-
+\subsection{Diagram}
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{VoiceRecording}	
@@ -33,6 +33,10 @@ The recording of speech is performed in an anechoic chamber, where a male speake
 	\label{fig:VoiceRecording}
 \end{figure}
 
+\subsection{Settings/Description}
+The recording of speech is performed in an anechoic chamber, where a male speaker is situated 1 m from the microphone. The microphone is supplied with Phantom Power from the sound card. \\ 
+
+\subsection{Settings}
 The parameters chosen for the recording, prediction and cancellation are:
 \begin{itemize}
 	\item $N=1200$
@@ -44,14 +48,38 @@ The parameters chosen for the recording, prediction and cancellation are:
 	\item $\mu=0.001$
 \end{itemize}
 
+\subsection{Performing the recording}
+The manuscript is divided into sections, where different manipulations are made. Each section is stored in separate audio files for easier manipulation of the individual parts. The procedure of recording is:
+\begin{itemize}
+	\item The script "Record.m" is adjusted to record enough time for the section being recorded. 
+	\item A countdown from 5 is made from the control room using the intercom. On "one" the following happens
+	\begin{itemize}
+		\item The script "Record.m" is run from the control room.
+		\item The speaker draws breath and prepares to read a section.
+	\end{itemize}
+	\item After the recorder has stopped the quality of the recording is checked. It should be clear, without noise and with correct pronunciation.
+	\item The recording is repeated for all sections in the manuscript.  
+\end{itemize}
 
-\subsection{The manuscript}
-The manuscript is divided into sections, where different operations are made. Each section is stored in separate audio files for easier manipulation of the individual parts. 
- 
+\subsubsection{Record.m}
+\begin{lstlisting}[language=MATLAB,caption=Record.m]
+fs=48000;
+h=audiorecorder(fs,16,1);
+
+record(h);
+pause(10);
+stop(h);
+myrec=getaudiodata(h);
+
+audiowrite('storefile.wav',myrec,fs);
+\end{lstlisting}
+
+\subsubsection{The manuscript}
+
 
 \textbf{Normal voice}\\
-This experience is best if you use a pair of headphones. 
-This recording will demonstrate the performance of an Active Noise Control  system, in a headphone using Filtered X Least Mean Squares combined with a Linear Prediction Algorithm. 
+\textit{This experience is best if you use a pair of headphones. 
+This recording will demonstrate the performance of an Active Noise Control system, in a headphone using Filtered X Least Mean Squares combined with a Linear Prediction Algorithm. }
 
 
 \textbf{Headphone filtered sound}\\
@@ -62,19 +90,22 @@ This recording will demonstrate the performance of an Active Noise Control  syst
 Here no prediction was used. Now the predictor is activated. }
 
 \textbf{LP FXLMS}\\
-This is the Filtered-x Least Means Squares combined with the Linear Prediction algorithm. This should be almost inaudible to you. 
+\textit{This is the Filtered-x Least Means Squares combined with the Linear Prediction algorithm. This should be almost inaudible to you. }
 
 \textbf{Normal voice 2}\\
-In case you did not hear, you have just listened to the Filtered-x Least Means Squares combined with the Linear Prediction algorithm. We will now listen to the predictor without noise cancelling.
+\textit{In case you did not hear, you have just listened to the Filtered-x Least Means Squares combined with the Linear Prediction algorithm. We will now listen to the predictor without noise cancelling.}
 
 \textbf{The predicted sound}\\
-You are now listening to the predictor predicting 25 $m$s ahead in time. You are listening to an estimate of what I am going to say.  
+\textit{You are now listening to the predictor predicting 200 $\mu$s ahead in time. You are listening to an estimate of what I am going to say.}  
 
 
 \textbf{Summary}\\
 We hope you enjoyed the demonstration. Thank you for listening.
 
-%The sections in the manuscript are filtered in the following way:
+%
+\subsection{Data extraction}
+The files are stored automatically by "Record.m". The file should be renamed to fit what's recorded. 
+The sections in the manuscript are filtered in the following way and stored:
 \begin{table}[H]
 	\centering
 	\ra{1.3}
@@ -92,10 +123,11 @@ We hope you enjoyed the demonstration. Thank you for listening.
 	\label{tab:VoiceRecSections}
 \end{table}
 
-The recordings are available here: \\
+
+
+\subsection{Conclusion}
+A recording has been made and the complete manipulated recording is available here: \\
 \url{https://www.youtube.com/watch?v=aSd2qz_pUPA} 
-
-
 
 
 

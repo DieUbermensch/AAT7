@@ -1,10 +1,10 @@
 \section{Hardware Documentation}\label{sec:HardwareDocumentation}
 
-The following sections describes the requirements and the preceding considerations concerning the hardware chosen for real time implementation. 
+The following sections describes the requirements and the preceding considerations concerning the hardware that was considered for real time implementation. 
 
 \subsection{Requirements}\label{subsec:Requirements}
 
-The system is based on a feed-forward system combined for an adaptive algorithm controlled by an error microphone in order for the cancellation path to be adapted. The following requirements are determined with the key-idea of having as much computation time as possible and maintaining causality.
+The system is based on a feed-forward system combined for an adaptive algorithm controlled by an error microphone in order for the HP to be adapted. The following requirements are determined with focus on getting as much computation time as possible and maintaining causality.
 All requirements are made from the assumption that a stereo implementation is made, and a sampling rate of $f_{s}$ = 48 $k$Hz
 \begin{enumerate}
 	
@@ -12,6 +12,7 @@ All requirements are made from the assumption that a stereo implementation is ma
 	\begin{itemize}
 		\item[-]In order for the system to predict a direction of the noise, there must be $\geq$6 microphones to compare levels at the different locations.
 	\end{itemize}
+ \todoChristian{I don't think that should be there! and it's 5. Below should that not be a smaller number?}
 	
 	\item The hardware platform must be able to sample and output with a computation time of $\leq$2$\cdot 10 ^{-3}$ seconds, corresponding to $\leq$12 samples.\label{Req:NoOfSamples}
 	\begin{itemize}
