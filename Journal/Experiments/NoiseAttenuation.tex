@@ -61,26 +61,26 @@ The purpose of this experiment is to determine the SNR needed to not find speech
 
 
 \subsection{Settings/Description}
-The experiment aims at reproducing noise in an office, this is done by creating a sound field with four speakers. 
-The thought behind the experiment is to reproduce a real life situation in an office. Speech and office background noise is played on four speakers. Speaker C and D in \autoref{Fig:NoiseAttenuationExperimet} play speech signals and speaker A and B play ambient office noise. The listener whom is seated in front of the speakers will wear a pair of headphones playing speech. This setup emulates a phone call in a noisy office. The test will run six times for each test participant. The first test is a "trial" and will not be used in data analysis. The following three will run at "high level" and he last two test will run at "low level" with the SPLs shown in \autoref{tab:SPLCalibration}. 
+The experiment aims at reproducing noise in an office, this is done by creating a sound field with four loudspeakers. 
+The thought behind the experiment is to reproduce a real life situation in an office. Speech and office background noise is played on four loudspeakers. Genelec C and D in \autoref{Fig:NoiseAttenuationExperimet} play speech signals and Genelec A and B play ambient office noise. The participant whom is seated in front of the loudspeakers will wear a pair of headphones playing speech. This setup emulates a phone call in a noisy office. The test will run six times for each test participant. The first test is a "trial" and will not be used in data analysis. The following three tests will run at "high level" and he last two tests will run at "low level" with the SPLs shown in \autoref{tab:SPLCalibration}. 
 
-The participant has control of a slider using a keyboard adjusting the sound level of the 4 speakers in the room, allowing them to attenuate the background noise. their role will be to find the noise level where they can understand the speech on the headset, without being disturbed significantly by the noisy environment. The slider has a range from 0 dB to -40 dB with steps of 0.4dB. 
+The participant has control of a slider, using a keyboard, adjusting the SPL of the 4 loudspeakers in the room, allowing them to attenuate the background noise. Their role will be to find the noise level where they can understand the speech in the headphone, without being disturbed significantly by the noisy environment. The slider has a range from 0 dB to -40 dB with steps of 0.4 dB. 
 
-The Sound pressure levels of the sources are calibrated at the position of the listener. The calibration is made with all gain settings on the computer and in Simulink\textsuperscript{\textregistered} set to 0 dBFS (including the slider). "Valdemar" is placed at the listening position and the built in SPL-meter is used to find the levels of the noise from the two sets of speakers individually and combined. 
+The SPL levels of the sources are calibrated at the position of the participant. The calibration is made with all gain settings on the computer set to 0 dBFS (including the slider). "Valdemar" is placed at the listening position and the built in SPL-meter is used to find the levels of the noise from the two sets of loudspeakers individually and combined. 
 The same method is used to find the SPL of the sound in the headphones. The headphones are placed over the ears of "Valdemar" and a readout is made. The levels can be seen in \autoref{tab:SPLCalibration}.
 
 \begin{table} [H]
 \centering
 \label{SPLtableNA}
 	\begin{tabular}{c c}											\toprule
-		Sound source				& 	SPL [dBre20\micro Pa]	\\ 	\bottomrule
-		Speaker C \& D				& 	72.5					\\
-		Speaker A \& B				&	70						\\
-		All speakers				&	74						\\
+		Sound source				& 	SPL [$dB_{re20\micro Pa}$]	\\ 	\bottomrule
+		Genelec C \& D				& 	72.5					\\
+		Genelec A \& B				&	70						\\
+		All Loudspeakers				&	74						\\
 		Headphone high level		&	68						\\ 	
 		Headphone low level			&	58						\\	\bottomrule
 	\end{tabular}
-	\caption{SPL calibration table - tolerance $\pm$ 2.5dB.}
+	\caption{SPL calibration table - tolerance $\pm$ 2.5 dB SPL (Resolution of "Valdemar").}
 	\label{tab:SPLCalibration}
 \end{table}   
 
@@ -95,19 +95,19 @@ The same method is used to find the SPL of the sound in the headphones. The head
 %	\tikzsetnextfilename{AttenuationSetup}
 %	\input{figures/AttenuationExperiment/SchematicSetup.tex}
 	\includegraphics[width=\textwidth]{AttenuationExperiment/AttenuationSetup}
-	\caption{Schematic overview of the setup. "5" is the participant during tests or Valdemar during calibration.}
+	\caption{Schematic overview of the set-up. "5" is the participant during tests or "Valdemar" during calibration.}
 	\label{fig:AttenuationSetup}
   \end{subfigure}\qquad
     \begin{subfigure}[b]{0.4\textwidth}
     \includegraphics[width=\textwidth]{AttenuationExperiment/AttenuationSetupBack}
-    \caption{Setup from the back.}
+    \caption{Set-up from the back.}
     \label{fig:SetupFront}
 \vspace{2ex}
     \includegraphics[width=\textwidth]{AttenuationExperiment/AttenuationSetupFront}
-    \caption{Setup from the front.}
+    \caption{Set-up from the front.}
     \label{fig:SetupBack}
   \end{subfigure}
-  \caption{Picture of setup and the specific schematic. The guy wearing a headset is the participant.}
+  \caption{Picture of set-up and the specific schematic. The guy wearing a headphone is the participant.}
 \end{figure}
 
 
@@ -217,11 +217,11 @@ Results will be extracted manually from Simulink to a table during the test and 
 
 \subsection{Analysis}
 
-The test was conducted with 12 participants subject to six listening tests. The first test (enumerated 0) is omitted in analysis. The next three tests (1-3) were realized with a high sound level in the headset whereas the two last tests (4-5) were conducted with a lower sound level in the headset. 
+The experiment was conducted with 12 participants subject to six listening tests. The first test (enumerated 0) is omitted in analysis. The next three tests (1-3) were realized with a high sound level in the headphones whereas the two last tests (4-5) were conducted with a lower sound level in the headphones. 
 
 %Looking at results it appears that they make sense except for the test number 3 which have a broader set of results. As shown in the attenuation box plot in figure \ref{fig:ResAttExp}, given a specific test, more than half of the participant's values are within 8-10 dB with extreme values going from 0 to -28.4.
 
-As show in table \ref{tab:MeanListeningResults}, means of each high level tests are stable (within $\pm$ 2.4 dB) and means of each low level tests are even more stable (within $\pm$ 0.7dB). Both these values are below the tolerance that the signals are calibrated within. 
+As show in table \ref{tab:MeanListeningResults}, means of each high level tests are stable (within $\pm$ 2.4 dB SPL) and means of each low level tests are stable (within $\pm$ 0.7 dB SPL). Both these values are below the tolerance that the signals are calibrated within. 
 
 \begin{table}[H]
 	\centering
@@ -236,11 +236,11 @@ As show in table \ref{tab:MeanListeningResults}, means of each high level tests 
 	\caption{Means of the listening test.}
 	\label{tab:MeanListeningResults}
 \end{table}
-The test shows that the participants are quite static in their choice of attenuation between test. The variation between participants is much larger. This shows that a user will have approximately constant requirements for attenuation over time and source of noise. However noise that does not disturb one person might disturb another.  
+The experiment shows that the participants are quite stable in their choice of attenuation between test. The variation between participants is much larger. This shows that a user will have approximately constant requirements for attenuation over time and source of noise. However noise that does not disturb one person might disturb another.  
 %Our first attempt to model the achieved data is a limited success. A normal distribution was considered but the data did not fit well, since the data seems the be skewed. Conforming to the QQ plots, data are bouncing not randomly distributed around the line and our population does not follow a normal distribution. A one sided normal distribution fit is used since is conforms better with the results and will provide good predictability. Figure \ref{fig:ResAttExp} contains the figures extracted from our Matlab analysis. \\
 It should be remembered that 0 dB is gain compared to maximum noise level. As can be seen in table \ref{tab:SPLCalibration} a signal to noise ratio of 1 is present when the noise is attenuated 6 dB for high level tests. \\\\
-Figure \ref{fig:ResAttExp} shows that at least a quarter of the participants does not need a signal to noise ratio greater than 1 to not be disturbed by the noise. This group of people are probably not very interested in noise canceling headphones in the situation described to them in the experiment. \\
-It can also be seen in the box plot, that the majority (3/4) of participants are satisfied with an attenuation of 15 dB corresponding to a SNR of 10 dB. This value is chosen as the guideline for required attenuation of the system. Some of the last quarter of the participants were extremely sensitive to noise, and it would prove difficult to make a system that would satisfy their needs. 
+Figure \ref{fig:ResAttExp} shows that at least a quarter of the participants does not need a signal to noise ratio greater than 1 to not be disturbed by the noise. This group of people are probably not interested in noise canceling headphones in the situation described to them in the experiment. \\\\
+It can also be seen in the box plot, that the majority (3/4) of participants are satisfied with an attenuation of 15 dB corresponding to a SNR of 10 dB. %Some of the last quarter of the participants were extremely sensitive to noise, and it would prove difficult to make a system that would satisfy their needs. 
 
 \begin{figure}[H]
 	\centering
@@ -249,13 +249,12 @@ It can also be seen in the box plot, that the majority (3/4) of participants are
 	\caption{Box plot showing the mean of each test with respective quartiles plotted.}
 	\label{fig:ResAttExp}
 \end{figure}
-to
 
 \subsection{Changes after pilot test}
-Before performing the experiment a pilot test was conducted. This section briefly discus the changed made to the original test design. 
-During the pilot the instructions were shorter and read aloud. This resulted in a lot of questions after the instructions was given. For the main test a written instruction set was written to better prepare the participants for the upcoming test, so people could reread sections if needed. This resulted in fewer questions after the instruction. \\
-The amount of tests per participant was also increased, which allowed testing at more than one gain setting in the headphones. \\
-The speakers were lowered and turned upside down to put the tweeter closer to ear height. 
+Before performing the experiment a pilot test was conducted. This section briefly discuss the changes made to the original test design. 
+During the pilot the instructions were shorter and read aloud. This resulted in a lot of questions after the instructions was given. For the main test a written instruction set was written to better prepare the participants for the upcoming test, so people could reread sections if needed. This resulted in fewer questions after the instruction. \\\\
+The amount of tests per participant were increased, which allowed testing at more than one gain setting in the headphones. \\\\
+The loudspeakers were lowered and turned upside down to put the tweeter closer to ear height. 
 
 \subsection{Notes from operator}
 \begin{itemize}
@@ -274,10 +273,10 @@ The speakers were lowered and turned upside down to put the tweeter closer to ea
 
 \subsection{Conclusion}
 %From the data collected conclusions can now be drawn over our study population. 
-Overall the results during iterations of the test for a given participant are very stable, within $\pm$ 2.5 dB which was the calibration uncertainty. 
+Overall the results during iterations of the test for a given participant are very stable, within $\pm$ 2.5 dB SPL which was the calibration uncertainty. 
 %  Secondly, even if test results between each participants varies a lot, three population families can be find: "ultra sensitive" from - 26db to - 19db , "sensitive" from -14db to -8db  and "less sensitive" from -6db to 0db. 
 
-The less sensitive population (1/4) might not be interested in ANC headsets. In order to satisfy most of the people (3/4) the experiment shows that a signal to attenuated noise ratio of minimum 10 dB should be achieved by the system.  
+In order to satisfy most of the people (3/4) the experiment shows that a signal to attenuated noise ratio of minimum 10 dB should be achieved by an ANC system.  
 %, our system needs to consider critical values of our experiment.
 
 
