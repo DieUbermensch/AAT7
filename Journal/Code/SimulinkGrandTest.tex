@@ -93,7 +93,7 @@ y = xIn*CPCoef;
 A simulation of the total system with different ADC and DAC delay is to be made to see if delays affect the attenuation of the system. The delays are varied from 2 to 50 in steps of 2. For each simulation the RMS of the output is compared to the RMS of the input filtered with the HP transfer function using \autoref{eq:testANC2}. 
 
 \begin{equation}\label{eq:testANC2}
-	Attenuation=20*log_{10}\bigg(\frac{\sqrt{\sum\limits_{i=1}^{N}HPSig^2[n-i]}}{\sqrt{\sum\limits_{i=1}^{N}ANCsig^2[n-i]}}\bigg)
+	Attenuation=20 \cdot log_{10} \left (\frac{\sqrt{\sum\limits_{i=1}^{N}HPSig^2[n-i]}}{\sqrt{\sum\limits_{i=1}^{N}ANCsig^2[n-i]}}  \right )
 \end{equation}
 
 The combined algorithm is not simulated a delay 0, as the predictor would be redundant. All other results are shown on \autoref{fig:delayRatioTotal} together with the results of the system with no predictor described in \autoref{sec:ANCSimulation}.
