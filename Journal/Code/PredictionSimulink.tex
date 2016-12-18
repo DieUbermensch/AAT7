@@ -154,7 +154,7 @@ The results are stored in different files automatically, and are shown in \autor
 \label{tb:fsPredictApp}
 \end{table}  
  
-\subsubsection{Automated tests - $N$ \& $O$}
+\subsubsection{Automated test - $N$ \& $O$}
 Here the automated test setup described in \autoref{sec:SimulinkAuto} is used.\\ 
 The PG with different prediction orders is measured. This is the frame length parameter ($N$). The overlap parameter ($O$) is also varied. \\ 
 Here the $P$ is set to 43. $N$ is varied from 100-3000 in steps of 100. Overlap, $O$ is varied from 0 to N-100. The used window is the Hamming window. The results are plotted using the surf function i Matlab, and the viewing angle is set to "from above" resulting in a 2D plot. It should be noted that the measured points are the crossings of the black lines and not the coloured squares. The mesh() plot could be used to avoid this, if a less readable plot could be accepted. 
@@ -176,7 +176,9 @@ The same experiment is performed with $P=10$.
 	\label{fig:Predict10App}
 \end{figure}
 
-Using $N=1200$ and $O=1100$ the PG of the predictor for different P is determined. 
+
+\subsubsection{Automated test - $P$}
+Using $N=1200$ and $O=1100$ the PG of the predictor for different $P$ is determined. 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{PvarApp}	
@@ -185,3 +187,16 @@ Using $N=1200$ and $O=1100$ the PG of the predictor for different P is determine
 	\label{fig:PredictPApp}
 \end{figure}
 
+\subsubsection{Automated test - $M$}
+Using $N=1200$ and $O=1100$ the PG of the predictor for different M is determined. The test is made with both $P=1$ and $P=10$. 
+\begin{figure}[H]
+	\centering
+	\tikzsetnextfilename{MvarApp}	
+	\input{figures/PredictionAppendix/Mvar.tex}
+	\caption{$PG$ as a function of $M$ for $P=1$ (blue) and $P=10$ (red).  $N=1200$ and $O=1100$}
+	\label{fig:PredictMApp}
+\end{figure}
+For $P=1$ a low $M$ can be used. When the filter is cascaded to predict 10 samples $M=N$ is required. 
+
+\subsection{Conclusion}
+The optimal parameters for $P=10$ have been determined to $N=1200$ and $O=1100$. Furthermore it has been shown that $M=N$ is required if $P=10$. 

@@ -44,7 +44,7 @@ Where: $c_j$ is the coefficients of a measured transfer function from the headph
 
 %When implementing the system, delays exist due to the anti-aliasing and reconstruction filters. The delays of the system exceeds the propagation time of sound from the reference microphone to the headphone loudspeaker resulting in poor performance. Therefore an LP-algorithm is proposed to predict future samples in order to decrease the effect of the time delays.
 \subsection{Measuring HP and CP Transfer Functions}
-The two transfer functions HP, shown on \autoref{fig:HPtransferFunction}, and CP, shown on \autoref{CancellationPathImpulseResponseCompare}, were measured on a set of Beyerdynamic DT 770 Headphones in an anechoic chamber using a HATS. The setup is similar to \autoref{fig:SystemOverview} except the DSP (4) is replaced by a soundcard. 
+The two transfer functions HP, shown on \autoref{fig:HPtransferFunction}, and CP, shown on \autoref{CancellationPathImpulseResponseCompare}, were measured on a set of Beyerdynamic DT 770 Headphones in an anechoic chamber using a HATS. The setup is similar to \autoref{fig:SystemOverview} except the DSP (4) is replaced by a sound card. 
 \\\\
 When measuring HP a small microphone (spmMic) is placed by the headphone loudspeaker (2) and a loudspeaker is placed 1.6 m from the centre of the HATS at 0$^\circ$ angle of incidence. A logarithmic chirp (50 Hz -- 24 $k$Hz) is played through the loudspeaker and recorded using the reference microphone (1) and spmMic. 
 \\\\{}
@@ -77,7 +77,7 @@ The full impulse responses are not used in the simulation. Only frequencies abov
 Speech is characterized as a quasiperiodic signal which can be split into two main classes; voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 Hz -- 500 Hz). Unvoiced sounds are characterized as stochastic. Speech is a non-stationary signal and can only be assumed Wide Sense Stationary (WSS) for periods of 20 $m$s -- 30 $m$s \cite{Speech}. 
 
 \subsection{Linear Prediction of Speech}
-The outline of the prediction system is shown in figure \ref{fig:LinearPredictionOverview}. The system predicts $\hat{x}[n+P]$ by adapting linear prediction coefficients (LPCs) $\hat{\bar{a}}$, in a Wiener filter, determined using a framebased Auto Correlation Function (ACF) estimation $\hat{r}_x[l]$ \cite{LinearPrediction}.   
+The outline of the prediction system is shown in figure \ref{fig:LinearPredictionOverview}. The system predicts $\hat{x}[n+P]$ by adapting linear prediction coefficients (LPCs) $\hat{\bar{a}}$, in a Wiener filter, determined using a frame-based Auto Correlation Function (ACF) estimation $\hat{r}_x[l]$ \cite{LinearPrediction}.   
 
 \begin{figure}[H]
 	\centering
@@ -89,7 +89,7 @@ The outline of the prediction system is shown in figure \ref{fig:LinearPredictio
 \end{figure}
 
 
-The ACF is found by biased nonrecursive estimation, shown in \autoref{eq:nonrecursive}, with framelength, $N$. The nonrecursive estimation uses a well defined window in order to avoid discontinuities. Therefore a Hamming window, w, is applied being one of the most widely used in speech encoding \cite{LinearPrediction}. Overlapping, $O$, can be used to increase the update rate of the ACF without having a small framelength.  
+The ACF is found by biased non-recursive estimation, shown in \autoref{eq:nonrecursive}, with framelength, $N$. The non-recursive estimation uses a well defined window in order to avoid discontinuities. Therefore a Hamming window, w, is applied being one of the most widely used in speech encoding \cite{LinearPrediction}. Overlapping, $O$, can be used to increase the update rate of the ACF without having a small framelength.  
 \begin{equation}\label{eq:nonrecursive}
 %%r_x[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} x_l[n]w_l[m-n]
 \hat{r}_x[l] = \sum^{N}_{n=\left| l\right|} x_l[n]w_l[N-n]
