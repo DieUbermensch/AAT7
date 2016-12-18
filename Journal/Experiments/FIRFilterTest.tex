@@ -70,7 +70,7 @@ RET
 
 
 \subsection{Test of the filter}
-A reference filter is designed in MATLAB\textsuperscript{\textregistered}, for testing. The design of the filter is done without any specific attenuation in mind, it is merely used to test if the same response is replicated on the DSP. A windowing design method is used in MATLAB\textsuperscript{\textregistered}.
+A reference filter is designed in Matlab, for testing. The design of the filter is done without any specific attenuation in mind, it is merely used to test if the same response is replicated on the DSP. A windowing design method is used in Matlab.
 
 %By running \path{PerformFIRExperiment.m} filter coefficients are determined, and a filter is designed as such:
 
@@ -151,7 +151,7 @@ The DSP is connected according to figure \ref{Fig:FIRSetupDiagram}, where the NI
 	\begin{subfigure}[b]{.495\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../Journal/Experiments/Figures/Fullsetup2}
-		\caption{The DSP loaded with the FIR-filter}
+		\caption{The DSP loaded with the FIR-filter.}
 		\label{fig:FIRFullSetup2}
 	\end{subfigure}
 	\caption{Overall set-up of the experiment.}
@@ -171,9 +171,9 @@ The measuring system on the computer are used with the following settings,
 
 The DSP board is connected to the measuring system in the manner described below:
 	\begin{itemize}
-		\item Connect Item 1's "A0-0" to Item 2's "IN 1R"
-		\item Connect Item 1's "A0-0" to Item 1's "A1-0"
-		\item Connect Item 1's "A1-1" to Item 2's "OUT 1R"
+		\item Connect the PC soundcard's "A0-0" to DSP boards "IN 1R".
+		\item Connect the PC soundcard's "A0-0" to its own "A1-0".
+		\item Connect the PC soundcard's "A1-1" to DSP boards "OUT 1R".
 	\end{itemize}
 	
 \subsubsection{Performing Experiment}
@@ -182,7 +182,7 @@ to perform a sine sweep on the DSP, the following step are to be made.
 		\item Upload filter to be tested onto DSP.
 		\item Open "SineSweep" application.
 		\begin{itemize}
-			 \item Set instruments on Item 1 to comply with the list \autoref{Eqp_Sett_FIR}.
+			 \item Set the PC soundcard to comply with the list \autoref{Eqp_Sett_FIR}.
 		\end{itemize}
 		\item Press 'Start'.
 		\item Save file as "SineSweepTest.txt" and include in FIRFIlterTest-foler.
@@ -192,11 +192,11 @@ to perform a sine sweep on the DSP, the following step are to be made.
 \subsubsection{Data Extraction}
 The data from the experiment is loaded as follows:
 	\begin{enumerate}
-		\item Open MATLAB\textsuperscript{\textregistered} and run script \path{SweptSineLoad.m} to extract and plot data from test
+		\item Open Matlab and run script \path{SweptSineLoad.m} to extract and plot data from test
 		\item Run \path{PerformFIRExperiment.m} to extract and plot data from generated and simulated filters
 	\end{enumerate}
 
-\autoref{Fig:FIRComparison} shows comparison between the designed quantized filter in MATLAB\textsuperscript{\textregistered} and the measured filter. The Blue graph shows the designed filter and the red graph shows the measured response. The phase response of the filter is not shown, since the FIR filter by nature is linear in phase.
+\autoref{Fig:FIRComparison} shows comparison between the designed quantized filter in Matlab and the measured filter. The Blue graph shows the designed filter and the red graph shows the measured response. The phase response of the filter is not shown, since the FIR filter by nature is linear in phase.
 	
 %\begin{figure}[H]
 %	\centering
