@@ -15,9 +15,9 @@ Note that only the active part is tested, and not the passive damping made by th
 		1	&	B\&K Head And Torso Simulator "Henry" Type 4128	& 08453	\\
 		2	&	B\&K Ear Simulator Type 4159				& 08453		\\
 		3	&	Sound card RME Fireface 802					& 86838		\\
-		4	&	Computer running simulink					& NaN		\\
+		4	&	Computer running Simulink					& NaN		\\
 		5	&	B\&K Sound Calibrator Type 4230				& 08155		\\ 
-		6	&	Genelec speaker								& 33990		\\ 
+		6	&	Genelec 1031-A								& 33990		\\ 
 		7	& 	B\&K Microphone Power Supply Type 2804		& 07304		\\
 								\bottomrule
 							& Tested Headphones 			& 			\\
@@ -26,6 +26,8 @@ Note that only the active part is tested, and not the passive damping made by th
 		8(b)	& Bose QuietComfort 15 							& NaN 		\\
 		8(c)	& Bose QuietComfort 25						 	& NaN		\\
 		8(d)	& B\&O BEOPLAY H8 								& NaN		\\
+		8(e)	& Sony MDR-1000X 								& NaN		\\
+		8(f)	& Sennheiser PXC-550 							& NaN		\\
 								\bottomrule
 	\end{tabular}
 	\caption{Table over equipment used in test.}
@@ -45,24 +47,24 @@ Note that only the active part is tested, and not the passive damping made by th
 \subsection{Settings/Description}
 \subsubsection{Control and calibration}
 \begin{itemize}
-	\item The speaker (6) is placed 1.6 meters from the HATS.
+	\item The speaker (6) is placed 1.6 meters from the HATS (1).
 	\item The microphone in the HATS (2) is calibrated on the computer using Simulink\textsuperscript{\textregistered}.
 	\begin{itemize} 
-		\item Calibration is made @ 1 $k$Hz using the calibrator with adapter for the ear simulator. This should yield a signal of 95.6 dB. The measured intensity in MATLAB\textsuperscript{\textregistered} however was 78.12 so all measurements are multiplied by 7.48 to get a calibrated signal in Matlab\textsuperscript{\textregistered}.
+		\item Calibration is made @ 1 $k$Hz using the calibrator (5) with adapter for the ear simulator (2). This should yield a signal of 95.6 dB. The measured intensity in Matlab\textsuperscript{\textregistered} was 78.12 dB so all measurements are multiplied by 7.48 to get a calibrated signal in Matlab\textsuperscript{\textregistered}.
 	\end{itemize}
 \end{itemize}
 
 \subsubsection{Equipment settings}
 \begin{itemize}
 	\item This experiment is performed with a sampling rate of, $f_{s}$ = 48 $k$Hz. 
-	\item In the mixing console on the computer 3 take care to turn on the "inst"-option. The following gain settings are present: 		
+	\item In the mixing console on the computer (3) take care to turn on the "inst"-option. The following gain settings are present: 		
 	\begin{itemize}
-		\item Line level gain is 0 dB
-		\item Ear Microphones has gain +30 dB set on the front of the RME
+		\item Line level gain is 0 dB.
+		\item Ear microphone has gain +30 dB set on the front of the RME Fireface 802.
 		%\item Ref Microphones has gain +48 dB
 		%\item Speaker Microphones has gain +48 dB
 	\end{itemize}
-	\item All settings on the computer is set to 0 dBFS
+	\item All settings on the computer is set to 0 dBFS.
 \end{itemize}
 	
 	
@@ -79,7 +81,7 @@ Note that only the active part is tested, and not the passive damping made by th
 		\caption{Set-up from an angle.}
 		\vspace{2ex}
 		\includegraphics[width=\textwidth]{../Journal/Experiments/TestofConsumerHeadphones/Pictures/OtherBrandsSetupSide.jpg}
-		\caption{Set-up form the side.}
+		\caption{Set-up from the side.}
 	\end{subfigure}
 	\caption{The test set-up form different angles with the Bose QuietComfort 25 headphone.}
 \label{fig:OtherBrandsPicture}
@@ -89,32 +91,32 @@ Note that only the active part is tested, and not the passive damping made by th
 \subsection{Procedure}
 	\subsubsection{Set-up}
 	\begin{enumerate}
-		\item Connect cable from the RMEs "Out 1L" to the speakers "Line in"
-		\item Connect cable from the RME's "Out 1R" to the RME's "In 1L"
-		\item Connect cable from the microphone in the ear simulator (2) to the microphone power supply's (7) "Input"
-		\item Connect cable from the microphone power supply's "Output" to the RME's "IN 2R"
-		\item Connect USB-cable from the computer to the RME
+		\item Connect cable from the RME Fireface 802's (3) "Out 1L" to the Genelecs (6) "Line in".
+		\item Connect cable from the RME Fireface 802's (3) "Out 1R" to the RME Fireface 802's (3) "In 1L".
+		\item Connect cable from the microphone in the ear simulator (2) to the microphone power supply's (7) "Input".
+		\item Connect cable from the microphone power supply's (7) "Output" to the RME Fireface 802's (3) "IN 2R".
+		\item Connect USB-cable from the computer (4) to the RME Fireface 802 (3).
 	\end{enumerate}
 
 	\subsubsection{Performing Experiment}
 	\begin{enumerate}
-		\item Open Simulink\textsuperscript{\textregistered} and open and run file \path{OtherBrands.xls}
+		\item Open Simulink and run file \path{OtherBrands.slx}.
 		\begin{itemize} 
-			\item The simulations outputs a speech signal at 0 dBFS over the span of 12 seconds
+			\item The simulations outputs a speech signal at 0 dBFS over the span of 12 seconds.
 			\begin{itemize}
 				\item [] The signal constructed using speech-files from "The Archimedes Project" by Bang \& Olufsen. \\
 				The signal is composed of three seconds of the UK male anechoic sample followed by three seconds of silence, followed by the UK female anechoic sample, and ends with another three seconds of silence.
 			\end{itemize}
-			\item The simulation runs for 14 seconds
+			\item The simulation runs for 14 seconds.
 		\end{itemize}
-		\item Rename generated file \path{GeneratedANC} according to headphone tested, and whether or not ANC was enabled. E.g. \path{Denonon[1].wav} for the first test of the Denon AH GC20 headhpone with ANC enabled. Names in \path{evaluatePerformance.m}-script is named accordingly.
+		\item Rename generated file \path{GeneratedANC} according to the headphone tested, and whether or not ANC was enabled. E.g. \path{Denonon[1].wav} for the first test of the Denon AH GC20 headhpone with ANC enabled. Names in \path{evaluatePerformance.m} is named accordingly.
 
 	\end{enumerate}
 	Perform this experiment five times for each headphone where the headphone is removed and remounted on the HATS between measurements. 
 		
 \subsection{Data Extraction}
 \begin{enumerate}
-	\item Open MATLAB\textsuperscript{\textregistered} and run script \path{evaluatePerformance.m}
+	\item Open Matlab and run script \path{evaluatePerformance.m}.
 \end{enumerate}
 
 From performing the experiment, a list of files were generated, ten for each device tested; five with ANC enabled and five with ANC disabled. The list can be seen below, where [i] indicates the iteration of the experiment.
@@ -128,6 +130,10 @@ From performing the experiment, a list of files were generated, ten for each dev
 	\item \path{BoseQC25off[i].wav}		(Bose QuietComfort 25 w/o ANC)
 	\item \path{BOH8on[i].wav}			(B\&O BEOPLAY H8 w/ ANC)
 	\item \path{BOH8off[i].wav}			(B\&O BEOPLAY H8 w/o ANC)
+	\item \path{Sonyon[i].wav}			(Sony MDR-1000X  w/ ANC)
+	\item \path{Sonyoff[i].wav}			(Sony MDR-1000X  w/o ANC)
+	\item \path{Sennon[i].wav}	(Sennheiser PXC-550  w/ ANC)
+	\item \path{Sennoff[i].wav}	(Sennheiser PXC-550  w/o ANC)
 \end{itemize}
 
 
@@ -169,6 +175,24 @@ According to the measurement Bose QuietComfort 25 gains significantly between 1 
 \end{figure}
 
 In figure \autoref{fig:OtherBrandsTestCompare} a comparison can be seen, this representation provides a better overview of the attenuation of four headphones.
+
+\begin{figure}[H]
+	\centering
+	%\tikzsetnextfilename{Sony1000Compare}
+	%\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/Sony1000Compare(fig).tex}
+	\caption{Sony MDR-1000X measured in an anechoic chamber and averaged over five measurements, results were filtered using a 1/3 octave filter bank.}
+	\label{fig:Sony1000Comp}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	%\tikzsetnextfilename{SennCompare}
+	%\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/SennCompare(fig).tex}
+	\caption{Sennheiser PXC 550 measured in an anechoic chamber and averaged over five measurements, results were filtered using a 1/3 octave filter bank.}
+	\label{fig:QC25Comp}
+\end{figure}
+
+
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{ComparedConusmerHPApp}
@@ -178,13 +202,6 @@ In figure \autoref{fig:OtherBrandsTestCompare} a comparison can be seen, this re
 \end{figure}
 
 
-%\begin{figure}[H]
-%	\centering
-%	\tikzsetnextfilename{ComparedConusmerHPApp}
-%	\input{../Journal/Experiments/TestofConsumerHeadphones/Plots/SmoothCompareAppendix(fig).tex}
-%	\caption{Comparison of the Denon(blue), Bang \& Olufsen H8(red), Bose QC15(yellow) and Bose QC25(purple) fitted curves.}
-%	\label{fig:OtherBrandsTestCompare}
-%\end{figure}
 
 
 \subsection{Conclusion}

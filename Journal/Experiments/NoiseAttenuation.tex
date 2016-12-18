@@ -2,10 +2,10 @@
 
 \subsection{Purpose}
 
-The purpose of this experiment is to determine the SNR needed to understand speech in a noisy office environment. 
+The purpose of this experiment is to determine the SNR needed to not find speech annoying in a noisy office environment. 
 
 \subsection{AAU number list}
-The materials used for the experiments is noted in table \ref{tab:UsedEquipmentListningAttenuation}. See figure \ref{fig:AttenuationSetup} for the setup.
+%The materials used for the experiments is noted in table \ref{tab:UsedEquipmentListningAttenuation}. See figure \ref{fig:AttenuationSetup} for the setup.
 
 \begin{table}[h]
 	\centering
@@ -17,10 +17,10 @@ The materials used for the experiments is noted in table \ref{tab:UsedEquipmentL
 		3      	&  Soundcard RME Fireface 802           & 86838		\\
 		4      	&  Computer	running Simulink			& NaN		\\  
 		5		&  Head And Torso Simulator "Valdemar" with SPL-meter					& 2150-04	\\
-		6      	&  Genelec speaker A					& 33984		\\
-		7      	&  Genelec speaker B					& 33989		\\
-		8      	&  Genelec speaker C					& 33987		\\
-		9      	&  Genelec speaker D					& 33990		\\ \bottomrule 
+		6      	&  Genelec 1031-A A					& 33984		\\
+		7      	&  Genelec 1031-A B					& 33989		\\
+		8      	&  Genelec 1031-A C					& 33987		\\
+		9      	&  Genelec 1031-A D					& 33990		\\ \bottomrule 
 	\end{tabular}
 	\caption{Equipment used in the experiment.}
 	\label{tab:UsedEquipmentListningAttenuation}
@@ -35,11 +35,11 @@ The materials used for the experiments is noted in table \ref{tab:UsedEquipmentL
 	\begin{tabular}{c c} \toprule
 		\centering
 		 Item:			 			& Height [cm] 	\\ \bottomrule
-		Speakers					  	& 100				\\
+		Genelecs					  	& 100				\\
 		The ear of participant			& 110				\\ 
 		Table							& 90				\\ \bottomrule 
 	\end{tabular}
-	\caption{Height of setup. Speakers are placed with tweeters downwards.}
+	\caption{Height of items in the set-up. Loudspeakers are placed with tweeters downwards.}
 	\label{Tab:NoiseAttenuationDimensions}
 \end{table}
 
@@ -61,7 +61,7 @@ The materials used for the experiments is noted in table \ref{tab:UsedEquipmentL
 
 
 \subsection{Settings/Description}
-The setting aim at reproducing noise in an office, this is done by creating a sound field with four speakers. 
+The experiment aims at reproducing noise in an office, this is done by creating a sound field with four speakers. 
 The thought behind the experiment is to reproduce a real life situation in an office. Speech and office background noise is played on four speakers. Speaker C and D in \autoref{Fig:NoiseAttenuationExperimet} play speech signals and speaker A and B play ambient office noise. The listener whom is seated in front of the speakers will wear a pair of headphones playing speech. This setup emulates a phone call in a noisy office. The test will run six times for each test participant. The first test is a "trial" and will not be used in data analysis. The following three will run at "high level" and he last two test will run at "low level" with the SPLs shown in \autoref{tab:SPLCalibration}. 
 
 The participant has control of a slider using a keyboard adjusting the sound level of the 4 speakers in the room, allowing them to attenuate the background noise. their role will be to find the noise level where they can understand the speech on the headset, without being disturbed significantly by the noisy environment. The slider has a range from 0 dB to -40 dB with steps of 0.4dB. 
@@ -187,7 +187,6 @@ Results will be extracted manually from Simulink to a table during the test and 
 	\caption{Results of the listening test. }
 	\label{tab:ListeningResults}
 \end{table}
-
 %\begin{table}[H]
 %	\centering
 %	\begin{tabular}{*{7}{c}}
