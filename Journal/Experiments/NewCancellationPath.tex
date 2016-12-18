@@ -33,7 +33,6 @@ The purpose of this experiment is to make a model of the CP, by determining its 
 	\caption{Total overview of the system.}
 	\label{SchematicOverviewCP}
 \end{figure}
-\todoMax{The amplifiers are both in the anechoic }
 
 \subsection{Settings/Description}
 \label{SettingsCacellationPath}
@@ -43,10 +42,10 @@ Calibration of the microphone and associated preamplifier is done on the compute
 \subsubsection{Control and calibration}
 \begin{itemize}
 	%\item Microphone sensitivity is controlled to 11.6 $m$V/Pa.
-	\item Error micro calibration signal yields a spike at 61 dB SPL @1000 Hz, the expected value is 95,6 dB which then requires a +34.6 dB SPL adjustment.
-	\item Reference micro calibration signal yields a spike at 66.07 dB SPL @1000 Hz, the expected value is 94 dB which then requires a +28 dB SPL adjustment.
+	\item Error microphone calibration signal yields a spike of 61 dB SPL @1000 Hz, the expected value is 95,6 dB which then requires a +34.6 dB SPL adjustment.
+	\item Reference micro calibration signal yields a spike of 66.07 dB SPL @1000 Hz, the expected value is 94 dB which then requires a +28 dB SPL adjustment.
 \end{itemize}
-\todoMax{write what they should have been}
+
 
 \subsubsection{Equipment settings}
 \begin{itemize}
@@ -97,7 +96,7 @@ Calibration of the microphone and associated preamplifier is done on the compute
 	\item Start Simulink\textsuperscript{\textregistered} and open and run file \path{SimulinkSystemCancellationPath.xls}.
 	\begin{itemize} 
 		\item The simulations outputs a logarithmic chirp from 20 Hz to 20,000 Hz with an amplitude of 0 dBFS over the span of five seconds.
-		\item The simulation runs for 7 seconds. \todoMax{I think we used 7 - pls check}
+		\item The simulation runs for 7 seconds. 
 	\end{itemize}
 	%\item Through Simulink\textsuperscript{\textregistered} play "LogChirp.wav" from item 5 via item 4
 	

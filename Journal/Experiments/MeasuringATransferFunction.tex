@@ -38,4 +38,10 @@ H(f)=\dfrac{\mathscr{F}(y(t)\star x(t))} {\mathscr{F}(x(t)\star x(t))}=
 \end{equation}  
  %The deconvolution should be made as a division in frequency domain as this is more robust towards noise in the system. 
  
- \todoChristian{insert the function code}
+ \subsection{Matlab function}
+ Here a function that can be used to find the transfer function is given. The return value is the response in frequency domain. If an impulse response is take the inverse Fourier transform of the return value. 
+ \begin{lstlisting}[language=MATLAB, caption=getTrans.m]
+function [ res ] = getTrans( sig,ref )
+	res=(fft(sig).*conj(fft(ref)))./(fft(ref).*conj(fft(ref)));
+end
+ \end{lstlisting} 

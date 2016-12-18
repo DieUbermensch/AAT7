@@ -11,14 +11,14 @@ This appendix will go through the design of the system using a feedforward topol
 \end{figure}  
 \todoKiis{I don't think we ever name 1,2,3 and 4 in the appendixes?}
 
-Because the cancellation path is LTI, the adaptive algorithm adjusting the cancellation path (CP) estimate will be omitted from the system. This means that the copy of the CP estimate will be a constant impulse response. The CP has been found as described in \autoref{sec:CPjournalDT770}. The used feedforward control system is shown in \autoref{fig:BasicSystem} and is described in \autoref{sec:BasicSystem}.
+Because the cancellation path is LTI, the adaptive algorithm adjusting the cancellation path (CP) estimate will be omitted from the system. This means that the copy of the CP estimate will be a constant impulse response. The CP has been found as described in \autoref{sec:DT770CPjournal}. The used feedforward control system is shown in \autoref{fig:ANCFeedforwardAppendix} and is described in \autoref{sec:BasicSystem}.
 
 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{ANCFeedForwardAppendix}
 	\input{figures/ArticleIllustrations/ANCFeedForwardAppendix.tex}
-	\caption{Block diagram of adaptive feedforward ANC system. Expansion of DSP (4) from \autoref{fig:SystemOverview}.}
+	\caption{Block diagram of adaptive feedforward ANC system. Expansion of DSP (4) from \autoref{fig:SystemHeadphone}.}
 	\label{fig:ANCFeedforwardAppendix}
 \end{figure}
 
