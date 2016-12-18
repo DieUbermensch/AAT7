@@ -22,11 +22,11 @@ The hypothesis is that the angle on incidence will influence both the time delay
 		2	&	B\&K ½'' Condenser Microphone Type 4134 	& 08130		\\
 		3	&	Beyerdynamic DT 770 Headphones				& 2037-18		\\
 		4	&	Soundcard RME Fireface 802					& 86838		\\
-		5	&	Computer running Simulink\textsuperscript{\textregistered}								& NaN		\\
+		5	&	Computer running Simulink								& NaN		\\
 		6	&	G.R.A.S. 26-AK Standard preamplifier		& 52665		\\
 		7	&	B\&K Sound Calibrator Type 4230				& 08155		\\ 
 		8	&	Knowles FG-23329 microphone					& NaN		\\
-		9	&	Genelec 1031-A speaker								& 33990		\\ 
+		9	&	Genelec 1031-A loudspeaker								& 33990		\\ 
 		10	&	Preamp for FG-23329  microphone	& NaN\\
 		11	& 	B\&K Microphone Power Supply Type 2804		& 07304		\\
 		\bottomrule
@@ -48,16 +48,16 @@ The experiment uses a total of three microphones:
 	\begin{itemize}
 		\item The B\&K 4134 is chosen.
 	\end{itemize}
-	\item For the speaker; the limiting criterion of this is the lower roll of. However transfer functions between the microphones are measured, so absolute flatness is not critical.
+	\item For the loudspeaker; the limiting criterion of this is the lower roll of. However transfer functions between the microphones are measured, so absolute flatness is not critical.
 	\begin{itemize}
 		\item The Genelec 1031-A is used as sound source.
 	\end{itemize}
-	\item The measurement system uses a RME Fireface 802 controlled using Simulink\textsuperscript{\textregistered}. Impulse responses are calculated using the method described in \autoref{Sec:MeasATransFunc}. 
+	\item The measurement system uses a RME Fireface 802 controlled using Simulink. Impulse responses are calculated using the method described in \autoref{Sec:MeasATransFunc}. 
 \end{itemize}
 
 \subsection{Diagram}
 
-Figure \ref{fig:AngleOfIndDiagram} shows the set-up of the experiment. When rotating the head, different angles between the line created by the three microphones and the speaker is obtained. The Angle is adjusted between measurements as described in section \ref{sec:AngleDescription}. %It is possible to determine the angle by measuring the difference in time of arrival between the speaker microphone and reference microphone. This is further described in section \ref{sec:AngleDescription}.
+Figure \ref{fig:AngleOfIndDiagram} shows the set-up of the experiment. When rotating the head, different angles between the line created by the three microphones and the loudspeaker is obtained. The Angle is adjusted between measurements as described in section \ref{sec:AngleDescription}. %It is possible to determine the angle by measuring the difference in time of arrival between the speaker microphone and reference microphone. This is further described in section \ref{sec:AngleDescription}.
 \todoOliver{I have no illustrator and that HATS is sad, because it's missing its nose :( }
 \begin{figure}[H]
 	\centering
@@ -79,7 +79,7 @@ Figure \ref{fig:AngleOfIndDiagram} shows the set-up of the experiment. When rota
 	\caption{Placement of microphones and rotation.}
 	\label{fig:AngleOfIndDiagram}
 \end{figure}
-The connections in the setup can be seen in \autoref{Fig:AngleOfIncidenceSetup}
+The connections in the set-up can be seen in \autoref{Fig:AngleOfIncidenceSetup}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/AngleOfIncidenceSetup.pdf}
@@ -107,18 +107,18 @@ Measurements are made for the following angles:
 \subsubsection{Control and calibration} \label{sec:calAngInc}
 
 \begin{itemize}
-	\item For the Ref microphone, calibration is made at 1 $k$Hz using the B\&K 4230 as calibrator. This should yield a signal of 93.6 dB as it is a pressure field microphone. The measured intensity in MATLAB\textsuperscript{\textregistered} was 68.99 dB so all measurements are multiplied by 17.00 to get a calibrated signal in MATLAB\textsuperscript{\textregistered}. 
-	\item For the Error microphone, calibration is made at 1 $k$Hz using the B\&K 4230 as calibrator with adapter B\&K 0741 for the ear of the HATS. This should yield a signal of 95.6 dB, according to the datasheet of the HATS. The measured intensity in MATLAB\textsuperscript{\textregistered} was 78.22 dB so all measurements are multiplied by 7.40 to get a calibrated signal in MATLAB\textsuperscript{\textregistered}. 
+	\item For the Ref microphone, calibration is made at 1 $k$Hz using the B\&K 4230 as calibrator. This should yield a signal of 93.6 dB as it is a pressure field microphone. The measured intensity in Matlab was 68.99 dB so all measurements are multiplied by 17.00 to get a calibrated signal in Matlab. 
+	\item For the Error microphone, calibration is made at 1 $k$Hz using the B\&K 4230 as calibrator with adapter B\&K 0741 for the ear of the HATS. This should yield a signal of 95.6 dB, according to the datasheet of the HATS. The measured intensity in Matlab was 78.22 dB so all measurements are multiplied by 7.40 to get a calibrated signal in Matlab. 
 	\item For the speakerMic, calibration is made using a earplug cut in half and fitted around the microphone, as an adapter. This simple adapter allows the B\&K 4230 to be used as calibrator. The measured output level is 84.37 dB, and should have been 94.0 dB . Therefore all measurements are multiplied by 3.03 to get a calibrated signal in MATLAB\textsuperscript{\textregistered}
 \end{itemize} 
  
 \subsubsection{Equipment settings}\label{sec:SettingsAngInc}
 \begin{itemize}
 	\item This experiment is performed with a sampling rate of, f$_{s}$ = 48 $k$Hz.
-	\item The speaker is placed 1.6 meters from the center of the HATS.
-	\item the spmMic is fitted just in front of the headphone speaker using medical tape 8.85 cm from the centre of the HATS
-	\item The Ref microphone is placed just outside the headset in-line with the ear and speaker unit 12.45 cm from the centre of the HATS. 
-	\item The spmMic is placed inside the headphone, as close to the speaker unit as possible. 
+	\item The loudspeaker is placed 1.6 meters from the center of the HATS.
+	\item the spmMic is fitted just in front of the headphone loudspeaker using medical tape 8.85 cm from the center of the HATS
+	\item The Ref microphone is placed just outside the headset in-line with the ear and loudspeaker unit 12.45 cm from the center of the HATS. 
+	\item The spmMic is placed inside the headphone, as close to the loudspeaker unit as possible. 
 	\item For on the RME, the "inst"-option is turned on in the mixing console. The following gain settings are present: 		
 	\begin{itemize}
 		\item Line level gain is 0 dB
@@ -127,7 +127,7 @@ Measurements are made for the following angles:
 		\item Speaker Microphones has gain +48 dB
 	\end{itemize}
 	\item All settings on the computer is set to 0 dBFS
-	\item A logarithmic sine sweep is generated and saved in MATLAB\textsuperscript{\textregistered} using the chirp function as follows:
+	\item A logarithmic sine sweep is generated and saved in Matlab using the chirp function as follows:
 	\begin{lstlisting} [language=Matlab, caption=Matlab code generating a logarithmic chirp.	]
 	fs=48000;
 	f1=50;
@@ -170,16 +170,16 @@ Measurements are made for the following angles:
 %\end{figure}  
 
 \subsection{Pictures}
-A picture of the setup is shown in figure \ref{AngIncidenceSetup}. The reference microphone is fixed to the outside of the headphone cup using thick metal wire and a glue gun.  
+A picture of the set-up is shown in figure \ref{AngIncidenceSetup}. The reference microphone is fixed to the outside of the headphone cup using thick metal wire and a glue gun.  
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{../Journal/Experiments/AngleOfIncidence/AngInSetup.jpg}
-	\caption{Setup of the experiment.}
+	\caption{Set-up of the experiment.}
 	\label{AngIncidenceSetup}	
 \end{figure}
 
 
 \subsection{Procedure}
-\subsubsection{setup}
+\subsubsection{set-up}
 \begin{enumerate}
 	\item Set instruments to comply with the list in \ref{sec:SettingsAngInc}.
 	\item Calibrate the microphones using the calibrator as described in \autoref{sec:calAngInc}.
@@ -187,7 +187,7 @@ A picture of the setup is shown in figure \ref{AngIncidenceSetup}. The reference
 	\item Connect the microphone to their pre-amplifiers as shown in \autoref{Fig:AngleOfIncidenceSetup}. 
 	\item Connect the pre-amplifiers to the RME Fireface 802 as shown in \autoref{Fig:AngleOfIncidenceSetup}. 
 	\item Connect the RME Fireface 802 to the computer via USB.
-	\item Connect the speaker to Out 1L on the RME Fireface 802.
+	\item Connect the Genelec loudspeaker to Out 1L on the RME Fireface 802.
 	\item Connect a loopback from the Out1R to In1L on the RME Fireface 802
 \end{enumerate}
 
@@ -195,8 +195,8 @@ A picture of the setup is shown in figure \ref{AngIncidenceSetup}. The reference
 \subsubsection{Performing the experiment}
 \begin{enumerate}
 	\item Set the HATS to the desired test angle. 
-	\item Open Simulink\textsuperscript{\textregistered} and run file \path{SimulinkAngleOfIndence.xls}.
-	\item This will play \path{LogChirp.wav} through the speaker.
+	\item Open Simulink and run file \path{SimulinkAngleOfIndence.slx}.
+	\item This will play \path{LogChirp.wav} through the genelec loudspeaker.
 	\item Record and save, and name \path{Mic[i].wav}, \path{SpM[i].wav}, \path{loop[i].wav} and \path{Ref[i].wav}\footnote{[i] indicates the angle of the experiment}.
 	\item Repeat the experiment for all angles in \autoref{Tab:AngleOfInciMeasAngles}.
 \end{enumerate}
@@ -205,7 +205,7 @@ A picture of the setup is shown in figure \ref{AngIncidenceSetup}. The reference
 
 \subsection{Data extraction}
 
-All data is automatically stored when the script \path{SimulinkAngleOfIndence.xls} is run. The only action to be taken is changing the name of the files after each measurement, so the angle under test is in the file name.
+All data is automatically stored when the script \path{SimulinkAngleOfIndence.slx} is run. The only action to be taken is changing the name of the files after each measurement, so the angle under test is in the file name.
 
 
 From the performing of the experiment, 40 files have been generated:
@@ -226,7 +226,7 @@ Below the frequency response and time response of the system is plotted for all 
 \begin{figure}[H]
 	\tikzsetnextfilename{AngOfIncFreq}
 	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncFreq.tex}
-	\caption{Transfer Function from Ref to Speaker - Frequency domain. 10$^\circ$(\textcolor{MATLABblue}{---}), 
+	\caption{Transfer Function from Ref to Genelec- Frequency domain. 10$^\circ$(\textcolor{MATLABblue}{---}), 
 	20$^\circ$(\textcolor{MATLABorange}{---}), 	
 	30$^\circ$(\textcolor{MATLAByellow}{---}), 	
 	40$^\circ$(\textcolor{MATLABpurple}{---}), 	
@@ -250,7 +250,7 @@ As expected the impulses are approximately delayed versions of each other. The o
 	\begin{subfigure}[b]{\textwidth}
 	\tikzsetnextfilename{AngOfIncTime}
 	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncTime.tex}
-	\caption{Transfer Function from Reference microphone to Speaker - showing 960 samples, it is clearly seen the lack of attenuation at low frequencies.
+	\caption{Transfer function from reference microphone to Genelec - showing 960 samples, it is clearly seen the lack of attenuation at low frequencies.
 		10$^\circ$(\textcolor{MATLABblue}{---}), 
 		20$^\circ$(\textcolor{MATLABorange}{---}), 	
 		30$^\circ$(\textcolor{MATLAByellow}{---}), 	
