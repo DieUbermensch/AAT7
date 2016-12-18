@@ -23,7 +23,7 @@ Where:
 \item \textbf{Adaptive algorithm:} LMS optimization algorithm for the coefficients of the Cancellation path estimate.
 \end{itemize}
 
-The feedforward topology uses a reference microphone to pick up the noise which is fed into the control filter which is the estimated impulse response of the path from the reference microphone to the transducer. The control filter can either be realized as a FIR filter if there is no feedback from the transducer to the reference microphone. An IIR filter should be used if there is feedback. It should be noted that if the filter is chosen to be an IIR filter there is a possibility of not getting a global minimum in the FXLMS algorithm.
+The feedforward topology uses a reference microphone to pick up the noise which is fed into the control filter which is the estimated impulse response of the path from the reference microphone to the transducer. The control filter can either be realized as a FIR filter if there is no feedback from the transducer to the reference microphone. An IIR filter should be used if there is feedback. It should be noted that if the filter is chosen to be an IIR filter there is a possibility of not getting a global minimum in the FXLMS algorithm.\\\\
 
 The advantage of the feedforward topology is that it can cancel all types of sound. The disadvantage is that in order for the feedforward to have a good performance, the delay of the system must be less than the propagation time of the sound from the reference microphone to the error microphone.    
 
