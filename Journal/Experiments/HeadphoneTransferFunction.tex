@@ -1,5 +1,5 @@
 \section{Headphone Transfer-Function} \label{sec:HPjournal}
-\textbf{Note:} This was the initial experiment to determine the impulse response of the used headphone, later the headphone was changed and a new experiment was done. The results of this experiment are therefore obsolete. The new experiment can be seen in \autoref{sec:AngleOfIncidence}
+\textbf{Note:} This was the initial experiment to determine the impulse response of the used headphone, later the headphone was changed and a new experiment was done. The results of this experiment are therefore obsolete. The new experiment can be seen in \autoref{sec:AngleOfIncidence}.
 \subsection{Purpose}
 The purpose of this experiment is to determine the dampening of the headphones, i.e. the transfer-function between the 'reference-microphone' and the headphone loudspeaker.
 
@@ -14,7 +14,7 @@ The purpose of this experiment is to determine the dampening of the headphones, 
 		%2	&	B\&K \textonehalf'' Condenser Microphone Type 4134 & 61447\\
 		3	&	Sennheiser HDA 200	Headphones			& 33379		\\
 		4	&	Roland Edirol UA-25EX Audio Capture		& 64696		\\
-		5	&	Computer running Simulink\textsuperscript{\textregistered}					& NaN		\\
+		5	&	Computer running Simulink					& NaN		\\
 		%6	&	B\&K Microphone Power Supply Type 2804	& 07304		\\
 		6	&	B\&K Measuring Amplifier Type 2636	& 08717		\\
 		%7	&	B\&K Sound Calibrator Type 4231			& 78301		\\ 
@@ -39,7 +39,7 @@ The purpose of this experiment is to determine the dampening of the headphones, 
 
 \begin{figure}[H]
 	\centering
-	\tikzsetnextfilename{Setup}
+	\tikzsetnextfilename{Set-up}
 	\input{figures/CancellationPath_MATLAB_Figures/Headphone.tex}
 	\caption{Total overview of the system.}
 	\label{SchematicOverviewHP}
@@ -47,7 +47,7 @@ The purpose of this experiment is to determine the dampening of the headphones, 
 %\todoKiis{In the CP experiment the measurement amplifier was in the anechoic - did that change for this experiment?}
 \subsection{Settings/Description}
 \label{SettingsHeadPhones}
-Calibration of the microphone and associated preamplifier is done on the computer using Simulink\textsuperscript{\textregistered}. The following settings are present:
+Calibration of the microphone and associated preamplifier is done on the computer using Simulink. The following settings are present:
 
 \subsubsection{Control and calibration}
 \begin{itemize}
@@ -108,7 +108,7 @@ Calibration of the microphone and associated preamplifier is done on the compute
 
 \subsubsection{Performing the experiment}
 \begin{enumerate}
-	\item Start Simulink \textsuperscript{\textregistered} and run file  \path{SimulinkSystemHeadPhone.xls}.
+	\item Start Simulink and run file  \path{SimulinkSystemHeadPhone.slx}.
 	\item The simulations outputs a logarithmic chirp from 20 Hz to 20,000 Hz with an amplitude of 0 dBFS over the span of five seconds.
 	\item Record and save, and name "Mic[i].wav" and Ref[i].wav"\footnote{[i] indicates the iteration of the experiment.}
 \end{enumerate}
@@ -118,7 +118,7 @@ If  a drop-out in the recorded signals occurs, then discard that recording and r
 \subsection{Data Extraction}
 \begin{enumerate}
 	%\item Place generated .wav-files in same folder as MATLAB\textsuperscript{\textregistered}-script "HeadPhoneScript.m".
-	\item Open MATLAB\textsuperscript{\textregistered} and run script \path{HeadPhoneScript.m}.
+	\item Open Matlab and run script \path{HeadPhoneScript.m}.
 \end{enumerate}
 
 From the performing of the experiment, ten files have been generated:
@@ -176,7 +176,7 @@ The impulse responses are shown on \autoref{HeadPhoneImpulseResponse}.
 	\centering
 	\tikzsetnextfilename{HeadPhoneImpulseResponse2}
 	\input{figures/HeadPhone_MATLAB_Figures/HeadPhoneImpulseResponse2.tex}
-	\caption{Impulse Response plot of the headphone transfer-function }
+	\caption{Impulse Response plot of the headphone transfer-function.}
 	\label{HeadPhoneImpulseResponse}
 \end{figure}
 

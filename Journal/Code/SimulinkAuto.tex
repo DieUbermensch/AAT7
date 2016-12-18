@@ -1,7 +1,7 @@
 \section{Automation of tests in Simulink} \label{sec:SimulinkAuto}
 \subsection{Description}
-This appendix describes an automated test setup used with simulations, to run the same simulation multiple times with different parameters.
-It might be required to run a simulation with a lot of different parameters. Rather than going for a random trial and error approach a systematic variation approach was chosen. If a person should control the simulations manually a lot of time would be spent, waiting for the algorithm to run. Therefore an automated test setup was constructed. 
+This appendix describes an automated test set-up used with simulations, to run the same simulation multiple times with different parameters.
+It might be required to run a simulation with a lot of different parameters. Rather than going for a random trial and error approach a systematic variation approach was chosen. If a person should control the simulations manually a lot of time would be spent, waiting for the algorithm to run. Therefore an automated test set-up was constructed. 
 
 \subsection{variables}
 A lot of variables, are declared in the simulations and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
@@ -18,7 +18,7 @@ M;				% is equal to N in all cases
 \subsection{Functions}
  The automation consists of 4 parts. 
 \begin{enumerate}
-	\item The Simulink setup under test. 
+	\item The Simulink se-tup under test. 
 	\item An initiation 
 	\item Saving data
 	\item A script controlling parameters 
@@ -104,5 +104,5 @@ An example of the output from an automated test can be seen on \autoref{fig:Auto
 
 
 \subsection{Conclusion}
-A working framework for automating tests in Simulinks has been created. 
+A working framework for automating tests in Simulink has been created. 
 

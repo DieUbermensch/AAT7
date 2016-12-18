@@ -3,7 +3,7 @@
 
 This appendix contains documentation regarding the third octave filter bank used in the project. The scripts can be found in \path{CD://Appendix P - Third octave filter ...}
 \\
-To run the script MATLAB 2016b is required with the dsp-toolbox installed. 
+To run the script Matlab 2016b is required with the dsp-toolbox installed. 
 
 \subsection{Purpose}
 
@@ -18,7 +18,7 @@ The filter banks are designed and used with the following parameters:
 \end{itemize}
 The class 0 requirements are described in \cite{OctaveBand}, and the are plotted in figure \ref{fig:1000KhzFilterClass0}. To accommodate these requirements the code described in listing \ref{lst:filterbanksSetup} is used.
 
-\begin{lstlisting} [language=MATLAB, caption=Design of each filter using MATLAB, label={lst:filterbanksSetup}]
+\begin{lstlisting} [language=MATLAB, caption=Design of each filter using Matlab, label={lst:filterbanksSetup}]
 BW = '1/3 octave';	% Type of bandwidth
 N = 8;           	% Filter Order
 F0 = 1000;       	% Center Frequency (Hz)
