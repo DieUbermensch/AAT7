@@ -2,7 +2,7 @@
 
 \begin{minipage}{.43\columnwidth}
  \textbf{Optimizing the LP parameters}\\
-The parameters; framelength $N$ and the overlap of frames $O$ are varied for $P=10$ and $f_s=48$ $k$Hz. This is to determine the parameters for which the Prediction Gain (PG) is largest. 
+The parameters; framelength $N$ and the overlap of frames $O$ are varied for a prediction length $P=10$ and $f_s=48$ $k$Hz. This is to determine the parameters for which the Prediction Gain (PG) is largest. 
  	The optimal parameters are found to be $N=1200$ and $O=1100$.
 	\label{fig:HammingNOP10}
 \end{minipage}% This must go next to `\end{minipage}`
@@ -16,7 +16,7 @@ The parameters; framelength $N$ and the overlap of frames $O$ are varied for $P=
 \vspace{10mm}
 \begin{minipage}{.43\columnwidth}
 	\textbf{System Delay Attenuation}\\
-Without system delays, prediction is unnecessary, as the FXLMS algorithm (\textcolor{MATLABblue}{---}) alone, will achieve infinite attenuation. For increasing system delay, a LP FXLMS (\textcolor{MATLABred}{---}), using the optimal parameters, has a higher attenuation. %of minimum 40 dB for delays below 14 samples at 48 $k$Hz.
+Without system delays, prediction is unnecessary, as the FXLMS algorithm (\textcolor{MATLABblue}{---}) alone, will achieve infinite attenuation. With increased system delay, an LP FXLMS (\textcolor{MATLABred}{---}), using the optimal parameters, has a higher attenuation. %of minimum 40 dB for delays below 14 samples at 48 $k$Hz.
 
 %	If no system delay is present no prediction is needed, because the FXLMS algorithm (\textcolor{MATLABblue}{---}) achieves infinite attenuation.
 %	The attenuation of the non-predicting algorithm decreases with delay. The predicting algorithm (\textcolor{MATLABred}{---}) however attenuate speech by $\geq$ 40 dB for delays of up to 14 samples at 48 $k$Hz.
