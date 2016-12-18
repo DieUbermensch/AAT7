@@ -1,0 +1,70 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=5.5in,
+height=2.5in,
+at={(0.758in,0.481in)},
+scale only axis,
+xmin=0,
+xmax=1200,
+xlabel={Number of LPCs ($M$)[$\cdot$]},
+xmajorgrids,
+ymin=-5,
+ymax=25,
+ylabel={Prediction ($P$) [samples]},
+ymajorgrids,
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1,solid,line width=1.5pt ,forget plot]
+  table[row sep=crcr]{%
+100	20.2056593415936\\
+200	19.9434479557707\\
+300	19.6376960527415\\
+400	19.6237829007472\\
+500	19.4521959422829\\
+600	19.9033560956139\\
+700	20.7519148834606\\
+800	21.0310239745975\\
+900	21.4592038861274\\
+1000	21.8540691729034\\
+1100	22.0060569989247\\
+1200	22.6691083434075\\
+};
+\addplot [color=mycolor2,solid,line width=1.5pt ,forget plot]
+  table[row sep=crcr]{%
+%0	0\\
+%0	0\\
+%0	0\\
+%0	0\\
+%0	0\\
+%0	0\\
+%0	0\\
+%0	0\\
+%0	0\\
+%0	0\\
+%0	0\\
+%0	0\\
+100	-4.30781135483756\\
+200	-0.92373998525097\\
+300	-3.91777868377144\\
+400	-4.23687846281806\\
+500	-3.82314679165278\\
+600	-3.97792197349853\\
+700	-1.77342324492681\\
+800	-0.873829921286045\\
+900	-0.0913232366472728\\
+1000	1.50184060394774\\
+1100	2.28985100283325\\
+1200	10.018452727616\\
+};
+\end{axis}
+\end{tikzpicture}%
