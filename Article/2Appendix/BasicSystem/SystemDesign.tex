@@ -13,15 +13,14 @@ This appendix will go through the design of the system using a feedforward topol
 
 Because the cancellation path is LTI, the adaptive algorithm adjusting the cancellation path (CP) estimate will be omitted from the system. This means that the copy of the CP estimate will be a constant impulse response. The CP has been found as described in \autoref{sec:CPjournalDT770}. The used feedforward control system is shown in \autoref{fig:BasicSystem} and is described in \autoref{sec:BasicSystem}.
 
-\todoMikkel{Tikz me! And add x(t), y(t) and e(t) as in article - maybe tikz is not important} 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{ArticleIllustrations/ANCFeedForward}
-	\caption{Block diagram of basic system without adaptive CP.}
-	\label{fig:BasicSystem}
-\end{figure}   
-
+	\tikzsetnextfilename{ANCFeedForwardAppendix}
+	\input{figures/ArticleIllustrations/ANCFeedForwardAppendix.tex}
+	\caption{Block diagram of adaptive feedforward ANC system. Expansion of DSP (4) from \autoref{fig:SystemOverview}.}
+	\label{fig:ANCFeedforwardAppendix}
+\end{figure}
 
 
 
@@ -264,7 +263,6 @@ bold(n,1) = b(n,1);
 end
 \end{lstlisting}
 
-\todoMikkel{autoref to appendix still has a capital A. I prefer small a, Kiss does not care. You decide!}
 
 \subsection{Test of ANC algorithm}
 A simulation of the ANC system with different ADC and DAC delay han been made to examine if delays affect the attenuation of the system. The delays are varied from 0 to 50 in steps of 2. The simulation is made using the automated testing as described in \autoref{sec:SimulinkAuto}. For each simulation the RMS of the output is compared to the RMS of the input filtered with the HP transfer function using \autoref{eq:testANC}.

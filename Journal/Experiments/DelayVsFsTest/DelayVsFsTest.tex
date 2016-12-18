@@ -14,14 +14,14 @@ Table \ref{tab:MeasDelayTable} shows the equipment used in the experiment. These
 		{Item}	& {Description} 						& {AAU-no}. \\ \bottomrule 
 		1	&	Spectrum Digital TMS320C5515 eZdsp	& NaN	\\
 		2	&	Digilent Analog Discovery 2	& NaN		\\
-		3	&	DSP Freedom Board Rev. 1 & NaN		\\
+		3	&	DSP expansion Board Rev. 1 & NaN		\\
 		4	&	Computer w. Waveform 2015					& NaN		\\
 		\bottomrule
 	\end{tabular}
 	\caption{Table over equipment used in test.}
 	\label{tab:MeasDelayTable}
 \end{table}
-\todoMikkel{Not that freedom thing! And refference the appendix about it, if you want to mention it. }
+
 \subsection{Diagram}
 
 \begin{figure}[H]
@@ -58,10 +58,9 @@ To ensure that the DSP is running at the desired frequencies, a probing of the d
 
 
 \subsubsection{Equipment settings}
-The TMS320C5515eZdsp is connected to the DSP Freedom board where the TLV320AIC3204 codec is connected via 3.5mm minijack cable (dashed lines in \autoref{fig:SchematicDelayExperiment} ) to the board. The oscilloscopes probes are then connected to the on-board BNC connectors. This is shown on figure \ref{fig:SchematicDelayExperiment}. It should be noted that even though the Freedom Board is equipped with 16 kHz first order lowpass filter, the probes were applied "behind" the filters. this can be seen on figure \ref{fig:DelayExperimentSetup}. However the signal should not be affected since the step is 2 Hz in frequency.
-\todoMikkel{I don't understand the step op 2 Hz in frequency thing? ... Ahh that's your step thing. Is it a 2 Hz square wave, because that will be affected by a lp filter!}
-
-To determine the sampling delay of the system a simple program is used, where the samples are passed through the system without any interaction. This ensures that no time is spent for calculations in the program. A step on the input signal will result in an delayed step on the output. The time difference in the steps will yield the conversion delay of the system directly. The delay takes into account the needed time for AA-filtering after oversampling and reconstruction in the $\Sigma\Delta$-converters.
+The TMS320C5515eZdsp is connected to the DSP board where the TLV320AIC3204 codec is connected via 3.5mm minijack cable (dashed lines in \autoref{fig:SchematicDelayExperiment} ) to the board. The oscilloscopes probes are then connected to the on-board BNC connectors. This is shown on figure \ref{fig:SchematicDelayExperiment}.It should be noted that even though the expansion Board is equipped with 16 kHz first order lowpass filter, the probes were applied "after" the filters. this can be seen on figure \ref{fig:DelayExperimentSetup}.
+\\
+To determine the sampling delay of the system a simple program is used, where the samples are passed through the system without any interaction. This ensures that no time is spent for calculations in the program. A step on the input signal will result in an delayed step on the output. The time difference in the steps will yield the conversion delay of the system directly. The delay takes into account the needed time for AA-filtering after oversampling and reconstruction in the $\Sigma\Delta$-converters. Using a low frequency as the signal will create a frame showing only on step, making the readout easier, this is shown in figure \ref{fig:ScopeDelayExperiment}.
 
 Listing \ref{lst:samplingbasic} shows the main code for looping the stereo codec. The code shows the sampling of the input register when ready, and writing to the output register when ready. 
 
@@ -127,9 +126,8 @@ I2S0_W1_LSW_W = 0;
 	\item The oscilloscope is set to trigger at the rise of IN1
 	\item Apply a 2 Hz square wave to OUT1 on the oscilloscope
 	\item Save measurement IN1 and IN2 on oscilloscope in a \path{.CSV} file
-	\item Repeat with different ADCFs in step 6
+	\item Repeat step 3 through 6 with different sampling frequencies as stated in step 2
 \end{enumerate}
-\todoMikkel{It should be clear how I perform step 7? I see no easy variable to change :D:D:D:D:D }
 
 \subsection{Data extraction}
 
@@ -171,12 +169,12 @@ The outputs from the three test are plotted on figure \ref{fig:ScopeDelayExperim
 	\label{fig:ScopeDelayExperiment}
 \end{figure}
 
-In equation \ref{eq:sampleDelay} it is seen that the delay of conversion corresponds to a delay of 43 samples.
+In equation \ref{eq:sampleDelay} it is seen that the delay of conversion corresponds to a delay of 43 samples if 48 $k$Hz is chosen.
 
 \begin{equation}\label{eq:sampleDelay}
-	\frac{N}{S} \cdot S = \frac{48000N}{1s} \cdot 900\cdot 10^{-6}\text{s} = 43 \text{ Samples [N]} 
+	\frac{48000\text{ Samples}}{1s} \cdot 900\cdot 10^{-6}\text{s} = 43 \text{ Samples} 
 \end{equation}
-\todoMikkel{Du har lidt mange S'er i den formel, og jeg aner ikke hvad de står for?? samples har enheden samples, ikke N}
+
 
 
 
@@ -195,12 +193,10 @@ In equation \ref{eq:sampleDelay} it is seen that the delay of conversion corresp
 
 \subsection{Accuracy \& error sources}
 
-The steps are captured using a single 8000-points frame, as shown in figure \ref{fig:ScopeDelayExperiment}. The output was noisy and had a slew-rate of $\pm$ 10 $\mu $s on all trails. The measurements noted in section \ref{sec:AnalysisFsDelay} were measured at the start of the step eliminating the effect of the slew-rate. However if implemented this has to be taken into account.
-\todoMikkel{Det med slew-rate har jeg ikke forstand på - hvad mener du med if implemented? Som i implementeret FXLMS? for det møder aldrig steps! }
+The steps are captured using a single 8000-points frame, as shown in figure \ref{fig:ScopeDelayExperiment}. The output was noisy and had a slew-rate of $\pm$ 10 $\mu $s on all trials. The measurements noted in section \ref{sec:AnalysisFsDelay} were measured at the start of the step eliminating the effect of the slew-rate. However when implemented, the slew-rate delay in the converter has to be taken into account.
+
 
 \subsection{Conclusion}
 The conversion delay of the chosen platform is determined to be 43 samples at 48 $k$Hz, 96 $k$Hz and 192 $k$Hz corresponding to 900 $\mu$s, 450 $\mu$s and 225 $\mu$s, respectively.
 % too large to be efficient for an actual implementation. The delay of the system forces it to become non-causal, deeming the platform not suitable for implementation. It should however be noted that a change in converter type or samplerate could solve the problem, this has not been further analyzed due to the scope of this project.
-\todoMikkel{Jeg har slettet din konklussion - ikke noget med at se det brede perspektiv! }
-
 
