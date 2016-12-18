@@ -101,13 +101,13 @@ To make sure the banks worked as expected a test was performed by applying two k
 		\item 1000 Hz sine wave with an amplitude of '1'
 		\item 10000 Hz sine wave with an amplitude of '0.5'
 	\end{itemize}
-	\item Five second Pink noise
+	\item Pink noise
 \end{itemize}
 \vspace{-3mm}
 The results is shown in figure \ref{fig:octresults}. 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 			\tikzsetnextfilename{Signal01k1k10k}
 			\input{figures/FilterBank/Signal01k1k10k.tex}
@@ -115,22 +115,22 @@ The results is shown in figure \ref{fig:octresults}.
 		\label{fig:Signal01k1k10k}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 			\tikzsetnextfilename{OctFilter01k1k10k}
 			\input{figures/FilterBank/OctFilter01k1k10k.tex}
 		\caption{The output from the signal shown in figure \ref{fig:Signal01k1k10k}.}
 		\label{fig:OctFilter01k1k10k}
 	\end{subfigure}	
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 			\tikzsetnextfilename{PinkNoise5sec}
 			\input{figures/FilterBank/PinkNoise5sec.tex}
-		\caption{Five second pink noise}
+		\caption{Pink noise}
 		\label{fig:PinkNoise5sec}
 	\end{subfigure}	
 	\hfill
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\tikzsetnextfilename{OctFilterPink}
 		\input{figures/FilterBank/OctFilterPink.tex}
