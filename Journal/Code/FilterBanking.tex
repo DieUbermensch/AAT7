@@ -1,6 +1,5 @@
 \section{Third octave filter bank} {\label{sec:OctaveBank}}
 
-\todoChristian{Read it, correct it, love it}
 
 This appendix contains documentation regarding the third octave filter bank used in the project. The scripts can be found in \path{CD://Appendix X...}
 \\
@@ -8,7 +7,7 @@ To run the script MATLAB 2016b is required with the dsp-toolbox installed.
 
 \subsection{Purpose}
 
-A third octave filter bank is designed to test the active noise cancellation headsets provided and to test the designed system. A third octave filter bank is used since the noise cancellation is not a time invariant system, hence a Fourier transform is not applicable for displaying a frequency response.
+A third octave filter bank is designed to test real world active noise cancellation headsets and to test the designed system. A third octave filter bank is used since the noise cancellation algorithm is not a Linear Time Invariant (LTI) system, hence a Fourier transform is not applicable for displaying a frequency response.
 
 \subsection{Design}
 
@@ -17,7 +16,7 @@ The filter banks are designed and used with the following parameters:
 	\item Complies with ANSI S1.11-2004 class 0 filter banks
 	\item Has a center frequency in 1 $k$Hz
 \end{itemize}
-The class 0 requirements are described in \cite{OctaveBand}, and is showed plotted in figure \ref{fig:1000KhzFilterClass0}. To accommodate these requirements the code described in listing \ref{lst:filterbanksSetup} is used.
+The class 0 requirements are described in \cite{OctaveBand}, and the are plotted in figure \ref{fig:1000KhzFilterClass0}. To accommodate these requirements the code described in listing \ref{lst:filterbanksSetup} is used.
 
 \begin{lstlisting} [language=MATLAB, caption=Design of each filter using MATLAB, label={lst:filterbanksSetup}]
 BW = '1/3 octave';	% Type of bandwidth
@@ -38,7 +37,7 @@ FilterBank{i} = octaveFilter('FilterOrder', N, ...
 end
 \end{lstlisting}
 
-listing \ref{lst:filterbanksSetup} calculates the need filter frequency response with a given order, the output is visualized in figure \ref{fig:1000KhzFilterClass0}. The response conforms with the wanted class 0 requirements. From the center frequency of 1 $k$Hz the correlating center frequencies for the other bands are determined.
+listing \ref{lst:filterbanksSetup} calculates the need filter frequency response with a given order, the output is visualized in figure \ref{fig:1000KhzFilterClass0}. The response conforms with the wanted class 0 requirements. From the center frequency of 1 $k$Hz the correlating center frequencies for the other bands are determined. \todoMikkel{correlating center freq...? }
 
 \begin{figure}[H]
 	\centering
@@ -50,9 +49,9 @@ listing \ref{lst:filterbanksSetup} calculates the need filter frequency response
 
 \subsection{Procedure}
 
-The comparison of each ANC system is done by calculating the ratio,in each band, when the system is turned on and off respectively. 
+The response of each ANC system is done by calculating the magnitude difference, when the system is turned on and off. This is done for all bands separately.  
 \\
-Listing \ref{lst:filterbanksProcedure} shows the procedure used to calculate each output of the filter. The filters takes the recorded signal as input and outputs the filtered response. An RMS value of each filter bank is then calculated. Using the RMS value of each band, the ratio of each signal is then determined. 
+Listing \ref{lst:filterbanksProcedure} shows the procedure used to calculate each output of the filter. The filters takes the recorded signal as input and outputs the filtered response. An RMS value of each filter bank is then calculated. Using the RMS value of each band, the ratio between on and off is then determined. 
 
 \begin{lstlisting} [language=MATLAB, caption=Calculation of each filter with averaging and comparison. The plotting code is removed in the listing, label={lst:filterbanksProcedure}]
 for i=1:Nfc
@@ -91,9 +90,9 @@ Difference(2,:)=-20*log10(rmsLPon./rmsLPoff);
 %stairs(F0Stair,Difference(2,:));
 %\end{lstlisting}
 
-\subsection{Test of algorithm}
+\subsection{Test}
 
-To make sure the banks worked as expected a test was performed by applying two known signals time signal and displaying the output.
+To make sure the banks worked as expected a test was performed by applying two known signals time signal and displaying the output. The two signals are given as follows;
 \vspace{-6mm}
 \begin{itemize}
 	\item An AM modulated wave containing:
@@ -105,7 +104,7 @@ To make sure the banks worked as expected a test was performed by applying two k
 	\item Five second Pink noise
 \end{itemize}
 \vspace{-3mm}
-The results is shown in figure \ref{fig:octresults}. Based on the results in figure \ref{fig:octresults} the third octave filter bank is assumed working as desired.
+The results is shown in figure \ref{fig:octresults}. 
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{0.45\textwidth}
@@ -141,3 +140,6 @@ The results is shown in figure \ref{fig:octresults}. Based on the results in fig
 	\caption{Picture of setup and the specific schematic.}
 	\label{fig:octresults}
 \end{figure}
+\todoMikkel{Any specific reasons for not havng any kind of units on those plots? Also I like how you chose to display a time signal on a log axis... (figure c) }
+\subsection{Conclusion}
+Based on the results in figure \ref{fig:octresults} the third octave filter bank is working as desired.
