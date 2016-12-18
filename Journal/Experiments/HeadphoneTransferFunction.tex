@@ -1,4 +1,5 @@
 \section{Headphone Transfer-Function} \label{sec:HPjournal}
+\textbf{Note:} This was the initial experiment to determine the impulse response of the used headphone, later the headphone was changed and a new experiment was done. The results of this experiment are therefore obsolete. The new experiment can be seen in \autoref{sec:AngleOfIncidence}
 \subsection{Purpose}
 The purpose of this experiment is to determine the dampening of the headphones, i.e. the transfer-function between the 'reference-microphone' and the headphone loudspeaker.
 
@@ -43,7 +44,7 @@ The purpose of this experiment is to determine the dampening of the headphones, 
 	\caption{Total overview of the system.}
 	\label{SchematicOverviewHP}
 \end{figure}
-\todoKiis{In the CP experiment the measurement amplifier was in the anechoic - did that change for this experiment?}
+%\todoKiis{In the CP experiment the measurement amplifier was in the anechoic - did that change for this experiment?}
 \subsection{Settings/Description}
 \label{SettingsHeadPhones}
 Calibration of the microphone and associated preamplifier is done on the computer using Simulink\textsuperscript{\textregistered}. The following settings are present:
@@ -53,7 +54,7 @@ Calibration of the microphone and associated preamplifier is done on the compute
 	\item 93.6 dB due to being a pressure field. 1 $k$Hz is used as calibration signal. %\todoOliver{again calibration??. Oliver: It's what is says on the calibrator. It's not the HATS ear this time}
 	\item Microphone sensitivity is controlled to 110 $m$V/Pa.
 	\item Measurement amplifier is set to -10 dB default.
-	\item Calibration signal yields an amplitude of 0.87 relative to 0 dBFS. \todoKiis{what is this information? and is it used?}
+	%\item Calibration signal yields an amplitude of 0.87 relative to 0 dBFS. \todoKiis{what is this information? and is it used?}
 	\item Calibration signal yields a spike at 101.3 dB SPL $@$ 1 $k$Hz, which requires a -7.7 dB SPL. adjustment
 \end{itemize}
 \subsubsection{Equipment settings}
@@ -250,6 +251,6 @@ Test 2's result are used for further test. To verify that the frequency response
 \end{table}
 
 \subsection{Conclusion}
-It can be concluded that an impulse response of 256 coefficients, see \autoref{fig:ImpRespCropHP}, is found for the 'headphone transfer-function'.
+It can be concluded that an impulse response of 256 coefficients, see \autoref{fig:ImpRespCropHP}, is found for the 'headphone transfer function'. However 256 coefficients are not sufficient to represent 50 Hz.    
 \todoOliver{I disagree. The 256 coefficients are about 10dB off at 50 Hz - that's too much!
 Oliver: yeah, this we probably need to discuss}
