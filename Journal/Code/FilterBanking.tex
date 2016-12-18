@@ -1,7 +1,7 @@
 \section{Third octave filter bank} {\label{sec:OctaveBank}}
 
 
-This appendix contains documentation regarding the third octave filter bank used in the project. The scripts can be found in \path{CD://Appendix X...}
+This appendix contains documentation regarding the third octave filter bank used in the project. The scripts can be found in \path{CD://Appendix P - Third octave filter ...}
 \\
 To run the script MATLAB 2016b is required with the dsp-toolbox installed. 
 
@@ -37,7 +37,7 @@ FilterBank{i} = octaveFilter('FilterOrder', N, ...
 end
 \end{lstlisting}
 
-listing \ref{lst:filterbanksSetup} calculates the need filter frequency response with a given order, the output is visualized in figure \ref{fig:1000KhzFilterClass0}. The response conforms with the wanted class 0 requirements. From the center frequency of 1 $k$Hz the correlating center frequencies for the other bands are determined. \todoMikkel{correlating center freq...? }
+listing \ref{lst:filterbanksSetup} calculates the need filter frequency response with a given order, the output is visualized in figure \ref{fig:1000KhzFilterClass0}. The response conforms with the wanted class 0 requirements. From the center frequency of 1 $k$Hz the corresponding one third octave center frequencies for the other bands are determined.
 
 \begin{figure}[H]
 	\centering
@@ -107,7 +107,7 @@ To make sure the banks worked as expected a test was performed by applying two k
 The results is shown in figure \ref{fig:octresults}. 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.4\textwidth}
 		\centering
 			\tikzsetnextfilename{Signal01k1k10k}
 			\input{figures/FilterBank/Signal01k1k10k.tex}
@@ -115,14 +115,14 @@ The results is shown in figure \ref{fig:octresults}.
 		\label{fig:Signal01k1k10k}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.4\textwidth}
 		\centering
 			\tikzsetnextfilename{OctFilter01k1k10k}
 			\input{figures/FilterBank/OctFilter01k1k10k.tex}
 		\caption{The output from the signal shown in figure \ref{fig:Signal01k1k10k}.}
 		\label{fig:OctFilter01k1k10k}
 	\end{subfigure}	
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.4\textwidth}
 		\centering
 			\tikzsetnextfilename{PinkNoise5sec}
 			\input{figures/FilterBank/PinkNoise5sec.tex}
@@ -130,16 +130,16 @@ The results is shown in figure \ref{fig:octresults}.
 		\label{fig:PinkNoise5sec}
 	\end{subfigure}	
 	\hfill
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.4\textwidth}
 		\centering
 		\tikzsetnextfilename{OctFilterPink}
 		\input{figures/FilterBank/OctFilterPink.tex}
 		\caption{The output from the signal shown in figure \ref{fig:PinkNoise5sec}.}
 		\label{fig:OctFilterPink}
 	\end{subfigure}	
-	\caption{Picture of setup and the specific schematic.}
+	\caption{The result of using the filter bank on a deterministic and stochastic signal.}
 	\label{fig:octresults}
 \end{figure}
-\todoMikkel{Any specific reasons for not havng any kind of units on those plots? Also I like how you chose to display a time signal on a log axis... (figure c) }
+
 \subsection{Conclusion}
 Based on the results in figure \ref{fig:octresults} the third octave filter bank is working as desired.
