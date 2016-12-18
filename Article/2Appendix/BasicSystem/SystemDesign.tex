@@ -6,10 +6,10 @@ This appendix will go through the design of the system using a feedforward topol
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Articleillustrations/SystemOverview}
-	\caption{Illustration of the HATS wearing a headphone fitted with a ANC solution.}
+	\caption{Illustration of the HATS wearing a headphone fitted with a ANC solution. Showing the reference microphone (1), a headphone loudspeaker (2), an error microphone (3) and a DSP (4).}
 	\label{fig:SystemHeadphone}
 \end{figure}  
-\todoKiis{I don't think we ever name 1,2,3 and 4 in the appendixes?}
+\todoKiis{I don't think we ever name 1,2,3 and 4 in the appendixes? DONE}
 
 Because the cancellation path is LTI, the adaptive algorithm adjusting the cancellation path (CP) estimate will be omitted from the system. This means that the copy of the CP estimate will be a constant impulse response. The CP has been found as described in \autoref{sec:DT770CPjournal}. The used feedforward control system is shown in \autoref{fig:ANCFeedforwardAppendix} and is described in \autoref{sec:BasicSystem}.
 
