@@ -142,8 +142,8 @@ This appendix describes the simulation of ANC. The system shown in \autoref{fig:
 \end{figure} 
 
 \subsection{Variables}
-The variables for the simulation are listed in 
-\begin{lstlisting} [language=MATLAB, caption=Simulink Variables., label=Lst:hpReal]
+The variables for the simulation are listed in \autoref{Lst:variables}.
+\begin{lstlisting} [language=MATLAB, caption=Simulink Variables., label=Lst:variables]
 fs = 48000; 	 %is the sample frequency
 L  = 960;  	 	 %is the length of the filter
 HPCoef;  		 %is the coeffiecients for the measured HP (length L)
@@ -153,7 +153,7 @@ delay 			 %is the total simulated delay of the ADC and DAC
 \end{lstlisting}
 
 \subsection{Functions}
-In the "real world" simulation HP and CP are sample-by-sample FIR filters with the measured coefficients from \autoref{sec:HPjournal} and  \autoref{sec:DT770CPjournal}. The functions are listed in \autoref{Lst:hpReal} and  \autoref{Lst:cpReal} respectively. 
+In the "real world" simulation HP and CP are sample-by-sample FIR-filters with the measured coefficients from \autoref{sec:HPjournal} and  \autoref{sec:DT770CPjournal}. The functions are listed in \autoref{Lst:hpReal} and  \autoref{Lst:cpReal} respectively. 
 
 \begin{lstlisting} [language=MATLAB, caption=Simulink HP function., label=Lst:hpReal]
 function y  = fcn(x,HPCoef,L)
@@ -189,7 +189,7 @@ xIn = [x xIn(1:end-1)];
 y = xIn'*CPCoef;
 \end{lstlisting}
 
-In the ANC algorithm the control filter and CP are also sample-by-sample FIR filters using adaptive coefficients and the CP coefficients respectively. The functions are listed in \autoref{Lst:control} and  \autoref{Lst:cpAL}. 
+In the ANC algorithm the control filter and CP are also sample-by-sample FIR-filters using adaptive coefficients and the CP coefficients respectively. The functions are listed in \autoref{Lst:control} and  \autoref{Lst:cpAL}. 
 
 
 \begin{lstlisting} [language=MATLAB, caption=Simulink control filter function., label=Lst:control]
@@ -225,7 +225,7 @@ xIn = [x xIn(1:end-1)];
 y = xIn*CPCoef;
 \end{lstlisting}
 
-The last function in the ANC algorithm is the FXLMS derived in \autoref{subsec:fxlms}. This is listed in \autoref{Lst:fxlms}.
+The last function in the ANC algorithm is the FXLMS derived in \autoref{sec:systemDesign}. This is listed in \autoref{Lst:fxlms}.
 
 \begin{lstlisting} [language=MATLAB, caption=Simulink FXLMS function., label=Lst:fxlms]
 function b  = fcn(x,u,e,HPCoef,L)
