@@ -88,7 +88,7 @@ This gives the LPCs:
 \subsection{Wiener filter}
 A Wiener filter is used in cascade, where $\hat{x}[n+2]$ is estimated using $\hat{x}[n+1]$ and $x[n]$ up until $\hat{x}[n+P]$. 
 \begin{equation}\label{eq:AppPredictor}
-\hat{x}[n+p] =- \sum^{M-1}_{i=1}\hat{a}_i[n]x[(n+p)-i]
+\hat{x}[n+P] =- \sum^{M-1}_{i=1}\hat{a}_i[n]x[(n+P)-i]
 \end{equation}
 The Wiener filter resembles an FIR-filter, where the previous inputs are used in combination with the LPCs to predict the next sample. 
 

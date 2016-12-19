@@ -1,6 +1,6 @@
 \section{Voice Recording}
 \subsection{Purpose}
-This appendix describes the recording and subsequent manipulation of the sound used in the demonstration of the project results. The recording is in English. The speaker is a man with English as his secondary language. 
+This appendix describes the recording and subsequent manipulation of the sound used in the demonstration of the results of the project. The recording is in English. The speaker is a man with English as his secondary language. 
 
 \subsection{AAU number list}
 \begin{table}[H]
@@ -34,7 +34,7 @@ This appendix describes the recording and subsequent manipulation of the sound u
 \end{figure}
 
 \subsection{Settings/Description}
-The recording of speech is performed in an anechoic chamber, where a male speaker is situated 1 m from the microphone. The microphone is supplied with Phantom Power from the sound card. \\ 
+The recording of speech is performed in an anechoic chamber, where a male speaker is situated 1 m from the microphone. The microphone is supplied with phantom power from the RME Fireface 802. \\ 
 
 \subsection{Settings}
 The parameters chosen for the recording, prediction and cancellation are:
@@ -62,7 +62,7 @@ The manuscript is divided into sections, where different manipulations are made.
 \end{itemize}
 
 \subsubsection{Record.m}
-\begin{lstlisting}[language=MATLAB,caption=Record.m]
+\begin{lstlisting}[language=MATLAB,caption=Record.m.]
 fs=48000;
 h=audiorecorder(fs,16,1);
 
@@ -79,7 +79,7 @@ audiowrite('storefile.wav',myrec,fs);
 
 \textbf{Normal voice}\\
 \textit{This experience is best if you use a pair of headphones. 
-This recording will demonstrate the performance of an Active Noise Control system, in a headphone using Filtered X Least Mean Squares combined with a Linear Prediction Algorithm. }
+This recording will demonstrate the performance of an Active Noise Control system, in a headphone using Filtered-$x$ Least Mean Squares combined with a Linear Prediction Algorithm. }
 
 
 \textbf{Headphone filtered sound}\\
@@ -98,9 +98,8 @@ Here no prediction was used. Now the predictor is activated. }
 \textbf{The predicted sound}\\
 \textit{You are now listening to the predictor predicting 200 $\mu$s ahead in time. You are listening to an estimate of what I am going to say.}  
 
-
 \textbf{Summary}\\
-We hope you enjoyed the demonstration. Thank you for listening.
+\textit{We hope you enjoyed the demonstration. Thank you for listening.}
 
 %
 \subsection{Data extraction}
