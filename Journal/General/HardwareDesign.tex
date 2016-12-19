@@ -1,22 +1,22 @@
 \section{Hardware Design}
-The following section will describe the thought process behind designing the expansion board for the eZdsp. 
+The following section will describe the expansion board made. The specifications of the expansion board is given below.%thought process behind designing the expansion board for the eZdsp. 
 
 
-\subsection{Design of expansionboard}\label{subsec:DesignOfExpansion}
+%\subsection{Design of expansionboard}\label{subsec:DesignOfExpansion}
 
-The DSP board will be insufficient when implemented as a stereo system, because 4 inputs is needed. To compensate for this problem a custom expansion board is designed. The board is designed to be full-fledged for both digital and analogue inputs and outputs. Since most of the development boards inputs are routed to an PCI expansion slot and not immediately accessible, these will be routed for easy access. The board developed has the following features:
+%The DSP developer board is insufficient when implemented as a stereo system, because 4 inputs is needed. To compensate for this problem a custom expansion board is designed. The board is designed to be full-fledged for both digital and analogue inputs and outputs. Since most of the development boards inputs are routed to an PCI expansion slot and not immediately accessible, these will be routed for easy access. The board developed has the following features:
 
 \begin{enumerate}
-	\item Four 6.3 mm mono jack input and two mono output for easy access.
+	\item Four 6.3 $m$m mono jack input and two 6.3 $m$m mono output for easy access.
 	\begin{itemize}
 		\item[-] All fitted with BNC for low noise data monitoring and data logging.
 		\item[-] All fitted with 1$^{st}$ order analogue lowpass filters with -3 dB cut-off at 16 $k$Hz.
 	\end{itemize}
-	\item 3.5 mm interconnected stereo mini-jack for easy access to DSP's onboard TLV320AIC3204 stereo codec.
+	\item 3.5 $m$m interconnected stereo mini-jack for easy access to DSP's onboard TLV320AIC3204 stereo codec.
 	\item I2S bus routed between DSP as master and slave set-up for inter-codec data transfer.
-	\item I2C and UART bus on master DSP made accessible.
-	\item Two sets GPIO Made accessible for MEMS connection.
-	\item Inter-I2C bus between DSP's routed. 
+	\item I2C and UART bus on master DSP made accessable.
+	\item Two sets of GPIO made accessable for MEMS connection.
+	\item Inter-I2C bus between DSPs routed. 
 \end{enumerate}
 
 
@@ -35,4 +35,4 @@ The DSP board will be insufficient when implemented as a stereo system, because 
 	\label{fig:PCBboard}
 \end{figure}
 
-It should be noted that the highest frequency used is the I2S bit clock of 12 $M$hz. Since the tenth harmonic of this frequency has a wavelength of $\lambda=\frac{c}{12M \text{Hz}}\approx25\text{ m}$ there has not been any considerations made about reflections.
+%It should be noted that the highest frequency used is the I2S bit clock of 12 $M$hz. Since the tenth harmonic of this frequency has a wavelength of $\lambda=\frac{c}{12M \text{Hz}}\approx25\text{ m}$ there has not been any considerations made about reflections.
