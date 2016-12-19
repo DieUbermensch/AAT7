@@ -27,7 +27,7 @@
 		\textit{Christian Claumarch, Kasper Kiis Jensen$^{\star \star}$, Maxime Démurger, \\Mikkel Krogh Simonsen, Oliver Palmhøj Jokumsen$^{\star}$}
 		\par}
 	{\centering
-		\textbf{Acoustics and Audio Technology Group 761}
+		\textbf{Acoustics and Audio Technology Group 16gr761}
 		\par}
 	
 	\bigskip
@@ -35,9 +35,9 @@
 	\paragraph{Introduction} 
 	%Active Noise Control (ANC) is a widely used technique in consumer headphones for attenuating noise. ANC is useful for attenuation of periodic noise e.g. machinery but has limited ability to attenuate quasiperioc noise e.g. speech (50 Hz -- 4000 Hz). This paper therefore focuses on improving attenuation of speech. Feedforward ANC systems are widely used, where an FIR-filter is adapted by a Filtered-$x$ Least Mean Square (FXLMS)-algorithm. The main problem when implementing ANC feedforward systems is delays in converters. A tested $\Sigma\Delta$-converter has a delay of 225 $\mu$s -- 900 $\mu$s. Therefore a Linear Prediction (LP) method combined with multirate processing is proposed to compensate for the introduced conversion delays.
 
-	Active Noise Control (ANC) is a widely used technique in consumer headphones for attenuating noise. ANC is useful for attenuation of periodic noise e.g. machinery but has limited ability to attenuate quasiperiodic noise e.g. speech (50 Hz -- 4000 Hz). This paper therefore focuses on improving attenuation of speech. Feedforward ANC systems are widely used, where an FIR-filter is adapted by a Filtered-$x$ Least Mean Squares (FXLMS)-algorithm. The main problem when implementing ANC is delays in converters. A tested $\Sigma\Delta$-converter has a delay of 225 $\mu$s -- 900 $\mu$s. A Linear Prediction (LP) method combined with multirate processing is proposed to compensate for the introduced conversion delays.
+	Active Noise Control (ANC) is a widely used technique in consumer headphones for attenuating noise. ANC is useful for attenuation of periodic noise e.g. machinery but has limited ability to attenuate quasiperiodic noise e.g. speech (50 Hz -- 4000 Hz). This paper therefore focuses on improving attenuation of speech. Feedforward ANC systems are widely used, where an FIR-filter is adapted by a Filtered-$x$ Least Mean Squares (FXLMS)-algorithm. The main problem when implementing ANC is delays in converters. A tested $\Sigma\Delta$-converter has a delay of 225 $\mu$s -- 900 $\mu$s depending on sampling rate. A Linear Prediction (LP) method combined with multirate processing is proposed to compensate for the introduced conversion delays.
 
-	\paragraph{Methods and Proposals}
+	\paragraph{Methods}
 	A signal sampled at 192 $k$Hz decimated to 48 $k$Hz requires prediction of 10 samples. Cascaded Wiener filtering is therefore used to predict 10 samples $\approx$ 225 $\mu$s at 48 $k$Hz. The predicted signal is filtered using a control filter with adaptive coefficients. The optimization algorithm adapting the coefficients is an FXLMS algorithm [1]. The combined feedforward LP FXLMS consists of two blocks, the LP and the FXLMS which can  function individually.
 	\\\\
 	Speech is characterized as a quasiperiodic signal, which can be split into two main classes; voiced and unvoiced. Voiced sounds are characterized by a strong periodicity, with the fundamental frequency referred to as the pitch frequency (50 Hz -- 500 Hz). Unvoiced sounds are characterized as stochastic. Speech is a non-stationary signal and can only be assumed Wide Sense Stationary (WSS) for periods of 20 $m$s -- 30 $m$s [2]. These characteristcs of speech allow for prediction of short time intervals.     
@@ -48,7 +48,7 @@
 	%For LP Wiener filtering is used in cascade to predict 10 samples which is outputted to the ANC system.  
 
 	\paragraph{Simulation Results}
-	The combined feedforward LP FXLMS system is found by simulation to have a 34 dB larger attenuation, when the delay is 10 samples, compared the system without LP. At frequencies above 400 Hz the attenuation of the feedforward FXLMS system drops, whereas the feedforward LP FXLMS system's attenuation is maintained above 20 dB up to 4000 Hz.
+	The combined feedforward LP FXLMS system is found by simulation to have a 34 dB larger attenuation, when the delay is 10 samples, compared to the system without LP. At frequencies above 400 Hz the attenuation of the feedforward FXLMS system drops, whereas the feedforward LP FXLMS system's attenuation is maintained above 20 dB up to 4000 Hz.
 
 	\paragraph{Discussion}
 	When listening to the output of the two ANC systems the difference in attenuation is clearly distinguishable . This shows that the concept of LP combined with FXLMS yields higher attenuation of speech in simulation. No real time implementation is attempted because the computational cost of the proposed LP is >50,000 instructions per sample. However Wiener filtering is used in speech encoding therefore real time implementaion is possible. 
