@@ -6,6 +6,9 @@ the file containing the code  \path{CD://Appendix P - Third octave filter ...}
 
 \subsection{Raw Code:}
 
+The code describes which registers and what value they are set at. To change the sampling frequency, the value of \verb|ADCFs| should be changed. This value can be changed to either 48, 96 or 192. The values of each register is determined by look up in \path{TLV320AIC3204 Reference guide.pdf}.
+
+
 \begin{lstlisting}
 // Initializing the codec
 Int16 AIC3204_Init(void)
