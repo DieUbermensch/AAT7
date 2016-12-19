@@ -105,25 +105,31 @@ To make sure the filter-banks worked as expected a test was performed by applyin
 	\item Pink noise generated using the Matlab function dsp.ColoredNoise('Color','pink').
 \end{itemize}
 \vspace{-3mm}
-The results is shown in figure \ref{fig:octresults}. 
+The results is shown in figure \ref{fig:octresultsDeterm} \ref{fig:octresultsStoch0}. 
 
 \begin{figure}[H]
-	\centering
+	\centering	
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
-			\tikzsetnextfilename{Signal01k1k10k}
-			\input{figures/FilterBank/Signal01k1k10k.tex}
+		\tikzsetnextfilename{Signal01k1k10k}
+		\input{figures/FilterBank/Signal01k1k10k.tex}
 		\caption{An AM modulated sine with a 100 Hz, 1 $k$Hz and 10 $k$Hz tone.}
 		\label{fig:Signal01k1k10k}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
-			\tikzsetnextfilename{OctFilter01k1k10k}
-			\input{figures/FilterBank/OctFilter01k1k10k.tex}
-		\caption{The output from the signal shown in figure \ref{fig:Signal01k1k10k}.}
+		\tikzsetnextfilename{OctFilter01k1k10k}
+		\input{figures/FilterBank/OctFilter01k1k10k.tex}
+		\caption{The output the signal in figure \ref{fig:Signal01k1k10k}.}
 		\label{fig:OctFilter01k1k10k}
-	\end{subfigure}	
+	\end{subfigure}
+	\caption{The result of using the filter-bank on a deterministic signal, e.g. AM modulated signal.}
+	\label{fig:octresultsDeterm}
+\end{figure}
+
+\begin{figure}[H]
+	\centering	
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 			\tikzsetnextfilename{PinkNoise5sec}
@@ -136,12 +142,12 @@ The results is shown in figure \ref{fig:octresults}.
 		\centering
 		\tikzsetnextfilename{OctFilterPink}
 		\input{figures/FilterBank/OctFilterPink.tex}
-		\caption{The output from the signal shown in figure \ref{fig:PinkNoise5sec}.}
+		\caption{The output the signal in figure \ref{fig:PinkNoise5sec}.}
 		\label{fig:OctFilterPink}
 	\end{subfigure}	
-	\caption{The result of using the filter-bank on a deterministic and stochastic signal.}
-	\label{fig:octresults}
+	\caption{The result of using the filter-bank on a stochastic signal, e.g. Pink noise.}
+	\label{fig:octresultsStoch}
 \end{figure}
 
 \subsection{Conclusion}
-Based on the results in figure \ref{fig:octresults} the 1/3 octave filter-bank is working as desired.
+Based on the results in figure \ref{fig:octresultsDeterm} \ref{fig:octresultsStoch} the 1/3 octave filter-bank is working as desired.
