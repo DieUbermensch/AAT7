@@ -63,9 +63,9 @@ To ensure that the DSP is running at the desired frequencies, a probing of the d
 \subsubsection{Equipment settings}
 The TMS320C5515 eZdsp is connected to the DSP expansion board where the TLV320AIC3204 codec is connected via 3.5 $m$m minijack cable (dashed lines in \autoref{fig:SchematicDelayExperiment}) to the board. The oscilloscopes probes are then connected to the on-board BNC connectors. This is shown on figure \ref{fig:SchematicDelayExperiment}. It should be noted that even though the expansion board is equipped with 16 $k$Hz first order lowpass filter, the probes were applied before the filters, such that they have no influence. 
 \\\\
-To determine the sampling delay of the system a simple program is used, where the samples are passed through the system without any interaction. This ensures that no time is spent for calculations in the program. A step on the input signal will result in an delayed step on the output. The time difference in the steps will yield the conversion delay of the system directly. The delay takes into account the needed time for AA-filtering after oversampling and reconstruction in the $\Sigma\Delta$-converters. Using a low frequency as the signal will create a frame showing only on step, making the readout easier, this is shown in figure \ref{fig:ScopeDelayExperiment}.
+To determine the sampling delay of the system a simple program is used, where the samples are passed through the system without any interaction. This ensures that no time is spent for calculations in the program. A step on the input signal will result in an delayed step on the output. The time difference in the steps will yield the conversion delay of the system directly. The delay takes into account the needed time for AA-filtering after oversampling and reconstruction in the $\Sigma\Delta$-converters. Using a low frequency as the signal will create a frame showing only one step, making the readout easier, this is shown in figure \ref{fig:ScopeDelayExperiment}.
 
-Listing \ref{lst:samplingbasic} shows the main code for looping the stereo codec (setup of codec is described in \autoref{sec:codecsetup}. The code shows the sampling of the input register when ready, and writing to the output register when ready. 
+Listing \ref{lst:samplingbasic} shows the main code for looping the stereo codec (setup of codec is described in \autoref{sec:codecsetup}). The code shows the sampling of the input register when ready, and writing to the output register when ready. 
 
 \begin{lstlisting} [language=C,label={lst:samplingbasic},caption={The code example used to pass a sample through the DSP and codec.}]
 void main( void )
@@ -163,14 +163,14 @@ The outputs from the three test are plotted on figure \ref{fig:ScopeDelayExperim
 	\centering
 	\tikzsetnextfilename{DelaySetupCSVRead}
 	\input{figures/Hardware/DelayGraph.tex}
-	\caption{Readout form the oscilloscope showing steps at different f$_s$ . The blue line is the step, f$_s$ = 48 $k$Hz (orange), f$_s$ = 96 $k$Hz (yellow) and f$_s$ = 192 $k$Hz (purple). Note that step has been offset for visual overview.}
+	\caption{Readout from the oscilloscope showing steps at different f$_s$. The blue line is the step, f$_s$ = 48 $k$Hz (orange), f$_s$ = 96 $k$Hz (yellow) and f$_s$ = 192 $k$Hz (purple). Note that step has been offset for visual overview.}
 	\label{fig:ScopeDelayExperiment}
 \end{figure}
 
-In equation \ref{eq:sampleDelay} it is seen that the delay of conversion corresponds to a delay of 43 samples if 48 $k$Hz is chosen.
+In equation \ref{eq:sampleDelay} it is seen that the delay of conversion corresponds to a delay of 43 samples dependen on $f_s$.
 
 \begin{equation}\label{eq:sampleDelay}
-	\frac{48000\text{ Samples}}{1s} \cdot 900\cdot 10^{-6}\text{s} = 43 \text{ Samples} 
+	\frac{f_s\text{ Samples}}{1s} \cdot 900\cdot 10^{-6}\text{s} = 43 \text{ Samples} 
 \end{equation}
 
 
