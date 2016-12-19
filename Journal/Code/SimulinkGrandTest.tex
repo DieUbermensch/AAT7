@@ -28,7 +28,7 @@ No other changes has been made to the total system and it is the system which wi
 \section{Simulink Combined System Test} \label{sec:SimulinkTotalSystem}
 
 \subsection{Description}
-This appendix will simulate the ANC system, shown on \autoref{fig:totalSystem}, which is a combination of the ANC system show on \autoref{fig:SimulinkANC} and the predictor shown on \autoref{Fig:PredictionSimulink}. The simulation will test if the combined LP FXLMS system is dependent on delays if the same delay is predicted by the predictor. All functions for the ANC system and predictor are already described in \autoref{sec:ANCSimulation} and \autoref{sec:predicSimulink} respectively. The "real world" simulink system is shown on \autoref{fig:SimulinkRealWorld}.
+This appendix will simulate the ANC system, shown on \autoref{fig:totalSystem}, which is a combination of the ANC system show on \autoref{fig:SimulinkANC} and the predictor shown on \autoref{Fig:PredictionSimulink}. The simulation will test if the combined LP FXLMS system is dependent on delays, if the same delay is predicted by the predictor. All functions for the ANC system and predictor are already described in \autoref{sec:ANCSimulation} and \autoref{sec:predicSimulink} respectively. The "real world" simulink system is shown on \autoref{fig:SimulinkRealWorld}.
 
 \subsection{Diagram}
 \begin{figure}[H]
@@ -40,7 +40,7 @@ This appendix will simulate the ANC system, shown on \autoref{fig:totalSystem}, 
 
 
 \subsection{Variables}
-\begin{lstlisting} [language=MATLAB, caption=Variables]
+\begin{lstlisting} [language=MATLAB, caption=Variables.]
 N 			= 1200; 		%is the frame length 
 overlap 	= 1100;			%is the overlap in the buffer "O"
 prediction 	= 10; 			%is how far the algorithm should predict "P"
@@ -56,7 +56,7 @@ delay 			 			%is the delay of the ADC delay and DAC delay
 
 \subsection{Functions}
 
-\begin{lstlisting} [language=MATLAB, caption=Simulink Expanded control filter function., label=Lst:controlFilterExpandedReal]
+\begin{lstlisting} [language=MATLAB, caption=Simulink expanded control filter function., label=Lst:controlFilterExpandedReal]
 function y = fcn(xhat,x,b,L,prediction)
 
 %Setup of interal variables
@@ -72,7 +72,7 @@ xIn = [xhat xIn(1:prediction-1) x xIn(prediction+1:end-1)];
 y = xIn*b;
 \end{lstlisting}
 
-\begin{lstlisting} [language=MATLAB, caption=Simulink Expanded CP function., label=Lst:cpExpandedReal]
+\begin{lstlisting} [language=MATLAB, caption=Simulink expanded CP function., label=Lst:cpExpandedReal]
 function y  = fcn(x,xhat,CPCoef,L,prediction)
 
 %Setup of interal variables
@@ -90,17 +90,17 @@ y = xIn*CPCoef;
 \end{lstlisting}
 
 \subsection{Test}
-A simulation of the total system with different ADC and DAC delay is to be made to see if delays affect the attenuation of the system. The delays are varied from 2 to 50 in steps of 2. For each simulation the RMS of the output is compared to the RMS of the input filtered with the HP transfer function using \autoref{eq:testANC2}. 
+A simulation of the total system with different ADC and DAC delay is to be made to determine if delays affect the attenuation of the system. The delays are varied from 2 to 50 in steps of 2. For each simulation the RMS of the output is compared to the RMS of the input filtered with the HP transfer function using \autoref{eq:testANC2}. 
 
 \begin{equation}\label{eq:testANC2}
 	Attenuation=20 \cdot log_{10} \left (\frac{\sqrt{\sum\limits_{i=1}^{N}HPSig^2[n-i]}}{\sqrt{\sum\limits_{i=1}^{N}ANCsig^2[n-i]}}  \right )
 \end{equation}
 
-The combined algorithm is not simulated a delay 0, as the predictor would be redundant. All other results are shown on \autoref{fig:delayRatioTotal} together with the results of the system with no predictor described in \autoref{sec:ANCSimulation}.
+The combined algorithm is not simulated with delay 0, as the predictor would be redundant. All other results are shown on \autoref{fig:delayRatioTotal} together with the results of the system with no predictor described in \autoref{sec:ANCSimulation}.
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{delayTestTotal}		\input{figures/GrandTest/DelayRatioTotal.tex}
-	\caption{ Attenuation of feedforward FXLMS (blue) compared with feedforward LP FXLMS (orange) with different system delays. The blue line is identical to that in \autoref{Fig:delayRatioAppendix}}
+	\caption{ Attenuation of feedforward FXLMS (blue) compared with feedforward LP FXLMS (orange) with different system delays. The blue line is identical to that in \autoref{Fig:delayRatioAppendix}.}
 		\label{fig:delayRatioTotal}
 \end{figure}
 
@@ -114,4 +114,4 @@ The combined algorithm is not simulated a delay 0, as the predictor would be red
 
 
 \subsection{Conclusion}
-The combined Feedforward LP FXLMS algorithm increase the attenuation of speech compared to a feedforward FXLMS algorithm. 
+The combined feedforward LP FXLMS algorithm increase the attenuation of speech compared to a feedforward FXLMS-algorithm. 
