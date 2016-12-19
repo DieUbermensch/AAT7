@@ -1,6 +1,8 @@
 
 \section{Prediction in Simulink} \label{sec:predicSimulink}
 
+All files from this appendix can be found in folder: \\
+\path{Attachment://Appendix L - Prediction in Simulink}
 
 \subsection{Description}
 This appendix shows the performance of the proposed prediction algorithm. It is not with fine tuned parameters in this version but allows for choice of settings corresponding to the need of a specific use case.  
@@ -133,7 +135,7 @@ end
 \subsection{Test}
 
 \subsubsection{Testing the predictor for different $f_s$ -- Non automated test}
-\todoChristian{Are we adding a path here?}
+
 When testing the predictor for different $f_s$ automated testing can not be used, as the audio file used by the predictor has to be changed to the version with the correct sample rate. \\ 
 In the "Init.m" file $N$ should be equal to $f_s$/N, $O=0$ and $P=1$. The following steps should be taken for each $f_s$ under test:
 \begin{itemize}
