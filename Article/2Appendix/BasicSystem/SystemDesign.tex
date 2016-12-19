@@ -112,6 +112,11 @@ With the definition of the FXLMS given, the system in \autoref{fig:ANCFeedforwar
 
 \newpage
 \section{Simulation of ANC} \label{sec:ANCSimulation}
+
+All files from this appendix can be found in folder: \\
+\path{Attachment://Appendix C - Simulation of ANC}
+
+
 \subsection{Description}
 This appendix describes the simulation of ANC. The system shown in \autoref{fig:ANCFeedforwardAppendix} has been set up in Simulink. Figure \ref{fig:SimulinkRealWorld} and \autoref{fig:SimulinkANC} shows the "real world"-simulation and the ANC algorithm-simulation, respectively. There has been inserted a delay of one sample in the input of the error because Simulink will not compile if this is not done. To compensate for this, a delay of one sample has been inserted in the CP as well in the ANC algorithm. The delayed error signal corresponds to a real world scenario, where the error signal will always be delayed compared to the output signal.   
 
