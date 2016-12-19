@@ -24,7 +24,7 @@ Because the cancellation path is LTI, the adaptive algorithm adjusting the cance
 
 
 
-\subsection{FXLMS algorithm for FIR filters}\label{subsec:fxlms}
+\subsection{FXLMS algorithm for FIR-filters}\label{subsec:fxlms}
 The FXLMS is a gradient descent algorithm which iteratively changes the coefficients of the control filter by adding a calculated step to the current coefficients which should converge to a global minimum of the error criterion. The derivation of the FXLMS algorithm is given below. 
 \begin{equation}\label{eq:FXLMSNewCoef}
 \bar{b}(k+1) = \bar{b}(k) - \mu\nabla \bar{J}(k)
@@ -99,7 +99,7 @@ Which yields equation \ref{eq:FXLMSw(k+1)}:
 \bar{b}(k+1) = \bar{b}(k) - 2\mu e(k)\bar{f}(k)
 \end{equation}
 
-Which is the standard FXLMS algorithm when using an adaptive FIR filter.
+Which is the standard FXLMS algorithm when using an adaptive FIR-filter.
 \begin{equation}\label{eq:FXLMSw_j(k+1)}
 b_j(k+1) = b_j(k) - 2\mu e(k)f(k-j)
 \end{equation}
@@ -193,7 +193,7 @@ end
 
 xIn = [x xIn(1:end-1)];
 
-% FIR filter
+% FIR-filter
 y = xIn*b;
 \end{lstlisting}
 
