@@ -5,7 +5,7 @@ All data from this experiment can be found at
  \path{CD:\\Appendices\Appendix H - The Angles of Incidences Influence on the Headphone Transfer-Function\..}
 
 \subsection{Purpose}
-The purpose of this experiment is to determine if the angle of incidence has any influence on the found headphone transfer function (HP). 
+The purpose of this experiment is to determine if the angle of incidence has any influence on the headphone transfer function (HP). 
 
 The hypothesis is that the angle on incidence will influence both the time delay and magnitude response of the transfer functions. Measurements will only be performed in a horizontal plane. 
 
@@ -23,11 +23,11 @@ The hypothesis is that the angle on incidence will influence both the time delay
 		3	&	Beyerdynamic DT 770 Headphones				& 2037-18		\\
 		4	&	Soundcard RME Fireface 802					& 86838		\\
 		5	&	Computer running Simulink								& NaN		\\
-		6	&	G.R.A.S. 26-AK Standard preamplifier		& 52665		\\
+		6	&	G.R.A.S. 26-AK Standard Preamplifier		& 52665		\\
 		7	&	B\&K Sound Calibrator Type 4230				& 08155		\\ 
-		8	&	Knowles FG-23329 microphone					& NaN		\\
-		9	&	Genelec 1031-A loudspeaker								& 33990		\\ 
-		10	&	Preamp for FG-23329  microphone	& NaN\\
+		8	&	Knowles FG-23329 Microphone					& NaN		\\
+		9	&	Genelec 1031-A Loudspeaker								& 33990		\\ 
+		10	&	PSU for FG-23329  Microphone	& NaN\\
 		11	& 	B\&K Microphone Power Supply Type 2804		& 07304		\\
 		\bottomrule
 	\end{tabular}
@@ -35,29 +35,29 @@ The hypothesis is that the angle on incidence will influence both the time delay
 	\label{tab:AngleOfIncideceHP}
 \end{table}
 
-\subsubsection{Choice of equipment}
-The experiment aims to be valid in the frequency range 50 Hz to 20 $k$Hz. This means that all equipment used should work within the span of this frequency range. \\\\
-The experiment uses a total of three microphones:
-\begin{itemize}
-	\item The error microphone; located inside the HATS's ear is given by the type fitted to the dummy.
-	\item The spmMic; it should be as small as possible in order to avoid influencing the transfer functions that are being measured.
-	\begin{itemize}
-		\item For this a Knowles FG-23329 is used.
-	\end{itemize}
-	\item The Ref microphone; this has less restrictions on size and placement. This allows for the choice of a standard measurement microphone.
-	\begin{itemize}
-		\item The B\&K 4134 is chosen.
-	\end{itemize}
-	\item For the loudspeaker; the limiting criterion of this is the lower roll of. However transfer functions between the microphones are measured, so absolute flatness is not critical.
-	\begin{itemize}
-		\item The Genelec 1031-A is used as sound source.
-	\end{itemize}
-	\item The measurement system uses a RME Fireface 802 controlled using Simulink. Impulse responses are calculated using the method described in \autoref{Sec:MeasATransFunc}. 
-\end{itemize}
+% \subsubsection{Choice of equipment}
+% %The experiment aims to be valid in the frequency range 50 Hz to 20 $k$Hz. This means that all equipment used should work within the span of this frequency range. \\\\
+% The experiment uses a total of three microphones:
+% \begin{itemize}
+% 	\item The error microphone; located inside the HATS's ear is given by the type fitted to the dummy.
+% 	\item The spmMic; it should be as small as possible in order to avoid influencing the transfer functions that are being measured.
+% 	\begin{itemize}
+% 		\item For this a Knowles FG-23329 is used.
+% 	\end{itemize}
+% 	\item The Ref microphone; this has less restrictions on size and placement. This allows for the choice of a standard measurement microphone.
+% 	\begin{itemize}
+% 		\item The B\&K 4134 is chosen.
+% 	\end{itemize}
+% 	\item For the loudspeaker; the limiting criterion of this is the lower roll of. However transfer functions between the microphones are measured, so absolute flatness is not critical.
+% 	\begin{itemize}
+% 		\item The Genelec 1031-A is used as sound source.
+% 	\end{itemize}
+% 	\item The measurement system uses a RME Fireface 802 controlled using Simulink. Impulse responses are calculated using the method described in \autoref{Sec:MeasATransFunc}. 
+% \end{itemize}
 
 \subsection{Diagram}
 
-Figure \ref{fig:AngleOfIndDiagram} shows the set-up of the experiment. When rotating the head, different angles between the line created by the three microphones and the loudspeaker is obtained. The Angle is adjusted between measurements as described in section \ref{sec:AngleDescription}. %It is possible to determine the angle by measuring the difference in time of arrival between the speaker microphone and reference microphone. This is further described in section \ref{sec:AngleDescription}.
+Figure \ref{fig:AngleOfIndDiagram} shows the set-up of the experiment. When rotating the head, different angles between the line created by the three microphones and the loudspeaker is obtained. The angle is adjusted between measurements as described in section \ref{sec:AngleDescription}. %It is possible to determine the angle by measuring the difference in time of arrival between the speaker microphone and reference microphone. This is further described in section \ref{sec:AngleDescription}.
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{.4\textwidth}
@@ -89,7 +89,7 @@ The connections in the set-up can be seen in \autoref{Fig:AngleOfIncidenceSetup}
 
 
 \subsection{Settings/Description}\label{sec:AngleDescription}
-The experiment uses a single loudspeaker to measure the  different angles of incidence, thus either the loudspeaker has to be moved around the center of the HATS, or the HATS will have to be rotates on its axis to the right angles. \\
+The experiment uses a single loudspeaker to measure the  different angles of incidence, thus either the loudspeaker has to be moved around the center of the HATS, or the HATS will have to be rotated on its axis to the right angles. \\\\
 It was chosen to adjust the angle by rotating the HATS around the center of its own axis, leaving the loudspeaker in place. This creates a triangle between the loudspeaker, microphone and inner microphone of the HATS. The resolution of the scale on the HATS is 2\degrees. The baseline of the triangle is from the microphone to the inner microphone, and angle is adjusted according to that line.
 Measurements are made for the following angles:
 \begin{table}[H]
