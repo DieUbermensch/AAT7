@@ -96,7 +96,7 @@
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{itemize}
-				\item Counter phase signal delayed 10 samples	
+				\item Counterphase signal delayed 10 samples	
 				\begin{itemize}
 					\item 250 Hz
 					\item 2500 Hz 
@@ -132,7 +132,6 @@
 		\begin{itemize}
 			\item Periodic Signals
 			\begin{itemize}
-				\item Periodic
 				\item Strict Sense Stationary (SSS)
 			\end{itemize}
 			\item Speech Signals
@@ -179,7 +178,7 @@
 
 \begin{frame}{Introduction}{Summary}		
 	\begin{itemize}
-		\item ANC attenuate infinitely ideally
+		\item ANC ideally attenuate infinitely 
 		\item Delays are introduced by sampling and reconstruction
 		\item Periodic signals can be attenuated infinitely
 		\item Speech signals are not attenuated very well
@@ -207,9 +206,9 @@
 				\item Cancelation path
 				\begin{itemize}
 					\item Transfer function from (2) to (3)
-					\item Linear Time Invariant 
+					\item Linear time-invariant 
 				\end{itemize}
-				\item Adaptive FXLMS Algorithm
+				\item Adaptive FXLMS-Algorithm
 				\begin{itemize}
 					\item Optimization problem
 				\end{itemize}
@@ -231,17 +230,17 @@
 			\begin{itemize}
 				\item Auto Correlation Function estimation 
 				\begin{itemize}
-					\item Frame length N
+					\item Framelength N
 					\item Overlap O
 				\end{itemize}
-				\item Wiener hopf equation: $\hat{R}  \bar{a} = -\bar{\hat{r}}_x$
+				\item Wiener-hopf equation: $\hat{R}  \bar{\hat{a}} = -\bar{\hat{r}}$
 				\begin{itemize}
 					\item Inverting matrix
-					\item Levinson Durbin
+					\item Levinson-Durbin
 				\end{itemize}
 				\item Wiener filtering in cascade
 				\begin{itemize}
-					\item Prediction order P
+					\item Prediction length P
 				\end{itemize}
 			\end{itemize}
 			\end{column}
@@ -263,7 +262,7 @@
 				\item High sample rate
 				\item Low processing rate
 			\end{itemize}
-			\item Smaller prediction order
+			\item Smaller prediction length
 			\begin{itemize}
 				\item 10 instead of 43
 			\end{itemize}
@@ -315,20 +314,12 @@
 	\item Delays are introduced due to sampling and reconstruction
 	\item Delays are reduced using multirate processing
 	\item Compensation by Linear Prediction using Wiener filtering
-	\item Noise cancelling using a feedforward FXLMS algorithm
+	\item Noise cancelling using a feedforward FXLMS-algorithm
 \end{itemize}
 \end{frame}
 
 
 
-\begin{frame}{Methods}{How to test}	
-\begin{itemize}
-	\item Simulink 
-	\item Prediction Gain
-	\item Cross correlations 
-	\item Not entirely sure what to put here
-\end{itemize}
-\end{frame}
 
 
 
@@ -338,6 +329,16 @@
 
 \section{Simulations Results}
 
+
+\begin{frame}{Simulation Results}{How to test}	
+\begin{itemize}
+	\item Simulink 
+	\item Prediction Gain
+	\item Filter banks vs Fourier transform
+	\item Not entirely sure what to put here
+\end{itemize}
+\end{frame}
+
 \subsection{Linear Prediction Parameters}
 \begin{frame}{Simulation Results}{Optimal parameters}		
 \begin{columns}
@@ -346,7 +347,7 @@
 			\item Prediction order P = 43
 			\item Optimal parameters
 			\begin{itemize}
-				\item Frame length N = 1600
+				\item Framelength N = 1600
 				\item Overlap O = 1500
 			\end{itemize}
 			\item Prediction Gain PG = 5.4 dB
@@ -366,7 +367,7 @@
 		\item Prediction order P = 10
 		\item Optimal parameters
 		\begin{itemize}
-			\item Frame length N = 1200
+			\item Framelength N = 1200
 			\item Overlap O = 1100
 		\end{itemize}
 		\item Prediction Gain PG = 10 dB
