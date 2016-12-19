@@ -18,20 +18,21 @@ In a typical set-up you want to measure the transfer function of a single device
 H(f)=\frac{Y(f)}{X(f)}=\frac{\mathscr{F}(y(t))\times\mathscr{F}^{\ast}(x(t))}{\mathscr{F}(x(t))\times\mathscr{F}^{\ast}(x(t))}
 \label{Eq:TranferFunctionTwoPort}
 \end{equation}
-Where $\star $ denotes the cross-correlation and $\ast $ denotes the convolution, and 
- $X(f)$ is the auto-spectrum of the reference signal and $Y(f)$ cross-spectrum of the reference signal and the measured signal. Found by auto- and cross correlation respectively.\\
-$x(t)$ and $y(t)$ are measured in time domain and to obtain the cross-spectrum and auto-spectrum, $X(f)$ and $Y(f)$ are calculated.
+Where $\times$ denotes bin-wise multiplication and $^{\ast}$ denotes the complex conjugate. \\
+$x(t)$ and $y(t)$ are measured in time domain. $X(f)$ is the auto-spectrum of the reference signal and $Y(f)$ is the cross-spectrum of the reference signal and the measured signal. \\\\
+% and to obtain the cross-spectrum, $Y(f)$, and auto-spectrum, $X(f)$, are calculated.
 %\begin{equation}
 %Y(f)=\mathscr{F}(y(t))\times\mathscr{F}^{\ast}(x(t)) \text{ \& } X(f)=\mathscr{F}(x(t))\times\mathscr{F}^{\ast}(x(t))
 %\label{Eq:cross-spectrum}
 %\end{equation}
-Where $\times$ denotes bin-wise multiplication and $^{\ast}$ denotes the complex conjugate. \\
 From equation \ref{Eq:TranferFunction} %and \ref{Eq:cross-spectrum} 
 you can find $H(f)$. Taking the inverse Fourier transform of that will give the impulse response of the system. 
 \begin{equation}
 H(f) = \frac{Y(f)}{X(f)} \xrightarrow{\mathscr{F}^{-1}} h(t)
 \label{Eq:Impulseresponse}
 \end{equation} 
+
+
 
 \subsection{Cross-correlation method}
 The mathematics described above can be converted to time domain, and yield the same result. The choice of method is a matter of convenience. If the Fourier transform of the signals are all ready known the above method is easily calculated. On the other hand if the cross-correlation between $y(t)$ and $x(t)$ is already known the method below might be more efficient
@@ -41,10 +42,13 @@ H(f)=\dfrac{\mathscr{F}(y(t)\star x(t))} {\mathscr{F}(x(t)\star x(t))}=
 \label{Eq:Xcorr method}
 \end{equation}  
  %The deconvolution should be made as a division in frequency domain as this is more robust towards noise in the system. 
+ Where $\star $ denotes the cross-correlation and $\ast $ denotes the convolution. 
+ 
+ 
  
  \subsection{Matlab function}
  Here a function that can be used to find the transfer function is given. The return value is the response in frequency domain. If an impulse response is take the inverse Fourier transform of the return value. 
- \begin{lstlisting}[language=MATLAB, caption=getTrans.m]
+ \begin{lstlisting}[language=MATLAB, caption=getTrans.m.]
 function [ res ] = getTrans( sig,ref )
 	res=(fft(sig).*conj(fft(ref)))./(fft(ref).*conj(fft(ref)));
 end
