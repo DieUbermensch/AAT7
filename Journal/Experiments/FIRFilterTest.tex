@@ -1,9 +1,9 @@
 \section{Design and Test FIR-Filter Function}
 
-This section describes the design method and tests of an FIR assembler function. 
+This appendix describes the design method and tests of an FIR assembler function. 
 
 \subsection{Purpose}
-The purpose of this test is to design an assembly FIR-filter. The filter was to be used if the system was implemented on a DSP platform. With the function written in assembler it is possible to minimize the amount of instructions used. 
+The purpose is to design an assembly FIR-filter and test it.% The filter was to be used if the system was implemented on a DSP platform. With the function written in assembler it is possible to minimize the amount of instructions used. 
 
 
 \subsection{Diagram}
@@ -16,7 +16,9 @@ The purpose of this test is to design an assembly FIR-filter. The filter was to 
 \end{figure}
 
 \subsection{Implementation}
-The FIR-filter is designed based on the flowchart seen in figure \ref{Fig:FIR_filter2}. The filter structure is chosen as a Type 1 FIR-filter, meaning symmetrical and even order. The variables are declared in C, since this creates a better overview and is not computational critical. The declaration can be shown in listing \ref{lst:variablesFIR}. The convolution is created in assembler and can be seen in listing \ref{lst:FIR}.
+The FIR-filter is designed based on the flowchart seen in figure \ref{Fig:FIR_filter2}. 
+%The filter structure is chosen as a Type 1 FIR-filter, meaning symmetrical and even order. 
+The variables are declared in C, since this creates a better overview and is not computational critical. The declaration is seen in listing \ref{lst:variablesFIR}. The convolution is created in assembler and is seen in listing \ref{lst:FIR}.
 
 \subsubsection{The declarations made in C}
 \begin{lstlisting}[language={C},caption={Declaration of the needed variables.}, label={lst:variablesFIR} ]
@@ -27,7 +29,7 @@ Int16	index	//The index of the newest x sample
 Int16	return	//Returns the output of the filter (y(n))
 \end{lstlisting}
 
-Using the syntax in Code Composer Studio, the values will be passed into the assembler function, the syntax for passing into assembler is shown in listing \ref{lst:SyntaxFIR}.
+Using the syntax in Code Composer Studio, the values will be passed into the assembler function. The syntax for passing into assembler is shown in listing \ref{lst:SyntaxFIR}.
 \begin{lstlisting}[language={C},caption={Function prototype.}, label={lst:SyntaxFIR}]
 extern Int16 FIR(Int16 *x, Int16 *b, Int16 order, Int16 index);
 \end{lstlisting}
@@ -45,7 +47,7 @@ The values from the function will be placed in the following registers, shown in
 
 
 \subsubsection{code}
-Listing \ref{lst:FIR} shows the convolution of the signal. The filter is running sample by sample, which means it will continuously output the i'th sample in accordance to a counter running in the main program.  
+Listing \ref{lst:FIR} shows the convolution of the signal. The filter is running sample by sample, which means it will continuously output a sample per sample.
 \begin{lstlisting} [language={[x86masm]Assembler},caption={The FIR-filter with N coefficients.}, label={lst:FIR}]
 .global _FIR;				; Declare function 
 
@@ -89,7 +91,7 @@ The magnitude response of the filter can be seen on \autoref{Fig:FIRComparison}.
 %\end{lstlisting}
 
 
-The Direct-Form 1 filter has 17 filter-coefficients and is double-precision with floating point. However this is not implementable on the selected DSP as it operates in fixed-point. This is why to compare this generated filter and the implementation, the generated filter is quantized into Q15 format.
+The filter has 17 filter-coefficients and is double-precision with floating point. However this is not implementable on the selected DSP as it operates in fixed-point. This is why to compare this generated filter and the implementation, the generated filter is quantized into Q15 format.
 
 %\begin{lstlisting} [language={[x86masm]Assembler}, caption=The 17 Q15 filter-coefficients., label=Lst:fdafiltercoefsquantized]
 %0.0550,	0.0564,	0.0576,	0.0587,	0.0596,	0.0603,	0.0608,	0.0611,	0.0612,
@@ -114,9 +116,9 @@ Table \ref{tab:UsedEquipmentListningFIRTest} shows the equipment used to perform
 	\ra{1.3}
 	\begin{tabular}{ c c c } \toprule
 	{Item}	& {Description} 								& {AAU-no}. 	\\ \bottomrule 
-	1	&	Computer w/ NI-PCI-4461 running Swept Sine FRF VI	& NaN			\\
+	1	&	Computer w/ NI-PCI-4461 running Swept Sine FRF VI	& 2037-18			\\
 	2	&	DSP Expansion Board rev. 1 						& NaN			\\
-	3	&	Computer running Code Composer Studio			& 2037-18		\\
+	3	&	Computer running Code Composer Studio			& NaN		\\
 	4	&	TMSC5515 eZDSP 									& NaN			\\
 	\bottomrule
 	\end{tabular}
@@ -159,7 +161,7 @@ The DSP is connected according to figure \ref{Fig:FIRSetupDiagram}, where the NI
 
 The measuring system on the computer are used with the following settings:
 \begin{itemize}
-	\item Fs = 48000 Hz
+	\item $f_s$ = 48000 Hz
 	\item Logarithmic sine sweep from 20 Hz to 20 $k$Hz
 	\item Vs = 0.5 V
 	\item Steps = 2000
@@ -181,18 +183,18 @@ To perform the experiment on the DSP, the following steps are to be made.
 			 \item Set the PC soundcard to comply with the list \autoref{Eqp_Sett_FIR}.
 		\end{itemize}
 		\item Press 'Start'.
-		\item Save file as "SineSweepTest.txt" and include in FIRFIlterTest-foler.
+		\item Save file as "SineSweepTest.txt" and include in FIRFIlterTest-folder.
 	\end{enumerate}
 
 
 \subsubsection{Data Extraction}
 The data from the experiment is loaded as follows:
 	\begin{enumerate}
-		\item Open Matlab and run script \path{SweptSineLoad.m} to extract and plot data from test.
+		\item Open Matlab and run \path{SweptSineLoad.m} to extract and plot data from test.
 		\item Run \path{PerformFIRExperiment.m} to extract and plot data from generated and simulated filters.
 	\end{enumerate}
 
-Figure \ref{Fig:FIRComparison} shows comparison between the designed quantized filter in Matlab and the measured filter. The blue graph shows the designed filter and the orange graph shows the measured response. The phase response of the filter is not shown, since the FIR-filter by nature is linear in phase.
+Figure \ref{Fig:FIRComparison} shows comparison between the designed quantized filter in Matlab and the measured filter. The blue graph shows the designed filter's magnitude response  and the orange graph shows the measured response magnitude response. %The phase response of the filter is not shown, since the FIR-filter by nature is linear in phase.
 	
 %\begin{figure}[H]
 %	\centering
@@ -207,12 +209,12 @@ Figure \ref{Fig:FIRComparison} shows comparison between the designed quantized f
 	\centering
 	\tikzsetnextfilename{Testing}
 	\input{figures/Hardware/FIRtest.tex}
-	\caption{16-tap FIR-filter with the kasier window applied using a $\beta$ value of 2. The blue graph is generated using quantized MATLAB coefficients and the red is measured using a logarithmic sine sweep.} 
+	\caption{16-tap FIR-filter with the Kaiser window applied. The blue graph is generated using quantized Matlab coefficients and the orange is measured using a logarithmic sine sweep.} 
 	\label{Fig:FIRComparison}
 \end{figure}
 
 \subsection{Conclusion}
-The test yielded a $\approx$ 0.5 dB of difference on the main lope, and slight deviation and gain in the side lobes. The filter does however perform as desired with the designed filter coefficient and is assumed fully functional.
+The test yielded a $\approx$ 0.5 dB of difference on the main lope, and slight deviation in the side lobes. The filter does however perform as desired with the designed filter coefficient and is assumed fully functional.
 
 
 
