@@ -1,7 +1,7 @@
 \section{Automation of tests in Simulink} \label{sec:SimulinkAuto}
 \subsection{Description}
 This appendix describes an automated test set-up used with simulations, to run the same simulation multiple times with different parameters.
-It might be required to run a simulation with a lot of different parameters. Rather than going for a random trial and error approach a systematic variation approach was chosen. If a person should control the simulations manually a lot of time would be spent, waiting for the algorithm to run. Therefore an automated test set-up was constructed. 
+It might be required to run a simulation with a lot of different parameters. Rather than going for a random trial and error approach, a systematic variation approach was chosen. If a person should control the simulations manually a lot of time would be spent, waiting for the algorithm to run. Therefore an automated test set-up was constructed. 
 
 \subsection{Variables}
 Numerous variables are declared in the simulations and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
@@ -12,7 +12,7 @@ prediction; 	%is how far the algorithm should predict "P"
 fs; 			%is the sample frequency of the input signal 
 w=hamming(N)	% could be replaced by other window functions
 M;				% is equal to N in all cases
-\mu 			% in case a FXLMS algorithm is included in the test
+u 				% in case a FXLMS algorithm is included in the test
 \end{lstlisting}
 
 \subsection{Functions}
