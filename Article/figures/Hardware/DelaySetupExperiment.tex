@@ -1,11 +1,5 @@
 \begin{tikzpicture}
-
 \draw  (3.8,3.4) rectangle (-3.8,-1.6);
-
-
-
-
-
 \draw  (-1.8,0.8) rectangle (-0.6,-1.2);
 
 
@@ -16,7 +10,7 @@
 \draw  (3,1.8) node (v3) {OR} ellipse (0.4 and 0.4);
 
 \draw  (-0.6,1.8) node (v5) {L2} ellipse (0.4 and 0.4);
-\draw  (0.6,1.8) node (v3) {R3} ellipse (0.4 and 0.4);
+\draw  (0.6,1.8) node (v3) {R2} ellipse (0.4 and 0.4);
 
 \draw  (-2.2,-1.6) rectangle node [text width = 1cm, align=center] {mini jack} (-3.2,-0.6);
 
@@ -47,10 +41,13 @@
 \draw  (-4.2,1.2) rectangle node [text width = 1cm,align=center] {IN 1} (-5.4,0.4);
 \draw  (-4.2,0.2) rectangle node [text width = 1cm,align=center] {W1} (-5.4,-0.6);
 \draw (v3);
-\draw [thick](-0.6,2.2) -- (-0.6,2.4) -- (-3.6,2.4) -- (-3.6,1.8) -- (-4.2,1.8);
-\draw[thick] (-3.4,1.8) -- (-3.4,0.8) node (v1) {} -- (-4.2,0.8) -- (-3.4,0.8) -- (-3.4,-0.2) -- (-4.2,-0.2);
+\draw [thick,->](-0.6,2.2) -- (-0.6,2.4) -- (-3.6,2.4) -- (-3.6,1.8) -- (-4.2,1.8);
+
 \node [text width = 1.75cm,align=center] at (-6.4,1) {Analog Discovery \\ 2};
 
 
 \draw (-8.6,0.8) -- node [above] {USB} (-7.6,0.8);
+\draw[thick,<->] (-4.2,0.8) -- (-3.6,0.8) node (v1) {} -- (-3.6,1.52) -- (-3.38,1.65);
+
+\draw[thick] (-4.2,-0.2) -- (-3.6,-0.2) -- (-3.6,0.8);
 \end{tikzpicture}
