@@ -97,7 +97,7 @@ Measurements are made for the following angles:
 	\begin{tabular}{c c c c c c c c c c} \toprule
 		0\degrees & 10\degrees & 20\degrees & 30\degrees & 40\degrees & 50\degrees & 60\degrees & 70\degrees & 80\degrees & 90\degrees \\ \bottomrule
 	\end{tabular}
-\caption{Angles that measurements should be performed at. 0\degrees  is the situation in \autoref{fig:AngOfIndOnax}.}
+\caption{Angles that measurements should be performed at 0\degrees  is the situation in \autoref{fig:AngOfIndOnax}.}
 \label{Tab:AngleOfInciMeasAngles}
 \end{table}
  
@@ -108,14 +108,14 @@ Measurements are made for the following angles:
 \begin{itemize}
 	\item For the Ref microphone, calibration is made at 1 $k$Hz using the B\&K 4230 as calibrator. This should yield a signal of 93.6 dB as it is a pressure field microphone. The measured intensity in Matlab was 68.99 dB so all measurements are multiplied by 17.00 to get a calibrated signal in Matlab. 
 	\item For the Error microphone, calibration is made at 1 $k$Hz using the B\&K 4230 as calibrator with adapter B\&K 0741 for the ear of the HATS. This should yield a signal of 95.6 dB, according to the datasheet of the HATS. The measured intensity in Matlab was 78.22 dB so all measurements are multiplied by 7.40 to get a calibrated signal in Matlab. 
-	\item For the speakerMic, calibration is made using a earplug cut in half and fitted around the microphone, as an adapter. This simple adapter allows the B\&K 4230 to be used as calibrator. The measured output level is 84.37 dB, and should have been 94.0 dB . Therefore all measurements are multiplied by 3.03 to get a calibrated signal in MATLAB\textsuperscript{\textregistered}
+	\item For the speakerMic, calibration is made using a earplug cut in half and fitted around the microphone, as an adapter. This simple adapter allows the B\&K 4230 to be used as calibrator. The measured output level is 84.37 dB, and should have been 94.0 dB . Therefore all measurements are multiplied by 3.03 to get a calibrated signal in Matlab
 \end{itemize} 
  
 \subsubsection{Equipment settings}\label{sec:SettingsAngInc}
 \begin{itemize}
 	\item This experiment is performed with a sampling rate of, f$_{s}$ = 48 $k$Hz.
 	\item The loudspeaker is placed 1.6 meters from the center of the HATS.
-	\item the spmMic is fitted just in front of the headphone loudspeaker using medical tape 8.85 cm from the center of the HATS
+	\item the spmMic is fitted just in front of the headphone loudspeaker using medical tape 8.85 cm from the center of the HATS.
 	\item The Ref microphone is placed just outside the headset in-line with the ear and loudspeaker unit 12.45 cm from the center of the HATS. 
 	\item The spmMic is placed inside the headphone, as close to the loudspeaker unit as possible. 
 	\item For on the RME, the "inst"-option is turned on in the mixing console. The following gain settings are present: 		
@@ -125,7 +125,7 @@ Measurements are made for the following angles:
 		\item Ref Microphones has gain +48 dB
 		\item Speaker Microphones has gain +48 dB
 	\end{itemize}
-	\item All settings on the computer is set to 0 dBFS
+	\item All settings on the computer is set to 0 dBFS.
 	\item A logarithmic sine sweep is generated and saved in Matlab using the chirp function as follows:
 	\begin{lstlisting} [language=Matlab, caption=Matlab code generating a logarithmic chirp.	]
 	fs=48000;
@@ -187,7 +187,7 @@ A picture of the set-up is shown in figure \ref{AngIncidenceSetup}. The referenc
 	\item Connect the pre-amplifiers to the RME Fireface 802 as shown in \autoref{Fig:AngleOfIncidenceSetup}. 
 	\item Connect the RME Fireface 802 to the computer via USB.
 	\item Connect the Genelec loudspeaker to Out 1L on the RME Fireface 802.
-	\item Connect a loopback from the Out1R to In1L on the RME Fireface 802
+	\item Connect a loopback from the Out1R to In1L on the RME Fireface 802.
 \end{enumerate}
 
 
@@ -283,8 +283,8 @@ As expected the impulses are approximately delayed versions of each other. The o
 \end{figure}
 
 \subsection{Error sources}
-The SpeakerMic is mounted inside the cup of the headphone. This influence the compartment inside the headphone. Futhermore the wire connecting the SpeakerMic to its pre-amplifier went between the headphone and the dummy, influencing the HP transfer function in an uncontrolled way. The results are consistent, but might have deviations from "the absolute truth".
-\todoKiis{Can I write this?? - it's quite hard to not say it's shit, when we have no numbers/knowledge} 
+The SpeakerMic is mounted inside the cup of the headphone. This influence the compartment inside the headphone. Futhermore the wire connecting the SpeakerMic to its pre-amplifier went between the headphone and the dummy, influencing the HP transfer function in an uncontrolled way. The results are consistent, but might deviate from reality.
+\todoKiis{Missing a TABLE of tolerances I KNOW} 
 
 \subsection{Conclusion}
 The angle of incidence influences both the frequency and the time response of th HP transfer function.  The largest time difference is achieved when sound propagates from the side of the wearer. If sound comes from the front there is no time difference at all. 

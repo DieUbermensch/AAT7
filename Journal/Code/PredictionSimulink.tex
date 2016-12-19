@@ -15,7 +15,7 @@ This appendix shows the performance of the proposed prediction algorithm. It is 
 \end{figure}
 
 
-\subsection{variables}
+\subsection{Variables}
 A lot of variables, are declared in the simulation and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
 \begin{lstlisting} [language=MATLAB, caption=Variables]
 N; 				%is the frame length used as memory in the prediction and the prediction order
@@ -154,7 +154,7 @@ The results are stored in different files automatically, and are shown in \autor
 \label{tb:fsPredictApp}
 \end{table}  
  
-\subsubsection{Automated test - $N$ \& $O$}
+\subsubsection{Testing the predictor for different $N$ \& $O$ -- Automated test}
 Here the automated test set-up described in \autoref{sec:SimulinkAuto} is used.\\ 
 The PG with different prediction orders is measured. This is the frame length parameter ($N$). The overlap parameter ($O$) is also varied. \\ 
 Here the $P$ is set to 43. $N$ is varied from 100-3000 in steps of 100. Overlap, $O$ is varied from 0 to N-100. The used window is the Hamming window. The results are plotted using the surf function i Matlab, and the viewing angle is set to "from above" resulting in a 2D plot. It should be noted that the measured points are the crossings of the black lines and not the coloured squares. The mesh() plot could be used to avoid this, if a less readable plot could be accepted. 
@@ -177,17 +177,17 @@ The same experiment is performed with $P=10$.
 \end{figure}
 
 
-\subsubsection{Automated test - $P$}
+\subsubsection{Testing the predictor for different $P$ -- Automated test}
 Using $N=1200$ and $O=1100$ the PG of the predictor for different $P$ is determined. 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{PvarApp}	
-	\input{figures/Articleillustrations/Pvar.tex}
+	\input{figures/Articleillustrations/PvarAppendix.tex}
 	\caption{$PG$ as a function of $P$. $N=1200$ and $O=1100$.}
 	\label{fig:PredictPApp}
 \end{figure}
 
-\subsubsection{Automated test - $M$}
+\subsubsection{Testing the predictor for different $M$ -- Automated test}
 Using $N=1200$ and $O=1100$ the PG of the predictor for different M is determined. The test is made with both $P=1$ and $P=10$. 
 \begin{figure}[H]
 	\centering
