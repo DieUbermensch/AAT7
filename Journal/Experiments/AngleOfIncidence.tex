@@ -113,12 +113,12 @@ Measurements are made for the following angles:
  
 \subsubsection{Equipment settings}\label{sec:SettingsAngInc}
 \begin{itemize}
-	\item This experiment is performed with a sampling rate of, f$_{s}$ = 48 $k$Hz.
+	\item This experiment is performed with a sampling rate of, $f_{s}$ = 48 $k$Hz.
 	\item The loudspeaker is placed 1.6 meters from the center of the HATS.
-	\item the spmMic is fitted just in front of the headphone loudspeaker using medical tape 8.85 cm from the center of the HATS.
-	\item The Ref microphone is placed just outside the headset in-line with the ear and loudspeaker unit 12.45 cm from the center of the HATS. 
+	\item The spmMic is fitted just in front of the headphone loudspeaker using medical tape 8.85 $c$m from the center of the HATS.
+	\item The Ref microphone is placed just outside the headphone in-line with the ear and loudspeaker unit 12.45 $c$m from the center of the HATS. 
 	\item The spmMic is placed inside the headphone, as close to the loudspeaker unit as possible. 
-	\item For on the RME, the "inst"-option is turned on in the mixing console. The following gain settings are present: 		
+	\item For the RME Fireface 802 the "inst"-option is turned on in the mixing console. The following gain settings are present: 		
 	\begin{itemize}
 		\item Line level gain is 0 dB
 		\item Error Microphones has gain +30 dB
@@ -138,7 +138,7 @@ Measurements are made for the following angles:
 	audiowrite('LogChirp.wav', sweep,fs);
 	
 	\end{lstlisting}
-	Resulting in a 5 seconds long logarithmic sweep from 50 Hz -- 24 $k$Hz starting at zero.
+	Resulting in a five seconds long logarithmic sweep from 50 Hz -- 24 $k$Hz.
 \end{itemize} 
  
 % \subsection{Pictures}
@@ -183,10 +183,10 @@ A picture of the set-up is shown in figure \ref{AngIncidenceSetup}. The referenc
 	\item Set instruments to comply with the list in \ref{sec:SettingsAngInc}.
 	\item Calibrate the microphones using the calibrator as described in \autoref{sec:calAngInc}.
 	\item Place the headphone on the HATS.
-	\item Connect the microphone to their pre-amplifiers as shown in \autoref{Fig:AngleOfIncidenceSetup}. 
-	\item Connect the pre-amplifiers to the RME Fireface 802 as shown in \autoref{Fig:AngleOfIncidenceSetup}. 
+	\item Connect the microphone to their power supplies as shown in \autoref{Fig:AngleOfIncidenceSetup}. 
+	\item Connect the power supplies to the RME Fireface 802 as shown in \autoref{Fig:AngleOfIncidenceSetup}. 
 	\item Connect the RME Fireface 802 to the computer via USB.
-	\item Connect the Genelec loudspeaker to Out 1L on the RME Fireface 802.
+	\item Connect the Genelec loudspeaker to Out1L on the RME Fireface 802.
 	\item Connect a loopback from the Out1R to In1L on the RME Fireface 802.
 \end{enumerate}
 
@@ -195,7 +195,6 @@ A picture of the set-up is shown in figure \ref{AngIncidenceSetup}. The referenc
 \begin{enumerate}
 	\item Set the HATS to the desired test angle. 
 	\item Open Simulink and run file \path{SimulinkAngleOfIndence.slx}.
-	\item This will play \path{LogChirp.wav} through the genelec loudspeaker.
 	\item Record and save, and name \path{Mic[i].wav}, \path{SpM[i].wav}, \path{loop[i].wav} and \path{Ref[i].wav}\footnote{[i] indicates the angle of the experiment}.
 	\item Repeat the experiment for all angles in \autoref{Tab:AngleOfInciMeasAngles}.
 \end{enumerate}
@@ -207,7 +206,7 @@ A picture of the set-up is shown in figure \ref{AngIncidenceSetup}. The referenc
 All data is automatically stored when the script \path{SimulinkAngleOfIndence.slx} is run. The only action to be taken is changing the name of the files after each measurement, so the angle under test is in the file name.
 
 
-From the performing of the experiment, 40 files have been generated:
+From performing the experiment, 40 files have been generated:
 \begin{itemize}
 	\item HPError0Deg.wav -- HPError90Deg.wav
 	\item HPRef0Deg0.wav -- HPRef0Deg90.wav
@@ -216,16 +215,16 @@ From the performing of the experiment, 40 files have been generated:
 \end{itemize}
 
 \subsection{Analysis}
-The analysis is performed using the script: \path{AngleOfIncidenceDataExtract.m}
+The analysis is performed using the script: \path{AngleOfIncidenceDataExtract.m}.
 The impulse response and frequency response of the HP is to be found for all angles.
-Note that a the Ref microphone has a 180\textdegree phase inversion. Therefore all impulses are inverted. When the data is later used it should be inverted again to yield the correct phase. \cite{michandbook}
+Note that the Ref microphone has a 180$^\circ$ phase inversion. Therefore all impulses are inverted. When the data is later used it should be inverted again to yield the correct phase \cite{michandbook}.
 
 The cross correlation method described in \autoref{Sec:MeasATransFunc} is used to find the transfer functions. The Reference microphone is used as input signal and the speakerMic is used as output. The system under test is the cup of the headphone. 
 Below the frequency response and time response of the system is plotted for all angles. 
 \begin{figure}[H]
 	\tikzsetnextfilename{AngOfIncFreq}
 	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncFreq.tex}
-	\caption{Transfer Function from Ref to Genelec- Frequency domain. 10$^\circ$(\textcolor{MATLABblue}{---}), 
+	\caption{Transfer Function from Ref to Genelec in frequency domain. 10$^\circ$(\textcolor{MATLABblue}{---}), 
 	20$^\circ$(\textcolor{MATLABorange}{---}), 	
 	30$^\circ$(\textcolor{MATLAByellow}{---}), 	
 	40$^\circ$(\textcolor{MATLABpurple}{---}), 	
@@ -233,14 +232,14 @@ Below the frequency response and time response of the system is plotted for all 
 	60$^\circ$(\textcolor{MATLABbabyblue}{---}), 	
 	70$^\circ$(\textcolor{MATLABred}{---}), 	
 	80$^\circ$(\textcolor{MATLABblue}{---}), 	
-	90$^\circ$(\textcolor{MATLABorange}{---})			
+	90$^\circ$(\textcolor{MATLABorange}{---}).			
 		}
 	\label{Fig:AngOfIncFreq}
 \end{figure}
-It can be seen, that the frequency response varies above 500 Hz with angle of incidence. This means that in the ANC headphone the model of HP transfer function should vary with the angle of incidence.  
+It can be seen that the frequency response varies above 500 Hz with different angle of incidences. %This means that in the ANC headphone the model of HP transfer function should vary with the angle of incidence.  
 
 
-\autoref{Fig:AngOfIncTime} shows the first 960 filter coefficients of a FIR filter with the same frequency response as the cup of the headphone. The coefficients are obtained by taking the inverse Fourier transform of the frequency response and truncating so only the first 960 samples are used.   The delay between the impulses is of interest, therefore a plot with a zoom is shown in \autoref{Fig:AngOfIncTimezoom2}.
+Figure \ref{Fig:AngOfIncTime} shows the first 960 filter coefficients of a FIR-filter with the same frequency response as the cup of the headphone. The coefficients are obtained by taking the IFT of the frequency response and truncating so only the first 960 samples are used.   The delay between the impulses is of interest, therefore a plot with a zoom is shown in \autoref{Fig:AngOfIncTimezoom2}. \\\\
 As expected the impulses are approximately delayed versions of each other. The on axis (0\degrees) yields the longest delay between the Ref microphone and spmMic. The 90\degrees case yields no delay at all. 
 
 
@@ -249,7 +248,7 @@ As expected the impulses are approximately delayed versions of each other. The o
 	\begin{subfigure}[b]{\textwidth}
 	\tikzsetnextfilename{AngOfIncTime}
 	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncTime.tex}
-	\caption{Transfer function from reference microphone to Genelec - showing 960 samples, it is clearly seen the lack of attenuation at low frequencies.
+	\caption{Transfer function from reference microphone to Genelec - showing 960 samples.
 		10$^\circ$(\textcolor{MATLABblue}{---}), 
 		20$^\circ$(\textcolor{MATLABorange}{---}), 	
 		30$^\circ$(\textcolor{MATLAByellow}{---}), 	
@@ -258,14 +257,14 @@ As expected the impulses are approximately delayed versions of each other. The o
 		60$^\circ$(\textcolor{MATLABbabyblue}{---}), 	
 		70$^\circ$(\textcolor{MATLABred}{---}), 	
 		80$^\circ$(\textcolor{MATLABblue}{---}), 	
-		90$^\circ$(\textcolor{MATLABorange}{---})			
+		90$^\circ$(\textcolor{MATLABorange}{---}).			
 		}
 	\label{Fig:AngOfIncTime}
 	\end{subfigure} 
 	\begin{subfigure}[b]{\textwidth}
 	\tikzsetnextfilename{AngOfIncTimeZoom}
 	\input{../Journal/Experiments/AngleOfIncidence/AngOfIncTimeZoom.tex}
-	\caption{Zoomed graph of figure \ref{Fig:AngOfIncTime}, showing the first 30 Samples. With each incrementation it is seen that the delay decreases.
+	\caption{Zoomed graph of figure \ref{Fig:AngOfIncTime}, showing the first 30 Samples.
 		10$^\circ$(\textcolor{MATLABblue}{---}), 
 		20$^\circ$(\textcolor{MATLABorange}{---}), 	
 		30$^\circ$(\textcolor{MATLAByellow}{---}), 	
@@ -274,17 +273,17 @@ As expected the impulses are approximately delayed versions of each other. The o
 		60$^\circ$(\textcolor{MATLABbabyblue}{---}), 	
 		70$^\circ$(\textcolor{MATLABred}{---}), 	
 		80$^\circ$(\textcolor{MATLABblue}{---}), 	
-		90$^\circ$(\textcolor{MATLABorange}{---})			
+		90$^\circ$(\textcolor{MATLABorange}{---}).			
 		}
 	\label{Fig:AngOfIncTimezoom2}
 	\end{subfigure}
-	\caption{The Transfer function showed at different angles with a incrementation of $10^{\circ}$}
+	\caption{The transfer function showed at different angles with a incrementation of $10^{\circ}$.}
 	\label{fig:AngOfIncResult}
 \end{figure}
 
 \subsection{Error sources}
-The SpeakerMic is mounted inside the cup of the headphone. This influence the compartment inside the headphone. Futhermore the wire connecting the SpeakerMic to its pre-amplifier went between the headphone and the dummy, influencing the HP transfer function in an uncontrolled way. The results are consistent, but might deviate from reality.
+The SpeakerMic is mounted inside the cup of the headphone. This influences the compartment inside the headphone. Futhermore the wire connecting the SpeakerMic to its power supply went between the headphone and the dummy, influencing the HP transfer function in an uncontrolled way. The results are consistent, but might deviate from reality.
 \todoKiis{Missing a TABLE of tolerances I KNOW} 
 
 \subsection{Conclusion}
-The angle of incidence influences both the frequency and the time response of th HP transfer function.  The largest time difference is achieved when sound propagates from the side of the wearer. If sound comes from the front there is no time difference at all. 
+The angle of incidence influences both the frequency and the time response of the HP transfer function.  The largest time difference is achieved when sound propagates from the side of the wearer. If sound comes from the front there is no time difference at all. 
