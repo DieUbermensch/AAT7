@@ -13,13 +13,17 @@ width=2.5in,
 height=2in,
 scale only axis,
 xmode=log,
-ylabel={Amplitude [dB]},
+ylabel={Magnitude [dB]},
 xlabel={Frequency [Hz]},
 xmin=20,
 xmax=2e+04,
 xminorticks=true,
 ymin=-1,
 ymax=3,
+xmajorgrids,
+xminorgrids,
+ymajorgrids,
+yminorgrids,
 axis background/.style={fill=white}
 ]
 \addplot[const plot,color=MATLABred,solid,forget plot] plot table[row sep=crcr] {%
