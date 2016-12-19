@@ -41,12 +41,12 @@
 \headcommand {\beamer@framepages {14}{14}}
 \headcommand {\slideentry {2}{4}{2}{15/15}{Combined system}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {2}{4}{3}{16/16}{Combined system}{0}}
+\headcommand {\sectionentry {3}{Simulations Results}{16}{Simulations Results}{0}}
+\headcommand {\beamer@sectionpages {11}{15}}
+\headcommand {\beamer@subsectionpages {14}{15}}
+\headcommand {\slideentry {3}{0}{1}{16/16}{}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\sectionentry {3}{Simulations Results}{17}{Simulations Results}{0}}
-\headcommand {\beamer@sectionpages {11}{16}}
-\headcommand {\beamer@subsectionpages {14}{16}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{17}{Linear Prediction Parameters}}\headcommand {\beamer@subsectionpages {17}{16}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{17}{Linear Prediction Parameters}}\headcommand {\beamer@subsectionpages {16}{16}}
 \headcommand {\slideentry {3}{1}{1}{17/17}{Linear Prediction Parameters}{0}}
 \headcommand {\beamer@framepages {17}{17}}
 \headcommand {\slideentry {3}{1}{2}{18/18}{Linear Prediction Parameters}{0}}
@@ -57,7 +57,7 @@
 \headcommand {\slideentry {3}{2}{2}{20/20}{Attenuation Performance}{0}}
 \headcommand {\beamer@framepages {20}{20}}
 \headcommand {\sectionentry {4}{Discussion}{21}{Discussion}{0}}
-\headcommand {\beamer@sectionpages {17}{20}}
+\headcommand {\beamer@sectionpages {16}{20}}
 \headcommand {\beamer@subsectionpages {19}{20}}
 \headcommand {\beamer@subsectionentry {0}{4}{1}{21}{Computational Cost}}\headcommand {\beamer@subsectionpages {21}{20}}
 \headcommand {\slideentry {4}{1}{1}{21/21}{Computational Cost}{0}}
