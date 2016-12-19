@@ -4,8 +4,8 @@ This appendix describes an automated test set-up used with simulations, to run t
 It might be required to run a simulation with a lot of different parameters. Rather than going for a random trial and error approach a systematic variation approach was chosen. If a person should control the simulations manually a lot of time would be spent, waiting for the algorithm to run. Therefore an automated test set-up was constructed. 
 
 \subsection{Variables}
-A lot of variables, are declared in the simulations and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
-\begin{lstlisting} [language=MATLAB, caption=Variables]
+Numerous variables are declared in the simulations and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
+\begin{lstlisting} [language=MATLAB, caption=Variables.]
 N; 				%is the frame length used as memory in the prediction and the prediction order
 overlap;		%is the overlap in the buffer "O"
 prediction; 	%is how far the algorithm should predict "P"
@@ -16,7 +16,7 @@ M;				% is equal to N in all cases
 \end{lstlisting}
 
 \subsection{Functions}
- The automation consists of 4 parts. 
+ The automation consists of four parts. 
 \begin{enumerate}
 	\item The Simulink set-up under test. 
 	\item An initiation. 
@@ -24,11 +24,11 @@ M;				% is equal to N in all cases
 	\item A script controlling parameters. 
 \end{enumerate}  
 
-Below an example of the 3 controlling scripts are shown. The  scripts should be modified to run the simulator using the desired combination of parameters.
+Below an example of the three controlling scripts are shown. The  scripts should be modified to run the simulator using the desired combination of parameters.
 
 \textbf{Init.m}\\
 If a variable is not controlled in "RunSim.m" it should be set here. 
-\begin{lstlisting} [language=MATLAB, caption=init.m]
+\begin{lstlisting} [language=MATLAB, caption=init.m.]
 fs = 48000;
 ts = 1/fs; 
 % Predictor 
@@ -43,8 +43,8 @@ w = hamming(N);
 \end{lstlisting}
 
 \textbf{SaveData.m}\\
-It is possible to modify the save function to store all variables, including the calculated audio. This however results in approximately 5 $M$B of data pr simulation of 5 seconds.  
-\begin{lstlisting} [language=MATLAB, caption=SaveData.m]
+It is possible to modify the save function to store all variables, including the calculated audio. This however results in approximately 5 $M$B of data pr. simulation of 5 seconds.  
+\begin{lstlisting} [language=MATLAB, caption=SaveData.m.]
 	PG=10*log10(var(Ref)/var(ErrorSig));
 	
 	fname = sprintf(['fs' num2str(fs ) '_N' num2str(N) '_O' num2str(overlap) ...              '_M' num2str(M) '_P' num2str((prediction)) '.mat']);
@@ -70,7 +70,7 @@ It is possible to modify the save function to store all variables, including the
 \end{lstlisting}
 
 \subsection{Data Extraction}
-After running the automated test the script "LoadData.m" can be used to structure the saved .mat files in a single matrix.\\
+After running the automated test, the script "LoadData.m" can be used to structure the saved .mat files into a single matrix.\\
 \textbf{LoadData.m}
 \begin{lstlisting} [language=MATLAB,caption=LoadData.m]
 	clear
