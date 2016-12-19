@@ -1,8 +1,6 @@
 \section{Automation of tests in Simulink} \label{sec:SimulinkAuto}
 \subsection{Description}
-This appendix describes an automated test set-up used with simulations, to run the same simulation multiple times with different parameters.
-It might be required to run a simulation with a lot of different parameters. Rather than going for a random trial and error approach, a systematic variation approach was chosen. If a person should control the simulations manually a lot of time would be spent, waiting for the algorithm to run. Therefore an automated test set-up was constructed. 
-
+This appendix describes an automated test set-up used with simulations, to run the same simulation multiple times with different parameters. 
 \subsection{Variables}
 Numerous variables are declared in the simulations and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
 \begin{lstlisting} [language=MATLAB, caption=Variables.]
@@ -53,7 +51,7 @@ It is possible to modify the save function to store all variables, including the
 \end{lstlisting}
 
 \textbf{RunSim.m}
-\begin{lstlisting} [language=MATLAB, caption=RunSim.m]
+\begin{lstlisting} [language=MATLAB, caption=RunSim.m.]
 	clear 
 	prediction=10;
 	
@@ -72,7 +70,7 @@ It is possible to modify the save function to store all variables, including the
 \subsection{Data Extraction}
 After running the automated test, the script "LoadData.m" can be used to structure the saved .mat files into a single matrix.\\
 \textbf{LoadData.m}
-\begin{lstlisting} [language=MATLAB,caption=LoadData.m]
+\begin{lstlisting} [language=MATLAB,caption=LoadData.m.]
 	clear
 	close all
 	fs=48000;
