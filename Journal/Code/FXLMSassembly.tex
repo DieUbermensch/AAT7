@@ -1,10 +1,10 @@
 
 \section{FXLMS function in assembly}
 
-\textit{The FXLMS algorithm was implemented on the DSP. At the point of validation, the system was deemed to computationally heavy and the chosen hardware platform was measured to have too large latency for implementation. Resulting in the algorithm being deemed none essential and hence not subject for validation.} 
+\textit{The FXLMS-algorithm was implemented on the DSP. At the point of validation, the system was deemed to be computationally heavy and the chosen hardware platform was measured to have too large delays for implementation. Resulting in the algorithm being deemed non-essential and thus not subject for validation.} 
 
 \subsection{Description}
-This function updates the coefficients given in b in order to minimize the error e using the FXLMS method. As given by the equation from \autoref{sec:systemDesign}
+This function updates the coefficients given in b in order to minimize the error e using the FXLMS method. As given by the equation from \autoref{sec:systemDesign}.
 \begin{equation}
 	b_n(k+1)=b_n(k)-2\mu e(k)x(k-n)
 \end{equation}
