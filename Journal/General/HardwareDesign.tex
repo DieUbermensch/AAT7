@@ -1,13 +1,13 @@
 \section{Hardware Design}
-<<<<<<< HEAD
+
 
 All files from this appendix can be found in folder: \\
 \path{Attachment://Appendix T - HardwareDesign}
 
 The following section will describe the thought process behind designing the expansion board for the eZdsp. 
-=======
+
 The following section will describe the expansion board made. The specifications of the expansion board is given below.%thought process behind designing the expansion board for the eZdsp. 
->>>>>>> b1faa191a4d9120137c7e4956d9040073592c05d
+
 
 
 %\subsection{Design of expansionboard}\label{subsec:DesignOfExpansion}
@@ -27,6 +27,13 @@ The following section will describe the expansion board made. The specifications
 	\item Inter-I2C bus between DSPs routed. 
 \end{enumerate}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Pictures/Board/Board_2DSP1}	
+	\caption{The expansion board equipped with two DSPs.}
+	\label{fig:PCBboard}
+\end{figure}
+
 
 \begin{figure}[H]
 	\centering
@@ -36,11 +43,6 @@ The following section will describe the expansion board made. The specifications
 \end{figure}
 
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{Pictures/Board/Board_2DSP1}	
-	\caption{The expansion board equipped with two DSPs.}
-	\label{fig:PCBboard}
-\end{figure}
+
 
 %It should be noted that the highest frequency used is the I2S bit clock of 12 $M$hz. Since the tenth harmonic of this frequency has a wavelength of $\lambda=\frac{c}{12M \text{Hz}}\approx25\text{ m}$ there has not been any considerations made about reflections.

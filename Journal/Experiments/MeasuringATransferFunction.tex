@@ -48,7 +48,7 @@ H(f)=\dfrac{\mathscr{F}(y(t)\star x(t))} {\mathscr{F}(x(t)\star x(t))}=
  
  \subsection{Matlab function}
  Here a function that can be used to find the transfer function is given. The return value is the response in frequency domain. If an impulse response is take the inverse Fourier transform of the return value. 
- \begin{lstlisting}[language=MATLAB, caption=getTrans.m]
+ \begin{lstlisting}[language=MATLAB, caption=getTrans.m.]
 function [ res ] = getTrans( sig,ref )
 	res=(fft(sig).*conj(fft(ref)))./(fft(ref).*conj(fft(ref)));
 end

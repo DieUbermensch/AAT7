@@ -46,8 +46,8 @@ Calibration of the microphones is done on the computer using Simulink. The follo
 \subsubsection{Control and calibration}
 \begin{itemize}
 	%\item Microphone sensitivity is controlled to 11.6 $m$V/Pa.
-	\item Error microphone calibration signal yields a spike of 61 dB SPL @1000 Hz, the expected value is 95.6 dB. Measured values requires a +34.6 dB SPL adjustment.
-	\item SpmMic microphone calibration signal yields a spike of 66.07 dB SPL @1000 Hz, the expected value is 94 dB SPL. Measured values requires a +28 dB SPL adjustment.
+	\item Error microphone calibration signal yields a spike of 61 dBSPL @1000 Hz, the expected value is 95.6 dB. Measured values requires a +34.6 dBSPL adjustment.
+	\item SpmMic microphone calibration signal yields a spike of 66.07 dBSPL @1000 Hz, the expected value is 94 dBSPL. Measured values requires a +28 dBSPL adjustment.
 \end{itemize}
 
 
@@ -227,7 +227,7 @@ To verify that the frequency response of the cropped impulse response approximat
 	\caption{Comparison of the frequency response of 336,896 coefficients (blue) vs. 960 coefficients (orange).}
 	\label{DT770CancellationPathImpulseResponseCompare}
 \end{figure}
-
+\pagebreak
 From \autoref{DT770CancellationPathImpulseResponseCompare}, 960 coefficients is shown to be sufficient for representing the impulse response with good accuracy. 
 
 \subsection{Error Sources / Tolerances}
