@@ -135,7 +135,7 @@ end
 
 xIn = [xhat xIn(1:prediction-1) x xIn(prediction+1:end-1)];
 
-% FIR filter
+% FIR-filter
 y = xIn*b;
 \end{lstlisting}
 
@@ -165,27 +165,19 @@ A simulation of the total system with different ADC and DAC delay is to be made 
 
 The combined algorithm is not simulated a delay 0, as the predictor would be redundant. All other results are shown on \autoref{fig:delayRatioTotal} together with the results of the system with no predictor described in \autoref{sec:ANCSimulation}.
 \begin{figure}[H]
-	\captionsetup[subfigure]{oneside,margin={1cm,-2cm}}
 	\centering
-		\hspace{-20mm}
-	\begin{subfigure}[b]{0.40\textwidth}
-	\centering
-		\tikzsetnextfilename{delayTestTotal}	
-		\input{figures/GrandTest/DelayRatioTotal.tex}
-		\caption{ Attenuation of feedforward FXLMS (blue) compared with feedforward LP FXLMS (red) with different system delays. The blue line is identical to that in \autoref{Fig:delayRatioAppendix}}
+	\tikzsetnextfilename{delayTestTotal}		\input{figures/GrandTest/DelayRatioTotal.tex}
+	\caption{ Attenuation of feedforward FXLMS (blue) compared with feedforward LP FXLMS (orange) with different system delays. The blue line is identical to that in \autoref{Fig:delayRatioAppendix}}
 		\label{fig:delayRatioTotal}
-	\end{subfigure}
-	\hspace{20mm}
-	\begin{subfigure}[b]{0.40\textwidth}
+\end{figure}
+
+\begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{ComparedConusmerHPOurAppendix}
 	\input{figures/ArticleIllustrations/SmoothCompareOur(fig)Appendix.tex}
-	\caption{Frequency response of feedforward FXLMS (blue) compared with feedforward LP FXLMS (red). Results are filtered using a class 0 1/3 octave filter bank \cite{OctaveBand}.}
+	\caption{Frequency response of feedforward FXLMS (blue) compared with feedforward LP FXLMS (orange). Results are filtered using a class 0 1/3 octave filter bank \cite{OctaveBand}.}
 	\label{fig:ANCcompareALLAppendix}
-	\end{subfigure}	
-	\caption{Results of the simulation}	
 \end{figure}
-
 
 
 \subsection{Conclusion}

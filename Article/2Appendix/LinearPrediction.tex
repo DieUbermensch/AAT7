@@ -1,6 +1,6 @@
 \section{Linear Prediction}
-Linear Prediction (LP) is proposed in order to compensate for the delay introduced by sampling and reconstructing acoustic signals. The delays have high impact on the attenuation of an ANC system. \\
-The proposed predictor uses Wiener filtering to predict the next sample based on the autocorrelation (ACF) of some previous samples. The prediction algorithm is then coupled in cascade in order to predict multiple samples. 
+Linear Prediction (LP) is proposed in order to compensate for the delays introduced by sampling and reconstructing acoustic signals. The delays have high impact on the attenuation of an ANC system. \\\\
+The proposed predictor uses Wiener filtering to predict the next sample based on the autocorrelation function (ACF) of some previous samples. The prediction algorithm is then coupled in cascade in order to predict multiple samples. 
 
 \begin{figure}[H]
 	\centering
@@ -10,28 +10,28 @@ The proposed predictor uses Wiener filtering to predict the next sample based on
 	\caption{Block diagram of linear prediction system.}
 	\label{fig:APPLinearPredictionOverview}
 \end{figure}
-The system predicts $\hat{x}[n+P]$ by adapting linear prediction coefficients $\hat{\bar{a}}$, in a Wiener filter, determined using a framebased Auto Correlation Function (ACF) $\hat{r}_x[l]$ \cite{LinearPrediction}.
+The system predicts $\hat{x}[n+P]$ by adapting linear prediction coefficients (LPCs) $\hat{\bar{a}}$, in a Wiener filter, determined using a framebased ACF $\hat{r}_x[l]$ \cite{LinearPrediction}.
 
 \begin{itemize} 
 	\item $N$ is the framelength, that is the amount of previous samples stored and used for predicting the next sample. $\bar{x}$ in \autoref{fig:APPLinearPredictionOverview} has size $N$.
 	\item $M$ is the order of the predictor, that is the amount of coefficients used for predicting the next sample. $\hat{\bar{a}}$ in \autoref{fig:APPLinearPredictionOverview} has size $M$.
-	\item $O$ is the overlap, that is the amount of samples to be reused, when calculating the new ACF. A new ACF and new Linear Prediction Coefficients (LPCs) are estimated for each $N-O$ samples.
+	\item $O$ is the overlap, that is the amount of samples to be reused, when calculating the new ACF. A new ACF and new LPCs are estimated for each $N-O$ samples.
 	\item $P$ determines the how many samples will be predicted. 
 	\item $W$ is a window used for weighting the samples in the current frame when calculating the ACF. 
 \end{itemize}
 
 
-\subsection{Auto Correlation estimation}
-The full autocorrelation would be an infinite time series, which would be impossible to calculate. Also it would not be useful as speech is not Wide Sense Stationary through infinite time. The short time stationarity of speech is used by only estimating the ACF for a short time frame determined by N/fs. The ACF is estimated using \autoref{eq:Appnonrecursive}.
+\subsection{Auto Correlation Function estimation}
+The full autocorrelation would be an infinite time series, which would be impossible to calculate. Also it would not be useful as speech is not WSS through infinite time. The short time stationarity of speech is used by only estimating the ACF for a short time frame determined by N/fs. The ACF is estimated using \autoref{eq:Appnonrecursive}.
 \begin{equation}\label{eq:Appnonrecursive}
 %%r_x[l,m] = \sum^{m}_{n=m-N+1+\left| l\right|} x_l[n]w_l[m-n]
 \hat{r}_x[l] = \sum^{N}_{n=\left| l\right|} x_l[n]w_l[N-n]
 \end{equation}
-Where: l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window that can be applied to avoid discontinuities. Some experimenting has been made using different windows. It was found that a Hamming window yielded best performance, but a rectangular window yielded almost similar results while saving a computations, as multiplying all samples by one can be omitted. A Barnwell window is proposed by \cite{Speech}, but has been found to yield poorer results than both other windows.   
+Where l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window that can be applied to avoid discontinuities. Some experimention has been made using different windows. It was found that a Hamming window yielded best performance, but a rectangular window yielded almost similar results while saving computations, as multiplying all samples by one can be omitted. A Barnwell window is proposed by \cite{Speech}, but has been found to yield poorer results than both other windows.   
 %Where: l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window that can be applied to emphasize specific parts of the signal. A Hamming window emphasizes the middle part of the signal in the middle of the frame. Here a periodicity is reliable, compared to a periodicity at the border of the frame, which might be a random occurrence Some experimenting has been made using different windows. It was found that a Hamming window yielded best performance, but a rectangular window yielded almost similar results while saving a computations, as multiplying all samples by one can be omitted. A Barnwell window is proposed by \cite{Speech}, but has been found to yield poorer results than both other windows.   
 
 \subsection{ Wiener Hopf - Finding the Linear Prediction Coefficients}
- The LPCs are determined using \autoref{eq:normal}, known as the Wiener-Hopf equation. The LPCs are found by minimize the mean squared prediction error given as.
+ The LPCs are determined using \autoref{eq:normal}, known as the Wiener-Hopf equation. The LPCs are found by minimizing the mean squared prediction error given as:
  \begin{equation}
  	E\{e^2[n]\}=E\{(x[n]+\sum_{i=1}^{M}a_ix[n-i] )^2\}
  \end{equation}
@@ -39,7 +39,7 @@ Where: l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window 
  \begin{equation}\label{eq:minPredError}
  \frac{\partial E\{e^2[n]\}}{\partial a_k} =2E\{(x[n]+\sum_{i=1}^{M}a_ix[n-i] )x[n-k]\}=0
  \end{equation}
- for $k = 1, 2, \cdots, M$. \autoref{eq:minPredError} can be rearranged to yield.
+ for $k = 1, 2, \dotsc, M$. \autoref{eq:minPredError} can be rearranged to yield.
  \begin{equation}
  	E\{x[n]x[n-k]\}+\sum_{i=1}^{M}a_iE\{x[n-i]x[n-k]\}=0
  \end{equation} 
@@ -51,7 +51,7 @@ Where: l is the lag, $x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$. w is a window 
 \begin{equation}\label{eq:normal}
 R  \bar{a} = -\bar{r}_x
 \end{equation}
-Where; $R$ is the covariance matrix $C_{xx}$, $\bar{a}$ is the LPCs $\bar{a} = [a_0 , a_1, \dots, a_{N-1}]^T$ and $\bar{r}_x$ is the ACF, $\bar{r}_x = [r_x[1] , r_x[2], \dotsc, r_x[N]]^T$. \autoref{eq:normal} can be rewritten as shown in \autoref{eq:normal2} yielding the LPCs directly.  
+Where $R$ is the covariance matrix $C_{xx}$, $\bar{a}$ is the LPCs $\bar{a} = [a_0 , a_1, \dots, a_{N-1}]^T$ and $\bar{r}_x$ is the ACF, $\bar{r}_x = [r_x[1] , r_x[2], \dotsc, r_x[N]]^T$. \autoref{eq:normal} can be rewritten as shown in \autoref{eq:normal2} yielding the LPCs directly.  
 \begin{equation}\label{eq:normal2}
 \bar{a} = -R^{-1} \bar{r}_x
 \end{equation}
@@ -92,12 +92,12 @@ A Wiener filter is used in cascade, where $\hat{x}[n+2]$ is estimated using $\ha
 \begin{equation}\label{eq:AppPredictor}
 \hat{x}[n+p] =- \sum^{M-1}_{i=1}\hat{a}_i[n]x[(n+p)-i]
 \end{equation}
-The Wiener filter resembles an FIR filter, where the previous inputs are used in combination with the LPCs to predict the next sample. 
+The Wiener filter resembles an FIR-filter, where the previous inputs are used in combination with the LPCs to predict the next sample. 
 
 \subsection{Prediction Gain}
 The Prediction Gain (PG) is an objective measure of the performance of a predictor measured in dB. 
 \begin{equation}\label{eq:App_PG}
-PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg) = 10 log_{10}\bigg(\frac{E\{x^2[n]\}}{E\{\varepsilon^2[n]\}}\bigg)
+PG = 10 \mathrm{log}_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg) = 10 \mathrm{log}_{10}\bigg(\frac{E\{x^2[n]\}}{E\{\varepsilon^2[n]\}}\bigg)
 \end{equation}
 As seen in \autoref{eq:App_PG} the PG is calculated based on a ratio between the variance of the signal to be predicted $\sigma^2_x$ and the variance of the error of the predictor $\sigma^2_\varepsilon$. The PG value yields an estimate of the performance of the predictor, however it is necessary to also listen to the predicted signal, as it might contain artefacts. PG is used as the performance indicator, while searching for optimum parameters for the predictor.  
 

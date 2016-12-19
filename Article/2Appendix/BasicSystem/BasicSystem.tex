@@ -3,7 +3,7 @@ This appendix will go through the various basic Active Noise Control (ANC) syste
 When it comes to canceling noise, there are three basic topologies; feedforward, feedback and hybrid feedforward/feedback. These topologies each have their advantages and disadvantages.
 A general ANC system, depending on the topology, uses either one or two signals as input to an adaptive optimization algorithm. The inputs are used to determine coefficients for a control filter that calculates an estimation of the transfer function from the feedforward microphone (Reference Microphone) to the transducer. Another general thing for ANC systems is to use an Filtered-x Least Mean Squares (FXLMS) algorithm to adapt the coefficients of a control filter and a Least Mean Squares (LMS) algorithm to update the estimate of the cancellation path.
 \\\\
-In a special "ideal" case the filter would be a FIR filter with a -1 tap. This is assuming no delay or magnitude change in either the physical world or in the ANC system and no feedback from the transducer to the feedforward microphone. This is of course not the case in reality. 
+In a special "ideal" case the filter would be a FIR-filter with a -1 tap. This is assuming no delay or magnitude change in either the physical world or in the ANC system and no feedback from the transducer to the feedforward microphone. This is of course not the case in reality. 
 
 
 \subsection{Feedforward}
@@ -24,7 +24,7 @@ Where:
 \item \textbf{Adaptive algorithm:} LMS optimization algorithm for the coefficients of the Cancellation path estimate.
 \end{itemize}
 
-The feedforward topology uses a reference microphone to pick up the noise which is fed into the control filter, which is the estimated transfer function of the path from the reference microphone to the transducer. The control filter can either be realized as a FIR filter if there is no feedback from the transducer to the reference microphone. An IIR filter should be used if there is feedback. It should be noted that if the filter is chosen to be an IIR filter there is a possibility of not getting a global minimum in the FXLMS algorithm.
+The feedforward topology uses a reference microphone to pick up the noise which is fed into the control filter, which is the estimated transfer function of the path from the reference microphone to the transducer. The control filter can either be realized as a FIR-filter if there is no feedback from the transducer to the reference microphone. An IIR-filter should be used if there is feedback. It should be noted that if the filter is chosen to be an IIR-filter there is a possibility of not getting a global minimum in the FXLMS algorithm.
 \\\\
 The advantage of the feedforward topology is that it can cancel all types of sound. The disadvantage is that in order for the feedforward to have large attenuation, the delay of the system must be less than the propagation time of the sound from the reference microphone to the error microphone.    
 
