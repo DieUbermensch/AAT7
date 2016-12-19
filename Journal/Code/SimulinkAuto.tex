@@ -3,7 +3,7 @@
 This appendix describes an automated test set-up used with simulations, to run the same simulation multiple times with different parameters.
 It might be required to run a simulation with a lot of different parameters. Rather than going for a random trial and error approach a systematic variation approach was chosen. If a person should control the simulations manually a lot of time would be spent, waiting for the algorithm to run. Therefore an automated test set-up was constructed. 
 
-\subsection{variables}
+\subsection{Variables}
 A lot of variables, are declared in the simulations and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
 \begin{lstlisting} [language=MATLAB, caption=Variables]
 N; 				%is the frame length used as memory in the prediction and the prediction order
@@ -18,10 +18,10 @@ M;				% is equal to N in all cases
 \subsection{Functions}
  The automation consists of 4 parts. 
 \begin{enumerate}
-	\item The Simulink se-tup under test. 
-	\item An initiation 
-	\item Saving data
-	\item A script controlling parameters 
+	\item The Simulink set-up under test. 
+	\item An initiation. 
+	\item Saving data.
+	\item A script controlling parameters. 
 \end{enumerate}  
 
 Below an example of the 3 controlling scripts are shown. The  scripts should be modified to run the simulator using the desired combination of parameters.
