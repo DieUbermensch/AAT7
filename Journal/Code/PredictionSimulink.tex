@@ -16,8 +16,8 @@ This appendix shows the performance of the proposed prediction algorithm. It is 
 
 
 \subsection{Variables}
-A lot of variables, are declared in the simulation and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
-\begin{lstlisting} [language=MATLAB, caption=Variables]
+A lot of variables are declared in the simulation and they are not all described here. The ones described are only the tunable parameters, that should be set in the prediction problem that should be solved. 
+\begin{lstlisting} [language=MATLAB, caption=Variables.]
 N; 				%is the frame length used as memory in the prediction and the prediction order
 overlap;		%is the overlap in the buffer "O"
 prediction; 	%is how far the algorithm should predict "P"
@@ -27,12 +27,12 @@ M;				% is equal to N in all cases
 \end{lstlisting}
 
 \subsection{Functions}
-The following sections will show the code and for the individual blocks. 
+The following sections will show the code for the individual blocks. 
 
 
 
 \subsubsection{ACF Estimation}
-The ACF estimation estimates the autocorrelation function using \autoref{eq:Appnonrecursive}
+The ACF estimation estimates the ACF using \autoref{eq:Appnonrecursive}
 \begin{lstlisting} [language=MATLAB, caption=ACF estimation.]
 function r = fcn(x,w,updateRate,N)
 persistent temp;
@@ -50,7 +50,7 @@ r=sum(temp')';
 end
 \end{lstlisting}
 
-The result of the ACF estimation is compared to the Matlab xcorr function in autoref{fig:ACFTest}, with no difference in results. The window used is a rectangular window, so the calculation of xcorr is mirrored.  
+The result of the ACF estimation is compared to the Matlab xcorr function in \autoref{fig:ACFTest} with no difference in results. The window used is a rectangular window, so the calculation of xcorr is mirrored.  
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{ACFtest}	
@@ -60,8 +60,8 @@ The result of the ACF estimation is compared to the Matlab xcorr function in aut
 \end{figure}
  
 
-\subsubsection{Lenvinson Durbin}
-\begin{lstlisting} [language=MATLAB, caption=Levinson Durbin ]
+\subsubsection{Levinson-Durbin}
+\begin{lstlisting} [language=MATLAB, caption=Levinson-Durbin. ]
 function a = LevinsonDurbin(r, M)
 % r      ACF It's a Coloumn input
 % M      Prediction order
@@ -106,12 +106,12 @@ In \autoref{fig:LDTest} the result of the Levinson-Durbin is compared to the Mat
 	\centering
 	\tikzsetnextfilename{LDtest}	
 	\input{figures/PredictionAppendix/levDurbTest.tex}
-	\caption{Implemented Levinson-Durbin (orange) compared with Matlab build in function(blue) - Identical results.}
+	\caption{Implemented Levinson-Durbin (orange) compared with Matlab build in function (blue) - Identical results.}
 	\label{fig:LDTest}
 \end{figure}
 
 \subsubsection{Recursive filter}
-\begin{lstlisting} [language=MATLAB, caption=Recursive filter -- Wiener filter]
+\begin{lstlisting} [language=MATLAB, caption=Recursive filter -- Wiener filter.]
 function xhat = fcn(x,a,prediction,N)
 %#codegen
 persistent xIn;     %buffer for input
@@ -135,10 +135,10 @@ end
 \subsubsection{Testing the predictor for different $f_s$ -- Non automated test}
 \todoChristian{Are we adding a path here?}
 When testing the predictor for different $f_s$ automated testing can not be used, as the audio file used by the predictor has to be changed to the version with the correct sample rate. \\ 
-In the "Init.m" file $N$ should be equal to $\frac{f_s}{N}$, $O=0$ and $P=1$. The following steps should be taken for each $f_s$ under test.
+In the "Init.m" file $N$ should be equal to $f_s$/N, $O=0$ and $P=1$. The following steps should be taken for each $f_s$ under test:
 \begin{itemize}
 	\item Choose the correct audio file in Simulink. 
-	\item Set the fs parameter in "Init.m". 
+	\item Set the $f_s$ parameter in "Init.m". 
 \end{itemize}
 The results are stored in different files automatically, and are shown in \autoref{tb:fsPredictApp}.
 
@@ -148,22 +148,22 @@ The results are stored in different files automatically, and are shown in \autor
 	\hline
 	$f_s$ {[}$k$Hz{]} & 8 & 16 & 24 & 48 & 96 & 192 \\ \hline 
 	$N$ {[}samples{]} & 100 & 200 & 300 & 600 & 1200 & 2400 \\ \hline 
-	PG {[}dB{]} & 13.5 & 15.950 & 14.7 & 20.8 & 35.0 & 43.8 \\ \hline
+	PG {[}dB{]} & 13.5 & 15.9 & 14.7 & 20.8 & 35.0 & 43.8 \\ \hline
 \end{tabular}
 \caption{$PG$ as a function of $f_S$. Parameters for the simulation are $O=0$ and $P=1$.}
 \label{tb:fsPredictApp}
 \end{table}  
  
 \subsubsection{Testing the predictor for different $N$ \& $O$ -- Automated test}
-Here the automated test set-up described in \autoref{sec:SimulinkAuto} is used.\\ 
-The PG with different prediction orders is measured. This is the frame length parameter ($N$). The overlap parameter ($O$) is also varied. \\ 
-Here the $P$ is set to 43. $N$ is varied from 100-3000 in steps of 100. Overlap, $O$ is varied from 0 to N-100. The used window is the Hamming window. The results are plotted using the surf function i Matlab, and the viewing angle is set to "from above" resulting in a 2D plot. It should be noted that the measured points are the crossings of the black lines and not the coloured squares. The mesh() plot could be used to avoid this, if a less readable plot could be accepted. 
+Here the automated test set-up described in \autoref{sec:SimulinkAuto} is used.\\\\ 
+The PG with different prediction orders is measured. This is the frame length parameter ($N$). The overlap parameter ($O$) is also varied. 
+Here the $P$ is set to 43. $N$ is varied from 100-3000 in steps of 100. Overlap, $O$ is varied from 0 to N-100. The used window is the Hamming window. The results are plotted using the surf function in Matlab, and the viewing angle is set to "from above" resulting in a 2D plot. It should be noted that the measured points are the crossings of the black lines and not the coloured squares. %The mesh() plot could be used to avoid this, if a less readable plot could be accepted. 
 
 \begin{figure}[H]
 	\centering
 	\tikzsetnextfilename{HammingNOP43App}	
 	\input{figures/Articleillustrations/HammingNOP43.tex}
-	\caption{$PG$ as a function of different $N$ and $O$ with $P=43$. $N$ and $O$ are in hundreds.}
+	\caption{$PG$ as a function of different $N$ and $O$ with $P=43$.}
 	\label{fig:Predict43App}
 \end{figure}
 
@@ -172,7 +172,7 @@ The same experiment is performed with $P=10$.
 	\centering
 	\tikzsetnextfilename{HammingNOP10App}	
 	\input{figures/Articleillustrations/HammingNOP10.tex}
-	\caption{$PG$ as a function of different $N$ and $O$ with $P=10$. $N$ and $O$ are in hundreds.}
+	\caption{$PG$ as a function of different $N$ and $O$ with $P=10$.}
 	\label{fig:Predict10App}
 \end{figure}
 
