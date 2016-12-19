@@ -104,10 +104,10 @@ I2S0_W1_LSW_W = 0;
 \subsection{Procedure}
 \subsubsection{Set-up}
 \begin{enumerate}
-	\item The DSP is mounted onto the DSP Freedom Board
+	\item The DSP is mounted onto the DSP Freedom Board.
 	\item  Connect the DSP board with 3.5 mm mini-jack cable to Input 1 and 2.
 	\begin{enumerate}
-		\item This ensures that bypass of the lowpass filters is possible
+		\item This ensures that bypass of the lowpass filters is possible.
 	\end{enumerate}
 	\item Connect OUT1 and IN1 from the oscilloscope to Input 1 on the board with BNC cables.
 	\item Connect IN2 from the oscilloscope to the Input 2 on the board.
@@ -115,18 +115,18 @@ I2S0_W1_LSW_W = 0;
 
 \subsubsection{Performing the experiment}
 \begin{enumerate}
-	\item Start Code Composer Studio V.6 and load \path{AIC3204C6.cproject}
+	\item Start Code Composer Studio V.6 and load \path{AIC3204C6.cproject}.
 	\item Change sampling frequency in \path{aic3204_Setup.h} by changing the defined ADCFs to:
 	\begin{enumerate}
 		\item 48
 		\item 96
 		\item 192
 	\end{enumerate}
-	\item Start Waveform 2015 to control the oscilloscope
-	\item The oscilloscope is set to trigger at the rise of IN1
-	\item Apply a 2 Hz square wave to OUT1 on the oscilloscope
-	\item Save measurement IN1 and IN2 on oscilloscope in a \path{.CSV} file
-	\item Repeat step 3 through 6 with different sampling frequencies as stated in step 2
+	\item Start Waveform 2015 to control the oscilloscope.
+	\item The oscilloscope is set to trigger at the rise of IN1.
+	\item Apply a 2 Hz square wave to OUT1 on the oscilloscope.
+	\item Save measurement IN1 and IN2 on oscilloscope in a \path{.CSV} file.
+	\item Repeat step 3 through 6 with different sampling frequencies as stated in step 2.
 \end{enumerate}
 
 \subsection{Data extraction}
@@ -146,17 +146,17 @@ The outputs from the three test are plotted on figure \ref{fig:ScopeDelayExperim
 
 \begin{itemize}
 	\item The blue line (\textcolor{MATLABblue}{---}) graph shows input step.
-	\item The purple line (\textcolor{MATLABpurple}{---}) shows the 192 $k$Hz output
+	\item The purple line (\textcolor{MATLABpurple}{---}) shows the 192 $k$Hz output.
 	\begin{itemize}
-		\item corresponding to 225 $\mu$s
+		\item corresponding to 225 $\mu$s.
 	\end{itemize}
-	\item The yellow line (\textcolor{MATLAByellow}{---}) shows the 96 $k$Hz output
+	\item The yellow line (\textcolor{MATLAByellow}{---}) shows the 96 $k$Hz output.
 	\begin{itemize}
-		\item corresponding to 450 $\mu$s
+		\item corresponding to 450 $\mu$s.
 	\end{itemize}
-	\item The orange line (\textcolor{MATLABorange}{---}) shows the 48 $k$Hz output
+	\item The orange line (\textcolor{MATLABorange}{---}) shows the 48 $k$Hz output.
 	\begin{itemize}
-		\item corresponding to 900 $\mu$s
+		\item corresponding to 900 $\mu$s.
 	\end{itemize}
 \end{itemize}
  
