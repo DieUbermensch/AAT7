@@ -13,7 +13,7 @@ The purpose of this test is to design an assembly FIR function. The Filter was t
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{../Journal/Code/FIRfilter}
-	\caption{Diagram of FIR filter\cite{FIRWiki}}
+	\caption{Diagram of FIR filter\cite{FIRWiki}.}
 	\label{Fig:FIR_filter2}
 \end{figure}
 
@@ -22,7 +22,7 @@ The FIR filter is designed based on the flowchart seen in figure \ref{Fig:FIR_fi
 
 \subsubsection{The declarations made in C}
 The variables declared are used to store input values, filter coefficients and the order. 
-\begin{lstlisting}[language={C},caption={declaration of the needed variables}, label={lst:variablesFIR} ]
+\begin{lstlisting}[language={C},caption={declaration of the needed variables.}, label={lst:variablesFIR} ]
 Int16 	*x 		//The input signal
 Int16	*b		//The filter coefficients
 Int16	order	//The order of the filter (length of x & b)
@@ -31,7 +31,7 @@ Int16	return	//Returns the output of the filter (y(n))
 \end{lstlisting}
 
 Using the syntax in code composer the values will be passed into the assembler function, the syntax for passing into assembler is shown in listing \ref{lst:SyntaxFIR}.
-\begin{lstlisting}[language={C},caption={Function prototype}, label={lst:SyntaxFIR}]
+\begin{lstlisting}[language={C},caption={Function prototype.}, label={lst:SyntaxFIR}]
 extern Int16 FIR(Int16 *x, Int16 *b, Int16 order, Int16 index);
 \end{lstlisting}
 The values from the function will be placed in the following registers, shown in table \ref{tab:Assemblerpassing}
@@ -42,14 +42,14 @@ The values from the function will be placed in the following registers, shown in
 		Variable & *x & *b & N & i \\ \hline
 		Register & AR0 & AR1 & T0 & T1
 	\end{tabular} 
-	\caption{Placement of variables into assembler function}
+	\caption{Placement of variables into assembler function.}
 	\label{tab:Assemblerpassing}
 \end{table}
 
 
 \subsubsection{code}
 listing \ref{lst:FIR} shows the convolution of the signal. The filter is running sample by sample, which means it will continuously output the i'th sample in accordance to a counter running in the main program.  
-\begin{lstlisting} [language={[x86masm]Assembler},caption={The FIR Convolution with N coefficients}, label={lst:FIR}]
+\begin{lstlisting} [language={[x86masm]Assembler},caption={The FIR Convolution with N coefficients.}, label={lst:FIR}]
 .global _FIR;				; Declare function 
 
 _FIR:	
@@ -75,9 +75,9 @@ A reference filter is designed in Matlab, for testing. The design of the filter 
 %By running \path{PerformFIRExperiment.m} filter coefficients are determined, and a filter is designed as such:
 
 \begin{itemize}
-	\item Characteristic: Kaiser window FIR filter with a $\beta$ value of 2
-	\item Order = 16
-	\item Fs = 48 $k$Hz
+	\item Characteristic: Kaiser window FIR filter with a $\beta$ value of 2.
+	\item Order = 16.
+	\item Fs = 48 $k$Hz.
 \end{itemize}
 
 
@@ -99,7 +99,7 @@ The Direct-Form 1 filter has 17 filter-coefficients and is double-precision with
 %0.0611,	0.0608,	0.0603,	0.0596,	0.0587,	0.0576,	0.0564,	0.0550
 %\end{lstlisting}
 
-The Q15 coefficients are converted into hexadecimal values, in order to implement them on the DSP for testing, as seen in \autoref{Lst:fdafiltercoefsquantizedhex} 
+The Q15 coefficients are converted into hexadecimal values, in order to implement them on the DSP for testing, as seen in \autoref{Lst:fdafiltercoefsquantizedhex}. 
 
 \begin{lstlisting} [language={[x86masm]Assembler}, caption=The 17 Q15 filter-coefficients in hexadecimal., label=Lst:fdafiltercoefsquantizedhex]
 0x028C,  0xFE22,  0xF9BA,  0xF8B2,  0xFD5E,  0x078C,  0x1433,  0x1EA2,  0x22AB,  
@@ -163,7 +163,7 @@ The DSP is connected according to figure \ref{Fig:FIRSetupDiagram}, where the NI
 The measuring system on the computer are used with the following settings,
 \begin{itemize}
 	\item Fs = 48000 Hz
-	\item Sweep from 20 hz to 20 $k$Hz
+	\item Logarithmic sine sweep from 20 hz to 20 $k$Hz
 	\item Vs = 0.5 V
 	\item Steps = 2000
 \end{itemize}
@@ -191,8 +191,8 @@ to perform a sine sweep on the DSP, the following step are to be made.
 \subsubsection{Data Extraction}
 The data from the experiment is loaded as follows:
 	\begin{enumerate}
-		\item Open Matlab and run script \path{SweptSineLoad.m} to extract and plot data from test
-		\item Run \path{PerformFIRExperiment.m} to extract and plot data from generated and simulated filters
+		\item Open Matlab and run script \path{SweptSineLoad.m} to extract and plot data from test.
+		\item Run \path{PerformFIRExperiment.m} to extract and plot data from generated and simulated filters.
 	\end{enumerate}
 
 \autoref{Fig:FIRComparison} shows comparison between the designed quantized filter in Matlab and the measured filter. The Blue graph shows the designed filter and the red graph shows the measured response. The phase response of the filter is not shown, since the FIR filter by nature is linear in phase.
@@ -210,7 +210,7 @@ The data from the experiment is loaded as follows:
 	\centering
 	\tikzsetnextfilename{Testing}
 	\input{figures/Hardware/FIRtest.tex}
-	\caption{16-tap FIR filter with the kasier window applied using a $\beta$ value of 2. The blue graph is generated using quantized MATLAB coefficients and the red is measured using a sine sweep} 
+	\caption{16-tap FIR filter with the kasier window applied using a $\beta$ value of 2. The blue graph is generated using quantized MATLAB coefficients and the red is measured using a logarithmic sine sweep.} 
 	\label{Fig:FIRComparison}
 \end{figure}
 
