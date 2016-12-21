@@ -128,6 +128,7 @@
 
 \begin{frame}{Introduction}{Speech vs Periodic Noise}		
 	\begin{itemize}
+		\item Periodic noise is easy to cancel
 		\item Signal Characteristics
 		\begin{itemize}
 			\item Periodic Signals
@@ -141,7 +142,6 @@
 				\item Can be assumed Wide Sense Stationary (WSS) for 20 $m$s -- 30 $m$s 
 			\end{itemize}
 		\end{itemize}
-		\item Periodic noise is easy to cancel
 		\item Speech noise is difficult to cancel
 	\end{itemize}
 \end{frame}
@@ -208,7 +208,7 @@
 					\item Transfer function from (2) to (3)
 					\item Linear time-invariant 
 				\end{itemize}
-				\item Adaptive FXLMS-Algorithm
+				\item Adaptive FXLMS-algorithm
 				\begin{itemize}
 					\item Optimization problem
 				\end{itemize}
@@ -295,7 +295,6 @@
 			\item $x[n]$
 			\item $\hat{x}[n+P]$
 			\end{itemize}
-			\item CP delayed for compensation of error microphone delay
 		\end{itemize}
 	\end{column}
 	\begin{column}{0.6\textwidth} 
@@ -335,7 +334,10 @@
 	\item Simulink 
 	\item Prediction Gain
 	\item Filter banks vs Fourier transform
-	\item Not entirely sure what to put here
+	\item Listening tests
+			\begin{itemize}
+				\item Archimedes Project
+			\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -439,7 +441,6 @@
 		\item Feedforward FXLMS: 4000 
 		\item Multirate: $\leq$ 100
 	\end{itemize}
-	\item Figure missing of different DSP maximum instruction pr sample at 48 kHz
 \end{itemize}
 
 \end{frame}
