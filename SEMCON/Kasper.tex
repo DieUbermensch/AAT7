@@ -1,12 +1,12 @@
 \section{Introduction}
 \subsection{What is Active Noise Control (ANC)}
-\begin{frame}{Introduction}{What is ANC}		
+\begin{frame}{Introduction}{What Is ANC?}		
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 				\begin{itemize}
 					\item The basic theory of ANC
 					\begin{itemize}
-						\item 250 Hz
+						\item  250 Hz
 						\item 2500 Hz 
 					\end{itemize}	
 				\end{itemize}
@@ -34,7 +34,7 @@
 
 
 
-\begin{frame}{Introduction}{How does ANC work}		
+\begin{frame}{Introduction}{How Does ANC Work?}		
 	\begin{itemize}
 		\item Headphone cups attenuate high frequencies passively
 		\item Lower frequencies must be attenuated actively 
@@ -42,7 +42,7 @@
 		\begin{itemize}
 			\item 1: Reference microphone
 			\item 2: Headphone loudspeaker
-			\item 3: Error mirophone
+			\item 3: Error microphone
 			\item 4: Digital signal Processor (DSP)
 		\end{itemize}
 	\end{itemize}
@@ -59,13 +59,13 @@
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 		\begin{itemize}
-		\item Feedforward problem
-		\item Sampling and reconstruction delay.
+		\item Problem with feedforward
+		\item Sampling and reconstruction delay
 		\begin{itemize}
 			\item Anti Aliasing filter
 			\item Reconstructions filter
 		\end{itemize}
-		\item The measured delay of a Sigma Delta converter TLV320AIC3204
+		\item The measured delay of a $\Sigma$/$\Delta$-converter - TLV320AIC3204
 		\item Spacing between microphones
 		\begin{itemize}
 			\item Min: 75.5 $m$m
@@ -126,12 +126,12 @@
 
 
 
-\begin{frame}{Introduction}{Speech vs Periodic Noise}		
+\begin{frame}{Introduction}{Speech vs. Periodic Noise}		
 	\begin{itemize}
-		\item Periodic noise is easy to cancel
-		\item Signal Characteristics
+		\item Periodic noise is \textit{easy} to cancel
+		\item Signal characteristics
 		\begin{itemize}
-			\item Periodic Signals
+			\item Periodic signals
 			\begin{itemize}
 				\item Strict Sense Stationary (SSS)
 			\end{itemize}
@@ -142,14 +142,14 @@
 				\item Can be assumed Wide Sense Stationary (WSS) for 20 $m$s -- 30 $m$s 
 			\end{itemize}
 		\end{itemize}
-		\item Speech noise is difficult to cancel
+		\item Speech noise is \textit{difficult} to cancel
 	\end{itemize}
 \end{frame}
 
 
 
 
-\begin{frame}{Introduction}{Present consumer headphones}
+\begin{frame}{Introduction}{Present Consumer Headphones}
 	\begin{itemize}	
 	\item How well does the consumer headphones attenuate?
 	\begin{columns}
@@ -187,7 +187,7 @@
 
 
 \begin{frame}{Introduction}{A solution for the problem}		
-	\centering{Combining a feedforward ANC algorithm with a Linear prediction (LP) scheme to compensate for delay.}
+	\centering{Combining a Feedforward ANC Algorithm With a Linear prediction (LP) Ccheme to Compensate for Delay.}
 \end{frame}
 
 
@@ -233,7 +233,7 @@
 					\item Framelength N
 					\item Overlap O
 				\end{itemize}
-				\item Wiener-hopf equation: $\hat{R}  \bar{\hat{a}} = -\bar{\hat{r}}$
+				\item Wiener-Hopf equation: $\hat{R}  \bar{\hat{a}} = -\bar{\hat{r}}$
 				\begin{itemize}
 					\item Inverting matrix
 					\item Levinson-Durbin
@@ -257,7 +257,7 @@
 \begin{columns}
 	\begin{column}{0.5\textwidth}
 		\begin{itemize}
-			\item Multirate Processing for reducing conversion delay
+			\item Multirate processing for reducing conversion delay
 			\begin{itemize}
 				\item High sample rate
 				\item Low processing rate
@@ -286,7 +286,7 @@
 
 
 \subsection{Combined system}
-\begin{frame}{Methods}{Combined system}	
+\begin{frame}{Methods}{Combined System}	
 \begin{columns}
 	\begin{column}{0.4\textwidth}
 		\begin{itemize}
@@ -330,12 +330,12 @@
 \section{Simulations Results}
 
 
-\begin{frame}{Simulation Results}{How to test}	
+\begin{frame}{Simulation Results}{How to Test}	
 \begin{itemize}
 	\item Simulink 
 	\item Archimedes Project
 	\item Prediction Gain
-	\item Filter banks vs Fourier transform
+	\item Filter-banks vs. Fourier transform
 	\item Listening tests			
 \end{itemize}
 \end{frame}
@@ -410,7 +410,7 @@
 
 
 
-\begin{frame}{Simulation Results}{Frequency response}		
+\begin{frame}{Simulation Results}{Frequency Response}		
 \begin{columns}
 	\begin{column}{0.4\textwidth}
 		\begin{itemize}
@@ -434,7 +434,7 @@
 
 \begin{frame}{Discussion}{Computational Cost}		
 \begin{itemize}
-\item Computational cost of System (instructions pr. sample)
+\item Computational cost of System (instructions per sample)
 	\begin{itemize}
 		\item Linear Prediction: 55000 
 		\item Feedforward FXLMS: 4000 
