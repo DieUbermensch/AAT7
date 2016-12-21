@@ -187,7 +187,7 @@
 
 
 \begin{frame}{Introduction}{A solution for the problem}		
-	\centering{Combining a Feedforward ANC Algorithm With a Linear prediction (LP) Ccheme to Compensate for Delay.}
+	\centering{Combining a Feedforward ANC Algorithm With a Linear prediction (LP) Scheme to Compensate for Delay.}
 \end{frame}
 
 
@@ -287,22 +287,18 @@
 
 \subsection{Combined system}
 \begin{frame}{Methods}{Combined System}	
-\begin{columns}
-	\begin{column}{0.4\textwidth}
 		\begin{itemize}
 			\item Input for control filter and CP
-			\vspace{-4mm}
 			\begin{itemize}
 			\item $x[n]$
 			\item $\hat{x}[n+P]$
 			\end{itemize}
 		\end{itemize}
-	\end{column}
-	\begin{column}{0.6\textwidth} 
-		\resizebox{0.9\columnwidth}{!}{		
+\begin{center}
+	\resizebox{0.9\columnwidth}{!}{		
 			\input{figures/Totalsystemoverview.tex}}
-	\end{column}
-\end{columns}
+\end{center}
+
 \end{frame}
 
 
@@ -393,8 +389,8 @@
 	\begin{itemize}
 		\item ANC attenuation with varying system delay
 		\begin{itemize}
-			\item Feedforward FXLMS 
-			\item Feedforward LP FXLMS 
+				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS 
+				\item[\textcolor{MATLABblue}{---}] Feedforward FXLMS 
 		\end{itemize}
 	\end{itemize}
 	\end{column}
@@ -416,8 +412,8 @@
 		\begin{itemize}
 			\item Frequency response
 			\begin{itemize}
-				\item Feedforward FXLMS 
-				\item Feedforward LP FXLMS 
+				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS 
+				\item[\textcolor{MATLABblue}{---}] Feedforward FXLMS  
 			\end{itemize}
 		\end{itemize}
 	\end{column}
@@ -436,8 +432,8 @@
 \begin{itemize}
 \item Computational cost of System (instructions per sample)
 	\begin{itemize}
-		\item Linear Prediction: >50000 
-		\item Feedforward FXLMS: >4000 
+		\item Linear Prediction: >50.000 
+		\item Feedforward FXLMS: >4.000 
 		\item Multirate: <100
 	\end{itemize}
 \end{itemize}
