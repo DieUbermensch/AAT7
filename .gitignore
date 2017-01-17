@@ -30,13 +30,15 @@
 *.dpth
 *.md5
 *.tex.orig
+*.snm
+*.nav
 
 main.pdf
 761Article.pdf
 761ArticleIEEE.pdf
 aauposter.pdf
 AAUsidebartheme.pdf
-
+ExamPresentation.pdf
 
 Article/tikz/*
 
