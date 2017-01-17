@@ -23,6 +23,7 @@
 		\item Assumptions:
 		\begin{itemize}
 		\item Stationary Cancellation path
+		\item FIR filter
 		\end{itemize}
 
 		\end{itemize}
@@ -98,7 +99,7 @@
 \subsection{DAC/ADC delay}
 \begin{frame}{Implementation Consideration}{Conversion delay}
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.4\textwidth}
 		\begin{itemize}
 		\item Too much delay in converters
 				\begin{itemize}
@@ -110,16 +111,16 @@
 				\end{itemize}
 		\item TLV320AIC3204
 				\begin{itemize}
-				\item[48 kHz]= 900 $\mu S$
-				\item[96 kHz]= 450 $\mu S$
-				\item[192 kHz]= 225 $\mu S$
+				\item[48 kHz]= 900 $\mu S$ $\approx 31$ cm
+				\item[96 kHz]= 450 $\mu S$ $\approx 15$ cm
+				\item[192 kHz]= 225 $\mu S$ $\approx 8$ cm
 				\end{itemize}			 
 		\item Equivalent to 43 samples
 		\end{itemize}
 		\end{column}
-		\begin{column}{0.5\textwidth} 
+		\begin{column}{0.6\textwidth} 
 		\begin{center}
-		Picture is coming
+		\input{figures/DelayGraph.tex}
 		\end{center}
 		\end{column}
 	\end{columns}
