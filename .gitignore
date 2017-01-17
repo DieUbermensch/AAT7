@@ -30,6 +30,8 @@
 *.dpth
 *.md5
 *.tex.orig
+*.snm
+*.nav
 
 main.pdf
 761Article.pdf
