@@ -25,7 +25,7 @@
 	\end{columns}
 \end{frame}
 
-\subsection{Wiener filtering}
+
 \begin{frame}{Prediction}{Overview}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -40,13 +40,45 @@
 			\begin{figure}
 				\includegraphics[width=\textwidth]{figures/WienerHopf}
 			\end{figure}
-		$\hat{x}[n+p] =- \sum^{M-1}_{i=1}\hat{a}_i[n]x[(n+p)-i]$
+		$\hat{x}[n+P] =- \sum^{M-1}_{i=1}\hat{a}_i[n]x[(n+P)-i]$
 		\end{column}
 	\end{columns}
 \end{frame}
 
 
+\subsection{The algorithm}
+\begin{frame}{Prediction}{Deriviations}
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item The Wiener filter: 
+				\vspace{3mm}
+				\item The LPC found by minimizing 
+				\vspace{3mm}
+				\item The gradient $\frac{\partial E\{e^2[n]\}}{\partial a_k}$
+				\vspace{3mm}
+				\item With autocorrelations
+				\vspace{3mm}
+				\item Yielding Wiener Hopf				
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.55\textwidth} 
+			\begin{itemize}
+				\item[] $\hat{x}[n+P] =- \sum^{M-1}_{i=1}\hat{a}_i[n]x[(n+P)-i]$
+				\vspace{3mm}
+				\item[] $E\{e^2[n]\}=E\{(x[n]+\sum_{i=1}^{M}a_ix[n-i] )^2\}$
+				\vspace{3mm}
+				\item[] $2E\{(x[n]+\sum_{i=1}^{M}a_ix[n-i] )x[n-k]\}=0$
+				\vspace{3mm}
+				\item[] $R_s[k]+\sum_{i=1}^{M}a_iR_s[i-k]=0$
+				\vspace{3mm}
+				\item[] $R  \bar{a} = -\bar{r}_x$
+			\end{itemize}		
+		\end{column}
+	\end{columns}
+\end{frame}
 
+\subsection{Predicted Speech}
 \begin{frame}{Prediction}{Autocorrelation function estimation}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -66,13 +98,14 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Prediction}{Wiener Hopf}
+\begin{frame}{Prediction}{Solving the Wiener Hopf}
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
 			\begin{itemize}
-				\item Wiener Hopf equation: $\hat{R}  \bar{\hat{a}} = -\bar{\hat{r}}_x$
+				\item Wiener Hopf equation: $R  \bar{a} = -\bar{r}_x$
+				\item By inversion: $\bar{a} = -R^{-1} \bar{r}_x$
 				\item Levinson Durbin to estimate LPCs 
-				\item Three steps using the symmetry
+				\item Three steps using symmetry
 			\end{itemize}
 			
 		\end{column}
