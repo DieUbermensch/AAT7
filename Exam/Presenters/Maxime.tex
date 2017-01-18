@@ -1,10 +1,44 @@
 \section{Maxime}
-\begin{frame}
-	\frametitle{Maximes Job}
-	\tableofcontents[currentsection]
+
+\section{Project foundation}
+\begin{frame}{Project foundation}
+	\begin{center}
+	The call center problem 
+	\end{center}
 \end{frame}
 
-\begin{frame}{Introduction}{What Is ANC?}		
+\section{Speech}
+\begin{frame}{Speech Signal}{Properties}
+	\begin{center}
+ 	\vspace{0.5cm}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+		\begin{itemize}		
+		\item Voiced Sound
+			\begin{itemize}
+				\item Periodic 
+				\item Low frequencies
+			\end{itemize}
+		\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+		\begin{itemize}
+		\item Unvoiced Sound 
+			\begin{itemize}
+				\item Random
+				\item High frequencies
+			\end{itemize}	
+	    \end{itemize}	
+		\end{column}
+	\end{columns}
+	\vspace{1cm}
+	We assume the frequency range of speech : 50-4000Hz \\
+	Speech can be seen as quasiperiodic and WSS for time frames of 20-30ms 
+	\end{center}
+\end{frame}
+
+\section{Basics of ANC}
+\begin{frame}{What Is ANC?}{Introduction}		
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 				\begin{itemize}
@@ -30,6 +64,59 @@
 	 		\input{figures/2500Hz.tex}
 	 		%\caption{2500 Hz}
 	 	\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Feedforward system}
+\begin{frame}{Feedforward ANC}
+	\begin{columns}	
+			\begin{column}{0.5\textwidth}
+			\begin{itemize}
+			\item 1: Reference microphone
+			\item 2: Headphone loudspeaker
+			\end{itemize}
+			\end{column}		
+	\begin{column}{0.5\textwidth} 
+	\begin{itemize}
+			\item 3: Error microphone
+			\item 4: Digital signal Processor (DSP)
+	\end{itemize}
+	\end{column}	
+	\end{columns}	
+	\input{figures/BasicOverviewZoomed}
+	\begin{itemize}
+			\item Attenuate all kind of signals
+			\item Process the signal upfront
+			\item Delay of the system must be less than the propagation time
+	\end{itemize}		
+\end{frame}
+
+\section{System delay}
+\begin{frame}{Conversion delay}{Conversion delay}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+		\begin{itemize}
+		\item Too much delay in converters
+				\begin{itemize}
+				\item $\Sigma \Delta$-converters
+				\begin{itemize}
+				\item Equivalent to 43 samples
+				\end{itemize}								
+				\end{itemize}
+		\item TLV320AIC3204
+				\begin{itemize}
+				\item[\textcolor{MATLABred}{48 kHz}]= 900 $\mu S$ $\approx 31$ cm
+				\item[\textcolor{MATLAByellow}{96 kHz}]= 450 $\mu S$ $\approx 15$ cm
+				\item[\textcolor{MATLABpurple}{192 kHz}]= 225 $\mu S$ $\approx 8$ cm
+				\end{itemize}	
+				\item Mems 	microphone less delay	 
+		\end{itemize}
+		\end{column}
+		\begin{column}{0.6\textwidth} 
+		\begin{center}
+		\input{figures/DelayGraph.tex}
+		\end{center}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -67,81 +154,15 @@
 \begin{frame}{Influence of system delay}{Problem of ANC}		
 	\begin{center}
 	\begin{itemize}
-	\item Delay is determining the frequency range that can be attenuated
-	\item Low frequency are well attenuated 
+	\item System delay determine the frequency range that can be attenuated
+	\item Low frequency are well attenuated by active systems
 	\item High frequencies are passively damped by the headphone cup 
 	\end{itemize}
 	\end{center}
 \end{frame}
 
-\begin{frame}{Feedback ANC}
-	\input{figures/FeedbackOverviewZoomed}
-	\begin{itemize}
-			\item Limited attenuation for periodic signal
-			\item Do not adapt to fast changes in the signal
-	\end{itemize}		
-\end{frame}
 
-\begin{frame}{Feedforward ANC}
-	\begin{columns}	
-			\begin{column}{0.5\textwidth}
-			\begin{itemize}
-			\item 1: Reference microphone
-			\item 2: Headphone loudspeaker
-			\end{itemize}
-			\end{column}		
-	
-	\begin{column}{0.5\textwidth} 
-	\begin{itemize}
-			\item 3: Error microphone
-			\item 4: Digital signal Processor (DSP)
-	\end{itemize}
-	\end{column}	
-	\end{columns}	
-	\input{figures/BasicOverviewZoomed}
-	\begin{itemize}
-			\item Process the signal upfront
-			\item Attenuate all kind of signals
-			\item Delay of the system must be less than the propagation time
-	\end{itemize}		
-\end{frame}
-
-\begin{frame}{Hybrid ANC}
-	\begin{itemize}
-			\item Better performance
-			\item Increase of system complexity 
-	\end{itemize}		
-\end{frame}
-
-\begin{frame}{Speech Signal}{Properties}
-	\begin{center}
- 	Speech can be subclassed into two categories	
- 	\end{center}
- 	\vspace{0.5cm}
-	\begin{columns}{center}
-		\begin{column}{0.5\textwidth}
-		Voiced Sound
-		\begin{itemize}
-			\item Periodic 
-			\item Low frequencies
-		\end{itemize}
-		\end{column}
-		\begin{column}{0.5\textwidth} 
-		Unvoiced Sound 
-		\begin{itemize}
-			\item Random
-			\item High frequencies
-		\end{itemize}		
-		\end{column}
-	\end{columns}{center}
-	\begin{center}
-	\vspace{1cm}
-	Frequency range of speech : 100-4000Hz \\
-	Speech can be seen as quasiperiodic for time frames of 20ms 
-\end{center}
-\end{frame}
-
-\begin{frame}{Introduction}{Present Consumer Headphones}
+\begin{frame}{Present Consumer Headphones}{Performance}
 	\begin{itemize}	
 	\item How well does the consumer headphones ANC attenuate?
 	\begin{columns}
@@ -168,26 +189,22 @@
 	\end{center}	
 \end{frame}
 
-\begin{frame}{Summary}
-	\begin{center}		
-	\begin{itemize}
-		\item Speech signal is quasiperiodic 
-		\item Feedforward system is chosen
-		\item System delay influence the system performance (frequency band)
-		\item Current headphones are not good for canceling speech
-	\end{itemize}
-	\end{center}	
-\end{frame}
-
+\section{Strategy}
 \begin{frame}{Strategy}
 	\begin{center}
 	\begin{itemize}
-		\item Reducing system Delay 
+		\item Improve the frequency range of the attenuation
+		\item Reducing system delay
+		\begin{itemize}	
+		\item Multirate processing
 		\item Linear prediction
+		\end{itemize}				
 	\end{itemize}
 	\end{center}
 \end{frame}
 
-\begin{frame}
-
+\begin{frame}{Prediction and feedforward system overview}
+	\begin{center}
+		\input{figures/CombinedSystem.tex}	
+	\end{center}
 \end{frame}
