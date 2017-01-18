@@ -150,7 +150,20 @@
 
 \end{frame}
 
-
+\section{Combined system}
+\begin{frame}{Overview}{Combined System}	
+	\begin{itemize}
+		\item Input for control filter and CP
+		\begin{itemize}
+			\item $x[n]$
+			\item $\hat{x}[n+P]$
+		\end{itemize}
+	\end{itemize}
+	\begin{center}
+		\resizebox{0.9\columnwidth}{!}{		
+			\input{figures/Totalsystemoverview.tex}}
+	\end{center}
+\end{frame}
 
 
 \subsection{Multirate}
@@ -194,7 +207,7 @@ xmajorgrids,
 xminorgrids,
 ymin=-60,
 ymax=10,
-ylabel={Magnitude [dBSPL]},
+ylabel={Magnitude [dBS]},
 ymajorgrids,
 axis background/.style={fill=white},
 ]
