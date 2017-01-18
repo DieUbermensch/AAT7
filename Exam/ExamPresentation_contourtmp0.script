@@ -1,0 +1,1 @@
+unset surface; set cntrparam levels discrete 0; set contour; set table "ExamPresentation_contourtmp0.table"; splot "ExamPresentation_contourtmp0.dat";
