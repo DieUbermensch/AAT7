@@ -96,7 +96,14 @@
 \usepackage{subfloat}
 %\usepackage{subcaption}
 
-
+\newcommand\tocforsect[2]{%
+	\begingroup
+	\edef\safesection{\thesection}
+	\setcounter{section}{#1}
+	\tableofcontents[#2,currentsection]
+	\setcounter{section}{\safesection}
+	\endgroup
+}
 
 \begin{document}
 % the titlepage
