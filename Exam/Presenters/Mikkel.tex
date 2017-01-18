@@ -1,8 +1,8 @@
 \section{Filtered-x Least mean square}
 
 
-\subsection{Periodic signals}
-\begin{frame}{Filtered-x Least mean square}{The General System}
+\subsection{The general system}
+\begin{frame}{Filtered-$x$ Least mean squares}{The General System}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}		
 
@@ -37,6 +37,62 @@
 		\end{column}
 	\end{columns}
 \end{frame}
+
+
+\subsection{Optimization}
+\begin{frame}{Filtered-$x$ Least mean squares}{A minimization problem}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}		
+			
+			\begin{itemize}
+				\item Feedforward
+				\begin{itemize}
+					\item Dependent on delay between actuator and source		
+				\end{itemize}
+				\item Combined with an error microphone for feedback
+				\begin{itemize}
+					\item Adapt to changes in environment
+					\item Always behind in samples/time 		
+					\begin{itemize}
+						\item Efficient for periodic signals
+						\item Inefficient for stochastic signal 
+					\end{itemize}	
+				\end{itemize}
+				\item Assumptions:
+				\begin{itemize}
+					\item Stationary Cancellation path
+					\item FIR filter
+				\end{itemize}
+				
+			\end{itemize}
+			
+			
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\resizebox{0.85\columnwidth}{!}{	
+			\begin{tikzpicture}
+			\begin{axis}[
+			view={60}{30},
+			ylabel = {Weight 1},
+			xlabel = {Weight 2},
+			zlabel = {Error},
+			zticklabels={1,0.5,0},ztick={0,-0.5,-1},
+			grid=major,
+			]
+			\addplot3[surf,shader=flat,
+			samples=20,
+			domain=-1:0,y domain=0:2*pi,
+			z buffer=sort]
+			({sqrt(1-x^2) * cos(deg(y))},
+			{sqrt( 1-x^2 ) * sin(deg(y))},
+			x);	
+			\end{axis}
+			\end{tikzpicture}
+			}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 
 \subsection{Feedforward system}
 \begin{frame}{Filtered-x Least mean square}{Adaptive FXLMS Algorithm}
@@ -94,94 +150,21 @@
 
 \end{frame}
 
-
-\section{Implementation Consideration}
-\subsection{DAC/ADC delay}
-\begin{frame}{Implementation Consideration}{Conversion delay}
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
+\section{Combined system}
+\begin{frame}{Overview}{Combined System}	
+	\begin{itemize}
+		\item Input for control filter and CP
 		\begin{itemize}
-		\item Too much delay in converters
-				\begin{itemize}
-				\item $\Sigma \Delta$-converters
-				\begin{itemize}
-				\item Oversampling
-				\item Low-pass filtering
-				\end{itemize}								
-				\end{itemize}
-		\item TLV320AIC3204
-				\begin{itemize}
-				\item[48 kHz]= 900 $\mu S$ $\approx 31$ cm
-				\item[96 kHz]= 450 $\mu S$ $\approx 15$ cm
-				\item[192 kHz]= 225 $\mu S$ $\approx 8$ cm
-				\end{itemize}			 
-		\item Equivalent to 43 samples
+			\item $x[n]$
+			\item $\hat{x}[n+P]$
 		\end{itemize}
-		\end{column}
-		\begin{column}{0.6\textwidth} 
-		\begin{center}
-		\input{figures/DelayGraph.tex}
-		\end{center}
-		\end{column}
-	\end{columns}
-
+	\end{itemize}
+	\begin{center}
+		\resizebox{0.9\columnwidth}{!}{		
+			\input{figures/Totalsystemoverview.tex}}
+	\end{center}
 \end{frame}
-\subsection{Computation time}
-\begin{frame}{Implementation Consideration}{Computation time}
 
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-\begin{itemize}
-\item[ ] ACF Estimation
-\begin{itemize}
-\item[ ] $ \frac{2\cdot N^2}{N-O}$
-\end{itemize}
-\item[ ] Levinson-Durbin
-\begin{itemize}
-\item[ ] $ \frac{N^2}{N-O}$
-\end{itemize}
-\item[ ] Wiener Filtering
-\begin{itemize}
-\item[ ] $P \cdot N$
-\end{itemize}
-\item[ ] FxLMS
-\begin{itemize}
-\item[ ] Order of filter
-\end{itemize}
-\end{itemize}	
-		\end{column}
-		\begin{column}{0.5\textwidth} 
-		
-		\begin{center}
-\resizebox{1\columnwidth}{!}{	
-\begin{tikzpicture}
-  \begin{axis}[
-    width  = 0.85*\textwidth,
-    height = 6cm,
-    xbar,
-    y axis line style = { opacity = 0 },
-    axis x line       = none,
-    tickwidth         = 0pt,
-%    enlarge y limits  = 0.2,
-%    enlarge x limits  = 0.02,
-    y tick label style={font=\small,text width=1.5cm,align=center},
-    symbolic y coords = {FxLMS, Wiener Filtering, Levinson-Durbin, ACF Estimation},
-    nodes near coords,
-  ]
-  \addplot coordinates { (57727,FxLMS)         (5672,Wiener Filtering)
-                         (2193,Levinson-Durbin)  (11106,ACF Estimation) };
-  \addplot[black,sharp plot]
-	coordinates {(500,FxLMS) (500,ACF Estimation)};
-
-  \end{axis}
-\end{tikzpicture}
-}
-		\end{center}
-	
-		\end{column}
-	\end{columns}
-
-\end{frame}
 
 \subsection{Multirate}
 \begin{frame}{Implementation Consideration}{Multirate}
@@ -190,25 +173,12 @@
 		\begin{column}{0.4\textwidth}
 \begin{itemize}
 \item Reduce to computation demands N-fold
+
 \begin{itemize}
 \item Lower prediction length
 \item 12 kHz is a factor $2^4$ lower in computation cost 
 \end{itemize}
 \end{itemize}
-Procedure: 
-\begin{enumerate}
-\item Downsample from 192 kHz to 12 kHz
-\begin{itemize}
-\item Decimate by an order of 2
-\item 1$^{st}$ IIR filter 
-\end{itemize}
-\item Perform  prediction
-\item Upsample from 12 kHz to 192 kHz
-\begin{itemize}
-\item Upsampling by order of 2 
-\item 1$^{st}$ IIR filter 
-\end{itemize}
-\end{enumerate}
 		\end{column}
 		\begin{column}{0.6\textwidth} 
 		
@@ -221,39 +191,34 @@ $fs$                                                          & 192 & 96 & 48 & 
 \begin{tabular}[c]{@{}c@{}}Prediction\\ Length\end{tabular}   & 43  & 22 & 11 & 6  & 3  \\ \hline
 \end{tabular}
 \end{table}
-
-
-\resizebox{1\columnwidth}{!}{	
+		\resizebox{0.75\columnwidth}{!}{
 \begin{tikzpicture}
-  \begin{axis}[
-    width  = 0.85*\textwidth,
-    height = 6cm,
-    xbar,
-    y axis line style = { opacity = 0 },
-    axis x line       = none,
-    tickwidth         = 0pt,
-    enlarge y limits  = 0.2,
-    enlarge x limits  = 0.02,
-    y tick label style={font=\small,text width=1.5cm,align=center},
-    symbolic y coords = {FxLMS, Wiener Filtering, Levinson-Durbin, ACF Estimation},
-    nodes near coords,
-  ]
-  \addplot coordinates { (57727,FxLMS)         (5672,Wiener Filtering)
-                         (2193,Levinson-Durbin)  (11106,ACF Estimation) };
-  \addplot coordinates { (57727,FxLMS)         (5672,Wiener Filtering)
-                         (2193,Levinson-Durbin)  (11106,ACF Estimation) };
-%  \legend{Topics, Posts}
-  \end{axis}
+\begin{axis}[
+width=3in,
+height=2in,
+scale only axis,
+unbounded coords=jump,
+xmode=log,
+xmin=10,
+xmax=192000,
+xminorticks=true,
+xlabel={Frequency [$k$Hz]},
+xmajorgrids,
+xminorgrids,
+ymin=-60,
+ymax=10,
+ylabel={Magnitude [dBS]},
+ymajorgrids,
+axis background/.style={fill=white},
+]
+\addplot[mark=none, blue,thick] coordinates {(24000,0) (48000,0) (96000,-60)};
+\addplot[mark=none, red,thick] coordinates {(12000,0) (24000,0) (48000,-60)};
+\addplot[mark=none, black,thick] coordinates {(6000,0) (12000,0) (24000,-60)};
+\addplot[mark=none, green,thick] coordinates {(10,0) (6000,0) (12000,-60)};
+\end{axis}
 \end{tikzpicture}
- }
-
-
-		\end{center}
-	
+}
+		\end{center}	
 		\end{column}
 	\end{columns}
-
-
-
-
 \end{frame}

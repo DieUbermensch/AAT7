@@ -14,16 +14,20 @@
 				\item O is the overlap between frames
 				\item P is the prediction length
 				\item M is the filter order
+				\item PG is the prediction gain
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth} 
-			picture	
+			$PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg)	$
+			
+			$x$ is the input signal\\
+			$\varepsilon$ is the error signal $(x-\hat{x})$
 		\end{column}
 	\end{columns}
 \end{frame}
 
 \subsection{Wiener filtering}
-\begin{frame}{Prediction}{Wiener filtering}
+\begin{frame}{Prediction}{Overview}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{itemize}
@@ -42,6 +46,8 @@
 	\end{columns}
 \end{frame}
 
+
+
 \begin{frame}{Prediction}{Autocorrelation function estimation}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -53,9 +59,9 @@
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth} 
-			$\hat{r}_x[l] = \sum^{N}_{n=\left| l\right|} x_l[n]w_l[N-n]$
+			$\hat{r}_x[l] = \sum^{N}_{n=\left| l\right|} x_l[n]w_l[N-n]$\\
 			\vspace{5mm}
-			Where: 
+			Where: \\
 			$x_l[n]=x[n]x[n-l]$ and $w_l[n]=w[n]w[n+l]$
 		\end{column}
 	\end{columns}
@@ -63,97 +69,140 @@
 
 \begin{frame}{Prediction}{Wiener Hopf}
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.4\textwidth}
 			\begin{itemize}
 				\item Wiener Hopf equation: $\hat{R}  \bar{\hat{a}} = -\bar{\hat{r}}_x$
-				\item Levinson Durbin to estimate 
+				\item Levinson Durbin to estimate LPCs 
+				\item Three steps using the symmetry
 			\end{itemize}
 			
 		\end{column}
-		\begin{column}{0.5\textwidth} 
-			picture	
+		\begin{column}{0.6\textwidth} 
+				\resizebox{1.0\columnwidth}{!}{	
+				\input{figures/LPC.tex}
+			}	
 		\end{column}
 	\end{columns}
 \end{frame}
 
-
-\subsection{Prediction gain}
-\begin{frame}{Prediction}{Prediction gain}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-			\item Used to quantify the quality of the predictor. 
-			\item $x$ is the input signal
-			\item $\varepsilon$ is the error signal $(x-\hat{x})$
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.5\textwidth} 
-			$PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg)	$
-		\end{column}
-	\end{columns}
-\end{frame}
-
-
-\subsection{Determining N,O,M and fs}
-\begin{frame}{Simulation Results}{Optimal parameters P=43}		
+\begin{frame}{Prediction}{A predicted signal}
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
 			\begin{itemize}
-				\item Prediction order P = 43
-				\item Optimal parameters
-				\begin{itemize}
-					\item Framelength N = 1600
-					\item Overlap O = 1500
-				\end{itemize}
-				\item Prediction Gain PG = 5.4 dB
+				\item[\textcolor{MATLABblue}{---}] Speech signal
+				\item[\textcolor{MATLABorange}{---}] Predicted speech signal
+				\item N =1200
+				\item O=1100
+				\item P=10
+				\item fs=48000
 			\end{itemize}
+			
 		\end{column}
 		\begin{column}{0.6\textwidth} 
-			\resizebox{0.9\columnwidth}{!}{		
-				\input{figures/HammingNOP43.tex}}
+			\resizebox{1.0\columnwidth}{!}{	
+				\input{figures/PredictionTime.tex}
+			}
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Simulation Results}{Optimal parameters P=10}		
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-			\begin{itemize}
-				\item Prediction order P = 10
-				\item Optimal parameters
-				\begin{itemize}
-					\item Framelength N = 1200
-					\item Overlap O = 1100
-				\end{itemize}
-				\item Prediction Gain PG = 10 dB
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.6\textwidth} 
-			\resizebox{0.9\columnwidth}{!}{		
-				\input{figures/HammingNOP10.tex}}
-		\end{column}
-	\end{columns}
-\end{frame}
 
-\begin{frame}{Simulation Results}{Optimal parameters fs=12000}		
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-			\begin{itemize}
-				\item Prediction order P = 3
-				\item Optimal parameters
-				\begin{itemize}
-					\item Framelength N = 300
-					\item Overlap O = 250
-				\end{itemize}
-				\item Prediction Gain PG = 8.5 dB
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.6\textwidth} 
-			\resizebox{0.9\columnwidth}{!}{		
-				\input{figures/HammingNOP3.tex}}
-		\end{column}
-	\end{columns}
-\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\subsection{Prediction gain}
+%\begin{frame}{Prediction}{Prediction gain}
+%	\begin{columns}
+%		\begin{column}{0.5\textwidth}
+%			\begin{itemize}
+%			\item Used to quantify the quality of the predictor. 
+%			\item $x$ is the input signal
+%			\item $\varepsilon$ is the error signal $(x-\hat{x})$
+%			\end{itemize}
+%		\end{column}
+%		\begin{column}{0.5\textwidth} 
+%			$PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg)	$
+%		\end{column}
+%	\end{columns}
+%\end{frame}
+
+%\subsection{Determining N,O,M and fs}
+%\begin{frame}{Simulation Results}{Optimal parameters P=43}		
+%	\begin{columns}
+%		\begin{column}{0.4\textwidth}
+%			\begin{itemize}
+%				\item Prediction order P = 43
+%				\item Optimal parameters
+%				\begin{itemize}
+%					\item Framelength N = 1600
+%					\item Overlap O = 1500
+%				\end{itemize}
+%				\item Prediction Gain PG = 5.4 dB
+%			\end{itemize}
+%		\end{column}
+%		\begin{column}{0.6\textwidth} 
+%			\resizebox{0.9\columnwidth}{!}{		
+%				\input{figures/HammingNOP43.tex}}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Simulation Results}{Optimal parameters P=10}		
+%	\begin{columns}
+%		\begin{column}{0.4\textwidth}
+%			\begin{itemize}
+%				\item Prediction order P = 10
+%				\item Optimal parameters
+%				\begin{itemize}
+%					\item Framelength N = 1200
+%					\item Overlap O = 1100
+%				\end{itemize}
+%				\item Prediction Gain PG = 10 dB
+%			\end{itemize}
+%		\end{column}
+%		\begin{column}{0.6\textwidth} 
+%			\resizebox{0.9\columnwidth}{!}{		
+%				\input{figures/HammingNOP10.tex}}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Simulation Results}{Optimal parameters fs=12000}		
+%	\begin{columns}
+%		\begin{column}{0.4\textwidth}
+%			\begin{itemize}
+%				\item Prediction order P = 3
+%				\item Optimal parameters
+%				\begin{itemize}
+%					\item Framelength N = 300
+%					\item Overlap O = 250
+%				\end{itemize}
+%				\item Prediction Gain PG = 8.5 dB
+%			\end{itemize}
+%		\end{column}
+%		\begin{column}{0.6\textwidth} 
+%			\resizebox{0.9\columnwidth}{!}{		
+%				\input{figures/HammingNOP3.tex}}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
 
 
 %\subsection{Prediction}
