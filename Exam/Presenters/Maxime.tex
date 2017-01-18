@@ -3,21 +3,191 @@
 	\frametitle{Maximes Job}
 	\tableofcontents[currentsection]
 \end{frame}
-\subsection{What about le' cheese}
-\begin{frame}{This is Maxime's part}{Put your cheese up in the air}		
+
+\begin{frame}{Introduction}{What Is ANC?}		
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
-		cheese can be both blue and green	
+				\begin{itemize}
+					\item The basic theory of ANC
+					\begin{itemize}
+						\item  250 Hz
+						\item 2500 Hz 
+					\end{itemize}	
+				\end{itemize}
+			\vspace{-2.5mm}	
+		\begin{center}
+	 		\input{figures/250Hz.tex}
+	 		%\caption{250 Hz}
+	 	\end{center}
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+			\begin{itemize}
+				\item[\textcolor{MATLABblue}{---}] Original signal
+				\item[\textcolor{MATLABblue}{- -}] Counterphase signal
+				\item[\textcolor{red}{---}] Error
+			\end{itemize}
+		\begin{center}
+	 		\input{figures/2500Hz.tex}
+	 		%\caption{2500 Hz}
+	 	\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Influence of system delay}{Problem of ANC}		
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Counterphase signal delayed 10 samples	
+				\begin{itemize}
+					\item 250 Hz
+					\item 2500 Hz 
+				\end{itemize}	
+			\end{itemize}
+			\vspace{-6.5mm}			
+		\begin{center}
+	 		\input{figures/250HzDelayed.tex}
+	 		%\caption{250 Hz}
+	 	\end{center}
 		\end{column}
 		\begin{column}{0.5\textwidth} 
 		\begin{itemize}
-			\item<1-> Blue cheese
-			\item<2-> Green cheese
-			\item<3-> But can we neglect the ''Tusindfryd''?
+			\item[\textcolor{MATLABblue}{---}] Original signal
+			\item[\textcolor{MATLABblue}{- -}] Counterphase signal
+			\item[\textcolor{red}{---}] Error
+		\end{itemize}
+		\begin{center}
+	 		\input{figures/2500HzDelayed.tex}
+	 		%\caption{2500 Hz}
+	 	\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Influence of system delay}{Problem of ANC}		
+	\begin{center}
+	\begin{itemize}
+	\item Delay is determining the frequency range that can be attenuated
+	\item Low frequency are well attenuated 
+	\item High frequencies are passively damped by the headphone cup 
+	\end{itemize}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Feedback ANC}
+	\input{figures/FeedbackOverviewZoomed}
+	\begin{itemize}
+			\item Limited attenuation for periodic signal
+			\item Do not adapt to fast changes in the signal
+	\end{itemize}		
+\end{frame}
+
+\begin{frame}{Feedforward ANC}
+	\begin{columns}	
+			\begin{column}{0.5\textwidth}
 			\begin{itemize}
-				\item<4-> Yes, because they are gay
-			\end{itemize}			
+			\item 1: Reference microphone
+			\item 2: Headphone loudspeaker
+			\end{itemize}
+			\end{column}		
+	
+	\begin{column}{0.5\textwidth} 
+	\begin{itemize}
+			\item 3: Error microphone
+			\item 4: Digital signal Processor (DSP)
+	\end{itemize}
+	\end{column}	
+	\end{columns}	
+	\input{figures/BasicOverviewZoomed}
+	\begin{itemize}
+			\item Process the signal upfront
+			\item Attenuate all kind of signals
+			\item Delay of the system must be less than the propagation time
+	\end{itemize}		
+\end{frame}
+
+\begin{frame}{Hybrid ANC}
+	\begin{itemize}
+			\item Better performance
+			\item Increase of system complexity 
+	\end{itemize}		
+\end{frame}
+
+\begin{frame}{Speech Signal}{Properties}
+	\begin{center}
+
+ 	Speech can be subclassed into two categories	
+ 	\vspace{0.5cm}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+		Voiced Sound
+		\begin{itemize}
+			\item Periodic 
+			\item Low frequencies
+		\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+		Unvoiced Sound 
+		\begin{itemize}
+			\item Random
+			\item High frequencies
 		\end{itemize}		
 		\end{column}
 	\end{columns}
+	\vspace{1cm}
+	Frequency range of speech : 100-4000Hz
+	\vspace{1cm}
+	Speech can be seen as quasiperiodic for time frames of 20ms 
+\end{center}
+\end{frame}
+
+\begin{frame}{Introduction}{Present Consumer Headphones}
+	\begin{itemize}	
+	\item How well does the consumer headphones ANC attenuate?
+	\begin{columns}
+		\begin{column}{0.27\textwidth}
+		\begin{itemize}
+			\item Denon AH-GC20
+			\item Bose QC25 
+			\item Bose QC15 	
+			\item BeoPlay H8 	
+		\end{itemize}
+		\end{column}
+		\begin{column}{0.6\textwidth} 
+		\begin{itemize}
+			\item[] 2.200 kr (2016)
+			\item[] 2.799 kr (2016)
+			\item[] 2.696 kr (2011)
+			\item[] 3.495 kr (2016)
+		\end{itemize}
+		\end{column}
+	\end{columns}
+	\end{itemize}			
+	\begin{center}
+		\input{figures/SmoothCompare(fig).tex}
+	\end{center}	
+\end{frame}
+
+\begin{frame}{Summary}
+	\begin{center}		
+	\begin{itemize}
+		\item Speech signal is quasiperiodic 
+		\item Feedforward system is chosen
+		\item System delay influence the system performance (frequency band)
+		\item Current headphones are not good for canceling speech
+	\end{itemize}
+	\end{center}	
+\end{frame}
+
+\begin{frame}{Strategy}
+	\begin{center}
+	\begin{itemize}
+		\item Reducing system Delay 
+		\item Linear prediction
+	\end{itemize}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+
 \end{frame}
