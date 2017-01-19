@@ -14,13 +14,16 @@
 			\end{itemize}	
 		\end{column}
 		\begin{column}{0.5\textwidth} 
+			\begin{figure}
+				\includegraphics[width=1\textwidth]{figures/SetupDiagram.pdf}
+			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
 
 \begin{frame}{Experiments}{Control and Adjusting}		
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.3\textwidth}
 			\begin{itemize}
 				\item Using a reference calibrator
 				\item Yields a given dB @ calibrators frequency
@@ -28,12 +31,15 @@
 				\item Account for the difference 
 			\end{itemize}	
 		\end{column}	
-		\begin{column}{0.5\textwidth} 
+		\begin{column}{0.7\textwidth} 
+			\begin{figure}
+				%\input{figures/CalibrationEx.tex}
+			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\subsection{Experiments in thie Project}
+\subsection{Experiments in this Project}
 \begin{frame}{Experiments}{Listening Test}		
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -43,12 +49,13 @@
 				\item Results
 				\begin{itemize}
 					\item 10 dB attenuation is required
+					\item Covered 3/4 of the test subjects 
 				\end{itemize}
 			\end{itemize}	
 		\end{column}	
 		\begin{column}{0.5\textwidth} 
 			\begin{figure}
-					\includegraphics[width=1\textwidth]{figures/ListeningTestSetup.jpg}
+					\includegraphics[width=0.8\textwidth]{figures/ListeningTestSetup.pdf}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -63,16 +70,27 @@
 					\item Physical cup of headphone
 				\end{itemize}
 				\item{Logarithmic Chirp}
-				\item Transfer-function formula:
-					\begin{equation*}
-						H(f)=\frac{Y(f)}{X(f)}=\frac{\mathscr{F}(y(t))\times\mathscr{F}^{\ast}(x(t))}{\mathscr{F}(x(t))\times\mathscr{F}^{\ast}(x(t))}
-					\end{equation*}
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth} 
 			\begin{figure}[h]
-				\includegraphics[width=1\textwidth]{figures/TransferFunctionHP}
+				\includegraphics[width=1\textwidth]{figures/AngleOfIncidenceSetup.pdf}
 			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Headphone)}		
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Transfer-function formula:
+				\begin{equation*}
+				H(f)=\frac{Y(f)}{X(f)}=\frac{\mathscr{F}(y(t))\times\mathscr{F}^{\ast}(x(t))}{\mathscr{F}(x(t))\times\mathscr{F}^{\ast}(x(t))}
+				\end{equation*}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth} 
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -109,7 +127,7 @@
 		\end{column}
 		\begin{column}{0.5\textwidth} 
 			\begin{figure}[h]
-				\includegraphics[width=1\textwidth]{figures/TransferFunctionCP}
+				\includegraphics[width=1\textwidth]{figures/CancellationPath.pdf}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -134,6 +152,37 @@
 	\end{columns}
 \end{frame}
 
+
+\begin{frame}{Experiments}{Angle of Incidence}		
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item hej
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+			\begin{figure}[h]
+				\includegraphics[width=1\textwidth]{figures/AngleOfIncidenceSetup.pdf}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Experiments}{Angle of Incidence}		
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Results
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+			\begin{figure}[h]
+				%\input{figures/compfilterCP.tex}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 \begin{frame}{Experiments}{Testing Consumer ANC}		
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -152,8 +201,22 @@
 		\end{column}
 		\begin{column}{0.5\textwidth} 				
 			\begin{figure}[h]
-				\includegraphics[width=1\textwidth]{figures/OtherBrandsSetupSide.jpg}
+				\includegraphics[width=1\textwidth]{figures/OtherBrandsDiagram.pdf}
 			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}{Experiments}{Testing Consumer ANC}		
+	\begin{columns}
+		\begin{column}{0.2\textwidth}
+			\begin{itemize}
+				\item Results
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.8\textwidth} 				
+			\begin{center}
+				\input{figures/SmoothCompare(fig).tex}
+			\end{center}
 		\end{column}
 	\end{columns}
 \end{frame}
