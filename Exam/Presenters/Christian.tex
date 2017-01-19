@@ -40,7 +40,7 @@
 			\begin{figure}
 				\includegraphics[width=\textwidth]{figures/WienerHopf}
 			\end{figure}
-		$\hat{x}[n+P] =- \sum^{M-1}_{i=1}\hat{a}_i[n]x[(n+P)-i]$
+%		$\hat{x}[n+P] =- \sum^{M-1}_{i=1}\hat{a}_i[n]x[(n+P)-i]$
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -70,7 +70,7 @@
 				\vspace{3mm}
 				\item[] $2E\{(x[n]+\sum_{i=1}^{M}a_ix[n-i] )x[n-k]\}=0$
 				\vspace{3mm}
-				\item[] $R_s[k]+\sum_{i=1}^{M}a_iR_s[i-k]=0$
+				\item[] $r_x[k]+\sum_{i=1}^{M}a_iR_x[i-k]=0$
 				\vspace{3mm}
 				\item[] $R  \bar{a} = -\bar{r}_x$
 			\end{itemize}		
@@ -123,10 +123,10 @@
 			\begin{itemize}
 				\item[\textcolor{MATLABblue}{---}] Speech signal
 				\item[\textcolor{MATLABorange}{---}] Predicted speech signal
-				\item N =1200
-				\item O=1100
-				\item P=10
-				\item fs=48000
+				\item N =1200 [samples]
+				\item O=1100 [samples]
+				\item P=10 [samples]
+				\item $f_s$=48000 [Hz]
 			\end{itemize}
 			
 		\end{column}
