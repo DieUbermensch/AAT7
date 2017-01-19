@@ -1,10 +1,8 @@
-\section{Filtered-x Least mean square}
+\section{Filtered-x Least mean squares}
 
-\begin{frame}{Mikkel}
-	  \tableofcontents[
-	  sectionstyle=show/show/shaded,
-	  subsectionstyle=show/show/show
-	  ]
+\begin{frame}{Filtered-x Least mean squares}{by Mikkel}
+	\small
+	\tableofcontents[currentsection, hideothersubsections]	
 \end{frame}
 \subsection{The general system}
 \begin{frame}{Filtered-$x$ Least mean squares}{The General System}
@@ -70,7 +68,7 @@
 			view={60}{30},
 			ylabel = {Weight 1},
 			xlabel = {Weight 2},
-			zlabel = {Error},
+			zlabel = {$E^2[n]$},
 			zticklabels={1,0.5,0},ztick={0,-0.5,-1},
 			grid=major,
 			]
@@ -99,8 +97,9 @@
 		\begin{itemize}
 		\item[] Error Source:
 		\begin{itemize}
-		\item Primary Noise
-		\item Actuated signal
+		\item Primary Noise $p[n]$
+		\item Counterphase signal $s[n]$
+		\item $e[n]=p[n]+s[n]$
 		\end{itemize}
 		\item[]
 		\item[] Determining the gradient
@@ -110,7 +109,7 @@
 		\item[]
 		\item[] Utilizing the Filtered-x
 		\begin{itemize}
-		\item[] $\frac{\partial s[n]}{\partial b[n]} = [b_j[n] * x[n]]* \hat{c}[n]$
+		\item[] $\frac{\partial s[n]}{\partial b[n]} = [b[n] * x[n]]* \hat{c}[n]$
 		\end{itemize}			
 		\end{itemize}
 		\end{center}	
@@ -150,7 +149,7 @@
 			\draw [<-](-2.1,0.54) -- (0.48,0.54) -- (0.48,1.06);
 			\draw [->](-2.3,0.82) -- (-2.3,0.86) -- (-2.94,0.86) -- (-2.94,1);
 			\node at (0,2) {\small{Ear Canal}};
-			\node at (-1.7,1.54) {\small{$H_{cp}$}};
+			\node at (-1.7,1.54) {\small{$h_{cp}$}};
 			
 
 			\draw  (1.56,2.32) rectangle (-3.7,0.32);
@@ -219,25 +218,17 @@
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
 \begin{itemize}
-\item Reduce to computation demands N-fold
+\item Reduce computation by $2^4$
 
 \begin{itemize}
 \item Lower prediction length
-\item 12 kHz is a factor $2^4$ lower in computation cost 
+\item Effecting 3 kHz slightly at $fs=12 kHz$ 
 \end{itemize}
 \end{itemize}
 		\end{column}
 		\begin{column}{0.6\textwidth} 
 		
 		\begin{center}
-\begin{table}[]
-\centering
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-$fs$                                                          & 192 & \textcolor{MATLABblue}{96} & \textcolor{MATLABred}{48} & \textcolor{MATLAByellow}{24} & \textcolor{MATLABgreen}{12} \\ \hline
-\begin{tabular}[c]{@{}c@{}}Prediction\\ Length\end{tabular}   & 43  &\textcolor{MATLABblue}{22} & \textcolor{MATLABred}{22} & \textcolor{MATLAByellow}{6}  & \textcolor{MATLABgreen}{3}  \\ \hline
-\end{tabular}
-\end{table}
 \vspace{3mm}
 		\resizebox{0.75\columnwidth}{!}{
 \begin{tikzpicture}
@@ -259,14 +250,23 @@ ylabel={Magnitude [dBS]},
 ymajorgrids,
 axis background/.style={fill=white},
 ]
-\addplot[mark=none, MATLABblue,very thick] coordinates {(24000,0) (48000,0) (96000,-60)};
-\addplot[mark=none, MATLABred,very thick] coordinates {(12000,0) (24000,0) (48000,-60)};
-\addplot[mark=none, MATLAByellow,very thick] coordinates {(6000,0) (12000,0) (24000,-60)};
-\addplot[mark=none, MATLABgreen,very thick] coordinates {(10,0) (6000,0) (12000,-60)};
+\addplot[mark=none, MATLABblue,very thick] coordinates {(12000,0) (24000,0) (48000,-60)};
+\addplot[mark=none, MATLABred,very thick] coordinates {(6000,0) (12000,0) (24000,-60)};
+\addplot[mark=none, MATLAByellow,very thick] coordinates {(3000,0) (6000,0) (12000,-60)};
+\addplot[mark=none, MATLABgreen,very thick] coordinates {(10,0) (3000,0) (6000,-60)};
 \end{axis}
 \end{tikzpicture}
 }
 		\end{center}	
 		\end{column}
 	\end{columns}
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		$fs$                                                          & 192 & \textcolor{MATLABblue}{96} & \textcolor{MATLABred}{48} & \textcolor{MATLAByellow}{24} & \textcolor{MATLABgreen}{12} \\ \hline
+		Time                                                          & 225 $\mu s$ & \textcolor{MATLABblue}{225 $\mu s$ } & \textcolor{MATLABred}{225 $\mu s$ } & \textcolor{MATLAByellow}{225 $\mu s$ } & \textcolor{MATLABgreen}{225 $\mu s$ } \\ \hline
+		\begin{tabular}[c]{@{}c@{}}Prediction\\ Length\end{tabular}   & 43  &\textcolor{MATLABblue}{22} & \textcolor{MATLABred}{11} & \textcolor{MATLAByellow}{6}  & \textcolor{MATLABgreen}{3}  \\ \hline
+	\end{tabular}
+\end{table}	
 \end{frame}
