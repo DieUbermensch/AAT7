@@ -1,16 +1,15 @@
-\section{Maxime}
+\section{Introduction}
 
 \subsection{Project foundation}
-\begin{frame}{Project foundation}
+\begin{frame}{Introduction}{Project foundation}
 	\begin{center}
 	The call center problem 
 	\end{center}
 \end{frame}
 
-\subsection{Speech}
-\begin{frame}{Speech Signal}{Properties}
+
+\begin{frame}{Introduction}{Speech Signal}
 	\begin{center}
- 	\vspace{0.5cm}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 		\begin{itemize}		
@@ -20,25 +19,25 @@
 				\item Low frequencies
 			\end{itemize}
 		\end{itemize}
-		\end{column}
-		\begin{column}{0.5\textwidth} 
 		\begin{itemize}
 		\item Unvoiced Sound 
 			\begin{itemize}
 				\item Random
 				\item High frequencies
 			\end{itemize}	
-	    \end{itemize}	
+		\item We assume the frequency range of speech : 50-4000Hz 
+		\item Speech can be seen as quasiperiodic and WSS for time frames of 20-30ms 	
+	    \end{itemize}
+	    \end{column}	
+	    \begin{column}{0.5\textwidth} 
+	    \includegraphics[width=1\textwidth]{figures/VoicedvsUnvoiced}
 		\end{column}
 	\end{columns}
-	\vspace{1cm}
-	We assume the frequency range of speech : 50-4000Hz \\
-	Speech can be seen as quasiperiodic and WSS for time frames of 20-30ms 
 	\end{center}
 \end{frame}
 
 \subsection{Basics of ANC}
-\begin{frame}{What Is ANC?}{Introduction}		
+\begin{frame}{Introduction}{What Is ANC?}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 				\begin{itemize}
@@ -68,8 +67,7 @@
 	\end{columns}
 \end{frame}
 
-\subsection{Feedforward system}
-\begin{frame}{Feedforward ANC}
+\begin{frame}{Introduction}{Feedforward ANC}
 	\begin{columns}	
 			\begin{column}{0.5\textwidth}
 			\begin{itemize}
@@ -87,13 +85,12 @@
 	\input{figures/BasicOverviewZoomed}
 	\begin{itemize}
 			\item Attenuate all kind of signals
-			\item Process the signal upfront
-			\item Delay of the system must be less than the propagation time
+			\item Delay of the system must be less than the propagation time of noise
 	\end{itemize}		
 \end{frame}
 
 \subsection{System delay}
-\begin{frame}{Conversion delay}{Conversion delay}
+\begin{frame}{Introduction}{Conversion delay}
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
 		\begin{itemize}
@@ -106,11 +103,10 @@
 				\end{itemize}
 		\item TLV320AIC3204
 				\begin{itemize}
-				\item[\textcolor{MATLABred}{48 kHz}]= 900 $\mu S$ $\approx 31$ cm
-				\item[\textcolor{MATLAByellow}{96 kHz}]= 450 $\mu S$ $\approx 15$ cm
-				\item[\textcolor{MATLABpurple}{192 kHz}]= 225 $\mu S$ $\approx 8$ cm
+				\item[\textcolor{MATLABred}{48 kHz}]= 900 $\mu s$ $\approx 31$ cm
+				\item[\textcolor{MATLAByellow}{96 kHz}]= 450 $\mu s$ $\approx 15$ cm
+				\item[\textcolor{MATLABpurple}{192 kHz}]= 225 $\mu s$ $\approx 8$ cm
 				\end{itemize}	
-				\item Mems 	microphone less delay	 
 		\end{itemize}
 		\end{column}
 		\begin{column}{0.6\textwidth} 
@@ -121,7 +117,7 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Influence of system delay}{Problem of ANC}		
+\begin{frame}{Introduction}{Influence of system delay}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{itemize}
@@ -151,18 +147,18 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Influence of system delay}{Problem of ANC}		
+\begin{frame}{Introduction}{Influence of system delay}
 	\begin{center}
 	\begin{itemize}
-	\item System delay determine the frequency range that can be attenuated
-	\item Low frequency are well attenuated by active systems
+	\item Low frequencies are well attenuated by active systems
 	\item High frequencies are passively damped by the headphone cup 
+	\item System delay determine the frequency range that can be attenuated
 	\end{itemize}
 	\end{center}
 \end{frame}
 
 
-\begin{frame}{Present Consumer Headphones}{Performance}
+\begin{frame}{Introduction}{Present Consumer Headphones}
 	\begin{itemize}	
 	\item How well does the consumer headphones ANC attenuate?
 	\begin{columns}
@@ -189,8 +185,8 @@
 	\end{center}	
 \end{frame}
 
-\subsection{Strategy}
-\begin{frame}{Strategy}
+
+\begin{frame}{Introduction}{Strategy}
 	\begin{center}
 	\begin{itemize}
 		\item Improve the frequency range of the attenuation
@@ -203,8 +199,8 @@
 	\end{center}
 \end{frame}
 
-\begin{frame}{Prediction and feedforward system overview}
+\begin{frame}{Introduction}{Prediction and feedforward system overview}
 	\begin{center}
-		\input{figures/CombinedSystem.tex}	
+
 	\end{center}
 \end{frame}
