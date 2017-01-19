@@ -1,5 +1,9 @@
 \section{Experiments}
+<<<<<<< HEAD
 \begin{frame}{Experiments}{By Oliver}
+=======
+\begin{frame}{By Oliver}
+>>>>>>> c3837ee6b934e844ec232801e983d5473ec54ec2
 	\tableofcontents[currentsection, currentsubsection, hideothersubsections]
 \end{frame}
 
@@ -14,13 +18,16 @@
 			\end{itemize}	
 		\end{column}
 		\begin{column}{0.5\textwidth} 
+			\begin{figure}
+				\includegraphics[width=1\textwidth]{figures/SetupDiagram.pdf}
+			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
 
 \begin{frame}{Experiments}{Control and Adjusting}		
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.3\textwidth}
 			\begin{itemize}
 				\item Using a reference calibrator
 				\item Yields a given dB @ calibrators frequency
@@ -28,12 +35,15 @@
 				\item Account for the difference 
 			\end{itemize}	
 		\end{column}	
-		\begin{column}{0.5\textwidth} 
+		\begin{column}{0.7\textwidth} 
+			\begin{figure}
+				\input{figures/CalibrationEx.tex}
+			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\subsection{Experiments in thie Project}
+\subsection{Experiments in this Project}
 \begin{frame}{Experiments}{Listening Test}		
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -43,35 +53,13 @@
 				\item Results
 				\begin{itemize}
 					\item 10 dB attenuation is required
+					\item Covered 3/4 of the test subjects 
 				\end{itemize}
 			\end{itemize}	
 		\end{column}	
 		\begin{column}{0.5\textwidth} 
 			\begin{figure}
-					\includegraphics[width=1\textwidth]{figures/ListeningTestSetup.jpg}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Experiments}{Measuring a Transfer-Function (Headphone)}		
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item Headphone Transfer-function
-				\begin{itemize}
-					\item Physical cup of headphone
-				\end{itemize}
-				\item{Logarithmic Chirp}
-				\item Transfer-function formula:
-					\begin{equation*}
-						H(f)=\frac{Y(f)}{X(f)}=\frac{\mathscr{F}(y(t))\times\mathscr{F}^{\ast}(x(t))}{\mathscr{F}(x(t))\times\mathscr{F}^{\ast}(x(t))}
-					\end{equation*}
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.5\textwidth} 
-			\begin{figure}[h]
-				\includegraphics[width=1\textwidth]{figures/TransferFunctionHP}
+					\includegraphics[width=0.8\textwidth]{figures/ListeningTestSetup.pdf}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -81,7 +69,53 @@
 	\begin{columns}
 		\begin{column}{0.3\textwidth}
 			\begin{itemize}
+				\item Headphone Transfer-function
+				\begin{itemize}
+					\item Physical cup of headphone
+				\end{itemize}
+				\item{Logarithmic Chirp}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.7\textwidth} 
+			\begin{figure}[h]
+				\includegraphics[width=1\textwidth]{figures/AngleOfIncidenceSetup.pdf}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Headphone)}		
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Transfer-function formula:
+				\begin{equation*}
+				H(f)=\frac{Y(f)}{X(f)}=\frac{\mathscr{F}(y(t))\times\mathscr{F}^{\ast}(x(t))}{\mathscr{F}(x(t))\times\mathscr{F}^{\ast}(x(t))}
+				\end{equation*}
+				\item Where:
+				\begin{itemize}
+					\item[] $\times$ denotes bin-wise multiplication
+					\item[] $\ast$ denotes the complex conjugate
+					\item[] $x(t)$ and $y(t)$ are measured in time domain
+					\item[] $X(f)$ is the auto-spectrum
+					\item[] $Y (f)$ is the cross-spectrum
+				\end{itemize}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+
+
+
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Headphone)}		
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\begin{itemize}
 				\item Results
+				\item Frequency response
 				\begin{itemize}
 					\item[\textcolor{MATLABorange}{---}] FFT of 960 coefficients
 					\item[\textcolor{MATLABblue}{---}] FFT of 386,024 coefficients
@@ -90,15 +124,31 @@
 		\end{column}
 		\begin{column}{0.7\textwidth} 
 			\begin{figure}[h]
-				\input{figures/compfilterHP.tex}
+				\input{figures/TFHP.tex}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Headphone)}		
+	\begin{columns}
+		\begin{column}{1\textwidth}
+			\begin{itemize}
+				\item Impulse response
+				\begin{itemize}
+					\item Inverse
+				\end{itemize}
+			\end{itemize}
+			\begin{figure}[h]
+				\input{figures/impDT770HP.tex}
 			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
 
+
 \begin{frame}{Experiments}{Measuring a Transfer-Function (Cancellation Path)}		
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.3\textwidth}
 			\begin{itemize}
 				\item Cancellation Path Transfer-function
 				\begin{itemize}
@@ -107,9 +157,9 @@
 				\item{Logarithmic Chirp}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.5\textwidth} 
+		\begin{column}{0.7\textwidth} 
 			\begin{figure}[h]
-				\includegraphics[width=1\textwidth]{figures/TransferFunctionCP}
+				\includegraphics[width=1\textwidth]{figures/CancellationPath.pdf}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -120,6 +170,7 @@
 		\begin{column}{0.3\textwidth}
 			\begin{itemize}
 				\item Results
+				\item Frequency response
 				\begin{itemize}
 					\item[\textcolor{MATLABorange}{---}] FFT of 960 coefficients
 					\item[\textcolor{MATLABblue}{---}] FFT of 480,256 coefficients
@@ -128,10 +179,53 @@
 		\end{column}
 		\begin{column}{0.7\textwidth} 
 			\begin{figure}[h]
-				\input{figures/compfilterCP.tex}
+				\input{figures/TFCP.tex}
 			\end{figure}
 		\end{column}
 	\end{columns}
+\end{frame}
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Headphone)}		
+	\begin{columns}
+		\begin{column}{1\textwidth}
+			\begin{itemize}
+				\item Impulse response
+				\begin{itemize}
+					\item Inverse
+				\end{itemize}
+			\end{itemize}
+			\begin{figure}[h]
+				\input{figures/impDT770CP.tex}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Angle of Incidence)}		
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\begin{itemize}
+				\item Measured different angles
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.7\textwidth} 
+			\begin{figure}[h]
+				\includegraphics[width=1\textwidth]{figures/AngleOfIncidenceSetup.pdf}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Angle of Incidence)}
+	\begin{columns}
+	\begin{column}{1\textwidth}
+		\begin{itemize}
+			\item Impulse response
+		\end{itemize}
+		\begin{figure}[h]
+			\input{figures/AngofIncTime.tex}
+		\end{figure}
+	\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Experiments}{Testing Consumer ANC}		
@@ -152,8 +246,22 @@
 		\end{column}
 		\begin{column}{0.5\textwidth} 				
 			\begin{figure}[h]
-				\includegraphics[width=1\textwidth]{figures/OtherBrandsSetupSide.jpg}
+				\includegraphics[width=1\textwidth]{figures/OtherBrandsDiagram.pdf}
 			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}{Experiments}{Testing Consumer ANC}		
+	\begin{columns}
+		\begin{column}{0.2\textwidth}
+			\begin{itemize}
+				\item Results
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.8\textwidth} 				
+			\begin{center}
+				\input{figures/SmoothCompare(fig).tex}
+			\end{center}
 		\end{column}
 	\end{columns}
 \end{frame}
