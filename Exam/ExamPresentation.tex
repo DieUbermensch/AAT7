@@ -1,4 +1,4 @@
-\documentclass[10pt,aspectratio=169]{beamer}
+\documentclass[10pt,aspectratio=169,handout]{beamer}
 \usetheme[
 %%% options passed to the outer theme
 %    hidetitle,           % hide the (short) title in the sidebar
@@ -102,7 +102,14 @@
 \usepackage{subfloat}
 %\usepackage{subcaption}
 
-
+\newcommand\tocforsect[2]{%
+	\begingroup
+	\edef\safesection{\thesection}
+	\setcounter{section}{#1}
+	\tableofcontents[#2,currentsection]
+	\setcounter{section}{\safesection}
+	\endgroup
+}
 
 \begin{document}
 % the titlepage
@@ -114,7 +121,7 @@
 
 % TOC
 \begin{frame}{Agenda}{}
-\tableofcontents
+\tableofcontents[hideallsubsections]
 \end{frame}
 %%%%%%%%%%%%%%%%
 
