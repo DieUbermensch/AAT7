@@ -1,3 +1,20 @@
+% \section{Combined system}
+% \begin{frame}{Methods}{Combined System}	
+% 		\begin{itemize}
+% 			\item Input for control filter and CP
+% 			\begin{itemize}
+% 			\item $x[n]$
+% 			\item $\hat{x}[n+P]$
+% 			\end{itemize}
+% 		\end{itemize}
+% \begin{center}
+% 	\resizebox{0.9\columnwidth}{!}{		
+% 			\input{figures/Totalsystemoverview.tex}}
+% \end{center}
+% \end{frame}
+
+
+
 \section{Simulations}
 \subsection{How to test}
 
@@ -5,56 +22,101 @@
 \begin{itemize}
 	\item Linear Prediction
 	\begin{itemize}
-		\item Optimal parameters for LP ($N$,$O$,$f_s$,$P$)
+		\item Optimal parameters ($N$,$O$)
+		\item At  $f_s = 48$ [kHz],  $f_s = 12$ [kHz]
+		\item At $P=43$, $P=10$, $P=3$ 
 	\end{itemize}
 	\item Feedforward FXLMS	
 	\begin{itemize}
 		\item Attenuation with different delays
 		\item Frequency response
+		\item At  $f_s = 48$ [kHz],  $f_s = 12$ [kHz] 
 	\end{itemize}
+	\item Listening
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Simulation}{How to Test}	
-\begin{itemize}
-	\item Simulink
-	\item Simulating with two systems 
-	\begin{itemize}
-		\item Linear Prediction
-		\item Feedforward FXLMS
-		\item Sound files are adapted 
-	\end{itemize}
-	\item Automation of simulations	
-\end{itemize}
+\begin{columns}
+		\begin{column}{0.6\textwidth}				
+		\begin{itemize}
+			\item Simulink
+			\item Simulating with two systems 
+			\begin{itemize}
+				\item Linear Prediction
+				\item Feedforward FXLMS
+			\end{itemize}
+			\item Sound files are adapted to used $f_s$ 
+		\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+		\resizebox{0.5\columnwidth}{!}{ 
+			\begin{tikzpicture}
+			\draw  (-3,3) rectangle node{Sound file -- $f_s = x$} (1.5,0.5);
+			\draw  (-3,-1) rectangle node{Linear Prediction} (1.5,-3.5);
+			\draw  (-3,-5) rectangle node{Feedforward FxLMS} (1.5,-7.5);
+			\draw[->,thick] (-0.8,0.5) -- (-0.8,-1);
+			\draw[->,thick] (-0.8,-3.5) -- (-0.8,-5);
+		\end{tikzpicture}}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Simulation}{How to Test}	
 \begin{itemize}
-	\item Archimedes Project		
+	\item Archimedes Project (1992)
+	\item Well known speech signal
+	\item $f_s = 44.1$ [kHz] 
+	\item Measured in anechoic chamber		
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Simulation}{How to Test}	
 
-\begin{frame}{Simulation Results}{Analysis of results}	
-\begin{itemize}
-	\item Linear Prediction
+\begin{columns}
+	\begin{column}{0.6\textwidth}
 	\begin{itemize}
-		\item Prediction Gain: $PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg) = 10 log_{10}\bigg(\frac{E\{x^2[n]\}}{E\{\varepsilon^2[n]\}}\bigg)$
+			\item Automation of simulations
+			\item Number of simulations: +1000	
+			\item Not possible without automation
+			\item Matlab scripts which can 	
 	\end{itemize}
-	\item Feedforward FXLMS
-	\begin{itemize}
-		\item Filter-bank
-	\end{itemize}
-\end{itemize}
+	\end{column}
+	\begin{column}{0.4\textwidth}
+	\resizebox{0.5\columnwidth}{!}{
+		\begin{tikzpicture}
+			\draw  (-3,3) rectangle node{Set parameters} (1.5,0.5);
+			\draw  (-3,-1) rectangle node{Run Simulink} (1.5,-3.5);
+			\draw  (-3,-5) rectangle node{Save results} (1.5,-7.5);
+			\draw[->,thick] (-0.8,0.5) -- (-0.8,-1);
+			\draw[->,thick] (-0.8,-3.5) -- (-0.8,-5);
+		\end{tikzpicture}}
+	\end{column}
+\end{columns}
 \end{frame}
 
 
-\subsection{Linear Prediction Parameters}
+% \begin{frame}{Simulation Results}{Analysis of results}	
+% \begin{itemize}
+% 	\item Linear Prediction
+% 	\begin{itemize}
+% 		\item Prediction Gain: $PG = 10 log_{10}\bigg(\frac{\sigma^2_x}{\sigma^2_\varepsilon}\bigg) = 10 log_{10}\bigg(\frac{E\{x^2[n]\}}{E\{\varepsilon^2[n]\}}\bigg)$
+% 	\end{itemize}
+% 	\item Feedforward FXLMS
+% 	\begin{itemize}
+% 		\item Filter-bank
+% 	\end{itemize}
+% \end{itemize}
+% \end{frame}
+
+
+\subsection{Results}
 \begin{frame}{Simulation Results}{Optimal parameters}		
 \begin{columns}
 	\begin{column}{0.4\textwidth}
 		\begin{itemize}
 			\item Prediction order P = 43
+			\item $f_s = 48$ [kHz]
 			\item Optimal parameters
 			\begin{itemize}
 				\item Framelength N = 1600
@@ -75,6 +137,7 @@
 	\begin{column}{0.4\textwidth}
 	\begin{itemize}
 		\item Prediction order P = 10
+		\item $f_s = 48$ [kHz]
 		\item Optimal parameters
 		\begin{itemize}
 			\item Framelength N = 1200
@@ -94,30 +157,31 @@
 \begin{columns}
 	\begin{column}{0.4\textwidth}
 	\begin{itemize}
-		\item Prediction order P = 4
+		\item Prediction order P = 3
+		\item $f_s = 12$ [kHz]
 		\item Optimal parameters
 		\begin{itemize}
 			\item Framelength N = 300
 			\item Overlap O = 250
 		\end{itemize}
-		\item Prediction Gain PG = ??? dB
+		\item Prediction Gain PG = 8.5 dB
 	\end{itemize}
 	\end{column}
 	\begin{column}{0.6\textwidth} 
 		\resizebox{0.9\columnwidth}{!}{		
-			\input{figures/HammingNOP10.tex}}
+			\input{figures/HammingNOP3.tex}}
 	\end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}{Simulation Results}{Summary of Prediction Gain}	
-\begin{itemize}
-	\item Analysis of results
-\end{itemize}
+
+\begin{frame}{Simulation}{How to Test}	
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/SystemOverview}
+\end{figure}  
 \end{frame}
 
-
-\subsection{Attenuation Performance}
 \begin{frame}{Simulation Results}{Attenuation Performance}		
 \begin{columns}
 	\begin{column}{0.4\textwidth}
@@ -147,14 +211,14 @@
 		\item ANC attenuation with varying system delay
 		\begin{itemize}
 				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS $f_s= 48$ [kHz] 
-				\item[\textcolor{MATLABblue}{---}] Feedforward LP FXLMS $f_s= 12$ [kHz] 
+				\item[\textcolor{MATLABpurple}{---}] Feedforward LP FXLMS $f_s= 12$ [kHz] 
 				\item[\textcolor{MATLABblue}{---}] Feedforward FXLMS 
 		\end{itemize}
 	\end{itemize}
 	\end{column}
 	\begin{column}{0.6\textwidth} 
 		\resizebox{0.9\columnwidth}{!}{		
-			\input{figures/DelayRatio.tex}}
+			\input{figures/DelayRatioW12.tex}}
 	\end{column}
 \end{columns}
 \end{frame}
@@ -190,14 +254,14 @@
 			\item Frequency response
 			\begin{itemize}
 				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS $f_s= 48$ [kHz]
-				\item[\textcolor{MATLABblue}{---}] Feedforward LP FXLMS $f_s= 12$ [kHz]  
+				\item[\textcolor{MATLABpurple}{---}] Feedforward LP FXLMS $f_s= 12$ [kHz]  
 				\item[\textcolor{MATLABblue}{---}] Feedforward FXLMS  
 			\end{itemize}
 		\end{itemize}
 	\end{column}
 	\begin{column}{0.6\textwidth} 
 		\resizebox{0.9\columnwidth}{!}{		
-			\input{figures/SmoothCompareOur(fig).tex}}
+			\input{figures/SmoothCompareOur(fig)W12.tex}}
 	\end{column}
 \end{columns}
 \end{frame}
@@ -205,28 +269,200 @@
 
 
 
-\section{Conclusion}
-\begin{frame}{Conclusion}{General}		
+\section{Discussion}
+
+\begin{frame}{Discussion}{Computational Cost}		
 \begin{itemize}
-\item Proof of concept
-\item Single person vs multiple persons
-\item Varying perfomance
+\item Computational cost of system (instructions per sample) = 98640
+	\begin{itemize} 
+		\item $f_s = 48$ [kHz]
+		\item P = 43: 
+		\item N = 1200
+		\item O = 1100
+	\end{itemize}
+\item Computational cost of system (instructions per sample) = 59040
+	\begin{itemize}
+		\item $f_s = 48$ [kHz]
+		\item P = 10: 
+		\item N = 1200
+		\item O = 1100
+	\end{itemize}
+\item Computational cost of system (instructions per sample) = 7260
+	\begin{itemize}
+		\item $f_s = 12$ [kHz]
+		\item P = 3: 
+		\item N = 300
+		\item O = 250
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Conclusion}{Computational Cost}		
+
+\begin{frame}{Discussion}{Computation cost}
+
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
 \begin{itemize}
-\item Computational cost of system (instructions per sample) ($f_s = 48$ [kHz])
+\item Total 
+\item ACF Estimation
+\begin{itemize}
+\item $\frac{2\cdot N^2}{N-O}$
+\end{itemize}
+\item Levinson-Durbin
+\begin{itemize}
+\item $ \frac{N^2}{N-O}$
+\end{itemize}
+\item Wiener Filtering
+\begin{itemize}
+\item $P \cdot N$
+\end{itemize}
+\item FxLMS
+\begin{itemize}
+\item Order of filter $\cdot$ 4 
+\end{itemize}
+
+\end{itemize}	
+		\end{column}
+		\begin{column}{0.5\textwidth} 
+		
+		\begin{center}
+\resizebox{1\columnwidth}{!}{	
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.85*\textwidth,
+    height = 8cm,
+    xbar,
+    y axis line style = { opacity = 0 },
+    axis x line       = none,
+    tickwidth         = 0pt,
+%    enlarge y limits  = 0.2,
+%    enlarge x limits  = 0.02,
+    y tick label style={font=\small,text width=1.5cm,align=center},
+    symbolic y coords = {FxLMS, Wiener Filtering, Levinson-Durbin, ACF Estimation, Total},
+    nodes near coords,
+  ]
+  \addplot coordinates {(3840,FxLMS)         (51600,Wiener Filtering)
+                         (14400,Levinson-Durbin)  (28800,ACF Estimation) (98640,Total)};
+  \addplot coordinates {(3840,FxLMS)         (12000,Wiener Filtering)
+                         (14400,Levinson-Durbin)  (28800,ACF Estimation) (59040,Total)};
+  \addplot coordinates {(960,FxLMS)         (900,Wiener Filtering)
+                         (1800,Levinson-Durbin)  (3600,ACF Estimation) (7260,Total)};
+  \end{axis}
+\end{tikzpicture}
+}
+		\end{center}
+	
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
+% \subsection{Multirate}
+% \begin{frame}{Implementation Consideration}{Multirate}
+
+% 	\begin{columns}
+% 		\begin{column}{0.4\textwidth}
+% \begin{itemize}
+% \item Reduce to computation demands N-fold
+% \begin{itemize}
+% \item Lower prediction length
+% \item 12 kHz is a factor $2^4$ lower in computation cost 
+% \end{itemize}
+% \end{itemize}
+% Procedure: 
+% \begin{enumerate}
+% \item Downsample from 192 kHz to 12 kHz
+% \begin{itemize}
+% \item Decimate by an order of 2
+% \item 1$^{st}$ IIR filter 
+% \end{itemize}
+% \item Perform  prediction
+% \item Upsample from 12 kHz to 192 kHz
+% \begin{itemize}
+% \item Upsampling by order of 2 
+% \item 1$^{st}$ IIR filter 
+% \end{itemize}
+% \end{enumerate}
+% 		\end{column}
+% 		\begin{column}{0.6\textwidth} 
+		
+% 		\begin{center}
+% \begin{table}[]
+% \centering
+% \begin{tabular}{|c|c|c|c|c|c|}
+% \hline
+% $fs$                                                          & 192 & 96 & 48 & 24 & 12 \\ \hline
+% \begin{tabular}[c]{@{}c@{}}Prediction\\ Length\end{tabular}   & 43  & 22 & 11 & 6  & 3  \\ \hline
+% \end{tabular}
+% \end{table}
+
+
+% \resizebox{1\columnwidth}{!}{	
+% \begin{tikzpicture}
+%   \begin{axis}[
+%     width  = 0.85*\textwidth,
+%     height = 6cm,
+%     xbar,
+%     y axis line style = { opacity = 0 },
+%     axis x line       = none,
+%     tickwidth         = 0pt,
+%     enlarge y limits  = 0.2,
+%     enlarge x limits  = 0.02,
+%     y tick label style={font=\small,text width=1.5cm,align=center},
+%     symbolic y coords = {FxLMS, Wiener Filtering, Levinson-Durbin, ACF Estimation},
+%     nodes near coords,
+%   ]
+%   \addplot coordinates { (57727,FxLMS)         (5672,Wiener Filtering)
+%                          (2193,Levinson-Durbin)  (11106,ACF Estimation) };
+%   \addplot coordinates { (57727,FxLMS)         (5672,Wiener Filtering)
+%                          (2193,Levinson-Durbin)  (11106,ACF Estimation) };
+% %  \legend{Topics, Posts}
+%   \end{axis}
+% \end{tikzpicture}
+%  }
+
+
+% 		\end{center}
+	
+% 		\end{column}
+% 	\end{columns}
+
+
+
+
+% \end{frame}
+
+
+
+
+
+
+
+
+
+\begin{frame}{Discussion}{General}		
+\begin{itemize}
+	\item Single person vs multiple persons
 	\begin{itemize}
-		\item Linear Prediction: > 50,000 
-		\item Feedforward FXLMS: > 4,000 
-		\item Multirate: < 100
+		\item ACF less periodic
+		\item Prediction Gain reduced
+		\item Attenuation changes
 	\end{itemize}
-\item Computational cost of system (instructions per sample) ($f_s = 12$ [kHz])
+	\item Random Signals (independent and identically distributed)
 	\begin{itemize}
-		\item Linear Prediction: > 50,000 
-		\item Feedforward FXLMS: > 4,000 
-		\item Multirate: < 100
+		\item Prediction is useless
+		\item Attenuation is limited to system without LP
 	\end{itemize}
 \end{itemize}
 \end{frame}
+
+\section{Conclusion}
+\begin{frame}{Conclusion}{General}		
+\begin{itemize}
+	\item Proof of concept
+	\item Only Simulation
+	\item Only simulated for a single person
+	\item High computation cost
+\end{itemize}
+\end{frame}
+

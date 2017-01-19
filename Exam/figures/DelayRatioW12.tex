@@ -6,6 +6,7 @@
 %
 \definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
 \definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{MATLABpurple}{rgb}{0.494,0.1840,0.5560}
 %
 \begin{tikzpicture}
 
@@ -81,6 +82,16 @@ table[row sep=crcr]{%
 	46	2.757705271237\\
 	48	1.74470077738877\\
 	50	0.5254168140125\\
+};
+\addplot [color=MATLABpurple,line width=1.5pt,solid,forget plot]
+  table[row sep=crcr]{%
+8	61.1606286991745\\
+16	29.0833456499768\\
+24	26.2186397382237\\
+32	23.7824496088535\\
+40	23.0955799562899\\
+48	22.1413869596502\\
+56	22.0570339332838\\
 };
 \end{axis}
 \end{tikzpicture}%
