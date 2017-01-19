@@ -15,9 +15,6 @@
 			\end{itemize}	
 		\end{column}
 		\begin{column}{0.5\textwidth} 
-			\begin{equation*}
-			H(f)=\frac{Y(f)}{X(f)}=\frac{\mathscr{F}(y(t))\times\mathscr{F}^{\ast}(x(t))}{\mathscr{F}(x(t))\times\mathscr{F}^{\ast}(x(t))}
-		\end{equation*}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -37,7 +34,7 @@
 	\end{columns}
 \end{frame}
 
-\subsection{Listening Test}
+\subsection{Experiments in thie Project}
 \begin{frame}{Experiments}{Listening Test}		
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -58,7 +55,6 @@
 	\end{columns}
 \end{frame}
 
-\subsection{Measuring a Transfer-Function}
 \begin{frame}{Experiments}{Measuring a Transfer-Function (Headphone)}		
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -68,6 +64,10 @@
 					\item Physical cup of headphone
 				\end{itemize}
 				\item{Logarithmic Chirp}
+				\item Transfer-function formula:
+					\begin{equation*}
+						H(f)=\frac{Y(f)}{X(f)}=\frac{\mathscr{F}(y(t))\times\mathscr{F}^{\ast}(x(t))}{\mathscr{F}(x(t))\times\mathscr{F}^{\ast}(x(t))}
+					\end{equation*}
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth} 
@@ -78,11 +78,30 @@
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Headphone)}		
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\begin{itemize}
+				\item Results
+				\begin{itemize}
+					\item[\textcolor{MATLABorange}{---}] FFT of 960 coefficients
+					\item[\textcolor{MATLABblue}{---}] FFT of 386,024 coefficients
+				\end{itemize}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.7\textwidth} 
+			\begin{figure}[h]
+				\input{figures/compfilterHP.tex}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 \begin{frame}{Experiments}{Measuring a Transfer-Function (Cancellation Path)}		
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{itemize}
-				\item Calcellation Path Transfer-function
+				\item Cancellation Path Transfer-function
 				\begin{itemize}
 					\item Headphone speaker \\ $\rightarrow$ Error microphone
 				\end{itemize}
@@ -97,7 +116,25 @@
 	\end{columns}
 \end{frame}
 
-\subsection{Testing the ANC of Other Brand Headphones}
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Cancellation Path)}		
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\begin{itemize}
+				\item Results
+				\begin{itemize}
+					\item[\textcolor{MATLABorange}{---}] FFT of 960 coefficients
+					\item[\textcolor{MATLABblue}{---}] FFT of 480,256 coefficients
+				\end{itemize}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.7\textwidth} 
+			\begin{figure}[h]
+				\input{figures/compfilterCP.tex}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 \begin{frame}{Experiments}{Testing Consumer ANC}		
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -121,13 +158,3 @@
 		\end{column}
 	\end{columns}
 \end{frame}
-
-
-
-
-
-
-
-
-
-
