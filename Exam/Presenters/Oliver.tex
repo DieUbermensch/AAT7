@@ -33,7 +33,7 @@
 		\end{column}	
 		\begin{column}{0.7\textwidth} 
 			\begin{figure}
-				%\input{figures/CalibrationEx.tex}
+				\input{figures/CalibrationEx.tex}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -63,7 +63,7 @@
 
 \begin{frame}{Experiments}{Measuring a Transfer-Function (Headphone)}		
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.3\textwidth}
 			\begin{itemize}
 				\item Headphone Transfer-function
 				\begin{itemize}
@@ -72,7 +72,7 @@
 				\item{Logarithmic Chirp}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.5\textwidth} 
+		\begin{column}{0.7\textwidth} 
 			\begin{figure}[h]
 				\includegraphics[width=1\textwidth]{figures/AngleOfIncidenceSetup.pdf}
 			\end{figure}
@@ -88,9 +88,20 @@
 				\begin{equation*}
 				H(f)=\frac{Y(f)}{X(f)}=\frac{\mathscr{F}(y(t))\times\mathscr{F}^{\ast}(x(t))}{\mathscr{F}(x(t))\times\mathscr{F}^{\ast}(x(t))}
 				\end{equation*}
+				\item Where:
+				\begin{itemize}
+					\item[] $\times$ denotes bin-wise multiplication
+					\item[] $\ast$ denotes the complex conjugate
+					\item[] $x(t)$ and $y(t)$ are measured in time domain
+					\item[] $X(f)$ is the auto-spectrum
+					\item[] $Y (f)$ is the cross-spectrum
+				\end{itemize}
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth} 
+
+
+
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -100,6 +111,7 @@
 		\begin{column}{0.3\textwidth}
 			\begin{itemize}
 				\item Results
+				\item Frequency response
 				\begin{itemize}
 					\item[\textcolor{MATLABorange}{---}] FFT of 960 coefficients
 					\item[\textcolor{MATLABblue}{---}] FFT of 386,024 coefficients
@@ -108,15 +120,28 @@
 		\end{column}
 		\begin{column}{0.7\textwidth} 
 			\begin{figure}[h]
-				\input{figures/compfilterHP.tex}
+				\input{figures/TFHP.tex}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Headphone)}		
+	\begin{columns}
+		\begin{column}{1\textwidth}
+			\begin{itemize}
+				\item Impulse response
+			\end{itemize}
+			\begin{figure}[h]
+				\input{figures/impDT770HP.tex}
 			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
 
+
 \begin{frame}{Experiments}{Measuring a Transfer-Function (Cancellation Path)}		
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.3\textwidth}
 			\begin{itemize}
 				\item Cancellation Path Transfer-function
 				\begin{itemize}
@@ -125,7 +150,7 @@
 				\item{Logarithmic Chirp}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.5\textwidth} 
+		\begin{column}{0.7\textwidth} 
 			\begin{figure}[h]
 				\includegraphics[width=1\textwidth]{figures/CancellationPath.pdf}
 			\end{figure}
@@ -138,6 +163,7 @@
 		\begin{column}{0.3\textwidth}
 			\begin{itemize}
 				\item Results
+				\item Frequency response
 				\begin{itemize}
 					\item[\textcolor{MATLABorange}{---}] FFT of 960 coefficients
 					\item[\textcolor{MATLABblue}{---}] FFT of 480,256 coefficients
@@ -146,41 +172,50 @@
 		\end{column}
 		\begin{column}{0.7\textwidth} 
 			\begin{figure}[h]
-				\input{figures/compfilterCP.tex}
+				\input{figures/TFCP.tex}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Headphone)}		
+	\begin{columns}
+		\begin{column}{1\textwidth}
+			\begin{itemize}
+				\item Impulse response
+			\end{itemize}
+			\begin{figure}[h]
+				\input{figures/impDT770CP.tex}
 			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
 
 
-\begin{frame}{Experiments}{Angle of Incidence}		
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Angle of Incidence)}		
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.3\textwidth}
 			\begin{itemize}
-				\item hej
+				\item Measured different angles
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.5\textwidth} 
+		\begin{column}{0.7\textwidth} 
 			\begin{figure}[h]
 				\includegraphics[width=1\textwidth]{figures/AngleOfIncidenceSetup.pdf}
 			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
-
-\begin{frame}{Experiments}{Angle of Incidence}		
+\begin{frame}{Experiments}{Measuring a Transfer-Function (Angle of Incidence)}
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item Results
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.5\textwidth} 
-			\begin{figure}[h]
-				%\input{figures/compfilterCP.tex}
-			\end{figure}
-		\end{column}
-	\end{columns}
+	\begin{column}{1\textwidth}
+		\begin{itemize}
+			\item Impulse response
+		\end{itemize}
+		\begin{figure}[h]
+			\input{figures/AngofIncTime.tex}
+		\end{figure}
+	\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Experiments}{Testing Consumer ANC}		
