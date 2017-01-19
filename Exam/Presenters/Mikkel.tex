@@ -33,9 +33,10 @@
 		\item Adapt to changes in environment
 		\item Using FIR filter		
 		\end{itemize}
-		\item Assumptions:
+		\item Assumptions
 		\begin{itemize}
 		\item Stationary Cancellation path
+		\item No feedback from 2 to 1
 		\end{itemize}
 
 		\begin{itemize}
@@ -62,14 +63,14 @@
 
 
 \subsection{Optimization}
-\begin{frame}{Filtered-$x$ Least Mean Squares}{A minimization problem}
+\begin{frame}{Filtered-$x$ Least Mean Squares}{A Minimization Problem}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}		
 			
 			\begin{itemize}
-				\item[] Minimize $e^2[n]$
+				\item Minimize $e^2[n]$
 				\item[]
-				\item[] Gradient descent method
+				\item Gradient descent method
 				\begin{itemize}
 					\item[] $\bar{b}[k+1]=\bar{b}[k]- \mu \nabla \bar{J}[n]$
 				\end{itemize}
@@ -83,9 +84,9 @@
 			\begin{tikzpicture}
 			\begin{axis}[
 			view={60}{30},
-			ylabel = {Weight 1},
-			xlabel = {Weight 2},
-			zlabel = {$E^2[n]$},
+			ylabel = {Weight 1 [$\cdot$]},
+			xlabel = {Weight 2 [$\cdot$]},
+			zlabel = {$e^2[n]$},
 			zticklabels={1,0.5,0},ztick={0,-0.5,-1},
 			grid=major,
 			]
@@ -112,19 +113,19 @@
 		
 
 		\begin{itemize}
-		\item[] Error Source:
+		\item Error Source
 		\begin{itemize}
-		\item Primary Noise $p[n]$
+		\item Primary noise $p[n]$
 		\item Counterphase signal $s[n]$
 		\item $e[n]=p[n]+s[n]$
 		\end{itemize}
 		\item[]
-		\item[] Determining the gradient
+		\item Determining the gradient
 		\begin{itemize}
 		\item[] $\frac{\partial e^2[n]}{\partial b[n]}=2 \cdot e[n] \cdot \frac{\partial e[n]}{\partial b[n]} =2e[n] \cdot \frac{\partial s[n]}{\partial b[n]}$
 		\end{itemize}
 		\item[]
-		\item[] Utilizing the Filtered-x
+		\item Utilizing the Filtered-x
 		\begin{itemize}
 		\item[] $\frac{\partial s[n]}{\partial b[n]} = [b[n] * x[n]]* \hat{c}[n]$
 		\end{itemize}			
@@ -146,12 +147,12 @@
 \end{frame}
 
 
-\begin{frame}{Filtered-$x$ Least Mean Squares}{How did it perform}
+\begin{frame}{Filtered-$x$ Least Mean Squares}{Attenuation Example}
 	
 	\begin{columns}
 		\begin{column}{0.4\textwidth}			
 				\begin{itemize}
-					\item[] LMS expression:
+					\item LMS expression:
 							\begin{itemize}
 								\item[] $b_j[n+1]=b_j[n]-2\mu e[n] f[n-j]$	
 							\end{itemize}					
@@ -163,11 +164,13 @@
 			
 		\end{column}
 		\begin{column}{0.6\textwidth}
-			\resizebox{1\columnwidth}{!}{	
-		\input{figures/Filtadapt.tex}
+			\resizebox{1\columnwidth}{!}{
+				\input{figures/Filtadaptchange.tex	
+		}
 			}
-			\resizebox{1\columnwidth}{!}{			
-			\input{figures/Filtadaptchange.tex}
+			\resizebox{1\columnwidth}{!}{
+				\input{figures/Filtadapt.tex			
+			}
 		}
 		\end{column}
 	\end{columns}
@@ -183,7 +186,7 @@
 \section{Combined system}
 \begin{frame}{Overview}{Combined System}	
 	\begin{itemize}
-		\item Input for control filter and CP
+		\item Input for control filter and Cancellation Path
 		\begin{itemize}
 			\item $x[n]$
 			\item $\hat{x}[n+P]$
@@ -202,12 +205,9 @@
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
 \begin{itemize}
-\item Reduce computation by $2^4$
 
-\begin{itemize}
 \item Lower prediction length
-\item Effecting 3 kHz slightly at $fs=12 kHz$ 
-\end{itemize}
+\item Effecting 3 $k$Hz slightly at $f_s=12 kHz$ 
 \end{itemize}
 		\end{column}
 		\begin{column}{0.6\textwidth} 
@@ -225,12 +225,12 @@ xmode=log,
 xmin=10,
 xmax=100000,
 xminorticks=true,
-xlabel={Frequency [$k$Hz]},
+xlabel={Frequency [Hz]},
 xmajorgrids,
 xminorgrids,
 ymin=-60,
 ymax=10,
-ylabel={Magnitude [dBS]},
+ylabel={Magnitude [dB]},
 ymajorgrids,
 axis background/.style={fill=white},
 ]

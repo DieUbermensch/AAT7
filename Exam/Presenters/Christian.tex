@@ -3,8 +3,8 @@
 	\tableofcontents[currentsection, currentsubsection, hideothersubsections]
 \end{frame}
 
-\subsection{Introduction to prediction}
-\begin{frame}{Prediction}{Introduction to prediction}
+\subsection{Introduction to Prediction}
+\begin{frame}{Prediction}{Introduction to Prediction}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{itemize}
@@ -51,7 +51,7 @@
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
 			\begin{itemize}
-				\item The Wiener filter: 
+				\item The Wiener filter 
 				\vspace{3mm}
 				\item The LPC found by minimizing 
 				\vspace{3mm}
@@ -79,13 +79,13 @@
 \end{frame}
 
 \subsection{Predicted Speech}
-\begin{frame}{Prediction}{Autocorrelation function estimation}
+\begin{frame}{Prediction}{Autocorrelation Function Estimation}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{itemize}
 				\item Frame based estimation of autocorrelation function, $\bar{\hat{r}}$
 				\item Same  $\bar{\hat{r}}$ used for N-O samples
-				\item non recursive
+				\item Non-recursive
 				\item Window function
 			\end{itemize}
 		\end{column}
@@ -102,8 +102,8 @@
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
 			\begin{itemize}
-				\item Wiener Hopf equation: $R  \bar{a} = -\bar{r}_x$
-				\item By inversion: $\bar{a} = -R^{-1} \bar{r}_x$
+				\item Wiener Hopf equation $R  \bar{a} = -\bar{r}_x$
+				\item By inversion $\bar{a} = -R^{-1} \bar{r}_x$
 				\item Levinson Durbin to estimate LPCs 
 				\item Three steps using symmetry
 			\end{itemize}
@@ -117,16 +117,16 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Prediction}{A predicted signal}
+\begin{frame}{Prediction}{A Predicted Signal}
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
 			\begin{itemize}
 				\item[\textcolor{MATLABblue}{---}] Speech signal
 				\item[\textcolor{MATLABorange}{---}] Predicted speech signal
-				\item N =1200 [samples]
-				\item O=1100 [samples]
-				\item P=10 [samples]
-				\item $f_s$=48000 [Hz]
+				\item N = 1200 samples
+				\item O = 1100 samples
+				\item P = 10 samples
+				\item $f_s$ = 48000 Hz
 			\end{itemize}
 			
 		\end{column}

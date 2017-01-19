@@ -40,14 +40,14 @@
 	\item Linear Prediction
 	\begin{itemize}
 		\item Optimal parameters ($N$,$O$)
-		\item At  $f_s = 48$ [kHz]: $P=43$, $P=10$
-		\item At  $f_s = 12$ [kHz]: $P=3$ 
+		\item At  $f_s = 48$ $k$Hz: $P=43$, $P=10$
+		\item At  $f_s = 12$ $k$Hz: $P=3$ 
 	\end{itemize}
 	\item Feedforward FXLMS	
 	\begin{itemize}
 		\item Attenuation with different delays
 		\item Frequency response
-		\item At  $f_s = 48$ [kHz],  $f_s = 12$ [kHz] 
+		\item At  $f_s = 48$ $k$Hz,  $f_s = 12$ $k$Hz 
 	\end{itemize}
 	\item Listening
 \end{itemize}
@@ -63,7 +63,7 @@
 				\item Linear Prediction
 				\item Feedforward FXLMS
 			\end{itemize}
-			\item Sound files are adapted to used $f_s$ 
+			\item Sound files are resampled to used $f_s$ 
 		\end{itemize}
 		\end{column}
 		\begin{column}{0.4\textwidth}
@@ -71,7 +71,7 @@
 			\begin{tikzpicture}
 			\draw  (-3,3) rectangle node{Sound file -- $f_s = x$} (1.5,0.5);
 			\draw  (-3,-1) rectangle node{Linear Prediction} (1.5,-3.5);
-			\draw  (-3,-5) rectangle node{Feedforward FxLMS} (1.5,-7.5);
+			\draw  (-3,-5) rectangle node{Feedforward FXLMS} (1.5,-7.5);
 			\draw[->,thick] (-0.8,0.5) -- (-0.8,-1);
 			\draw[->,thick] (-0.8,-3.5) -- (-0.8,-5);
 		\end{tikzpicture}}
@@ -83,8 +83,8 @@
 \begin{itemize}
 	\item Archimedes Project (1992)
 	\item Well known speech signal
-	\item $f_s = 44.1$ [kHz] 
-	\item Measured in anechoic chamber		
+	\item $f_s = 44.1$ $k$Hz 
+	\item Measured in an anechoic chamber		
 \end{itemize}
 \end{frame}
 
@@ -128,12 +128,12 @@
 
 
 \subsection{Results}
-\begin{frame}{Simulation Results}{Optimal parameters}		
+\begin{frame}{Simulation Results}{Optimal Parameters}		
 \begin{columns}
 	\begin{column}{0.4\textwidth}
 		\begin{itemize}
 			\item Prediction order P = 43
-			\item $f_s = 48$ [kHz]
+			\item $f_s = 48$ $k$Hz
 			\item Optimal parameters
 			\begin{itemize}
 				\item Framelength N = 1600
@@ -149,12 +149,12 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{Simulation Results}{Optimal parameters}		
+\begin{frame}{Simulation Results}{Optimal Parameters}		
 \begin{columns}
 	\begin{column}{0.4\textwidth}
 	\begin{itemize}
 		\item Prediction order P = 10
-		\item $f_s = 48$ [kHz]
+		\item $f_s = 48$ $k$Hz
 		\item Optimal parameters
 		\begin{itemize}
 			\item Framelength N = 1200
@@ -170,12 +170,12 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{Simulation Results}{Optimal parameters}		
+\begin{frame}{Simulation Results}{Optimal Parameters}		
 \begin{columns}
 	\begin{column}{0.4\textwidth}
 	\begin{itemize}
 		\item Prediction order P = 3
-		\item $f_s = 12$ [kHz]
+		\item $f_s = 12$ $k$Hz
 		\item Optimal parameters
 		\begin{itemize}
 			\item Framelength N = 300
@@ -205,7 +205,7 @@
 	\begin{itemize}
 		\item ANC attenuation with varying system delay
 		\begin{itemize}
-				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS $f_s= 48$ [kHz] 
+				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS $f_s= 48$ $k$Hz 
 				\item[\textcolor{MATLABblue}{---}] Feedforward FXLMS 
 		\end{itemize}
 	\end{itemize}
@@ -227,8 +227,8 @@
 	\begin{itemize}
 		\item ANC attenuation with varying system delay
 		\begin{itemize}
-				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS $f_s= 48$ [kHz] 
-				\item[\textcolor{MATLABpurple}{---}] Feedforward LP FXLMS $f_s= 12$ [kHz] 
+				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS $f_s= 48$ $k$Hz 
+				\item[\textcolor{MATLABpurple}{---}] Feedforward LP FXLMS $f_s= 12$ $k$Hz 
 				\item[\textcolor{MATLABblue}{---}] Feedforward FXLMS 
 		\end{itemize}
 	\end{itemize}
@@ -251,7 +251,7 @@
 		\begin{itemize}
 			\item Frequency response
 			\begin{itemize}
-				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS $f_s= 48$ [kHz]  
+				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS $f_s= 48$ $k$Hz  
 				\item[\textcolor{MATLABblue}{---}] Feedforward FXLMS 
 			\end{itemize}
 		\end{itemize}
@@ -270,8 +270,8 @@
 		\begin{itemize}
 			\item Frequency response
 			\begin{itemize}
-				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS $f_s= 48$ [kHz]
-				\item[\textcolor{MATLABpurple}{---}] Feedforward LP FXLMS $f_s= 12$ [kHz]  
+				\item[\textcolor{MATLABorange}{---}] Feedforward LP FXLMS $f_s= 48$ $k$Hz
+				\item[\textcolor{MATLABpurple}{---}] Feedforward LP FXLMS $f_s= 12$ $k$Hz  
 				\item[\textcolor{MATLABblue}{---}] Feedforward FXLMS  
 			\end{itemize}
 		\end{itemize}
@@ -292,21 +292,21 @@
 \begin{itemize}
 \item Computational cost of system (instructions per sample) = 98640 (4,734 MIPS)
 	\begin{itemize} 
-		\item $f_s = 48$ [kHz]
+		\item $f_s = 48$ $k$Hz
 		\item P = 43 
 		\item N = 1200
 		\item O = 1100
 	\end{itemize}
 \item Computational cost of system (instructions per sample) = 59040 (2,833 MIPS)
 	\begin{itemize}
-		\item $f_s = 48$ [kHz]
+		\item $f_s = 48$ $k$Hz
 		\item P = 10 
 		\item N = 1200
 		\item O = 1100
 	\end{itemize}
 \item Computational cost of system (instructions per sample) = 7260 (87 MIPS)
 	\begin{itemize}
-		\item $f_s = 12$ [kHz]
+		\item $f_s = 12$ $k$Hz
 		\item P = 3 
 		\item N = 300
 		\item O = 250
@@ -315,16 +315,16 @@
 \end{frame}
 
 
-\begin{frame}{Discussion}{Computation cost}
+\begin{frame}{Discussion}{Computational Cost}
 
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 \begin{itemize}
 \item Total
 \begin{itemize}
-		\item[\textcolor{MATLABblue}{---}] $f_s=48$ kHz, $P=43$
-		\item[\textcolor{MATLABorange}{---}] $f_s=48$ kHz, $P=10$ 
-		\item[\textcolor{MATLABpurple}{---}] $f_s=12$ kHz, $P=3$  
+		\item[\textcolor{MATLABblue}{---}] $f_s=48$ $k$Hz, $P=43$
+		\item[\textcolor{MATLABorange}{---}] $f_s=48$ $k$Hz, $P=10$ 
+		\item[\textcolor{MATLABpurple}{---}] $f_s=12$ $k$Hz, $P=3$  
 \end{itemize}
 \item ACF Estimation
 \begin{itemize}
@@ -338,7 +338,7 @@
 \begin{itemize}
 \item $P \cdot N$
 \end{itemize}
-\item FxLMS
+\item FXLMS
 \begin{itemize}
 \item Order of control filter $\cdot$ 4 
 \end{itemize}
@@ -466,16 +466,16 @@
 
 \begin{frame}{Discussion}{General}		
 \begin{itemize}
-	\item Single person vs multiple persons
+	\item Single person vs. multiple persons
 	\begin{itemize}
 		\item ACF less periodic
 		\item Prediction Gain reduced
 		\item Attenuation decreases
 	\end{itemize}
-	\item Random Signals (independent and identically distributed)
+	\item Random signals (Independent and Identically Distributed)
 	\begin{itemize}
 		\item Prediction is useless
-		\item Attenuation is limited to system without LP
+		\item Attenuation not improved by LP
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -491,12 +491,12 @@
 	\item Feedforward FXLMS
 	\begin{itemize}
 		\item $0^\circ$ angle of incidence
-		\item LTI Cancellation path
-		\item No feedback
+		\item LTI Cancellation Path
+		\item No feedback from 2 to 1
 	\end{itemize}
-	\item Only Simulation
+	\item Only simulation
 	\item Only simulated for a single sound source
-	\item High computation cost
+	\item High computational cost
 \end{itemize}
 \end{frame}
 

@@ -5,7 +5,7 @@
 \end{frame}
 
 \subsection{Introduction}
-\begin{frame}{Introduction}{Project foundation}
+\begin{frame}{Introduction}{Project Motivation}
 	\begin{center}
 	The call center problem 
 	\end{center}
@@ -17,31 +17,33 @@
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 		\begin{itemize}		
-		\item Voiced Sound
+		\item Voiced Sounds
 			\begin{itemize}
 				\item Periodic 
 				\item Low frequencies
 			\end{itemize}
 		\end{itemize}
 		\begin{itemize}
-		\item Unvoiced Sound 
+		\item Unvoiced Sounds 
 			\begin{itemize}
 				\item Random
 				\item High frequencies
 			\end{itemize}	
-		\item We assume the frequency range of speech : 50-4000Hz 
-		\item Speech can be seen as quasiperiodic and WSS for time frames of 20-30ms 	
+		\item We assume the frequency range of speech is 50 - 4000Hz 
+		\item Speech can be seen as quasiperiodic and WSS for time frames of 20 - 30ms 	
 	    \end{itemize}
 	    \end{column}	
 	    \begin{column}{0.5\textwidth} 
-	    \includegraphics[width=1\textwidth]{figures/VoicedvsUnvoiced}
+	    \includegraphics[width=0.8\textwidth]{figures/VoicedvsUnvoiced}
+	    
+	    [W. C. Chu, Speech Coding Algorithms. Wiley 1st ed., 2013.] 
 		\end{column}
 	\end{columns}
 	\end{center}
 \end{frame}
 
 \subsection{Basics of ANC}
-\begin{frame}{Introduction}{What Is ANC?}
+\begin{frame}{Introduction}{What is ANC?}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 				\begin{itemize}
@@ -82,19 +84,19 @@
 	\begin{column}{0.5\textwidth} 
 	\begin{itemize}
 			\item 3: Error microphone
-			\item 4: Digital signal Processor (DSP)
+			\item 4: Digital Signal Processor (DSP)
 	\end{itemize}
 	\end{column}	
 	\end{columns}	
 	\input{figures/BasicOverviewZoomed}
 	\begin{itemize}
 			\item Attenuate periodic and non-periodic signals
-			\item Delay of the system must be less than the propagation time of noise
+			\item Delay of the system must be less than the propagation time of the noise
 	\end{itemize}		
 \end{frame}
 
 \subsection{System delay}
-\begin{frame}{Introduction}{Conversion delay}
+\begin{frame}{Introduction}{Conversion Delay}
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
 		\begin{itemize}
@@ -119,7 +121,7 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Introduction}{Influence of system delay}
+\begin{frame}{Introduction}{Influence of System Delay}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{itemize}
@@ -149,12 +151,12 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Introduction}{Influence of system delay}
+\begin{frame}{Introduction}{Influence of System Delay}
 	\begin{center}
 	\begin{itemize}
-	\item Low frequencies are well attenuated by active systems
-	\item High frequencies are passively damped by the headphone cup 
-	\item System delay determine the frequency range that can be attenuated
+	\item Low frequencies are attenuated by active systems
+	\item High frequencies are passively attenuate by the headphone cup 
+	\item The system delay determines the frequency range that can be attenuated
 	\end{itemize}
 	\end{center}
 \end{frame}
@@ -162,7 +164,7 @@
 
 \begin{frame}{Introduction}{Present Consumer Headphones}
 	\begin{itemize}	
-	\item How well does the consumer headphones ANC attenuate?
+	\item How well does the consumer headphones' ANC attenuate?
 	\begin{columns}
 		\begin{column}{0.27\textwidth}
 		\begin{itemize}
@@ -201,7 +203,7 @@
 	\end{center}
 \end{frame}
 
-\begin{frame}{Introduction}{Prediction and feedforward system overview}
+\begin{frame}{Introduction}{Prediction and Feedforward FXLMS System Overview}
 	\begin{center}
 		\resizebox{0.85\columnwidth}{!}{	
 		\input{figures/Systembox}
